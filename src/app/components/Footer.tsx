@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-hw-dark text-gray-400 py-12 px-6">
+    <footer className="bg-hw-dark text-gray-300 py-12 px-6">
       <div className="max-w-5xl mx-auto text-center space-y-5">
         <div className="flex items-center justify-center gap-3">
           <Image
@@ -19,7 +19,7 @@ export default function Footer() {
             Headley <span className="text-hw-primary">Web &amp; SEO</span>
           </p>
         </div>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-400">
           Websites that make your phone ring.
         </p>
 
@@ -28,12 +28,12 @@ export default function Footer() {
             <Mail className="inline w-4 h-4 mr-1 -mt-0.5" />
             matt@headleyweb.com
           </a>
-          <span className="text-gray-600">&middot;</span>
+          <span className="text-gray-500">&middot;</span>
           <a href="tel:+12566447334" className="hover:text-white transition-colors">
             <Phone className="inline w-4 h-4 mr-1 -mt-0.5" />
             (256) 644-7334
           </a>
-          <span className="text-gray-600">&middot;</span>
+          <span className="text-gray-500">&middot;</span>
           <a
             href="https://share.google/Dqh6aBASaey4yQXzm"
             target="_blank"
@@ -44,24 +44,24 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="text-xs text-gray-600 flex items-center justify-center gap-1">
+        <p className="text-xs text-gray-400 flex items-center justify-center gap-1">
           <MapPin className="w-3 h-3" />
           Jacksonville, Alabama &middot; Serving Northeast Alabama
         </p>
 
-        <p className="text-xs text-gray-600 max-w-lg mx-auto">
+        <p className="text-xs text-gray-400 max-w-lg mx-auto">
           Your website will be live, mobile-friendly, and optimized for local search.
           Outcomes depend on your business and customer behavior.
         </p>
 
-        <div className="flex items-center justify-center gap-4 text-xs text-gray-500 pt-2">
+        <div className="flex items-center justify-center gap-4 text-xs text-gray-400 pt-2">
           <span>&copy; {new Date().getFullYear()} Headley Web &amp; SEO. All rights reserved.</span>
           <Link href="/privacy" className="hover:text-white transition-colors">
             Privacy Policy
           </Link>
         </div>
 
-        <p className="text-xs text-gray-600">
+        <p className="text-xs text-gray-400">
           Built by{" "}
           <a href="https://headleyweb.com" className="text-hw-primary hover:text-hw-primary-dark transition-colors">
             Headley Web &amp; SEO

@@ -65,12 +65,12 @@ export default function Nav() {
                 {l.label}
               </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="btn-primary text-sm !py-2 !px-4"
             >
               Schedule a Free Call
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile hamburger */}
@@ -118,13 +118,13 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="btn-primary text-lg mt-4"
             onClick={() => setMobileOpen(false)}
           >
             Schedule a Free Call
-          </a>
+          </Link>
         </nav>
       </div>
     </>

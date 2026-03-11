@@ -127,6 +127,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center ken-burns-subtle"
           style={{ backgroundImage: "url('/images/google-review-hvac.webp')" }}
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(28,40,38,0.85)] via-[rgba(28,40,38,0.7)] to-[rgba(28,40,38,0.9)]" />
         <div className="max-w-5xl mx-auto px-6 relative z-10">
@@ -502,11 +503,11 @@ export default function Home() {
                 <div className="flex gap-6 mb-5">
                   <div>
                     <p className="text-2xl font-bold text-hw-primary">0 → 1</p>
-                    <p className="text-gray-500 text-xs uppercase tracking-wide">Online Presence</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wide">Online Presence</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-hw-primary">3 wks</p>
-                    <p className="text-gray-500 text-xs uppercase tracking-wide">To Launch</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wide">To Launch</p>
                   </div>
                 </div>
                 <span className="text-hw-primary font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -539,7 +540,7 @@ export default function Home() {
               </div>
               <div className="p-6 text-left">
                 <h3 className="text-lg font-bold mb-1 !text-white">Golden Hive Honey</h3>
-                <p className="text-gray-400 text-sm mb-4">
+                <p className="text-gray-300 text-sm mb-4">
                   Clean e-commerce demo for local honey products with warm, inviting design
                 </p>
                 <span className="text-hw-primary font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -568,7 +569,7 @@ export default function Home() {
               </div>
               <div className="p-6 text-left">
                 <h3 className="text-lg font-bold mb-1 !text-white">Chromatic Chaos Salon</h3>
-                <p className="text-gray-400 text-sm mb-4">
+                <p className="text-gray-300 text-sm mb-4">
                   Modern salon site with booking integration and bold brand personality
                 </p>
                 <span className="text-hw-primary font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -579,7 +580,7 @@ export default function Home() {
           </div>
 
           <div className="text-center animate-on-scroll">
-            <p className="text-gray-400 mb-6">Want results like these for your business?</p>
+            <p className="text-gray-300 mb-6">Want results like these for your business?</p>
             <a href="#audit" className="btn-primary">
               Get Your Free Video Audit
             </a>
@@ -588,7 +589,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Pricing ═══ */}
-      <section className="relative py-24 px-6 overflow-hidden" style={{ backgroundColor: "var(--color-dark)", backgroundImage: "linear-gradient(to bottom, rgba(28,40,38,0.92) 0%, rgba(28,40,38,0.68) 15%, rgba(28,40,38,0.68) 85%, rgba(28,40,38,0.92) 100%), url('/images/background-dark-oak.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <section className="relative py-24 px-6 overflow-hidden" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 15%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.82) 100%), url('/images/background-dark-oak.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="relative z-10 max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Pricing</p>
@@ -604,9 +605,9 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 items-start">
             {/* Kickstart */}
             <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0s" }}>
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-1">Kickstart</h3>
+              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Kickstart</h3>
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$495</p>
-              <p className="text-xs text-gray-400 uppercase tracking-wide mb-4">one-time</p>
+              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
                 Get online fast with a clean, professional website.
               </p>
@@ -632,17 +633,17 @@ export default function Home() {
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
                   You own your website
                 </li>
-                <li className="flex items-start gap-2 text-gray-500 line-through">
+                <li className="flex items-start gap-2 text-gray-400 line-through">
                   Multi-page site
                 </li>
-                <li className="flex items-start gap-2 text-gray-500 line-through">
+                <li className="flex items-start gap-2 text-gray-400 line-through">
                   Google Business Profile setup
                 </li>
               </ul>
               {/* Paired care plan */}
               <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
                 <span className="text-xs font-semibold text-gray-300">Essential Care — <span className="text-hw-primary font-normal">$49/mo</span></span>
-                <span className="text-xs text-gray-400">Hosting, security, &amp; minor updates</span>
+                <span className="text-xs text-gray-300">Hosting, security, &amp; minor updates</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
               <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
@@ -653,9 +654,9 @@ export default function Home() {
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-hw-primary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                 Best Value
               </span>
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-1">Starter</h3>
+              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Starter</h3>
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$795</p>
-              <p className="text-xs text-gray-400 uppercase tracking-wide mb-4">one-time</p>
+              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
                 A full site that actually shows up in local search.
               </p>
@@ -694,7 +695,7 @@ export default function Home() {
               {/* Paired care plan */}
               <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
                 <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$79/mo</span></span>
-                <span className="text-xs text-gray-400">Essential + monthly traffic reports</span>
+                <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
               <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
@@ -702,9 +703,9 @@ export default function Home() {
 
             {/* Professional */}
             <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0.24s" }}>
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-1">Professional</h3>
+              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Professional</h3>
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$1,195</p>
-              <p className="text-xs text-gray-400 uppercase tracking-wide mb-4">one-time</p>
+              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
                 The complete package for businesses ready to dominate local search.
               </p>
@@ -747,7 +748,7 @@ export default function Home() {
               {/* Paired care plan */}
               <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
                 <span className="text-xs font-semibold text-gray-300">Accelerate — <span className="text-hw-primary font-normal">$149/mo</span></span>
-                <span className="text-xs text-gray-400">Growth + AI visibility &amp; strategy</span>
+                <span className="text-xs text-gray-300">Growth + AI visibility &amp; strategy</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
               <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
@@ -757,7 +758,7 @@ export default function Home() {
           <p className="text-center text-gray-400 text-sm mt-8 animate-on-scroll">
             Flat-rate build. No surprises. 50% upfront, 50% at launch.
           </p>
-          <p className="text-center text-gray-500 text-xs mt-2 animate-on-scroll">
+          <p className="text-center text-gray-400 text-xs mt-2 animate-on-scroll">
             *Timelines begin once all content (text, photos, logos) is received.
           </p>
         </div>
@@ -969,7 +970,7 @@ export default function Home() {
           <p className="text-gray-400 mb-2 animate-on-scroll">
             Flat-rate builds from $495. Care plan included free for 3 months, then from $49/mo — cancel anytime.
           </p>
-          <p className="text-gray-500 text-sm mb-8 animate-on-scroll">
+          <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
             Serving Jacksonville, Anniston, and Northeast Alabama
           </p>
