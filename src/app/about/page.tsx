@@ -49,9 +49,9 @@ export default function AboutPage() {
       />
 
       {/* ═══ Hero ═══ */}
-      <section className="pt-28 pb-16 px-6 bg-hw-light">
+      <section className="pt-32 pb-20 md:pt-36 md:pb-24 px-6 bg-hw-light">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-scroll">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
             A Local Business Owner,{" "}
             <span className="text-hw-primary">Just Like You</span>
           </h1>
@@ -62,9 +62,9 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ Story + Headshot ═══ */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-10 items-center">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
             {/* Headshot */}
             <div className="shrink-0 animate-on-scroll">
               <Image
@@ -94,9 +94,9 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ Credentials ═══ */}
-      <section className="py-16 px-6 bg-hw-light">
+      <section className="py-24 md:py-32 px-6 bg-hw-light">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8 animate-on-scroll">
+          <h2 className="text-3xl font-bold text-center mb-12 animate-on-scroll">
             What I Bring to the Table
           </h2>
           <ul className="space-y-4">
@@ -111,7 +111,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ Family Photo + Personal Touch ═══ */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <Image
             src="/images/headley-family-800w.webp"
@@ -128,7 +128,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="py-20 px-6 bg-hw-dark text-white">
+      <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">
             Let&apos;s Talk About Your Business

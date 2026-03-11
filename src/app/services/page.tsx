@@ -35,7 +35,7 @@ const services = [
   {
     icon: Monitor,
     title: "Custom Web Design",
-    oneLiner: "I build 3-8 page, mobile-ready sites that look professional and actually work for your business.",
+    oneLiner: "I build clean, mobile-ready sites that look professional and actually work for your business.",
     details: [
       "StoryBrand messaging that makes customers the hero",
       "Mobile-first design — looks great on every device",
@@ -173,9 +173,9 @@ export default function ServicesPage() {
       />
 
       {/* ═══ Hero ═══ */}
-      <section className="pt-28 pb-16 px-6 bg-hw-light">
+      <section className="pt-32 pb-20 md:pt-36 md:pb-24 px-6 bg-hw-light">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-scroll">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
             How I Help Local Businesses{" "}
             <span className="text-hw-primary">Get Found</span>
           </h1>
@@ -186,9 +186,9 @@ export default function ServicesPage() {
       </section>
 
       {/* ═══ Services Detail ═══ */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="space-y-12">
+          <div className="space-y-16">
             {services.map((svc, i) => (
               <div
                 key={svc.title}
@@ -220,9 +220,9 @@ export default function ServicesPage() {
       </section>
 
       {/* ═══ How It Works ═══ */}
-      <section className="py-16 px-6 bg-hw-light">
+      <section className="py-24 md:py-32 px-6 bg-hw-light">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">
             How We Get You More Leads
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -240,9 +240,9 @@ export default function ServicesPage() {
       </section>
 
       {/* ═══ Why Work With Me ═══ */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">
             Why Local Businesses Choose Me
           </h2>
           <div className="grid sm:grid-cols-2 gap-6">
@@ -263,7 +263,7 @@ export default function ServicesPage() {
 
       {/* ═══ Pricing ═══ */}
       <section
-        className="py-20 px-6 relative"
+        className="py-28 md:py-36 px-6 relative"
         style={{
           backgroundImage: "linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('/images/background-dark-oak.webp')",
           backgroundSize: "cover",
@@ -330,7 +330,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section id="cta" className="py-20 px-6 bg-hw-dark text-white">
+      <section id="cta" className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">
             Ready to Get Found?
@@ -358,7 +358,7 @@ export default function ServicesPage() {
       <section className="sr-only" aria-hidden="true">
         <h2>Web Design and SEO Services in Northeast Alabama</h2>
         <p>
-          Headley Web &amp; SEO offers three core services for local businesses in Northeast Alabama: custom web design (3-8 page mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), and Google Business Profile setup and management. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 for a Get Found site, $795 for a Get Calls site, and $1,195 for a Get Booked site. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
+          Headley Web &amp; SEO offers three core services for local businesses in Northeast Alabama: custom web design (clean, mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), and Google Business Profile setup and management. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 for a Get Found site, $795 for a Get Calls site, and $1,195 for a Get Booked site. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
         </p>
       </section>
     </main>

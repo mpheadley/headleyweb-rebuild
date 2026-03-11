@@ -62,8 +62,8 @@ const projects = [
   {
     title: "Emotional Support Chicken",
     description: "Satirical concept site for a fake certified emotional support poultry business. Built to demonstrate design range, humor, and full-stack chops.",
-    desktop: null,
-    mobile: null,
+    desktop: "/images/project-esc-800w.webp",
+    mobile: "/images/project-esc-mobile-480w.webp",
     url: null,
     tag: "Creative Showcase",
     featured: false,
@@ -79,9 +79,9 @@ export default function PortfolioPage() {
       />
 
       {/* ═══ Hero ═══ */}
-      <section className="pt-28 pb-16 px-6 bg-hw-light">
+      <section className="pt-32 pb-20 md:pt-36 md:pb-24 px-6 bg-hw-light">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-scroll">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
             Helping Alabama Businesses{" "}
             <span className="text-hw-primary">Get Found Online</span>
           </h1>
@@ -92,7 +92,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ═══ Projects ═══ */}
-      <section className="py-16 px-6 bg-hw-dark">
+      <section className="py-24 md:py-32 px-6 bg-hw-dark">
         <div className="max-w-5xl mx-auto">
           {/* Featured project — horizontal card */}
           {projects.filter((p) => p.featured).map((project) => (
@@ -213,7 +213,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="py-20 px-6 bg-hw-light">
+      <section className="py-24 md:py-32 px-6 bg-hw-light">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
             Want Results Like These?

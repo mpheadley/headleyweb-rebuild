@@ -47,9 +47,9 @@ export default function ContactPage() {
       />
 
       {/* ═══ Hero ═══ */}
-      <section className="pt-28 pb-16 px-6 bg-hw-light">
+      <section className="pt-32 pb-20 md:pt-36 md:pb-24 px-6 bg-hw-light">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-scroll">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
             Let&apos;s <span className="text-hw-primary">Talk</span>
           </h1>
           <p className="text-lg text-hw-text-light max-w-2xl mx-auto animate-on-scroll">
@@ -59,9 +59,9 @@ export default function ContactPage() {
       </section>
 
       {/* ═══ Contact Grid ═══ */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-16">
             {/* Form */}
             <div className="animate-on-scroll">
               <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>

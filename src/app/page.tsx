@@ -122,7 +122,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* ═══ Hero Section ═══ */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-hw-dark text-white section-angled overflow-hidden pt-24">
+      <section className="relative min-h-svh md:min-h-[80vh] flex items-center justify-center bg-hw-dark text-white section-angled overflow-hidden pt-28 pb-20 md:pt-24 md:pb-0">
         {/* Background image with dark overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center ken-burns-subtle"
@@ -134,7 +134,7 @@ export default function Home() {
           <div className="grid md:grid-cols-[1fr_22rem] gap-12 items-center">
             {/* Left — Copy */}
             <div className="text-center md:text-left min-w-0">
-              <p className="text-hw-secondary font-semibold text-sm tracking-widest uppercase mb-4">
+              <p className="text-hw-secondary font-semibold text-sm tracking-widest uppercase mb-5 md:mb-4">
                 Web Design &amp; SEO for Northeast Alabama
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 !text-white">
@@ -174,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Pain Points ═══ */}
-      <section className="pt-24 pb-16 px-6 bg-hw-light grain">
+      <section className="py-24 md:py-32 px-6 bg-hw-light grain">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Left — Image */}
@@ -249,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Services ═══ */}
-      <section className="relative py-20 px-6 text-white section-angled-reverse overflow-hidden">
+      <section className="relative py-24 md:py-32 px-6 text-white section-angled-reverse overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/background-charred-stacked-timber.webp')" }}
@@ -272,7 +272,7 @@ export default function Home() {
                 Custom Web Design
               </h3>
               <p className="text-gray-300 mb-4">
-                I build 3–8 page, mobile-ready sites that look professional and
+                I build clean, mobile-ready sites that look professional and
                 actually work for your business.
               </p>
               <a href="/services" className="text-hw-primary font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">
@@ -310,10 +310,10 @@ export default function Home() {
       </section>
 
       {/* ═══ How It Works ═══ */}
-      <section className="pt-16 pb-24 px-6 bg-hw-light grain">
+      <section className="py-24 md:py-32 px-6 bg-hw-light grain">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">The Plan</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 animate-on-scroll">
             How We Get You <span className="font-light">More Leads</span>
           </h2>
           <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-y-8 gap-x-0 items-start relative">
@@ -381,7 +381,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Trust (Empathy + Benefit Cards) ═══ */}
-      <section className="pt-28 pb-20 px-6 bg-white">
+      <section className="py-28 md:py-36 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           {/* Top — Headshot + Empathy */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
@@ -466,7 +466,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Portfolio / Results ═══ */}
-      <section className="pt-20 pb-28 px-6 bg-hw-dark text-white">
+      <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Results</p>
@@ -590,7 +590,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Pricing ═══ */}
-      <section className="relative py-24 px-6 overflow-hidden" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 15%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.82) 100%), url('/images/background-dark-oak.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <section className="relative py-28 md:py-36 px-6 overflow-hidden" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 15%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.82) 100%), url('/images/background-dark-oak.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="relative z-10 max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Pricing</p>
@@ -755,7 +755,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Quiz CTA ═══ */}
-      <section className="py-10 px-6 bg-hw-light">
+      <section className="py-14 md:py-16 px-6 bg-hw-light">
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8 p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-sm animate-on-scroll">
             <div className="shrink-0 w-14 h-14 rounded-2xl bg-hw-primary/10 flex items-center justify-center">
@@ -775,7 +775,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Consequences ═══ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "rgba(28,40,38,0.04)" }}>
+      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "rgba(28,40,38,0.04)" }}>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Don&apos;t Wait</p>
           <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">What Happens If You Wait</h2>
@@ -831,9 +831,9 @@ export default function Home() {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section className="py-20 px-6">
+      <section className="py-24 md:py-32 px-6">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">FAQ</p>
             <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Questions We Hear From Local Business Owners</h2>
           </div>
@@ -903,7 +903,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Success / Transformation ═══ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "rgba(107,143,113,0.06)" }}>
+      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "rgba(107,143,113,0.06)" }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-hw-secondary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">The Transformation</p>
@@ -951,7 +951,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Final CTA ═══ */}
-      <section className="py-20 px-6 bg-hw-dark text-white">
+      <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">Ready to Get Found?</h2>
           <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
@@ -977,7 +977,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Lead Gen Form ═══ */}
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className="py-24 md:py-32 px-6">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Audit</p>
