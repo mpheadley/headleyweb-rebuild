@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ExternalLink, ArrowRight, Phone, MapPin } from "lucide-react";
+import { ExternalLink, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -93,17 +93,16 @@ export default function PortfolioPage() {
 
       {/* ═══ Projects ═══ */}
       <section className="py-16 px-6 bg-hw-dark">
-        <div className="max-w-5xl mx-auto space-y-8">
-          {projects.map((project) => (
+        <div className="max-w-5xl mx-auto">
+          {/* Featured project — horizontal card */}
+          {projects.filter((p) => p.featured).map((project) => (
             <div
               key={project.title}
-              className={`bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl overflow-hidden animate-on-scroll ${
-                project.featured ? "md:flex" : ""
-              }`}
+              className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl overflow-hidden animate-on-scroll md:flex mb-8"
             >
               {/* Screenshot */}
               {project.desktop ? (
-                <div className={`relative aspect-[16/10] ${project.featured ? "md:aspect-auto md:w-1/2" : ""} bg-hw-dark/60 border-b ${project.featured ? "md:border-b-0 md:border-r" : ""} border-white/10 overflow-hidden`}>
+                <div className="relative aspect-[16/10] md:aspect-auto md:w-1/2 bg-hw-dark/60 border-b md:border-b-0 md:border-r border-white/10 overflow-hidden">
                   <img
                     src={project.desktop}
                     alt={`${project.title} website screenshot`}
@@ -124,15 +123,15 @@ export default function PortfolioPage() {
                   )}
                 </div>
               ) : (
-                <div className={`aspect-[16/10] ${project.featured ? "md:aspect-auto md:w-1/2" : ""} bg-hw-dark/40 border-b border-white/10 flex items-center justify-center`}>
+                <div className="aspect-[16/10] md:aspect-auto md:w-1/2 bg-hw-dark/40 border-b md:border-b-0 md:border-r border-white/10 flex items-center justify-center">
                   <p className="text-gray-500 text-sm">Screenshots coming soon</p>
                 </div>
               )}
 
               {/* Info */}
-              <div className={`p-6 ${project.featured ? "md:p-8 md:flex md:flex-col md:justify-center" : ""}`}>
+              <div className="p-6 md:p-8 md:flex md:flex-col md:justify-center">
                 <span className="text-xs font-semibold text-hw-primary uppercase tracking-wider">{project.tag}</span>
-                <h2 className={`${project.featured ? "text-xl" : "text-lg"} font-bold !text-white mt-1 mb-2`}>
+                <h2 className="text-xl font-bold !text-white mt-1 mb-2">
                   {project.title}
                 </h2>
                 <p className="text-gray-300 text-sm mb-4">
@@ -151,6 +150,65 @@ export default function PortfolioPage() {
               </div>
             </div>
           ))}
+
+          {/* Remaining projects — 2-column grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {projects.filter((p) => !p.featured).map((project) => (
+              <div
+                key={project.title}
+                className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl overflow-hidden animate-on-scroll"
+              >
+                {/* Screenshot */}
+                {project.desktop ? (
+                  <div className="relative aspect-[16/10] bg-hw-dark/60 border-b border-white/10 overflow-hidden">
+                    <img
+                      src={project.desktop}
+                      alt={`${project.title} website screenshot`}
+                      width={800}
+                      height={456}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-top"
+                    />
+                    {project.mobile && (
+                      <img
+                        src={project.mobile}
+                        alt={`${project.title} on mobile`}
+                        width={480}
+                        height={914}
+                        loading="lazy"
+                        className="absolute bottom-0 right-4 w-[22%] rounded-t-lg shadow-2xl border-t-2 border-x-2 border-white/20"
+                      />
+                    )}
+                  </div>
+                ) : (
+                  <div className="aspect-[16/10] bg-hw-dark/40 border-b border-white/10 flex items-center justify-center">
+                    <p className="text-gray-500 text-sm">Screenshots coming soon</p>
+                  </div>
+                )}
+
+                {/* Info */}
+                <div className="p-6">
+                  <span className="text-xs font-semibold text-hw-primary uppercase tracking-wider">{project.tag}</span>
+                  <h2 className="text-lg font-bold !text-white mt-1 mb-2">
+                    {project.title}
+                  </h2>
+                  <p className="text-gray-300 text-sm mb-4">
+                    {project.description}
+                  </p>
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm text-hw-primary hover:text-hw-primary-dark transition-colors font-semibold"
+                    >
+                      View Live Site <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -167,10 +225,10 @@ export default function PortfolioPage() {
             <Link href="/contact" className="btn-primary text-lg px-8">
               Get Your Free Video Audit <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <a href="tel:+12566447334" className="btn-secondary text-lg px-8">
-              <Phone className="w-5 h-5 mr-2" />
-              (256) 644-7334
-            </a>
+            <Link href="/quiz" className="btn-secondary text-lg px-8">
+              <Sparkles className="w-5 h-5 mr-2" />
+              Take the Quiz
+            </Link>
           </div>
         </div>
       </section>

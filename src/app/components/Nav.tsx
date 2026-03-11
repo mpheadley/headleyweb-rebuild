@@ -69,7 +69,7 @@ export default function Nav() {
               href="/contact"
               className="btn-primary text-sm !py-2 !px-4"
             >
-              Schedule a Free Call
+              Get Your Free Video Audit
             </Link>
           </nav>
 
@@ -123,7 +123,7 @@ export default function Nav() {
             className="btn-primary text-lg mt-4"
             onClick={() => setMobileOpen(false)}
           >
-            Schedule a Free Call
+            Get Your Free Video Audit
           </Link>
         </nav>
       </div>

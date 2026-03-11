@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check, MapPin, Phone, ArrowRight } from "lucide-react";
+import { Check, MapPin, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -142,12 +142,12 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/contact" className="btn-primary text-lg px-8">
-              Schedule a Free Call <ArrowRight className="w-5 h-5 ml-2" />
+              Get Your Free Video Audit <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <a href="tel:+12566447334" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
-              <Phone className="w-5 h-5 mr-2" />
-              (256) 644-7334
-            </a>
+            <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
+              <Sparkles className="w-5 h-5 mr-2" />
+              Take the Quiz
+            </Link>
           </div>
         </div>
       </section>

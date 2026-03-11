@@ -153,9 +153,10 @@ export default function Home() {
                 <a href="#audit" className="btn-primary">
                   Get Your Free Video Audit
                 </a>
-                <a href="#contact" className="btn-secondary !text-white !border-white/80 hover:!bg-hw-secondary hover:!border-hw-secondary">
-                  Schedule a 15-Minute Call
-                </a>
+                <Link href="/quiz" className="btn-secondary !text-white !border-white/80 hover:!bg-hw-secondary hover:!border-hw-secondary">
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Take the Quiz
+                </Link>
               </div>
             </div>
 
@@ -603,15 +604,15 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 items-start">
-            {/* Kickstart */}
+            {/* Get Found */}
             <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0s" }}>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Kickstart</h3>
+              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Found</h3>
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$495</p>
               <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Get online fast with a clean, professional website.
+                Get online and start getting calls.
               </p>
-              <p className="text-xs text-hw-primary font-semibold mb-5">Estimated turnaround: ~1–2 weeks*</p>
+              <p className="text-xs text-gray-400 mb-5">Typically 1 page · ~1–2 weeks*</p>
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
@@ -634,9 +635,6 @@ export default function Home() {
                   You own your website
                 </li>
                 <li className="flex items-start gap-2 text-gray-400 line-through">
-                  Multi-page site
-                </li>
-                <li className="flex items-start gap-2 text-gray-400 line-through">
                   Google Business Profile setup
                 </li>
               </ul>
@@ -649,23 +647,19 @@ export default function Home() {
               <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
             </div>
 
-            {/* Starter — Best Value */}
+            {/* Get Calls — Best Value */}
             <div className="bg-hw-primary/[0.07] backdrop-blur-sm border border-hw-primary/30 rounded-2xl p-8 flex flex-col relative transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.15)] animate-on-scroll" style={{ transitionDelay: "0.12s" }}>
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-hw-primary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                 Best Value
               </span>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Starter</h3>
+              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Calls</h3>
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$795</p>
               <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                A full site that actually shows up in local search.
+                Show up where customers search.
               </p>
-              <p className="text-xs text-hw-primary font-semibold mb-5">Estimated turnaround: ~2–3 weeks*</p>
+              <p className="text-xs text-gray-400 mb-5">Typically 3–5 pages · ~2–3 weeks*</p>
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  3–5 pages
-                </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
                   Google Business Profile setup
@@ -701,20 +695,16 @@ export default function Home() {
               <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
             </div>
 
-            {/* Professional */}
+            {/* Get Booked */}
             <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0.24s" }}>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Professional</h3>
+              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Booked</h3>
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$1,195</p>
               <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                The complete package for businesses ready to dominate local search.
+                Dominate your market in search and AI.
               </p>
-              <p className="text-xs text-hw-primary font-semibold mb-5">Estimated turnaround: ~3–4 weeks*</p>
+              <p className="text-xs text-gray-400 mb-5">Typically 5–7 pages · ~3–4 weeks*</p>
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  5–7 pages
-                </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
                   Google Business Profile setup &amp; optimization
@@ -975,11 +965,13 @@ export default function Home() {
             Serving Jacksonville, Anniston, and Northeast Alabama
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
-            <a href="#contact" className="btn-primary text-lg px-8">Schedule a Free Call</a>
-            <a href="tel:+12566447334" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
-              <Phone className="w-5 h-5 mr-2" />
-              Call Me Directly
-            </a>
+            <Link href="/contact" className="btn-primary text-lg px-8">
+              Get Your Free Video Audit <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
+            <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
+              <Sparkles className="w-5 h-5 mr-2" />
+              Take the Quiz
+            </Link>
           </div>
         </div>
       </section>

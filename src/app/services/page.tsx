@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Monitor, Search, MapPin, Check, ArrowRight, Phone, Clock, Shield, BarChart3, Users, FileText, BrainCircuit } from "lucide-react";
+import { Monitor, Search, MapPin, Check, ArrowRight, Phone, Clock, Shield, BarChart3, Users, FileText, BrainCircuit, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -96,9 +96,10 @@ const process = [
 
 const tiers = [
   {
-    name: "Kickstart",
-    tagline: "Get online fast.",
+    name: "Get Found",
+    tagline: "Get online and start getting calls.",
     price: "$495",
+    pages: "1 page",
     timeline: "1-2 weeks",
     features: [
       "Professional, mobile-friendly design",
@@ -110,16 +111,16 @@ const tiers = [
     carePlan: "Essential Care",
     carePrice: "$49/mo",
     careDesc: "Hosting, security updates, 30 min edits, email support",
-    cta: "Get Your Site Live",
+    cta: "Get Found Now",
     highlight: false,
   },
   {
-    name: "Starter",
-    tagline: "Built to get found.",
+    name: "Get Calls",
+    tagline: "Show up where customers search.",
     price: "$795",
+    pages: "3–5 pages",
     timeline: "2-3 weeks",
     features: [
-      "3-5 pages",
       "Google Business Profile setup ($150 value)",
       "Search optimization",
       "FAQ section that Google features in search",
@@ -130,16 +131,16 @@ const tiers = [
     carePlan: "Growth Care",
     carePrice: "$79/mo",
     careDesc: "Everything in Essential + GBP management, monthly traffic reports, review coaching, 1 hr edits",
-    cta: "Start Growing",
+    cta: "Start Getting Calls",
     highlight: true,
   },
   {
-    name: "Professional",
-    tagline: "Dominate your market.",
+    name: "Get Booked",
+    tagline: "Dominate your market in search and AI.",
     price: "$1,195",
+    pages: "5–7 pages",
     timeline: "3-4 weeks",
     features: [
-      "5-7 pages",
       "Google Business Profile setup & optimization ($300 value)",
       "Advanced search optimization",
       "Content written for AI visibility",
@@ -293,7 +294,7 @@ export default function ServicesPage() {
                 <h3 className="text-xl font-bold !text-hw-primary">{tier.name}</h3>
                 <p className="text-gray-400 text-sm mb-3">{tier.tagline}</p>
                 <p className="font-heading text-4xl font-bold text-white mb-1">{tier.price}</p>
-                <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">{tier.timeline}</p>
+                <p className="text-xs text-gray-400 mb-4">Typically {tier.pages} · ~{tier.timeline}*</p>
 
                 <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
                   {tier.features.map((f) => (
@@ -343,12 +344,12 @@ export default function ServicesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/contact" className="btn-primary text-lg px-8">
-              Schedule a Free Call
+              Get Your Free Video Audit <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <a href="tel:+12566447334" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
-              <Phone className="w-5 h-5 mr-2" />
-              Call Me Directly
-            </a>
+            <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
+              <Sparkles className="w-5 h-5 mr-2" />
+              Take the Quiz
+            </Link>
           </div>
         </div>
       </section>
@@ -357,7 +358,7 @@ export default function ServicesPage() {
       <section className="sr-only" aria-hidden="true">
         <h2>Web Design and SEO Services in Northeast Alabama</h2>
         <p>
-          Headley Web &amp; SEO offers three core services for local businesses in Northeast Alabama: custom web design (3-8 page mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), and Google Business Profile setup and management. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 for a single-page Kickstart site, $795 for a 3-5 page Starter site, and $1,195 for a 5-7 page Professional site. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
+          Headley Web &amp; SEO offers three core services for local businesses in Northeast Alabama: custom web design (3-8 page mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), and Google Business Profile setup and management. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 for a Get Found site, $795 for a Get Calls site, and $1,195 for a Get Booked site. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
         </p>
       </section>
     </main>
