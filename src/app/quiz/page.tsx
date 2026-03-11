@@ -377,8 +377,8 @@ export default function QuizPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link href="/#contact" className="btn-primary text-center">
-                  Get Your Free Video Audit
+                <Link href="/#checkup" className="btn-primary text-center">
+                  Get Your Free Site Checkup
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
                 <a

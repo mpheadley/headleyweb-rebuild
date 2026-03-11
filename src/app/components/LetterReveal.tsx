@@ -18,10 +18,16 @@ export default function LetterReveal({
   trigger = "load",
 }: LetterRevealProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [visible, setVisible] = useState(trigger === "load");
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (trigger !== "scroll" || !ref.current) return;
+    if (trigger === "load") {
+      // Start hidden, then trigger after a frame so CSS transition fires
+      requestAnimationFrame(() => setVisible(true));
+      return;
+    }
+
+    if (!ref.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {

@@ -4,6 +4,7 @@ import "./globals.css";
 import ScrollReveal from "./components/ScrollReveal";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Helping Alabama Businesses Get Found, Get Called, and Get Growing.",
+        alt: "Headley Web & SEO — Get Found. Get Calls. Get Booked.",
       },
     ],
   },
@@ -70,7 +71,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Playfair+Display:wght@700&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -84,6 +85,7 @@ export default function RootLayout({
         <Nav />
         {children}
         <Footer />
+        <CookieBanner />
         <ScrollReveal />
       </body>
     </html>

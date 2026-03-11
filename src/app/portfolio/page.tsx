@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ExternalLink, ArrowRight, Sparkles } from "lucide-react";
+import { ExternalLink, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -79,13 +79,19 @@ export default function PortfolioPage() {
       />
 
       {/* ═══ Hero ═══ */}
-      <section className="pt-32 pb-20 md:pt-36 md:pb-24 px-6 bg-hw-light">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
-            Helping Alabama Businesses{" "}
-            <span className="text-hw-primary">Get Found Online</span>
+      <section className="relative pt-32 pb-20 md:pt-36 md:pb-24 px-6 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center ken-burns-subtle"
+          style={{ backgroundImage: "url('/images/background-dark-oak.webp')" }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(28,40,38,0.92)] via-[rgba(28,40,38,0.85)] to-[rgba(28,40,38,0.95)]" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
+            Work That Gets{" "}
+            <span className="text-hw-primary">Results</span>
           </h1>
-          <p className="text-lg text-hw-text-light max-w-2xl mx-auto animate-on-scroll">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
             Every project starts with a clear goal: make your phone ring. Here&apos;s what that looks like in practice.
           </p>
         </div>
@@ -213,19 +219,23 @@ export default function PortfolioPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="py-24 md:py-32 px-6 bg-hw-light">
+      <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">
             Want Results Like These?
           </h2>
-          <p className="text-lg text-hw-text-light mb-8 animate-on-scroll">
+          <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
             Let&apos;s talk about what a professional online presence could do for your business.
+          </p>
+          <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
+            <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
+            Serving Jacksonville, Anniston, and Northeast Alabama
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/contact" className="btn-primary text-lg px-8">
-              Get Your Free Video Audit <ArrowRight className="w-5 h-5 ml-2" />
+              Get Your Free Site Checkup <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <Link href="/quiz" className="btn-secondary text-lg px-8">
+            <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
               <Sparkles className="w-5 h-5 mr-2" />
               Take the Quiz
             </Link>

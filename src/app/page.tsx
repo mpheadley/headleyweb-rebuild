@@ -1,4 +1,4 @@
-import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Phone, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles } from "lucide-react";
+import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Video, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles } from "lucide-react";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
@@ -150,8 +150,8 @@ export default function Home() {
                 predictable flat rate.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="#audit" className="btn-primary">
-                  Get Your Free Video Audit
+                <a href="#checkup" className="btn-primary">
+                  Get Your Free Site Checkup
                 </a>
                 <Link href="/quiz" className="btn-secondary !text-white !border-white/80 hover:!bg-hw-secondary hover:!border-hw-secondary">
                   <Sparkles className="w-5 h-5 mr-2" />
@@ -235,11 +235,11 @@ export default function Home() {
                 Want to see what AI says about your business?
               </p>
               <p className="text-hw-text-light text-sm mt-1">
-                I&apos;ll include an AI visibility check in your free video audit.
+                I&apos;ll include an AI visibility check in your free site checkup.
               </p>
             </div>
-            <a href="#audit" className="btn-primary whitespace-nowrap shrink-0">
-              Get Your Free Audit
+            <a href="#checkup" className="btn-primary whitespace-nowrap shrink-0">
+              Get Your Free Checkup
             </a>
           </div>
         </div>
@@ -316,13 +316,12 @@ export default function Home() {
           <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-y-8 gap-x-0 items-start relative">
             <div className="flex flex-col items-center text-center animate-on-scroll" style={{ transitionDelay: "0.05s" }}>
               <div className="w-16 h-16 rounded-full bg-hw-secondary/10 border-2 border-hw-secondary flex items-center justify-center mb-4 relative z-10">
-                <Phone className="w-7 h-7 text-hw-secondary" />
+                <Video className="w-7 h-7 text-hw-secondary" />
                 <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-secondary text-white text-xs font-bold flex items-center justify-center">1</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Quick Call</h3>
+              <h3 className="text-xl font-bold mb-2">Request Your Free Checkup</h3>
               <p className="text-hw-text-light">
-                We talk about your business and what customers search for.
-                20 minutes, no pressure.
+                Take the quiz or fill out the form. I&apos;ll record a personalized video showing exactly where you stand online.
               </p>
             </div>
             {/* Connector 1→2 */}
@@ -343,10 +342,9 @@ export default function Home() {
                 <Wrench className="w-7 h-7 text-hw-secondary" />
                 <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-secondary text-white text-xs font-bold flex items-center justify-center">2</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">I Handle Everything</h3>
+              <h3 className="text-xl font-bold mb-2">I Build Your System</h3>
               <p className="text-hw-text-light">
-                Website, local SEO, and Google Business Profile — built in
-                3–4 weeks for a flat rate. You focus on your business.
+                Based on what I find, I build your website, local SEO, and Google Business Profile — flat rate, no surprises.
               </p>
             </div>
             {/* Connector 2→3 */}
@@ -367,10 +365,9 @@ export default function Home() {
                 <TrendingUp className="w-7 h-7 text-hw-primary" />
                 <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-primary text-white text-xs font-bold flex items-center justify-center">3</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">You Get Found</h3>
+              <h3 className="text-xl font-bold mb-2">Your Phone Starts Ringing</h3>
               <p className="text-hw-text-light">
-                Customers find you online, understand how you solve their
-                problem, and your phone starts ringing.
+                Customers find you, call you, and book you. You get found online and get back to the work you love.
               </p>
             </div>
           </div>
@@ -404,7 +401,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg text-hw-text-light mb-6">
-                As a husband, dad, and former pastor living right here in Jacksonville, I know that running a small business isn&apos;t just about &quot;marketing&quot; — it&apos;s about providing for your family and serving your community. I started Headley Web &amp; SEO because I grew tired of seeing great local businesses get ignored by high-priced agencies.
+                As a husband, dad, and former pastor living right here in Jacksonville, I know that running a small business isn&apos;t just about &quot;marketing&quot; — it&apos;s about providing for your family and serving your community. I started Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO because I grew tired of seeing great local businesses get ignored by high-priced agencies.
               </p>
               <ul className="space-y-3 text-hw-text-light">
                 <li className="flex items-start gap-3">
@@ -579,8 +576,8 @@ export default function Home() {
 
           <div className="text-center animate-on-scroll">
             <p className="text-gray-300 mb-6">Want results like these for your business?</p>
-            <a href="#audit" className="btn-primary">
-              Get Your Free Video Audit
+            <a href="#checkup" className="btn-primary">
+              Get Your Free Site Checkup
             </a>
           </div>
         </div>
@@ -607,7 +604,7 @@ export default function Home() {
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$495</p>
               <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Get online and start getting calls.
+                Get online. Get visible. Get found.
               </p>
               <p className="text-xs text-gray-400 mb-5">Typically 1 page · ~1–2 weeks*</p>
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
@@ -641,7 +638,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Hosting, security, &amp; minor updates</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
+              <a href="#checkup" className="btn-primary w-full text-center">Get Started</a>
             </div>
 
             {/* Get Calls — Best Value */}
@@ -653,7 +650,7 @@ export default function Home() {
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$795</p>
               <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Show up where customers search.
+                Show up in search. Start getting calls.
               </p>
               <p className="text-xs text-gray-400 mb-5">Typically 3–5 pages · ~2–3 weeks*</p>
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
@@ -689,7 +686,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
+              <a href="#checkup" className="btn-primary w-full text-center">Get Started</a>
             </div>
 
             {/* Get Booked */}
@@ -698,7 +695,7 @@ export default function Home() {
               <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$1,195</p>
               <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
               <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Dominate your market in search and AI.
+                Dominate local search. Stay booked solid.
               </p>
               <p className="text-xs text-gray-400 mb-5">Typically 5–7 pages · ~3–4 weeks*</p>
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
@@ -738,7 +735,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Growth + AI visibility &amp; strategy</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#audit" className="btn-primary w-full text-center">Get Started</a>
+              <a href="#checkup" className="btn-primary w-full text-center">Get Started</a>
             </div>
           </div>
 
@@ -963,7 +960,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/contact" className="btn-primary text-lg px-8">
-              Get Your Free Video Audit <ArrowRight className="w-5 h-5 ml-2" />
+              Get Your Free Site Checkup <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
               <Sparkles className="w-5 h-5 mr-2" />
@@ -974,16 +971,17 @@ export default function Home() {
       </section>
 
       {/* ═══ Lead Gen Form ═══ */}
-      <section id="contact" className="py-24 md:py-32 px-6">
+      <section id="checkup" className="py-24 md:py-32 px-6">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
-            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Audit</p>
-            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Get Your Free Local Visibility Audit</h2>
+            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Checkup</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Get Your Free Site Checkup</h2>
             <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
               I&apos;ll personally review your online presence and send you a short video showing exactly what&apos;s keeping customers from finding you — no sales pitch, no strings attached.
             </p>
           </div>
           <form className="animate-on-scroll space-y-5 card-glow" action="https://formspree.io/f/xyknwdgp" method="POST">
+            <input type="hidden" name="_subject" value="New Site Checkup Request from headleyweb.com" />
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-hw-dark mb-1">Your Name</label>
               <input type="text" id="name" name="name" required className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="John Smith" />
@@ -993,15 +991,11 @@ export default function Home() {
               <input type="email" id="email" name="email" required className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="john@example.com" />
             </div>
             <div>
-              <label htmlFor="website" className="block text-sm font-semibold text-hw-dark mb-1">Your Website URL</label>
-              <input type="text" id="website" name="website" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="www.yoursite.com or &quot;I don't have one yet&quot;" />
+              <label htmlFor="website" className="block text-sm font-semibold text-hw-dark mb-1">Your Website URL <span className="text-hw-text-light font-normal">(or &quot;I don&apos;t have one yet&quot;)</span></label>
+              <input type="text" id="website" name="website" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="www.yourbusiness.com" />
             </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-hw-dark mb-1">Phone Number <span className="text-hw-text-light font-normal">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="(256) 555-1234" />
-              <p className="text-xs text-hw-text-light mt-1">Just so I can text you the link once the video is uploaded.</p>
-            </div>
-            <button type="submit" className="btn-primary w-full text-lg">Send Me My Free Audit</button>
+            <button type="submit" className="btn-primary w-full text-lg">Get My Free Checkup</button>
+            <p className="text-xs text-hw-text-light text-center">No sales pitch. I&apos;ll send you a short video within 48 hours.</p>
           </form>
         </div>
       </section>
@@ -1009,7 +1003,7 @@ export default function Home() {
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only" aria-hidden="true">
         <p>
-          Headley Web &amp; SEO is a Jacksonville, Alabama web design studio that builds
+          Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
           StoryBrand-powered websites for local service businesses in Northeast Alabama. We
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business
           Profile optimization for plumbers, HVAC companies, contractors, restaurants, and other

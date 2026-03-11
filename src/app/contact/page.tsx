@@ -47,12 +47,18 @@ export default function ContactPage() {
       />
 
       {/* ═══ Hero ═══ */}
-      <section className="pt-32 pb-20 md:pt-36 md:pb-24 px-6 bg-hw-light">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
+      <section className="relative pt-32 pb-20 md:pt-36 md:pb-24 px-6 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center ken-burns-subtle"
+          style={{ backgroundImage: "url('/images/plumber-handshake2.webp')" }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(28,40,38,0.92)] via-[rgba(28,40,38,0.85)] to-[rgba(28,40,38,0.95)]" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
             Let&apos;s <span className="text-hw-primary">Talk</span>
           </h1>
-          <p className="text-lg text-hw-text-light max-w-2xl mx-auto animate-on-scroll">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
             Ready to get your business found online? Start with a quick conversation — no pressure, no sales pitch.
           </p>
         </div>
@@ -78,6 +84,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="hidden" name="_subject" value="New Site Checkup Request from headleyweb.com" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold mb-1">
                       Your Name
@@ -105,18 +112,6 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold mb-1">
-                      Phone Number <span className="text-hw-text-light font-normal">(optional)</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="form-input w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-hw-text"
-                      placeholder="(256) 555-1234"
-                    />
-                  </div>
-                  <div>
                     <label htmlFor="website" className="block text-sm font-semibold mb-1">
                       Your Website URL <span className="text-hw-text-light font-normal">(or &quot;I don&apos;t have one yet&quot;)</span>
                     </label>
@@ -128,26 +123,14 @@ export default function ContactPage() {
                       placeholder="www.yourbusiness.com"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-semibold mb-1">
-                      How Can I Help?
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      required
-                      className="form-textarea w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-hw-text resize-y"
-                      placeholder="Tell me about your business and what you're looking for..."
-                    />
-                  </div>
                   <button
                     type="submit"
                     disabled={status === "sending"}
                     className="btn-primary w-full text-center"
                   >
-                    {status === "sending" ? "Sending..." : "Get My Free Audit"}
+                    {status === "sending" ? "Sending..." : "Get My Free Checkup"}
                   </button>
+                  <p className="text-xs text-hw-text-light text-center">No sales pitch. I&apos;ll send you a short video within 48 hours.</p>
                   {status === "error" && (
                     <p className="text-red-600 text-sm text-center">
                       Something went wrong. Please try again or call me directly.

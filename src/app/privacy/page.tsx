@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         <p className="text-hw-text-light text-sm mb-8">Last updated: March 11, 2026</p>
 
         <p>
-          Headley Web &amp; SEO (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates headleyweb.com. This page explains what information we collect, how we use it, and your rights regarding that information.
+          Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates headleyweb.com. This page explains what information we collect, how we use it, and your rights regarding that information.
         </p>
 
         <h2 className="text-xl font-bold mt-8 mb-3">Information We Collect</h2>
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
         <h2 className="text-xl font-bold mt-8 mb-3">How We Use Your Information</h2>
         <ul className="list-disc pl-6 space-y-1">
           <li>To respond to your inquiries and provide our services</li>
-          <li>To send you your free video audit or quiz results</li>
+          <li>To send you your free site checkup or quiz results</li>
           <li>To improve our website and services</li>
           <li>We will never sell, rent, or share your personal information with third parties for marketing purposes</li>
         </ul>

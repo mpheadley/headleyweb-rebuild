@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,11 +9,13 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Work" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,42 +37,52 @@ export default function Nav() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-hw-dark/95 backdrop-blur-sm shadow-lg py-3"
-            : "bg-transparent py-5"
+            : "bg-gradient-to-b from-black/70 via-black/40 to-transparent py-5"
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/logo-headley-web.webp"
-              alt="Headley Web & SEO"
-              width={56}
-              height={56}
-              priority
-              className={`rounded-full transition-all duration-300 ${
-                scrolled ? "w-9 h-9" : "w-14 h-14"
-              }`}
-            />
-            <span className="text-white font-bold text-lg tracking-tight">
-              Headley <span className="text-hw-primary">Web &amp; SEO</span>
+            <svg
+              viewBox="0 0 24 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`transition-all duration-300 ${scrolled ? "w-5 h-7" : "w-7 h-9"}`}
+              aria-hidden="true"
+            >
+              <path
+                d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20c0-6.6-5.4-12-12-12z"
+                fill="#E07B3C"
+              />
+              <circle cx="12" cy="12" r="5" fill="white" />
+            </svg>
+            <span className={`font-heading font-bold text-lg tracking-tight transition-colors duration-300 ${
+              scrolled ? "text-white" : "text-white"
+            }`}>
+              Headley <span className={`transition-colors duration-300 ${scrolled ? "text-hw-primary" : "text-white"}`}>Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO</span>
             </span>
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
+            {links.map((l) => {
+              const isActive = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive ? "text-white border-b-2 border-hw-primary pb-0.5" : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
             <Link
               href="/contact"
               className="btn-primary text-sm !py-2 !px-4"
             >
-              Get Your Free Video Audit
+              Get Your Free Site Checkup
             </Link>
           </nav>
 
@@ -108,22 +121,27 @@ export default function Nav() {
           </svg>
         </button>
         <nav className="flex flex-col items-center gap-8">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-white text-2xl font-heading font-semibold hover:text-hw-primary transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const isActive = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`text-2xl font-heading font-semibold transition-colors ${
+                  isActive ? "text-hw-primary" : "text-white hover:text-hw-primary"
+                }`}
+                onClick={() => setMobileOpen(false)}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
           <Link
             href="/contact"
             className="btn-primary text-lg mt-4"
             onClick={() => setMobileOpen(false)}
           >
-            Get Your Free Video Audit
+            Get Your Free Site Checkup
           </Link>
         </nav>
       </div>
