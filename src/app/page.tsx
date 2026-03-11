@@ -122,7 +122,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* ═══ Hero Section ═══ */}
-      <section className="relative min-h-svh md:min-h-[80vh] flex items-center justify-center bg-hw-dark text-white section-angled overflow-hidden pt-28 pb-20 md:pt-24 md:pb-0">
+      <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center bg-hw-dark text-white section-angled overflow-hidden pt-32 pb-24 md:pt-24 md:pb-0">
         {/* Background image with dark overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center ken-burns-subtle"
@@ -166,10 +166,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Search bar on mobile — below CTAs */}
-          <div className="mt-10 flex justify-center md:hidden">
-            <SearchTypewriter />
-          </div>
+          {/* Search bar — desktop only. Hidden on mobile to keep hero clean and spacious. */}
         </div>
       </section>
 
