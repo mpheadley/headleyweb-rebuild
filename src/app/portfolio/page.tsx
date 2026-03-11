@@ -64,7 +64,7 @@ const projects = [
     description: "Satirical concept site for a fake certified emotional support poultry business. Built to demonstrate design range, humor, and full-stack chops.",
     desktop: "/images/project-esc-800w.webp",
     mobile: "/images/project-esc-mobile-480w.webp",
-    url: null,
+    url: "https://emotional-support-chicken.vercel.app/",
     tag: "Creative Showcase",
     featured: false,
   },
