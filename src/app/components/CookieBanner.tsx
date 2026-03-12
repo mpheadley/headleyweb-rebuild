@@ -53,7 +53,7 @@ export default function CookieBanner() {
               This site uses cookies to measure traffic and improve your experience.{" "}
               <Link
                 href="/privacy"
-                className="text-hw-primary hover:text-orange-300 underline"
+                className="text-orange-300 hover:text-orange-200 underline"
               >
                 Privacy Policy
               </Link>
