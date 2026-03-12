@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Video, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
@@ -145,11 +146,17 @@ export default function Home() {
       {/* ═══ Hero Section ═══ */}
       <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center bg-hw-dark text-white section-angled overflow-hidden pt-32 pb-24 md:pt-24 md:pb-0">
         {/* Background image with dark overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center ken-burns-subtle"
-          style={{ backgroundImage: "url('/images/google-review-hvac.webp')" }}
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0 ken-burns-subtle" aria-hidden="true">
+          <Image
+            src="/images/google-review-hvac.webp"
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(28,40,38,0.85)] via-[rgba(28,40,38,0.7)] to-[rgba(28,40,38,0.9)]" />
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-[1fr_22rem] gap-12 items-center">
@@ -199,11 +206,12 @@ export default function Home() {
             <div className="relative mx-auto md:mx-0 w-72 h-72 md:w-80 md:h-80 animate-on-scroll">
               {/* Decorative ring */}
               <div className="absolute -inset-3 rounded-full border-2 border-dashed border-hw-secondary/30" aria-hidden="true" />
-              <img
+              <Image
                 src="/images/google-map-review.webp"
                 alt="Hand holding phone showing Google Maps local business results"
-                width={1024}
-                height={1024}
+                width={320}
+                height={320}
+                sizes="(min-width: 768px) 320px, 288px"
                 loading="lazy"
                 className="w-full h-full object-cover object-center rounded-full shadow-lg border-4 border-white"
               />
@@ -294,7 +302,7 @@ export default function Home() {
                 actually work for your business.
               </p>
               <a href="/services" className="text-hw-primary font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Learn more <ArrowRight className="w-4 h-4" />
+                Explore web design services <ArrowRight className="w-4 h-4" />
               </a>
             </div>
             <div className="service-card bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-8 text-center animate-on-scroll" style={{ transitionDelay: "0.15s" }}>
@@ -307,7 +315,7 @@ export default function Home() {
                 first when searching for your trade.
               </p>
               <a href="/services" className="text-hw-primary font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Learn more <ArrowRight className="w-4 h-4" />
+                Explore local SEO services <ArrowRight className="w-4 h-4" />
               </a>
             </div>
             <div className="service-card bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-8 text-center animate-on-scroll" style={{ transitionDelay: "0.3s" }}>
@@ -320,7 +328,7 @@ export default function Home() {
                 calls and booked jobs every month.
               </p>
               <a href="/services" className="text-hw-primary font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Learn more <ArrowRight className="w-4 h-4" />
+                Explore Google Business services <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </div>

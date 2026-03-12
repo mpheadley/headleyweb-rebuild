@@ -53,7 +53,7 @@ export default function CookieBanner() {
               This site uses cookies to measure traffic and improve your experience.{" "}
               <Link
                 href="/privacy"
-                className="text-hw-primary hover:text-hw-primary-dark underline"
+                className="text-hw-primary hover:text-orange-300 underline"
               >
                 Privacy Policy
               </Link>
@@ -61,7 +61,7 @@ export default function CookieBanner() {
             <div className="flex gap-3 shrink-0">
               <button
                 onClick={accept}
-                className="bg-hw-primary text-white text-sm font-semibold px-5 py-2 rounded-lg hover:bg-hw-primary-dark transition-colors"
+                className="bg-hw-primary text-hw-dark text-sm font-bold px-5 py-2 rounded-lg hover:bg-hw-primary-dark hover:text-white transition-colors"
               >
                 Accept
               </button>

@@ -77,13 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preload hero background image */}
-        <link
-          rel="preload"
-          as="image"
-          href="/images/google-review-hvac.webp"
-          type="image/webp"
-        />
+        {/* Hero image preload is handled automatically by Next.js Image priority={true} in page.tsx */}
       </head>
       <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} ${playfairDisplay.variable} antialiased`}>
         <script dangerouslySetInnerHTML={{ __html: "" }} />
