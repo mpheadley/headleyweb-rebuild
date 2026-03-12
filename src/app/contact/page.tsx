@@ -56,7 +56,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(28,40,38,0.92)] via-[rgba(28,40,38,0.85)] to-[rgba(28,40,38,0.95)]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
-            Let&apos;s <span className="text-hw-primary">Talk</span>
+            Let&apos;s <span className="text-hw-primary hand-accent">Talk</span>
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
             Ready to get your business found online? Start with a quick conversation — no pressure, no sales pitch.
@@ -70,7 +70,10 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-16">
             {/* Form */}
             <div className="animate-on-scroll">
-              <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>
+              <h2 className="text-2xl font-bold mb-3">Send Me a Message</h2>
+              <p className="text-hw-text-light mb-6">
+                I&apos;ll personally review your online presence and send you a short video showing exactly what&apos;s keeping customers from finding you — no sales pitch, no strings attached.
+              </p>
 
               {status === "sent" ? (
                 <div className="card-glow text-center py-12">
@@ -85,6 +88,7 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <input type="hidden" name="_subject" value="New Site Checkup Request from headleyweb.com" />
+                  <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold mb-1">
                       Your Name
@@ -121,6 +125,18 @@ export default function ContactPage() {
                       name="website"
                       className="form-input w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-hw-text"
                       placeholder="www.yourbusiness.com"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold mb-1">
+                      Phone Number <span className="text-hw-text-light font-normal">(optional — so I can text you the link)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="form-input w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-hw-text"
+                      placeholder="(256) 555-1234"
                     />
                   </div>
                   <button

@@ -1,7 +1,28 @@
+import type { Metadata } from "next";
 import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Video, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles } from "lucide-react";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
+
+export const metadata: Metadata = {
+  title: "Northeast Alabama Web Design & Local SEO",
+  description:
+    "Headley Web & SEO builds StoryBrand-powered websites for local service businesses in Jacksonville, Anniston & Northeast Alabama. Get found, get calls, get booked.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: "/",
+    images: [
+      {
+        url: "/images/headley_web_seo_clean-1200-630.webp",
+        width: 1200,
+        height: 630,
+        alt: "Headley Web & SEO — Web Design for Local Businesses",
+      },
+    ],
+  },
+};
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -146,7 +167,7 @@ export default function Home() {
               </h1>
               <p className="text-lg text-gray-300 max-w-xl mb-8 mx-auto md:mx-0">
                 Stop losing leads to a website that isn&apos;t working for you. I
-                build clear, mobile-friendly sites that make your phone ring — for a
+                build clear, mobile-friendly sites that help you get found, get calls, and get booked — for a
                 predictable flat rate.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -626,10 +647,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  You own your website
-                </li>
-                <li className="flex items-start gap-2 text-gray-400 line-through">
                   Google Business Profile setup
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                  You own your website
                 </li>
               </ul>
               {/* Paired care plan */}
@@ -638,7 +660,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Hosting, security, &amp; minor updates</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#checkup" className="btn-primary w-full text-center">Get Started</a>
+              <a href="#checkup" className="btn-primary w-full text-center">Get Found Now</a>
             </div>
 
             {/* Get Calls — Best Value */}
@@ -654,11 +676,6 @@ export default function Home() {
               </p>
               <p className="text-xs text-gray-400 mb-5">Typically 3–5 pages · ~2–3 weeks*</p>
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup
-                  <span className="text-hw-primary text-xs font-semibold">($150 value)</span>
-                </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
                   Search optimization
@@ -677,6 +694,10 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                  Google Business Profile setup
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
                   You own your website
                 </li>
               </ul>
@@ -686,7 +707,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#checkup" className="btn-primary w-full text-center">Get Started</a>
+              <a href="#checkup" className="btn-primary w-full text-center">Start Getting Calls</a>
             </div>
 
             {/* Get Booked */}
@@ -701,12 +722,7 @@ export default function Home() {
               <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup &amp; optimization
-                  <span className="text-hw-primary text-xs font-semibold">($300 value)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Advanced search optimization — I find the exact terms your customers use
+                  Advanced search optimization
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
@@ -726,6 +742,10 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                  Google Business Profile setup &amp; optimization
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
                   You own your website
                 </li>
               </ul>
@@ -735,7 +755,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Growth + AI visibility &amp; strategy</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#checkup" className="btn-primary w-full text-center">Get Started</a>
+              <a href="#checkup" className="btn-primary w-full text-center">Dominate Local Search</a>
             </div>
           </div>
 
@@ -789,7 +809,7 @@ export default function Home() {
             <div className="pt-2.5">
               <h3 className="text-lg font-bold mb-2">Competitors rank above you</h3>
               <p className="text-hw-text-light leading-relaxed">
-                Every search is a chance for them to win a customer that could&apos;ve been yours — and it keeps happening every day.
+                Every search is a chance for them to win a customer that could&apos;ve been yours — and it keeps happening every day. They&apos;re getting stronger in the map pack AND in AI answers.
               </p>
             </div>
           </div>
@@ -803,7 +823,7 @@ export default function Home() {
             <div className="pt-2.5">
               <h3 className="text-lg font-bold mb-2">Customers move on to whoever shows up next</h3>
               <p className="text-hw-text-light leading-relaxed">
-                Without a clear online presence, potential customers can&apos;t find you — and they&apos;re not waiting around.
+                Without a clear online presence, potential customers can&apos;t find you — and they&apos;re not waiting around. They call whoever shows up first.
               </p>
             </div>
           </div>
@@ -982,6 +1002,7 @@ export default function Home() {
           </div>
           <form className="animate-on-scroll space-y-5 card-glow" action="https://formspree.io/f/xyknwdgp" method="POST">
             <input type="hidden" name="_subject" value="New Site Checkup Request from headleyweb.com" />
+            <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-hw-dark mb-1">Your Name</label>
               <input type="text" id="name" name="name" required className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="John Smith" />
@@ -994,6 +1015,10 @@ export default function Home() {
               <label htmlFor="website" className="block text-sm font-semibold text-hw-dark mb-1">Your Website URL <span className="text-hw-text-light font-normal">(or &quot;I don&apos;t have one yet&quot;)</span></label>
               <input type="text" id="website" name="website" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="www.yourbusiness.com" />
             </div>
+            <div>
+              <label htmlFor="phone" className="block text-sm font-semibold text-hw-dark mb-1">Phone Number <span className="text-hw-text-light font-normal">(optional — so I can text you the link)</span></label>
+              <input type="tel" id="phone" name="phone" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="(256) 555-1234" />
+            </div>
             <button type="submit" className="btn-primary w-full text-lg">Get My Free Checkup</button>
             <p className="text-xs text-hw-text-light text-center">No sales pitch. I&apos;ll send you a short video within 48 hours.</p>
           </form>
@@ -1001,7 +1026,7 @@ export default function Home() {
       </section>
 
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
-      <section className="sr-only" aria-hidden="true">
+      <section className="sr-only">
         <p>
           Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
           StoryBrand-powered websites for local service businesses in Northeast Alabama. We

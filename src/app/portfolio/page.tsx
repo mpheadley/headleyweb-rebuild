@@ -37,7 +37,7 @@ const projects = [
     description: "Local service site with customer testimonials and easy contact — built to convert search traffic into phone calls.",
     desktop: "/images/desktop-screenshot-valley-800w.webp",
     mobile: "/images/mobile-sreenshot-valley-480w.webp",
-    url: "https://valley-small-engine.vercel.app",
+    url: "https://mpheadley.github.io/valley-small-engine-repair/",
     tag: "Local Service",
     featured: true,
   },
@@ -46,7 +46,7 @@ const projects = [
     description: "Clean e-commerce demo for local honey products with warm, inviting design.",
     desktop: "/images/project-honey-800w.webp",
     mobile: "/images/project-honey-mobile-480w.webp",
-    url: "https://golden-hive-honey.vercel.app",
+    url: "https://v0-honey-vendor-store-3let.vercel.app/",
     tag: "E-Commerce",
     featured: false,
   },
@@ -55,7 +55,7 @@ const projects = [
     description: "Modern salon site with booking integration and bold brand personality.",
     desktop: "/images/project-salon-800w.webp",
     mobile: "/images/project-salon-mobile-480w.webp",
-    url: "https://chromatic-chaos-salon.vercel.app",
+    url: "https://v0-edgy-salon-website.vercel.app/",
     tag: "Salon & Beauty",
     featured: false,
   },
@@ -89,7 +89,7 @@ export default function PortfolioPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
             Work That Gets{" "}
-            <span className="text-hw-primary">Results</span>
+            <span className="text-hw-primary hand-accent">Results</span>
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
             Every project starts with a clear goal: make your phone ring. Here&apos;s what that looks like in practice.
@@ -219,15 +219,15 @@ export default function PortfolioPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
+      <section className="py-24 md:py-32 px-6 bg-hw-light">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
             Want Results Like These?
           </h2>
-          <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
+          <p className="text-hw-text-light text-lg mb-3 animate-on-scroll">
             Let&apos;s talk about what a professional online presence could do for your business.
           </p>
-          <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
+          <p className="text-hw-text-light text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
             Serving Jacksonville, Anniston, and Northeast Alabama
           </p>
@@ -235,7 +235,7 @@ export default function PortfolioPage() {
             <Link href="/contact" className="btn-primary text-lg px-8">
               Get Your Free Site Checkup <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
+            <Link href="/quiz" className="btn-secondary text-lg px-8">
               <Sparkles className="w-5 h-5 mr-2" />
               Take the Quiz
             </Link>

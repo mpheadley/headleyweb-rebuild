@@ -20,7 +20,7 @@ export default function Footer() {
           </p>
         </div>
         <p className="text-sm text-gray-400">
-          Websites that make your phone ring.
+          Get found. Get calls. Get booked.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 text-sm">

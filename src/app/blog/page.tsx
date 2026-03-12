@@ -62,7 +62,7 @@ export default function BlogIndexPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
             The{" "}
-            <span className="text-hw-primary">Headley Web</span>{" "}
+            <span className="text-hw-primary hand-accent">Headley Web</span>{" "}
             Blog
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">

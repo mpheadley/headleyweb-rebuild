@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/privacy",
   },
+  openGraph: {
+    url: "/privacy",
+    images: [
+      {
+        url: "/images/headley_web_seo_clean-1200-630.webp",
+        width: 1200,
+        height: 630,
+        alt: "Headley Web & SEO — Privacy Policy",
+      },
+    ],
+  },
   robots: {
     index: true,
     follow: true,

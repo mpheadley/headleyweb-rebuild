@@ -103,7 +103,7 @@ const archetypes: Record<string, Archetype> = {
     risk: "Every day without a web presence, you're handing leads to competitors",
     recommendation:
       "You need the full package — a professional site, Google Business Profile, and local SEO to go from invisible to unmissable.",
-    tier: "Professional",
+    tier: "Get Booked",
   },
   warrior: {
     name: "The Word-of-Mouth Warrior",
@@ -115,7 +115,7 @@ const archetypes: Record<string, Archetype> = {
     risk: "You're one bad Google search away from losing warm leads",
     recommendation:
       "A clean, professional site with your Google Business Profile set up properly. You don't need to dominate the internet — you need to not lose the people already looking for you.",
-    tier: "Starter",
+    tier: "Get Found",
   },
   dabbler: {
     name: "The DIY Dabbler",
@@ -127,7 +127,7 @@ const archetypes: Record<string, Archetype> = {
     risk: "A mediocre site can actually hurt more than no site (it says 'I don't take this seriously')",
     recommendation:
       "Let someone build it right. A proper site with real messaging, real SEO, and a design that matches the quality of your work.",
-    tier: "Starter",
+    tier: "Get Calls",
   },
   almost: {
     name: "The Almost There",
@@ -139,7 +139,7 @@ const archetypes: Record<string, Archetype> = {
     risk: "Without optimization, you're leaving money on the table every month",
     recommendation:
       "A strategic rebuild or optimization pass. Tighten the messaging, fix the SEO gaps, and turn your existing presence into an actual lead machine.",
-    tier: "Starter or Professional",
+    tier: "Get Calls or Get Booked",
   },
   legend: {
     name: "The Local Legend",
@@ -150,8 +150,8 @@ const archetypes: Record<string, Archetype> = {
     strength: "You have momentum and market trust",
     risk: "Complacency is the only real threat — new competitors are always catching up",
     recommendation:
-      "The Professional tier with AI visibility and ongoing care. Stay ahead of the curve while everyone else is still figuring out what happened.",
-    tier: "Professional",
+      "The Get Booked tier with AI visibility and ongoing care. Stay ahead of the curve while everyone else is still figuring out what happened.",
+    tier: "Get Booked",
   },
 };
 
@@ -303,6 +303,7 @@ export default function QuizPage() {
                 personalized recommendation for your business.
               </p>
               <form onSubmit={handleEmailSubmit} className="max-w-sm mx-auto">
+                <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                 <div className="flex gap-2">
                   <div className="relative flex-grow">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-hw-text-light" />

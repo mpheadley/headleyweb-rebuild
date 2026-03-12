@@ -57,7 +57,7 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 
 ### Copy
 - Pull ALL copy from `website-copy.md`. Never invent copy during the build.
-- Hero sub-headline: "Stop losing leads to a website that isn't working for you. I build clear, mobile-friendly sites that make your phone ring — for a predictable flat rate."
+- Hero sub-headline: "Stop losing leads to a website that isn't working for you. I build clear, mobile-friendly sites that help you get found, get calls, and get booked — for a predictable flat rate."
 - Keep hero headline broad (no geo). Geo goes in JSON-LD `areaServed`, answer-first blocks, footer, trade pages.
 - Don't use "StoryBrand" in hero or customer-facing headlines. Use it on About page, Services page, blog posts.
 

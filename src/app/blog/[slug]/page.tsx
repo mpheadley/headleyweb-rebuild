@@ -250,7 +250,7 @@ export default async function BlogPostPage({
         <div className="max-w-3xl mx-auto text-center card-glow">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Want a Website That{" "}
-            <span className="text-hw-primary">Actually Works?</span>
+            <span className="text-hw-primary hand-accent">Actually Works?</span>
           </h2>
           <p className="text-hw-text-light mb-6 max-w-xl mx-auto">
             Let&apos;s talk about your business, your goals, and how a clear

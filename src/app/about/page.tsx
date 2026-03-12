@@ -114,7 +114,7 @@ export default function AboutPage() {
                 I&apos;m Matt Headley — husband, dad, and small business owner living in Jacksonville, Alabama. As a former pastor, I know exactly what it&apos;s like to work hard and worry about where the next customer is coming from.
               </p>
               <p className="text-lg leading-relaxed">
-                I started Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO because I kept watching great local businesses lose leads to competitors who weren&apos;t better — just more visible online. It wasn&apos;t because those competitors did better work — they just had a better digital front door.
+                I started Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO because I kept watching great local businesses lose leads to competitors who were simply easier to find online. It wasn&apos;t because those competitors did better work — they just had a better digital front door.
               </p>
               <p className="text-lg leading-relaxed">
                 I built this service to be a straightforward partnership for my neighbors in Northeast Alabama. I handle the technical heavy lifting — from the initial build to ongoing security and maintenance — so you can focus on running your business. My goal is to provide a professional online presence with flat-rate pricing, clear communication, and the peace of mind that your site is always working for you.
