@@ -58,7 +58,7 @@ export default function Nav() {
             <span className={`font-heading font-bold text-lg tracking-tight transition-colors duration-300 ${
               scrolled ? "text-white" : "text-white"
             }`}>
-              Headley <span className={`transition-colors duration-300 ${scrolled ? "text-hw-primary" : "text-white"}`}>Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO</span>
+              Headley <span className={`transition-colors duration-300 ${scrolled ? "text-hw-primary" : "text-white"}`}>Web <span className="amp">&amp;</span> SEO</span>
             </span>
           </Link>
 

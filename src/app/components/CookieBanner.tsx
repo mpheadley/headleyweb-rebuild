@@ -5,7 +5,7 @@ import Link from "next/link";
 import Analytics, { loadGA4 } from "./Analytics";
 
 // Set NEXT_PUBLIC_GA4_ID in .env.local (e.g. G-XXXXXXXXXX)
-const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
+const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID?.trim();
 
 export default function CookieBanner() {
   const [show, setShow] = useState(false);

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 // Set NEXT_PUBLIC_GA4_ID in .env.local (e.g. G-XXXXXXXXXX)
-const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
+const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID?.trim();
 
 declare global {
   interface Window {

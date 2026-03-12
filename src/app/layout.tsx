@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces, Rock_Salt, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ScrollReveal from "./components/ScrollReveal";
 import Nav from "./components/Nav";
@@ -8,6 +8,27 @@ import CookieBanner from "./components/CookieBanner";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+  axes: ["opsz"],
+});
+
+const rockSalt = Rock_Salt({
+  variable: "--font-rock-salt",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  weight: "700",
   subsets: ["latin"],
   display: "swap",
 });
@@ -63,19 +84,8 @@ export default function RootLayout({
           href="/images/google-review-hvac.webp"
           type="image/webp"
         />
-        {/* Fraunces — loaded via <link> for optical sizing support */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Playfair+Display:wght@700&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} ${playfairDisplay.variable} antialiased`}>
         <script dangerouslySetInnerHTML={{ __html: "" }} />
         {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={{ __html: "<!-- Built by Headley Web & SEO | headleyweb.com -->" }} />

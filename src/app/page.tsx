@@ -422,7 +422,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg text-hw-text-light mb-6">
-                As a husband, dad, and former pastor living right here in Jacksonville, I know that running a small business isn&apos;t just about &quot;marketing&quot; — it&apos;s about providing for your family and serving your community. I started Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO because I grew tired of seeing great local businesses get ignored by high-priced agencies.
+                As a husband, dad, and former pastor living right here in Jacksonville, I know that running a small business isn&apos;t just about &quot;marketing&quot; — it&apos;s about providing for your family and serving your community. I started Headley Web <span className="amp">&amp;</span> SEO because I grew tired of seeing great local businesses get ignored by high-priced agencies.
               </p>
               <ul className="space-y-3 text-hw-text-light">
                 <li className="flex items-start gap-3">
@@ -1028,7 +1028,7 @@ export default function Home() {
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only">
         <p>
-          Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
+          Headley Web <span className="amp">&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
           StoryBrand-powered websites for local service businesses in Northeast Alabama. We
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business
           Profile optimization for plumbers, HVAC companies, contractors, restaurants, and other

@@ -16,7 +16,7 @@ export default function Footer() {
             className="rounded-full"
           />
           <p className="text-white font-heading text-lg font-semibold">
-            Headley <span className="text-hw-primary">Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO</span>
+            Headley <span className="text-hw-primary">Web <span className="amp">&amp;</span> SEO</span>
           </p>
         </div>
         <p className="text-sm text-gray-400">
@@ -55,7 +55,7 @@ export default function Footer() {
         </p>
 
         <div className="flex items-center justify-center gap-4 text-xs text-gray-400 pt-2">
-          <span>&copy; {new Date().getFullYear()} Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Headley Web <span className="amp">&amp;</span> SEO. All rights reserved.</span>
           <Link href="/privacy" className="hover:text-white transition-colors">
             Privacy Policy
           </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
         <p className="text-xs text-gray-400">
           Built by{" "}
           <a href="https://headleyweb.com" className="text-hw-primary hover:text-hw-primary-dark transition-colors">
-            Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO
+            Headley Web <span className="amp">&amp;</span> SEO
           </a>
         </p>
       </div>

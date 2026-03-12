@@ -7,7 +7,7 @@ This is both the live business site AND the proving ground for the Next.js start
 ## Tech Stack
 - **Framework:** Next.js 16.1.6 (App Router, `src/app/`)
 - **Styling:** Tailwind CSS v4 (`@tailwindcss/postcss`) — no daisyUI (removed due to class conflicts)
-- **Fonts:** Fraunces (headings, `<link>` in layout.tsx for optical sizing) + Inter (body, `next/font/google`) + Rock Salt (accent, `<link>` — used sparingly for hero/section emphasis via `LetterReveal` component)
+- **Fonts:** Fraunces (headings, `next/font/google` with `axes: ["opsz"]`) + Inter (body, `next/font/google`) + Rock Salt (accent, `next/font/google`) + Playfair Display (ampersand only, `next/font/google`). All fonts self-hosted via next/font — no `<link>` stylesheet tags.
 - **Hosting:** Vercel (deploy from GitHub)
 - **Analytics:** GA4 (consent-gated — build same pattern as HTML starter kit)
 - **Forms:** Formspree (or Vercel serverless — TBD)
@@ -99,8 +99,14 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 ### Accessibility
 - `prefers-reduced-motion` respected (already in globals.css)
 - 4.5:1 contrast minimum on all text
+- **Button contrast:** `.btn-primary` uses dark text (`--color-dark`) on bright terracotta (`--color-primary`) = 5.12:1. Hover shifts to white text on `--color-primary-dark` = 4.64:1. Never use white text on `--color-primary` (2.97:1 — fails).
 - Semantic HTML: `<nav>`, `<main>`, `<section>`, `<footer>`
 - Skip-to-content link
+
+### Performance
+- **All fonts via `next/font/google`** — self-hosted, non-render-blocking. Never use `<link rel="stylesheet">` for Google Fonts.
+- **Hero image preloaded** via `<link rel="preload">` in layout.tsx `<head>`
+- `.trim()` all env vars before use (Vercel trailing whitespace bug)
 
 ## Next.js Kit Notes
 After completing each major component or page, update `../NEXTJS_KIT_NOTES.md` with:

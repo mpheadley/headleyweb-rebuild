@@ -46,7 +46,7 @@ export default function PrivacyPage() {
         <p className="text-hw-text-light text-sm mb-8">Last updated: March 11, 2026</p>
 
         <p>
-          Headley Web <span style={{ fontFamily: "'Playfair Display', serif" }}>&amp;</span> SEO (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates headleyweb.com. This page explains what information we collect, how we use it, and your rights regarding that information.
+          Headley Web <span className="amp">&amp;</span> SEO (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates headleyweb.com. This page explains what information we collect, how we use it, and your rights regarding that information.
         </p>
 
         <h2 className="text-xl font-bold mt-8 mb-3">Information We Collect</h2>
