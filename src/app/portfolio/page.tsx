@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { ExternalLink, ArrowRight, Sparkles, MapPin } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { projects } from "@/app/data/projects";
+import PageSpeedProof from "@/app/components/PageSpeedProof";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -30,45 +33,6 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://headleyweb.com/portfolio" },
   ],
 };
-
-const projects = [
-  {
-    title: "Valley Small Engine Repair",
-    description: "Local service site with customer testimonials and easy contact — built to convert search traffic into phone calls.",
-    desktop: "/images/desktop-screenshot-valley-800w.webp",
-    mobile: "/images/mobile-sreenshot-valley-480w.webp",
-    url: "https://mpheadley.github.io/valley-small-engine-repair/",
-    tag: "Local Service",
-    featured: true,
-  },
-  {
-    title: "Golden Hive Honey",
-    description: "Clean e-commerce demo for local honey products with warm, inviting design.",
-    desktop: "/images/project-honey-800w.webp",
-    mobile: "/images/project-honey-mobile-480w.webp",
-    url: "https://v0-honey-vendor-store-3let.vercel.app/",
-    tag: "E-Commerce",
-    featured: false,
-  },
-  {
-    title: "Chromatic Chaos Salon",
-    description: "Modern salon site with booking integration and bold brand personality.",
-    desktop: "/images/project-salon-800w.webp",
-    mobile: "/images/project-salon-mobile-480w.webp",
-    url: "https://v0-edgy-salon-website.vercel.app/",
-    tag: "Salon & Beauty",
-    featured: false,
-  },
-  {
-    title: "Emotional Support Chicken",
-    description: "Satirical concept site for a fake certified emotional support poultry business. Built to demonstrate design range, humor, and full-stack chops.",
-    desktop: "/images/project-esc-800w.webp",
-    mobile: "/images/project-esc-mobile-480w.webp",
-    url: "https://emotional-support-chicken.vercel.app/",
-    tag: "Creative Showcase",
-    featured: false,
-  },
-];
 
 export default function PortfolioPage() {
   return (
@@ -109,23 +73,24 @@ export default function PortfolioPage() {
               {/* Screenshot */}
               {project.desktop ? (
                 <div className="relative aspect-[16/10] md:aspect-auto md:w-1/2 bg-hw-dark/60 border-b md:border-b-0 md:border-r border-white/10 overflow-hidden">
-                  <img
+                  <Image
                     src={project.desktop}
                     alt={`${project.title} website screenshot`}
                     width={800}
                     height={456}
                     sizes="(min-width: 768px) 50vw, 100vw"
-                    loading="lazy"
+                    quality={80}
                     className="w-full h-full object-cover object-top"
                   />
                   {project.mobile && (
-                    <img
+                    <Image
                       src={project.mobile}
                       alt={`${project.title} on mobile`}
                       width={480}
                       height={914}
                       sizes="62px"
-                      loading="lazy"
+                      quality={80}
+                      fill={false}
                       className="absolute bottom-0 right-4 w-[22%] rounded-t-lg shadow-2xl border-t-2 border-x-2 border-white/20"
                     />
                   )}
@@ -169,23 +134,24 @@ export default function PortfolioPage() {
                 {/* Screenshot */}
                 {project.desktop ? (
                   <div className="relative aspect-[16/10] bg-hw-dark/60 border-b border-white/10 overflow-hidden">
-                    <img
+                    <Image
                       src={project.desktop}
                       alt={`${project.title} website screenshot`}
                       width={800}
                       height={456}
                       sizes="(min-width: 768px) 50vw, 100vw"
-                      loading="lazy"
+                      quality={80}
                       className="w-full h-full object-cover object-top"
                     />
                     {project.mobile && (
-                      <img
+                      <Image
                         src={project.mobile}
                         alt={`${project.title} on mobile`}
                         width={480}
                         height={914}
                         sizes="62px"
-                        loading="lazy"
+                        quality={80}
+                        fill={false}
                         className="absolute bottom-0 right-4 w-[22%] rounded-t-lg shadow-2xl border-t-2 border-x-2 border-white/20"
                       />
                     )}
@@ -221,6 +187,9 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ PageSpeed Proof ═══ */}
+      <PageSpeedProof variant="dark" />
 
       {/* ═══ CTA ═══ */}
       <section className="py-24 md:py-32 px-6 bg-hw-light">

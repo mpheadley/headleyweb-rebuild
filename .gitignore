@@ -42,3 +42,6 @@ next-env.d.ts
 
 # design tools
 og-preview.html
+
+# source/original images (not deployed — PNG/JPG originals for GBP, social, print)
+/originals/

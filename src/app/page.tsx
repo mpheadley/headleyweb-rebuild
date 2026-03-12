@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
+import PageSpeedProof from "./components/PageSpeedProof";
+import { projects } from "@/app/data/projects";
 
 export const metadata: Metadata = {
   title: "Northeast Alabama Web Design & Local SEO",
@@ -409,15 +411,13 @@ export default function Home() {
           {/* Top — Headshot + Empathy */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
             <div className="relative mx-auto md:mx-0 animate-on-scroll overflow-hidden rounded-2xl shadow-lg h-72 md:h-80">
-              <img
+              <Image
                 src="/images/laptop-matt-headley.webp"
-                srcSet="/images/laptop-matt-headley-480w.webp 480w, /images/laptop-matt-headley.webp 1600w"
-                sizes="(min-width: 768px) 50vw, 100vw"
                 alt="Matt Headley working on a laptop at a local coffee shop"
-                width={1600}
-                height={600}
-                loading="lazy"
-                className="w-full h-full object-cover object-[50%_20%]"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                quality={80}
+                className="object-cover object-[50%_20%]"
               />
             </div>
             <div className="animate-on-scroll" style={{ transitionDelay: "0.15s" }}>
@@ -501,114 +501,87 @@ export default function Home() {
           </div>
 
           {/* Featured project — full width, horizontal layout */}
-          <a href="https://mpheadley.github.io/valley-small-engine-repair/" target="_blank" rel="noopener noreferrer" className="group rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-hw-primary/40 transition-colors mb-8 animate-on-scroll block">
+          {projects.filter((p) => p.featured).map((project) => (
+          <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-hw-primary/40 transition-colors mb-8 animate-on-scroll block">
             <div className="grid md:grid-cols-[1.2fr_1fr]">
               <div className="relative aspect-[16/10] md:aspect-auto bg-hw-dark/60 border-b md:border-b-0 md:border-r border-white/10 overflow-hidden">
-                <img
-                  src="/images/desktop-screenshot-valley-800w.webp"
-                  alt="Valley Small Engine Repair website screenshot"
+                <Image
+                  src={project.desktop}
+                  alt={`${project.title} website screenshot`}
                   width={800}
-                  height={367}
+                  height={456}
                   sizes="(min-width: 768px) 55vw, 100vw"
-                  loading="lazy"
+                  quality={80}
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <img
-                  src="/images/mobile-sreenshot-valley-480w.webp"
-                  alt="Valley Small Engine Repair on mobile"
-                  width={480}
-                  height={914}
+                <Image
+                  src={project.mobile}
+                  alt={`${project.title} on mobile`}
+                  width={62}
+                  height={112}
                   sizes="62px"
-                  loading="lazy"
-                  className="absolute bottom-3 right-4 w-[62px] h-[112px] object-cover object-top rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
+                  quality={80}
+                  className="absolute bottom-3 right-4 rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
                 />
               </div>
               <div className="p-8 flex flex-col justify-center text-left">
-                <h3 className="text-xl font-bold mb-2 !text-white">Valley Small Engine Repair</h3>
+                <h3 className="text-xl font-bold mb-2 !text-white">{project.title}</h3>
                 <p className="text-gray-300 mb-4">
-                  Local service site with customer testimonials and easy contact — built to convert search traffic into phone calls.
+                  {project.description}
                 </p>
+                {project.stats && (
                 <div className="flex gap-6 mb-5">
-                  <div>
-                    <p className="text-2xl font-bold text-hw-primary">0 → 1</p>
-                    <p className="text-gray-400 text-xs uppercase tracking-wide">Online Presence</p>
+                  {project.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <p className="text-2xl font-bold text-hw-primary">{stat.value}</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wide">{stat.label}</p>
                   </div>
-                  <div>
-                    <p className="text-2xl font-bold text-hw-primary">3 wks</p>
-                    <p className="text-gray-400 text-xs uppercase tracking-wide">To Launch</p>
-                  </div>
+                  ))}
                 </div>
+                )}
                 <span className="text-hw-primary font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                   View project <ExternalLink className="w-3.5 h-3.5" />
                 </span>
               </div>
             </div>
           </a>
+          ))}
 
-          {/* Secondary projects — 2-col to break 3-col monotony */}
+          {/* Secondary projects — 2-col grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <a href="https://v0-honey-vendor-store-3let.vercel.app/" target="_blank" rel="noopener noreferrer" className="group rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-hw-primary/40 transition-colors animate-on-scroll block" style={{ transitionDelay: "0.1s" }}>
+            {projects.filter((p) => !p.featured).slice(0, 2).map((project, i) => (
+            <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-hw-primary/40 transition-colors animate-on-scroll block" style={{ transitionDelay: `${(i + 1) * 0.1}s` }}>
               <div className="relative aspect-[16/10] bg-hw-dark/60 border-b border-white/10 overflow-hidden">
-                <img
-                  src="/images/project-honey-800w.webp"
-                  alt="Golden Hive Honey website screenshot"
+                <Image
+                  src={project.desktop}
+                  alt={`${project.title} website screenshot`}
                   width={800}
                   height={456}
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  loading="lazy"
+                  quality={80}
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <img
-                  src="/images/project-honey-mobile-480w.webp"
-                  alt="Golden Hive Honey on mobile"
-                  width={480}
-                  height={1043}
+                <Image
+                  src={project.mobile}
+                  alt={`${project.title} on mobile`}
+                  width={62}
+                  height={112}
                   sizes="62px"
-                  loading="lazy"
-                  className="absolute bottom-3 right-4 w-[62px] h-[112px] object-cover object-top rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
+                  quality={80}
+                  className="absolute bottom-3 right-4 rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
                 />
               </div>
               <div className="p-6 text-left">
-                <h3 className="text-lg font-bold mb-1 !text-white">Golden Hive Honey</h3>
+                <h3 className="text-lg font-bold mb-1 !text-white">{project.title}</h3>
                 <p className="text-gray-300 text-sm mb-4">
-                  Clean e-commerce demo for local honey products with warm, inviting design
+                  {project.description}
                 </p>
                 <span className="text-hw-primary font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                   View project <ExternalLink className="w-3.5 h-3.5" />
                 </span>
               </div>
             </a>
-            <a href="https://v0-edgy-salon-website.vercel.app/" target="_blank" rel="noopener noreferrer" className="group rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-hw-primary/40 transition-colors animate-on-scroll block" style={{ transitionDelay: "0.2s" }}>
-              <div className="relative aspect-[16/10] bg-hw-dark/60 border-b border-white/10 overflow-hidden">
-                <img
-                  src="/images/project-salon-800w.webp"
-                  alt="Chromatic Chaos Salon website screenshot"
-                  width={800}
-                  height={456}
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  loading="lazy"
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-                <img
-                  src="/images/project-salon-mobile-480w.webp"
-                  alt="Chromatic Chaos Salon on mobile"
-                  width={480}
-                  height={1043}
-                  sizes="62px"
-                  loading="lazy"
-                  className="absolute bottom-3 right-4 w-[62px] h-[112px] object-cover object-top rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
-                />
-              </div>
-              <div className="p-6 text-left">
-                <h3 className="text-lg font-bold mb-1 !text-white">Chromatic Chaos Salon</h3>
-                <p className="text-gray-300 text-sm mb-4">
-                  Modern salon site with booking integration and bold brand personality
-                </p>
-                <span className="text-hw-primary font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                  View project <ExternalLink className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </a>
+            ))}
           </div>
 
           <div className="text-center animate-on-scroll">
@@ -619,6 +592,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══ PageSpeed Proof ═══ */}
+      <PageSpeedProof variant="light" />
 
       {/* ═══ Pricing ═══ */}
       <section className="relative py-28 md:py-36 px-6 overflow-hidden" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 15%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.82) 100%), url('/images/background-dark-oak.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>

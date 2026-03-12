@@ -73,9 +73,12 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 - New component classes get added to `globals.css` following the existing token pattern.
 
 ### Images
-- WebP format, `width`/`height` on every `<img>` or Next.js `<Image>`
-- Hero: `loading="eager"` / `priority={true}`. Everything else: lazy.
-- Large images need `srcset` / `sizes` (or use Next.js `<Image>` which handles this)
+- **Always use `next/image`** — never raw `<img>` tags. ESLint `@next/next/no-img-element` is set to `error` and will fail the build.
+- **Pre-optimize source files:** Save images as WebP (via `convert.py` or `cwebp -q 80`) at appropriate dimensions before adding to `/public/images/`. Next.js Image optimizes on delivery, but pre-sized WebP sources reduce first-request latency.
+- `width`/`height` on every `<Image>` (or use `fill` for images that cover their container)
+- Hero: `priority={true}`. Everything else lazy by default (Next.js Image default).
+- Add `sizes` attribute for responsive images. Add `quality={80}` to match our WebP quality target.
+- For images in a fixed-height container with `object-cover`, use `fill` + parent `position: relative`.
 
 ### SEO & AEO
 - JSON-LD `LocalBusiness` schema on homepage (type: `ProfessionalService`)
