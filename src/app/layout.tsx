@@ -23,14 +23,16 @@ const rockSalt = Rock_Salt({
   variable: "--font-rock-salt",
   weight: "400",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  preload: false,
 });
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   weight: "700",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  preload: false,
 });
 
 export const metadata: Metadata = {
