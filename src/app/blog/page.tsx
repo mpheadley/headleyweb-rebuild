@@ -93,6 +93,7 @@ export default function BlogIndexPage() {
                         alt={post.frontmatter.title}
                         width={1200}
                         height={630}
+                        sizes="(min-width: 768px) 50vw, 100vw"
                         className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                         loading="lazy"
                       />

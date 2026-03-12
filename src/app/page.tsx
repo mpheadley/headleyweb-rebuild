@@ -411,6 +411,8 @@ export default function Home() {
             <div className="relative mx-auto md:mx-0 animate-on-scroll overflow-hidden rounded-2xl shadow-lg h-72 md:h-80">
               <img
                 src="/images/laptop-matt-headley.webp"
+                srcSet="/images/laptop-matt-headley-480w.webp 480w, /images/laptop-matt-headley.webp 1600w"
+                sizes="(min-width: 768px) 50vw, 100vw"
                 alt="Matt Headley working on a laptop at a local coffee shop"
                 width={1600}
                 height={600}
@@ -507,6 +509,7 @@ export default function Home() {
                   alt="Valley Small Engine Repair website screenshot"
                   width={800}
                   height={367}
+                  sizes="(min-width: 768px) 55vw, 100vw"
                   loading="lazy"
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
@@ -515,6 +518,7 @@ export default function Home() {
                   alt="Valley Small Engine Repair on mobile"
                   width={480}
                   height={914}
+                  sizes="62px"
                   loading="lazy"
                   className="absolute bottom-3 right-4 w-[62px] h-[112px] object-cover object-top rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
                 />
@@ -550,6 +554,7 @@ export default function Home() {
                   alt="Golden Hive Honey website screenshot"
                   width={800}
                   height={456}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   loading="lazy"
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
@@ -558,6 +563,7 @@ export default function Home() {
                   alt="Golden Hive Honey on mobile"
                   width={480}
                   height={1043}
+                  sizes="62px"
                   loading="lazy"
                   className="absolute bottom-3 right-4 w-[62px] h-[112px] object-cover object-top rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
                 />
@@ -579,6 +585,7 @@ export default function Home() {
                   alt="Chromatic Chaos Salon website screenshot"
                   width={800}
                   height={456}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   loading="lazy"
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
@@ -587,6 +594,7 @@ export default function Home() {
                   alt="Chromatic Chaos Salon on mobile"
                   width={480}
                   height={1043}
+                  sizes="62px"
                   loading="lazy"
                   className="absolute bottom-3 right-4 w-[62px] h-[112px] object-cover object-top rounded-lg border-2 border-white/90 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
                 />

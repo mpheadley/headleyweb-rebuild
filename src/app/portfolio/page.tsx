@@ -114,6 +114,7 @@ export default function PortfolioPage() {
                     alt={`${project.title} website screenshot`}
                     width={800}
                     height={456}
+                    sizes="(min-width: 768px) 50vw, 100vw"
                     loading="lazy"
                     className="w-full h-full object-cover object-top"
                   />
@@ -123,6 +124,7 @@ export default function PortfolioPage() {
                       alt={`${project.title} on mobile`}
                       width={480}
                       height={914}
+                      sizes="62px"
                       loading="lazy"
                       className="absolute bottom-0 right-4 w-[22%] rounded-t-lg shadow-2xl border-t-2 border-x-2 border-white/20"
                     />
@@ -172,6 +174,7 @@ export default function PortfolioPage() {
                       alt={`${project.title} website screenshot`}
                       width={800}
                       height={456}
+                      sizes="(min-width: 768px) 50vw, 100vw"
                       loading="lazy"
                       className="w-full h-full object-cover object-top"
                     />
@@ -181,6 +184,7 @@ export default function PortfolioPage() {
                         alt={`${project.title} on mobile`}
                         width={480}
                         height={914}
+                        sizes="62px"
                         loading="lazy"
                         className="absolute bottom-0 right-4 w-[22%] rounded-t-lg shadow-2xl border-t-2 border-x-2 border-white/20"
                       />

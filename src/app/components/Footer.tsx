@@ -8,10 +8,11 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto text-center space-y-5">
         <div className="flex items-center justify-center gap-3">
           <Image
-            src="/images/logo-headley-web.webp"
+            src="/images/logo-headley-web-sm.webp"
             alt="Headley Web & SEO"
             width={144}
             height={144}
+            sizes="144px"
             loading="lazy"
             className="rounded-full"
           />
