@@ -147,18 +147,12 @@ export default function Home() {
       />
       {/* ═══ Hero Section ═══ */}
       <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center bg-hw-dark text-white section-angled overflow-hidden pt-32 pb-24 md:pt-24 md:pb-0">
-        {/* Background image with dark overlay */}
-        <div className="absolute inset-0 ken-burns-subtle" aria-hidden="true">
-          <Image
-            src="/images/google-review-hvac.webp"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
+        {/* Background image with dark overlay — CSS bg-image for instant LCP (no JS hydration delay) */}
+        <div
+          className="absolute inset-0 ken-burns-subtle bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/google-review-hvac.webp')" }}
+          aria-hidden="true"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(28,40,38,0.85)] via-[rgba(28,40,38,0.7)] to-[rgba(28,40,38,0.9)]" />
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-[1fr_22rem] gap-12 items-center">
