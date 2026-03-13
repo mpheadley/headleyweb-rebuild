@@ -3,7 +3,7 @@ import { ExternalLink, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/app/data/projects";
-import PageSpeedProof from "@/app/components/PageSpeedProof";
+import LazyPageSpeedProof from "@/app/components/LazyPageSpeedProof";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -189,7 +189,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ═══ PageSpeed Proof ═══ */}
-      <PageSpeedProof variant="dark" />
+      <LazyPageSpeedProof variant="dark" />
 
       {/* ═══ CTA ═══ */}
       <section className="py-24 md:py-32 px-6 bg-hw-light">

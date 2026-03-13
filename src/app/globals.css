@@ -61,12 +61,14 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 1.7;
+  text-wrap: pretty;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   line-height: 1.2;
   color: var(--color-dark);
+  text-wrap: balance;
 }
 
 /* ─── Tactile Button ─── */

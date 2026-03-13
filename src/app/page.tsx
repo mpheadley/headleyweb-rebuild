@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
-import PageSpeedProof from "./components/PageSpeedProof";
+import LazyPageSpeedProof from "./components/LazyPageSpeedProof";
 import { projects } from "@/app/data/projects";
 
 export const metadata: Metadata = {
@@ -588,7 +588,7 @@ export default function Home() {
       </section>
 
       {/* ═══ PageSpeed Proof ═══ */}
-      <PageSpeedProof variant="light" />
+      <LazyPageSpeedProof variant="light" />
 
       {/* ═══ Pricing ═══ */}
       <section className="relative py-28 md:py-36 px-6 overflow-hidden" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 15%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.82) 100%), url('/images/background-dark-oak.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>

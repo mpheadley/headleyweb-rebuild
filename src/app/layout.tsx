@@ -23,8 +23,7 @@ const rockSalt = Rock_Salt({
   variable: "--font-rock-salt",
   weight: "400",
   subsets: ["latin"],
-  display: "optional",
-  preload: false,
+  display: "swap",
 });
 
 const playfairDisplay = Playfair_Display({
