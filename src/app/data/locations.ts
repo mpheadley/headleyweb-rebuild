@@ -47,13 +47,13 @@ export const locations: Location[] = [
     zip: "36203",
     metaTitle: "Web Design in Oxford, AL",
     metaDescription:
-      "Custom web design and local SEO for Oxford, Alabama businesses. Rank on Google in the Quintard corridor and Calhoun County. Flat-rate pricing from $495.",
+      "Custom web design and local SEO for Oxford, Alabama businesses. Rank on Google near the Oxford Exchange and across Calhoun County. Flat-rate pricing from $495.",
     heroHeadline: "Web Design for Oxford Businesses",
     heroSub:
       "Oxford is where Calhoun County shops. If your business isn't showing up when locals search, you're losing customers every day.",
     heroImage: { src: "/images/locations/oxford-hero.webp", alt: "Oxford, Alabama", credit: "Rivers Langley / CC BY-SA 3.0" },
     localIntro:
-      "Oxford is the retail and commercial hub of Calhoun County. The Quintard Mall corridor, Honda Manufacturing, and the Talladega Superspeedway traffic all funnel through here — bringing customers who are searching on their phones before they ever pull into a parking lot. Whether you run a service business off Highway 21, a restaurant near the Quintard strip, or a home services company covering Oxford and the surrounding area, your online presence is your first impression. I build websites that load fast, look professional on any device, and are structured so Google knows exactly what you do and where you do it. No templates, no page builders — just clean code and clear messaging that turns searches into phone calls.",
+      "Oxford is the retail and commercial hub of Calhoun County. The Oxford Exchange — a 775,000 square foot shopping center anchored by Target, Kohl's, Home Depot, and Dick's Sporting Goods — Honda Manufacturing, and the Talladega Superspeedway traffic all funnel through here, bringing customers who are searching on their phones before they ever pull into a parking lot. Whether you run a service business off Highway 21, a restaurant near the Oxford Exchange, or a home services company covering Oxford and the surrounding area, your online presence is your first impression. I build websites that load fast, look professional on any device, and are structured so Google knows exactly what you do and where you do it. No templates, no page builders — just clean code and clear messaging that turns searches into phone calls.",
     whyHere: [
       { title: "Retail & Commercial Hub", desc: "Oxford is where the county comes to spend money. Your website needs to capture that traffic online too." },
       { title: "Honda Manufacturing Workforce", desc: "Thousands of Honda employees live and spend locally. Be the business they find first." },

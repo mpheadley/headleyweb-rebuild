@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, Clock, ArrowLeft, Tag, List } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getAllSlugs, getPostBySlug, extractHeadings, buildFaqSchema, AUTHOR, PUBLISHER } from "@/lib/blog";
 import { notFound } from "next/navigation";
 
@@ -77,6 +78,20 @@ const mdxComponents = {
       className="bg-hw-dark text-hw-light p-6 rounded-lg overflow-x-auto mb-6 text-sm"
       {...props}
     />
+  ),
+  table: (props: React.ComponentProps<"table">) => (
+    <div className="overflow-x-auto mb-6">
+      <table className="w-full border-collapse text-sm text-hw-text" {...props} />
+    </div>
+  ),
+  thead: (props: React.ComponentProps<"thead">) => (
+    <thead className="bg-hw-dark text-hw-white" {...props} />
+  ),
+  th: (props: React.ComponentProps<"th">) => (
+    <th className="px-4 py-3 text-left font-semibold" {...props} />
+  ),
+  td: (props: React.ComponentProps<"td">) => (
+    <td className="px-4 py-3 border-t border-hw-dark/10" {...props} />
   ),
 };
 
@@ -312,7 +327,7 @@ export default async function BlogPostPage({
       {/* Article Content */}
       <article className="px-6 pb-20 md:pb-28 bg-hw-light">
         <div className="max-w-3xl mx-auto prose-custom">
-          <MDXRemote source={content} components={mdxComponents} />
+          <MDXRemote source={content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
         </div>
       </article>
 
