@@ -23,8 +23,8 @@ export const AUTHOR = {
   url: "https://headleyweb.com/about",
   sameAs: [
     "https://www.linkedin.com/in/mpheadley/",
+    "https://share.google/dgOVQ1xvLGRCnunm9",
     // TODO: Add Facebook business page URL
-    // TODO: Add GBP URL
   ],
 };
 
