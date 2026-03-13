@@ -1,9 +1,24 @@
 import fs from "fs";
 import path from "path";
+import { execSync } from "child_process";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+
+/** Get the last git commit date for a file (ISO date only). Falls back to null. */
+function getGitLastModified(filePath: string): string | null {
+  try {
+    const result = execSync(`git log -1 --format=%aI -- "${filePath}"`, {
+      encoding: "utf-8",
+      cwd: process.cwd(),
+    }).trim();
+    if (!result) return null;
+    return result.slice(0, 10);
+  } catch {
+    return null;
+  }
+}
 
 export interface BlogFrontmatter {
   title: string;
@@ -105,9 +120,18 @@ export function getAllPosts(): BlogPost[] {
     const raw = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(raw);
     const stats = readingTime(content);
+    const fm = data as BlogFrontmatter;
+
+    // Auto-set lastModified from git if not in frontmatter
+    if (!fm.lastModified) {
+      const gitDate = getGitLastModified(filePath);
+      if (gitDate && gitDate !== fm.date) {
+        fm.lastModified = gitDate;
+      }
+    }
 
     return {
-      frontmatter: data as BlogFrontmatter,
+      frontmatter: fm,
       content,
       readingTime: stats.text,
     };
