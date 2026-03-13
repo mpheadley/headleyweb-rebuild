@@ -48,7 +48,7 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 - **`website-copy.md`** — ALL website copy. Pull directly into components. Don't rewrite on the fly.
 - **`brandscript.md`** — StoryBrand framework, one-liner, soundbytes, brand descriptor
 - **`DESIGN_BRIEF_FILLED.md`** — Locked design decisions (colors, fonts, structure, effects)
-- **`REBUILD_PLAN.md`** — Full rebuild plan with page list and architecture
+- **`PLAN.md`** — Full plan with page list, architecture, and post-launch roadmap
 - **`BLOG_POST_PLAN.md`** — Planned blog content (MDX)
 - **`BUSINESS_STRATEGY.md`** — Revenue model, pricing, growth plan
 - **`NEXTJS_KIT_NOTES.md`** — Patterns to extract for the Next.js starter kit

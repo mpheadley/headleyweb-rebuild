@@ -31,6 +31,102 @@ const breadcrumbSchema = {
   ],
 };
 
+const areaServed = [
+  { "@type": "City", name: "Jacksonville", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "City", name: "Anniston", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "City", name: "Oxford", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "City", name: "Gadsden", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "City", name: "Talladega", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "City", name: "Centre", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "AdministrativeArea", name: "Calhoun County", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "AdministrativeArea", name: "Etowah County", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "AdministrativeArea", name: "Cherokee County", addressRegion: "AL", addressCountry: "US" },
+  { "@type": "AdministrativeArea", name: "Talladega County", addressRegion: "AL", addressCountry: "US" },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Web Design and Local SEO",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Headley Web & SEO",
+    url: "https://headleyweb.com",
+    telephone: "+1-256-644-7334",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Jacksonville",
+      addressRegion: "AL",
+      postalCode: "36265",
+      addressCountry: "US",
+    },
+  },
+  areaServed,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Web Design & SEO Services",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Custom Web Design",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Get Found — Single-Page Website",
+              description: "Professional, mobile-friendly single-page website with clear messaging, basic search optimization, contact form setup, and Google Business Profile setup. You own your website from day one.",
+              areaServed,
+            },
+            price: "495",
+            priceCurrency: "USD",
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Get Calls — Multi-Page Website",
+              description: "3-5 page website with search optimization, FAQ sections featured in Google search results, professional mobile-friendly design, clear messaging that converts visitors, and Google Business Profile setup.",
+              areaServed,
+            },
+            price: "795",
+            priceCurrency: "USD",
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Get Booked — Full SEO Website",
+              description: "5-7 page website with advanced search optimization, content written for AI visibility, structured data so Google knows your trade and town, professional design, and full Google Business Profile setup and optimization.",
+              areaServed,
+            },
+            price: "1195",
+            priceCurrency: "USD",
+          },
+        ],
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Local SEO Optimization",
+          description: "Keyword research for your specific trade and market, on-page optimization including titles, meta tags, and schema markup, content structured for Google and AI answers, local search targeting for your service area, and FAQ sections that Google features in search results.",
+          areaServed,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Google Business Profile Setup & Management",
+          description: "Full Google Business Profile setup and optimization including category and service area configuration, review response coaching and strategy, photo optimization, and monthly management available via care plans.",
+          areaServed,
+        },
+      },
+    ],
+  },
+};
+
 const services = [
   {
     icon: Monitor,
@@ -87,6 +183,10 @@ export default function ServicesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
       {/* ═══ Hero ═══ */}

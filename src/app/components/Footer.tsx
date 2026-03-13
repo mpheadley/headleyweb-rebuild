@@ -1,6 +1,7 @@
 import { MapPin, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { locations } from "@/app/data/locations";
 
 export default function Footer() {
   return (
@@ -49,6 +50,24 @@ export default function Footer() {
           <MapPin className="w-3 h-3" />
           Jacksonville, Alabama &middot; Serving Northeast Alabama
         </p>
+
+        {/* Service Areas */}
+        <div className="pt-2">
+          <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-2">Service Areas</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs">
+            {locations.map((loc, i) => (
+              <span key={loc.slug} className="flex items-center gap-x-3">
+                <Link
+                  href={`/locations/${loc.slug}`}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {loc.name}, AL
+                </Link>
+                {i < locations.length - 1 && <span className="text-gray-600">&middot;</span>}
+              </span>
+            ))}
+          </div>
+        </div>
 
         <p className="text-xs text-gray-400 max-w-lg mx-auto">
           Your website will be live, mobile-friendly, and optimized for local search.

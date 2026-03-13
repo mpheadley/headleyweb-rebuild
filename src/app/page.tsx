@@ -77,6 +77,34 @@ const localBusinessSchema = {
   },
 };
 
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Get More Leads for Your Local Business with a Professional Website",
+  description:
+    "A 3-step process to get your local service business found online, generate phone calls, and book more jobs.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Request Your Free Checkup",
+      text: "Take the quiz or fill out the form. I'll record a personalized video showing exactly where you stand online.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "I Build Your System",
+      text: "Based on what I find, I build your website, local SEO, and Google Business Profile — flat rate, no surprises.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Your Phone Starts Ringing",
+      text: "Customers find you, call you, and book you. You get found online and get back to the work you love.",
+    },
+  ],
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -141,6 +169,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <script
         type="application/ld+json"

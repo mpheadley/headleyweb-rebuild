@@ -1,7 +1,15 @@
 import type { MetadataRoute } from "next";
+import { getAllLocationSlugs } from "@/app/data/locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://headleyweb.com";
+
+  const locationPages = getAllLocationSlugs().map((slug) => ({
+    url: `${baseUrl}/locations/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
@@ -12,5 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/quiz`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    ...locationPages,
   ];
 }
