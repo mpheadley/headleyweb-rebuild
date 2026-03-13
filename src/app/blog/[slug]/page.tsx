@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock, ArrowLeft, Tag } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Tag, List } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllSlugs, getPostBySlug } from "@/lib/blog";
+import { getAllSlugs, getPostBySlug, extractHeadings, buildFaqSchema, AUTHOR, PUBLISHER } from "@/lib/blog";
 import { notFound } from "next/navigation";
+
+/** Generate a URL-safe slug from heading text */
+function toId(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 // MDX components — maps markdown elements to styled HTML
 const mdxComponents = {
-  h2: (props: React.ComponentProps<"h2">) => (
-    <h2
-      className="text-2xl md:text-3xl font-bold text-hw-dark mt-12 mb-4"
-      {...props}
-    />
-  ),
+  h2: (props: React.ComponentProps<"h2">) => {
+    const text = typeof props.children === "string" ? props.children : "";
+    const id = toId(text);
+    return (
+      <h2
+        id={id}
+        className="text-2xl md:text-3xl font-bold text-hw-dark mt-12 mb-4 scroll-mt-24"
+        {...props}
+      />
+    );
+  },
   h3: (props: React.ComponentProps<"h3">) => (
     <h3
       className="text-xl md:text-2xl font-bold text-hw-dark mt-10 mb-3"
@@ -82,7 +95,7 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  const { title, description, image } = post.frontmatter;
+  const { title, description, image, lastModified, date } = post.frontmatter;
 
   return {
     title,
@@ -95,7 +108,8 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      publishedTime: post.frontmatter.date,
+      publishedTime: date,
+      ...(lastModified && { modifiedTime: lastModified }),
       images: image
         ? [{ url: image, width: 1200, height: 630, alt: title }]
         : [
@@ -133,6 +147,9 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const { frontmatter, content, readingTime } = post;
+  const headings = extractHeadings(content);
+  const faqSchema = buildFaqSchema(headings, content);
+  const postUrl = `https://headleyweb.com/blog/${slug}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -144,7 +161,7 @@ export default async function BlogPostPage({
         "@type": "ListItem",
         position: 3,
         name: frontmatter.title,
-        item: `https://headleyweb.com/blog/${slug}`,
+        item: postUrl,
       },
     ],
   };
@@ -153,30 +170,40 @@ export default async function BlogPostPage({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: frontmatter.title,
-    description: frontmatter.description,
+    description: frontmatter.tldr || frontmatter.description,
     datePublished: frontmatter.date,
+    ...(frontmatter.lastModified && { dateModified: frontmatter.lastModified }),
     author: {
       "@type": "Person",
-      name: "Matt Headley",
-      url: "https://headleyweb.com/about",
+      name: AUTHOR.name,
+      url: AUTHOR.url,
+      ...(AUTHOR.sameAs.length > 0 && { sameAs: AUTHOR.sameAs }),
     },
     publisher: {
       "@type": "Organization",
-      name: "Headley Web & SEO",
-      url: "https://headleyweb.com",
+      name: PUBLISHER.name,
+      url: PUBLISHER.url,
     },
-    mainEntityOfPage: `https://headleyweb.com/blog/${slug}`,
+    mainEntityOfPage: postUrl,
     ...(frontmatter.image && {
       image: `https://headleyweb.com${frontmatter.image}`,
     }),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable='true']", "h1"],
+    },
   };
+
+  // Combine all schemas
+  const schemas: Record<string, unknown>[] = [breadcrumbSchema, articleSchema];
+  if (faqSchema) schemas.push(faqSchema);
 
   return (
     <main id="main-content">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([breadcrumbSchema, articleSchema]),
+          __html: JSON.stringify(schemas),
         }}
       />
 
@@ -195,11 +222,27 @@ export default async function BlogPostPage({
             {frontmatter.title}
           </h1>
 
+          {/* TLDR — speakable summary for AI engines + voice assistants */}
+          {frontmatter.tldr && (
+            <p
+              data-speakable="true"
+              className="text-hw-text leading-relaxed mb-6 text-lg italic border-l-4 border-hw-secondary pl-4 animate-on-scroll"
+            >
+              <strong className="not-italic text-hw-dark">TL;DR:</strong> {frontmatter.tldr}
+            </p>
+          )}
+
           <div className="flex flex-wrap items-center gap-4 text-sm text-hw-text-light mb-6 animate-on-scroll">
             <span className="flex items-center gap-1.5">
               <Calendar size={14} />
               {formatDate(frontmatter.date)}
             </span>
+            {frontmatter.lastModified && frontmatter.lastModified !== frontmatter.date && (
+              <span className="flex items-center gap-1.5">
+                <Calendar size={14} />
+                Updated {formatDate(frontmatter.lastModified)}
+              </span>
+            )}
             <span className="flex items-center gap-1.5">
               <Clock size={14} />
               {readingTime}
@@ -209,13 +252,14 @@ export default async function BlogPostPage({
           {frontmatter.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 animate-on-scroll">
               {frontmatter.tags.map((tag) => (
-                <span
+                <Link
                   key={tag}
-                  className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-hw-secondary/10 text-hw-secondary"
+                  href={`/blog?tag=${encodeURIComponent(tag)}`}
+                  className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-hw-secondary/10 text-hw-secondary hover:bg-hw-secondary/20 transition-colors"
                 >
                   <Tag size={10} />
                   {tag}
-                </span>
+                </Link>
               ))}
             </div>
           )}
@@ -237,6 +281,32 @@ export default async function BlogPostPage({
             />
           </div>
         </section>
+      )}
+
+      {/* Table of Contents */}
+      {headings.length >= 3 && (
+        <nav className="px-6 pb-8 bg-hw-light" aria-label="Table of contents">
+          <div className="max-w-3xl mx-auto">
+            <details className="card-glow" open>
+              <summary className="flex items-center gap-2 cursor-pointer text-hw-dark font-semibold text-lg select-none">
+                <List size={18} className="text-hw-secondary" />
+                In This Article
+              </summary>
+              <ol className="mt-4 space-y-2 list-decimal list-inside text-sm">
+                {headings.map((h) => (
+                  <li key={h.id}>
+                    <a
+                      href={`#${h.id}`}
+                      className="text-hw-secondary hover:text-hw-primary transition-colors"
+                    >
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          </div>
+        </nav>
       )}
 
       {/* Article Content */}

@@ -41,8 +41,14 @@ function formatDate(dateStr: string): string {
   });
 }
 
-export default function BlogIndexPage() {
-  const posts = getAllPosts();
+type SearchParams = Promise<{ tag?: string }>;
+
+export default async function BlogIndexPage({ searchParams }: { searchParams: SearchParams }) {
+  const { tag } = await searchParams;
+  const allPosts = getAllPosts();
+  const posts = tag
+    ? allPosts.filter((p) => p.frontmatter.tags.some((t) => t.toLowerCase() === tag.toLowerCase()))
+    : allPosts;
 
   return (
     <main id="main-content">
@@ -74,6 +80,20 @@ export default function BlogIndexPage() {
       {/* Posts Grid */}
       <section className="py-24 md:py-32 px-6 bg-hw-light">
         <div className="max-w-5xl mx-auto">
+          {tag && (
+            <div className="flex items-center gap-3 mb-8">
+              <span className="text-sm text-hw-text-light">
+                Filtered by: <span className="font-semibold text-hw-secondary">{tag}</span>
+              </span>
+              <Link
+                href="/blog"
+                className="text-xs font-medium text-hw-primary hover:text-hw-primary-dark transition-colors"
+              >
+                Clear filter
+              </Link>
+            </div>
+          )}
+
           {posts.length === 0 ? (
             <p className="text-center text-hw-text-light text-lg">
               Posts coming soon. Check back shortly.
@@ -127,13 +147,14 @@ export default function BlogIndexPage() {
                   {post.frontmatter.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {post.frontmatter.tags.map((tag) => (
-                        <span
+                        <Link
                           key={tag}
-                          className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-hw-secondary/10 text-hw-secondary"
+                          href={`/blog?tag=${encodeURIComponent(tag)}`}
+                          className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-hw-secondary/10 text-hw-secondary hover:bg-hw-secondary/20 transition-colors"
                         >
                           <Tag size={10} />
                           {tag}
-                        </span>
+                        </Link>
                       ))}
                     </div>
                   )}
