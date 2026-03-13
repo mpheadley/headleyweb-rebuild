@@ -935,7 +935,7 @@ export default function Home() {
                   href={`/blog/${post.frontmatter.slug}`}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-hw-primary hover:text-hw-primary-dark transition-colors mt-auto"
                 >
-                  Read more <ArrowRight className="w-4 h-4" />
+                  Read more<span className="sr-only">: {post.frontmatter.title}</span> <ArrowRight className="w-4 h-4" />
                 </Link>
               </article>
             ))}
