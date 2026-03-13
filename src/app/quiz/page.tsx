@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowLeft, Mail, RotateCcw } from "lucide-react";
 
 /* ── Questions ── */
@@ -241,9 +242,18 @@ export default function QuizPage() {
           <h1 className="text-3xl md:text-4xl font-bold !text-white mb-4">
             What&apos;s Your Business&apos;s Online Personality?
           </h1>
-          <p className="text-gray-300">
+          <p className="text-gray-300 mb-8">
             8 quick questions. 60 seconds. Find out where you stand — and what to do next.
           </p>
+          <Image
+            src="/images/quiz-website-checkup-1200-630.webp"
+            alt="Before and after illustration: a frustrated business owner with a failing website report card transforms into a happy owner with top scores in speed, SEO, and user experience"
+            width={1200}
+            height={630}
+            sizes="(min-width: 768px) 640px, 100vw"
+            className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+            priority
+          />
         </div>
       </section>
 

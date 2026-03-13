@@ -6,6 +6,7 @@ import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
 import LazyPageSpeedProof from "./components/LazyPageSpeedProof";
 import { projects } from "@/app/data/projects";
+import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Northeast Alabama Web Design & Local SEO",
@@ -898,6 +899,51 @@ export default function Home() {
                 You know how people are starting to ask ChatGPT and Google&apos;s AI for recommendations instead of scrolling through search results? Yeah — I make sure your business shows up in those answers. You don&apos;t need to understand how it works. That&apos;s literally what you&apos;re paying me for.
               </div>
             </details>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Latest from the Blog ═══ */}
+      <section className="py-24 md:py-32 px-6 bg-hw-light">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Blog</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Latest from the Blog</h2>
+            <p className="text-hw-text-light mt-4 animate-on-scroll">
+              Practical tips to help your business get found online.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto">
+            {getAllPosts().slice(0, 2).map((post, i) => (
+              <article
+                key={post.frontmatter.slug}
+                className="card-glow flex flex-col animate-on-scroll"
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                <p className="text-xs text-hw-text-light mb-2">
+                  {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
+                <h3 className="text-lg font-bold mb-2">{post.frontmatter.title}</h3>
+                <p className="text-hw-text-light text-sm mb-4 flex-1">
+                  {post.frontmatter.description}
+                </p>
+                <Link
+                  href={`/blog/${post.frontmatter.slug}`}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-hw-primary hover:text-hw-primary-dark transition-colors mt-auto"
+                >
+                  Read more <ArrowRight className="w-4 h-4" />
+                </Link>
+              </article>
+            ))}
+          </div>
+          <div className="text-center mt-10 animate-on-scroll">
+            <Link href="/blog" className="btn-secondary">
+              View All Posts <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
           </div>
         </div>
       </section>
