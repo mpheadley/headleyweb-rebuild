@@ -77,10 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Hero bg uses CSS background-image for instant LCP — manual preload since not using next/image */}
-        <link rel="preload" href="/images/google-review-hvac.webp" as="image" type="image/webp" fetchPriority="high" />
-      </head>
+      <head />
       <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} ${playfairDisplay.variable} antialiased`}>
         <script dangerouslySetInnerHTML={{ __html: "" }} />
         {/* eslint-disable-next-line react/no-danger */}
