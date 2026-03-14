@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { MapPin, Mail, Phone, Clock, Send } from "lucide-react";
+import Link from "next/link";
+import { MapPin, Mail, Phone, Clock, Send, HelpCircle } from "lucide-react";
 import type { Metadata } from "next";
 
 const breadcrumbSchema = {
@@ -198,6 +199,25 @@ export default function ContactPage() {
                   <div>
                     <p className="font-semibold">Response Time</p>
                     <p className="text-sm text-hw-text-light">Usually within a few hours. I&apos;m a real person — not a chatbot.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quiz nudge */}
+              <div className="bg-hw-primary/5 border border-hw-primary/15 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <HelpCircle className="w-5 h-5 text-hw-primary shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-sm mb-1">Not sure what you need yet?</p>
+                    <p className="text-sm text-hw-text-light mb-2">
+                      Take our 60-second quiz to find out where your business stands online.
+                    </p>
+                    <Link
+                      href="/quiz"
+                      className="text-sm font-semibold text-hw-primary hover:text-hw-primary-dark transition-colors"
+                    >
+                      Take the Quiz →
+                    </Link>
                   </div>
                 </div>
               </div>

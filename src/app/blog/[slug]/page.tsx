@@ -362,9 +362,14 @@ export default async function BlogPostPage({
             Let&apos;s talk about your business, your goals, and how a clear
             website can start generating leads.
           </p>
-          <Link href="/contact" className="btn-primary">
-            Get a Free Strategy Call
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/contact" className="btn-primary">
+              Get a Free Strategy Call
+            </Link>
+            <Link href="/quiz" className="btn-secondary">
+              Take the 60-Second Quiz
+            </Link>
+          </div>
         </div>
       </section>
     </main>
