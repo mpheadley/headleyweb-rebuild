@@ -7,19 +7,17 @@ export default function Footer() {
   return (
     <footer className="bg-hw-dark text-gray-300 py-12 px-6">
       <div className="max-w-5xl mx-auto text-center space-y-5">
-        <div className="flex items-center justify-center gap-3">
-          <Image
-            src="/images/logo-headley-web-sm.webp"
-            alt="Headley Web & SEO"
-            width={144}
-            height={144}
-            sizes="144px"
-            loading="lazy"
-            className="rounded-full"
-          />
-          <p className="text-white font-heading text-lg font-semibold">
-            Headley <span className="text-hw-primary">Web <span className="amp">&amp;</span> SEO</span>
-          </p>
+        <div className="flex items-center justify-center">
+          <div className="w-80 h-52 rounded-2xl bg-[#F2E8D4] overflow-hidden relative">
+            <Image
+              src="/images/logo-seal-footer.webp"
+              alt="Headley Web & SEO"
+              fill
+              sizes="320px"
+              loading="lazy"
+              className="object-cover scale-110"
+            />
+          </div>
         </div>
         <p className="text-sm text-gray-400">
           Get found. Get calls. Get booked.

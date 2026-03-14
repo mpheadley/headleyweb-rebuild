@@ -331,6 +331,26 @@ export default async function BlogPostPage({
         </div>
       </article>
 
+      {/* Author */}
+      <section className="px-6 pb-12 bg-hw-light">
+        <div className="max-w-3xl mx-auto flex items-center gap-3 border-t border-gray-200 pt-8">
+          <Image
+            src="/images/logo-icon-sm.webp"
+            alt="Headley Web & SEO"
+            width={40}
+            height={35}
+            sizes="40px"
+            className="w-10 h-auto rounded-full bg-[#F2E8D4] p-0.5"
+          />
+          <div>
+            <p className="text-sm font-semibold text-hw-text">Matt Headley</p>
+            <p className="text-xs text-hw-text-light">
+              Headley Web <span className="amp">&amp;</span> SEO · Jacksonville, AL
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="px-6 pb-20 md:pb-28 bg-hw-light">
         <div className="max-w-3xl mx-auto text-center card-glow">

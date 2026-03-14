@@ -42,19 +42,14 @@ export default function Nav() {
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <svg
-              viewBox="0 0 24 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={`transition-all duration-300 ${scrolled ? "w-5 h-7" : "w-7 h-9"}`}
-              aria-hidden="true"
-            >
-              <path
-                d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20c0-6.6-5.4-12-12-12z"
-                fill="#E07B3C"
-              />
-              <circle cx="12" cy="12" r="5" fill="white" />
-            </svg>
+            <Image
+              src="/images/logo-icon-sm.webp"
+              alt="Headley Web & SEO"
+              width={36}
+              height={32}
+              sizes="36px"
+              className={`rounded-full bg-[#F2E8D4] transition-all duration-300 ${scrolled ? "w-7 h-auto p-0.5" : "w-9 h-auto p-0.5"}`}
+            />
             <span className={`font-heading font-bold text-lg tracking-tight transition-colors duration-300 ${
               scrolled ? "text-white" : "text-white"
             }`}>
