@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, ArrowLeft, Mail, RotateCcw, Globe, Loader2, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
 import { roiEstimates, normalizeTier, tierPrices, type TradeEstimate } from "../data/roi-estimates";
-import type { AuditResult } from "../api/site-audit/route";
+import type { AuditResult, StoryBrandItem } from "../api/site-audit/route";
 
 /* ── Trade options (not scored) ── */
 const tradeOptions = [
@@ -236,6 +236,101 @@ function getScoreLabel(score: number, category: string): string {
   if (score >= 50) return `Your ${category} needs some work`;
   return `Your ${category} needs serious attention`;
 }
+
+/* ── StoryBrand Grade Colors ── */
+function getGradeColor(grade: string): string {
+  if (grade === "A") return "text-green-600 bg-green-50 border-green-200";
+  if (grade === "B") return "text-green-600 bg-green-50 border-green-200";
+  if (grade === "C") return "text-yellow-500 bg-yellow-50 border-yellow-200";
+  if (grade === "D") return "text-red-500 bg-red-50 border-red-200";
+  return "text-red-600 bg-red-50 border-red-200";
+}
+
+function getGradeLabel(grade: string): string {
+  if (grade === "A") return "StoryBrand-aligned — this site sells";
+  if (grade === "B") return "Good foundation, needs tightening";
+  if (grade === "C") return "Has pieces, but the message is muddled";
+  if (grade === "D") return "Talking about themselves, not the customer";
+  return "Digital brochure — not a sales tool";
+}
+
+/* ── StoryBrand Item Score Display ── */
+function StoryBrandItemRow({ item }: { item: StoryBrandItem }) {
+  const scoreColor = item.autoScore === null
+    ? "bg-gray-100 text-gray-500"
+    : item.autoScore === 2
+      ? "bg-green-100 text-green-700"
+      : item.autoScore === 1
+        ? "bg-yellow-100 text-yellow-700"
+        : "bg-red-100 text-red-700";
+
+  return (
+    <div className="border border-gray-100 rounded-lg p-3">
+      <div className="flex items-center justify-between mb-1">
+        <p className="text-sm font-medium text-hw-text">{item.id} {item.label}</p>
+        <span className={`text-xs font-mono px-2 py-0.5 rounded ${scoreColor}`}>
+          {item.autoScore === null ? "Manual" : `${item.autoScore}/2`}
+        </span>
+      </div>
+      {item.signals.map((s, i) => (
+        <p key={i} className="text-xs text-hw-text-light">{s}</p>
+      ))}
+    </div>
+  );
+}
+
+/* ── Manual Audit Checklist Items ── */
+const manualChecklist = [
+  {
+    section: "Google Business Profile",
+    items: [
+      "GBP claimed and verified",
+      "Business name, address, phone (NAP) accurate",
+      "Correct business category selected",
+      "Business hours set and up to date",
+      "At least 10 photos uploaded (storefront, work, team)",
+      "Business description filled out with keywords",
+      "Service area or address set correctly",
+      "At least 5 Google reviews",
+      "Owner responds to reviews",
+      "Posts/updates in last 30 days",
+    ],
+  },
+  {
+    section: "Online Presence",
+    items: [
+      "Shows up on Google Maps for main keyword + city",
+      "Facebook page exists and is active",
+      "Yelp listing claimed (if applicable)",
+      "BBB listing (if applicable)",
+      "NAP consistent across all directories",
+      "No duplicate listings on Google",
+    ],
+  },
+  {
+    section: "Conversion Elements",
+    items: [
+      "Phone number clickable on mobile",
+      "Contact form works and submits",
+      "Form is short (name, phone, message max)",
+      "Thank-you page or confirmation after form submit",
+      "Social proof near CTA (reviews, badges, testimonials)",
+      "Trust signals present (license #, insurance, BBB)",
+      "Live chat or text option (bonus)",
+    ],
+  },
+  {
+    section: "StoryBrand (Manual Review)",
+    items: [
+      "1.4 — Sub-headline expands the story (not just a tagline)",
+      "1.6 — Three questions answered in 5 seconds (offer, benefit, next step)",
+      "Overall messaging clarity — would a stranger understand in one read?",
+      "Guide positioning — empathy + authority balanced, not just credentials",
+      "Copy reads like conversation, not corporate speak",
+      "Every section drives toward the CTA",
+    ],
+  },
+];
 
 export default function QuizPage() {
   const searchParams = useSearchParams();
@@ -739,6 +834,34 @@ export default function QuizPage() {
                     <AuditCheck passed={auditResult.isLinkCrawlable} label="Links are crawlable" />
                   </div>
 
+                  {/* StoryBrand Messaging Score (Client-Facing) */}
+                  {auditResult.storyBrand && (
+                    <div className="mb-6">
+                      <h4 className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-3">
+                        Your Website Messaging
+                      </h4>
+                      <div className={`rounded-xl p-5 border text-center mb-4 ${getGradeColor(auditResult.storyBrand.grade)}`}>
+                        <p className="text-3xl font-bold mb-1">{auditResult.storyBrand.grade}</p>
+                        <p className="text-sm">{getGradeLabel(auditResult.storyBrand.grade)}</p>
+                      </div>
+                      <div className="space-y-2">
+                        {auditResult.storyBrand.items
+                          .filter(i => i.autoScore !== null && i.autoScore < 2)
+                          .slice(0, 4)
+                          .map((item) => (
+                            <div key={item.id} className={`flex items-start gap-2 p-2 rounded-lg ${item.autoScore === 0 ? "bg-red-50" : "bg-yellow-50"}`}>
+                              {item.autoScore === 0 ? (
+                                <XCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                              ) : (
+                                <AlertTriangle className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
+                              )}
+                              <p className="text-sm text-hw-text">{item.label}</p>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+                  )}
+
                   <div className="bg-hw-primary/5 border border-hw-primary/15 rounded-xl p-5 text-center">
                     <p className="text-sm text-hw-text mb-2">
                       Want me to walk you through what this means for your business?
@@ -857,6 +980,93 @@ export default function QuizPage() {
                     </div>
                   )}
 
+                  {/* StoryBrand Analysis (Internal) */}
+                  {auditResult.storyBrand && (
+                    <div className="mb-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-sm font-bold uppercase tracking-wide text-hw-text-light">
+                          StoryBrand Copy Analysis
+                        </p>
+                        <span className={`text-lg font-bold px-3 py-1 rounded border ${getGradeColor(auditResult.storyBrand.grade)}`}>
+                          {auditResult.storyBrand.grade} — {auditResult.storyBrand.autoTotal}/{auditResult.storyBrand.autoMax} auto-scored
+                        </span>
+                      </div>
+
+                      {/* Extracted Copy for Review */}
+                      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+                        <p className="text-xs font-bold uppercase tracking-wide text-blue-600 mb-2">
+                          Extracted Copy (review this)
+                        </p>
+                        {auditResult.storyBrand.extractedCopy.heroHeadline && (
+                          <div className="mb-2">
+                            <p className="text-xs text-blue-500">Hero Headline:</p>
+                            <p className="text-sm font-medium text-hw-text">&ldquo;{auditResult.storyBrand.extractedCopy.heroHeadline}&rdquo;</p>
+                          </div>
+                        )}
+                        {auditResult.storyBrand.extractedCopy.heroSubheadline && (
+                          <div className="mb-2">
+                            <p className="text-xs text-blue-500">Sub-headline:</p>
+                            <p className="text-sm text-hw-text">&ldquo;{auditResult.storyBrand.extractedCopy.heroSubheadline}&rdquo;</p>
+                          </div>
+                        )}
+                        <div className="mb-2">
+                          <p className="text-xs text-blue-500">
+                            Pronoun Balance: {auditResult.storyBrand.extractedCopy.secondPersonCount} &ldquo;you/your&rdquo; vs {auditResult.storyBrand.extractedCopy.firstPersonCount} &ldquo;we/our&rdquo;
+                          </p>
+                        </div>
+                        {auditResult.storyBrand.extractedCopy.ctaTexts.length > 0 && (
+                          <div className="mb-2">
+                            <p className="text-xs text-blue-500">CTAs Found:</p>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {auditResult.storyBrand.extractedCopy.ctaTexts.slice(0, 8).map((cta, i) => (
+                                <span key={i} className="text-xs bg-white border border-blue-200 px-2 py-0.5 rounded">{cta}</span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Scoring Items by Section */}
+                      {["Hero", "Problem", "Guide", "Plan", "Call to Action", "Stakes", "Messaging"].map((section) => {
+                        const sectionItems = auditResult.storyBrand!.items.filter(i => i.section === section);
+                        if (sectionItems.length === 0) return null;
+                        return (
+                          <div key={section} className="mb-3">
+                            <p className="text-xs font-bold uppercase tracking-wide text-hw-text-light mb-2">{section}</p>
+                            <div className="space-y-2">
+                              {sectionItems.map(item => (
+                                <StoryBrandItemRow key={item.id} item={item} />
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* Manual Audit Checklist */}
+                  <div className="mb-6">
+                    <p className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-3">
+                      Manual Audit Checklist
+                    </p>
+                    <p className="text-xs text-hw-text-light mb-4">
+                      Check these items during your call with the client. Items above are automated — these need your eyes.
+                    </p>
+                    {manualChecklist.map((group) => (
+                      <div key={group.section} className="mb-4">
+                        <p className="text-xs font-bold uppercase tracking-wide text-hw-primary mb-2">{group.section}</p>
+                        <div className="space-y-1">
+                          {group.items.map((item, i) => (
+                            <label key={i} className="flex items-start gap-2 text-sm text-hw-text cursor-pointer hover:bg-gray-50 p-1 rounded">
+                              <input type="checkbox" className="mt-1 accent-hw-primary" />
+                              <span>{item}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
                   {/* Copy-Paste Summary */}
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
                     <p className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-2">
@@ -867,7 +1077,7 @@ export default function QuizPage() {
 Performance: ${auditResult.performance}/100 | SEO: ${auditResult.seo}/100 | Accessibility: ${auditResult.accessibility}/100
 FCP: ${auditResult.fcp}s | LCP: ${auditResult.lcp}s | CLS: ${auditResult.cls} | TBT: ${auditResult.tbt}ms
 HTTPS: ${auditResult.isHttps ? "Yes" : "No"} | Meta Desc: ${auditResult.hasMetaDescription ? "Yes" : "No"} | Viewport: ${auditResult.hasViewport ? "Yes" : "No"}
-Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passedAudits.length}`}
+Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passedAudits.length}${auditResult.storyBrand ? `\nStoryBrand Grade: ${auditResult.storyBrand.grade} (${auditResult.storyBrand.autoTotal}/${auditResult.storyBrand.autoMax} auto-scored)` : ""}`}
                     </pre>
                   </div>
                 </div>
