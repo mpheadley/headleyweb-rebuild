@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -353,6 +353,42 @@ export default function QuizPage() {
   const [auditError, setAuditError] = useState<string | null>(null);
   const [auditLoading, setAuditLoading] = useState(false);
 
+  // Checklist state keyed by URL for LocalStorage persistence
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+  const [checklistLoaded, setChecklistLoaded] = useState<string | null>(null);
+
+  // Build a stable storage key from the audit URL
+  const checklistStorageKey = auditResult?.url
+    ? `hw-checklist-${auditResult.url}`
+    : null;
+
+  // Load checklist from LocalStorage when audit result arrives
+  // Using a ref-like pattern to avoid calling setState in effect body
+  if (checklistStorageKey && checklistLoaded !== checklistStorageKey) {
+    try {
+      const saved = localStorage.getItem(checklistStorageKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Only update if different from current state
+        setCheckedItems(parsed);
+      }
+    } catch {
+      // Ignore parse errors
+    }
+    setChecklistLoaded(checklistStorageKey);
+  }
+
+  // Save checklist to LocalStorage on change
+  const handleChecklistToggle = useCallback((key: string) => {
+    setCheckedItems((prev) => {
+      const next = { ...prev, [key]: !prev[key] };
+      if (checklistStorageKey) {
+        try { localStorage.setItem(checklistStorageKey, JSON.stringify(next)); } catch { /* quota */ }
+      }
+      return next;
+    });
+  }, [checklistStorageKey]);
+
   // Total steps: 8 questions + trade select = 9 steps before result
   const totalSteps = questions.length + 1;
   const currentStep = showTradeSelect
@@ -452,23 +488,72 @@ export default function QuizPage() {
     setSiteUrl("");
     setAuditResult(null);
     setAuditError(null);
+    setCheckedItems({});
   }
 
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
     try {
+      const formData: Record<string, unknown> = {
+        email,
+        quiz_result: result?.name,
+        quiz_score: totalScore,
+        recommended_tier: recommendedTier,
+        trade: trade || "not selected",
+        site_url: siteUrl || "not provided",
+        _subject: `Quiz Result: ${result?.name}${auditResult ? ` | Site: ${auditResult.url}` : ""}`,
+      };
+
+      // Include audit data if available
+      if (auditResult) {
+        formData.lighthouse = {
+          performance: auditResult.performance,
+          seo: auditResult.seo,
+          accessibility: auditResult.accessibility,
+          fcp: auditResult.fcp,
+          lcp: auditResult.lcp,
+          cls: auditResult.cls,
+          tbt: auditResult.tbt,
+          https: auditResult.isHttps,
+          meta_description: auditResult.hasMetaDescription,
+          viewport: auditResult.hasViewport,
+          failed_audits: auditResult.failedAudits.length,
+          passed_audits: auditResult.passedAudits.length,
+        };
+      }
+
+      // Include StoryBrand data if available
+      if (auditResult?.storyBrand) {
+        const sb = auditResult.storyBrand;
+        formData.storybrand = {
+          grade: sb.grade,
+          auto_score: `${sb.autoTotal}/${sb.autoMax}`,
+          hero_headline: sb.extractedCopy.heroHeadline || "(none detected)",
+          pronoun_balance: `${sb.extractedCopy.secondPersonCount} you/your vs ${sb.extractedCopy.firstPersonCount} we/our`,
+          top_issues: sb.items
+            .filter(i => i.autoScore !== null && i.autoScore < 2)
+            .slice(0, 5)
+            .map(i => `${i.id} ${i.label}: ${i.autoScore}/2`)
+            .join("; "),
+        };
+      }
+
+      // Include ROI data if trade was selected
+      if (tradeData) {
+        formData.roi = {
+          trade: tradeData.label,
+          avg_job_value: tradeData.avgJobValue,
+          estimated_monthly_loss: `$${tradeData.estimatedMonthlyLoss[0].toLocaleString()}-$${tradeData.estimatedMonthlyLoss[1].toLocaleString()}`,
+          payback_jobs: tradeData.paybackJobs[recommendedTier] ?? "N/A",
+          tier_price: tierPrice,
+        };
+      }
+
       await fetch("https://formspree.io/f/xyknwdgp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          quiz_result: result?.name,
-          quiz_score: totalScore,
-          trade: trade || "not selected",
-          site_url: siteUrl || "not provided",
-          _subject: `Quiz Result: ${result?.name}`,
-        }),
+        body: JSON.stringify(formData),
       });
     } catch {
       // Silently continue — show result regardless
@@ -476,13 +561,6 @@ export default function QuizPage() {
     setSubmitting(false);
     setEmailSubmitted(true);
   }
-
-  // Start the audit in the background once we move to email gate
-  useEffect(() => {
-    if (showResult && siteUrl.trim() && !auditResult && !auditError && !auditLoading) {
-      // Audit was kicked off from URL input step — nothing extra needed here
-    }
-  }, [showResult, siteUrl, auditResult, auditError, auditLoading]);
 
   const totalScore = answers.reduce((sum, v) => sum + v, 0);
   const result = showResult ? getArchetype(totalScore) : null;
@@ -1056,12 +1134,20 @@ export default function QuizPage() {
                       <div key={group.section} className="mb-4">
                         <p className="text-xs font-bold uppercase tracking-wide text-hw-primary mb-2">{group.section}</p>
                         <div className="space-y-1">
-                          {group.items.map((item, i) => (
-                            <label key={i} className="flex items-start gap-2 text-sm text-hw-text cursor-pointer hover:bg-gray-50 p-1 rounded">
-                              <input type="checkbox" className="mt-1 accent-hw-primary" />
-                              <span>{item}</span>
-                            </label>
-                          ))}
+                          {group.items.map((item, i) => {
+                            const key = `${group.section}-${i}`;
+                            return (
+                              <label key={key} className="flex items-start gap-2 text-sm text-hw-text cursor-pointer hover:bg-gray-50 p-1 rounded">
+                                <input
+                                  type="checkbox"
+                                  className="mt-1 accent-hw-primary"
+                                  checked={!!checkedItems[key]}
+                                  onChange={() => handleChecklistToggle(key)}
+                                />
+                                <span className={checkedItems[key] ? "line-through text-hw-text-light" : ""}>{item}</span>
+                              </label>
+                            );
+                          })}
                         </div>
                       </div>
                     ))}
