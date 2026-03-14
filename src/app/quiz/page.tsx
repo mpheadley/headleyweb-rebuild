@@ -1,9 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowLeft, Mail, RotateCcw } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { ArrowRight, ArrowLeft, Mail, RotateCcw, Globe, Loader2, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
+import { roiEstimates, normalizeTier, tierPrices, type TradeEstimate } from "../data/roi-estimates";
+import type { AuditResult } from "../api/site-audit/route";
+
+/* ── Trade options (not scored) ── */
+const tradeOptions = [
+  { key: "plumbing", label: "Plumbing" },
+  { key: "hvac", label: "HVAC" },
+  { key: "electrical", label: "Electrical" },
+  { key: "salon", label: "Salon / Barbershop" },
+  { key: "small-engine", label: "Small Engine / Lawn Care" },
+  { key: "contractor", label: "General Contractor" },
+  { key: "other", label: "Other Local Service" },
+];
 
 /* ── Questions ── */
 const questions = [
@@ -164,7 +178,69 @@ function getArchetype(score: number): Archetype {
   return archetypes.legend;
 }
 
+/* ── Score Gauge Component ── */
+function ScoreGauge({ score, label, size = "normal" }: { score: number; label: string; size?: "normal" | "small" }) {
+  const color = score >= 90 ? "text-green-600" : score >= 50 ? "text-yellow-500" : "text-red-500";
+  const bgColor = score >= 90 ? "stroke-green-600" : score >= 50 ? "stroke-yellow-500" : "stroke-red-500";
+  const dims = size === "small" ? "w-16 h-16" : "w-20 h-20";
+  const circumference = 2 * Math.PI * 36;
+  const offset = circumference - (score / 100) * circumference;
+
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <div className={`relative ${dims}`}>
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#e5e7eb" strokeWidth="6" />
+          <circle
+            cx="40" cy="40" r="36" fill="none"
+            className={bgColor}
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            style={{ transition: "stroke-dashoffset 1s ease-out" }}
+          />
+        </svg>
+        <span className={`absolute inset-0 flex items-center justify-center font-bold ${color} ${size === "small" ? "text-sm" : "text-lg"}`}>
+          {score}
+        </span>
+      </div>
+      <span className={`text-hw-text-light ${size === "small" ? "text-xs" : "text-xs"} text-center`}>{label}</span>
+    </div>
+  );
+}
+
+/* ── Audit Check Item ── */
+function AuditCheck({ passed, label }: { passed: boolean; label: string }) {
+  return (
+    <div className="flex items-center gap-2 text-sm">
+      {passed ? (
+        <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0" />
+      ) : (
+        <XCircle className="w-4 h-4 text-red-500 shrink-0" />
+      )}
+      <span className={passed ? "text-hw-text" : "text-red-600 font-medium"}>{label}</span>
+    </div>
+  );
+}
+
+/* ── Plain-English Metric Labels ── */
+function getSpeedLabel(lcp: number): string {
+  if (lcp <= 2.5) return "Your site loads fast — visitors won't wait around";
+  if (lcp <= 4) return "Your site is a bit slow — some visitors are leaving before it loads";
+  return "Your site is slow — most visitors leave before they ever see your content";
+}
+
+function getScoreLabel(score: number, category: string): string {
+  if (score >= 90) return `Your ${category} is in great shape`;
+  if (score >= 50) return `Your ${category} needs some work`;
+  return `Your ${category} needs serious attention`;
+}
+
 export default function QuizPage() {
+  const searchParams = useSearchParams();
+  const isInternal = searchParams.get("internal") === "true";
+
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
@@ -173,11 +249,24 @@ export default function QuizPage() {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const progress = ((currentQ + (showResult ? 1 : 0)) / questions.length) * 100;
+  // New state for trade, URL audit, and ROI
+  const [trade, setTrade] = useState<string | null>(null);
+  const [showTradeSelect, setShowTradeSelect] = useState(false);
+  const [siteUrl, setSiteUrl] = useState("");
+  const [showUrlInput, setShowUrlInput] = useState(false);
+  const [auditResult, setAuditResult] = useState<AuditResult | null>(null);
+  const [auditError, setAuditError] = useState<string | null>(null);
+  const [auditLoading, setAuditLoading] = useState(false);
+
+  // Total steps: 8 questions + trade select = 9 steps before result
+  const totalSteps = questions.length + 1;
+  const currentStep = showTradeSelect
+    ? questions.length
+    : currentQ;
+  const progress = ((currentStep + (showResult ? 1 : 0)) / totalSteps) * 100;
 
   function handleSelect(value: number, index: number) {
     setSelected(index);
-    // Brief delay so user sees the selection highlight
     setTimeout(() => {
       const newAnswers = [...answers, value];
       setAnswers(newAnswers);
@@ -186,12 +275,69 @@ export default function QuizPage() {
       if (currentQ + 1 < questions.length) {
         setCurrentQ(currentQ + 1);
       } else {
-        setShowResult(true);
+        // Show trade selection instead of going straight to results
+        setShowTradeSelect(true);
       }
     }, 300);
   }
 
+  function handleTradeSelect(tradeKey: string) {
+    setTrade(tradeKey);
+    // Brief delay so user sees the selection
+    setTimeout(() => {
+      setShowTradeSelect(false);
+      setShowUrlInput(true);
+    }, 300);
+  }
+
+  function handleSkipTrade() {
+    setShowTradeSelect(false);
+    setShowUrlInput(true);
+  }
+
+  async function handleRunAudit() {
+    if (!siteUrl.trim()) {
+      // Skip audit, go to results
+      setShowUrlInput(false);
+      setShowResult(true);
+      return;
+    }
+    setAuditLoading(true);
+    setAuditError(null);
+    try {
+      const res = await fetch(`/api/site-audit?url=${encodeURIComponent(siteUrl.trim())}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setAuditError(data.error || "Could not analyze that URL.");
+      } else {
+        setAuditResult(data as AuditResult);
+      }
+    } catch {
+      setAuditError("Something went wrong. Please try again.");
+    }
+    setAuditLoading(false);
+    setShowUrlInput(false);
+    setShowResult(true);
+  }
+
+  function handleSkipUrl() {
+    setShowUrlInput(false);
+    setShowResult(true);
+  }
+
   function handleBack() {
+    if (showUrlInput) {
+      setShowUrlInput(false);
+      setShowTradeSelect(true);
+      return;
+    }
+    if (showTradeSelect) {
+      setShowTradeSelect(false);
+      setTrade(null);
+      setCurrentQ(questions.length - 1);
+      setAnswers(answers.slice(0, -1));
+      return;
+    }
     if (currentQ > 0) {
       setCurrentQ(currentQ - 1);
       setAnswers(answers.slice(0, -1));
@@ -203,8 +349,14 @@ export default function QuizPage() {
     setAnswers([]);
     setSelected(null);
     setShowResult(false);
+    setShowTradeSelect(false);
+    setShowUrlInput(false);
     setEmail("");
     setEmailSubmitted(false);
+    setTrade(null);
+    setSiteUrl("");
+    setAuditResult(null);
+    setAuditError(null);
   }
 
   async function handleEmailSubmit(e: React.FormEvent) {
@@ -218,6 +370,8 @@ export default function QuizPage() {
           email,
           quiz_result: result?.name,
           quiz_score: totalScore,
+          trade: trade || "not selected",
+          site_url: siteUrl || "not provided",
           _subject: `Quiz Result: ${result?.name}`,
         }),
       });
@@ -228,8 +382,18 @@ export default function QuizPage() {
     setEmailSubmitted(true);
   }
 
+  // Start the audit in the background once we move to email gate
+  useEffect(() => {
+    if (showResult && siteUrl.trim() && !auditResult && !auditError && !auditLoading) {
+      // Audit was kicked off from URL input step — nothing extra needed here
+    }
+  }, [showResult, siteUrl, auditResult, auditError, auditLoading]);
+
   const totalScore = answers.reduce((sum, v) => sum + v, 0);
   const result = showResult ? getArchetype(totalScore) : null;
+  const tradeData: TradeEstimate | null = trade ? roiEstimates[trade] ?? null : null;
+  const recommendedTier = result ? normalizeTier(result.tier) : "Get Calls";
+  const tierPrice = tierPrices[recommendedTier] ?? 795;
 
   return (
     <main id="main-content" className="min-h-screen bg-hw-light">
@@ -268,8 +432,9 @@ export default function QuizPage() {
       {/* Quiz Body */}
       <section className="py-12 px-6">
         <div className="max-w-2xl mx-auto">
-          {!showResult ? (
-            /* ── Question Card ── */
+
+          {/* ── Scored Questions ── */}
+          {!showTradeSelect && !showUrlInput && !showResult && (
             <div className="card-glow !p-8 md:!p-10">
               <p className="text-sm text-hw-text-light mb-2">
                 Question {currentQ + 1} of {questions.length}
@@ -301,7 +466,100 @@ export default function QuizPage() {
                 </button>
               )}
             </div>
-          ) : !emailSubmitted ? (
+          )}
+
+          {/* ── Trade Selection ── */}
+          {showTradeSelect && (
+            <div className="card-glow !p-8 md:!p-10">
+              <p className="text-sm text-hw-text-light mb-2">
+                Almost done!
+              </p>
+              <h2 className="text-xl md:text-2xl font-bold mb-3">
+                What kind of business do you run?
+              </h2>
+              <p className="text-hw-text-light text-sm mb-6">
+                This helps us estimate what a weak online presence might be costing you.
+              </p>
+              <div className="space-y-3">
+                {tradeOptions.map((t) => (
+                  <button
+                    key={t.key}
+                    onClick={() => handleTradeSelect(t.key)}
+                    className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all duration-200 font-medium ${
+                      trade === t.key
+                        ? "border-hw-primary bg-hw-primary/10 text-hw-dark"
+                        : "border-gray-200 hover:border-hw-primary/40 hover:bg-hw-primary/5 text-hw-text"
+                    }`}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center justify-between mt-6">
+                <button
+                  onClick={handleBack}
+                  className="text-sm text-hw-text-light hover:text-hw-text flex items-center gap-1 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" /> Back
+                </button>
+                <button
+                  onClick={handleSkipTrade}
+                  className="text-sm text-gray-400 hover:text-hw-text-light transition-colors underline"
+                >
+                  Skip
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* ── URL Input ── */}
+          {showUrlInput && !showResult && (
+            <div className="card-glow !p-8 md:!p-10 text-center">
+              <Globe className="w-10 h-10 text-hw-primary mx-auto mb-4" />
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                Got a website?
+              </h2>
+              <p className="text-hw-text-light mb-6 max-w-md mx-auto">
+                Paste your URL and I&apos;ll run a quick checkup — speed, SEO, mobile-friendliness — so you can see exactly where you stand.
+              </p>
+              <div className="max-w-md mx-auto">
+                <div className="flex gap-2">
+                  <input
+                    type="url"
+                    value={siteUrl}
+                    onChange={(e) => setSiteUrl(e.target.value)}
+                    placeholder="yoursite.com"
+                    className="form-input flex-grow px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text"
+                    onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleRunAudit(); } }}
+                  />
+                  <button
+                    onClick={handleRunAudit}
+                    disabled={auditLoading}
+                    className="btn-primary !py-3 !px-5 shrink-0"
+                  >
+                    {auditLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Check It"}
+                  </button>
+                </div>
+              </div>
+              <div className="flex items-center justify-between mt-6 max-w-md mx-auto">
+                <button
+                  onClick={handleBack}
+                  className="text-sm text-hw-text-light hover:text-hw-text flex items-center gap-1 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" /> Back
+                </button>
+                <button
+                  onClick={handleSkipUrl}
+                  className="text-sm text-gray-400 hover:text-hw-text-light transition-colors underline"
+                >
+                  Skip — I don&apos;t have one
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* ── Results Flow ── */}
+          {showResult && !emailSubmitted && (
             /* ── Email Gate ── */
             <div className="card-glow !p-8 md:!p-10 text-center">
               <p className="text-hw-primary text-4xl mb-4">{result?.emoji}</p>
@@ -309,8 +567,8 @@ export default function QuizPage() {
                 Your results are ready!
               </h2>
               <p className="text-hw-text-light mb-8 max-w-md mx-auto">
-                Enter your email to see your Online Personality type — plus a
-                personalized recommendation for your business.
+                Enter your email to see your Online Personality type, personalized recommendation
+                {auditResult ? ", and your site audit results" : ""}.
               </p>
               <form onSubmit={handleEmailSubmit} className="max-w-sm mx-auto">
                 <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
@@ -342,71 +600,315 @@ export default function QuizPage() {
                 Skip — just show my results
               </button>
             </div>
-          ) : (
-            /* ── Result Card ── */
-            <div className="card-glow !p-8 md:!p-10">
-              <div className="text-center mb-8">
-                <p className="text-5xl mb-3">{result?.emoji}</p>
-                <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-2">
-                  Your Online Personality
-                </p>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">
-                  {result?.name}
-                </h2>
-                <p className="text-lg text-hw-text-light italic">
-                  {result?.tagline}
-                </p>
-              </div>
+          )}
 
-              <p className="text-hw-text leading-relaxed mb-6">
-                {result?.description}
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-4 mb-8">
-                <div className="bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5">
-                  <p className="text-sm font-bold text-hw-secondary uppercase tracking-wide mb-2">
-                    Your Strength
+          {showResult && emailSubmitted && (
+            <div className="space-y-6">
+              {/* ── Result Card ── */}
+              <div className="card-glow !p-8 md:!p-10">
+                <div className="text-center mb-8">
+                  <p className="text-5xl mb-3">{result?.emoji}</p>
+                  <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-2">
+                    Your Online Personality
                   </p>
-                  <p className="text-hw-text text-sm">{result?.strength}</p>
-                </div>
-                <div className="bg-red-50 border border-red-200/40 rounded-xl p-5">
-                  <p className="text-sm font-bold text-red-500 uppercase tracking-wide mb-2">
-                    Your Risk
+                  <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                    {result?.name}
+                  </h2>
+                  <p className="text-lg text-hw-text-light italic">
+                    {result?.tagline}
                   </p>
-                  <p className="text-hw-text text-sm">{result?.risk}</p>
+                </div>
+
+                <p className="text-hw-text leading-relaxed mb-6">
+                  {result?.description}
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                  <div className="bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5">
+                    <p className="text-sm font-bold text-hw-secondary uppercase tracking-wide mb-2">
+                      Your Strength
+                    </p>
+                    <p className="text-hw-text text-sm">{result?.strength}</p>
+                  </div>
+                  <div className="bg-red-50 border border-red-200/40 rounded-xl p-5">
+                    <p className="text-sm font-bold text-red-500 uppercase tracking-wide mb-2">
+                      Your Risk
+                    </p>
+                    <p className="text-hw-text text-sm">{result?.risk}</p>
+                  </div>
+                </div>
+
+                <div className="bg-hw-primary/5 border border-hw-primary/15 rounded-xl p-6 mb-8">
+                  <p className="text-sm font-bold text-hw-primary uppercase tracking-wide mb-2">
+                    What I&apos;d Recommend
+                  </p>
+                  <p className="text-hw-text mb-3">{result?.recommendation}</p>
+                  <p className="text-sm text-hw-text-light">
+                    Best fit: <span className="font-semibold text-hw-primary">{result?.tier}</span> tier
+                  </p>
                 </div>
               </div>
 
-              <div className="bg-hw-primary/5 border border-hw-primary/15 rounded-xl p-6 mb-8">
-                <p className="text-sm font-bold text-hw-primary uppercase tracking-wide mb-2">
-                  What I&apos;d Recommend
-                </p>
-                <p className="text-hw-text mb-3">{result?.recommendation}</p>
-                <p className="text-sm text-hw-text-light">
-                  Best fit: <span className="font-semibold text-hw-primary">{result?.tier}</span> tier
-                </p>
-              </div>
+              {/* ── ROI Estimate ── */}
+              {tradeData && (
+                <div className="card-glow !p-8 md:!p-10">
+                  <h3 className="text-lg font-bold mb-1">
+                    What This Could Be Costing You
+                  </h3>
+                  <p className="text-sm text-hw-text-light mb-6">
+                    Based on typical {tradeData.label.toLowerCase()} businesses in our area
+                  </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link href="/#checkup" className="btn-primary text-center">
-                  Get Your Free Site Checkup
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-                <a
-                  href="tel:+12566447334"
-                  className="btn-secondary text-center"
-                >
-                  Call Me — (256) 644-7334
-                </a>
-              </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                    <div className="bg-white border border-gray-100 rounded-xl p-4 text-center">
+                      <p className="text-2xl font-bold text-hw-dark">${tradeData.avgJobValue}</p>
+                      <p className="text-xs text-hw-text-light mt-1">Average Job Value</p>
+                    </div>
+                    <div className="bg-white border border-gray-100 rounded-xl p-4 text-center">
+                      <p className="text-2xl font-bold text-hw-dark">{tradeData.estimatedMissedLeads[0]}-{tradeData.estimatedMissedLeads[1]}</p>
+                      <p className="text-xs text-hw-text-light mt-1">Missed Leads / Month</p>
+                    </div>
+                    <div className="bg-red-50 border border-red-200/40 rounded-xl p-4 text-center col-span-2 md:col-span-1">
+                      <p className="text-2xl font-bold text-red-600">${tradeData.estimatedMonthlyLoss[0].toLocaleString()}-${tradeData.estimatedMonthlyLoss[1].toLocaleString()}</p>
+                      <p className="text-xs text-hw-text-light mt-1">Estimated Monthly Loss</p>
+                    </div>
+                  </div>
 
-              <div className="text-center mt-6">
-                <button
-                  onClick={handleRestart}
-                  className="text-sm text-hw-text-light hover:text-hw-text flex items-center gap-1 mx-auto transition-colors"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" /> Take it again
-                </button>
+                  <div className="bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5 text-center">
+                    <p className="text-hw-text">
+                      Your <span className="font-semibold text-hw-primary">{recommendedTier}</span> package (${tierPrice}) pays for itself in just{" "}
+                      <span className="font-bold text-hw-dark">
+                        {tradeData.paybackJobs[recommendedTier] ?? 4} job{(tradeData.paybackJobs[recommendedTier] ?? 4) !== 1 ? "s" : ""}
+                      </span>.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* ── Site Audit Results (Client-Facing) ── */}
+              {auditResult && !isInternal && (
+                <div className="card-glow !p-8 md:!p-10">
+                  <h3 className="text-lg font-bold mb-1">
+                    Your Site&apos;s Quick Checkup
+                  </h3>
+                  <p className="text-sm text-hw-text-light mb-6">
+                    Here&apos;s how <span className="font-medium text-hw-text">{auditResult.url}</span> is performing on mobile
+                  </p>
+
+                  {/* Score Gauges */}
+                  <div className="flex justify-center gap-8 mb-8">
+                    <ScoreGauge score={auditResult.performance} label="Speed" />
+                    <ScoreGauge score={auditResult.seo} label="SEO" />
+                    <ScoreGauge score={auditResult.accessibility} label="Accessibility" />
+                  </div>
+
+                  {/* Plain-English Summary */}
+                  <div className="space-y-3 mb-6">
+                    <div className={`flex items-start gap-3 p-3 rounded-lg ${auditResult.lcp <= 2.5 ? "bg-green-50" : auditResult.lcp <= 4 ? "bg-yellow-50" : "bg-red-50"}`}>
+                      {auditResult.lcp <= 2.5 ? (
+                        <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
+                      ) : auditResult.lcp <= 4 ? (
+                        <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                      ) : (
+                        <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                      )}
+                      <div>
+                        <p className="text-sm font-medium text-hw-text">{getSpeedLabel(auditResult.lcp)}</p>
+                        <p className="text-xs text-hw-text-light mt-0.5">Your site takes {auditResult.lcp}s to show its main content</p>
+                      </div>
+                    </div>
+
+                    <div className={`flex items-start gap-3 p-3 rounded-lg ${auditResult.seo >= 90 ? "bg-green-50" : auditResult.seo >= 50 ? "bg-yellow-50" : "bg-red-50"}`}>
+                      {auditResult.seo >= 90 ? (
+                        <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
+                      ) : (
+                        <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                      )}
+                      <div>
+                        <p className="text-sm font-medium text-hw-text">{getScoreLabel(auditResult.seo, "search engine visibility")}</p>
+                        <p className="text-xs text-hw-text-light mt-0.5">This affects whether customers find you on Google</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Basic Checks */}
+                  <div className="grid grid-cols-2 gap-2 mb-6">
+                    <AuditCheck passed={auditResult.isHttps} label="Secure connection (HTTPS)" />
+                    <AuditCheck passed={auditResult.hasMetaDescription} label="Search description" />
+                    <AuditCheck passed={auditResult.hasViewport} label="Mobile-friendly setup" />
+                    <AuditCheck passed={auditResult.isLinkCrawlable} label="Links are crawlable" />
+                  </div>
+
+                  <div className="bg-hw-primary/5 border border-hw-primary/15 rounded-xl p-5 text-center">
+                    <p className="text-sm text-hw-text mb-2">
+                      Want me to walk you through what this means for your business?
+                    </p>
+                    <a href="tel:+12566447334" className="btn-primary !text-sm !py-2 !px-4 inline-flex items-center gap-2">
+                      Let&apos;s Talk — (256) 644-7334
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* ── Site Audit Results (Internal View) ── */}
+              {auditResult && isInternal && (
+                <div className="card-glow !p-8 md:!p-10">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-lg font-bold">
+                      Site Audit — Internal View
+                    </h3>
+                    <span className="text-xs bg-hw-primary/10 text-hw-primary px-2 py-1 rounded font-mono">
+                      INTERNAL
+                    </span>
+                  </div>
+                  <p className="text-sm text-hw-text-light mb-6 font-mono">
+                    {auditResult.url}
+                  </p>
+
+                  {/* Score Gauges */}
+                  <div className="flex justify-center gap-8 mb-6">
+                    <ScoreGauge score={auditResult.performance} label="Performance" />
+                    <ScoreGauge score={auditResult.seo} label="SEO" />
+                    <ScoreGauge score={auditResult.accessibility} label="Accessibility" />
+                  </div>
+
+                  {/* Core Web Vitals */}
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-6">
+                    <p className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-3">
+                      Core Web Vitals (Mobile)
+                    </p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div>
+                        <p className={`text-xl font-mono font-bold ${auditResult.fcp <= 1.8 ? "text-green-600" : auditResult.fcp <= 3 ? "text-yellow-500" : "text-red-500"}`}>
+                          {auditResult.fcp}s
+                        </p>
+                        <p className="text-xs text-hw-text-light">FCP</p>
+                      </div>
+                      <div>
+                        <p className={`text-xl font-mono font-bold ${auditResult.lcp <= 2.5 ? "text-green-600" : auditResult.lcp <= 4 ? "text-yellow-500" : "text-red-500"}`}>
+                          {auditResult.lcp}s
+                        </p>
+                        <p className="text-xs text-hw-text-light">LCP</p>
+                      </div>
+                      <div>
+                        <p className={`text-xl font-mono font-bold ${auditResult.cls <= 0.1 ? "text-green-600" : auditResult.cls <= 0.25 ? "text-yellow-500" : "text-red-500"}`}>
+                          {auditResult.cls}
+                        </p>
+                        <p className="text-xs text-hw-text-light">CLS</p>
+                      </div>
+                      <div>
+                        <p className={`text-xl font-mono font-bold ${auditResult.tbt <= 200 ? "text-green-600" : auditResult.tbt <= 600 ? "text-yellow-500" : "text-red-500"}`}>
+                          {auditResult.tbt}ms
+                        </p>
+                        <p className="text-xs text-hw-text-light">TBT</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Boolean Checks */}
+                  <div className="grid grid-cols-2 gap-2 mb-6">
+                    <AuditCheck passed={auditResult.isHttps} label="HTTPS" />
+                    <AuditCheck passed={auditResult.hasMetaDescription} label="Meta description" />
+                    <AuditCheck passed={auditResult.hasViewport} label="Viewport meta tag" />
+                    <AuditCheck passed={auditResult.isLinkCrawlable} label="Crawlable link text" />
+                  </div>
+
+                  {/* Failed Audits */}
+                  {auditResult.failedAudits.length > 0 && (
+                    <div className="mb-6">
+                      <p className="text-sm font-bold uppercase tracking-wide text-red-500 mb-3">
+                        Failed Audits ({auditResult.failedAudits.length})
+                      </p>
+                      <div className="space-y-2 max-h-80 overflow-y-auto">
+                        {auditResult.failedAudits.map((audit) => (
+                          <div key={audit.id} className="bg-red-50 border border-red-200/40 rounded-lg p-3">
+                            <div className="flex items-center justify-between">
+                              <p className="text-sm font-medium text-hw-text">{audit.title}</p>
+                              {audit.score !== null && (
+                                <span className={`text-xs font-mono px-2 py-0.5 rounded ${
+                                  audit.score === 0 ? "bg-red-100 text-red-600" : "bg-yellow-100 text-yellow-600"
+                                }`}>
+                                  {Math.round(audit.score * 100)}
+                                </span>
+                              )}
+                            </div>
+                            {audit.description && (
+                              <p className="text-xs text-hw-text-light mt-1">{audit.description}</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Passed Audits */}
+                  {auditResult.passedAudits.length > 0 && (
+                    <div className="mb-6">
+                      <p className="text-sm font-bold uppercase tracking-wide text-green-600 mb-3">
+                        Passed Audits ({auditResult.passedAudits.length})
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {auditResult.passedAudits.map((audit) => (
+                          <span key={audit.id} className="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-1 rounded">
+                            {audit.title}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Copy-Paste Summary */}
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                    <p className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-2">
+                      Quick Summary (copy-paste ready)
+                    </p>
+                    <pre className="text-xs text-hw-text font-mono whitespace-pre-wrap bg-white border border-gray-100 rounded-lg p-3 overflow-x-auto">
+{`Site: ${auditResult.url}
+Performance: ${auditResult.performance}/100 | SEO: ${auditResult.seo}/100 | Accessibility: ${auditResult.accessibility}/100
+FCP: ${auditResult.fcp}s | LCP: ${auditResult.lcp}s | CLS: ${auditResult.cls} | TBT: ${auditResult.tbt}ms
+HTTPS: ${auditResult.isHttps ? "Yes" : "No"} | Meta Desc: ${auditResult.hasMetaDescription ? "Yes" : "No"} | Viewport: ${auditResult.hasViewport ? "Yes" : "No"}
+Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passedAudits.length}`}
+                    </pre>
+                  </div>
+                </div>
+              )}
+
+              {/* ── Audit Error ── */}
+              {auditError && (
+                <div className="card-glow !p-6 bg-yellow-50 border-yellow-200">
+                  <div className="flex items-start gap-3">
+                    <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium text-hw-text">{auditError}</p>
+                      <p className="text-xs text-hw-text-light mt-1">No worries — your quiz results and recommendation are still valid.</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── CTAs ── */}
+              <div className="card-glow !p-8 md:!p-10">
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link href="/#checkup" className="btn-primary text-center">
+                    Get Your Free Site Checkup
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                  <a
+                    href="tel:+12566447334"
+                    className="btn-secondary text-center"
+                  >
+                    Call Me — (256) 644-7334
+                  </a>
+                </div>
+
+                <div className="text-center mt-6">
+                  <button
+                    onClick={handleRestart}
+                    className="text-sm text-hw-text-light hover:text-hw-text flex items-center gap-1 mx-auto transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" /> Take it again
+                  </button>
+                </div>
               </div>
             </div>
           )}
