@@ -113,14 +113,52 @@ const RISK_REDUCERS = [
   "risk-free", "cancel anytime", "no commitment", "no strings",
 ];
 
-/* ── URL Validation ── */
+/* ── Rate Limiting ── */
+
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW = 60_000; // 1 minute
+const RATE_LIMIT_MAX = 5; // 5 requests per minute per IP
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimit.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return true;
+  }
+  if (entry.count >= RATE_LIMIT_MAX) return false;
+  entry.count++;
+  return true;
+}
+
+/* ── URL Validation (SSRF-hardened) ── */
 
 function isValidUrl(str: string): boolean {
   try {
     const url = new URL(str);
     if (!["http:", "https:"].includes(url.protocol)) return false;
-    if (["localhost", "127.0.0.1", "0.0.0.0"].includes(url.hostname)) return false;
-    if (url.hostname.endsWith(".local")) return false;
+
+    const hostname = url.hostname;
+
+    // Block localhost variants
+    if (["localhost", "127.0.0.1", "0.0.0.0"].includes(hostname)) return false;
+    if (hostname === "[::1]") return false;
+    if (hostname.endsWith(".local")) return false;
+
+    // Block private/reserved IP ranges
+    const parts = hostname.split(".").map(Number);
+    if (parts.length === 4 && parts.every((p) => !isNaN(p))) {
+      if (parts[0] === 10) return false; // 10.0.0.0/8
+      if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return false; // 172.16.0.0/12
+      if (parts[0] === 192 && parts[1] === 168) return false; // 192.168.0.0/16
+      if (parts[0] === 169 && parts[1] === 254) return false; // link-local / cloud metadata
+      if (parts[0] === 127) return false; // 127.0.0.0/8
+      if (parts[0] === 0) return false; // 0.0.0.0/8
+    }
+
+    // Block all bracket-notation IPv6 (prevents ::1, fe80::, etc.)
+    if (hostname.startsWith("[")) return false;
+
     return true;
   } catch {
     return false;
@@ -566,11 +604,26 @@ function scoreStoryBrand(extracted: ReturnType<typeof extractTextFromHtml>): Sto
 
 /* ── Main Handler ── */
 
-export async function GET(request: NextRequest) {
-  const url = request.nextUrl.searchParams.get("url");
+export async function POST(request: NextRequest) {
+  // Rate limit by IP
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please wait a minute and try again." } as AuditError,
+      { status: 429 }
+    );
+  }
 
+  let body: { url?: string };
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" } as AuditError, { status: 400 });
+  }
+
+  const url = body.url;
   if (!url) {
-    return NextResponse.json({ error: "URL parameter is required" } as AuditError, { status: 400 });
+    return NextResponse.json({ error: "URL is required" } as AuditError, { status: 400 });
   }
 
   let normalizedUrl = url.trim();

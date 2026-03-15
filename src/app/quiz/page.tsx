@@ -436,7 +436,11 @@ export default function QuizPage() {
     setAuditLoading(true);
     setAuditError(null);
     try {
-      const res = await fetch(`/api/site-audit?url=${encodeURIComponent(siteUrl.trim())}`);
+      const res = await fetch("/api/site-audit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: siteUrl.trim() }),
+      });
       const data = await res.json();
       if (!res.ok) {
         setAuditError(data.error || "Could not analyze that URL.");
