@@ -1,0 +1,385 @@
+<!-- Built by Headley Web & SEO | headleyweb.com | Web Design & SEO for local businesses -->
+<!--
+  TRADE-SPECIFIC LANDING PAGE TEMPLATE
+  =====================================
+  Purpose: Create one of these for each trade/service the business targets.
+  Each page targets "[web design/service] for [trade] in [city]" keywords.
+  Combined with location.html, this creates an SEO matrix:
+    /web-design-for-plumbers-anniston-al.html
+    /web-design-for-hvac-oxford-al.html
+
+  Usage:
+  1. Duplicate this file and rename: e.g. web-design-for-plumbers.html
+  2. Replace {{TRADE}}, {{TRADE_SLUG}}, {{TRADE_DESCRIPTION}} tokens
+  3. Fill in trade-specific content — pain points, features, FAQ
+  4. Add the page to your sitemap.xml
+  5. Do NOT just swap trade names — write unique pain points, features,
+     and FAQ for each trade. Google penalizes thin/duplicate pages.
+
+  Tokens specific to this template:
+    {{TRADE}}              — Trade display name (e.g. "Plumbers")
+    {{TRADE_SINGULAR}}     — Singular form (e.g. "Plumber")
+    {{TRADE_SLUG}}         — URL-safe trade identifier (e.g. "plumbers")
+    {{TRADE_DESCRIPTION}}  — 2-3 sentence trade-specific intro
+    {{TRADE_SCHEMA_TYPE}}  — Schema.org service type (e.g. "Plumber", "HVACBusiness", "Electrician")
+    {{TRADE_PAIN_1}}       — Trade-specific pain point #1
+    {{TRADE_PAIN_2}}       — Trade-specific pain point #2
+    {{TRADE_PAIN_3}}       — Trade-specific pain point #3
+    {{TRADE_FEATURE_1_TITLE}} — Feature/benefit title #1
+    {{TRADE_FEATURE_1_BODY}}  — Feature/benefit description #1
+    {{TRADE_FEATURE_2_TITLE}} — Feature/benefit title #2
+    {{TRADE_FEATURE_2_BODY}}  — Feature/benefit description #2
+    {{TRADE_FEATURE_3_TITLE}} — Feature/benefit title #3
+    {{TRADE_FEATURE_3_BODY}}  — Feature/benefit description #3
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Design for {{TRADE}} in {{CLIENT_CITY}}, {{CLIENT_STATE_ABBR}} | {{CLIENT_NAME}}</title>
+  <meta name="description" content="Professional websites for {{TRADE}} in {{CLIENT_CITY}}, {{CLIENT_STATE}}. {{TRADE_DESCRIPTION}}">
+  <meta name="keywords" content="web design for {{TRADE}}, {{TRADE_SINGULAR}} website, {{TRADE_SINGULAR}} web design {{CLIENT_CITY}}, {{TRADE}} website design {{CLIENT_STATE_ABBR}}">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Headley Web & SEO | headleyweb.com">
+  <link rel="author" href="https://headleyweb.com">
+  <link rel="canonical" href="https://{{CLIENT_DOMAIN}}/web-design-for-{{TRADE_SLUG}}.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{CLIENT_NAME}}">
+  <meta property="og:title" content="Web Design for {{TRADE}} in {{CLIENT_CITY}}, {{CLIENT_STATE_ABBR}} | {{CLIENT_NAME}}">
+  <meta property="og:description" content="Professional websites for {{TRADE}} in {{CLIENT_CITY}}, {{CLIENT_STATE}}. {{TRADE_DESCRIPTION}}">
+  <meta property="og:image" content="https://{{CLIENT_DOMAIN}}/images/og-image.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://{{CLIENT_DOMAIN}}/web-design-for-{{TRADE_SLUG}}.html">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web Design for {{TRADE}} in {{CLIENT_CITY}}, {{CLIENT_STATE_ABBR}} | {{CLIENT_NAME}}">
+  <meta name="twitter:description" content="Professional websites for {{TRADE}} in {{CLIENT_CITY}}, {{CLIENT_STATE}}.">
+  <meta name="twitter:image" content="https://{{CLIENT_DOMAIN}}/images/og-image.webp">
+
+  <!-- Fonts -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+
+  <!-- daisyUI — component classes -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://{{CLIENT_DOMAIN}}/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://{{CLIENT_DOMAIN}}/services.html" },
+      { "@type": "ListItem", "position": 3, "name": "Web Design for {{TRADE}}" }
+    ]
+  }
+  </script>
+
+  <!-- Service Schema — trade-specific -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Web Design for {{TRADE}}",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "{{CLIENT_NAME}}",
+      "url": "https://{{CLIENT_DOMAIN}}",
+      "telephone": "{{CLIENT_PHONE_HREF}}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{CLIENT_CITY}}",
+        "addressRegion": "{{CLIENT_STATE_ABBR}}",
+        "postalCode": "{{CLIENT_ZIP}}",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "{{CLIENT_STATE}}"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "{{TRADE_SCHEMA_TYPE}}"
+    },
+    "description": "{{TRADE_DESCRIPTION}}",
+    "creator": {
+      "@type": "Organization",
+      "name": "Headley Web & SEO",
+      "url": "https://headleyweb.com"
+    }
+  }
+  </script>
+
+  <!-- FAQPage Schema — trade-specific questions -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a website for a {{TRADE_SINGULAR}} cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{FAQ_COST_ANSWER}}"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do {{TRADE}} really need a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{FAQ_NEED_ANSWER}}"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build a {{TRADE_SINGULAR}} website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{FAQ_TIMELINE_ANSWER}}"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- PARTIAL:nav:START -->
+  <!-- ─── Header ─── -->
+  <header class="site-header" id="site-header">
+    <div class="nav-inner container">
+      <a href="index.html" class="nav-logo">
+        {{CLIENT_NAME_SHORT}}
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="{{CALENDLY_URL}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">{{NAV_CTA}}</a>
+      </nav>
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── Mobile Menu ─── -->
+  <div class="mobile-overlay" id="mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button type="button" class="mobile-close-btn" id="mobile-close-btn" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="services.html" class="mobile-nav-link">Services</a>
+      <a href="portfolio.html" class="mobile-nav-link">Work</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </div>
+  <!-- PARTIAL:nav:END -->
+
+  <main id="main">
+
+    <!-- ─── Hero — Trade-Specific ─── -->
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <span class="eyebrow animate-hero" style="--hero-delay: 0.1s">Web Design for {{TRADE}}</span>
+        <h1 class="page-hero-title animate-hero" style="--hero-delay: 0.25s">Websites That Get {{TRADE}} More Calls</h1>
+        <p class="page-hero-subtitle animate-hero" style="--hero-delay: 0.4s">{{TRADE_DESCRIPTION}}</p>
+        <div class="animate-hero" style="--hero-delay: 0.55s; margin-top: 24px;">
+          <a href="contact.html" class="btn btn-primary btn-lg">
+            Get Your Free Strategy Call
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="tel:{{CLIENT_PHONE_HREF}}" class="btn btn-ghost btn-lg" style="margin-left: 12px;">Call Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Answer-First Block (AEO) ─── -->
+    <!-- 100-200 words directly answering "do plumbers need a website?" etc.
+         This is the content AI models extract for direct answers. -->
+    <section class="section-pad" style="background: var(--light);">
+      <div class="container narrow">
+        <div class="animate-on-scroll" style="max-width: 720px; margin: 0 auto; line-height: 1.8; color: var(--text-body); font-size: 17px;">
+          <p><strong>{{TRADE}} in {{CLIENT_CITY}} need a website that does more than look good — it needs to make the phone ring.</strong> {{TRADE_DESCRIPTION}} Most {{TRADE}} lose customers to competitors who simply show up first on Google. A professionally built website with local SEO, Google Business Profile optimization, and mobile-first design changes that.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Pain Points (StoryBrand: The Problem) ─── -->
+    <section class="section-pad" style="background: var(--dark);">
+      <div class="container">
+        <div class="section-header animate-on-scroll" style="text-align: center;">
+          <span class="eyebrow">Sound Familiar?</span>
+          <h2 class="section-title">What We Hear from {{TRADE}}</h2>
+        </div>
+        <div class="service-pillars" style="margin-top: 40px;">
+
+          <div class="service-pillar animate-on-scroll" style="--stagger-delay: 0s">
+            <div class="service-pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="service-pillar-title" style="color: var(--white);">{{TRADE_PAIN_1}}</h3>
+          </div>
+
+          <div class="service-pillar animate-on-scroll" style="--stagger-delay: 0.15s">
+            <div class="service-pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="service-pillar-title" style="color: var(--white);">{{TRADE_PAIN_2}}</h3>
+          </div>
+
+          <div class="service-pillar animate-on-scroll" style="--stagger-delay: 0.3s">
+            <div class="service-pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="service-pillar-title" style="color: var(--white);">{{TRADE_PAIN_3}}</h3>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── What You Get (StoryBrand: The Plan) ─── -->
+    <section class="section-pad" style="background: var(--light);">
+      <div class="container">
+        <div class="section-header animate-on-scroll" style="text-align: center;">
+          <span class="eyebrow eyebrow-dark">What's Included</span>
+          <h2 class="section-title dark">A Website Built for {{TRADE}}</h2>
+          <p class="section-subtext">Every site we build for {{TRADE}} includes these essentials — no add-on pricing.</p>
+        </div>
+        <div class="service-pillars">
+
+          <div class="service-pillar animate-on-scroll" style="--stagger-delay: 0s">
+            <div class="service-pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3 class="service-pillar-title">{{TRADE_FEATURE_1_TITLE}}</h3>
+            <p class="service-pillar-body">{{TRADE_FEATURE_1_BODY}}</p>
+          </div>
+
+          <div class="service-pillar animate-on-scroll" style="--stagger-delay: 0.15s">
+            <div class="service-pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <h3 class="service-pillar-title">{{TRADE_FEATURE_2_TITLE}}</h3>
+            <p class="service-pillar-body">{{TRADE_FEATURE_2_BODY}}</p>
+          </div>
+
+          <div class="service-pillar animate-on-scroll" style="--stagger-delay: 0.3s">
+            <div class="service-pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 15a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 4h3a2 2 0 0 1 2 1.72 11.07 11.07 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 11.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45 11.07 11.07 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 class="service-pillar-title">{{TRADE_FEATURE_3_TITLE}}</h3>
+            <p class="service-pillar-body">{{TRADE_FEATURE_3_BODY}}</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FAQ (StoryBrand: Overcoming Objections + FAQPage Schema for AEO) ─── -->
+    <section class="section-pad" style="background: var(--light-grey);">
+      <div class="container narrow">
+        <div class="section-header animate-on-scroll" style="text-align: center;">
+          <span class="eyebrow eyebrow-dark">FAQ</span>
+          <h2 class="section-title dark">Common Questions from {{TRADE}}</h2>
+        </div>
+        <div class="faq-list" style="margin-top: 40px;">
+
+          <details class="faq-item animate-on-scroll" style="--stagger-delay: 0s">
+            <summary class="faq-question">How much does a website for a {{TRADE_SINGULAR}} cost?</summary>
+            <div class="faq-answer">
+              <p>{{FAQ_COST_ANSWER}}</p>
+            </div>
+          </details>
+
+          <details class="faq-item animate-on-scroll" style="--stagger-delay: 0.1s">
+            <summary class="faq-question">Do {{TRADE}} really need a website?</summary>
+            <div class="faq-answer">
+              <p>{{FAQ_NEED_ANSWER}}</p>
+            </div>
+          </details>
+
+          <details class="faq-item animate-on-scroll" style="--stagger-delay: 0.2s">
+            <summary class="faq-question">How long does it take to build a {{TRADE_SINGULAR}} website?</summary>
+            <div class="faq-answer">
+              <p>{{FAQ_TIMELINE_ANSWER}}</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section class="section-pad" style="background: var(--dark); background-image: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.88)), url('images/footer-bg.webp'); background-size:cover; background-position:center; text-align:center;">
+      <div class="container narrow animate-on-scroll">
+        <span class="eyebrow">Ready?</span>
+        <h2 class="section-title" style="color:var(--white);">Let's Build a Website That Works as Hard as You Do</h2>
+        <p class="section-subtext">Most {{TRADE}} we work with start getting more calls within the first month.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+          <a href="contact.html" class="btn btn-primary btn-lg">Get Your Free Strategy Call</a>
+          <a href="tel:{{CLIENT_PHONE_HREF}}" class="btn btn-ghost btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 15a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 4h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 11.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {{CLIENT_PHONE_DISPLAY}}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <section style="background: var(--dark);">
+      <footer class="site-footer">
+        <img src="images/brand-mark.webp" alt="{{CLIENT_NAME}}" class="footer-brand-mark" width="200" height="200" loading="lazy">
+        <p class="footer-copy">&copy; <span id="year"></span> {{CLIENT_NAME}}. All rights reserved.</p>
+        <div class="footer-contact">
+          <a href="mailto:{{CLIENT_EMAIL}}" class="footer-contact-link">{{CLIENT_EMAIL}}</a>
+          <span class="footer-divider">·</span>
+          <a href="tel:{{CLIENT_PHONE_HREF}}" class="footer-contact-link">{{CLIENT_PHONE_DISPLAY}}</a>
+          <span class="footer-divider">·</span>
+          <a href="{{CLIENT_GBP_URL}}" target="_blank" rel="noopener noreferrer" class="footer-contact-link">Google Business Profile</a>
+        </div>
+        <p class="footer-disclaimer">{{FOOTER_DISCLAIMER}}</p>
+        <a href="privacy.html" class="footer-privacy">Privacy Policy</a>
+        <span class="footer-built-by">Built by <a href="https://headleyweb.com" target="_blank" rel="noopener">{{TRADE_SINGULAR}} Web Design</a></span>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- PARTIAL:cookie-banner:START -->
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookie-banner" data-ga4="{{GA4_MEASUREMENT_ID}}">
+    <p>We use cookies to analyze site traffic and improve your experience. <a href="privacy.html">Privacy Policy</a></p>
+    <button class="cookie-btn cookie-btn-accept">Accept</button>
+    <button class="cookie-btn cookie-btn-decline">Decline</button>
+  </div>
+  <!-- PARTIAL:cookie-banner:END -->
+
+  <script src="script.js?v=1"></script>
+</body>
+</html>

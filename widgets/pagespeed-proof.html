@@ -1,0 +1,352 @@
+<!--
+  PageSpeed Social Proof — Starter Kit Widget
+  =============================================
+  4 circular gauge visuals mimicking Google Lighthouse scores.
+  Shows Performance, Accessibility, Best Practices, and SEO scores.
+  Great for services pages, about pages, or footer trust sections.
+
+  REQUIREMENTS:
+  - Your project's style.css must define :root tokens (--primary, --dark, --light, etc.)
+  - The <style> block below should be copied into your style.css (or kept inline for testing)
+  - Uses .container and .animate-on-scroll classes from the starter-kit base styles
+
+  HOW IT WORKS:
+  - Each gauge is a CSS-only circular progress ring using conic-gradient
+  - Score value is set via --ps-score custom property (0-100)
+  - Color auto-changes: green (90+), orange (50-89), red (0-49)
+  - Tiny JS snippet animates the numbers counting up on scroll
+
+  CUSTOMIZATION:
+  - Update --ps-score on each .ps-gauge to match your actual Lighthouse scores
+  - Change the headline/subtext to match your pitch
+  - Run Lighthouse on a finished client site, screenshot it, or use these gauges
+  - For headleyweb.com: use this on your own services page as proof
+
+  PREFIX: All classes use ps- to avoid daisyUI conflicts.
+-->
+
+<style>
+/* ==========================================================================
+   PAGESPEED PROOF — Copy into your project style.css
+   ========================================================================== */
+
+.ps-section {
+  padding: 80px 0;
+  background: var(--dark, #111);
+}
+
+/* Light background variant */
+.ps-section--light {
+  background: var(--light, #FAFAFA);
+}
+
+.ps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .ps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Individual gauge */
+.ps-gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Circular ring */
+.ps-ring {
+  --ps-score: 0;
+  --ps-size: 110px;
+  --ps-stroke: 8px;
+  --ps-color: #16a34a; /* default green, overridden by JS */
+  position: relative;
+  width: var(--ps-size);
+  height: var(--ps-size);
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--ps-color) calc(var(--ps-score) * 3.6deg),
+    rgba(255, 255, 255, 0.08) calc(var(--ps-score) * 3.6deg)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Light variant track color */
+.ps-section--light .ps-ring {
+  background: conic-gradient(
+    var(--ps-color) calc(var(--ps-score) * 3.6deg),
+    rgba(0, 0, 0, 0.06) calc(var(--ps-score) * 3.6deg)
+  );
+}
+
+/* Inner circle (creates the ring effect) */
+.ps-ring::before {
+  content: '';
+  position: absolute;
+  inset: var(--ps-stroke);
+  border-radius: 50%;
+  background: var(--dark, #111);
+}
+
+.ps-section--light .ps-ring::before {
+  background: var(--light, #FAFAFA);
+}
+
+/* Score number */
+.ps-score {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-body, sans-serif);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ps-color);
+  line-height: 1;
+}
+
+/* Label below the gauge */
+.ps-label {
+  font-family: var(--font-body, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.ps-section--light .ps-label {
+  color: var(--text-muted, #888);
+}
+
+/* Section header overrides for dark bg */
+.ps-section .section-title {
+  color: var(--white, #fff);
+}
+
+.ps-section .section-subtext {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ps-section .eyebrow {
+  color: var(--primary, #E8722A);
+}
+
+/* Light variant header */
+.ps-section--light .section-title {
+  color: var(--dark-2, #1f1f1f);
+}
+
+.ps-section--light .section-subtext {
+  color: var(--text-body, #555);
+}
+
+/* Footnote */
+.ps-footnote {
+  text-align: center;
+  font-family: var(--font-body, sans-serif);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 32px;
+}
+
+.ps-section--light .ps-footnote {
+  color: var(--text-muted, #888);
+}
+
+.ps-footnote a {
+  color: var(--primary, #E8722A);
+  text-decoration: none;
+}
+
+.ps-footnote a:hover {
+  text-decoration: underline;
+}
+</style>
+
+
+<!-- ====================================================================
+     PAGESPEED PROOF — DARK BACKGROUND (default)
+     ====================================================================
+     WHERE TO USE: Services page, below the fold on homepage, or as
+     a trust signal near the CTA. Dark bg works well between light sections.
+
+     CUSTOMIZATION:
+     - Update data-score on each .ps-ring to your actual Lighthouse scores
+     - Run PageSpeed Insights on a finished client site to get real numbers
+     - Scores auto-color: green 90+, orange 50-89, red below 50
+     - The JS below handles the animation + color assignment
+     ==================================================================== -->
+
+<section class="ps-section section-pad">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="eyebrow">Performance</span>
+      <h2 class="section-title">Our Sites Are Built for Speed</h2>
+      <p class="section-subtext">Every site we build scores 90+ on Google Lighthouse. Fast sites rank higher and convert more visitors.</p>
+    </div>
+
+    <div class="ps-grid animate-on-scroll">
+
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="98" style="--ps-score: 98; --ps-color: #16a34a">
+          <span class="ps-score">98</span>
+        </div>
+        <span class="ps-label">Performance</span>
+      </div>
+
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="100" style="--ps-score: 100; --ps-color: #16a34a">
+          <span class="ps-score">100</span>
+        </div>
+        <span class="ps-label">Accessibility</span>
+      </div>
+
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="100" style="--ps-score: 100; --ps-color: #16a34a">
+          <span class="ps-score">100</span>
+        </div>
+        <span class="ps-label">Best Practices</span>
+      </div>
+
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="100" style="--ps-score: 100; --ps-color: #16a34a">
+          <span class="ps-score">100</span>
+        </div>
+        <span class="ps-label">SEO</span>
+      </div>
+
+    </div>
+
+    <p class="ps-footnote">
+      Scores from <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">Google PageSpeed Insights</a> — updated after each build.
+    </p>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     LIGHT BACKGROUND VARIANT
+     ====================================================================
+     Add class "ps-section--light" to the section for light background.
+     ==================================================================== -->
+
+<!--
+<section class="ps-section ps-section--light section-pad">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="eyebrow eyebrow-dark">Performance</span>
+      <h2 class="section-title dark">Our Sites Are Built for Speed</h2>
+      <p class="section-subtext">Every site we build scores 90+ on Google Lighthouse.</p>
+    </div>
+
+    <div class="ps-grid animate-on-scroll">
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="98" style="--ps-score: 98; --ps-color: #16a34a">
+          <span class="ps-score">98</span>
+        </div>
+        <span class="ps-label">Performance</span>
+      </div>
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="100" style="--ps-score: 100; --ps-color: #16a34a">
+          <span class="ps-score">100</span>
+        </div>
+        <span class="ps-label">Accessibility</span>
+      </div>
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="100" style="--ps-score: 100; --ps-color: #16a34a">
+          <span class="ps-score">100</span>
+        </div>
+        <span class="ps-label">Best Practices</span>
+      </div>
+      <div class="ps-gauge">
+        <div class="ps-ring" data-score="100" style="--ps-score: 100; --ps-color: #16a34a">
+          <span class="ps-score">100</span>
+        </div>
+        <span class="ps-label">SEO</span>
+      </div>
+    </div>
+
+    <p class="ps-footnote">
+      Scores from <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">Google PageSpeed Insights</a>
+    </p>
+  </div>
+</section>
+-->
+
+
+<!-- ====================================================================
+     JAVASCRIPT — Add to your script.js or keep inline
+     ====================================================================
+     Animates score numbers counting up when scrolled into view.
+     Also assigns color based on score (green/orange/red).
+     ==================================================================== -->
+
+<script>
+// ─── PageSpeed gauge animation ───
+(function () {
+  function getColor(score) {
+    if (score >= 90) return '#16a34a';
+    if (score >= 50) return '#ea8c00';
+    return '#dc2626';
+  }
+
+  var gauges = document.querySelectorAll('.ps-ring');
+  if (!gauges.length) return;
+
+  var animated = false;
+
+  function animateGauges() {
+    if (animated) return;
+    animated = true;
+
+    gauges.forEach(function (ring) {
+      var target = parseInt(ring.getAttribute('data-score'), 10) || 0;
+      var color = getColor(target);
+      var scoreEl = ring.querySelector('.ps-score');
+      var current = 0;
+      var duration = 1200;
+      var start = null;
+
+      ring.style.setProperty('--ps-color', color);
+
+      // Animate from 0 to target
+      ring.style.setProperty('--ps-score', '0');
+
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        current = Math.round(target * eased);
+
+        scoreEl.textContent = current;
+        ring.style.setProperty('--ps-score', current);
+
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    });
+  }
+
+  // Trigger animation when section scrolls into view
+  var section = document.querySelector('.ps-section');
+  if (section && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) animateGauges();
+    }, { threshold: 0.3 }).observe(section);
+  } else {
+    // Fallback: animate immediately
+    animateGauges();
+  }
+})();
+</script>
