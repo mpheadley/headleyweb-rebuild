@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Headley Web — Rebuild
 
-## Getting Started
+**Status:** LIVE | **URL:** https://headleyweb.com | **Platform:** Next.js on Vercel
 
-First, run the development server:
+Personal web design business portfolio and service site for Matt Headley.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What's Built
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Hero section** with service overview + CTAs
+- **Service pages** (branding, websites, optimization)
+- **Portfolio/case studies** (client work)
+- **Quiz funnel** (lead generation, Formspree integration)
+- **Contact form** (Formspree)
+- **Blog** (planned — outlines + copy drafts in progress)
+- **Design system** (components, colors, typography)
+- **Full Lighthouse optimization** (90+ score)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js 15 (React)
+- Tailwind CSS
+- Formspree (forms)
+- Vercel (hosting)
 
-## Learn More
+## Key Files
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/` — Pages and layouts
+- `src/components/` — Reusable components
+- `public/` — Images, fonts, assets
+- `BUSINESS_STRATEGY.md` — Revenue/positioning strategy
+- `PLAN.md` — Implementation roadmap
+- `NEXTJS_KIT_NOTES.md` — Reusable patterns for other Next.js projects
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Next Steps
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Blog launch (pending content approval)
+- Google Search Console setup
+- Analytics deep-dive
+- Testimonial collection for portfolio
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push to main branch → auto-deploys via Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+See `headleyweb-rebuild-progress.md` in project memory for detailed status.
