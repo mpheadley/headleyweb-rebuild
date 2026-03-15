@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -53,6 +53,7 @@ export default function QuizPage() {
   const [email, setEmail] = useState("");
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [formspreeError, setFormspreeError] = useState(false);
 
   // New state for trade, URL audit, and ROI
   const [trade, setTrade] = useState<string | null>(null);
@@ -73,20 +74,16 @@ export default function QuizPage() {
     : null;
 
   // Load checklist from LocalStorage when audit result arrives
-  // Using a ref-like pattern to avoid calling setState in effect body
-  if (checklistStorageKey && checklistLoaded !== checklistStorageKey) {
+  useEffect(() => {
+    if (!checklistStorageKey || checklistLoaded === checklistStorageKey) return;
     try {
       const saved = localStorage.getItem(checklistStorageKey);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        // Only update if different from current state
-        setCheckedItems(parsed);
-      }
+      if (saved) setCheckedItems(JSON.parse(saved));
     } catch {
       // Ignore parse errors
     }
     setChecklistLoaded(checklistStorageKey);
-  }
+  }, [checklistStorageKey, checklistLoaded]);
 
   // Save checklist to LocalStorage on change
   const handleChecklistToggle = useCallback((key: string) => {
@@ -208,10 +205,12 @@ export default function QuizPage() {
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
+    setFormspreeError(false);
     try {
-      const formData: Record<string, unknown> = {
+      // Flat key-value pairs (no nesting — Formspree renders nested objects as [object Object])
+      const formData: Record<string, string | number> = {
         email,
-        quiz_result: result?.name,
+        quiz_result: result?.name ?? "",
         quiz_score: totalScore,
         recommended_tier: recommendedTier,
         trade: trade || "not selected",
@@ -219,58 +218,51 @@ export default function QuizPage() {
         _subject: `Quiz Result: ${result?.name}${auditResult ? ` | Site: ${auditResult.url}` : ""}`,
       };
 
-      // Include audit data if available
+      // Audit data (flat keys)
       if (auditResult) {
-        formData.lighthouse = {
-          performance: auditResult.performance,
-          seo: auditResult.seo,
-          accessibility: auditResult.accessibility,
-          fcp: auditResult.fcp,
-          lcp: auditResult.lcp,
-          cls: auditResult.cls,
-          tbt: auditResult.tbt,
-          https: auditResult.isHttps,
-          meta_description: auditResult.hasMetaDescription,
-          viewport: auditResult.hasViewport,
-          failed_audits: auditResult.failedAudits.length,
-          passed_audits: auditResult.passedAudits.length,
-        };
+        formData.audit_performance = auditResult.performance;
+        formData.audit_seo = auditResult.seo;
+        formData.audit_accessibility = auditResult.accessibility;
+        formData.audit_lcp = `${auditResult.lcp}s`;
+        formData.audit_fcp = `${auditResult.fcp}s`;
+        formData.audit_cls = auditResult.cls;
+        formData.audit_tbt = `${auditResult.tbt}ms`;
+        formData.audit_https = auditResult.isHttps ? "Yes" : "No";
+        formData.audit_meta_desc = auditResult.hasMetaDescription ? "Yes" : "No";
+        formData.audit_issues = auditResult.failedAudits.length;
       }
 
-      // Include StoryBrand data if available
+      // StoryBrand data (flat keys)
       if (auditResult?.storyBrand) {
         const sb = auditResult.storyBrand;
-        formData.storybrand = {
-          grade: sb.grade,
-          auto_score: `${sb.autoTotal}/${sb.autoMax}`,
-          hero_headline: sb.extractedCopy.heroHeadline || "(none detected)",
-          pronoun_balance: `${sb.extractedCopy.secondPersonCount} you/your vs ${sb.extractedCopy.firstPersonCount} we/our`,
-          top_issues: sb.items
-            .filter(i => i.autoScore !== null && i.autoScore < 2)
-            .slice(0, 5)
-            .map(i => `${i.id} ${i.label}: ${i.autoScore}/2`)
-            .join("; "),
-        };
+        formData.storybrand_grade = sb.grade;
+        formData.storybrand_score = `${sb.autoTotal}/${sb.autoMax}`;
+        formData.storybrand_hero = sb.extractedCopy.heroHeadline || "(none)";
+        formData.storybrand_pronouns = `${sb.extractedCopy.secondPersonCount} you/your vs ${sb.extractedCopy.firstPersonCount} we/our`;
+        formData.storybrand_top_issues = sb.items
+          .filter(i => i.autoScore !== null && i.autoScore < 2)
+          .slice(0, 5)
+          .map(i => `${i.id} ${i.label}: ${i.autoScore}/2`)
+          .join("; ");
       }
 
-      // Include ROI data if trade was selected
+      // ROI data (flat keys)
       if (tradeData) {
-        formData.roi = {
-          trade: tradeData.label,
-          avg_job_value: tradeData.avgJobValue,
-          estimated_monthly_loss: `$${tradeData.estimatedMonthlyLoss[0].toLocaleString()}-$${tradeData.estimatedMonthlyLoss[1].toLocaleString()}`,
-          payback_jobs: tradeData.paybackJobs[recommendedTier] ?? "N/A",
-          tier_price: tierPrice,
-        };
+        formData.roi_trade = tradeData.label;
+        formData.roi_avg_job = `$${tradeData.avgJobValue}`;
+        formData.roi_monthly_loss = `$${tradeData.estimatedMonthlyLoss[0].toLocaleString()}-$${tradeData.estimatedMonthlyLoss[1].toLocaleString()}`;
+        formData.roi_payback_jobs = tradeData.paybackJobs[recommendedTier] ?? "N/A";
+        formData.roi_tier_price = `$${tierPrice}`;
       }
 
-      await fetch("https://formspree.io/f/xyknwdgp", {
+      const res = await fetch("https://formspree.io/f/xyknwdgp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      if (!res.ok) setFormspreeError(true);
     } catch {
-      // Silently continue — show result regardless
+      setFormspreeError(true);
     }
     setSubmitting(false);
     setEmailSubmitted(true);
@@ -491,6 +483,23 @@ export default function QuizPage() {
 
           {showResult && emailSubmitted && (
             <div className="space-y-6">
+
+              {/* ── Formspree Error Warning ── */}
+              {formspreeError && (
+                <div className="card-glow !p-6 bg-yellow-50 border-yellow-200">
+                  <div className="flex items-start gap-3">
+                    <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium text-hw-text">We had trouble saving your info.</p>
+                      <p className="text-xs text-hw-text-light mt-1">
+                        Your results are below. If you&apos;d like us to follow up, give us a call at{" "}
+                        <a href="tel:+12566447334" className="text-hw-primary font-medium">(256) 644-7334</a>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* ── Result Card ── */}
               <div className="card-glow !p-8 md:!p-10">
                 <div className="text-center mb-8">
