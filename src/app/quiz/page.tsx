@@ -44,7 +44,8 @@ function getGradeLabel(grade: string): string {
 
 export default function QuizPage() {
   const searchParams = useSearchParams();
-  const isInternal = searchParams.get("internal") === "true";
+  const internalKey = process.env.NEXT_PUBLIC_INTERNAL_KEY?.trim();
+  const isInternal = internalKey ? searchParams.get("internal") === internalKey : false;
 
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -135,13 +136,15 @@ export default function QuizPage() {
 
   async function handleRunAudit() {
     if (!siteUrl.trim()) {
-      // Skip audit, go to results
       setShowUrlInput(false);
       setShowResult(true);
       return;
     }
+    // Transition to results immediately — audit loads in the background
     setAuditLoading(true);
     setAuditError(null);
+    setShowUrlInput(false);
+    setShowResult(true);
     try {
       const res = await fetch("/api/site-audit", {
         method: "POST",
@@ -158,8 +161,6 @@ export default function QuizPage() {
       setAuditError("Something went wrong. Please try again.");
     }
     setAuditLoading(false);
-    setShowUrlInput(false);
-    setShowResult(true);
   }
 
   function handleSkipUrl() {
@@ -286,7 +287,7 @@ export default function QuizPage() {
             What&apos;s Your Business&apos;s Online Personality?
           </h1>
           <p className="text-gray-300 mb-8">
-            8 quick questions. 60 seconds. Find out where you stand — and what to do next.
+            A few quick questions. 60 seconds. Find out where you stand — and what to do next.
           </p>
           <Image
             src="/images/quiz-website-checkup-1200-630.webp"
@@ -383,9 +384,9 @@ export default function QuizPage() {
                 </button>
                 <button
                   onClick={handleSkipTrade}
-                  className="text-sm text-gray-400 hover:text-hw-text-light transition-colors underline"
+                  className="text-sm text-hw-text-light hover:text-hw-text transition-colors underline"
                 >
-                  Skip
+                  Skip this step
                 </button>
               </div>
             </div>
@@ -549,10 +550,10 @@ export default function QuizPage() {
               {tradeData && (
                 <div className="card-glow !p-8 md:!p-10">
                   <h3 className="text-lg font-bold mb-1">
-                    What This Could Be Costing You
+                    What a Weak Online Presence Could Mean
                   </h3>
                   <p className="text-sm text-hw-text-light mb-6">
-                    Based on typical {tradeData.label.toLowerCase()} businesses in our area
+                    Estimates based on industry averages for {tradeData.label.toLowerCase()} businesses in Northeast Alabama
                   </p>
 
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
@@ -562,22 +563,36 @@ export default function QuizPage() {
                     </div>
                     <div className="bg-white border border-gray-100 rounded-xl p-4 text-center">
                       <p className="text-2xl font-bold text-hw-dark">{tradeData.estimatedMissedLeads[0]}-{tradeData.estimatedMissedLeads[1]}</p>
-                      <p className="text-xs text-hw-text-light mt-1">Missed Leads / Month</p>
+                      <p className="text-xs text-hw-text-light mt-1">Leads That May Go Elsewhere</p>
                     </div>
                     <div className="bg-red-50 border border-red-200/40 rounded-xl p-4 text-center col-span-2 md:col-span-1">
                       <p className="text-2xl font-bold text-red-600">${tradeData.estimatedMonthlyLoss[0].toLocaleString()}-${tradeData.estimatedMonthlyLoss[1].toLocaleString()}</p>
-                      <p className="text-xs text-hw-text-light mt-1">Estimated Monthly Loss</p>
+                      <p className="text-xs text-hw-text-light mt-1">Potential Missed Revenue</p>
                     </div>
                   </div>
 
                   <div className="bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5 text-center">
                     <p className="text-hw-text">
-                      Your <span className="font-semibold text-hw-primary">{recommendedTier}</span> package (${tierPrice}) pays for itself in just{" "}
+                      Your <span className="font-semibold text-hw-primary">{recommendedTier}</span> package (${tierPrice}) typically pays for itself within{" "}
                       <span className="font-bold text-hw-dark">
                         {tradeData.paybackJobs[recommendedTier] ?? 4} job{(tradeData.paybackJobs[recommendedTier] ?? 4) !== 1 ? "s" : ""}
                       </span>.
                     </p>
                   </div>
+                  <p className="text-xs text-hw-text-light text-center mt-3">
+                    Your results may vary — these numbers reflect typical businesses in our area.
+                  </p>
+                </div>
+              )}
+
+              {/* ── Audit Loading ── */}
+              {auditLoading && (
+                <div className="card-glow !p-8 md:!p-10 text-center">
+                  <Loader2 className="w-8 h-8 animate-spin text-hw-primary mx-auto mb-4" />
+                  <h3 className="text-lg font-bold mb-2">Analyzing your website...</h3>
+                  <p className="text-sm text-hw-text-light">
+                    This takes 20–30 seconds. We&apos;re checking speed, SEO, mobile setup, and messaging.
+                  </p>
                 </div>
               )}
 
