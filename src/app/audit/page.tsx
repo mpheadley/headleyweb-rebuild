@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, Globe, Loader2, CheckCircle2, XCircle, AlertTriangle, Search } from "lucide-react";
 import type { AuditResult } from "@/lib/audit-types";
+import { roiEstimates, normalizeTier, tierPrices, type TradeEstimate } from "../data/roi-estimates";
+import { tradeOptions } from "../data/quiz-questions";
 import QuizScoreGauge from "../components/QuizScoreGauge";
 import AuditCheck from "../components/AuditCheck";
 import StoryBrandItemRow from "../components/StoryBrandItemRow";
@@ -66,9 +68,15 @@ export default function AuditPage() {
   const isInternal = internalKey ? searchParams.get("internal") === internalKey : false;
 
   const [siteUrl, setSiteUrl] = useState("");
+  const [trade, setTrade] = useState<string>("");
   const [auditResult, setAuditResult] = useState<AuditResult | null>(null);
   const [auditError, setAuditError] = useState<string | null>(null);
   const [auditLoading, setAuditLoading] = useState(false);
+
+  // Trade/ROI data
+  const tradeData: TradeEstimate | null = trade ? roiEstimates[trade] ?? null : null;
+  const recommendedTier = "Get Calls";
+  const tierPrice = tierPrices[recommendedTier] ?? 795;
 
   // Checklist state for internal view
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
@@ -168,6 +176,24 @@ export default function AuditPage() {
                   )}
                   {auditLoading ? "Analyzing..." : "Run Audit"}
                 </button>
+              </div>
+              {/* Optional trade selector */}
+              <div className="mt-4">
+                <label htmlFor="audit-trade" className="block text-sm font-semibold text-hw-dark mb-2">
+                  What type of business? <span className="text-hw-text-light font-normal">(optional — unlocks ROI estimates)</span>
+                </label>
+                <select
+                  id="audit-trade"
+                  value={trade}
+                  onChange={(e) => setTrade(e.target.value)}
+                  className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text"
+                  disabled={auditLoading}
+                >
+                  <option value="">Skip — just audit the site</option>
+                  {tradeOptions.map((t) => (
+                    <option key={t.key} value={t.key}>{t.label}</option>
+                  ))}
+                </select>
               </div>
               <p className="text-xs text-hw-text-light mt-2">
                 No signup required. Results appear in 20–30 seconds.
@@ -308,6 +334,45 @@ export default function AuditPage() {
                   Let&apos;s Talk — (256) 644-7334
                 </a>
               </div>
+            </div>
+          )}
+
+          {/* ── ROI Estimate ── */}
+          {auditResult && tradeData && (
+            <div className="card-glow !p-8 md:!p-10">
+              <h3 className="text-lg font-bold mb-1">
+                What a Weak Online Presence Could Mean
+              </h3>
+              <p className="text-sm text-hw-text-light mb-6">
+                Estimates based on industry averages for {tradeData.label.toLowerCase()} businesses in Northeast Alabama
+              </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-white border border-gray-100 rounded-xl p-4 text-center">
+                  <p className="text-2xl font-bold text-hw-dark">${tradeData.avgJobValue}</p>
+                  <p className="text-xs text-hw-text-light mt-1">Average Job Value</p>
+                </div>
+                <div className="bg-white border border-gray-100 rounded-xl p-4 text-center">
+                  <p className="text-2xl font-bold text-hw-dark">{tradeData.estimatedMissedLeads[0]}-{tradeData.estimatedMissedLeads[1]}</p>
+                  <p className="text-xs text-hw-text-light mt-1">Leads That May Go Elsewhere</p>
+                </div>
+                <div className="bg-red-50 border border-red-200/40 rounded-xl p-4 text-center col-span-2 md:col-span-1">
+                  <p className="text-2xl font-bold text-red-600">${tradeData.estimatedMonthlyLoss[0].toLocaleString()}-${tradeData.estimatedMonthlyLoss[1].toLocaleString()}</p>
+                  <p className="text-xs text-hw-text-light mt-1">Potential Missed Revenue</p>
+                </div>
+              </div>
+
+              <div className="bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5 text-center">
+                <p className="text-hw-text">
+                  A <span className="font-semibold text-hw-primary">{recommendedTier}</span> package (${tierPrice}) typically pays for itself within{" "}
+                  <span className="font-bold text-hw-dark">
+                    {tradeData.paybackJobs[recommendedTier] ?? 4} job{(tradeData.paybackJobs[recommendedTier] ?? 4) !== 1 ? "s" : ""}
+                  </span>.
+                </p>
+              </div>
+              <p className="text-xs text-hw-text-light text-center mt-3">
+                Your results may vary — these numbers reflect typical businesses in our area.
+              </p>
             </div>
           )}
 
@@ -570,9 +635,9 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                 <QuizReportPdf
                   archetype={{ name: "Site Audit", emoji: "🔍", tagline: "Instant website analysis", description: `Automated audit of ${auditResult.url} covering speed, SEO, accessibility, and messaging.`, strength: "", risk: "", recommendation: "Review the results below and take action on the top recommendations.", tier: "" }}
                   auditResult={auditResult}
-                  tradeData={null}
-                  recommendedTier=""
-                  tierPrice={0}
+                  tradeData={tradeData}
+                  recommendedTier={recommendedTier}
+                  tierPrice={tierPrice}
                   recommendations={recommendations}
                 />
               </div>

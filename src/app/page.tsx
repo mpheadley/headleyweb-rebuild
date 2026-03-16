@@ -1067,7 +1067,7 @@ export default function Home() {
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Checkup</p>
             <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Get Your Free Site Checkup</h2>
             <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
-              I&apos;ll personally review your online presence and send you a short video showing exactly what&apos;s keeping customers from finding you — no sales pitch, no strings attached.
+              I&apos;ll personally review your online presence and send you a detailed report plus a short video walkthrough showing exactly what&apos;s keeping customers from finding you — no sales pitch, no strings attached.
             </p>
           </div>
           <form className="animate-on-scroll space-y-5 card-glow" action="https://formspree.io/f/xyknwdgp" method="POST">
@@ -1090,7 +1090,12 @@ export default function Home() {
               <input type="tel" id="phone" name="phone" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="(256) 555-1234" />
             </div>
             <button type="submit" className="btn-primary w-full text-lg">Get My Free Checkup</button>
-            <p className="text-xs text-hw-text-light text-center">No sales pitch. I&apos;ll send you a short video within 48 hours.</p>
+            <p className="text-xs text-hw-text-light text-center">No sales pitch. I&apos;ll send you a report and video walkthrough within 48 hours.</p>
+            <p className="text-xs text-center mt-3">
+              <a href="/audit" className="text-hw-primary hover:text-hw-primary-dark underline transition-colors">
+                Want instant results? Try the free automated audit
+              </a>
+            </p>
           </form>
         </div>
       </section>
