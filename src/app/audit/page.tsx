@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, Globe, Loader2, CheckCircle2, XCircle, AlertTriangle, Search, Mail } from "lucide-react";
@@ -29,7 +29,7 @@ function getScoreLabel(score: number, category: string): string {
 function getGradeColor(grade: string): string {
   if (grade === "A") return "text-green-600 bg-green-50 border-green-200";
   if (grade === "B") return "text-green-600 bg-green-50 border-green-200";
-  if (grade === "C") return "text-yellow-500 bg-yellow-50 border-yellow-200";
+  if (grade === "C") return "text-yellow-700 bg-yellow-50 border-yellow-200";
   if (grade === "D") return "text-red-500 bg-red-50 border-red-200";
   return "text-red-600 bg-red-50 border-red-200";
 }
@@ -84,8 +84,18 @@ export default function AuditPage() {
   const [emailSent, setEmailSent] = useState(false);
   const [emailError, setEmailError] = useState(false);
 
+  // Refs
+  const resultsRef = useRef<HTMLDivElement>(null);
+
   // Checklist state for internal view
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+
+  // Auto-scroll to results when they load
+  useEffect(() => {
+    if (auditResult && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [auditResult]);
 
   const handleChecklistToggle = useCallback((key: string) => {
     setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -99,20 +109,30 @@ export default function AuditPage() {
     setAuditError(null);
     setAuditResult(null);
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 45000);
+
     try {
       const res = await fetch("/api/site-audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: siteUrl.trim() }),
+        signal: controller.signal,
       });
+      clearTimeout(timeout);
       const data = await res.json();
       if (!res.ok) {
         setAuditError(data.error || "Could not analyze that URL.");
       } else {
         setAuditResult(data as AuditResult);
       }
-    } catch {
-      setAuditError("Something went wrong. Please try again.");
+    } catch (err) {
+      clearTimeout(timeout);
+      if (err instanceof DOMException && err.name === "AbortError") {
+        setAuditError("The audit timed out. The site may be slow or unreachable — please try again.");
+      } else {
+        setAuditError("Something went wrong. Please try again.");
+      }
     }
     setAuditLoading(false);
   }
@@ -156,6 +176,7 @@ export default function AuditPage() {
     setEmail("");
     setEmailSent(false);
     setEmailError(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   // Compute recommendations for PDF
@@ -256,7 +277,7 @@ export default function AuditPage() {
           {auditError && (
             <div className="card-glow !p-6 bg-yellow-50 border-yellow-200">
               <div className="flex items-start gap-3">
-                <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm font-medium text-hw-text">{auditError}</p>
                   <p className="text-xs text-hw-text-light mt-1">Check the URL and try again.</p>
@@ -267,7 +288,7 @@ export default function AuditPage() {
 
           {/* ── Client-Facing Results ── */}
           {auditResult && (
-            <div className="card-glow !p-8 md:!p-10">
+            <div ref={resultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
               <h3 className="text-lg font-bold mb-1">
                 Your Site&apos;s Quick Checkup
               </h3>
@@ -276,7 +297,7 @@ export default function AuditPage() {
               </p>
 
               {/* Score Gauges */}
-              <div className="flex justify-center gap-8 mb-8">
+              <div className="flex justify-center gap-4 md:gap-8 flex-wrap mb-8">
                 <QuizScoreGauge score={auditResult.performance} label="Speed" />
                 <QuizScoreGauge score={auditResult.seo} label="SEO" />
                 <QuizScoreGauge score={auditResult.accessibility} label="Accessibility" />
@@ -288,7 +309,7 @@ export default function AuditPage() {
                   {auditResult.lcp <= 2.5 ? (
                     <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
                   ) : auditResult.lcp <= 4 ? (
-                    <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                    <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
                   ) : (
                     <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                   )}
@@ -302,7 +323,7 @@ export default function AuditPage() {
                   {auditResult.seo >= 90 ? (
                     <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
                   ) : (
-                    <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                    <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
                   )}
                   <div>
                     <p className="text-sm font-medium text-hw-text">{getScoreLabel(auditResult.seo, "search engine visibility")}</p>
@@ -339,7 +360,7 @@ export default function AuditPage() {
                           {item.autoScore === 0 ? (
                             <XCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                           ) : (
-                            <AlertTriangle className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
+                            <AlertTriangle className="w-4 h-4 text-yellow-600 shrink-0 mt-0.5" />
                           )}
                           <p className="text-sm text-hw-text">{item.label}</p>
                         </div>
@@ -432,7 +453,7 @@ export default function AuditPage() {
               </p>
 
               {/* Score Gauges */}
-              <div className="flex justify-center gap-8 mb-6">
+              <div className="flex justify-center gap-4 md:gap-8 flex-wrap mb-6">
                 <QuizScoreGauge score={auditResult.performance} label="Performance" />
                 <QuizScoreGauge score={auditResult.seo} label="SEO" />
                 <QuizScoreGauge score={auditResult.accessibility} label="Accessibility" />
@@ -683,19 +704,26 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                   />
                   <span className="text-xs text-hw-text-light">or</span>
                   {emailSent ? (
-                    <p className="text-sm text-green-600 flex items-center gap-1">
-                      <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
-                    </p>
+                    <div role="status" aria-live="polite" className="text-center">
+                      <p className="text-sm text-green-600 flex items-center justify-center gap-1">
+                        <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
+                      </p>
+                      <p className="text-xs text-hw-text-light mt-2">
+                        Check your inbox in a few minutes. <Link href="/contact" className="text-hw-primary hover:text-hw-primary-dark underline">Schedule a call</Link> to walk through the results.
+                      </p>
+                    </div>
                   ) : (
                     <form onSubmit={handleSendEmail} className="flex gap-2">
                       <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-hw-text-light" />
+                        <label htmlFor="audit-email" className="sr-only">Email address</label>
+                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-hw-text-light" aria-hidden="true" />
                         <input
+                          id="audit-email"
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="you@email.com"
-                          className="form-input pl-10 pr-3 py-2 border border-gray-200 rounded-lg bg-white text-hw-text text-sm w-48"
+                          className="form-input pl-10 pr-3 py-2 border border-gray-200 rounded-lg bg-white text-hw-text text-sm w-full sm:w-48"
                           required
                         />
                       </div>

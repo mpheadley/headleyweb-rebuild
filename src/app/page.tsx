@@ -5,6 +5,7 @@ import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
 import LazyPageSpeedProof from "./components/LazyPageSpeedProof";
+import CheckupForm from "./components/CheckupForm";
 import { projects } from "@/app/data/projects";
 import { getAllPosts } from "@/lib/blog";
 
@@ -1070,33 +1071,7 @@ export default function Home() {
               I&apos;ll personally review your online presence and send you a detailed report plus a short video walkthrough showing exactly what&apos;s keeping customers from finding you — no sales pitch, no strings attached.
             </p>
           </div>
-          <form className="animate-on-scroll space-y-5 card-glow" action="https://formspree.io/f/xyknwdgp" method="POST">
-            <input type="hidden" name="_subject" value="New Site Checkup Request from headleyweb.com" />
-            <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
-            <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-hw-dark mb-1">Your Name</label>
-              <input type="text" id="name" name="name" required className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="John Smith" />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-hw-dark mb-1">Email Address</label>
-              <input type="email" id="email" name="email" required className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="john@example.com" />
-            </div>
-            <div>
-              <label htmlFor="website" className="block text-sm font-semibold text-hw-dark mb-1">Your Website URL <span className="text-hw-text-light font-normal">(or &quot;I don&apos;t have one yet&quot;)</span></label>
-              <input type="text" id="website" name="website" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="www.yourbusiness.com" />
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-hw-dark mb-1">Phone Number <span className="text-hw-text-light font-normal">(optional — so I can text you the link)</span></label>
-              <input type="tel" id="phone" name="phone" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="(256) 555-1234" />
-            </div>
-            <button type="submit" className="btn-primary w-full text-lg">Get My Free Checkup</button>
-            <p className="text-xs text-hw-text-light text-center">No sales pitch. I&apos;ll send you a report and video walkthrough within 48 hours.</p>
-            <p className="text-xs text-center mt-3">
-              <a href="/audit" className="text-hw-primary hover:text-hw-primary-dark underline transition-colors">
-                Want instant results? Try the free automated audit
-              </a>
-            </p>
-          </form>
+          <CheckupForm />
         </div>
       </section>
 
