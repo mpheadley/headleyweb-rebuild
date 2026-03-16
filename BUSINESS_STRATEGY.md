@@ -510,9 +510,10 @@ Three layers of search visibility, each building on the last:
 | **Agentic Integration** | $5,000/mo | + API-ready data feeds, automated entity correction, CRM integration | AI-referred lead volume |
 
 **Micro-SaaS tools to build (in priority order):**
-1. **Schema Forge** — internal tool first, then productize. Auto-generates trade-specific JSON-LD from client service pages. Use on every build. ($99/mo white-label)
-2. **AEO Brand Grader** — diagnostic that queries LLMs for client's services, shows "Share of Voice" vs. competitors. Great lead magnet. ($49-199/mo)
-3. **Citation Sentinel** — monitors AI Overview mentions. Proves retainer ROI. ($79/mo)
+1. **Site Audit Tool (White-Label)** — ALREADY BUILT. `/audit` page + `/api/site-audit` + PDF generation + email delivery via Resend. Currently branded Headley Web. White-label version needs: configurable branding (colors, logo, company name, phone, from-address) via env vars or config object, custom domain support, usage tracking/limits per client. **This is the fastest path to productized revenue because the core product already works.** See Idea 11 below for full analysis. ($49-149/mo or $299-499 one-time setup)
+2. **Schema Forge** — internal tool first, then productize. Auto-generates trade-specific JSON-LD from client service pages. Use on every build. ($99/mo white-label)
+3. **AEO Brand Grader** — diagnostic that queries LLMs for client's services, shows "Share of Voice" vs. competitors. Great lead magnet. ($49-199/mo)
+4. **Citation Sentinel** — monitors AI Overview mentions. Proves retainer ROI. ($79/mo)
 
 > See [AEO_RESEARCH.md](AEO_RESEARCH.md) for full Gemini Deep Research on agentic SEO,
 > micro-SaaS tools, and competitive landscape.
@@ -638,6 +639,57 @@ Your strategy buries GBP setup inside the build tiers. A standalone GBP-only pro
 - Sits below Get Found on the value ladder and feeds directly into it.
 - Can be offered as an upsell from the free video audit: "Your GBP is a mess — I can fix it in 48 hours for $149."
 - **When:** Phase 1. Can launch immediately — you already know how to do this.
+
+### Idea 11: White-Label Site Audit Tool (SaaS / Productized Service)
+
+The `/audit` page on headleyweb.com is already a fully functional product: URL input → PageSpeed + StoryBrand messaging analysis → PDF report → email delivery. The engineering is done. White-labeling it creates a new revenue stream without building anything from scratch.
+
+**What exists today (March 2026):**
+- `/api/site-audit` — PageSpeed Insights API + cheerio-based StoryBrand scorer + JSON-LD schema detection
+- `/api/send-report` — Resend transactional email with branded PDF attachment
+- `generate-report-pdf.ts` — Server-side PDF generation (jsPDF)
+- Client-facing results: score gauges, plain-English summaries, messaging grade, "What I'd Fix First" recommendations
+- Internal view: Core Web Vitals, failed/passed audits, full StoryBrand breakdown, manual checklist, copy-paste summary
+- Optional ROI estimates by trade vertical
+
+**What it takes to white-label:**
+1. **Config object or env vars** — swap brand name, colors (3-4 tokens), logo URL, phone number, from-email, CTA links
+2. **Custom subdomain routing** — `audit.clientagency.com` pointing to a shared deployment, config loaded per hostname
+3. **Usage dashboard** — track audits run per client, monthly limits
+4. **Stripe billing** — monthly subscription or per-audit metering
+
+**Estimated build time:** 2-3 days for basic white-label (env var approach), 1-2 weeks for multi-tenant SaaS with billing.
+
+**Pricing models:**
+
+| Model | Price | Best For |
+|-------|-------|----------|
+| **One-time setup** | $299-499 | Solo web designers who want it on their own site |
+| **Monthly SaaS** | $49-149/mo | Agencies running multiple audits, want updates |
+| **Per-audit** | $1-3/audit | High-volume agencies, pay as you go |
+
+**Realistic ROI analysis:**
+
+*Conservative scenario (Phase 2, 6-12 months out):*
+- 5-10 agency/designer customers at $79/mo average = $395-790/mo ($4,740-9,480/yr)
+- One-time setup sales: 2-3/month at $399 = $798-1,197/mo ($9,576-14,364/yr)
+- **Realistic Year 1 range: $5,000-15,000** (side income, not primary revenue)
+
+*Why it won't replace client work (yet):*
+- NE Alabama market is tiny — white-label customers come from online marketing (different sales motion)
+- SaaS requires support, documentation, onboarding — time cost is real
+- Competing with established tools (MySiteAuditor $39/mo, SEOptimer $19/mo, Ryte, etc.)
+- Your differentiator is the **StoryBrand messaging analysis** — no competitor scores copy quality
+
+*Where it IS worth pursuing:*
+- **Differentiator:** No audit tool on the market grades website messaging through a StoryBrand lens. SEOptimer checks meta tags. You check whether the hero talks about the customer or the business. That's genuinely unique.
+- **Lead magnet for YOUR business:** Even if you never sell it, every agency that embeds your audit tool sends their leads through your scoring engine. You see which businesses have bad sites.
+- **Credibility play:** "I built an audit tool used by X agencies" is a stronger trust signal than another case study.
+- **Compounds with existing strategy:** Quiz, audit, video checkup, PDF report — the audit tool is the engine powering all of them. Productizing it forces you to keep improving it.
+
+**Priority:** Phase 2-3. Don't build the SaaS wrapper until you have 3+ people asking for it. Use your own tool aggressively in Phase 1 — the product-market signal comes from agencies seeing YOUR audit results and asking "can I get that on my site?"
+
+**The play:** Share audit results on LinkedIn and in web designer communities. When someone asks "what tool is that?" — that's your first customer.
 
 ---
 
