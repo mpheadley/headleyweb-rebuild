@@ -103,76 +103,98 @@ export default function QuizReportPdf({
     y = 115;
 
     // ── Archetype section ──
-    doc.setFillColor(...lightBg);
-    doc.roundedRect(margin, y, contentWidth, 110, 8, 8, "F");
-    y += 25;
-    doc.setTextColor(...terracotta);
-    doc.setFontSize(10);
-    doc.setFont("helvetica", "bold");
-    doc.text("YOUR ONLINE PERSONALITY", margin + 20, y);
-    y += 20;
-    doc.setTextColor(...dark);
-    doc.setFontSize(18);
-    doc.text(`${archetype.emoji}  ${archetype.name}`, margin + 20, y);
-    y += 18;
-    doc.setTextColor(...mutedText);
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "italic");
-    doc.text(archetype.tagline, margin + 20, y);
-    y += 18;
-    doc.setFont("helvetica", "normal");
-    doc.setTextColor(...textColor);
-    doc.setFontSize(10);
-    const descLines = doc.splitTextToSize(archetype.description, contentWidth - 40);
-    doc.text(descLines.slice(0, 3), margin + 20, y);
-    y += Math.min(descLines.length, 3) * 14 + 20;
+    const hasArchetypeDetails = !!(archetype.strength || archetype.risk);
 
-    // Strength & Risk
-    checkPageBreak(70);
-    const halfWidth = (contentWidth - 15) / 2;
+    if (hasArchetypeDetails) {
+      doc.setFillColor(...lightBg);
+      doc.roundedRect(margin, y, contentWidth, 110, 8, 8, "F");
+      y += 25;
+      doc.setTextColor(...terracotta);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("YOUR ONLINE PERSONALITY", margin + 20, y);
+      y += 20;
+      doc.setTextColor(...dark);
+      doc.setFontSize(18);
+      doc.text(archetype.name, margin + 20, y);
+      y += 18;
+      doc.setTextColor(...mutedText);
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "italic");
+      doc.text(archetype.tagline, margin + 20, y);
+      y += 18;
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(...textColor);
+      doc.setFontSize(10);
+      const descLines = doc.splitTextToSize(archetype.description, contentWidth - 40);
+      doc.text(descLines.slice(0, 3), margin + 20, y);
+      y += Math.min(descLines.length, 3) * 14 + 20;
 
-    // Strength box
-    doc.setFillColor(240, 249, 240);
-    doc.roundedRect(margin, y, halfWidth, 55, 6, 6, "F");
-    doc.setTextColor(...sage);
-    doc.setFontSize(9);
-    doc.setFont("helvetica", "bold");
-    doc.text("YOUR STRENGTH", margin + 12, y + 18);
-    doc.setFont("helvetica", "normal");
-    doc.setTextColor(...textColor);
-    doc.setFontSize(9);
-    const strengthLines = doc.splitTextToSize(archetype.strength, halfWidth - 24);
-    doc.text(strengthLines.slice(0, 2), margin + 12, y + 32);
+      // Strength & Risk
+      checkPageBreak(70);
+      const halfWidth = (contentWidth - 15) / 2;
 
-    // Risk box
-    doc.setFillColor(254, 242, 242);
-    doc.roundedRect(margin + halfWidth + 15, y, halfWidth, 55, 6, 6, "F");
-    doc.setTextColor(...red);
-    doc.setFontSize(9);
-    doc.setFont("helvetica", "bold");
-    doc.text("YOUR RISK", margin + halfWidth + 27, y + 18);
-    doc.setFont("helvetica", "normal");
-    doc.setTextColor(...textColor);
-    doc.setFontSize(9);
-    const riskLines = doc.splitTextToSize(archetype.risk, halfWidth - 24);
-    doc.text(riskLines.slice(0, 2), margin + halfWidth + 27, y + 32);
+      // Strength box
+      doc.setFillColor(240, 249, 240);
+      doc.roundedRect(margin, y, halfWidth, 55, 6, 6, "F");
+      doc.setTextColor(...sage);
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "bold");
+      doc.text("YOUR STRENGTH", margin + 12, y + 18);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(...textColor);
+      doc.setFontSize(9);
+      const strengthLines = doc.splitTextToSize(archetype.strength, halfWidth - 24);
+      doc.text(strengthLines.slice(0, 2), margin + 12, y + 32);
 
-    y += 70;
+      // Risk box
+      doc.setFillColor(254, 242, 242);
+      doc.roundedRect(margin + halfWidth + 15, y, halfWidth, 55, 6, 6, "F");
+      doc.setTextColor(...red);
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "bold");
+      doc.text("YOUR RISK", margin + halfWidth + 27, y + 18);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(...textColor);
+      doc.setFontSize(9);
+      const riskLines = doc.splitTextToSize(archetype.risk, halfWidth - 24);
+      doc.text(riskLines.slice(0, 2), margin + halfWidth + 27, y + 32);
 
-    // Recommendation
-    checkPageBreak(60);
-    doc.setFillColor(254, 247, 241);
-    doc.roundedRect(margin, y, contentWidth, 50, 6, 6, "F");
-    doc.setTextColor(...terracotta);
-    doc.setFontSize(9);
-    doc.setFont("helvetica", "bold");
-    doc.text("WHAT I'D RECOMMEND", margin + 15, y + 18);
-    doc.setFont("helvetica", "normal");
-    doc.setTextColor(...textColor);
-    doc.setFontSize(9);
-    const recLines = doc.splitTextToSize(`${archetype.recommendation} Best fit: ${archetype.tier} tier.`, contentWidth - 30);
-    doc.text(recLines.slice(0, 2), margin + 15, y + 32);
-    y += 65;
+      y += 70;
+
+      // Recommendation
+      checkPageBreak(60);
+      doc.setFillColor(254, 247, 241);
+      doc.roundedRect(margin, y, contentWidth, 50, 6, 6, "F");
+      doc.setTextColor(...terracotta);
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "bold");
+      doc.text("WHAT I'D RECOMMEND", margin + 15, y + 18);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(...textColor);
+      doc.setFontSize(9);
+      const recText = archetype.tier
+        ? `${archetype.recommendation} Best fit: ${archetype.tier} tier.`
+        : archetype.recommendation;
+      const recLines = doc.splitTextToSize(recText, contentWidth - 30);
+      doc.text(recLines.slice(0, 2), margin + 15, y + 32);
+      y += 65;
+    } else {
+      // Standalone audit — compact header
+      doc.setFillColor(...lightBg);
+      doc.roundedRect(margin, y, contentWidth, 55, 8, 8, "F");
+      y += 20;
+      doc.setTextColor(...dark);
+      doc.setFontSize(14);
+      doc.setFont("helvetica", "bold");
+      doc.text(archetype.name, margin + 20, y);
+      y += 16;
+      doc.setTextColor(...mutedText);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      doc.text(archetype.description, margin + 20, y);
+      y += 35;
+    }
 
     // ── Site Audit Scores ──
     if (auditResult && (auditResult.performance > 0 || auditResult.seo > 0)) {
@@ -227,7 +249,7 @@ export default function QuizReportPdf({
         doc.setTextColor(checks[i].passed ? green[0] : red[0], checks[i].passed ? green[1] : red[1], checks[i].passed ? green[2] : red[2]);
         doc.setFontSize(10);
         doc.setFont("helvetica", "bold");
-        doc.text(checks[i].passed ? "✓" : "✗", cx, cy);
+        doc.text(checks[i].passed ? "+" : "-", cx, cy);
         doc.setTextColor(...textColor);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(9);
@@ -264,25 +286,24 @@ export default function QuizReportPdf({
         A: "StoryBrand-aligned — this site sells",
         B: "Good foundation, needs tightening",
         C: "Has pieces, but the message is muddled",
-        D: "Talking about themselves, not the customer",
-        F: "Digital brochure — not a sales tool",
+        D: "Missing key messaging elements",
+        F: "No clear message — visitors won't know what to do",
       };
       doc.text(gradeLabels[grade] ?? gradeLabels.F, margin + 60, y + 30);
       y += 65;
 
-      // Weak items
-      const weakItems = auditResult.storyBrand.items
-        .filter(i => i.autoScore !== null && i.autoScore < 2)
-        .slice(0, 4);
+      // All auto-scored items with pass/warn/fail indicators
+      const scoredItems = auditResult.storyBrand.items.filter(i => i.autoScore !== null);
 
-      if (weakItems.length > 0) {
-        checkPageBreak(weakItems.length * 20 + 10);
-        for (const item of weakItems) {
-          const color = item.autoScore === 0 ? red : yellow;
+      if (scoredItems.length > 0) {
+        checkPageBreak(scoredItems.length * 18 + 10);
+        for (const item of scoredItems) {
+          const color = item.autoScore === 2 ? green : item.autoScore === 1 ? yellow : red;
+          const symbol = item.autoScore === 2 ? "+" : item.autoScore === 1 ? "!" : "-";
           doc.setTextColor(...color);
           doc.setFontSize(10);
           doc.setFont("helvetica", "bold");
-          doc.text(item.autoScore === 0 ? "✗" : "!", margin, y);
+          doc.text(symbol, margin, y);
           doc.setTextColor(...textColor);
           doc.setFont("helvetica", "normal");
           doc.setFontSize(9);
@@ -309,7 +330,7 @@ export default function QuizReportPdf({
         doc.setFontSize(9);
         for (const rec of recommendations) {
           doc.setTextColor(...sage);
-          doc.text("→", margin + 15, y);
+          doc.text("->", margin + 15, y);
           doc.setTextColor(...textColor);
           const recLine = doc.splitTextToSize(rec, contentWidth - 50);
           doc.text(recLine[0], margin + 30, y);

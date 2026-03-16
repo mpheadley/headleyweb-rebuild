@@ -39,8 +39,8 @@ function getGradeLabel(grade: string): string {
   if (grade === "A") return "StoryBrand-aligned — this site sells";
   if (grade === "B") return "Good foundation, needs tightening";
   if (grade === "C") return "Has pieces, but the message is muddled";
-  if (grade === "D") return "Talking about themselves, not the customer";
-  return "Digital brochure — not a sales tool";
+  if (grade === "D") return "Missing key messaging elements";
+  return "No clear message — visitors won't know what to do";
 }
 
 /* ── StoryBrand Recommendations (client-facing) ── */

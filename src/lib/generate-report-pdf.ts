@@ -106,7 +106,7 @@ export function generateReportPdf(input: ReportInput): Uint8Array {
     y += 20;
     doc.setTextColor(...dark);
     doc.setFontSize(18);
-    doc.text(`${archetype.emoji}  ${archetype.name}`, margin + 20, y);
+    doc.text(archetype.name, margin + 20, y);
     y += 18;
     doc.setTextColor(...mutedText);
     doc.setFontSize(11);
@@ -161,7 +161,10 @@ export function generateReportPdf(input: ReportInput): Uint8Array {
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...textColor);
     doc.setFontSize(9);
-    const recLines = doc.splitTextToSize(`${archetype.recommendation} Best fit: ${archetype.tier} tier.`, contentWidth - 30);
+    const recText = archetype.tier
+      ? `${archetype.recommendation} Best fit: ${archetype.tier} tier.`
+      : archetype.recommendation;
+    const recLines = doc.splitTextToSize(recText, contentWidth - 30);
     doc.text(recLines.slice(0, 2), margin + 15, y + 32);
     y += 65;
   } else {
@@ -263,24 +266,23 @@ export function generateReportPdf(input: ReportInput): Uint8Array {
       A: "StoryBrand-aligned — this site sells",
       B: "Good foundation, needs tightening",
       C: "Has pieces, but the message is muddled",
-      D: "Talking about themselves, not the customer",
-      F: "Digital brochure — not a sales tool",
+      D: "Missing key messaging elements",
+      F: "No clear message — visitors won't know what to do",
     };
     doc.text(gradeLabels[grade] ?? gradeLabels.F, margin + 60, y + 30);
     y += 65;
 
-    const weakItems = auditResult.storyBrand.items
-      .filter(i => i.autoScore !== null && i.autoScore < 2)
-      .slice(0, 4);
+    const scoredItems = auditResult.storyBrand.items.filter(i => i.autoScore !== null);
 
-    if (weakItems.length > 0) {
-      checkPageBreak(weakItems.length * 20 + 10);
-      for (const item of weakItems) {
-        const color = item.autoScore === 0 ? red : yellow;
+    if (scoredItems.length > 0) {
+      checkPageBreak(scoredItems.length * 18 + 10);
+      for (const item of scoredItems) {
+        const color = item.autoScore === 2 ? green : item.autoScore === 1 ? yellow : red;
+        const symbol = item.autoScore === 2 ? "+" : item.autoScore === 1 ? "!" : "-";
         doc.setTextColor(...color);
         doc.setFontSize(10);
         doc.setFont("helvetica", "bold");
-        doc.text(item.autoScore === 0 ? "-" : "!", margin, y);
+        doc.text(symbol, margin, y);
         doc.setTextColor(...textColor);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(9);
