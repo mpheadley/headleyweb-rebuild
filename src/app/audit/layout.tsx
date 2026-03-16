@@ -1,0 +1,43 @@
+import { Suspense } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Free Site Audit — Headley Web & SEO",
+  description:
+    "Paste your URL and get an instant website audit — speed, SEO, mobile-friendliness, and messaging analysis. Free, no signup required.",
+  alternates: {
+    canonical: "/audit",
+  },
+  openGraph: {
+    url: "/audit",
+    images: [
+      {
+        url: "/images/headley_web_seo_clean-1200-630.webp",
+        width: 1200,
+        height: 630,
+        alt: "Headley Web & SEO — Free Site Audit",
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
+    { "@type": "ListItem", position: 2, name: "Free Site Audit", item: "https://headleyweb.com/audit" },
+  ],
+};
+
+export default function AuditLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Suspense fallback={null}>{children}</Suspense>
+    </>
+  );
+}
