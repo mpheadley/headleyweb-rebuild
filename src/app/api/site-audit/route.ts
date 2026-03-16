@@ -106,13 +106,16 @@ export async function POST(request: NextRequest) {
 
     // Process copy scrape + StoryBrand scoring
     let storyBrand: StoryBrandScore | null = null;
+    let hasLocalBusinessSchema = false;
     if (copyResult.status === "fulfilled" && copyResult.value) {
       storyBrand = scoreStoryBrand(copyResult.value);
+      hasLocalBusinessSchema = copyResult.value.hasLocalBusinessSchema;
     }
 
     const result: AuditResult = {
       url: normalizedUrl,
       ...lighthouse,
+      hasLocalBusinessSchema,
       storyBrand,
     };
 
@@ -208,7 +211,7 @@ async function fetchPageSpeed(normalizedUrl: string) {
   return {
     performance, seo, accessibility,
     fcp, lcp, cls, tbt,
-    isHttps, hasMetaDescription, hasViewport, hasHreflang, isLinkCrawlable,
+    isHttps, hasMetaDescription, hasViewport, hasHreflang, isLinkCrawlable, hasLocalBusinessSchema: false,
     failedAudits, passedAudits,
   };
 }
@@ -217,7 +220,7 @@ function getDefaultLighthouse() {
   return {
     performance: 0, seo: 0, accessibility: 0,
     fcp: 0, lcp: 0, cls: 0, tbt: 0,
-    isHttps: false, hasMetaDescription: false, hasViewport: false, hasHreflang: false, isLinkCrawlable: false,
+    isHttps: false, hasMetaDescription: false, hasViewport: false, hasHreflang: false, isLinkCrawlable: false, hasLocalBusinessSchema: false,
     failedAudits: [] as AuditResult["failedAudits"],
     passedAudits: [] as AuditResult["passedAudits"],
   };

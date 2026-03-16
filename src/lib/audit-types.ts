@@ -44,6 +44,7 @@ export type AuditResult = {
   hasViewport: boolean;
   hasHreflang: boolean;
   isLinkCrawlable: boolean;
+  hasLocalBusinessSchema: boolean;
   // Detailed audits for internal view
   failedAudits: { id: string; title: string; description: string; score: number | null }[];
   passedAudits: { id: string; title: string }[];

@@ -66,6 +66,7 @@ export type ExtractedCopy = {
   ctaTexts: string[];
   phoneNumbers: string[];
   bodyText: string;
+  hasLocalBusinessSchema: boolean;
 };
 
 export function extractTextFromHtml(html: string): ExtractedCopy {
@@ -131,7 +132,33 @@ export function extractTextFromHtml(html: string): ExtractedCopy {
     .replace(/\s+/g, " ")
     .trim();
 
-  return { heroHeadline, heroSubheadline, allHeadings, ctaTexts, phoneNumbers, bodyText };
+  // Check for LocalBusiness (or subtype) JSON-LD schema
+  let hasLocalBusinessSchema = false;
+  $('script[type="application/ld+json"]').each((_, el) => {
+    try {
+      const json = JSON.parse($(el).html() ?? "");
+      const types = Array.isArray(json) ? json : [json];
+      for (const obj of types) {
+        const t = (obj["@type"] ?? "").toLowerCase();
+        if (
+          t.includes("localbusiness") ||
+          t.includes("professionalservice") ||
+          t.includes("homeandconstructionbusiness") ||
+          t.includes("plumber") ||
+          t.includes("electrician") ||
+          t.includes("hvacbusiness") ||
+          t.includes("roofingcontractor") ||
+          t.includes("generalcontractor")
+        ) {
+          hasLocalBusinessSchema = true;
+        }
+      }
+    } catch {
+      // invalid JSON-LD, skip
+    }
+  });
+
+  return { heroHeadline, heroSubheadline, allHeadings, ctaTexts, phoneNumbers, bodyText, hasLocalBusinessSchema };
 }
 
 /* ── StoryBrand Scoring ── */

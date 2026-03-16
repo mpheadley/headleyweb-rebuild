@@ -250,6 +250,7 @@ export default function QuizPage() {
         formData.audit_tbt = `${auditResult.tbt}ms`;
         formData.audit_https = auditResult.isHttps ? "Yes" : "No";
         formData.audit_meta_desc = auditResult.hasMetaDescription ? "Yes" : "No";
+        formData.audit_local_schema = auditResult.hasLocalBusinessSchema ? "Yes" : "No";
         formData.audit_issues = auditResult.failedAudits.length;
       }
 
@@ -668,6 +669,7 @@ export default function QuizPage() {
                     <AuditCheck passed={auditResult.hasMetaDescription} label="Search description" />
                     <AuditCheck passed={auditResult.hasViewport} label="Mobile-friendly setup" />
                     <AuditCheck passed={auditResult.isLinkCrawlable} label="Links are crawlable" />
+                    <AuditCheck passed={auditResult.hasLocalBusinessSchema} label="Google local business info" />
                   </div>
 
                   {/* StoryBrand Messaging Score (Client-Facing) */}
@@ -794,6 +796,7 @@ export default function QuizPage() {
                     <AuditCheck passed={auditResult.hasMetaDescription} label="Meta description" />
                     <AuditCheck passed={auditResult.hasViewport} label="Viewport meta tag" />
                     <AuditCheck passed={auditResult.isLinkCrawlable} label="Crawlable link text" />
+                    <AuditCheck passed={auditResult.hasLocalBusinessSchema} label="LocalBusiness schema" />
                   </div>
 
                   {/* Failed Audits */}
@@ -944,7 +947,7 @@ export default function QuizPage() {
 {`Site: ${auditResult.url}
 Performance: ${auditResult.performance}/100 | SEO: ${auditResult.seo}/100 | Accessibility: ${auditResult.accessibility}/100
 FCP: ${auditResult.fcp}s | LCP: ${auditResult.lcp}s | CLS: ${auditResult.cls} | TBT: ${auditResult.tbt}ms
-HTTPS: ${auditResult.isHttps ? "Yes" : "No"} | Meta Desc: ${auditResult.hasMetaDescription ? "Yes" : "No"} | Viewport: ${auditResult.hasViewport ? "Yes" : "No"}
+HTTPS: ${auditResult.isHttps ? "Yes" : "No"} | Meta Desc: ${auditResult.hasMetaDescription ? "Yes" : "No"} | Viewport: ${auditResult.hasViewport ? "Yes" : "No"} | LocalBusiness Schema: ${auditResult.hasLocalBusinessSchema ? "Yes" : "No"}
 Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passedAudits.length}${auditResult.storyBrand ? `\nStoryBrand Grade: ${auditResult.storyBrand.grade} (${auditResult.storyBrand.autoTotal}/${auditResult.storyBrand.autoMax} auto-scored)` : ""}`}
                     </pre>
                   </div>
