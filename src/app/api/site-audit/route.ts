@@ -173,7 +173,7 @@ async function fetchPageSpeed(normalizedUrl: string) {
 
   const isHttps = normalizedUrl.startsWith("https");
   const hasMetaDescription = audits["meta-description"]?.score === 1;
-  const hasViewport = audits["viewport"]?.score === 1;
+  const hasViewport = audits["viewport"]?.score === 1 || audits["viewport"]?.score === null;
   const hasHreflang = audits["hreflang"]?.score === 1 || audits["hreflang"]?.score === null;
   const isLinkCrawlable = audits["link-text"]?.score === 1;
 

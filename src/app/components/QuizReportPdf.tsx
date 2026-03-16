@@ -230,6 +230,27 @@ export default function QuizReportPdf({
       }
       y += 80;
 
+      // Speed summary (plain-English label + LCP)
+      checkPageBreak(40);
+      const lcpColor: [number, number, number] = auditResult.lcp <= 2.5 ? green : auditResult.lcp <= 4 ? yellow : red;
+      const lcpBg: [number, number, number] = auditResult.lcp <= 2.5 ? [240, 249, 240] : auditResult.lcp <= 4 ? [254, 249, 235] : [254, 242, 242];
+      const speedLabel = auditResult.lcp <= 2.5
+        ? "Your site loads fast — visitors won't wait around"
+        : auditResult.lcp <= 4
+        ? "Your site is a bit slow — some visitors are leaving before it loads"
+        : "Your site is slow — most visitors leave before they ever see your content";
+      doc.setFillColor(...lcpBg);
+      doc.roundedRect(margin, y, contentWidth, 35, 6, 6, "F");
+      doc.setTextColor(...lcpColor);
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "bold");
+      doc.text(speedLabel, margin + 15, y + 14);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(...mutedText);
+      doc.setFontSize(8);
+      doc.text(`Your site takes ${auditResult.lcp}s to show its main content`, margin + 15, y + 26);
+      y += 45;
+
       // Basic checks
       checkPageBreak(80);
       const checks = [
@@ -260,7 +281,10 @@ export default function QuizReportPdf({
 
     // ── StoryBrand Messaging ──
     if (auditResult?.storyBrand) {
-      checkPageBreak(100);
+      const scoredItems = auditResult.storyBrand.items.filter(i => i.autoScore !== null);
+      // Reserve space for grade box + at least a few items together
+      const minStoryBrandHeight = 25 + 65 + Math.min(scoredItems.length, 5) * 18 + 10;
+      checkPageBreak(minStoryBrandHeight);
       drawLine();
       doc.setTextColor(...dark);
       doc.setFontSize(14);
@@ -293,11 +317,9 @@ export default function QuizReportPdf({
       y += 65;
 
       // All auto-scored items with pass/warn/fail indicators
-      const scoredItems = auditResult.storyBrand.items.filter(i => i.autoScore !== null);
-
       if (scoredItems.length > 0) {
-        checkPageBreak(scoredItems.length * 18 + 10);
         for (const item of scoredItems) {
+          checkPageBreak(20);
           const color = item.autoScore === 2 ? green : item.autoScore === 1 ? yellow : red;
           const symbol = item.autoScore === 2 ? "+" : item.autoScore === 1 ? "!" : "-";
           doc.setTextColor(...color);

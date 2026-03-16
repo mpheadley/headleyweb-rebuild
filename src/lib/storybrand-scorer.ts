@@ -89,6 +89,32 @@ export type ExtractedCopy = {
 export function extractTextFromHtml(html: string): ExtractedCopy {
   const $ = cheerio.load(html);
 
+  // Check for LocalBusiness (or subtype) JSON-LD schema BEFORE removing scripts
+  let hasLocalBusinessSchema = false;
+  $('script[type="application/ld+json"]').each((_, el) => {
+    try {
+      const json = JSON.parse($(el).html() ?? "");
+      const types = Array.isArray(json) ? json : [json];
+      for (const obj of types) {
+        const t = (obj["@type"] ?? "").toLowerCase();
+        if (
+          t.includes("localbusiness") ||
+          t.includes("professionalservice") ||
+          t.includes("homeandconstructionbusiness") ||
+          t.includes("plumber") ||
+          t.includes("electrician") ||
+          t.includes("hvacbusiness") ||
+          t.includes("roofingcontractor") ||
+          t.includes("generalcontractor")
+        ) {
+          hasLocalBusinessSchema = true;
+        }
+      }
+    } catch {
+      // invalid JSON-LD, skip
+    }
+  });
+
   // Remove non-content elements
   $("script, style, noscript, svg, iframe").remove();
 
@@ -148,32 +174,6 @@ export function extractTextFromHtml(html: string): ExtractedCopy {
   const bodyText = $("body").text()
     .replace(/\s+/g, " ")
     .trim();
-
-  // Check for LocalBusiness (or subtype) JSON-LD schema
-  let hasLocalBusinessSchema = false;
-  $('script[type="application/ld+json"]').each((_, el) => {
-    try {
-      const json = JSON.parse($(el).html() ?? "");
-      const types = Array.isArray(json) ? json : [json];
-      for (const obj of types) {
-        const t = (obj["@type"] ?? "").toLowerCase();
-        if (
-          t.includes("localbusiness") ||
-          t.includes("professionalservice") ||
-          t.includes("homeandconstructionbusiness") ||
-          t.includes("plumber") ||
-          t.includes("electrician") ||
-          t.includes("hvacbusiness") ||
-          t.includes("roofingcontractor") ||
-          t.includes("generalcontractor")
-        ) {
-          hasLocalBusinessSchema = true;
-        }
-      }
-    } catch {
-      // invalid JSON-LD, skip
-    }
-  });
 
   return { heroHeadline, heroSubheadline, allHeadings, ctaTexts, phoneNumbers, bodyText, hasLocalBusinessSchema };
 }
