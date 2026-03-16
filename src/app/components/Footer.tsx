@@ -74,6 +74,9 @@ export default function Footer() {
 
         <div className="flex items-center justify-center gap-4 text-xs text-gray-400 pt-2">
           <span>&copy; {new Date().getFullYear()} Headley Web <span className="amp">&amp;</span> SEO. All rights reserved.</span>
+          <Link href="/audit" className="hover:text-white transition-colors">
+            Free Site Audit
+          </Link>
           <Link href="/privacy" className="hover:text-white transition-colors">
             Privacy Policy
           </Link>
