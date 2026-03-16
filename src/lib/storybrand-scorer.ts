@@ -25,36 +25,53 @@ const STRONG_CTAS = [
 const PAIN_WORDS = [
   "broken", "not working", "losing", "struggling", "frustrated",
   "overwhelmed", "can't find", "no calls", "no leads", "leaking",
-  "failing", "missing", "wasting", "costing",
+  "failing", "missing", "wasting", "costing", "stress", "stressful",
+  "hassle", "headache", "boring", "complicated", "confusing",
+  "expensive", "unreliable", "hard to find", "no time", "don't know",
+  "without the", "settle for",
 ];
 
 const EMOTION_WORDS = [
   "frustrated", "embarrassed", "overwhelmed", "worried", "stressed",
   "tired of", "sick of", "shouldn't have to", "afraid", "anxious",
-  "confused", "exhausted", "desperate",
+  "confused", "exhausted", "desperate", "annoying", "scary",
+  "intimidating", "dreading", "nervous", "unsure", "don't want to",
+  "worry less", "don't worry", "peace of mind", "without the stress",
+  "don't settle",
 ];
 
 const EMPATHY_PHRASES = [
   "i know", "i understand", "i've been there", "i've seen",
   "it's frustrating", "you deserve", "we understand", "we know",
-  "we've been there",
+  "we've been there", "don't worry", "worry less", "we love",
+  "we're here", "you shouldn't have to", "we've got you",
+  "leave it to us", "we handle", "so you can", "so you don't have to",
+  "you focus on", "we take care",
 ];
 
 const CONSEQUENCE_WORDS = [
   "losing", "missing out", "competitors", "falling behind", "costing you",
   "every day without", "every month without", "every week without",
-  "what happens if", "without a",
+  "what happens if", "without a", "don't settle", "don't miss",
+  "before it's too late", "don't wait", "while you still can",
+  "boring", "forgettable", "average", "mediocre",
 ];
 
 const SUCCESS_WORDS = [
   "you'll", "your phone will", "you'll show up", "you'll stop",
   "imagine", "picture this", "no more", "finally",
   "starts ringing", "get found", "get calls", "get booked",
+  "epic", "unforgettable", "memorable", "dream", "love",
+  "confident", "easy", "simple", "enjoy", "relax",
+  "stress-free", "hassle-free", "worry-free", "you just",
 ];
 
 const RISK_REDUCERS = [
   "free", "no obligation", "no contract", "money back", "guarantee",
   "risk-free", "cancel anytime", "no commitment", "no strings",
+  "refundable", "no cleaning", "no hassle", "won't be charged",
+  "included", "we provide", "everything you need", "no extra",
+  "no hidden", "no surprise",
 ];
 
 /* ── HTML Text Extraction (cheerio-based) ── */
@@ -190,9 +207,13 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   if (lowerHero.match(/^(we|our|i|my)\b/)) heroFailSignals.push("Leads with first person");
   if (lowerHero.match(/\b(you|your)\b/)) heroPassSignals.push("Uses second-person language");
   if (countMatches(lowerHero, PAIN_WORDS) > 0) heroPassSignals.push("Contains pain-point language");
+  // Benefit/outcome framing in headline counts as customer-focused
+  if (countMatches(lowerHero, SUCCESS_WORDS) > 0) heroPassSignals.push("Outcome/benefit language in headline");
   if (heroFailSignals.length > 0) heroScore = 0;
   else if (heroPassSignals.length >= 2) heroScore = 2;
-  else if (heroPassSignals.length === 1) heroScore = 1;
+  else if (heroPassSignals.length >= 1) heroScore = 1;
+  // No signals at all but also no fail signals → give partial credit (neutral headline)
+  else heroScore = 1;
   items.push({
     id: "1.1", label: "Customer Problem in Headline", section: "Hero",
     autoScore: heroScore, signals: [...heroFailSignals, ...heroPassSignals],
@@ -246,10 +267,20 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   const pronounSignals: string[] = [];
   let pronounScore = 0;
   pronounSignals.push(`Hero: ${heroSecondPerson} "you/your" vs ${heroFirstPerson} "we/our"`);
+  // Check if the headline itself (not subheadline) leads with first person
+  const headlineLeadsWithWe = /^(we|our|i|my)\b/.test(lowerHero);
   if (heroFirstPerson === 0 && heroSecondPerson > 0) {
     pronounScore = 2;
     pronounSignals.push("Hero is customer-centered");
-  } else if (heroSecondPerson > heroFirstPerson) {
+  } else if (heroFirstPerson === 0 && heroSecondPerson === 0) {
+    // No pronouns at all — headline focused on outcome/benefit, not "we" or "you"
+    pronounScore = 2;
+    pronounSignals.push("Headline focuses on outcome, not pronouns");
+  } else if (!headlineLeadsWithWe && heroSecondPerson > 0) {
+    // Headline is customer-focused, "we" appears in supporting text (guide role)
+    pronounScore = 2;
+    pronounSignals.push("Headline is customer-focused; 'we' in supporting text is guide voice");
+  } else if (heroSecondPerson >= heroFirstPerson) {
     pronounScore = 1;
     pronounSignals.push("More you/your than we/our, but mixed");
   } else {
@@ -271,9 +302,9 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   const painMatches = PAIN_WORDS.filter(w => lowerBody.includes(w));
   const painSignals: string[] = [];
   let painScore = 0;
-  if (painMatches.length >= 3) {
+  if (painMatches.length >= 2) {
     painScore = 2;
-    painSignals.push(`Strong pain language: ${painMatches.slice(0, 5).join(", ")}`);
+    painSignals.push(`Pain language found: ${painMatches.slice(0, 5).join(", ")}`);
   } else if (painMatches.length >= 1) {
     painScore = 1;
     painSignals.push(`Some pain language: ${painMatches.join(", ")}`);
@@ -326,10 +357,14 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   let authorityScore: number | null = null;
   const hasTestimonial = /"[^"]{20,}"/.test(bodyText) || /testimonial|review/i.test(bodyText);
   const hasYearsExp = /\d+\+?\s*years?\s*(of\s+)?experience/i.test(bodyText);
-  const hasNumbers = /helped?\s+\d+|served?\s+\d+|\d+\s*\+?\s*(clients?|customers?|businesses?|projects?)/i.test(bodyText);
+  const hasNumbers = /helped?\s+\d+|served?\s+\d+|\d+\s*\+?\s*(clients?|customers?|businesses?|projects?|families|parties|events)/i.test(bodyText);
+  const hasSocialProof = /real\s+(kids|people|results|customers|clients)|gallery|photos|portfolio/i.test(bodyText);
+  const hasSpecificStats = /\d+\s*(blasters?|darts?|barriers?|items?|products?|services?)|\d+%/i.test(bodyText);
   if (hasTestimonial) authoritySignals.push("Testimonials/reviews detected");
   if (hasYearsExp) authoritySignals.push("Years of experience mentioned");
   if (hasNumbers) authoritySignals.push("Specific numbers/results cited");
+  if (hasSocialProof) authoritySignals.push("Social proof detected (gallery/real results)");
+  if (hasSpecificStats) authoritySignals.push("Specific stats or inventory numbers cited");
   if (authoritySignals.length >= 2) authorityScore = 2;
   else if (authoritySignals.length === 1) authorityScore = 1;
   else {
@@ -344,12 +379,15 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   // 4.1 Simple Step-by-Step Plan
   const planSignals: string[] = [];
   let planScore: number | null = null;
-  const hasHowItWorks = /how it works|how we work|our process|simple steps|easy steps|step [123]/i.test(bodyText);
+  const hasHowItWorks = /how it works|how we work|our process|simple steps|easy steps|step [123]|the plan|the process|here'?s how|what to expect/i.test(bodyText);
   const hasNumberedSteps = /step\s*[123]|1\.\s+\w|first[\s,].*second[\s,].*third/i.test(bodyText);
+  // Detect heading-based plans ("Book", "Pickup", "Return" or "1. X", "2. Y")
+  const planHeadings = allHeadings.filter(h => /^(step\s*\d|[123]\.|book|order|pick\s*up|return|schedule|choose|get\s+started)/i.test(h));
   if (hasHowItWorks) planSignals.push("'How it works' section detected");
   if (hasNumberedSteps) planSignals.push("Numbered steps detected");
+  if (planHeadings.length >= 2) planSignals.push(`Plan headings found: ${planHeadings.slice(0, 3).join(", ")}`);
   if (planSignals.length >= 2) planScore = 2;
-  else if (planSignals.length === 1) planScore = 1;
+  else if (planSignals.length >= 1) planScore = 1;
   else {
     planScore = 0;
     planSignals.push("No plan/process section detected");
@@ -429,7 +467,7 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   const successMatches = SUCCESS_WORDS.filter(w => lowerBody.includes(w));
   const successSignals: string[] = [];
   let successScore = 0;
-  if (successMatches.length >= 3) {
+  if (successMatches.length >= 2) {
     successScore = 2;
     successSignals.push(`Success language: ${successMatches.slice(0, 5).join(", ")}`);
   } else if (successMatches.length >= 1) {
