@@ -226,19 +226,37 @@ function getDefaultLighthouse() {
   };
 }
 
-/* ── Copy Scrape ── */
+/* ── Copy Scrape (with retry) ── */
 
 async function fetchAndScrapeCopy(normalizedUrl: string) {
-  const response = await fetch(normalizedUrl, {
-    signal: AbortSignal.timeout(15000),
-    headers: {
-      "User-Agent": "HeadleyWebAudit/1.0 (site-checkup)",
-      "Accept": "text/html",
-    },
-  });
+  const maxAttempts = 3;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const response = await fetch(normalizedUrl, {
+        signal: AbortSignal.timeout(20000),
+        headers: {
+          "User-Agent": "HeadleyWebAudit/1.0 (site-checkup)",
+          "Accept": "text/html",
+        },
+      });
 
-  if (!response.ok) return null;
+      if (!response.ok) {
+        if (attempt < maxAttempts) continue;
+        return null;
+      }
 
-  const html = await response.text();
-  return extractTextFromHtml(html);
+      const html = await response.text();
+      if (!html || html.length < 100) {
+        if (attempt < maxAttempts) continue;
+        return null;
+      }
+
+      return extractTextFromHtml(html);
+    } catch {
+      if (attempt === maxAttempts) return null;
+      // Brief pause before retry
+      await new Promise(r => setTimeout(r, 1000));
+    }
+  }
+  return null;
 }
