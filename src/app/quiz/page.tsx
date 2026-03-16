@@ -42,6 +42,26 @@ function getGradeLabel(grade: string): string {
   return "Digital brochure — not a sales tool";
 }
 
+/* ── StoryBrand Recommendations (client-facing) ── */
+const storyBrandRecommendations: Record<string, string> = {
+  "1.1": "Lead your headline with the customer's problem — not your company name",
+  "1.2": "Make it clear what you do, who you help, and where — in the first sentence",
+  "1.3": "Add a strong call-to-action button above the fold (\"Call Now\", \"Get a Free Quote\")",
+  "1.5": "Rewrite your hero section to say \"you\" and \"your\" instead of \"we\" and \"our\"",
+  "2.1": "Name the problem your customer is actually dealing with — don't assume they know",
+  "2.2": "Speak to how the problem makes your customer feel (frustrated, overwhelmed, stuck)",
+  "3.1": "Show empathy — let customers know you understand what they're going through",
+  "3.2": "Add proof: testimonials, years of experience, or number of customers served",
+  "4.1": "Add a simple 3-step plan so customers know exactly what to expect",
+  "4.2": "Reduce risk with language like \"free estimate\", \"no obligation\", or \"satisfaction guaranteed\"",
+  "5.1": "Repeat your main call-to-action throughout the page — not just at the top",
+  "5.2": "Use action words in your buttons: \"Get\", \"Call\", \"Book\", \"Schedule\" — not \"Learn More\"",
+  "6.1": "Show what's at stake — what happens if they don't fix this problem?",
+  "6.2": "Paint the picture of success — what does life look like after they hire you?",
+  "7.1": "Cut the jargon — write like you talk to a customer, not a conference room",
+  "7.2": "Put your phone number where people can see it — header, hero, and footer",
+};
+
 export default function QuizPage() {
   const searchParams = useSearchParams();
   const internalKey = process.env.NEXT_PUBLIC_INTERNAL_KEY?.trim();
@@ -675,6 +695,30 @@ export default function QuizPage() {
                             </div>
                           ))}
                       </div>
+
+                      {/* Recommendations based on low-scoring items */}
+                      {(() => {
+                        const recs = auditResult.storyBrand!.items
+                          .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
+                          .slice(0, 3)
+                          .map(i => storyBrandRecommendations[i.id]);
+                        if (recs.length === 0) return null;
+                        return (
+                          <div className="mt-4 bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5">
+                            <p className="text-sm font-bold text-hw-secondary uppercase tracking-wide mb-3">
+                              What I&apos;d Fix First
+                            </p>
+                            <ul className="space-y-2">
+                              {recs.map((rec, i) => (
+                                <li key={i} className="flex items-start gap-2 text-sm text-hw-text">
+                                  <ArrowRight className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                                  {rec}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      })()}
                     </div>
                   )}
 
