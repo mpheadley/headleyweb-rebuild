@@ -6,6 +6,8 @@ export type StoryBrandItem = {
   section: string;
   autoScore: number | null; // 0-2, null = needs manual scoring
   signals: string[]; // what the auto-scorer detected
+  passLabel: string; // plain-English label when passing (e.g. "Your headline speaks to a real problem")
+  failLabel: string; // plain-English label when failing (e.g. "Visitors can't tell what you do in 5 seconds")
 };
 
 export type StoryBrandScore = {

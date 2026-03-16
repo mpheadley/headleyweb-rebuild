@@ -131,24 +131,24 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.setFillColor(240, 249, 240);
     doc.roundedRect(margin, y, halfWidth, 55, 6, 6, "F");
     doc.setTextColor(...sage);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.text("YOUR STRENGTH", margin + 12, y + 18);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...textColor);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     const strengthLines = doc.splitTextToSize(archetype.strength, halfWidth - 24);
     doc.text(strengthLines.slice(0, 2), margin + 12, y + 32);
 
     doc.setFillColor(254, 242, 242);
     doc.roundedRect(margin + halfWidth + 15, y, halfWidth, 55, 6, 6, "F");
     doc.setTextColor(...red);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.text("YOUR RISK", margin + halfWidth + 27, y + 18);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...textColor);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     const riskLines = doc.splitTextToSize(archetype.risk, halfWidth - 24);
     doc.text(riskLines.slice(0, 2), margin + halfWidth + 27, y + 32);
 
@@ -159,12 +159,12 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.setFillColor(254, 247, 241);
     doc.roundedRect(margin, y, contentWidth, 50, 6, 6, "F");
     doc.setTextColor(...terracotta);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.text("WHAT I'D RECOMMEND", margin + 15, y + 18);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...textColor);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     const recText = archetype.tier
       ? `${archetype.recommendation} Best fit: ${archetype.tier} tier.`
       : archetype.recommendation;
@@ -173,13 +173,15 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     y += 65;
   } else {
     // Standalone audit (no archetype details)
-    doc.setFillColor(...lightBg);
-    doc.roundedRect(margin, y, contentWidth, 40, 8, 8, "F");
     doc.setTextColor(...dark);
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "bold");
-    doc.text(archetype.description, margin + 20, y + 25);
-    y += 60;
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    const descLines = doc.splitTextToSize(archetype.description, contentWidth - 40);
+    const descBlockHeight = descLines.length * 16 + 20;
+    doc.setFillColor(...lightBg);
+    doc.roundedRect(margin, y, contentWidth, descBlockHeight, 8, 8, "F");
+    doc.text(descLines, margin + 20, y + 18);
+    y += descBlockHeight + 15;
   }
 
   // ── Site Audit Scores ──
@@ -187,7 +189,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     checkPageBreak(130);
     drawLine();
     doc.setTextColor(...dark);
-    doc.setFontSize(14);
+    doc.setFontSize(16);
     doc.setFont("helvetica", "bold");
     doc.text("Your Site's Quick Checkup", margin, y);
     y += 25;
@@ -209,7 +211,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       doc.setFont("helvetica", "bold");
       doc.text(`${gauges[i].score}`, gx + gaugeWidth / 2, y + 35, { align: "center" });
       doc.setTextColor(...mutedText);
-      doc.setFontSize(9);
+      doc.setFontSize(10);
       doc.setFont("helvetica", "normal");
       doc.text(gauges[i].label, gx + gaugeWidth / 2, y + 52, { align: "center" });
     }
@@ -227,12 +229,12 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.setFillColor(...lcpBg);
     doc.roundedRect(margin, y, contentWidth, 35, 6, 6, "F");
     doc.setTextColor(...lcpColor);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.text(speedLabel, margin + 15, y + 14);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...mutedText);
-    doc.setFontSize(8);
+    doc.setFontSize(9);
     doc.text(`Your site takes ${auditResult.lcp}s to show its main content`, margin + 15, y + 26);
     y += 45;
 
@@ -258,7 +260,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       doc.text(checks[i].passed ? "+" : "-", cx, cy);
       doc.setTextColor(...textColor);
       doc.setFont("helvetica", "normal");
-      doc.setFontSize(9);
+      doc.setFontSize(10);
       doc.text(checks[i].label, cx + 15, cy);
     }
     y += Math.ceil(checks.length / 2) * 20 + 15;
@@ -271,7 +273,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     checkPageBreak(minStoryBrandHeight);
     drawLine();
     doc.setTextColor(...dark);
-    doc.setFontSize(14);
+    doc.setFontSize(16);
     doc.setFont("helvetica", "bold");
     doc.text("Your Website Messaging", margin, y);
     y += 25;
@@ -299,19 +301,51 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.text(gradeLabels[grade] ?? gradeLabels.F, margin + 60, y + 30);
     y += 65;
 
-    if (scoredItems.length > 0) {
-      for (const item of scoredItems) {
+    // What's working (up to 3 passes)
+    const passItems = scoredItems.filter(i => i.autoScore === 2);
+    if (passItems.length > 0) {
+      checkPageBreak(20 + Math.min(passItems.length, 3) * 18);
+      doc.setTextColor(...sage);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("WHAT'S WORKING", margin, y);
+      y += 16;
+      for (const item of passItems.slice(0, 3)) {
         checkPageBreak(20);
-        const color = item.autoScore === 2 ? green : item.autoScore === 1 ? yellow : red;
-        const symbol = item.autoScore === 2 ? "+" : item.autoScore === 1 ? "!" : "-";
+        doc.setTextColor(...green);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text("+", margin, y);
+        doc.setTextColor(...textColor);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.text(item.passLabel, margin + 15, y);
+        y += 18;
+      }
+      y += 8;
+    }
+
+    // What needs work (failures + warnings)
+    const failItems = scoredItems.filter(i => i.autoScore !== null && i.autoScore < 2);
+    if (failItems.length > 0) {
+      checkPageBreak(20 + failItems.length * 18);
+      doc.setTextColor(...red);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("WHAT NEEDS WORK", margin, y);
+      y += 16;
+      for (const item of failItems) {
+        checkPageBreak(20);
+        const color = item.autoScore === 0 ? red : yellow;
+        const symbol = item.autoScore === 0 ? "-" : "!";
         doc.setTextColor(...color);
         doc.setFontSize(10);
         doc.setFont("helvetica", "bold");
         doc.text(symbol, margin, y);
         doc.setTextColor(...textColor);
         doc.setFont("helvetica", "normal");
-        doc.setFontSize(9);
-        doc.text(item.label, margin + 15, y);
+        doc.setFontSize(10);
+        doc.text(item.failLabel, margin + 15, y);
         y += 18;
       }
       y += 5;
@@ -324,20 +358,20 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       doc.roundedRect(margin, y, contentWidth, recBlockHeight, 6, 6, "F");
       y += 20;
       doc.setTextColor(...sage);
-      doc.setFontSize(10);
+      doc.setFontSize(11);
       doc.setFont("helvetica", "bold");
       doc.text("WHAT I'D FIX FIRST", margin + 15, y);
-      y += 16;
+      y += 18;
       doc.setFont("helvetica", "normal");
       doc.setTextColor(...textColor);
-      doc.setFontSize(9);
+      doc.setFontSize(10);
       for (const rec of recommendations) {
         doc.setTextColor(...sage);
         doc.text("->", margin + 15, y);
         doc.setTextColor(...textColor);
         const recLine = doc.splitTextToSize(rec, contentWidth - 50);
         doc.text(recLine[0], margin + 30, y);
-        y += 18;
+        y += 20;
       }
       y += 15;
     }
@@ -348,12 +382,12 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     checkPageBreak(120);
     drawLine();
     doc.setTextColor(...dark);
-    doc.setFontSize(14);
+    doc.setFontSize(16);
     doc.setFont("helvetica", "bold");
     doc.text("What a Weak Online Presence Could Mean", margin, y);
-    y += 15;
+    y += 18;
     doc.setTextColor(...mutedText);
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
     doc.text(
       `Estimates based on industry averages for ${tradeData.label.toLowerCase()} businesses in Northeast Alabama`,
@@ -378,7 +412,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       doc.setFont("helvetica", "bold");
       doc.text(roiData[i].value, rx + roiWidth / 2, y + 25, { align: "center" });
       doc.setTextColor(...mutedText);
-      doc.setFontSize(8);
+      doc.setFontSize(9);
       doc.setFont("helvetica", "normal");
       doc.text(roiData[i].label, rx + roiWidth / 2, y + 40, { align: "center" });
     }
@@ -388,7 +422,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.setFillColor(240, 249, 240);
     doc.roundedRect(margin, y, contentWidth, 35, 6, 6, "F");
     doc.setTextColor(...textColor);
-    doc.setFontSize(10);
+    doc.setFontSize(11);
     doc.setFont("helvetica", "normal");
     const paybackJobs = tradeData.paybackJobs[recommendedTier] ?? 4;
     doc.text(
@@ -399,29 +433,38 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     y += 45;
 
     doc.setTextColor(...mutedText);
-    doc.setFontSize(8);
+    doc.setFontSize(9);
     doc.text("Your results may vary — these numbers reflect typical businesses in our area.", margin, y);
     y += 20;
   }
 
   // ── Footer ──
-  const footerY = doc.internal.pageSize.getHeight() - 40;
+  // Place footer at bottom of page, but ensure at least 30pt gap from content
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const footerHeight = 50;
+  const footerY = Math.max(y + 30, pageHeight - footerHeight);
+  // If footer would go off-page, add a new page
+  if (footerY + footerHeight > pageHeight) {
+    doc.addPage();
+    y = 50;
+  }
+  const finalFooterY = Math.max(y + 30, pageHeight - footerHeight);
   doc.setFillColor(...dark);
-  doc.rect(0, footerY - 10, pageWidth, 50, "F");
+  doc.rect(0, finalFooterY, pageWidth, footerHeight, "F");
   doc.setTextColor(...terracotta);
-  doc.setFontSize(10);
+  doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
-  doc.text("Ready to fix this?", margin, footerY + 8);
+  doc.text("Ready to fix this?", margin, finalFooterY + 18);
   doc.setTextColor(200, 200, 200);
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text("headleyweb.com  |  (256) 644-7334  |  matt@headleyweb.com", margin, footerY + 22);
+  doc.text("headleyweb.com  |  (256) 644-7334  |  matt@headleyweb.com", margin, finalFooterY + 34);
   doc.setTextColor(...mutedText);
-  doc.setFontSize(7);
+  doc.setFontSize(8);
   doc.text(
     `Generated ${new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}`,
     pageWidth - margin,
-    footerY + 22,
+    finalFooterY + 34,
     { align: "right" }
   );
 

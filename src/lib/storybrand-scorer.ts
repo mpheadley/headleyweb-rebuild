@@ -217,6 +217,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "1.1", label: "Customer Problem in Headline", section: "Hero",
     autoScore: heroScore, signals: [...heroFailSignals, ...heroPassSignals],
+    passLabel: "Your headline speaks to a real customer problem",
+    failLabel: "Headline doesn't connect to a real customer pain",
   });
 
   // 1.2 Clear Value Proposition
@@ -234,6 +236,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "1.2", label: "Clear Value Proposition", section: "Hero",
     autoScore: vpScore, signals: vpSignals,
+    passLabel: "Visitors can quickly tell what you do and where",
+    failLabel: "Visitors can't tell what you do in 5 seconds",
   });
 
   // 1.3 Direct CTA Above the Fold
@@ -255,12 +259,16 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "1.3", label: "Direct CTA Above the Fold", section: "Hero",
     autoScore: ctaScore, signals: ctaSignals,
+    passLabel: "Clear call-to-action visible right away",
+    failLabel: "No clear call-to-action above the fold",
   });
 
   // 1.4 Sub-headline Expands the Story (manual)
   items.push({
     id: "1.4", label: "Sub-headline Expands the Story", section: "Hero",
     autoScore: null, signals: heroSubheadline ? [`Sub-headline found: "${heroSubheadline.slice(0, 100)}"`] : ["No sub-headline detected"],
+    passLabel: "Sub-headline adds helpful detail",
+    failLabel: "No sub-headline to explain what you offer",
   });
 
   // 1.5 No "We" Disease in Hero
@@ -290,12 +298,16 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "1.5", label: 'No "We" Disease in Hero', section: "Hero",
     autoScore: pronounScore, signals: pronounSignals,
+    passLabel: "Your hero section focuses on the customer, not you",
+    failLabel: "Hero talks about your business instead of the customer",
   });
 
   // 1.6 Three Questions Answered (manual)
   items.push({
     id: "1.6", label: "Three Questions Answered in 5 Seconds", section: "Hero",
     autoScore: null, signals: ["Manual check: What do you offer? How does it help me? What do I do next?"],
+    passLabel: "A visitor can answer 'what, how, and what next' in seconds",
+    failLabel: "Visitors can't quickly tell what you offer, how it helps, or what to do next",
   });
 
   // 2.1 External Problem Stated
@@ -314,6 +326,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "2.1", label: "External Problem Stated", section: "Problem",
     autoScore: painScore, signals: painSignals,
+    passLabel: "You name the problem your customers are facing",
+    failLabel: "Doesn't name the problem your customers face",
   });
 
   // 2.2 Internal/Emotional Problem
@@ -332,6 +346,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "2.2", label: "Internal/Emotional Problem Addressed", section: "Problem",
     autoScore: emotionScore, signals: emotionSignals,
+    passLabel: "You speak to how the problem makes customers feel",
+    failLabel: "Doesn't speak to how the problem makes customers feel",
   });
 
   // 3.1 Empathy
@@ -350,6 +366,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "3.1", label: "Guide Shows Empathy", section: "Guide",
     autoScore: empathyScore, signals: empathySignals,
+    passLabel: "You show customers you understand their situation",
+    failLabel: "Doesn't show customers you understand what they're going through",
   });
 
   // 3.2 Authority
@@ -374,6 +392,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "3.2", label: "Guide Shows Authority", section: "Guide",
     autoScore: authorityScore, signals: authoritySignals,
+    passLabel: "You back up your expertise with proof",
+    failLabel: "No proof you're the right person for the job",
   });
 
   // 4.1 Simple Step-by-Step Plan
@@ -395,6 +415,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "4.1", label: "Simple Step-by-Step Plan", section: "Plan",
     autoScore: planScore, signals: planSignals,
+    passLabel: "You show visitors exactly how to get started",
+    failLabel: "No clear 'here's how it works' steps",
   });
 
   // 4.2 Plan Reduces Risk
@@ -413,6 +435,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "4.2", label: "Plan Reduces Risk", section: "Plan",
     autoScore: riskScore, signals: riskSignals,
+    passLabel: "You reduce risk with guarantees or reassurance",
+    failLabel: "Nothing to make visitors feel safe taking the next step",
   });
 
   // 5.1 CTA Repeated Throughout
@@ -424,6 +448,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "5.1", label: "CTA Repeated Throughout Page", section: "Call to Action",
     autoScore: ctaRepeatScore, signals: ctaRepeatSignals,
+    passLabel: "Call-to-action buttons appear throughout the page",
+    failLabel: "Not enough call-to-action buttons — visitors lose interest",
   });
 
   // 5.2 CTA Language is Action-Oriented
@@ -443,6 +469,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "5.2", label: "CTA Language is Action-Oriented", section: "Call to Action",
     autoScore: ctaLangScore, signals: ctaLangSignals,
+    passLabel: "Your buttons use strong, clear action words",
+    failLabel: "Button text is vague — visitors aren't sure what happens next",
   });
 
   // 6.1 Failure/Consequences Stated
@@ -461,6 +489,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "6.1", label: "Failure/Consequences Stated", section: "Stakes",
     autoScore: consequenceScore, signals: consequenceSignals,
+    passLabel: "You show what happens if visitors do nothing",
+    failLabel: "Doesn't show what happens if they do nothing",
   });
 
   // 6.2 Success/Transformation Painted
@@ -479,6 +509,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "6.2", label: "Success/Transformation Painted", section: "Stakes",
     autoScore: successScore, signals: successSignals,
+    passLabel: "You paint a picture of what life looks like after",
+    failLabel: "Doesn't show visitors what success looks like",
   });
 
   // 7.1 No Jargon
@@ -497,6 +529,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "7.1", label: "No Jargon — Plain English", section: "Messaging",
     autoScore: jargonScore, signals: jargonSignals,
+    passLabel: "Your site uses plain, easy-to-understand language",
+    failLabel: "Too much jargon — customers won't understand what you're saying",
   });
 
   // 7.2 Phone Number Visible
@@ -518,6 +552,8 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   items.push({
     id: "7.2", label: "Phone Number Visible", section: "Messaging",
     autoScore: phoneScore, signals: phoneSignals,
+    passLabel: "Phone number is easy to find",
+    failLabel: "No phone number visible on the page",
   });
 
   // Calculate totals

@@ -386,10 +386,25 @@ export default function AuditPage() {
                     <p className="text-3xl font-bold mb-1">{auditResult.storyBrand.grade}</p>
                     <p className="text-sm">{getGradeLabel(auditResult.storyBrand.grade)}</p>
                   </div>
+                  {/* What's working (up to 3 passes) */}
+                  {(() => {
+                    const passes = auditResult.storyBrand!.items.filter(i => i.autoScore === 2);
+                    if (passes.length === 0) return null;
+                    return (
+                      <div className="space-y-2 mb-3">
+                        {passes.slice(0, 3).map((item) => (
+                          <div key={item.id} className="flex items-start gap-2 p-2 rounded-lg bg-green-50">
+                            <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                            <p className="text-sm text-hw-text">{item.passLabel}</p>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  })()}
+                  {/* What needs work (failures + warnings) */}
                   <div className="space-y-2">
                     {auditResult.storyBrand.items
                       .filter(i => i.autoScore !== null && i.autoScore < 2)
-                      .slice(0, 3)
                       .map((item) => (
                         <div key={item.id} className={`flex items-start gap-2 p-2 rounded-lg ${item.autoScore === 0 ? "bg-red-50" : "bg-yellow-50"}`}>
                           {item.autoScore === 0 ? (
@@ -397,7 +412,7 @@ export default function AuditPage() {
                           ) : (
                             <AlertTriangle className="w-4 h-4 text-yellow-600 shrink-0 mt-0.5" />
                           )}
-                          <p className="text-sm text-hw-text">{item.label}</p>
+                          <p className="text-sm text-hw-text">{item.failLabel}</p>
                         </div>
                       ))}
                   </div>
