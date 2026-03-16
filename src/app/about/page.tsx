@@ -192,6 +192,9 @@ export default function AboutPage() {
               Take the Quiz
             </Link>
           </div>
+          <p className="text-gray-400 text-sm mt-4 animate-on-scroll">
+            Want instant results? <Link href="/audit" className="text-hw-primary hover:text-hw-primary/80 underline transition-colors">Try the free automated audit</Link>
+          </p>
         </div>
       </section>
     </main>
