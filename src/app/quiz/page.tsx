@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -86,6 +86,9 @@ export default function QuizPage() {
   const [auditError, setAuditError] = useState<string | null>(null);
   const [auditLoading, setAuditLoading] = useState(false);
 
+  // Ref for scrolling to audit results
+  const auditResultsRef = useRef<HTMLDivElement>(null);
+
   // Checklist state keyed by URL for LocalStorage persistence
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [checklistLoaded, setChecklistLoaded] = useState<string | null>(null);
@@ -106,6 +109,13 @@ export default function QuizPage() {
     }
     setChecklistLoaded(checklistStorageKey);
   }, [checklistStorageKey, checklistLoaded]);
+
+  // Auto-scroll to audit results when they arrive
+  useEffect(() => {
+    if (auditResult && auditResultsRef.current) {
+      auditResultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [auditResult]);
 
   // Save checklist to LocalStorage on change
   const handleChecklistToggle = useCallback((key: string) => {
@@ -178,8 +188,12 @@ export default function QuizPage() {
       } else {
         setAuditResult(data as AuditResult);
       }
-    } catch {
-      setAuditError("Something went wrong. Please try again.");
+    } catch (err) {
+      if (err instanceof TypeError && err.message.includes("fetch")) {
+        setAuditError("Couldn't reach our server. Check your internet connection and try again.");
+      } else {
+        setAuditError("Something went wrong analyzing that site. Please try again.");
+      }
     }
     setAuditLoading(false);
   }
@@ -620,7 +634,7 @@ export default function QuizPage() {
 
               {/* ── Site Audit Results (Client-Facing) ── */}
               {auditResult && (
-                <div className="card-glow !p-8 md:!p-10">
+                <div ref={auditResultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
                   <h3 className="text-lg font-bold mb-1">
                     Your Site&apos;s Quick Checkup
                   </h3>
@@ -686,7 +700,7 @@ export default function QuizPage() {
                       <div className="space-y-2">
                         {auditResult.storyBrand.items
                           .filter(i => i.autoScore !== null && i.autoScore < 2)
-                          .slice(0, 4)
+                          .slice(0, 3)
                           .map((item) => (
                             <div key={item.id} className={`flex items-start gap-2 p-2 rounded-lg ${item.autoScore === 0 ? "bg-red-50" : "bg-yellow-50"}`}>
                               {item.autoScore === 0 ? (

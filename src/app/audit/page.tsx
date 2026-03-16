@@ -361,7 +361,7 @@ export default function AuditPage() {
                   <div className="space-y-2">
                     {auditResult.storyBrand.items
                       .filter(i => i.autoScore !== null && i.autoScore < 2)
-                      .slice(0, 4)
+                      .slice(0, 3)
                       .map((item) => (
                         <div key={item.id} className={`flex items-start gap-2 p-2 rounded-lg ${item.autoScore === 0 ? "bg-red-50" : "bg-yellow-50"}`}>
                           {item.autoScore === 0 ? (

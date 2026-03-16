@@ -1,9 +1,12 @@
-/* ── Server-safe PDF generation for Site Readiness Report ── */
+/* ── Shared PDF generation for Site Readiness Report ──
+ * Used by both the server-side email sender (generateReportPdf)
+ * and the client-side download button (buildReportDoc).
+ */
 
 import { jsPDF } from "jspdf";
 import type { AuditResult } from "./audit-types";
 
-type Archetype = {
+export type ReportArchetype = {
   name: string;
   emoji: string;
   tagline: string;
@@ -14,7 +17,7 @@ type Archetype = {
   tier: string;
 };
 
-type TradeEstimate = {
+export type ReportTradeEstimate = {
   label: string;
   avgJobValue: number;
   estimatedMissedLeads: [number, number];
@@ -22,16 +25,17 @@ type TradeEstimate = {
   paybackJobs: Record<string, number>;
 };
 
-type ReportInput = {
-  archetype: Archetype;
+export type ReportInput = {
+  archetype: ReportArchetype;
   auditResult: AuditResult | null;
-  tradeData: TradeEstimate | null;
+  tradeData: ReportTradeEstimate | null;
   recommendedTier: string;
   tierPrice: number;
   recommendations: string[];
 };
 
-export function generateReportPdf(input: ReportInput): Uint8Array {
+/** Build a jsPDF document with the full report. Caller decides output format. */
+export function buildReportDoc(input: ReportInput): jsPDF {
   const { archetype, auditResult, tradeData, recommendedTier, tierPrice, recommendations } = input;
 
   const doc = new jsPDF({ unit: "pt", format: "letter" });
@@ -421,5 +425,11 @@ export function generateReportPdf(input: ReportInput): Uint8Array {
     { align: "right" }
   );
 
+  return doc;
+}
+
+/** Server-side convenience: returns PDF as Uint8Array for email attachment. */
+export function generateReportPdf(input: ReportInput): Uint8Array {
+  const doc = buildReportDoc(input);
   return new Uint8Array(doc.output("arraybuffer"));
 }
