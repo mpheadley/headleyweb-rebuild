@@ -11,6 +11,7 @@ import { questions, tradeOptions, getArchetype, manualChecklist } from "../data/
 import QuizScoreGauge from "../components/QuizScoreGauge";
 import AuditCheck from "../components/AuditCheck";
 import StoryBrandItemRow from "../components/StoryBrandItemRow";
+import QuizReportPdf from "../components/QuizReportPdf";
 
 /* ── Plain-English Metric Labels ── */
 function getSpeedLabel(lcp: number): string {
@@ -981,6 +982,25 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                     Call Me — (256) 644-7334
                   </a>
                 </div>
+
+                {/* PDF Download */}
+                {result && (
+                  <div className="text-center mt-4">
+                    <QuizReportPdf
+                      archetype={result}
+                      auditResult={auditResult}
+                      tradeData={tradeData}
+                      recommendedTier={recommendedTier}
+                      tierPrice={tierPrice}
+                      recommendations={
+                        auditResult?.storyBrand?.items
+                          .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
+                          .slice(0, 3)
+                          .map(i => storyBrandRecommendations[i.id]) ?? []
+                      }
+                    />
+                  </div>
+                )}
 
                 <div className="text-center mt-6">
                   <button
