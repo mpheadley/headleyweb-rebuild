@@ -617,7 +617,7 @@ export default function QuizPage() {
               )}
 
               {/* ── Site Audit Results (Client-Facing) ── */}
-              {auditResult && !isInternal && (
+              {auditResult && (
                 <div className="card-glow !p-8 md:!p-10">
                   <h3 className="text-lg font-bold mb-1">
                     Your Site&apos;s Quick Checkup
