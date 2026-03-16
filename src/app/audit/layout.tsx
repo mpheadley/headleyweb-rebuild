@@ -37,6 +37,12 @@ export default function AuditLayout({ children }: { children: React.ReactNode })
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <noscript>
+        <div style={{ maxWidth: 600, margin: "120px auto", padding: 24, textAlign: "center", fontFamily: "system-ui, sans-serif" }}>
+          <h1>Free Site Audit</h1>
+          <p>This tool requires JavaScript to run. Please enable JavaScript in your browser, or call <a href="tel:+12566447334">(256) 644-7334</a> for a free manual audit.</p>
+        </div>
+      </noscript>
       <Suspense fallback={null}>{children}</Suspense>
     </>
   );

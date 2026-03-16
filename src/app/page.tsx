@@ -785,6 +785,58 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Quick Comparison */}
+          <div className="mt-10 overflow-x-auto animate-on-scroll">
+            <table className="w-full text-sm text-left border-collapse">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="py-3 pr-4 text-gray-400 font-medium" />
+                  <th className="py-3 px-4 text-gray-300 font-semibold text-center">Get Found</th>
+                  <th className="py-3 px-4 text-hw-primary font-semibold text-center">Get Calls</th>
+                  <th className="py-3 px-4 text-gray-300 font-semibold text-center">Get Booked</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-300">
+                <tr className="border-b border-white/5">
+                  <td className="py-2.5 pr-4 text-gray-400">Pages</td>
+                  <td className="py-2.5 px-4 text-center">1</td>
+                  <td className="py-2.5 px-4 text-center">3–5</td>
+                  <td className="py-2.5 px-4 text-center">5–7</td>
+                </tr>
+                <tr className="border-b border-white/5">
+                  <td className="py-2.5 pr-4 text-gray-400">Timeline</td>
+                  <td className="py-2.5 px-4 text-center">1–2 weeks</td>
+                  <td className="py-2.5 px-4 text-center">2–3 weeks</td>
+                  <td className="py-2.5 px-4 text-center">3–4 weeks</td>
+                </tr>
+                <tr className="border-b border-white/5">
+                  <td className="py-2.5 pr-4 text-gray-400">SEO</td>
+                  <td className="py-2.5 px-4 text-center">Basic</td>
+                  <td className="py-2.5 px-4 text-center">Full</td>
+                  <td className="py-2.5 px-4 text-center">Advanced + AI</td>
+                </tr>
+                <tr className="border-b border-white/5">
+                  <td className="py-2.5 pr-4 text-gray-400">GBP Setup</td>
+                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
+                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
+                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
+                </tr>
+                <tr className="border-b border-white/5">
+                  <td className="py-2.5 pr-4 text-gray-400">FAQ Schema</td>
+                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
+                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
+                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
+                </tr>
+                <tr>
+                  <td className="py-2.5 pr-4 text-gray-400">AI Visibility</td>
+                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
+                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
+                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <p className="text-center text-gray-400 text-sm mt-8 animate-on-scroll">
             Flat-rate build. No surprises. 50% upfront, 50% at launch.
           </p>

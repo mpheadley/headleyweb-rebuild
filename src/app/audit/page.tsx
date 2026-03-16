@@ -297,11 +297,18 @@ export default function AuditPage() {
               </p>
 
               {/* Score Gauges */}
-              <div className="flex justify-center gap-4 md:gap-8 flex-wrap mb-8">
+              <div className="flex justify-center gap-4 md:gap-8 flex-wrap mb-2">
                 <QuizScoreGauge score={auditResult.performance} label="Speed" />
                 <QuizScoreGauge score={auditResult.seo} label="SEO" />
                 <QuizScoreGauge score={auditResult.accessibility} label="Accessibility" />
               </div>
+              <p className="text-xs text-hw-text-light text-center mb-8">
+                <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> 90+ Good</span>
+                <span className="mx-2">·</span>
+                <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-500 inline-block" /> 50–89 Fair</span>
+                <span className="mx-2">·</span>
+                <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> Below 50 Poor</span>
+              </p>
 
               {/* Plain-English Summary */}
               <div className="space-y-3 mb-6">
