@@ -184,7 +184,7 @@ export default function AboutPage() {
             Jacksonville, Alabama &middot; Serving Northeast Alabama
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
-            <Link href="/contact" className="btn-primary text-lg px-8">
+            <Link href="/audit" className="btn-primary text-lg px-8">
               Get Your Free Site Checkup <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">

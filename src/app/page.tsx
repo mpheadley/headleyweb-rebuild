@@ -5,7 +5,6 @@ import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
 import LazyPageSpeedProof from "./components/LazyPageSpeedProof";
-import CheckupForm from "./components/CheckupForm";
 import { projects } from "@/app/data/projects";
 import { getAllPosts } from "@/lib/blog";
 
@@ -214,9 +213,9 @@ export default function Home() {
                 predictable flat rate.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="#checkup" className="btn-primary">
+                <Link href="/audit" className="btn-primary">
                   Get Your Free Site Checkup
-                </a>
+                </Link>
                 <Link href="/quiz" className="btn-secondary !text-white !border-white/80 hover:!bg-hw-secondary hover:!border-hw-secondary">
                   <Sparkles className="w-5 h-5 mr-2" />
                   Take the Quiz
@@ -303,9 +302,9 @@ export default function Home() {
                 I&apos;ll include an AI visibility check in your free site checkup.
               </p>
             </div>
-            <a href="#checkup" className="btn-primary whitespace-nowrap shrink-0">
+            <Link href="/audit" className="btn-primary whitespace-nowrap shrink-0">
               Get Your Free Checkup
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -384,9 +383,9 @@ export default function Home() {
                 <Video className="w-7 h-7 text-hw-secondary" />
                 <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-secondary text-white text-xs font-bold flex items-center justify-center">1</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Request Your Free Checkup</h3>
+              <h3 className="text-xl font-bold mb-2">Run Your Free Site Audit</h3>
               <p className="text-hw-text-light">
-                Take the quiz or fill out the form. I&apos;ll record a personalized video showing exactly where you stand online.
+                Check your site in 30 seconds. I&apos;ll follow up with a personalized video showing exactly where you stand online.
               </p>
             </div>
             {/* Connector 1→2 */}
@@ -620,9 +619,9 @@ export default function Home() {
 
           <div className="text-center animate-on-scroll">
             <p className="text-gray-300 mb-6">Want results like these for your business?</p>
-            <a href="#checkup" className="btn-primary">
+            <Link href="/audit" className="btn-primary">
               Get Your Free Site Checkup
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -686,7 +685,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Hosting, security, &amp; minor updates</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#checkup" className="btn-primary w-full text-center">Get Found Now</a>
+              <Link href="/contact" className="btn-primary w-full text-center">Get Found Now</Link>
             </div>
 
             {/* Get Calls — Best Value */}
@@ -733,7 +732,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#checkup" className="btn-primary w-full text-center">Start Getting Calls</a>
+              <Link href="/contact" className="btn-primary w-full text-center">Start Getting Calls</Link>
             </div>
 
             {/* Get Booked */}
@@ -781,7 +780,7 @@ export default function Home() {
                 <span className="text-xs text-gray-300">Growth + AI visibility &amp; strategy</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
-              <a href="#checkup" className="btn-primary w-full text-center">Dominate Local Search</a>
+              <Link href="/contact" className="btn-primary w-full text-center">Dominate Local Search</Link>
             </div>
           </div>
 
@@ -1102,7 +1101,7 @@ export default function Home() {
             Serving Jacksonville, Anniston, and Northeast Alabama
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
-            <Link href="/contact" className="btn-primary text-lg px-8">
+            <Link href="/audit" className="btn-primary text-lg px-8">
               Get Your Free Site Checkup <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
@@ -1113,17 +1112,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Lead Gen Form ═══ */}
-      <section id="checkup" className="py-24 md:py-32 px-6">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Checkup</p>
-            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Get Your Free Site Checkup</h2>
-            <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
-              I&apos;ll personally review your online presence and send you a detailed report plus a short video walkthrough showing exactly what&apos;s keeping customers from finding you — no sales pitch, no strings attached.
-            </p>
-          </div>
-          <CheckupForm />
+      {/* ═══ Free Site Checkup CTA ═══ */}
+      <section className="py-24 md:py-32 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Site Checkup</p>
+          <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">See How Your Website Stacks Up</h2>
+          <p className="text-hw-text-light mt-4 max-w-xl mx-auto mb-8 animate-on-scroll">
+            Get an instant report on your site&apos;s speed, SEO, and messaging — free, no strings attached. I&apos;ll follow up with a personal video walkthrough showing exactly what to fix.
+          </p>
+          <Link href="/audit" className="btn-primary text-lg px-8 animate-on-scroll">
+            Check Your Site <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
         </div>
       </section>
 

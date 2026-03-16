@@ -75,12 +75,6 @@ export default function Nav() {
             })}
             <Link
               href="/audit"
-              className="text-sm font-medium text-hw-primary hover:text-white transition-colors"
-            >
-              Free Audit
-            </Link>
-            <Link
-              href="/contact"
               className="btn-primary text-sm !py-2 !px-4"
             >
               Get Your Free Site Checkup
@@ -139,13 +133,6 @@ export default function Nav() {
           })}
           <Link
             href="/audit"
-            className="text-lg font-medium text-hw-primary hover:text-white transition-colors"
-            onClick={() => setMobileOpen(false)}
-          >
-            Free Audit
-          </Link>
-          <Link
-            href="/contact"
             className="btn-primary text-lg mt-4"
             onClick={() => setMobileOpen(false)}
           >

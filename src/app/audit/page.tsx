@@ -731,14 +731,19 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
           {/* ── Bottom CTAs ── */}
           {auditResult && (
             <div className="card-glow !p-8 md:!p-10">
+              <div className="bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5 text-center mb-2">
+                <p className="text-sm font-semibold text-hw-secondary mb-1">What happens next?</p>
+                <p className="text-sm text-hw-text">
+                  I&apos;ll record a personal video walkthrough of these results and email it to you — no charge, no strings attached.
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link href="/#checkup" className="btn-primary text-center">
-                  Get Your Free Video Walkthrough
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-                <a href="tel:+12566447334" className="btn-secondary text-center">
+                <a href="tel:+12566447334" className="btn-primary text-center">
                   Call Me — (256) 644-7334
                 </a>
+                <Link href="/contact" className="btn-secondary text-center">
+                  Send Me a Message
+                </Link>
               </div>
 
               {/* PDF Download + Email */}

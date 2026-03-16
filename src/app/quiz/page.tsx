@@ -1000,7 +1000,7 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
               {/* ── CTAs ── */}
               <div className="card-glow !p-8 md:!p-10">
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link href="/#checkup" className="btn-primary text-center">
+                  <Link href="/audit" className="btn-primary text-center">
                     Get Your Free Site Checkup
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
