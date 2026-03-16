@@ -97,6 +97,34 @@ export default function AuditPage() {
     }
   }, [auditResult]);
 
+  // Send audit data to Formspree for lead capture (fire-and-forget)
+  useEffect(() => {
+    if (!auditResult) return;
+    const formData: Record<string, string | number> = {
+      _subject: `Site Audit: ${auditResult.url}`,
+      source: "audit-page",
+      site_url: auditResult.url,
+      trade: trade || "not selected",
+      audit_performance: auditResult.performance,
+      audit_seo: auditResult.seo,
+      audit_accessibility: auditResult.accessibility,
+      audit_lcp: `${auditResult.lcp}s`,
+      audit_https: auditResult.isHttps ? "Yes" : "No",
+      audit_meta_desc: auditResult.hasMetaDescription ? "Yes" : "No",
+      audit_local_schema: auditResult.hasLocalBusinessSchema ? "Yes" : "No",
+      audit_issues: auditResult.failedAudits.length,
+    };
+    if (auditResult.storyBrand) {
+      formData.storybrand_grade = auditResult.storyBrand.grade;
+      formData.storybrand_score = `${auditResult.storyBrand.autoTotal}/${auditResult.storyBrand.autoMax}`;
+    }
+    fetch("https://formspree.io/f/xyknwdgp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }).catch(() => { /* silent — lead capture is best-effort */ });
+  }, [auditResult, trade]);
+
   const handleChecklistToggle = useCallback((key: string) => {
     setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
   }, []);
