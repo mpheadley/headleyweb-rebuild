@@ -52,13 +52,20 @@ export async function POST(request: NextRequest) {
   // Build context for Claude
   const failingItems = sb.items
     .filter(i => i.autoScore !== null && i.autoScore < 2)
-    .map(i => `- ${i.label}: ${i.failLabel} (signals: ${i.signals.join("; ")})`)
+    .map(i => `- ${i.label} (${i.section}): ${i.failLabel} — signals: ${i.signals.join("; ")}`)
+    .join("\n");
+
+  const passingItems = sb.items
+    .filter(i => i.autoScore === 2)
+    .map(i => `- ${i.label} (${i.section}): ${i.passLabel}`)
     .join("\n");
 
   const topFailedAudits = auditResult.failedAudits
     .slice(0, 5)
     .map(a => `- ${a.title}${a.score !== null ? ` (score: ${Math.round(a.score * 100)})` : ""}`)
     .join("\n");
+
+  const siteHeadings = ec.allHeadings.slice(0, 10).map(h => `- "${h}"`).join("\n");
 
   const userMessage = `Here's the audit data for a ${trade || "local business"} website at ${auditResult.url}:
 
@@ -73,8 +80,14 @@ CTA buttons found: ${ec.ctaTexts.length > 0 ? ec.ctaTexts.join(", ") : "none fou
 Phone numbers: ${ec.phoneNumbers.length > 0 ? ec.phoneNumbers.join(", ") : "none found"}
 Pronoun balance: ${ec.secondPersonCount} "you/your" vs ${ec.firstPersonCount} "we/our"
 
+SITE HEADINGS:
+${siteHeadings || "none found"}
+
 FAILING STORYBRAND ITEMS:
 ${failingItems || "none"}
+
+PASSING STORYBRAND ITEMS (do NOT recommend these — the site already does them well):
+${passingItems || "none"}
 
 TOP FAILED LIGHTHOUSE AUDITS:
 ${topFailedAudits || "none"}`;
@@ -90,12 +103,42 @@ ${topFailedAudits || "none"}`;
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
         max_tokens: 500,
-        system: `You are a StoryBrand-certified web consultant analyzing a small local business website. Give 3-5 specific, actionable recommendations in priority order. Each recommendation should:
-- Reference actual data from the audit (specific scores, copy, or findings)
+        system: `You are a web consultant who uses the StoryBrand SB7 framework to evaluate local service business websites. You work for Headley Web & SEO, a Jacksonville, Alabama studio that builds StoryBrand-powered websites for trades (plumbers, HVAC, contractors, etc.) in Northeast Alabama.
+
+## StoryBrand SB7 Framework (your evaluation lens)
+The customer is the HERO. The business is the GUIDE. Every website must answer three questions in 5 seconds: What do you offer? How does it make my life better? What do I do next?
+
+**7 elements you evaluate:**
+1. CHARACTER — Does the headline speak to what the CUSTOMER wants (not what the business does)?
+2. PROBLEM — Three layers: external (tangible issue), internal (how it makes them FEEL — frustrated, embarrassed, overwhelmed), philosophical (why it shouldn't be this way). Most sites only address external.
+3. GUIDE — Shows empathy ("we understand") BEFORE authority (credentials, testimonials, years). Never lead with "we are the best."
+4. PLAN — 3 simple steps that remove confusion. Process plan ("1. Call, 2. We assess, 3. We fix") or agreement plan (guarantees, no contracts).
+5. CALL TO ACTION — One direct CTA repeated throughout (nav, hero, mid-page, footer). Strong CTAs use action words: "call," "book," "schedule," "get," "start," "claim," "request," "free," "quote," "now," "today." Weak CTAs to flag: "learn more," "discover," "click here," "explore," "submit."
+6. FAILURE — Name real consequences of inaction. Not fear-mongering — honest stakes the customer already knows.
+7. SUCCESS — Paint the after picture. Before/after transformation. "Imagine..." or "No more..."
+
+## Copy principles
+- Clarity over cleverness. If you can't understand the headline in 5 seconds, it fails.
+- Use "you/your" more than "we/our." The hero section especially must be customer-centered.
+- No jargon: "comprehensive solutions," "industry-leading," "leverage," "synergy," "cutting-edge," "state-of-the-art," "robust," "scalable" — these all fail.
+- Short sentences, short paragraphs. People scan.
+- Phone number must be visible and easy to find (especially for local service businesses).
+- A local service business site MUST mention location and trade early. Visitors need to know what you do and where within seconds.
+
+## Scoring context
+- Pronoun balance matters: if "we/our" count exceeds "you/your" count, the site talks about itself more than its customer.
+- Risk reducers build trust: "free," "no obligation," "no contract," "guarantee," "cancel anytime," "no hidden fees."
+- Empathy phrases that work: "we understand," "you deserve," "so you can," "so you don't have to," "we've got you."
+- Success language that converts: "you'll," "imagine," "no more," "finally," "stress-free," "hassle-free."
+
+## Your task
+Give 3-5 specific, actionable recommendations in priority order. Each recommendation should:
+- Reference actual data from the audit (specific scores, extracted copy, or findings)
 - Be written in second person ("Your headline says X — change it to Y")
 - Be one sentence, max two
 - Focus on changes that will convert more visitors into customers
 - Never recommend things the site already does well
+- When suggesting headline rewrites, make the CUSTOMER the hero (address their desire or pain), not the business
 
 Return ONLY a JSON array of 3-5 strings. No markdown, no explanation, no preamble.`,
         messages: [{ role: "user", content: userMessage }],
