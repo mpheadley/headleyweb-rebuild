@@ -61,6 +61,24 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 - Keep hero headline broad (no geo). Geo goes in JSON-LD `areaServed`, answer-first blocks, footer, trade pages.
 - Don't use "StoryBrand" in hero or customer-facing headlines. Use it on About page, Services page, blog posts.
 
+### Blog Writing Workflow
+- **Voice guide:** `~/Documents/Web Development/local-legends/content/AUTHENTIC-VOICE-GUIDE.md` — same guide as Southern Legends, applies here too.
+- **AI kill list applies:** No delve, foster, leverage, tapestry, "it's worth noting," tricolon groups, mirror paragraphs, summary conclusions. See Part 5 of the voice guide.
+- **AI-written posts (6):** All current published blog posts were written entirely by Claude and tagged `aiWritten: true` in frontmatter. They need Matt's review and proofing before being treated as final. Don't reference them as voice examples.
+- **Draft in progress:** `drafts/why-i-build-for-local-businesses.mdx` — outline only, needs Matt's voice.
+
+**What Matt writes from scratch:**
+- Personal story posts (like the "why I build" draft)
+- About page copy, trust-building sections, anything that builds credibility through vulnerability
+
+**Where Claude can draft with heavy rewriting by Matt:**
+- Tactical/educational posts ("5 things your HVAC website needs") — Claude drafts, Matt rewrites in his voice before publishing
+
+**Where Claude can draft with light editing:**
+- Meta descriptions, schema markup, technical SEO content, social copy
+
+**When Matt removes `aiWritten: true` from a post, it's been proofed and can be treated as final/publishable.**
+
 ### Structure
 - Build one page at a time. Finish and verify before starting the next.
 - Build one section at a time within each page. Pause for review after each section.
