@@ -52,6 +52,8 @@ export type AuditResult = {
   passedAudits: { id: string; title: string }[];
   // StoryBrand copy analysis
   storyBrand: StoryBrandScore | null;
+  // Mobile screenshot (base64 data URI from PageSpeed Insights)
+  screenshot: string | null;
 };
 
 export type AuditError = {

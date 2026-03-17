@@ -225,6 +225,30 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     }
     y += 80;
 
+    // ── 3b. Mobile Screenshot ──
+    if (auditResult.screenshot) {
+      checkPageBreak(280);
+      doc.setTextColor(...mutedText);
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "normal");
+      doc.text("How your site looks on mobile", margin + contentWidth / 2, y, { align: "center" });
+      y += 10;
+
+      // Add screenshot — phone-like frame
+      const imgW = 140;
+      const imgH = 250;
+      const imgX = margin + (contentWidth - imgW) / 2;
+      doc.setDrawColor(200, 200, 200);
+      doc.setLineWidth(1);
+      doc.roundedRect(imgX - 4, y - 4, imgW + 8, imgH + 8, 8, 8, "S");
+      try {
+        doc.addImage(auditResult.screenshot, "JPEG", imgX, y, imgW, imgH);
+      } catch {
+        // If image fails to load, skip silently
+      }
+      y += imgH + 20;
+    }
+
     // ── 4. What your customers experience ──
     checkPageBreak(100);
     doc.setTextColor(...dark);

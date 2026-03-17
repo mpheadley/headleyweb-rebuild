@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, Globe, Loader2, CheckCircle2, AlertTriangle, Search, Mail } from "lucide-react";
 import type { AuditResult } from "@/lib/audit-types";
@@ -72,6 +73,10 @@ export default function AuditPage() {
   const tradeData: TradeEstimate | null = trade ? roiEstimates[trade] ?? null : null;
   const recommendedTier = "Get Calls";
   const tierPrice = tierPrices[recommendedTier] ?? 795;
+
+  // AI recommendations state
+  const [aiRecs, setAiRecs] = useState<string[] | null>(null);
+  const [aiRecsLoading, setAiRecsLoading] = useState(false);
 
   // Email state
   const [email, setEmail] = useState("");
@@ -147,7 +152,23 @@ export default function AuditPage() {
       if (!res.ok) {
         setAuditError(data.error || "Could not analyze that URL.");
       } else {
-        setAuditResult(data as AuditResult);
+        const result = data as AuditResult;
+        setAuditResult(result);
+        // Fetch AI recommendations in background (non-blocking)
+        if (result.storyBrand) {
+          setAiRecsLoading(true);
+          fetch("/api/audit-recommendations", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ auditResult: result, trade }),
+          })
+            .then(r => r.ok ? r.json() : null)
+            .then(json => {
+              if (json?.recommendations?.length > 0) setAiRecs(json.recommendations);
+            })
+            .catch(() => {})
+            .finally(() => setAiRecsLoading(false));
+        }
       }
     } catch (err) {
       clearTimeout(timeout);
@@ -218,11 +239,12 @@ export default function AuditPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // Compute recommendations for PDF
-  const recommendations = auditResult?.storyBrand?.items
+  // Compute recommendations — prefer AI recs, fall back to static
+  const staticRecs = auditResult?.storyBrand?.items
     .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
     .slice(0, 3)
     .map(i => storyBrandRecommendations[i.id]) ?? [];
+  const recommendations = aiRecs ?? staticRecs;
 
   // Compute overall grade for teaser
   const overallScore = (() => {
@@ -401,6 +423,25 @@ export default function AuditPage() {
                 <span className="mx-2">·</span>
                 <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> Below 50 Poor</span>
               </p>
+
+              {/* Mobile Screenshot */}
+              {auditResult.screenshot && (
+                <div className="flex justify-center mb-8">
+                  <div className="relative w-48 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                    <Image
+                      src={auditResult.screenshot}
+                      alt={`Mobile screenshot of ${auditResult.url}`}
+                      width={360}
+                      height={640}
+                      className="w-full h-auto"
+                      unoptimized
+                    />
+                    <p className="text-[10px] text-hw-text-light text-center py-1 bg-gray-50">
+                      How your site looks on mobile
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Email Gate */}
               <div className="border-t border-gray-100 pt-6">
@@ -685,12 +726,22 @@ export default function AuditPage() {
                     );
                   })}
 
-                  {/* Internal Recommendations */}
-                  {recommendations.length > 0 && (
+                  {/* Recommendations (AI-powered when available) */}
+                  {(recommendations.length > 0 || aiRecsLoading) && (
                     <div className="mt-4 bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5">
-                      <p className="text-sm font-bold text-hw-secondary uppercase tracking-wide mb-3">
-                        What I&apos;d Fix First
-                      </p>
+                      <div className="flex items-center gap-2 mb-3">
+                        <p className="text-sm font-bold text-hw-secondary uppercase tracking-wide">
+                          What I&apos;d Fix First
+                        </p>
+                        {aiRecs && (
+                          <span className="text-[10px] bg-hw-secondary/10 text-hw-secondary px-1.5 py-0.5 rounded font-medium">
+                            AI
+                          </span>
+                        )}
+                        {aiRecsLoading && (
+                          <Loader2 className="w-3.5 h-3.5 animate-spin text-hw-secondary" />
+                        )}
+                      </div>
                       <ul className="space-y-2">
                         {recommendations.map((rec, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-hw-text">

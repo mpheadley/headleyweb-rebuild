@@ -94,6 +94,10 @@ export default function QuizPage() {
   const [auditError, setAuditError] = useState<string | null>(null);
   const [auditLoading, setAuditLoading] = useState(false);
 
+  // AI recommendations state
+  const [aiRecs, setAiRecs] = useState<string[] | null>(null);
+  const [aiRecsLoading, setAiRecsLoading] = useState(false);
+
   // PDF email state
   const [reportSending, setReportSending] = useState(false);
   const [reportSent, setReportSent] = useState(false);
@@ -199,7 +203,23 @@ export default function QuizPage() {
       if (!res.ok) {
         setAuditError(data.error || "Could not analyze that URL.");
       } else {
-        setAuditResult(data as AuditResult);
+        const result = data as AuditResult;
+        setAuditResult(result);
+        // Fetch AI recommendations in background
+        if (result.storyBrand) {
+          setAiRecsLoading(true);
+          fetch("/api/audit-recommendations", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ auditResult: result, trade }),
+          })
+            .then(r => r.ok ? r.json() : null)
+            .then(json => {
+              if (json?.recommendations?.length > 0) setAiRecs(json.recommendations);
+            })
+            .catch(() => {})
+            .finally(() => setAiRecsLoading(false));
+        }
       }
     } catch (err) {
       if (err instanceof TypeError && err.message.includes("fetch")) {
@@ -359,10 +379,11 @@ export default function QuizPage() {
     return `Right now, ${parts.slice(0, 2).join(" and ")}. Get the full report for the complete breakdown.`;
   })();
 
-  const recommendations = auditResult?.storyBrand?.items
+  const staticRecs = auditResult?.storyBrand?.items
     .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
     .slice(0, 3)
     .map(i => storyBrandRecommendations[i.id]) ?? [];
+  const recommendations = aiRecs ?? staticRecs;
 
   async function handleSendReport() {
     if (!email.trim() || !auditResult) return;
@@ -748,6 +769,25 @@ export default function QuizPage() {
                     <span className="mx-2">·</span>
                     <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> Below 50 Poor</span>
                   </p>
+
+                  {/* Mobile Screenshot */}
+                  {auditResult.screenshot && (
+                    <div className="flex justify-center mb-8">
+                      <div className="relative w-48 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                        <Image
+                          src={auditResult.screenshot}
+                          alt={`Mobile screenshot of ${auditResult.url}`}
+                          width={360}
+                          height={640}
+                          className="w-full h-auto"
+                          unoptimized
+                        />
+                        <p className="text-[10px] text-hw-text-light text-center py-1 bg-gray-50">
+                          How your site looks on mobile
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Get Full Report */}
                   <div className="border-t border-gray-100 pt-6 text-center">

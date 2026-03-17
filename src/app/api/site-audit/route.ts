@@ -208,11 +208,15 @@ async function fetchPageSpeed(normalizedUrl: string) {
 
   failedAudits.sort((a, b) => (a.score ?? 0) - (b.score ?? 0));
 
+  // Extract mobile screenshot from PSI (base64 data URI)
+  const screenshot: string | null = audits["final-screenshot"]?.details?.data ?? null;
+
   return {
     performance, seo, accessibility,
     fcp, lcp, cls, tbt,
     isHttps, hasMetaDescription, hasViewport, hasHreflang, isLinkCrawlable, hasLocalBusinessSchema: false,
     failedAudits, passedAudits,
+    screenshot,
   };
 }
 
@@ -223,6 +227,7 @@ function getDefaultLighthouse() {
     isHttps: false, hasMetaDescription: false, hasViewport: false, hasHreflang: false, isLinkCrawlable: false, hasLocalBusinessSchema: false,
     failedAudits: [] as AuditResult["failedAudits"],
     passedAudits: [] as AuditResult["passedAudits"],
+    screenshot: null as string | null,
   };
 }
 
