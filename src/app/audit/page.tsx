@@ -10,7 +10,6 @@ import { tradeOptions } from "../data/quiz-questions";
 import QuizScoreGauge from "../components/QuizScoreGauge";
 import AuditCheck from "../components/AuditCheck";
 import StoryBrandItemRow from "../components/StoryBrandItemRow";
-import QuizReportPdf from "../components/QuizReportPdf";
 
 /* ── Plain-English Metric Labels ── */
 function getSpeedLabel(lcp: number): string {
@@ -186,6 +185,22 @@ export default function AuditPage() {
       });
       if (res.ok) {
         setEmailSent(true);
+        // Send lead data with email to Formspree (fire-and-forget)
+        fetch("https://formspree.io/f/xyknwdgp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            _subject: `Site Audit Lead: ${auditResult.url}`,
+            source: "audit-page-email",
+            email: email.trim(),
+            site_url: auditResult.url,
+            trade: trade || "not selected",
+            audit_performance: auditResult.performance,
+            audit_seo: auditResult.seo,
+            audit_accessibility: auditResult.accessibility,
+            storybrand_grade: auditResult.storyBrand?.grade ?? "N/A",
+          }),
+        }).catch(() => {});
       } else {
         setEmailError(true);
       }
@@ -746,30 +761,25 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                 </Link>
               </div>
 
-              {/* PDF Download + Email */}
+              {/* Get Your Report via Email */}
               <div className="mt-6 border-t border-gray-100 pt-6">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                  <QuizReportPdf
-                    archetype={{ name: "Site Audit", emoji: "🔍", tagline: "Instant website analysis", description: `Automated audit of ${auditResult.url} covering speed, SEO, accessibility, and messaging.`, strength: "", risk: "", recommendation: "Review the results below and take action on the top recommendations.", tier: "" }}
-                    auditResult={auditResult}
-                    tradeData={tradeData}
-                    recommendedTier={recommendedTier}
-                    tierPrice={tierPrice}
-                    recommendations={recommendations}
-                  />
-                  <span className="text-xs text-hw-text-light">or</span>
-                  {emailSent ? (
-                    <div role="status" aria-live="polite" className="text-center">
-                      <p className="text-sm text-green-600 flex items-center justify-center gap-1">
-                        <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
-                      </p>
-                      <p className="text-xs text-hw-text-light mt-2">
-                        Check your inbox in a few minutes. <Link href="/contact" className="text-hw-primary hover:text-hw-primary-dark underline">Schedule a call</Link> to walk through the results.
-                      </p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSendEmail} className="flex gap-2">
-                      <div className="relative">
+                {emailSent ? (
+                  <div role="status" aria-live="polite" className="text-center">
+                    <p className="text-sm text-green-600 flex items-center justify-center gap-1">
+                      <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
+                    </p>
+                    <p className="text-xs text-hw-text-light mt-2">
+                      Check your inbox in a few minutes. I&apos;ll follow up with a personal video walkthrough.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <p className="text-sm font-semibold text-hw-text mb-1">Get your full report as a PDF</p>
+                    <p className="text-xs text-hw-text-light mb-4">
+                      I&apos;ll email your report and follow up with a personal video walkthrough — free, no strings.
+                    </p>
+                    <form onSubmit={handleSendEmail} className="flex flex-col sm:flex-row gap-2 justify-center items-center">
+                      <div className="relative w-full sm:w-auto">
                         <label htmlFor="audit-email" className="sr-only">Email address</label>
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-hw-text-light" aria-hidden="true" />
                         <input
@@ -778,25 +788,25 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="you@email.com"
-                          className="form-input pl-10 pr-3 py-2 border border-gray-200 rounded-lg bg-white text-hw-text text-sm w-full sm:w-48"
+                          className="form-input pl-10 pr-3 py-2.5 border border-gray-200 rounded-lg bg-white text-hw-text text-sm w-full sm:w-64"
                           required
                         />
                       </div>
                       <button
                         type="submit"
                         disabled={emailSending}
-                        className="btn-secondary !text-sm !py-2 !px-4 inline-flex items-center gap-1"
+                        className="btn-primary !text-sm !py-2.5 !px-6 inline-flex items-center gap-2 w-full sm:w-auto justify-center"
                       >
-                        {emailSending ? <Loader2 className="w-3 h-3 animate-spin" /> : <Mail className="w-3 h-3" />}
-                        {emailSending ? "Sending..." : "Email Report"}
+                        {emailSending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
+                        {emailSending ? "Sending..." : "Send My Report"}
                       </button>
                     </form>
-                  )}
-                </div>
-                {emailError && (
-                  <p className="text-xs text-red-500 text-center mt-2">
-                    Couldn&apos;t send the email. Try downloading the PDF instead.
-                  </p>
+                    {emailError && (
+                      <p className="text-xs text-red-500 text-center mt-2">
+                        Something went wrong. Try again, or call (256) 644-7334 and I&apos;ll send it manually.
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
 
