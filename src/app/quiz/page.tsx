@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, ArrowLeft, Mail, RotateCcw, Globe, Loader2, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
+import { ArrowRight, ArrowLeft, Mail, RotateCcw, Globe, Loader2, CheckCircle2, XCircle, AlertTriangle, Download } from "lucide-react";
 import { roiEstimates, normalizeTier, tierPrices, type TradeEstimate } from "../data/roi-estimates";
 import type { AuditResult } from "@/lib/audit-types";
 import { questions, tradeOptions, getArchetype, manualChecklist } from "../data/quiz-questions";
@@ -414,6 +414,21 @@ export default function QuizPage() {
     setReportSending(false);
   }
 
+  async function handleDownloadPdf() {
+    if (!auditResult || !result) return;
+    const { buildReportDoc } = await import("@/lib/generate-report-pdf");
+    const doc = buildReportDoc({
+      archetype: result,
+      auditResult,
+      tradeData,
+      recommendedTier,
+      tierPrice,
+      recommendations,
+    });
+    const hostname = new URL(auditResult.url).hostname;
+    doc.save(`site-readiness-report-${hostname}.pdf`);
+  }
+
   return (
     <main id="main-content" className="min-h-screen bg-hw-light">
       {/* Header */}
@@ -796,9 +811,16 @@ export default function QuizPage() {
                         <p className="text-sm text-green-600 flex items-center justify-center gap-1">
                           <CheckCircle2 className="w-4 h-4" /> Full report sent to {email}
                         </p>
-                        <p className="text-xs text-hw-text-light mt-2">
+                        <p className="text-xs text-hw-text-light mt-2 mb-3">
                           Check your inbox — your detailed PDF is on the way.
                         </p>
+                        <button
+                          onClick={handleDownloadPdf}
+                          className="btn-secondary !text-sm !py-2 !px-5 inline-flex items-center gap-2"
+                        >
+                          <Download className="w-4 h-4" />
+                          Download PDF
+                        </button>
                       </div>
                     ) : (
                       <>

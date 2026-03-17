@@ -4,7 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Globe, Loader2, CheckCircle2, AlertTriangle, Search, Mail } from "lucide-react";
+import { ArrowRight, Globe, Loader2, CheckCircle2, AlertTriangle, Search, Mail, Download } from "lucide-react";
 import type { AuditResult } from "@/lib/audit-types";
 import { roiEstimates, normalizeTier, tierPrices, type TradeEstimate } from "../data/roi-estimates";
 import { tradeOptions } from "../data/quiz-questions";
@@ -225,6 +225,30 @@ export default function AuditPage() {
       setEmailError(true);
     }
     setEmailSending(false);
+  }
+
+  async function handleDownloadPdf() {
+    if (!auditResult) return;
+    const { buildReportDoc } = await import("@/lib/generate-report-pdf");
+    const doc = buildReportDoc({
+      archetype: {
+        name: "Site Audit",
+        emoji: "\u{1F50D}",
+        tagline: "Instant website analysis",
+        description: `Automated audit of ${auditResult.url} covering speed, SEO, accessibility, and messaging.`,
+        strength: "",
+        risk: "",
+        recommendation: "Review the results below and take action on the top recommendations.",
+        tier: "",
+      },
+      auditResult,
+      tradeData,
+      recommendedTier,
+      tierPrice,
+      recommendations,
+    });
+    const hostname = new URL(auditResult.url).hostname;
+    doc.save(`site-readiness-report-${hostname}.pdf`);
   }
 
   function handleReset() {
@@ -450,9 +474,16 @@ export default function AuditPage() {
                     <p className="text-sm text-green-600 flex items-center justify-center gap-1">
                       <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
                     </p>
-                    <p className="text-xs text-hw-text-light mt-2">
+                    <p className="text-xs text-hw-text-light mt-2 mb-3">
                       Check your inbox — your full report is on the way.
                     </p>
+                    <button
+                      onClick={handleDownloadPdf}
+                      className="btn-secondary !text-sm !py-2 !px-5 inline-flex items-center gap-2"
+                    >
+                      <Download className="w-4 h-4" />
+                      Download PDF
+                    </button>
                   </div>
                 ) : (
                   <div className="text-center">
