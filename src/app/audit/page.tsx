@@ -22,7 +22,7 @@ function getGradeColor(grade: string): string {
 }
 
 function getGradeLabel(grade: string): string {
-  if (grade === "A") return "StoryBrand-aligned — this site sells";
+  if (grade === "A") return "Clear and compelling — this site sells";
   if (grade === "B") return "Good foundation, needs tightening";
   if (grade === "C") return "Has pieces, but the message is muddled";
   if (grade === "D") return "Missing key messaging elements";
@@ -290,7 +290,7 @@ export default function AuditPage() {
     if (!auditResult) return "";
     const parts: string[] = [];
     if (auditResult.lcp > 4) {
-      parts.push(`your site takes ${auditResult.lcp}s to load — most visitors leave after 3`);
+      parts.push(`your site takes ${auditResult.lcp}s to load — even ready-to-hire customers may bounce at that speed`);
     } else if (auditResult.lcp > 2.5) {
       parts.push(`your site is a bit slow at ${auditResult.lcp}s`);
     }

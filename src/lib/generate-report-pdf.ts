@@ -2,21 +2,34 @@
  * Used by both the server-side email sender (generateReportPdf)
  * and the client-side download button (buildReportDoc).
  *
- * StoryBrand-aligned structure:
+ * Section order:
  *   1. Header (branding)
- *   2. Overall grade + executive summary (the bottom line)
- *   3. Scores (the visual hook)
- *   4. What your customers experience (speed + checks, customer-eye framing)
- *   5. The stakes / ROI (what this is costing you — failure)
- *   6. Messaging analysis (StoryBrand grade + details)
- *   7. What I'd fix first (the plan)
- *   8. What success looks like (the transformation — success)
- *   9. Archetype (quiz only — context, not the main event)
- *  10. Footer CTA (call to action)
+ *   2. Overall grade + executive summary
+ *   3. Mobile screenshot
+ *   4. Messaging analysis (clarity, CTA, empathy, authority)
+ *   5. Scores (speed, SEO, accessibility)
+ *   6. What your customers experience (speed callout + checks)
+ *   7. The stakes / ROI (trade-specific, when available)
+ *   8. What I'd fix first (recommendations)
+ *   9. What success looks like (transformation)
+ *  10. Archetype (quiz only)
+ *  11. Footer CTA
+ *
+ * Copy guidelines:
+ * - Never use "StoryBrand" in customer-facing text. Use plain language
+ *   ("Your Website's Message", "messaging", "clarity").
+ * - The PDF is auto-generated — don't imply Matt personally reviewed it.
+ *   Use "the checkup found" not "I found." First-person is OK for
+ *   forward-looking statements ("What I'd Fix First", "I'll follow up")
+ *   since those describe what Matt will do, not what he already did.
+ * - Keep labels honest about what the tool can actually verify.
+ *   If the code checks HTML (not the visual screenshot), don't claim
+ *   something is "visible" or "above the fold."
  */
 
 import { jsPDF } from "jspdf";
 import type { AuditResult } from "./audit-types";
+import { LOGO_ICON_BASE64 } from "./logo-icon-data";
 
 export type ReportArchetype = {
   name: string;
@@ -100,16 +113,26 @@ export function buildReportDoc(input: ReportInput): jsPDF {
   // ── 1. Header bar ──
   doc.setFillColor(...dark);
   doc.rect(0, 0, pageWidth, 90, "F");
+
+  // Logo icon (left side of header)
+  const logoW = 46;
+  const logoH = 40;
+  const logoX = margin;
+  const logoY = 22;
+  doc.addImage(LOGO_ICON_BASE64, "PNG", logoX, logoY, logoW, logoH);
+
+  // Text shifted right to accommodate logo
+  const textX = margin + logoW + 12;
   doc.setTextColor(...white);
   doc.setFontSize(22);
   doc.setFont("helvetica", "bold");
-  doc.text("Site Readiness Report", margin, 40);
+  doc.text("Site Readiness Report", textX, 40);
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...terracotta);
-  doc.text("Headley Web & SEO", margin, 60);
+  doc.text("Headley Web & SEO", textX, 60);
   doc.setTextColor(180, 180, 180);
-  doc.text("headleyweb.com  |  (256) 644-7334", margin, 76);
+  doc.text("headleyweb.com  |  (256) 644-7334", textX, 76);
 
   if (auditResult) {
     doc.setTextColor(...white);
@@ -136,7 +159,44 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     const overallColor = getScoreColor(overallScore);
 
     // Grade circle + summary
-    const gradeBoxHeight = 80;
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(...textColor);
+    doc.setFontSize(10);
+
+    // Build a dynamic summary sentence — lead with biggest pain point
+    const summaryParts: string[] = [];
+    // Messaging problems first — highest impact
+    if (auditResult.storyBrand && (auditResult.storyBrand.grade === "D" || auditResult.storyBrand.grade === "F")) {
+      summaryParts.push("your messaging isn't clear enough to convert visitors into customers");
+    } else if (auditResult.storyBrand && auditResult.storyBrand.grade === "C") {
+      summaryParts.push("your messaging has the right pieces but needs tightening");
+    }
+    // Speed second
+    if (auditResult.lcp > 4) {
+      summaryParts.push(`your site takes ${auditResult.lcp}s to load — even ready-to-hire customers may bounce at that speed`);
+    } else if (auditResult.lcp > 2.5) {
+      summaryParts.push(`your site is a bit slow at ${auditResult.lcp}s to load`);
+    }
+    if (!auditResult.hasLocalBusinessSchema) {
+      summaryParts.push("Google can't confirm your business details for local search");
+    }
+    if (!auditResult.hasMetaDescription) {
+      summaryParts.push("your site is missing a search description");
+    }
+
+    let summary: string;
+    if (summaryParts.length === 0 && recommendations.length > 0) {
+      summary = `Your site is in solid shape. The checkup still found ${recommendations.length} thing${recommendations.length > 1 ? "s" : ""} worth tightening — see "What I'd Fix First" below.`;
+    } else if (summaryParts.length === 0) {
+      summary = "Your site is in solid shape — speed, SEO, and messaging are all working for you.";
+    } else {
+      summary = `Your website is your hardest-working employee — but right now, ${summaryParts.slice(0, 2).join(" and ")}. Here's what the checkup found.`;
+    }
+
+    const summaryLines = doc.splitTextToSize(summary, contentWidth - 95);
+    const summaryLineCount = Math.min(summaryLines.length, 5);
+    const gradeBoxHeight = Math.max(80, 38 + summaryLineCount * 13 + 8);
+
     doc.setFillColor(...lightBg);
     doc.roundedRect(margin, y, contentWidth, gradeBoxHeight, 8, 8, "F");
 
@@ -160,39 +220,147 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...textColor);
     doc.setFontSize(10);
+    doc.text(summaryLines.slice(0, 5), margin + 80, y + 38);
+    y += gradeBoxHeight + 12;
 
-    // Build a dynamic summary sentence
-    const summaryParts: string[] = [];
-    if (auditResult.lcp > 4) {
-      summaryParts.push(`your site takes ${auditResult.lcp}s to load — most visitors leave after 3`);
-    } else if (auditResult.lcp > 2.5) {
-      summaryParts.push(`your site is a bit slow at ${auditResult.lcp}s to load`);
-    }
-    if (auditResult.storyBrand && (auditResult.storyBrand.grade === "D" || auditResult.storyBrand.grade === "F")) {
-      summaryParts.push("your messaging isn't clear enough to convert visitors into customers");
-    } else if (auditResult.storyBrand && auditResult.storyBrand.grade === "C") {
-      summaryParts.push("your messaging has the right pieces but needs tightening");
-    }
-    if (!auditResult.hasLocalBusinessSchema) {
-      summaryParts.push("Google can't confirm your business details for local search");
-    }
-    if (!auditResult.hasMetaDescription) {
-      summaryParts.push("your site is missing a search description");
-    }
-
-    let summary: string;
-    if (summaryParts.length === 0) {
-      summary = "Your site is in solid shape. A few tweaks could make it even stronger at converting visitors into customers.";
-    } else {
-      summary = `Your website is your hardest-working employee — but right now, ${summaryParts.slice(0, 2).join(" and ")}. Here's what I found and exactly what I'd fix.`;
-    }
-
-    const summaryLines = doc.splitTextToSize(summary, contentWidth - 95);
-    doc.text(summaryLines.slice(0, 3), margin + 80, y + 38);
-    y += gradeBoxHeight + 20;
+    // Disclaimer — sets up the video follow-up
+    doc.setTextColor(...mutedText);
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "italic");
+    doc.text("This report is generated automatically. I'll personally review your site and follow up.", margin, y);
+    y += 16;
   }
 
-  // ── 3. Scores (the visual hook) ──
+  // ── 3. Mobile Screenshot ──
+  if (auditResult?.screenshot) {
+    checkPageBreak(280);
+    doc.setTextColor(...mutedText);
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    doc.text("How your site looks on mobile", margin + contentWidth / 2, y, { align: "center" });
+    y += 10;
+
+    const imgW = 140;
+    const imgH = 250;
+    const imgX = margin + (contentWidth - imgW) / 2;
+    doc.setDrawColor(200, 200, 200);
+    doc.setLineWidth(1);
+    doc.roundedRect(imgX - 4, y - 4, imgW + 8, imgH + 8, 8, 8, "S");
+    try {
+      doc.addImage(auditResult.screenshot, "JPEG", imgX, y, imgW, imgH);
+    } catch {
+      // If image fails to load, skip silently
+    }
+    y += imgH + 20;
+  }
+
+  // ── 4. Messaging Analysis ──
+  if (auditResult?.storyBrand) {
+    const scoredItems = auditResult.storyBrand.items.filter(i => i.autoScore !== null);
+    checkPageBreak(120);
+    drawLine();
+    doc.setTextColor(...dark);
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("Your Website's Message", margin, y);
+    y += 16;
+    doc.setTextColor(...mutedText);
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    doc.text("Does your site clearly tell visitors what you do, how you help, and what to do next?", margin, y);
+    y += 18;
+
+    const msgGrade = auditResult.storyBrand.grade;
+    const msgGradeColor = msgGrade === "A" || msgGrade === "B" ? green : msgGrade === "C" ? yellow : red;
+
+    doc.setFillColor(250, 250, 250);
+    doc.roundedRect(margin, y, contentWidth, 50, 6, 6, "F");
+    doc.setTextColor(...msgGradeColor);
+    doc.setFontSize(28);
+    doc.setFont("helvetica", "bold");
+    doc.text(msgGrade, margin + 30, y + 33);
+
+    doc.setTextColor(...textColor);
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    const msgGradeLabels: Record<string, string> = {
+      A: "Your messaging is clear and compelling — this site sells",
+      B: "Good foundation, but a few gaps are holding you back",
+      C: "The right pieces are there, but the message is muddled",
+      D: "Key messaging elements are missing — visitors get confused",
+      F: "No clear message — visitors won't know what to do",
+    };
+    doc.text(msgGradeLabels[msgGrade] ?? msgGradeLabels.F, margin + 60, y + 30);
+    y += 65;
+
+    // What's working (up to 3 passes)
+    const msgPassItems = scoredItems.filter(i => i.autoScore === 2);
+    if (msgPassItems.length > 0) {
+      checkPageBreak(20 + Math.min(msgPassItems.length, 3) * 18);
+      doc.setTextColor(...sage);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("WHAT'S WORKING", margin, y);
+      y += 16;
+      for (const item of msgPassItems.slice(0, 3)) {
+        checkPageBreak(20);
+        doc.setTextColor(...green);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text("+", margin, y);
+        doc.setTextColor(...textColor);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.text(item.passLabel, margin + 15, y);
+        y += 18;
+      }
+      y += 8;
+    }
+
+    // What needs work (failures + warnings)
+    const msgFailItems = scoredItems.filter(i => i.autoScore !== null && i.autoScore < 2);
+    if (msgFailItems.length > 0) {
+      checkPageBreak(20 + msgFailItems.length * 18);
+      doc.setTextColor(...red);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("WHAT NEEDS WORK", margin, y);
+      y += 16;
+      for (const item of msgFailItems) {
+        checkPageBreak(20);
+        const color = item.autoScore === 0 ? red : yellow;
+        const symbol = item.autoScore === 0 ? "-" : "!";
+        doc.setTextColor(...color);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text(symbol, margin, y);
+        doc.setTextColor(...textColor);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.text(item.failLabel, margin + 15, y);
+        y += 18;
+      }
+      y += 5;
+    }
+
+    // CTA visibility question — can't verify automatically
+    const ctaItem = scoredItems.find(i => i.id === "1.3");
+    if (ctaItem && ctaItem.autoScore === 2) {
+      checkPageBreak(22);
+      doc.setTextColor(...yellow);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("?", margin, y);
+      doc.setTextColor(...textColor);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.text("Can a visitor see your call-to-action without scrolling? Check the screenshot above.", margin + 15, y);
+      y += 18;
+    }
+    y += 5;
+  }
+
+  // ── 4. Scores ──
   if (auditResult && (auditResult.performance > 0 || auditResult.seo > 0)) {
     checkPageBreak(110);
     drawLine();
@@ -225,31 +393,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     }
     y += 80;
 
-    // ── 3b. Mobile Screenshot ──
-    if (auditResult.screenshot) {
-      checkPageBreak(280);
-      doc.setTextColor(...mutedText);
-      doc.setFontSize(9);
-      doc.setFont("helvetica", "normal");
-      doc.text("How your site looks on mobile", margin + contentWidth / 2, y, { align: "center" });
-      y += 10;
-
-      // Add screenshot — phone-like frame
-      const imgW = 140;
-      const imgH = 250;
-      const imgX = margin + (contentWidth - imgW) / 2;
-      doc.setDrawColor(200, 200, 200);
-      doc.setLineWidth(1);
-      doc.roundedRect(imgX - 4, y - 4, imgW + 8, imgH + 8, 8, 8, "S");
-      try {
-        doc.addImage(auditResult.screenshot, "JPEG", imgX, y, imgW, imgH);
-      } catch {
-        // If image fails to load, skip silently
-      }
-      y += imgH + 20;
-    }
-
-    // ── 4. What your customers experience ──
+    // ── What your customers experience ──
     checkPageBreak(100);
     doc.setTextColor(...dark);
     doc.setFontSize(12);
@@ -263,8 +407,8 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     const speedLabel = auditResult.lcp <= 2.5
       ? "When someone finds you on Google, your site loads quickly — they'll stick around."
       : auditResult.lcp <= 4
-      ? `When someone finds you on Google, they wait ${auditResult.lcp}s for your site to appear. Some will leave.`
-      : `When someone Googles you on their phone, they wait ${auditResult.lcp}s for your site to load. Most people leave after 3.`;
+      ? `When someone finds you on Google, they wait ${auditResult.lcp}s for your site to appear. Some will leave before they see what you offer.`
+      : `When someone Googles you on their phone, they wait ${auditResult.lcp}s for your site to load. Even customers ready to hire may bounce at that speed.`;
     doc.setFillColor(...lcpBg);
     const speedLines = doc.splitTextToSize(speedLabel, contentWidth - 30);
     const speedBoxH = speedLines.length * 14 + 16;
@@ -345,96 +489,6 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.setFontSize(9);
     doc.text("Estimates reflect typical businesses in our area. Your results may vary.", margin, y);
     y += 15;
-  }
-
-  // ── 6. Messaging Analysis (StoryBrand) ──
-  if (auditResult?.storyBrand) {
-    const scoredItems = auditResult.storyBrand.items.filter(i => i.autoScore !== null);
-    checkPageBreak(120);
-    drawLine();
-    doc.setTextColor(...dark);
-    doc.setFontSize(16);
-    doc.setFont("helvetica", "bold");
-    doc.text("Your Website's Message", margin, y);
-    y += 8;
-    doc.setTextColor(...mutedText);
-    doc.setFontSize(10);
-    doc.setFont("helvetica", "normal");
-    doc.text("Does your site clearly tell visitors what you do, how you help, and what to do next?", margin, y);
-    y += 22;
-
-    const grade = auditResult.storyBrand.grade;
-    const gradeColor = grade === "A" || grade === "B" ? green : grade === "C" ? yellow : red;
-
-    doc.setFillColor(250, 250, 250);
-    doc.roundedRect(margin, y, contentWidth, 50, 6, 6, "F");
-    doc.setTextColor(...gradeColor);
-    doc.setFontSize(28);
-    doc.setFont("helvetica", "bold");
-    doc.text(grade, margin + 30, y + 33);
-
-    doc.setTextColor(...textColor);
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "normal");
-    const gradeLabels: Record<string, string> = {
-      A: "Your messaging is clear and compelling — this site sells",
-      B: "Good foundation, but a few gaps are holding you back",
-      C: "The right pieces are there, but the message is muddled",
-      D: "Key messaging elements are missing — visitors get confused",
-      F: "No clear message — visitors won't know what to do",
-    };
-    doc.text(gradeLabels[grade] ?? gradeLabels.F, margin + 60, y + 30);
-    y += 65;
-
-    // What's working (up to 3 passes)
-    const passItems = scoredItems.filter(i => i.autoScore === 2);
-    if (passItems.length > 0) {
-      checkPageBreak(20 + Math.min(passItems.length, 3) * 18);
-      doc.setTextColor(...sage);
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "bold");
-      doc.text("WHAT'S WORKING", margin, y);
-      y += 16;
-      for (const item of passItems.slice(0, 3)) {
-        checkPageBreak(20);
-        doc.setTextColor(...green);
-        doc.setFontSize(10);
-        doc.setFont("helvetica", "bold");
-        doc.text("+", margin, y);
-        doc.setTextColor(...textColor);
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(10);
-        doc.text(item.passLabel, margin + 15, y);
-        y += 18;
-      }
-      y += 8;
-    }
-
-    // What needs work (failures + warnings)
-    const failItems = scoredItems.filter(i => i.autoScore !== null && i.autoScore < 2);
-    if (failItems.length > 0) {
-      checkPageBreak(20 + failItems.length * 18);
-      doc.setTextColor(...red);
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "bold");
-      doc.text("WHAT NEEDS WORK", margin, y);
-      y += 16;
-      for (const item of failItems) {
-        checkPageBreak(20);
-        const color = item.autoScore === 0 ? red : yellow;
-        const symbol = item.autoScore === 0 ? "-" : "!";
-        doc.setTextColor(...color);
-        doc.setFontSize(10);
-        doc.setFont("helvetica", "bold");
-        doc.text(symbol, margin, y);
-        doc.setTextColor(...textColor);
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(10);
-        doc.text(item.failLabel, margin + 15, y);
-        y += 18;
-      }
-      y += 5;
-    }
   }
 
   // ── 7. What I'd Fix First (the plan) ──
@@ -579,14 +633,9 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     y += 70;
   }
 
-  // ── 10. Footer CTA ──
+  // ── 10. Footer CTA — always anchored to bottom of last page ──
   const footerHeight = 50;
-  const footerY = Math.max(y + 30, pageHeight - footerHeight);
-  if (footerY + footerHeight > pageHeight) {
-    doc.addPage();
-    y = 50;
-  }
-  const finalFooterY = Math.max(y + 30, pageHeight - footerHeight);
+  const finalFooterY = pageHeight - footerHeight;
   doc.setFillColor(...dark);
   doc.rect(0, finalFooterY, pageWidth, footerHeight, "F");
   doc.setTextColor(...terracotta);

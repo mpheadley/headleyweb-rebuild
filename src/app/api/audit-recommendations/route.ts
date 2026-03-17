@@ -140,6 +140,11 @@ Give 3-5 specific, actionable recommendations in priority order. Each recommenda
 - Never recommend things the site already does well
 - When suggesting headline rewrites, make the CUSTOMER the hero (address their desire or pain), not the business
 
+## Voice rules
+- Never use the word "StoryBrand" — use plain language ("messaging," "clarity," "your website's message")
+- These recommendations appear in an auto-generated report. Use "the checkup found" or "your site" framing — never "I noticed" or "I found" (no one has personally reviewed it yet). Forward-looking first-person is OK ("I'd rewrite this as...").
+- Keep labels honest: if a recommendation is about something only visible in the HTML (not the visual layout), don't claim it's "visible" or "above the fold."
+
 Return ONLY a JSON array of 3-5 strings. No markdown, no explanation, no preamble.`,
         messages: [{ role: "user", content: userMessage }],
       }),

@@ -257,10 +257,10 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   }
   if (weakCtas.length > 0) ctaSignals.push(`Weak CTAs: ${weakCtas.slice(0, 3).map(s => `"${s}"`).join(", ")}`);
   items.push({
-    id: "1.3", label: "Direct CTA Above the Fold", section: "Hero",
+    id: "1.3", label: "Direct CTA on the Page", section: "Hero",
     autoScore: ctaScore, signals: ctaSignals,
-    passLabel: "Clear call-to-action visible right away",
-    failLabel: "No clear call-to-action above the fold",
+    passLabel: "Your site has a clear call-to-action",
+    failLabel: "No clear call-to-action found on your site",
   });
 
   // 1.4 Sub-headline Expands the Story (manual)

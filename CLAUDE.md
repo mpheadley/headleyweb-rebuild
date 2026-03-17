@@ -144,6 +144,17 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
 6. **Blog** (`blog/`) — MDX-powered, launch with 2 posts
 7. **Privacy** (`privacy/page.tsx`)
 
+## Audit Tool & PDF Report
+- **Audit page:** `src/app/audit/page.tsx` — free site checkup, email-gated PDF report
+- **PDF generator:** `src/lib/generate-report-pdf.ts` — see copy guidelines in file header
+- **Messaging scorer:** `src/lib/storybrand-scorer.ts` — scores HTML structure, not visual layout
+- **Copy rules for audit/PDF:**
+  - Never use "StoryBrand" in customer-facing text — use "messaging," "clarity," "your website's message"
+  - Don't imply Matt personally reviewed it — use "the checkup found," not "I found"
+  - First-person OK for forward-looking ("What I'd Fix First") since that's what Matt will do
+  - Labels must be honest about what the code actually checks — if it reads HTML, don't claim "above the fold" or "visible right away"
+- **Lead funnel:** Automated PDF (step 1) → free personal follow-up by Matt (step 2, video/call/in-person)
+
 ## Existing Site Assets
 Copy from `~/Documents/Web Development/headley-web-seo/`:
 - `images/` — headshot, brand mark, project screenshots, OG image
