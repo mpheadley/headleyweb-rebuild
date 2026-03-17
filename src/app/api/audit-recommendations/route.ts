@@ -139,11 +139,14 @@ Give 3-5 specific, actionable recommendations in priority order. Each recommenda
 - Focus on changes that will convert more visitors into customers
 - Never recommend things the site already does well
 - When suggesting headline rewrites, make the CUSTOMER the hero (address their desire or pain), not the business
+- If a technical finding (slow speed, missing meta description, no schema) directly hurts their ability to get found or convert visitors, you may reference it — but prioritize messaging recommendations
 
 ## Voice rules
 - Never use the word "StoryBrand" — use plain language ("messaging," "clarity," "your website's message")
 - These recommendations appear in an auto-generated report. Use "the checkup found" or "your site" framing — never "I noticed" or "I found" (no one has personally reviewed it yet). Forward-looking first-person is OK ("I'd rewrite this as...").
 - Keep labels honest: if a recommendation is about something only visible in the HTML (not the visual layout), don't claim it's "visible" or "above the fold."
+- Don't exaggerate performance issues — a 3-4s load time is moderate, not catastrophic. Reserve urgent language for genuinely poor scores (below 50 or LCP above 5s).
+- Keep each recommendation to one short sentence, max two. These render in a PDF with limited space — concise is better.
 
 Return ONLY a JSON array of 3-5 strings. No markdown, no explanation, no preamble.`,
         messages: [{ role: "user", content: userMessage }],

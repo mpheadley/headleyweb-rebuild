@@ -407,7 +407,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     const speedLabel = auditResult.lcp <= 2.5
       ? "When someone finds you on Google, your site loads quickly — they'll stick around."
       : auditResult.lcp <= 4
-      ? `When someone finds you on Google, they wait ${auditResult.lcp}s for your site to appear. Some will leave before they see what you offer.`
+      ? `Your site takes ${auditResult.lcp}s to load — not terrible, but faster competitors may get the edge.`
       : `When someone Googles you on their phone, they wait ${auditResult.lcp}s for your site to load. Even customers ready to hire may bounce at that speed.`;
     doc.setFillColor(...lcpBg);
     const speedLines = doc.splitTextToSize(speedLabel, contentWidth - 30);
@@ -506,22 +506,28 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.text("If I were working on this site today, here's where I'd start:", margin, y);
     y += 20;
 
-    const recBlockHeight = 20 + recommendations.length * 22;
+    // Pre-calculate all recommendation line wraps for accurate block height
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    const recLineHeight = 13;
+    const recWrapped = recommendations.map(r => doc.splitTextToSize(r, contentWidth - 45));
+    const totalRecLines = recWrapped.reduce((sum, lines) => sum + lines.length, 0);
+    const recBlockHeight = 20 + totalRecLines * recLineHeight + (recommendations.length - 1) * 6;
     doc.setFillColor(240, 249, 240);
     doc.roundedRect(margin, y, contentWidth, recBlockHeight, 6, 6, "F");
     y += 16;
-    doc.setFont("helvetica", "normal");
     doc.setTextColor(...textColor);
-    doc.setFontSize(10);
     for (let i = 0; i < recommendations.length; i++) {
       doc.setTextColor(...sage);
       doc.setFont("helvetica", "bold");
       doc.text(`${i + 1}.`, margin + 12, y);
       doc.setTextColor(...textColor);
       doc.setFont("helvetica", "normal");
-      const recLine = doc.splitTextToSize(recommendations[i], contentWidth - 45);
-      doc.text(recLine[0], margin + 28, y);
-      y += 22;
+      for (let j = 0; j < recWrapped[i].length; j++) {
+        doc.text(recWrapped[i][j], margin + 28, y);
+        y += recLineHeight;
+      }
+      if (i < recommendations.length - 1) y += 6;
     }
     y += 15;
   }
