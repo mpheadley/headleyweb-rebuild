@@ -163,7 +163,7 @@ export default function AboutPage() {
           />
           <div className="animate-on-scroll">
             <p className="text-lg text-hw-text-light">
-              I&apos;d love to help your business be the first thing people find when they search. Let&apos;s start with a quick conversation about where you are now and where you want to be.
+              I&apos;d love to help your business be the first thing people find when they search. Let&apos;s start with a free look at where you stand online.
             </p>
             <p className="mt-4 text-xl text-hw-primary hand-accent">— Matt</p>
           </div>
@@ -174,10 +174,10 @@ export default function AboutPage() {
       <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">
-            Let&apos;s Talk About Your Business
+            See Where You Stand Online
           </h2>
           <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
-            20 minutes, no pressure, no sales pitch. Just an honest look at where you stand online.
+            Get a free checkup of your website — no sales pitch, no strings attached.
           </p>
           <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
