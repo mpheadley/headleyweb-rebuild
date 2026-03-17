@@ -3,26 +3,13 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Globe, Loader2, CheckCircle2, XCircle, AlertTriangle, Search, Mail } from "lucide-react";
+import { ArrowRight, Globe, Loader2, CheckCircle2, AlertTriangle, Search, Mail } from "lucide-react";
 import type { AuditResult } from "@/lib/audit-types";
 import { roiEstimates, normalizeTier, tierPrices, type TradeEstimate } from "../data/roi-estimates";
 import { tradeOptions } from "../data/quiz-questions";
 import QuizScoreGauge from "../components/QuizScoreGauge";
 import AuditCheck from "../components/AuditCheck";
 import StoryBrandItemRow from "../components/StoryBrandItemRow";
-
-/* ── Plain-English Metric Labels ── */
-function getSpeedLabel(lcp: number): string {
-  if (lcp <= 2.5) return "Your site loads fast — visitors won't wait around";
-  if (lcp <= 4) return "Your site is a bit slow — some visitors are leaving before it loads";
-  return "Your site is slow — most visitors leave before they ever see your content";
-}
-
-function getScoreLabel(score: number, category: string): string {
-  if (score >= 90) return `Your ${category} is in great shape`;
-  if (score >= 50) return `Your ${category} needs some work`;
-  return `Your ${category} needs serious attention`;
-}
 
 /* ── StoryBrand Grade Helpers ── */
 function getGradeColor(grade: string): string {
@@ -39,6 +26,15 @@ function getGradeLabel(grade: string): string {
   if (grade === "C") return "Has pieces, but the message is muddled";
   if (grade === "D") return "Missing key messaging elements";
   return "No clear message — visitors won't know what to do";
+}
+
+/* ── Overall Grade Helpers ── */
+function getLetterGrade(score: number): string {
+  if (score >= 90) return "A";
+  if (score >= 80) return "B";
+  if (score >= 70) return "C";
+  if (score >= 60) return "D";
+  return "F";
 }
 
 /* ── StoryBrand Recommendations ── */
@@ -228,6 +224,48 @@ export default function AuditPage() {
     .slice(0, 3)
     .map(i => storyBrandRecommendations[i.id]) ?? [];
 
+  // Compute overall grade for teaser
+  const overallScore = (() => {
+    if (!auditResult) return 0;
+    const scores: number[] = [];
+    if (auditResult.performance > 0) scores.push(auditResult.performance);
+    if (auditResult.seo > 0) scores.push(auditResult.seo);
+    if (auditResult.accessibility > 0) scores.push(auditResult.accessibility);
+    const sbGradeMap: Record<string, number> = { A: 95, B: 82, C: 68, D: 55, F: 35 };
+    if (auditResult.storyBrand) {
+      scores.push(sbGradeMap[auditResult.storyBrand.grade] ?? 50);
+    }
+    return scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+  })();
+  const overallGrade = getLetterGrade(overallScore);
+
+  // Dynamic executive summary for teaser
+  const executiveSummary = (() => {
+    if (!auditResult) return "";
+    const parts: string[] = [];
+    if (auditResult.lcp > 4) {
+      parts.push(`your site takes ${auditResult.lcp}s to load — most visitors leave after 3`);
+    } else if (auditResult.lcp > 2.5) {
+      parts.push(`your site is a bit slow at ${auditResult.lcp}s`);
+    }
+    if (auditResult.storyBrand && (auditResult.storyBrand.grade === "D" || auditResult.storyBrand.grade === "F")) {
+      parts.push("your messaging isn\u2019t clear enough to convert visitors into customers");
+    }
+    if (auditResult.seo < 50) {
+      parts.push("search engines are having trouble understanding your site");
+    }
+    if (!auditResult.hasLocalBusinessSchema) {
+      parts.push("Google can\u2019t verify your business details for local search");
+    }
+    if (!auditResult.isHttps) {
+      parts.push("your site isn\u2019t secure — browsers may warn visitors away");
+    }
+    if (parts.length === 0) {
+      return "Your site is in solid shape. A few tweaks could make it even stronger \u2014 get the full report to see exactly where.";
+    }
+    return `Your website is your hardest-working employee \u2014 but right now, ${parts.slice(0, 2).join(" and ")}. Get the full report to see what I\u2019d fix first.`;
+  })();
+
   return (
     <main id="main-content" className="min-h-screen bg-hw-light">
       {/* Header */}
@@ -329,14 +367,25 @@ export default function AuditPage() {
             </div>
           )}
 
-          {/* ── Client-Facing Results ── */}
-          {auditResult && (
+          {/* ── Client-Facing Results (Teaser) ── */}
+          {auditResult && !isInternal && (
             <div ref={resultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
-              <h3 className="text-lg font-bold mb-1">
-                Your Site&apos;s Quick Checkup
-              </h3>
-              <p className="text-sm text-hw-text-light mb-6">
-                Here&apos;s how <span className="font-medium text-hw-text">{auditResult.url}</span> is performing on mobile
+              {/* Overall Grade */}
+              <div className="text-center mb-6">
+                <h3 className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-3">
+                  Your Overall Site Grade
+                </h3>
+                <div className={`inline-flex items-center justify-center w-24 h-24 rounded-2xl border-2 ${getGradeColor(overallGrade)}`}>
+                  <span className="text-5xl font-bold">{overallGrade}</span>
+                </div>
+                <p className="text-sm text-hw-text-light mt-2">
+                  <span className="font-medium text-hw-text">{auditResult.url}</span>
+                </p>
+              </div>
+
+              {/* Executive Summary */}
+              <p className="text-sm text-hw-text text-center mb-8 max-w-lg mx-auto leading-relaxed">
+                {executiveSummary}
               </p>
 
               {/* Score Gauges */}
@@ -353,118 +402,82 @@ export default function AuditPage() {
                 <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> Below 50 Poor</span>
               </p>
 
-              {/* Plain-English Summary */}
-              <div className="space-y-3 mb-6">
-                <div className={`flex items-start gap-3 p-3 rounded-lg ${auditResult.lcp <= 2.5 ? "bg-green-50" : auditResult.lcp <= 4 ? "bg-yellow-50" : "bg-red-50"}`}>
-                  {auditResult.lcp <= 2.5 ? (
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                  ) : auditResult.lcp <= 4 ? (
-                    <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
-                  ) : (
-                    <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                  )}
-                  <div>
-                    <p className="text-sm font-medium text-hw-text">{getSpeedLabel(auditResult.lcp)}</p>
-                    <p className="text-xs text-hw-text-light mt-0.5">Your site takes {auditResult.lcp}s to show its main content</p>
+              {/* Email Gate */}
+              <div className="border-t border-gray-100 pt-6">
+                {emailSent ? (
+                  <div role="status" aria-live="polite" className="text-center">
+                    <p className="text-sm text-green-600 flex items-center justify-center gap-1">
+                      <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
+                    </p>
+                    <p className="text-xs text-hw-text-light mt-2">
+                      Check your inbox — your full report is on the way.
+                    </p>
                   </div>
-                </div>
-
-                <div className={`flex items-start gap-3 p-3 rounded-lg ${auditResult.seo >= 90 ? "bg-green-50" : auditResult.seo >= 50 ? "bg-yellow-50" : "bg-red-50"}`}>
-                  {auditResult.seo >= 90 ? (
-                    <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                  ) : (
-                    <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
-                  )}
-                  <div>
-                    <p className="text-sm font-medium text-hw-text">{getScoreLabel(auditResult.seo, "search engine visibility")}</p>
-                    <p className="text-xs text-hw-text-light mt-0.5">This affects whether customers find you on Google</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Basic Checks */}
-              <div className="grid grid-cols-2 gap-2 mb-6">
-                <AuditCheck passed={auditResult.isHttps} label="Secure connection (HTTPS)" />
-                <AuditCheck passed={auditResult.hasMetaDescription} label="Search description" />
-                <AuditCheck passed={auditResult.hasViewport} label="Mobile-friendly setup" />
-                <AuditCheck passed={auditResult.isLinkCrawlable} label="Links are crawlable" />
-                <AuditCheck passed={auditResult.hasLocalBusinessSchema} label="Google local business info" />
-              </div>
-
-              {/* StoryBrand Messaging Score */}
-              {auditResult.storyBrand && (
-                <div className="mb-6">
-                  <h4 className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-3">
-                    Your Website Messaging
-                  </h4>
-                  <div className={`rounded-xl p-5 border text-center mb-4 ${getGradeColor(auditResult.storyBrand.grade)}`}>
-                    <p className="text-3xl font-bold mb-1">{auditResult.storyBrand.grade}</p>
-                    <p className="text-sm">{getGradeLabel(auditResult.storyBrand.grade)}</p>
-                  </div>
-                  {/* What's working (up to 3 passes) */}
-                  {(() => {
-                    const passes = auditResult.storyBrand!.items.filter(i => i.autoScore === 2);
-                    if (passes.length === 0) return null;
-                    return (
-                      <div className="space-y-2 mb-3">
-                        {passes.slice(0, 3).map((item) => (
-                          <div key={item.id} className="flex items-start gap-2 p-2 rounded-lg bg-green-50">
-                            <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                            <p className="text-sm text-hw-text">{item.passLabel}</p>
-                          </div>
-                        ))}
+                ) : (
+                  <div className="text-center">
+                    <p className="text-base font-semibold text-hw-text mb-1">Get Your Full Report</p>
+                    <p className="text-xs text-hw-text-light mb-4">
+                      Your detailed PDF includes speed analysis, messaging breakdown, and exactly what I&apos;d fix first — free, no strings.
+                    </p>
+                    <form onSubmit={handleSendEmail} className="flex flex-col sm:flex-row gap-2 justify-center items-center">
+                      <div className="relative w-full sm:w-auto">
+                        <label htmlFor="audit-email" className="sr-only">Email address</label>
+                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-hw-text-light" aria-hidden="true" />
+                        <input
+                          id="audit-email"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@email.com"
+                          className="form-input pl-10 pr-3 py-2.5 border border-gray-200 rounded-lg bg-white text-hw-text text-sm w-full sm:w-64"
+                          required
+                        />
                       </div>
-                    );
-                  })()}
-                  {/* What needs work (failures + warnings) */}
-                  <div className="space-y-2">
-                    {auditResult.storyBrand.items
-                      .filter(i => i.autoScore !== null && i.autoScore < 2)
-                      .map((item) => (
-                        <div key={item.id} className={`flex items-start gap-2 p-2 rounded-lg ${item.autoScore === 0 ? "bg-red-50" : "bg-yellow-50"}`}>
-                          {item.autoScore === 0 ? (
-                            <XCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                          ) : (
-                            <AlertTriangle className="w-4 h-4 text-yellow-600 shrink-0 mt-0.5" />
-                          )}
-                          <p className="text-sm text-hw-text">{item.failLabel}</p>
-                        </div>
-                      ))}
-                  </div>
-
-                  {/* Recommendations */}
-                  {recommendations.length > 0 && (
-                    <div className="mt-4 bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5">
-                      <p className="text-sm font-bold text-hw-secondary uppercase tracking-wide mb-3">
-                        What I&apos;d Fix First
+                      <button
+                        type="submit"
+                        disabled={emailSending}
+                        className="btn-primary !text-sm !py-2.5 !px-6 inline-flex items-center gap-2 w-full sm:w-auto justify-center"
+                      >
+                        {emailSending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
+                        {emailSending ? "Sending..." : "Send My Report"}
+                      </button>
+                    </form>
+                    {emailError && (
+                      <p className="text-xs text-red-500 text-center mt-2">
+                        Something went wrong. Try again, or call (256) 644-7334 and I&apos;ll send it manually.
                       </p>
-                      <ul className="space-y-2">
-                        {recommendations.map((rec, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-hw-text">
-                            <ArrowRight className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                            {rec}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              )}
+                    )}
+                  </div>
+                )}
+              </div>
 
-              {/* CTA */}
-              <div className="bg-hw-primary/5 border border-hw-primary/15 rounded-xl p-5 text-center">
-                <p className="text-sm text-hw-text mb-2">
-                  Want me to walk you through what this means for your business?
+              {/* Phone CTA */}
+              <div className="mt-6 text-center">
+                <p className="text-sm text-hw-text-light mb-2">
+                  Want to talk through your results?
                 </p>
-                <a href="tel:+12566447334" className="btn-primary !text-sm !py-2 !px-4 inline-flex items-center gap-2">
-                  Let&apos;s Talk — (256) 644-7334
+                <a href="tel:+12566447334" className="text-sm font-semibold text-hw-primary hover:text-hw-primary-dark transition-colors">
+                  Call me — (256) 644-7334
                 </a>
+              </div>
+
+              {/* Utility links */}
+              <div className="flex justify-center gap-4 mt-6 pt-4 border-t border-gray-100">
+                <button
+                  onClick={handleReset}
+                  className="text-sm text-hw-text-light hover:text-hw-text transition-colors underline"
+                >
+                  Audit another site
+                </button>
+                <Link href="/quiz" className="text-sm text-hw-primary hover:text-hw-primary-dark transition-colors underline">
+                  Take the full quiz
+                </Link>
               </div>
             </div>
           )}
 
-          {/* ── ROI Estimate ── */}
-          {auditResult && tradeData && (
+          {/* ── ROI Estimate (Internal only — client sees this in PDF) ── */}
+          {auditResult && isInternal && tradeData && (
             <div className="card-glow !p-8 md:!p-10">
               <h3 className="text-lg font-bold mb-1">
                 What a Weak Online Presence Could Mean
@@ -504,7 +517,7 @@ export default function AuditPage() {
 
           {/* ── Internal View ── */}
           {auditResult && isInternal && (
-            <div className="card-glow !p-8 md:!p-10">
+            <div ref={resultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
               <div className="flex items-center justify-between mb-1">
                 <h3 className="text-lg font-bold">
                   Site Audit — Internal View
@@ -743,16 +756,10 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
             </div>
           )}
 
-          {/* ── Bottom CTAs ── */}
-          {auditResult && (
+          {/* ── Bottom CTAs (Internal only — client teaser has its own email gate) ── */}
+          {auditResult && isInternal && (
             <div className="card-glow !p-8 md:!p-10">
-              <div className="bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5 text-center mb-2">
-                <p className="text-sm font-semibold text-hw-secondary mb-1">What happens next?</p>
-                <p className="text-sm text-hw-text">
-                  I&apos;ll record a personal video walkthrough of these results and email it to you — no charge, no strings attached.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
                 <a href="tel:+12566447334" className="btn-primary text-center">
                   Call Me — (256) 644-7334
                 </a>
@@ -761,24 +768,18 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                 </Link>
               </div>
 
-              {/* Get Your Report via Email */}
-              <div className="mt-6 border-t border-gray-100 pt-6">
+              {/* Email report (for testing) */}
+              <div className="border-t border-gray-100 pt-6">
                 {emailSent ? (
                   <div role="status" aria-live="polite" className="text-center">
                     <p className="text-sm text-green-600 flex items-center justify-center gap-1">
                       <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
                     </p>
-                    <p className="text-xs text-hw-text-light mt-2">
-                      Check your inbox in a few minutes. I&apos;ll follow up with a personal video walkthrough.
-                    </p>
                   </div>
                 ) : (
                   <div className="text-center">
-                    <p className="text-sm font-semibold text-hw-text mb-1">Get your full report as a PDF</p>
-                    <p className="text-xs text-hw-text-light mb-4">
-                      I&apos;ll email your report and follow up with a personal video walkthrough — free, no strings.
-                    </p>
-                    <form onSubmit={handleSendEmail} className="flex flex-col sm:flex-row gap-2 justify-center items-center">
+                    <p className="text-sm font-semibold text-hw-text mb-1">Email PDF Report</p>
+                    <form onSubmit={handleSendEmail} className="flex flex-col sm:flex-row gap-2 justify-center items-center mt-3">
                       <div className="relative w-full sm:w-auto">
                         <label htmlFor="audit-email" className="sr-only">Email address</label>
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-hw-text-light" aria-hidden="true" />
@@ -798,12 +799,12 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                         className="btn-primary !text-sm !py-2.5 !px-6 inline-flex items-center gap-2 w-full sm:w-auto justify-center"
                       >
                         {emailSending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
-                        {emailSending ? "Sending..." : "Send My Report"}
+                        {emailSending ? "Sending..." : "Send Report"}
                       </button>
                     </form>
                     {emailError && (
                       <p className="text-xs text-red-500 text-center mt-2">
-                        Something went wrong. Try again, or call (256) 644-7334 and I&apos;ll send it manually.
+                        Something went wrong.
                       </p>
                     )}
                   </div>

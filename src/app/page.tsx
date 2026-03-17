@@ -1118,7 +1118,7 @@ export default function Home() {
           <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Site Checkup</p>
           <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">See How Your Website Stacks Up</h2>
           <p className="text-hw-text-light mt-4 max-w-xl mx-auto mb-8 animate-on-scroll">
-            Get an instant report on your site&apos;s speed, SEO, and messaging — free, no strings attached. I&apos;ll follow up with a personal video walkthrough showing exactly what to fix.
+            Get an instant report on your site&apos;s speed, SEO, and messaging — free, no strings attached.
           </p>
           <Link href="/audit" className="btn-primary text-lg px-8 animate-on-scroll">
             Check Your Site <ArrowRight className="w-5 h-5 ml-2" />

@@ -43,6 +43,14 @@ function getGradeLabel(grade: string): string {
   return "No clear message — visitors won't know what to do";
 }
 
+function getLetterGrade(score: number): string {
+  if (score >= 90) return "A";
+  if (score >= 80) return "B";
+  if (score >= 70) return "C";
+  if (score >= 60) return "D";
+  return "F";
+}
+
 /* ── StoryBrand Recommendations (client-facing) ── */
 const storyBrandRecommendations: Record<string, string> = {
   "1.1": "Lead your headline with the customer's problem — not your company name",
@@ -85,6 +93,11 @@ export default function QuizPage() {
   const [auditResult, setAuditResult] = useState<AuditResult | null>(null);
   const [auditError, setAuditError] = useState<string | null>(null);
   const [auditLoading, setAuditLoading] = useState(false);
+
+  // PDF email state
+  const [reportSending, setReportSending] = useState(false);
+  const [reportSent, setReportSent] = useState(false);
+  const [reportError, setReportError] = useState(false);
 
   // Ref for scrolling to audit results
   const auditResultsRef = useRef<HTMLDivElement>(null);
@@ -310,6 +323,75 @@ export default function QuizPage() {
   const tradeData: TradeEstimate | null = trade ? roiEstimates[trade] ?? null : null;
   const recommendedTier = result ? normalizeTier(result.tier) : "Get Calls";
   const tierPrice = tierPrices[recommendedTier] ?? 795;
+
+  // Overall grade for audit teaser
+  const overallScore = (() => {
+    if (!auditResult) return 0;
+    const scores: number[] = [];
+    if (auditResult.performance > 0) scores.push(auditResult.performance);
+    if (auditResult.seo > 0) scores.push(auditResult.seo);
+    if (auditResult.accessibility > 0) scores.push(auditResult.accessibility);
+    const sbGradeMap: Record<string, number> = { A: 95, B: 82, C: 68, D: 55, F: 35 };
+    if (auditResult.storyBrand) {
+      scores.push(sbGradeMap[auditResult.storyBrand.grade] ?? 50);
+    }
+    return scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+  })();
+  const overallGrade = getLetterGrade(overallScore);
+
+  const executiveSummary = (() => {
+    if (!auditResult) return "";
+    const parts: string[] = [];
+    if (auditResult.lcp > 4) {
+      parts.push(`your site takes ${auditResult.lcp}s to load \u2014 most visitors leave after 3`);
+    } else if (auditResult.lcp > 2.5) {
+      parts.push(`your site is a bit slow at ${auditResult.lcp}s`);
+    }
+    if (auditResult.storyBrand && (auditResult.storyBrand.grade === "D" || auditResult.storyBrand.grade === "F")) {
+      parts.push("your messaging isn\u2019t clear enough to convert visitors into customers");
+    }
+    if (auditResult.seo < 50) {
+      parts.push("search engines are having trouble understanding your site");
+    }
+    if (parts.length === 0) {
+      return "Your site is in solid shape. Get the full report to see exactly where you can improve.";
+    }
+    return `Right now, ${parts.slice(0, 2).join(" and ")}. Get the full report for the complete breakdown.`;
+  })();
+
+  const recommendations = auditResult?.storyBrand?.items
+    .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
+    .slice(0, 3)
+    .map(i => storyBrandRecommendations[i.id]) ?? [];
+
+  async function handleSendReport() {
+    if (!email.trim() || !auditResult) return;
+    setReportSending(true);
+    setReportError(false);
+    try {
+      const res = await fetch("/api/send-report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          auditResult,
+          archetype: result,
+          tradeData,
+          recommendedTier,
+          tierPrice,
+          recommendations,
+        }),
+      });
+      if (res.ok) {
+        setReportSent(true);
+      } else {
+        setReportError(true);
+      }
+    } catch {
+      setReportError(true);
+    }
+    setReportSending(false);
+  }
 
   return (
     <main id="main-content" className="min-h-screen bg-hw-light">
@@ -582,8 +664,8 @@ export default function QuizPage() {
                 </div>
               </div>
 
-              {/* ── ROI Estimate ── */}
-              {tradeData && (
+              {/* ── ROI Estimate (Internal only — client sees this in PDF) ── */}
+              {isInternal && tradeData && (
                 <div className="card-glow !p-8 md:!p-10">
                   <h3 className="text-lg font-bold mb-1">
                     What a Weak Online Presence Could Mean
@@ -632,142 +714,80 @@ export default function QuizPage() {
                 </div>
               )}
 
-              {/* ── Site Audit Results (Client-Facing) ── */}
-              {auditResult && (
+              {/* ── Site Audit Results (Client Teaser) ── */}
+              {auditResult && !isInternal && (
                 <div ref={auditResultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
-                  <h3 className="text-lg font-bold mb-1">
-                    Your Site&apos;s Quick Checkup
-                  </h3>
-                  <p className="text-sm text-hw-text-light mb-6">
-                    Here&apos;s how <span className="font-medium text-hw-text">{auditResult.url}</span> is performing on mobile
+                  {/* Overall Grade */}
+                  <div className="text-center mb-6">
+                    <h3 className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-3">
+                      Your Overall Site Grade
+                    </h3>
+                    <div className={`inline-flex items-center justify-center w-24 h-24 rounded-2xl border-2 ${getGradeColor(overallGrade)}`}>
+                      <span className="text-5xl font-bold">{overallGrade}</span>
+                    </div>
+                    <p className="text-sm text-hw-text-light mt-2">
+                      <span className="font-medium text-hw-text">{auditResult.url}</span>
+                    </p>
+                  </div>
+
+                  {/* Executive Summary */}
+                  <p className="text-sm text-hw-text text-center mb-8 max-w-lg mx-auto leading-relaxed">
+                    {executiveSummary}
                   </p>
 
                   {/* Score Gauges */}
-                  <div className="flex justify-center gap-8 mb-8">
+                  <div className="flex justify-center gap-4 md:gap-8 flex-wrap mb-2">
                     <QuizScoreGauge score={auditResult.performance} label="Speed" />
                     <QuizScoreGauge score={auditResult.seo} label="SEO" />
                     <QuizScoreGauge score={auditResult.accessibility} label="Accessibility" />
                   </div>
+                  <p className="text-xs text-hw-text-light text-center mb-8">
+                    <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> 90+ Good</span>
+                    <span className="mx-2">·</span>
+                    <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-500 inline-block" /> 50–89 Fair</span>
+                    <span className="mx-2">·</span>
+                    <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> Below 50 Poor</span>
+                  </p>
 
-                  {/* Plain-English Summary */}
-                  <div className="space-y-3 mb-6">
-                    <div className={`flex items-start gap-3 p-3 rounded-lg ${auditResult.lcp <= 2.5 ? "bg-green-50" : auditResult.lcp <= 4 ? "bg-yellow-50" : "bg-red-50"}`}>
-                      {auditResult.lcp <= 2.5 ? (
-                        <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                      ) : auditResult.lcp <= 4 ? (
-                        <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                      ) : (
-                        <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                      )}
-                      <div>
-                        <p className="text-sm font-medium text-hw-text">{getSpeedLabel(auditResult.lcp)}</p>
-                        <p className="text-xs text-hw-text-light mt-0.5">Your site takes {auditResult.lcp}s to show its main content</p>
+                  {/* Get Full Report */}
+                  <div className="border-t border-gray-100 pt-6 text-center">
+                    {reportSent ? (
+                      <div role="status" aria-live="polite">
+                        <p className="text-sm text-green-600 flex items-center justify-center gap-1">
+                          <CheckCircle2 className="w-4 h-4" /> Full report sent to {email}
+                        </p>
+                        <p className="text-xs text-hw-text-light mt-2">
+                          Check your inbox — your detailed PDF is on the way.
+                        </p>
                       </div>
-                    </div>
-
-                    <div className={`flex items-start gap-3 p-3 rounded-lg ${auditResult.seo >= 90 ? "bg-green-50" : auditResult.seo >= 50 ? "bg-yellow-50" : "bg-red-50"}`}>
-                      {auditResult.seo >= 90 ? (
-                        <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                      ) : (
-                        <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                      )}
-                      <div>
-                        <p className="text-sm font-medium text-hw-text">{getScoreLabel(auditResult.seo, "search engine visibility")}</p>
-                        <p className="text-xs text-hw-text-light mt-0.5">This affects whether customers find you on Google</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Basic Checks */}
-                  <div className="grid grid-cols-2 gap-2 mb-6">
-                    <AuditCheck passed={auditResult.isHttps} label="Secure connection (HTTPS)" />
-                    <AuditCheck passed={auditResult.hasMetaDescription} label="Search description" />
-                    <AuditCheck passed={auditResult.hasViewport} label="Mobile-friendly setup" />
-                    <AuditCheck passed={auditResult.isLinkCrawlable} label="Links are crawlable" />
-                    <AuditCheck passed={auditResult.hasLocalBusinessSchema} label="Google local business info" />
-                  </div>
-
-                  {/* StoryBrand Messaging Score (Client-Facing) */}
-                  {auditResult.storyBrand && (
-                    <div className="mb-6">
-                      <h4 className="text-sm font-bold uppercase tracking-wide text-hw-text-light mb-3">
-                        Your Website Messaging
-                      </h4>
-                      <div className={`rounded-xl p-5 border text-center mb-4 ${getGradeColor(auditResult.storyBrand.grade)}`}>
-                        <p className="text-3xl font-bold mb-1">{auditResult.storyBrand.grade}</p>
-                        <p className="text-sm">{getGradeLabel(auditResult.storyBrand.grade)}</p>
-                      </div>
-                      {/* What's working (up to 3 passes) */}
-                      {(() => {
-                        const passes = auditResult.storyBrand!.items.filter(i => i.autoScore === 2);
-                        if (passes.length === 0) return null;
-                        return (
-                          <div className="space-y-2 mb-3">
-                            {passes.slice(0, 3).map((item) => (
-                              <div key={item.id} className="flex items-start gap-2 p-2 rounded-lg bg-green-50">
-                                <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                                <p className="text-sm text-hw-text">{item.passLabel}</p>
-                              </div>
-                            ))}
-                          </div>
-                        );
-                      })()}
-                      {/* What needs work (failures + warnings) */}
-                      <div className="space-y-2">
-                        {auditResult.storyBrand.items
-                          .filter(i => i.autoScore !== null && i.autoScore < 2)
-                          .map((item) => (
-                            <div key={item.id} className={`flex items-start gap-2 p-2 rounded-lg ${item.autoScore === 0 ? "bg-red-50" : "bg-yellow-50"}`}>
-                              {item.autoScore === 0 ? (
-                                <XCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                              ) : (
-                                <AlertTriangle className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
-                              )}
-                              <p className="text-sm text-hw-text">{item.failLabel}</p>
-                            </div>
-                          ))}
-                      </div>
-
-                      {/* Recommendations based on low-scoring items */}
-                      {(() => {
-                        const recs = auditResult.storyBrand!.items
-                          .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
-                          .slice(0, 3)
-                          .map(i => storyBrandRecommendations[i.id]);
-                        if (recs.length === 0) return null;
-                        return (
-                          <div className="mt-4 bg-hw-secondary/5 border border-hw-secondary/15 rounded-xl p-5">
-                            <p className="text-sm font-bold text-hw-secondary uppercase tracking-wide mb-3">
-                              What I&apos;d Fix First
-                            </p>
-                            <ul className="space-y-2">
-                              {recs.map((rec, i) => (
-                                <li key={i} className="flex items-start gap-2 text-sm text-hw-text">
-                                  <ArrowRight className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                                  {rec}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        );
-                      })()}
-                    </div>
-                  )}
-
-                  <div className="bg-hw-primary/5 border border-hw-primary/15 rounded-xl p-5 text-center">
-                    <p className="text-sm text-hw-text mb-2">
-                      Want me to walk you through what this means for your business?
-                    </p>
-                    <a href="tel:+12566447334" className="btn-primary !text-sm !py-2 !px-4 inline-flex items-center gap-2">
-                      Let&apos;s Talk — (256) 644-7334
-                    </a>
+                    ) : (
+                      <>
+                        <p className="text-base font-semibold text-hw-text mb-1">Get Your Full Report</p>
+                        <p className="text-xs text-hw-text-light mb-4">
+                          Detailed PDF with speed analysis, messaging breakdown, and what I&apos;d fix first — sent to {email || "your email"}.
+                        </p>
+                        <button
+                          onClick={handleSendReport}
+                          disabled={reportSending}
+                          className="btn-primary !text-sm !py-2.5 !px-6 inline-flex items-center gap-2"
+                        >
+                          {reportSending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
+                          {reportSending ? "Sending..." : "Send My Report"}
+                        </button>
+                        {reportError && (
+                          <p className="text-xs text-red-500 mt-2">
+                            Something went wrong. Try again, or call (256) 644-7334.
+                          </p>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
               )}
 
               {/* ── Site Audit Results (Internal View) ── */}
               {auditResult && isInternal && (
-                <div className="card-glow !p-8 md:!p-10">
+                <div ref={auditResultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="text-lg font-bold">
                       Site Audit — Internal View
@@ -1012,8 +1032,8 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                   </a>
                 </div>
 
-                {/* PDF Download */}
-                {result && (
+                {/* PDF Download (Internal only — client gets PDF via email) */}
+                {result && isInternal && (
                   <div className="text-center mt-4">
                     <QuizReportPdf
                       archetype={result}
@@ -1021,12 +1041,7 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                       tradeData={tradeData}
                       recommendedTier={recommendedTier}
                       tierPrice={tierPrice}
-                      recommendations={
-                        auditResult?.storyBrand?.items
-                          .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
-                          .slice(0, 3)
-                          .map(i => storyBrandRecommendations[i.id]) ?? []
-                      }
+                      recommendations={recommendations}
                     />
                   </div>
                 )}
