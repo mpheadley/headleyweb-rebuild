@@ -523,6 +523,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ Google Review Nudge ═══ */}
+      <section className="py-10 px-6 bg-hw-light border-y border-black/5">
+        <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left animate-on-scroll">
+          <span className="text-3xl" aria-hidden="true">⭐</span>
+          <p className="text-hw-text-light text-sm">
+            Happy with your experience? A Google review helps other local businesses find me —&nbsp;
+            <a
+              href="https://g.page/r/CZcynt10WKMIEAE/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-hw-primary hover:text-hw-primary-dark underline underline-offset-2 transition-colors font-medium"
+            >
+              Leave a quick review
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* ═══ Portfolio / Results ═══ */}
       <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-5xl mx-auto">

@@ -170,6 +170,24 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ═══ Google Review ═══ */}
+      <section className="py-10 px-6 bg-hw-light border-y border-black/5">
+        <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left animate-on-scroll">
+          <span className="text-3xl" aria-hidden="true">⭐</span>
+          <p className="text-hw-text-light text-sm">
+            Already a client? A Google review means the world to a small business —&nbsp;
+            <a
+              href="https://g.page/r/CZcynt10WKMIEAE/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-hw-primary hover:text-hw-primary-dark underline underline-offset-2 transition-colors font-medium"
+            >
+              Leave a quick review
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* ═══ CTA ═══ */}
       <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
