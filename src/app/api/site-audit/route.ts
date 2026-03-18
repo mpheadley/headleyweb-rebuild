@@ -229,7 +229,7 @@ async function fetchPageSpeed(normalizedUrl: string, strategy: "mobile" | "deskt
 
 function getDefaultLighthouse() {
   return {
-    performance: 0, performanceDesktop: 0, seo: 0, accessibility: 0,
+    performance: 0, seo: 0, accessibility: 0,
     fcp: 0, lcp: 0, cls: 0, tbt: 0,
     isHttps: false, hasMetaDescription: false, hasViewport: false, hasHreflang: false, isLinkCrawlable: false, hasLocalBusinessSchema: false,
     failedAudits: [] as AuditResult["failedAudits"],

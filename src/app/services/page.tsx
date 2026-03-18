@@ -438,7 +438,7 @@ export default function ServicesPage() {
                 </li>
               </ul>
               <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$79/mo</span></span>
+                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$99/mo</span></span>
                 <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
