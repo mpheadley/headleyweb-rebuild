@@ -92,9 +92,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Run PageSpeed and copy scrape in parallel
-    const [pageSpeedResult, copyResult] = await Promise.allSettled([
-      fetchPageSpeed(normalizedUrl),
+    // Run mobile PageSpeed, desktop PageSpeed, and copy scrape in parallel
+    const [pageSpeedResult, pageSpeedDesktopResult, copyResult] = await Promise.allSettled([
+      fetchPageSpeed(normalizedUrl, "mobile"),
+      fetchPageSpeed(normalizedUrl, "desktop"),
       fetchAndScrapeCopy(normalizedUrl),
     ]);
 
@@ -103,6 +104,11 @@ export async function POST(request: NextRequest) {
     if (pageSpeedResult.status === "fulfilled") {
       lighthouse = pageSpeedResult.value;
     }
+
+    const performanceDesktop =
+      pageSpeedDesktopResult.status === "fulfilled"
+        ? pageSpeedDesktopResult.value.performance
+        : 0;
 
     // Process copy scrape + StoryBrand scoring
     let storyBrand: StoryBrandScore | null = null;
@@ -115,6 +121,7 @@ export async function POST(request: NextRequest) {
     const result: AuditResult = {
       url: normalizedUrl,
       ...lighthouse,
+      performanceDesktop,
       hasLocalBusinessSchema,
       storyBrand,
     };
@@ -137,13 +144,13 @@ export async function POST(request: NextRequest) {
 
 /* ── PageSpeed Fetch ── */
 
-async function fetchPageSpeed(normalizedUrl: string) {
+async function fetchPageSpeed(normalizedUrl: string, strategy: "mobile" | "desktop" = "mobile") {
   const apiUrl = new URL(PAGESPEED_API);
   apiUrl.searchParams.set("url", normalizedUrl);
   apiUrl.searchParams.set("category", "performance");
   apiUrl.searchParams.append("category", "seo");
   apiUrl.searchParams.append("category", "accessibility");
-  apiUrl.searchParams.set("strategy", "mobile");
+  apiUrl.searchParams.set("strategy", strategy);
 
   const apiKey = process.env.PAGESPEED_API_KEY?.trim();
   if (apiKey) {
@@ -222,7 +229,7 @@ async function fetchPageSpeed(normalizedUrl: string) {
 
 function getDefaultLighthouse() {
   return {
-    performance: 0, seo: 0, accessibility: 0,
+    performance: 0, performanceDesktop: 0, seo: 0, accessibility: 0,
     fcp: 0, lcp: 0, cls: 0, tbt: 0,
     isHttps: false, hasMetaDescription: false, hasViewport: false, hasHreflang: false, isLinkCrawlable: false, hasLocalBusinessSchema: false,
     failedAudits: [] as AuditResult["failedAudits"],

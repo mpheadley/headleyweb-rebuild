@@ -154,6 +154,8 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
   - First-person OK for forward-looking ("What I'd Fix First") since that's what Matt will do
   - Labels must be honest about what the code actually checks — if it reads HTML, don't claim "above the fold" or "visible right away"
 - **Lead funnel:** Automated PDF (step 1) → free personal follow-up by Matt (step 2, video/call/in-person)
+- **Desktop PageSpeed:** `route.ts` now fetches mobile + desktop in parallel. `performanceDesktop` field added to `AuditResult`. Report PDF shows both scores side by side. Mobile is the primary number (most visitors are on phones).
+- **Quick terminal audit script:** `Documents/Web Development/between-worlds/fetch-site-audit.py` — run with `python3 fetch-site-audit.py` from Claude Code for any new prospect site. Pulls meta description, JSON-LD schema, viewport/mobile signal, and both mobile + desktop PageSpeed in one shot. No API key needed (uses public PSI endpoint). Copy to each new client project folder as a starting point.
 
 ## Existing Site Assets
 Copy from `~/Documents/Web Development/headley-web-seo/`:

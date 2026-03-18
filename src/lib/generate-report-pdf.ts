@@ -370,9 +370,12 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.text("How Your Site Performs", margin, y);
     y += 25;
 
-    const gaugeWidth = (contentWidth - 30) / 3;
+    const hasDesktop = auditResult.performanceDesktop > 0;
+    const gaugeCount = hasDesktop ? 4 : 3;
+    const gaugeWidth = (contentWidth - 15 * (gaugeCount - 1)) / gaugeCount;
     const gauges = [
-      { label: "Speed", score: auditResult.performance },
+      { label: "Speed (Mobile)", score: auditResult.performance },
+      ...(hasDesktop ? [{ label: "Speed (Desktop)", score: auditResult.performanceDesktop }] : []),
       { label: "SEO", score: auditResult.seo },
       { label: "Accessibility", score: auditResult.accessibility },
     ];
