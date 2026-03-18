@@ -520,7 +520,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg text-hw-text-light mb-6">
-                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. I started Headley Web <span className="amp">&amp;</span> SEO because great local businesses deserve a website that works as hard as they do.
+                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. I started Headley Web &amp; SEO because great local businesses deserve a website that works as hard as they do.
               </p>
               <ul className="space-y-3 text-hw-text-light">
                 <li className="flex items-start gap-3">
@@ -1057,7 +1057,7 @@ export default function Home() {
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only">
         <p>
-          Headley Web <span className="amp">&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
+          Headley Web &amp; SEO is a Jacksonville, Alabama web design studio that builds
           StoryBrand-powered websites for local service businesses in Northeast Alabama. We
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business
           Profile optimization for plumbers, HVAC companies, contractors, restaurants, and other

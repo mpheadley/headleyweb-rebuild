@@ -273,6 +273,8 @@ h1, h2, h3, h4, h5, h6 {
 /* ─── Decorative Ampersand (Fraunces) ─── */
 .amp {
   font-family: var(--font-heading), Georgia, serif;
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 144 !important;
 }
 
 /* ─── Blur-to-clear reveal (scroll-triggered) ─── */
