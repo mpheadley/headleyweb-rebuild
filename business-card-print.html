@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Business Card PRINT-READY — Headley Web & SEO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700&family=Inter:wght@400;500;600&family=Rock+Salt&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      gap: 60px;
+      padding: 40px;
+    }
+
+    .label {
+      color: #666;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: -48px;
+    }
+    .sublabel {
+      color: #999;
+      font-size: 11px;
+      margin-top: -44px;
+    }
+
+    /* ─── PRINT DIMENSIONS ───
+       Trim size: 3.5" x 2" = 1050x600 at 300dpi
+       Bleed: 0.125" each side = 37.5px (rounded to 38px)
+       Full bleed size: 1126x676
+       Safe zone: 0.125" inside trim = content inset 76px from bleed edge
+    */
+    .card-wrap {
+      position: relative;
+      width: 1126px;
+      height: 676px;
+    }
+
+    .card {
+      width: 1126px;
+      height: 676px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Trim marks */
+    .card-wrap::before,
+    .card-wrap::after {
+      content: '';
+      position: absolute;
+      z-index: 10;
+    }
+    /* Corner trim marks using box-shadow */
+    .trim-marks {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .trim-mark {
+      position: absolute;
+      background: #000;
+    }
+    /* Top-left */
+    .tm-tl-h { top: 38px; left: 0; width: 28px; height: 0.5px; }
+    .tm-tl-v { top: 0; left: 38px; width: 0.5px; height: 28px; }
+    /* Top-right */
+    .tm-tr-h { top: 38px; right: 0; width: 28px; height: 0.5px; }
+    .tm-tr-v { top: 0; right: 38px; width: 0.5px; height: 28px; }
+    /* Bottom-left */
+    .tm-bl-h { bottom: 38px; left: 0; width: 28px; height: 0.5px; }
+    .tm-bl-v { bottom: 0; left: 38px; width: 0.5px; height: 28px; }
+    /* Bottom-right */
+    .tm-br-h { bottom: 38px; right: 0; width: 28px; height: 0.5px; }
+    .tm-br-v { bottom: 0; right: 38px; width: 0.5px; height: 28px; }
+
+    /* ─── FRONT ─── */
+    .card-front {
+      background: #1C2826;
+      display: flex;
+    }
+
+    .front-photo {
+      position: absolute;
+      left: 0; top: 0;
+      width: 418px; /* 380 + 38 bleed */
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .front-photo-fade {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 468px; /* 430 + 38 bleed */
+      background: linear-gradient(to right, transparent 40%, #1C2826 90%);
+      z-index: 1;
+    }
+
+    .front-content {
+      position: relative;
+      z-index: 2;
+      margin-left: 398px; /* 360 + 38 bleed */
+      padding: 88px 88px 88px 20px; /* 50 + 38 safe zone */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .front-headline {
+      font-family: 'Fraunces', serif;
+      font-size: 68px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .front-headline .accent {
+      font-family: 'Rock Salt', cursive;
+      color: #E07B3C;
+      font-size: 62px;
+      font-weight: 400;
+    }
+
+    .front-brand {
+      position: absolute;
+      bottom: 70px; /* 32 + 38 bleed */
+      left: 418px; /* 380 + 38 bleed */
+      right: 88px; /* 50 + 38 bleed */
+      z-index: 2;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .front-brand-name {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .front-brand-name .hw-accent {
+      color: #E07B3C;
+    }
+    .front-brand-name .amp {
+      font-family: 'Fraunces', serif;
+      font-optical-sizing: none;
+      font-variation-settings: "opsz" 144;
+    }
+    .front-url {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .front-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 54px; /* 16 + 38 bleed — extends past trim */
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+      z-index: 2;
+    }
+
+    /* ─── BACK ─── */
+    .card-back {
+      background: #F5F0EB;
+      display: flex;
+      align-items: center;
+      padding: 0 98px; /* 60 + 38 bleed */
+    }
+
+    .back-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .back-name {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #1C2826;
+      margin-bottom: 2px;
+    }
+
+    .back-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: #6B8F71;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .back-divider {
+      width: 200px;
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+      margin-bottom: 28px;
+    }
+
+    .back-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .back-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 20px;
+      color: #2D2D2D;
+    }
+
+    .back-row svg {
+      width: 22px;
+      height: 22px;
+      color: #6B8F71;
+      flex-shrink: 0;
+    }
+
+    .back-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-left: 40px;
+    }
+
+    .back-qr {
+      width: 180px;
+      height: 180px;
+    }
+
+    .back-brand-name {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1C2826;
+      text-align: center;
+    }
+    .back-brand-name .hw-accent {
+      color: #E07B3C;
+    }
+    .back-brand-name .amp {
+      font-family: 'Fraunces', serif;
+      font-optical-sizing: none;
+      font-variation-settings: "opsz" 144;
+    }
+
+    .back-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 54px; /* 16 + 38 bleed — extends past trim */
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+    }
+  </style>
+</head>
+<body>
+  <p class="label">Front — Print Ready (with bleed + trim marks)</p>
+
+  <div class="card-wrap">
+    <div class="card card-front">
+      <img class="front-photo" src="public/images/headshot-matt-headley.webp" alt="">
+      <div class="front-photo-fade"></div>
+
+      <div class="front-content">
+        <h1 class="front-headline">
+          Get Found.<br>
+          Get Calls.<br>
+          Get <span class="accent">Booked.</span>
+        </h1>
+      </div>
+
+      <div class="front-brand">
+        <div class="front-brand-name">Headley <span class="hw-accent">Web <span class="amp">&amp;</span> SEO</span></div>
+        <div class="front-url">headleyweb.com</div>
+      </div>
+
+      <div class="front-bar"></div>
+    </div>
+
+    <div class="trim-marks">
+      <div class="trim-mark tm-tl-h"></div>
+      <div class="trim-mark tm-tl-v"></div>
+      <div class="trim-mark tm-tr-h"></div>
+      <div class="trim-mark tm-tr-v"></div>
+      <div class="trim-mark tm-bl-h"></div>
+      <div class="trim-mark tm-bl-v"></div>
+      <div class="trim-mark tm-br-h"></div>
+      <div class="trim-mark tm-br-v"></div>
+    </div>
+  </div>
+  <p class="sublabel">1126 x 676px (3.75" x 2.25" at 300dpi) — 0.125" bleed on all sides</p>
+
+  <p class="label">Back — Print Ready (with bleed + trim marks)</p>
+
+  <div class="card-wrap">
+    <div class="card card-back">
+      <div class="back-left">
+        <div class="back-name">Matt Headley</div>
+        <div class="back-title">Web Designer &amp; SEO Specialist</div>
+        <div class="back-divider"></div>
+
+        <div class="back-info">
+          <div class="back-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(256) 644-7334</span>
+          </div>
+          <div class="back-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>matt@headleyweb.com</span>
+          </div>
+          <div class="back-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>headleyweb.com</span>
+          </div>
+          <div class="back-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Jacksonville, Alabama</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="back-right">
+        <img class="back-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https%3A%2F%2Fheadleyweb.com%3Futm_source%3Dbusiness_card%26utm_medium%3Dqr%26utm_campaign%3Dnetworking&color=1C2826&bgcolor=F5F0EB&format=svg" alt="QR code to headleyweb.com">
+        <div class="back-brand-name">Headley <span class="hw-accent">Web <span class="amp">&amp;</span> SEO</span></div>
+      </div>
+
+      <div class="back-bar"></div>
+    </div>
+
+    <div class="trim-marks">
+      <div class="trim-mark tm-tl-h"></div>
+      <div class="trim-mark tm-tl-v"></div>
+      <div class="trim-mark tm-tr-h"></div>
+      <div class="trim-mark tm-tr-v"></div>
+      <div class="trim-mark tm-bl-h"></div>
+      <div class="trim-mark tm-bl-v"></div>
+      <div class="trim-mark tm-br-h"></div>
+      <div class="trim-mark tm-br-v"></div>
+    </div>
+  </div>
+  <p class="sublabel">1126 x 676px (3.75" x 2.25" at 300dpi) — 0.125" bleed on all sides</p>
+
+</body>
+</html>

@@ -47,10 +47,11 @@
 
     .front-photo {
       position: absolute;
-      left: 0; top: 0; bottom: 0;
+      left: 0; top: 0;
       width: 380px;
+      height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 20%;
     }
     .front-photo-fade {
       position: absolute;
@@ -122,7 +123,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 16px;
       background: linear-gradient(to right, #6B8F71, #E07B3C);
       z-index: 2;
     }
@@ -141,40 +142,47 @@
     .card-back {
       background: #F5F0EB;
       display: flex;
+      align-items: center;
+      padding: 0 60px;
+    }
+
+    .back-left {
+      flex: 1;
+      display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 50px 60px;
     }
 
     .back-name {
       font-family: 'Fraunces', serif;
-      font-size: 38px;
+      font-size: 42px;
       font-weight: 700;
       color: #1C2826;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .back-title {
       font-family: 'Inter', sans-serif;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 500;
       color: #6B8F71;
       letter-spacing: 1px;
       text-transform: uppercase;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
     .back-divider {
-      width: 60px;
-      height: 3px;
+      width: 200px;
+      height: 8px;
+      border-radius: 4px;
       background: linear-gradient(to right, #6B8F71, #E07B3C);
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
     .back-info {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .back-row {
@@ -192,38 +200,23 @@
       flex-shrink: 0;
     }
 
-    .back-row a {
-      color: #2D2D2D;
-      text-decoration: none;
-    }
-
     .back-right {
-      position: absolute;
-      right: 60px;
-      top: 50px;
-      bottom: 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
+      margin-left: 40px;
     }
 
     .back-qr {
-      width: 160px;
-      height: 160px;
-    }
-
-    .back-qr-label {
-      font-size: 13px;
-      color: #6B7280;
-      letter-spacing: 0.5px;
-      text-align: center;
+      width: 180px;
+      height: 180px;
     }
 
     .back-brand-name {
       font-family: 'Fraunces', serif;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
       color: #1C2826;
       text-align: center;
@@ -242,7 +235,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 16px;
       background: linear-gradient(to right, #6B8F71, #E07B3C);
     }
   </style>
@@ -251,7 +244,7 @@
   <p class="label">Front</p>
 
   <div class="card card-front">
-    <img class="front-photo" src="headleyweb/public/images/headshot-matt-headley.webp" alt="">
+    <img class="front-photo" src="public/images/headshot-matt-headley.webp" alt="">
     <div class="front-photo-fade"></div>
 
     <div class="front-content">
@@ -273,6 +266,7 @@
   <p class="label">Back</p>
 
   <div class="card card-back">
+    <div class="back-left">
     <div class="back-name">Matt Headley</div>
     <div class="back-title">Web Designer &amp; SEO Specialist</div>
     <div class="back-divider"></div>
@@ -295,10 +289,10 @@
         <span>Jacksonville, Alabama</span>
       </div>
     </div>
+    </div>
 
     <div class="back-right">
       <img class="back-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https%3A%2F%2Fheadleyweb.com%3Futm_source%3Dbusiness_card%26utm_medium%3Dqr%26utm_campaign%3Dnetworking&color=1C2826&bgcolor=F5F0EB&format=svg" alt="QR code to headleyweb.com">
-      <div class="back-qr-label">Scan to visit</div>
       <div class="back-brand-name">Headley <span class="hw-accent">Web <span class="amp">&amp;</span> SEO</span></div>
     </div>
 
