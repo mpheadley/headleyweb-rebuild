@@ -73,28 +73,11 @@ Create city-specific landing pages targeting "[service] + [city]" keywords. Each
 
 ---
 
-### Automated Audit Tool (LIVE)
-The `/audit` page is live on headleyweb.com. Features:
-- URL input → PageSpeed Insights + StoryBrand messaging analysis (18-item scorer)
-- Score gauges (Speed, SEO, Accessibility) with plain-English summaries
-- StoryBrand grade (A–F) with "What I'd Fix First" recommendations
-- LocalBusiness JSON-LD schema detection
-- Optional trade selector → ROI estimates
-- PDF report download + email delivery (Resend via `send.headleyweb.com`)
-- Internal view (`?internal=[key]`) with Core Web Vitals, failed/passed audits, manual checklist, copy-paste summary
-- Linked from nav ("Free Audit"), homepage checkup section, services/about/portfolio CTAs
-
-**Still TODO:**
-- [ ] Build reusable `/audit/[trade]-[city]` landing page template (video embed + audit results + CTA)
-- [ ] First instance: "I Googled [Plumber] in Anniston" — screen record + audit page link
-- [ ] Share as Reel/TikTok + LinkedIn audit post (see social strategy), landing page is the conversion point
-- [ ] Phase 2-3: Explore white-label SaaS (see BUSINESS_STRATEGY.md Idea 11)
-
-**How the audit fits the sales funnel:**
-1. `/audit` (zero friction) — instant results, no signup, PDF download
-2. `/quiz` (email capture) — personality archetype + full audit + ROI estimates
-3. `/#checkup` (high-touch) — manual video review, 48-hour turnaround
-Each tier feeds the next. The audit is the top of the funnel.
+### Audit Landing Page Template (Phase 3 blog content)
+- [ ] Build reusable `/audit/[trade]-[city]` page template (video embed + observations + CTA)
+- [ ] First instance: "I Googled [Plumber] in Anniston" — screen record + landing page
+- [ ] Component: `<AuditLandingPage trade="" city="" videoUrl="" observations={[]} />`
+- [ ] Share as Reel/TikTok, landing page is the conversion point → Clarity Sprint booking
 - [ ] See [BLOG_POST_PLAN.md](BLOG_POST_PLAN.md) Phase 3 for full details
 
 ---
