@@ -183,6 +183,55 @@ See [BUSINESS_STRATEGY.md](BUSINESS_STRATEGY.md) Case Study Template for format.
 
 ---
 
+## 3-Month Editorial Calendar (April–June 2026)
+
+Target: ~60% broad small business topics (reach), ~40% trade-specific (local SEO).
+Posts marked with * are higher priority.
+
+### Month 1 — April 2026
+
+| Week | Type | Title | CTA |
+|------|------|-------|-----|
+| 1 | Broad | * "Nobody Reads Your Website (Here's What They Actually Do)" | Audit |
+| 2 | Trade | "What Every Electrician's Website Gets Wrong" | Audit |
+| 3 | Broad | * "When to DIY Your Website and When to Hire Someone" | Quiz/Audit |
+| 4 | Broad | "What 'SEO' Actually Means for a Small Business (No Jargon)" | Audit |
+
+### Month 2 — May 2026
+
+| Week | Type | Title | CTA |
+|------|------|-------|-----|
+| 1 | Broad | * "Why Your Website Looks Fine But Doesn't Get Calls" | Audit |
+| 2 | Trade | "Your Lawn Care Website Needs These 5 Things Before Summer" | Audit |
+| 3 | Broad | "Is Your Website Slow? Here's What It's Costing You" | Audit |
+| 4 | Broad | * "Your Customer Is the Hero, Not Your Business" | Audit |
+
+### Month 3 — June 2026
+
+| Week | Type | Title | CTA |
+|------|------|-------|-----|
+| 1 | Broad | "The Free Google Tool Most Small Businesses Ignore" (GBP) | Audit |
+| 2 | Trade | "Marketing Your Cleaning Business Online: What Actually Works" | Audit |
+| 3 | Broad | * "Why I Show My Prices (And Why Most Web Designers Don't)" — Matt should write/heavy rewrite | Audit |
+| 4 | Broad | "5 Signs It's Time to Rebuild Your Website" | Audit |
+
+### Backlog (Unscheduled)
+
+- "What to Put on Your Homepage (And What to Leave Off)"
+- "Why Reviews Matter More Than Your Website Design"
+- "The One Page Your Website Is Probably Missing" (dedicated services/pricing page)
+- "How to Write Your Own About Page (Template)"
+- "Local SEO Checklist: 10 Things You Can Do This Week"
+- "Why I Don't Build on WordPress Anymore"
+- "What Happens After Your Website Launches (Hint: That's When the Work Starts)"
+- Trade: Roofers
+- Trade: Auto repair / detailing
+- Trade: Restaurants / food trucks
+- Trade: Real estate agents
+- Trade: Dentists / chiropractors
+
+---
+
 ## Publishing Notes
 
 ### Priority Order (what to write next)
@@ -229,4 +278,4 @@ For **every** published post, run through this checklist:
 
 ---
 
-*Last updated: March 13, 2026*
+*Last updated: March 18, 2026 (added 3-month editorial calendar)*

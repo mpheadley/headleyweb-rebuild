@@ -44,7 +44,7 @@
 | Tier | Price | Key Deliverables |
 |------|-------|-----------------|
 | **Essential Care** | $49/mo | Hosting, security, 30 min edits, uptime monitoring |
-| **Growth Care** | $79/mo | + GBP management, monthly report, review coaching, 1 hr edits |
+| **Growth Care** | $99/mo | + GBP management, monthly report, review coaching, 1 hr edits |
 | **Accelerate** | $149/mo | + AI Visibility monitoring, quarterly entity audit, answer-first content refresh, strategy call |
 
 > First 3 months free with any build. Cancel anytime.
@@ -76,7 +76,7 @@ Monthly deliverables:
 
 | Phase | Timeline | Client Type | Build Price | Monthly | Your Goal |
 |-------|----------|-------------|-------------|---------|-----------|
-| **1 — Reps & Reviews** | Now – Month 6 | Local startups, side-hustles | $495 – $1,195 | $49 – $109 | 5–10 live case studies, build recurring revenue floor |
+| **1 — Reps & Reviews** | Now – Month 6 | Local startups, side-hustles | $495 – $1,195 | $49 – $149 | 5–10 live case studies, build recurring revenue floor |
 | **2 — Market Competitor** | Months 6–12 | Established local services | $2,200 – $4,000 | $149 – $349 | Compete with local agencies (Lake City Web Designs, etc.) |
 | **3 — Strategic Partner** | Years 1–2 | Regional / niche companies ($1M+ revenue) | $5,000 – $10,000 | $1,500 – $2,500 | Pivot to "Sales Engine" + Fractional CMO model |
 
@@ -100,7 +100,7 @@ often matters more than the website itself.
 4. Price sensitivity evaporates — upsell to Get Calls / Get Booked / Sales Engine
 
 **The math to $400K:** You don't need 300 local shops. You need **10 high-value
-partnerships**. Once recurring revenue from $109/mo plans covers living expenses,
+partnerships**. Once recurring revenue from $49–$149/mo plans covers living expenses,
 you gain the financial margin to stop taking low-budget work and pitch larger
 regional companies using the case studies you built locally.
 
@@ -123,7 +123,21 @@ regional companies using the case studies you built locally.
 
 **Scope cap:** Starter tier max (5 pages). No scope creep into Professional/Sales Engine territory.
 
-**After 6 months:** Natural conversion point — they're already in the habit and seeing value. Pitch Maintain ($49/mo) or Grow ($149/mo).
+**After 6 months:** Natural conversion point — they're already in the habit and seeing value. Pitch Essential Care ($49/mo) or Accelerate ($149/mo).
+
+### Case Study Build Pitch (verbal framing)
+
+> **Pre-meeting research:** Before any discovery call, run the 8-step process in [DISCOVERY_WORKFLOW.md](DISCOVERY_WORKFLOW.md). It takes 30–60 minutes and gives you the audit numbers, competitor names, and GBP status you need to make the pitch concrete. The baseline metrics you capture also become the "before" numbers for the case study.
+
+Use this when presenting a free build to a prospect. Anchor value first, then reveal the arrangement.
+
+> "A site like this typically runs **$795 to $1,195**. I'm building yours free as part of a case study — I document the before/after and use it on my site. After 3 months, the site is yours. At that point you can take everything and host it yourself, or stay on an optional care plan: **$49/mo** covers updates and hosting, **$149/mo** adds Google Business Profile management and ongoing SEO."
+
+**Why this order matters:** Lead with the retail value so the prospect understands what they're getting. If you lead with "it's free," they anchor to zero and the care plan feels like a bait-and-switch. If you lead with $795–$1,195 and *then* say it's free, the care plan feels cheap by comparison.
+
+**Care plan framing after anchor:**
+- $49/mo = updates + hosting. "Basically just keeping the lights on."
+- $149/mo = adds GBP management + ongoing SEO. "This is where you actually keep moving up in search."
 
 ### Nonprofit / Community Builds (Portfolio + Goodwill)
 
@@ -156,6 +170,7 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [x] Choose email platform — **Mailchimp free tier** (one account, all clients get separate Audiences). Added to Launch Checklist Phase 15.
 
 ### Phase 1b: New Growth Initiatives (Now - Month 3)
+- [x] Pre-meeting discovery workflow documented — [DISCOVERY_WORKFLOW.md](DISCOVERY_WORKFLOW.md) (run this before every sales call)
 - [ ] Build "Website Report Card" PDF template (Idea #6) — attach to every video audit
 - [ ] Formalize referral incentive structure (Gap #1) — "$100 off care plan per referral"
 - [ ] Research Calhoun County / Jacksonville Chamber of Commerce membership (Idea #9)
@@ -180,6 +195,11 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [ ] Draft year-long nurture sequence (12-24 evergreen emails beyond the initial 5)
 - [ ] Build win-back email templates: 60-day silence + 90-day re-engagement + annual health check (Gap #2)
 - [ ] Evaluate standalone `/pricing` page based on GSC data for price-intent keywords (Gap #4)
+
+### Automation Skills (Cowork)
+- [ ] Build "discovery-prep" skill — automates pre-call research using Airtable CRM + DISCOVERY_WORKFLOW.md
+- [ ] Build "case-study" skill — generates case study content in multiple formats from client data
+- See [SKILL_PROMPTS.md](SKILL_PROMPTS.md) for ready-to-use prompts
 
 ### Phase 3: High-Ticket Pivot (Month 3-6)
 - [ ] 3 case studies showing measurable lead increase
@@ -301,6 +321,7 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 
 **9. Case Study Pipeline (Proof Engine)**
 - **What:** A structured process to turn every client project into a metrics-first case study that justifies higher pricing.
+- **Pre-meeting research:** Use [DISCOVERY_WORKFLOW.md](DISCOVERY_WORKFLOW.md) to capture baseline metrics, competitor gaps, and GBP status before the discovery call. These become your "before" numbers automatically.
 - **Baseline "before" snapshot:** On day 1, save Lighthouse scores + full-page screenshots of the old site (or document "no site"). Store in `before-screenshots/` in the project folder. Added to Launch Checklist Phase 0.
 - **AI Share of Voice (SOV) tracking:** At launch and at 30/60/90 days, query ChatGPT and Perplexity for the client's services + city. Screenshot results. Track whether the client appears as a recommendation. This is raw proof for the Accelerate care plan and AEO positioning.
 - **Signed agreement as commitment filter:** Free builds require a signed agreement: testimonial upon completion + care plan commitment after the 3-month grace period. Filters out tire-kickers and guarantees you get the testimonial and recurring revenue. Added to Launch Checklist Phase 0.
@@ -574,22 +595,26 @@ Distribution checklist mentions LinkedIn but doesn't treat it seriously. For B2B
 - Share case study metrics and AI/AEO insights — LinkedIn audience eats that up.
 - **When:** Phase 1-2. Low effort, high signal for the Phase 2-3 client segment.
 
-### Idea 6: "Website Report Card" — 1-Page PDF Leave-Behind
+### Idea 6: "Website Report Card" — PDF Leave-Behind ✅ BUILT
 
-You have the quiz and the video audit. What's missing is a **leave-behind document** that gets forwarded to business partners and spouses — the people who actually approve the spend. A video audit doesn't get forwarded the same way.
+**Status:** Live. The automated site checkup at headleyweb.com/audit generates a branded PDF report and emails it via Resend. No manual template needed.
 
-**Format (branded 1-page PDF):**
-- Lighthouse scores (mobile + desktop)
-- GBP status (complete / incomplete / missing)
-- Schema status
-- AI visibility check (does ChatGPT mention them?)
-- 3 specific recommendations
-- Your logo, contact info, and CTA at the bottom
+**What the PDF includes:**
+- Overall letter grade (A-F) with executive summary
+- Mobile screenshot of their site
+- Messaging analysis (clarity, CTA placement, empathy, authority — 16 scored items)
+- Lighthouse scores (Speed, SEO, Accessibility)
+- Core Web Vitals (LCP, FCP, CLS, TBT)
+- HTTPS, meta description, viewport, crawlability, local business schema checks
+- "What I'd Fix First" recommendations
+- Trade-specific ROI estimates (when trade data available)
+- Headley Web branding + contact info footer
 
-**Actions:**
-- Build a PDF template (Canva or programmatic with a simple HTML-to-PDF script).
-- Generate one for every video audit. Attach to the follow-up email.
-- **When:** Phase 1. Build the template before the next audit.
+**Two-step lead funnel:**
+1. **Automated PDF** — prospect enters URL + email at headleyweb.com/audit → instant branded report emailed. This is the lead capture.
+2. **Free video review (manual follow-up)** — Matt records a personalized 3-5 minute Loom walking through their specific site, referencing the PDF scores. Offered as a free follow-up to every audit lead. This is the trust-builder that converts.
+
+**Why 2 steps:** The PDF is the scalable lead magnet that captures the email. The video is the personal touch that closes. The PDF gets forwarded to business partners and spouses — the video builds the relationship with the decision-maker.
 
 ### Idea 7: Strategic Partnerships with Adjacent Providers
 
@@ -637,7 +662,7 @@ Your strategy buries GBP setup inside the build tiers. A standalone GBP-only pro
 - A business owner who won't spend $495 on a website WILL spend $149 to "fix my Google listing."
 - Once they see results (calls, map pack visibility), the website conversation starts naturally.
 - Sits below Get Found on the value ladder and feeds directly into it.
-- Can be offered as an upsell from the free video audit: "Your GBP is a mess — I can fix it in 48 hours for $149."
+- Can be offered as an upsell from the free site checkup: "Your GBP is a mess — I can fix it in 48 hours for $149."
 - **When:** Phase 1. Can launch immediately — you already know how to do this.
 
 ### Idea 11: White-Label Site Audit Tool (SaaS / Productized Service)

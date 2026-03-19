@@ -53,6 +53,7 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 - **`PLAN.md`** — Full plan with page list, architecture, and post-launch roadmap
 - **`BLOG_POST_PLAN.md`** — Planned blog content (MDX)
 - **`BUSINESS_STRATEGY.md`** — Revenue model, pricing, growth plan
+- **`SKILL_PROMPTS.md`** — Ready-to-use prompts for building Cowork automation skills (discovery prep, case study generator)
 - **`NEXTJS_KIT_NOTES.md`** — Patterns to extract for the Next.js starter kit
 
 ## Build Rules
