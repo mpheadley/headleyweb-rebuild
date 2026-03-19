@@ -28,6 +28,9 @@ jobs:
           NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
         run: npx tsx scripts/scan-new-businesses.ts --output leads-weekly.csv
 
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
       - name: Run chamber member scan
         env:
           AIRTABLE_PAT: ${{ secrets.AIRTABLE_PAT }}

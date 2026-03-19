@@ -2,14 +2,14 @@
 /**
  * Chamber of Commerce New Member Scanner
  *
- * Scrapes public member directories from NE Alabama chambers,
- * diffs against previous scan to detect NEW members, scores them,
- * and feeds into the same Airtable + email pipeline as the SOS scanner.
+ * Scrapes public member directories from NE Alabama chambers using Playwright
+ * (headless Chromium) because GrowthZone/ChamberMaster directories are
+ * JS-rendered — plain fetch + cheerio gets empty containers.
  *
  * Chambers monitored:
  *   - Etowah (Gadsden):    business.etowahchamber.org
- *   - Calhoun (Anniston):   calhounchamber.chambermaster.com
- *   - Cherokee (Centre):    members.cherokee-chamber.org
+ *   - Calhoun (Anniston):  calhounchamber.chambermaster.com
+ *   - Cherokee (Centre):   members.cherokee-chamber.org
  *
  * Usage:
  *   npx tsx scripts/scan-chamber-members.ts
@@ -24,7 +24,7 @@
  * Weekly automation: see .github/workflows/weekly-lead-scan.yml
  */
 
-import * as cheerio from 'cheerio';
+import { chromium, type Browser, type Page } from 'playwright';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -35,7 +35,6 @@ interface ChamberConfig {
   name: string;
   county: string;
   baseUrl: string;
-  // ChamberMaster directories support /list/searchalpha/{letter}
   directoryPath: string;
 }
 
@@ -122,154 +121,10 @@ function parseArgs() {
   return { flags };
 }
 
-// --- HTTP Helpers ---
-
-async function fetchWithRetry(url: string, retries = 3): Promise<string> {
-  const headers: Record<string, string> = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'en-US,en;q=0.5',
-  };
-
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      const res = await fetch(url, { headers, redirect: 'follow' });
-      if (res.ok) return await res.text();
-      if (res.status === 429 || res.status >= 500) {
-        if (attempt < retries) {
-          const wait = Math.pow(2, attempt + 1) * 1000;
-          console.log(`  Retry ${attempt + 1}/${retries} after ${wait}ms (status ${res.status})`);
-          await sleep(wait);
-          continue;
-        }
-      }
-      throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-    } catch (err) {
-      if (attempt < retries) {
-        const wait = Math.pow(2, attempt + 1) * 1000;
-        console.log(`  Retry ${attempt + 1}/${retries} after ${wait}ms (${(err as Error).message})`);
-        await sleep(wait);
-        continue;
-      }
-      throw err;
-    }
-  }
-  throw new Error('Exhausted retries');
-}
+// --- Helpers ---
 
 function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-// --- ChamberMaster Directory Scraper ---
-
-function parseMemberListingPage(html: string, chamber: ChamberConfig): ChamberMember[] {
-  const $ = cheerio.load(html);
-  const members: ChamberMember[] = [];
-
-  // ChamberMaster uses .mn-search-result or .gz-results-card for each member
-  // Try multiple selectors to handle different ChamberMaster versions
-
-  // Pattern 1: GrowthZone / newer ChamberMaster
-  $('.gz-results-card, .mn-search-result, .card.mn-card').each((_, el) => {
-    const card = $(el);
-    const name = card.find('.gz-card-title a, .mn-org-name a, h4 a, .card-title a').first().text().trim();
-    const detailHref = card.find('.gz-card-title a, .mn-org-name a, h4 a, .card-title a').first().attr('href') || '';
-    const category = card.find('.gz-card-category, .mn-cat, .gz-category, .card-category').first().text().trim();
-    const address = card.find('.gz-card-address, .mn-addr, .gz-address, .card-text').first().text().trim();
-    const phone = card.find('.gz-card-phone a, .mn-phone a, a[href^="tel:"]').first().text().trim();
-    const website = card.find('a[href^="http"]:not([href*="chambermaster"]):not([href*="growthzone"]):not([href*="etowahchamber"]):not([href*="cherokee-chamber"]):not([href*="calhounchamber"])').first().attr('href') || '';
-
-    if (name) {
-      members.push({
-        name,
-        category,
-        address,
-        city: extractCity(address),
-        phone,
-        website: website || '',
-        detailUrl: detailHref.startsWith('http') ? detailHref : `${chamber.baseUrl}${detailHref}`,
-        chamberId: chamber.id,
-        chamberName: chamber.name,
-      });
-    }
-  });
-
-  // Pattern 2: Older ChamberMaster — table-based directory
-  if (members.length === 0) {
-    $('table.mn-table tr, table.list-table tr, .directory-table tr').each((_, row) => {
-      const cells = $(row).find('td');
-      if (cells.length >= 2) {
-        const nameEl = cells.first().find('a').first();
-        const name = nameEl.text().trim() || cells.first().text().trim();
-        const detailHref = nameEl.attr('href') || '';
-        const address = cells.eq(1)?.text().trim() || '';
-        const phone = cells.eq(2)?.text().trim() || '';
-
-        if (name && !name.toLowerCase().includes('business name')) {
-          members.push({
-            name,
-            category: '',
-            address,
-            city: extractCity(address),
-            phone,
-            website: '',
-            detailUrl: detailHref.startsWith('http') ? detailHref : `${chamber.baseUrl}${detailHref}`,
-            chamberId: chamber.id,
-            chamberName: chamber.name,
-          });
-        }
-      }
-    });
-  }
-
-  // Pattern 3: Unstructured list items
-  if (members.length === 0) {
-    $('li.list-group-item, .mn-member-item, .directory-item').each((_, el) => {
-      const item = $(el);
-      const nameEl = item.find('a').first();
-      const name = nameEl.text().trim();
-      const detailHref = nameEl.attr('href') || '';
-
-      if (name) {
-        members.push({
-          name,
-          category: '',
-          address: item.find('.address, .mn-addr').text().trim(),
-          city: extractCity(item.text()),
-          phone: '',
-          website: '',
-          detailUrl: detailHref.startsWith('http') ? detailHref : `${chamber.baseUrl}${detailHref}`,
-          chamberId: chamber.id,
-          chamberName: chamber.name,
-        });
-      }
-    });
-  }
-
-  // Pattern 4: Generic links within common directory containers
-  if (members.length === 0) {
-    $('#mn-search-results a[href*="/list/member/"], #mn-directory a, .gz-directory-list a, main a[href*="/list/member/"]').each((_, el) => {
-      const link = $(el);
-      const name = link.text().trim();
-      const href = link.attr('href') || '';
-      if (name && name.length > 2 && !name.match(/^(back|next|prev|search|home|page)/i)) {
-        members.push({
-          name,
-          category: '',
-          address: '',
-          city: '',
-          phone: '',
-          website: '',
-          detailUrl: href.startsWith('http') ? href : `${chamber.baseUrl}${href}`,
-          chamberId: chamber.id,
-          chamberName: chamber.name,
-        });
-      }
-    });
-  }
-
-  return members;
 }
 
 function extractCity(text: string): string {
@@ -277,34 +132,169 @@ function extractCity(text: string): string {
   return match ? match[1].trim() : '';
 }
 
-async function scrapeAllMembers(chamber: ChamberConfig): Promise<ChamberMember[]> {
+// --- Playwright-based GrowthZone Scraper ---
+
+async function scrapePageWithPlaywright(
+  page: Page,
+  url: string,
+  chamber: ChamberConfig,
+): Promise<ChamberMember[]> {
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+
+  // GrowthZone renders member cards via JS — wait for them to appear.
+  // Try multiple selectors that GrowthZone versions use.
+  const cardSelector = [
+    '.gz-results-card',
+    '.mn-search-result',
+    '.card.mn-card',
+    '#mn-search-results .card',
+    '.gz-directory-card',
+  ].join(', ');
+
+  try {
+    await page.waitForSelector(cardSelector, { timeout: 10000 });
+  } catch {
+    // No cards rendered — could be empty letter page or different layout.
+    // Fall back to any member links.
+    try {
+      await page.waitForSelector('a[href*="/list/member/"]', { timeout: 5000 });
+    } catch {
+      return []; // Genuinely empty page
+    }
+  }
+
+  // Extract member data from the rendered DOM
+  const members = await page.evaluate((chamberData: { id: string; name: string; baseUrl: string }) => {
+    const results: Array<{
+      name: string;
+      category: string;
+      address: string;
+      phone: string;
+      website: string;
+      detailUrl: string;
+    }> = [];
+
+    // Strategy 1: GrowthZone card elements
+    const cards = document.querySelectorAll(
+      '.gz-results-card, .mn-search-result, .card.mn-card, #mn-search-results .card, .gz-directory-card'
+    );
+
+    if (cards.length > 0) {
+      cards.forEach(card => {
+        const nameEl = card.querySelector(
+          '.gz-card-title a, .mn-org-name a, h4 a, .card-title a, .gz-member-name a'
+        );
+        const name = nameEl?.textContent?.trim() || '';
+        const detailHref = nameEl?.getAttribute('href') || '';
+
+        const categoryEl = card.querySelector(
+          '.gz-card-category, .mn-cat, .gz-category, .card-category'
+        );
+        const category = categoryEl?.textContent?.trim() || '';
+
+        const addressEl = card.querySelector(
+          '.gz-card-address, .mn-addr, .gz-address, .card-text'
+        );
+        const address = addressEl?.textContent?.trim() || '';
+
+        const phoneEl = card.querySelector(
+          '.gz-card-phone a, .mn-phone a, a[href^="tel:"]'
+        );
+        const phone = phoneEl?.textContent?.trim() || '';
+
+        // Find external website links (exclude chamber/growthzone domains)
+        const chamberDomains = ['chambermaster', 'growthzone', 'etowahchamber', 'cherokee-chamber', 'calhounchamber'];
+        let website = '';
+        const links = card.querySelectorAll('a[href^="http"]');
+        for (const link of links) {
+          const href = link.getAttribute('href') || '';
+          if (!chamberDomains.some(d => href.includes(d))) {
+            website = href;
+            break;
+          }
+        }
+
+        if (name) {
+          results.push({
+            name,
+            category,
+            address,
+            phone,
+            website,
+            detailUrl: detailHref.startsWith('http') ? detailHref : `${chamberData.baseUrl}${detailHref}`,
+          });
+        }
+      });
+    }
+
+    // Strategy 2: Fall back to member links if no cards found
+    if (results.length === 0) {
+      const memberLinks = document.querySelectorAll(
+        'a[href*="/list/member/"], #mn-search-results a, .gz-directory-list a, main a[href*="/list/member/"]'
+      );
+      memberLinks.forEach(link => {
+        const name = link.textContent?.trim() || '';
+        const href = link.getAttribute('href') || '';
+        if (name && name.length > 2 && !/^(back|next|prev|search|home|page)/i.test(name)) {
+          results.push({
+            name,
+            category: '',
+            address: '',
+            phone: '',
+            website: '',
+            detailUrl: href.startsWith('http') ? href : `${chamberData.baseUrl}${href}`,
+          });
+        }
+      });
+    }
+
+    return results;
+  }, { id: chamber.id, name: chamber.name, baseUrl: chamber.baseUrl });
+
+  return members.map(m => ({
+    ...m,
+    city: extractCity(m.address),
+    chamberId: chamber.id,
+    chamberName: chamber.name,
+  }));
+}
+
+async function scrapeAllMembers(
+  browser: Browser,
+  chamber: ChamberConfig,
+): Promise<ChamberMember[]> {
   console.log(`\nScraping ${chamber.name}...`);
   const allMembers: ChamberMember[] = [];
   const seen = new Set<string>();
   let failCount = 0;
 
-  for (const letter of ALPHABET) {
-    const url = `${chamber.baseUrl}${chamber.directoryPath}/${letter}`;
-    try {
-      const html = await fetchWithRetry(url);
-      const members = parseMemberListingPage(html, chamber);
-      for (const m of members) {
-        const key = m.name.toLowerCase().trim();
-        if (!seen.has(key)) {
-          seen.add(key);
-          allMembers.push(m);
+  const page = await browser.newPage();
+
+  try {
+    for (const letter of ALPHABET) {
+      const url = `${chamber.baseUrl}${chamber.directoryPath}/${letter}`;
+      try {
+        const members = await scrapePageWithPlaywright(page, url, chamber);
+        for (const m of members) {
+          const key = m.name.toLowerCase().trim();
+          if (!seen.has(key)) {
+            seen.add(key);
+            allMembers.push(m);
+          }
+        }
+        process.stdout.write(`  ${letter.toUpperCase()}: ${members.length} members\r`);
+        await sleep(800); // Be polite — 800ms between requests
+      } catch (err) {
+        failCount++;
+        console.log(`  ${letter.toUpperCase()}: failed (${(err as Error).message})`);
+        if (failCount >= 5) {
+          console.log(`  Too many failures for ${chamber.name}, skipping remaining letters`);
+          break;
         }
       }
-      process.stdout.write(`  ${letter.toUpperCase()}: ${members.length} members\r`);
-      await sleep(800); // Be polite — 800ms between requests
-    } catch (err) {
-      failCount++;
-      console.log(`  ${letter.toUpperCase()}: failed (${(err as Error).message})`);
-      if (failCount >= 5) {
-        console.log(`  Too many failures for ${chamber.name}, skipping remaining letters`);
-        break;
-      }
     }
+  } finally {
+    await page.close();
   }
 
   console.log(`  ${chamber.name}: ${allMembers.length} total members found`);
@@ -652,7 +642,7 @@ async function main() {
 
   const scanDate = new Date().toISOString().split('T')[0];
 
-  console.log('Chamber of Commerce Member Scanner');
+  console.log('Chamber of Commerce Member Scanner (Playwright)');
   console.log('='.repeat(40));
   console.log(`Chambers: ${CHAMBERS.map(c => c.name).join(', ')}`);
   console.log(`Airtable: ${skipAirtable ? 'disabled' : 'enabled'}`);
@@ -667,35 +657,44 @@ async function main() {
     seenData = { lastScan: null, chambers: {} };
   }
 
+  // Launch headless browser once, reuse across all chambers
+  console.log('\nLaunching headless browser...');
+  const browser = await chromium.launch({ headless: true });
+
   const allNewLeads: ChamberLead[] = [];
 
-  for (const chamber of CHAMBERS) {
-    try {
-      const currentMembers = await scrapeAllMembers(chamber);
+  try {
+    for (const chamber of CHAMBERS) {
+      try {
+        const currentMembers = await scrapeAllMembers(browser, chamber);
 
-      if (currentMembers.length === 0) {
-        console.log(`  ${chamber.name}: No members found (site may be blocking)`);
-        continue;
-      }
-
-      const previousNames = seenData.chambers[chamber.id] || [];
-      const newMembers = isFirstScan ? [] : findNewMembers(currentMembers, previousNames);
-
-      // Update baseline with current full list
-      seenData.chambers[chamber.id] = currentMembers.map(m => m.name);
-
-      if (isFirstScan) {
-        console.log(`  ${chamber.name}: Baseline established (${currentMembers.length} members saved)`);
-      } else {
-        console.log(`  ${chamber.name}: ${newMembers.length} new members since last scan`);
-        if (newMembers.length > 0) {
-          const scored = scoreMembers(newMembers);
-          allNewLeads.push(...scored);
+        if (currentMembers.length === 0) {
+          console.log(`  ${chamber.name}: No members found (site may be blocking)`);
+          continue;
         }
+
+        const previousNames = seenData.chambers[chamber.id] || [];
+        const newMembers = isFirstScan ? [] : findNewMembers(currentMembers, previousNames);
+
+        // Update baseline with current full list
+        seenData.chambers[chamber.id] = currentMembers.map(m => m.name);
+
+        if (isFirstScan) {
+          console.log(`  ${chamber.name}: Baseline established (${currentMembers.length} members saved)`);
+        } else {
+          console.log(`  ${chamber.name}: ${newMembers.length} new members since last scan`);
+          if (newMembers.length > 0) {
+            const scored = scoreMembers(newMembers);
+            allNewLeads.push(...scored);
+          }
+        }
+      } catch (err) {
+        console.error(`  ${chamber.name}: Error — ${(err as Error).message}`);
       }
-    } catch (err) {
-      console.error(`  ${chamber.name}: Error — ${(err as Error).message}`);
     }
+  } finally {
+    await browser.close();
+    console.log('Browser closed.');
   }
 
   // Save updated baseline
