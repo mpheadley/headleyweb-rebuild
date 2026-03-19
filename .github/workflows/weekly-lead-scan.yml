@@ -1,0 +1,39 @@
+name: Weekly Lead Scan
+
+on:
+  schedule:
+    # Every Monday at 8am CT (1pm UTC)
+    - cron: '0 13 * * 1'
+  workflow_dispatch: # Manual trigger from GitHub Actions tab
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lead scan
+        env:
+          AIRTABLE_PAT: ${{ secrets.AIRTABLE_PAT }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          AIRTABLE_TABLE_NAME: ${{ secrets.AIRTABLE_TABLE_NAME || 'New Business Leads' }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+        run: npx tsx scripts/scan-new-businesses.ts --output leads-weekly.csv
+
+      - name: Upload results as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lead-scan-${{ github.run_number }}
+          path: |
+            leads-weekly.csv
+            leads-weekly.json
+          retention-days: 30
