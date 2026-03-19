@@ -65,7 +65,7 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 
 ### Blog Writing Workflow
 - **Voice guide:** `~/Documents/Web Development/local-legends/content/AUTHENTIC-VOICE-GUIDE.md` — same guide as Southern Legends, applies here too.
-- **AI kill list applies:** No delve, foster, leverage, tapestry, "it's worth noting," tricolon groups, mirror paragraphs, summary conclusions. See Part 5 of the voice guide.
+- **AI kill list applies:** No delve, foster, leverage, tapestry, "it's worth noting," tricolon groups, mirror paragraphs, summary conclusions, em dashes, semicolons in casual copy, marketing hedges, uniform paragraph lengths. See Part 5 of the voice guide.
 - **AI-written posts (6):** All current published blog posts were written entirely by Claude and tagged `aiWritten: true` in frontmatter. They need Matt's review and proofing before being treated as final. Don't reference them as voice examples.
 - **Draft in progress:** `drafts/why-i-build-for-local-businesses.mdx` — outline only, needs Matt's voice.
 
