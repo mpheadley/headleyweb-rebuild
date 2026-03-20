@@ -91,12 +91,23 @@ export default function Footer() {
           </Link>
         </div>
 
-        <p className="text-xs text-gray-400">
-          Built by{" "}
-          <a href="https://headleyweb.com" className="font-heading text-hw-primary hover:text-hw-primary-dark transition-colors">
-            Headley Web <span className="amp">&amp;</span> SEO
-          </a>
-        </p>
+        <a
+          href="https://headleyweb.com"
+          className="inline-flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity mx-auto"
+          aria-label="Built by Headley Web & SEO"
+        >
+          <Image
+            src="/images/logo-headley-web-sm.webp"
+            alt="Headley Web & SEO logo"
+            width={28}
+            height={28}
+            loading="lazy"
+            className="rounded-full"
+          />
+          <span className="text-xs text-gray-400">
+            Built by Headley Web <span className="amp">&amp;</span> SEO
+          </span>
+        </a>
       </div>
     </footer>
   );
