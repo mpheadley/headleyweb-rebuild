@@ -51,6 +51,21 @@
 > **Accelerate** is the bridge to high-value retainers — positions AI Visibility
 > early without requiring $2,500/mo proof yet. Raise to $249-$349 after case studies.
 
+### Care Plan Scaling (Phase 2+)
+Current maintenance tiers are priced for Phase 1 builds. Once build prices rise, maintenance must scale with them — a $3,000 build client expects a professional ongoing relationship, not a $49 hosting account.
+
+| Build tier | Target maintenance |
+|---|---|
+| $495 Get Found | $49 Essential |
+| $795–$1,195 Get Calls/Booked | $99–$149 Growth/Accelerate |
+| $3,000–$5,000 Phase 2 builds | $199–$299/mo (build this tier) |
+| $7,500+ Sales Engine | $499+/mo or retainer conversation |
+
+**Gap to fill before Phase 2:** a $199–$299/mo tier between Accelerate and the $2,500 retainer. Deliverables: everything in Accelerate + 1 blog post/month + quarterly conversion audit + priority support. This is the "grow my business" plan vs. "keep my site running."
+
+### For Free Builds (portfolio/case study projects)
+Ask for **Accelerate ($149/mo)** in exchange for the waived build fee. Frame: *"Since I'm waiving the build fee, I'd love to have you on Accelerate while I'm growing — it helps me keep the site sharp for you and builds my recurring revenue base."* Don't offer $49 on a free build — you're already giving away $1,200.
+
 ### Target Retainers (Phase 3+: $2,500/mo)
 Monthly deliverables:
 1. 45-minute strategy call
@@ -63,6 +78,26 @@ Monthly deliverables:
 - StoryBrand workshop as a separate 2-day deliverable
 - De-risks the sale — client commits $1,500 before the $6,000 build
 - If they like the strategy, the build is a natural upsell
+
+### Add-Ons (bolt onto any tier)
+
+These are features clients see on inspiration sites and ask for. Price by build time, not by how impressive the source site looked. A site that cost $50,000 to build can use techniques that cost you 2 hours.
+
+| Add-On | Price | What It Is | Est. Time |
+|--------|-------|------------|-----------|
+| **Language cycling animation** | $150 | Typewriter effect cycling through languages — strong differentiator for translation/language service clients | 3–4 hrs |
+| **Scrolling logo/credential marquee** | $150 | Auto-scrolling strip of client logos or certification badges | 1–2 hrs |
+| **Premium scroll interactions** | $250 | Directional slide-ins, parallax layers, clip-path section shapes | 4–6 hrs |
+| **Portfolio/case study carousel** | $250 | Centered card carousel with split-title treatment | 4–6 hrs |
+| **GSAP scroll choreography** | Quote | Pinned sections, synchronized timelines, precise element timing | 1–2 days |
+| **Accessibility toolbar** | $75 | UserWay or custom text/contrast switcher | 30 min–2 hrs |
+
+**What's out of scope at any tier (different category of project):**
+- WebGL / Three.js 3D environments — campaign microsites, $30k–$100k+
+- Immersive audio experiences — not appropriate for service business sites regardless of budget
+- Custom GLSL shaders — specialist engineering, not web design
+
+**Scope rule:** Standard scroll animations (fade-in, slide-in) are included in Get Booked tier. Add-ons are for clients who specifically request effects beyond the standard kit after seeing a reference site.
 
 ---
 
