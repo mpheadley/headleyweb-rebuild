@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -74,9 +74,10 @@ export default function AuditPage() {
   const recommendedTier = "Get Calls";
   const tierPrice = tierPrices[recommendedTier] ?? 795;
 
-  // AI recommendations state
+  // AI recommendations + Claude scoring state
   const [aiRecs, setAiRecs] = useState<string[] | null>(null);
   const [aiRecsLoading, setAiRecsLoading] = useState(false);
+  const [claudeScores, setClaudeScores] = useState<Record<string, { score: number; rationale: string }> | null>(null);
 
   // Email state
   const [email, setEmail] = useState("");
@@ -165,6 +166,7 @@ export default function AuditPage() {
             .then(r => r.ok ? r.json() : null)
             .then(json => {
               if (json?.recommendations?.length > 0) setAiRecs(json.recommendations);
+              if (json?.claudeScores) setClaudeScores(json.claudeScores);
             })
             .catch(() => {})
             .finally(() => setAiRecsLoading(false));
@@ -193,7 +195,7 @@ export default function AuditPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email.trim(),
-          auditResult,
+          auditResult: mergedAuditResult ?? auditResult,
           tradeData,
           recommendedTier,
           tierPrice,
@@ -230,18 +232,19 @@ export default function AuditPage() {
   async function handleDownloadPdf() {
     if (!auditResult) return;
     const { buildReportDoc } = await import("@/lib/generate-report-pdf");
+    const reportData = mergedAuditResult ?? auditResult;
     const doc = buildReportDoc({
       archetype: {
         name: "Site Audit",
         emoji: "\u{1F50D}",
         tagline: "Instant website analysis",
-        description: `Automated audit of ${auditResult.url} covering speed, SEO, accessibility, and messaging.`,
+        description: `Automated audit of ${reportData.url} covering speed, SEO, accessibility, and messaging.`,
         strength: "",
         risk: "",
         recommendation: "Review the results below and take action on the top recommendations.",
         tier: "",
       },
-      auditResult,
+      auditResult: reportData,
       tradeData,
       recommendedTier,
       tierPrice,
@@ -260,17 +263,67 @@ export default function AuditPage() {
     setEmail("");
     setEmailSent(false);
     setEmailError(false);
+    setAiRecs(null);
+    setClaudeScores(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // Compute recommendations — prefer AI recs, fall back to static
-  const staticRecs = auditResult?.storyBrand?.items
+  // Merge Claude scores into StoryBrand items when available
+  const displayItems = useMemo(() => {
+    if (!auditResult?.storyBrand) return [];
+    if (!claudeScores) return auditResult.storyBrand.items;
+    return auditResult.storyBrand.items.map(item => {
+      const cs = claudeScores[item.id];
+      if (!cs) return item;
+      return {
+        ...item,
+        autoScore: cs.score,
+        signals: [cs.rationale],
+        scoredBy: "claude" as const,
+      };
+    });
+  }, [auditResult, claudeScores]);
+
+  // Recompute messaging grade from Claude-scored items when available
+  const displayGrade = useMemo(() => {
+    if (!auditResult?.storyBrand) return null;
+    if (!claudeScores) return auditResult.storyBrand.grade;
+    const scored = displayItems.filter(i => i.autoScore !== null);
+    const total = scored.reduce((s, i) => s + (i.autoScore ?? 0), 0);
+    const max = scored.length * 2;
+    const rate = max > 0 ? total / max : 0;
+    const est = Math.round(rate * 40);
+    if (est >= 34) return "A";
+    if (est >= 26) return "B";
+    if (est >= 18) return "C";
+    if (est >= 10) return "D";
+    return "F";
+  }, [auditResult, claudeScores, displayItems]);
+
+  // Merged audit result — used for PDF/email so Claude scores are reflected
+  const mergedAuditResult = useMemo(() => {
+    if (!auditResult) return null;
+    if (!claudeScores || !auditResult.storyBrand) return auditResult;
+    const scored = displayItems.filter(i => i.autoScore !== null);
+    return {
+      ...auditResult,
+      storyBrand: {
+        ...auditResult.storyBrand,
+        items: displayItems,
+        grade: displayGrade ?? auditResult.storyBrand.grade,
+        autoTotal: scored.reduce((s, i) => s + (i.autoScore ?? 0), 0),
+      },
+    };
+  }, [auditResult, claudeScores, displayItems, displayGrade]);
+
+  // Compute recommendations — prefer AI recs, fall back to static using display items
+  const staticRecs = displayItems
     .filter(i => i.autoScore !== null && i.autoScore === 0 && storyBrandRecommendations[i.id])
     .slice(0, 3)
-    .map(i => storyBrandRecommendations[i.id]) ?? [];
+    .map(i => storyBrandRecommendations[i.id]);
   const recommendations = aiRecs ?? staticRecs;
 
-  // Compute overall grade for teaser
+  // Compute overall grade for teaser (uses merged/display grade)
   const overallScore = (() => {
     if (!auditResult) return 0;
     const scores: number[] = [];
@@ -278,9 +331,8 @@ export default function AuditPage() {
     if (auditResult.seo > 0) scores.push(auditResult.seo);
     if (auditResult.accessibility > 0) scores.push(auditResult.accessibility);
     const sbGradeMap: Record<string, number> = { A: 95, B: 82, C: 68, D: 55, F: 35 };
-    if (auditResult.storyBrand) {
-      scores.push(sbGradeMap[auditResult.storyBrand.grade] ?? 50);
-    }
+    const gradeToUse = displayGrade ?? auditResult.storyBrand?.grade;
+    if (gradeToUse) scores.push(sbGradeMap[gradeToUse] ?? 50);
     return scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
   })();
   const overallGrade = getLetterGrade(overallScore);
@@ -294,7 +346,7 @@ export default function AuditPage() {
     } else if (auditResult.lcp > 2.5) {
       parts.push(`your site is a bit slow at ${auditResult.lcp}s`);
     }
-    if (auditResult.storyBrand && (auditResult.storyBrand.grade === "D" || auditResult.storyBrand.grade === "F")) {
+    if (auditResult.storyBrand && (displayGrade === "D" || displayGrade === "F")) {
       parts.push("your messaging isn\u2019t clear enough to convert visitors into customers");
     }
     if (auditResult.seo < 50) {
@@ -702,8 +754,8 @@ export default function AuditPage() {
                     <p className="text-sm font-bold uppercase tracking-wide text-hw-text-light">
                       StoryBrand Copy Analysis
                     </p>
-                    <span className={`text-lg font-bold px-3 py-1 rounded border ${getGradeColor(auditResult.storyBrand.grade)}`}>
-                      {auditResult.storyBrand.grade} — {auditResult.storyBrand.autoTotal}/{auditResult.storyBrand.autoMax} auto-scored
+                    <span className={`text-lg font-bold px-3 py-1 rounded border ${getGradeColor(displayGrade ?? auditResult.storyBrand.grade)}`}>
+                      {displayGrade ?? auditResult.storyBrand.grade}{claudeScores ? " (AI)" : ""} — {auditResult.storyBrand.autoTotal}/{auditResult.storyBrand.autoMax} auto-scored
                     </span>
                   </div>
 
@@ -743,7 +795,7 @@ export default function AuditPage() {
 
                   {/* Scoring Items by Section */}
                   {["Hero", "Problem", "Guide", "Plan", "Call to Action", "Stakes", "Messaging"].map((section) => {
-                    const sectionItems = auditResult.storyBrand!.items.filter(i => i.section === section);
+                    const sectionItems = displayItems.filter(i => i.section === section);
                     if (sectionItems.length === 0) return null;
                     return (
                       <div key={section} className="mb-3">

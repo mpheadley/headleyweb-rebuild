@@ -326,27 +326,50 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       y += 8;
     }
 
-    // What needs work (failures + warnings)
-    const msgFailItems = scoredItems.filter(i => i.autoScore !== null && i.autoScore < 2);
-    if (msgFailItems.length > 0) {
-      checkPageBreak(20 + msgFailItems.length * 18);
+    // What needs work — only hard fails (score === 0)
+    const msgHardFails = scoredItems.filter(i => i.autoScore === 0);
+    if (msgHardFails.length > 0) {
+      checkPageBreak(20 + msgHardFails.length * 18);
       doc.setTextColor(...red);
       doc.setFontSize(10);
       doc.setFont("helvetica", "bold");
       doc.text("WHAT NEEDS WORK", margin, y);
       y += 16;
-      for (const item of msgFailItems) {
+      for (const item of msgHardFails) {
         checkPageBreak(20);
-        const color = item.autoScore === 0 ? red : yellow;
-        const symbol = item.autoScore === 0 ? "-" : "!";
-        doc.setTextColor(...color);
+        doc.setTextColor(...red);
         doc.setFontSize(10);
         doc.setFont("helvetica", "bold");
-        doc.text(symbol, margin, y);
+        doc.text("!", margin, y);
         doc.setTextColor(...textColor);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(10);
         doc.text(item.failLabel, margin + 15, y);
+        y += 18;
+      }
+      y += 5;
+    }
+
+    // Worth a look — partial credit items (score === 1)
+    const msgSoftWarns = scoredItems.filter(i => i.autoScore === 1);
+    if (msgSoftWarns.length > 0) {
+      checkPageBreak(20 + msgSoftWarns.length * 18);
+      doc.setTextColor(...yellow);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("WORTH A LOOK", margin, y);
+      y += 16;
+      for (const item of msgSoftWarns) {
+        checkPageBreak(20);
+        doc.setTextColor(...yellow);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text("?", margin, y);
+        doc.setTextColor(...textColor);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        const displayLabel = item.partialLabel ?? item.failLabel;
+        doc.text(displayLabel, margin + 15, y);
         y += 18;
       }
       y += 5;
@@ -603,7 +626,18 @@ export function buildReportDoc(input: ReportInput): jsPDF {
   }
 
   // ── 8. What Success Looks Like (the transformation) ──
-  if (auditResult) {
+  // Only show for sites that aren't already scoring well — avoids redundant filler on strong sites
+  const _overallScoreForSuccessSection = (() => {
+    if (!auditResult) return 0;
+    const s: number[] = [];
+    if (auditResult.performance > 0) s.push(auditResult.performance);
+    if (auditResult.seo > 0) s.push(auditResult.seo);
+    if (auditResult.accessibility > 0) s.push(auditResult.accessibility);
+    const _m: Record<string, number> = { A: 95, B: 82, C: 68, D: 55, F: 35 };
+    if (auditResult.storyBrand) s.push(_m[auditResult.storyBrand.grade] ?? 50);
+    return s.length > 0 ? Math.round(s.reduce((a, b) => a + b, 0) / s.length) : 0;
+  })();
+  if (auditResult && _overallScoreForSuccessSection < 90) {
     checkPageBreak(100);
     drawLine();
     doc.setTextColor(...dark);

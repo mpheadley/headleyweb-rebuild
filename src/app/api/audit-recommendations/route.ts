@@ -26,37 +26,32 @@ function checkRateLimit(ip: string): boolean {
 export async function POST(request: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY?.trim();
   if (!apiKey) {
-    return NextResponse.json({ recommendations: [] }, { status: 200 });
+    return NextResponse.json({ recommendations: [], claudeScores: undefined }, { status: 200 });
   }
 
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (!checkRateLimit(ip)) {
-    return NextResponse.json({ recommendations: [] }, { status: 200 });
+    return NextResponse.json({ recommendations: [], claudeScores: undefined }, { status: 200 });
   }
 
   let body: { auditResult: AuditResult; trade?: string };
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ recommendations: [] }, { status: 200 });
+    return NextResponse.json({ recommendations: [], claudeScores: undefined }, { status: 200 });
   }
 
   const { auditResult, trade } = body;
   if (!auditResult?.storyBrand) {
-    return NextResponse.json({ recommendations: [] }, { status: 200 });
+    return NextResponse.json({ recommendations: [], claudeScores: undefined }, { status: 200 });
   }
 
   const sb = auditResult.storyBrand;
   const ec = sb.extractedCopy;
 
-  // Build context for Claude
-  const failingItems = sb.items
-    .filter(i => i.autoScore !== null && i.autoScore < 2)
-    .map(i => `- ${i.label} (${i.section}): ${i.failLabel} — signals: ${i.signals.join("; ")}`)
-    .join("\n");
-
+  // Items that Claude should NOT recommend (already passing via keyword scorer)
   const passingItems = sb.items
-    .filter(i => i.autoScore === 2)
+    .filter(i => i.autoScore === 2 && i.scoredBy !== "keyword")
     .map(i => `- ${i.label} (${i.section}): ${i.passLabel}`)
     .join("\n");
 
@@ -65,28 +60,31 @@ export async function POST(request: NextRequest) {
     .map(a => `- ${a.title}${a.score !== null ? ` (score: ${Math.round(a.score * 100)})` : ""}`)
     .join("\n");
 
-  const siteHeadings = ec.allHeadings.slice(0, 10).map(h => `- "${h}"`).join("\n");
+  const siteHeadings = ec.allHeadings.slice(0, 15).map(h => `"${h}"`).join("\n");
 
-  const userMessage = `Here's the audit data for a ${trade || "local business"} website at ${auditResult.url}:
+  const userMessage = `Evaluate this ${trade || "local business"} website at ${auditResult.url}.
 
-PERFORMANCE: ${auditResult.performance}/100 | SEO: ${auditResult.seo}/100 | Accessibility: ${auditResult.accessibility}/100
+PERFORMANCE SCORES:
+Mobile speed: ${auditResult.performance}/100 | Desktop speed: ${auditResult.performanceDesktop}/100
+SEO: ${auditResult.seo}/100 | Accessibility: ${auditResult.accessibility}/100
 Load time (LCP): ${auditResult.lcp}s | First paint: ${auditResult.fcp}s | Layout shift: ${auditResult.cls}
 HTTPS: ${auditResult.isHttps ? "Yes" : "No"} | Meta description: ${auditResult.hasMetaDescription ? "Yes" : "No"} | Local business schema: ${auditResult.hasLocalBusinessSchema ? "Yes" : "No"}
 
-STORYBRAND GRADE: ${sb.grade}
+PRONOUN BALANCE: ${ec.secondPersonCount} "you/your" vs ${ec.firstPersonCount} "we/our"
+CTA BUTTONS FOUND: ${ec.ctaTexts.length > 0 ? ec.ctaTexts.slice(0, 10).join(", ") : "none found"}
+PHONE NUMBERS: ${ec.phoneNumbers.length > 0 ? ec.phoneNumbers.join(", ") : "none found"}
+
+RAW COPY FOR MESSAGING EVALUATION:
 Hero headline: "${ec.heroHeadline || "none found"}"
 Hero subheadline: "${ec.heroSubheadline || "none found"}"
-CTA buttons found: ${ec.ctaTexts.length > 0 ? ec.ctaTexts.join(", ") : "none found"}
-Phone numbers: ${ec.phoneNumbers.length > 0 ? ec.phoneNumbers.join(", ") : "none found"}
-Pronoun balance: ${ec.secondPersonCount} "you/your" vs ${ec.firstPersonCount} "we/our"
 
-SITE HEADINGS:
+All headings (in page order):
 ${siteHeadings || "none found"}
 
-FAILING STORYBRAND ITEMS:
-${failingItems || "none"}
+Body text (first 4000 chars):
+${ec.fullText || "none found"}
 
-PASSING STORYBRAND ITEMS (do NOT recommend these — the site already does them well):
+MECHANICAL CHECKS ALREADY PASSING (do NOT recommend these):
 ${passingItems || "none"}
 
 TOP FAILED LIGHTHOUSE AUDITS:
@@ -102,76 +100,106 @@ ${topFailedAudits || "none"}`;
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
-        max_tokens: 500,
-        system: `You are a web consultant who uses the StoryBrand SB7 framework to evaluate local service business websites. You work for Headley Web & SEO, a Jacksonville, Alabama studio that builds StoryBrand-powered websites for trades (plumbers, HVAC, contractors, etc.) in Northeast Alabama.
+        max_tokens: 1000,
+        system: `You are a web consultant who evaluates local service business websites for messaging clarity and conversion. You work for Headley Web & SEO, a Jacksonville, Alabama studio.
 
-## StoryBrand SB7 Framework (your evaluation lens)
+## Messaging Framework
 The customer is the HERO. The business is the GUIDE. Every website must answer three questions in 5 seconds: What do you offer? How does it make my life better? What do I do next?
-
-**7 elements you evaluate:**
-1. CHARACTER — Does the headline speak to what the CUSTOMER wants (not what the business does)?
-2. PROBLEM — Three layers: external (tangible issue), internal (how it makes them FEEL — frustrated, embarrassed, overwhelmed), philosophical (why it shouldn't be this way). Most sites only address external.
-3. GUIDE — Shows empathy ("we understand") BEFORE authority (credentials, testimonials, years). Never lead with "we are the best."
-4. PLAN — 3 simple steps that remove confusion. Process plan ("1. Call, 2. We assess, 3. We fix") or agreement plan (guarantees, no contracts).
-5. CALL TO ACTION — One direct CTA repeated throughout (nav, hero, mid-page, footer). Strong CTAs use action words: "call," "book," "schedule," "get," "start," "claim," "request," "free," "quote," "now," "today." Weak CTAs to flag: "learn more," "discover," "click here," "explore," "submit."
-6. FAILURE — Name real consequences of inaction. Not fear-mongering — honest stakes the customer already knows.
-7. SUCCESS — Paint the after picture. Before/after transformation. "Imagine..." or "No more..."
 
 ## Copy principles
 - Clarity over cleverness. If you can't understand the headline in 5 seconds, it fails.
 - Use "you/your" more than "we/our." The hero section especially must be customer-centered.
-- No jargon: "comprehensive solutions," "industry-leading," "leverage," "synergy," "cutting-edge," "state-of-the-art," "robust," "scalable" — these all fail.
+- No jargon: "comprehensive solutions," "industry-leading," "leverage," "synergy," "cutting-edge," "state-of-the-art," "robust," "scalable."
 - Short sentences, short paragraphs. People scan.
 - Phone number must be visible and easy to find (especially for local service businesses).
-- A local service business site MUST mention location and trade early. Visitors need to know what you do and where within seconds.
+- A local service business site MUST mention location and trade early.
 
-## Scoring context
-- Pronoun balance matters: if "we/our" count exceeds "you/your" count, the site talks about itself more than its customer.
-- Risk reducers build trust: "free," "no obligation," "no contract," "guarantee," "cancel anytime," "no hidden fees."
-- Empathy phrases that work: "we understand," "you deserve," "so you can," "so you don't have to," "we've got you."
-- Success language that converts: "you'll," "imagine," "no more," "finally," "stress-free," "hassle-free."
+## Your tasks
 
-## Your task
-Give 3-5 specific, actionable recommendations in priority order. Each recommendation should:
-- Reference actual data from the audit (specific scores, extracted copy, or findings)
-- Be written in second person ("Your headline says X — change it to Y")
+### Task 1 — Score 7 messaging items
+Read the raw copy and score each item 0, 1, or 2. Base your score ONLY on what the copy actually says, not on keyword presence or absence.
+
+Item IDs and scoring criteria:
+- "1.1" (Customer Problem in Headline): 2=headline directly names a customer pain or desire, 1=customer-focused but vague or generic, 0=talks about the business or has no customer hook
+- "2.1" (External Problem Stated): 2=explicitly names the tangible problem customers face, 1=implies a problem without stating it clearly, 0=no problem language anywhere
+- "2.2" (Internal/Emotional Problem): 2=speaks to how the problem makes customers feel (frustrated, embarrassed, worried, etc.), 1=one emotional word or phrase, 0=purely transactional — features only, no feelings
+- "3.1" (Guide Shows Empathy): 2=multiple signals that the business understands the customer's world before asking for the sale, 1=one empathy phrase or statement, 0=jumps straight to features/authority with no empathy
+- "4.1" (Simple Step-by-Step Plan): 2=clear numbered or named 3-step (or similar) process that removes confusion about how to work together, 1=process implied or mentioned but not clearly laid out, 0=no explanation of how to get started
+- "6.1" (Failure/Consequences Stated): 2=names real stakes of inaction — what happens if they don't act, 1=hints at consequences without stating them, 0=no stakes language
+- "6.2" (Success/Transformation Painted): 2=vivid before/after transformation with specific outcomes (phone ringing, more bookings, etc.), 1=some success language but generic ("grow your business"), 0=no transformation picture
+
+For each item, provide a score (0, 1, or 2) and a one-sentence rationale based on what you actually read.
+
+### Task 2 — Recommendations
+Give 3-5 specific, actionable recommendations in priority order. Each must:
+- Reference actual content from the site (specific copy, scores, or findings)
+- Be written in second person ("Your headline says X — consider Y")
 - Be one sentence, max two
 - Focus on changes that will convert more visitors into customers
-- Never recommend things the site already does well
-- When suggesting headline rewrites, make the CUSTOMER the hero (address their desire or pain), not the business
-- If a technical finding (slow speed, missing meta description, no schema) directly hurts their ability to get found or convert visitors, you may reference it — but prioritize messaging recommendations
-- Infer the target audience from the site's actual copy (headings, services listed, CTAs) — don't assume B2B or B2C based on the trade label alone
-- Match the site's tone and scope: reference the full range of services they actually offer, respect their geographic market (don't substitute our service area), and match the formality level of their existing copy
+- Never recommend things already passing in the mechanical checks
+- When suggesting headline rewrites, make the CUSTOMER the hero
+- If a technical finding directly hurts conversions, you may include it — but prioritize messaging first
+- Infer the target audience from the site's actual copy — don't assume
+- Match the site's tone and scope; respect their geographic market
 
 ## Voice rules
 - Never use the word "StoryBrand" — use plain language ("messaging," "clarity," "your website's message")
-- These recommendations appear in an auto-generated report. Use "the checkup found" or "your site" framing — never "I noticed" or "I found" (no one has personally reviewed it yet). Forward-looking first-person is OK ("I'd rewrite this as...").
-- Keep labels honest: if a recommendation is about something only visible in the HTML (not the visual layout), don't claim it's "visible" or "above the fold."
-- Don't exaggerate performance issues — a 3-4s load time is moderate, not catastrophic. Reserve urgent language for genuinely poor scores (below 50 or LCP above 5s).
-- Keep each recommendation to one short sentence, max two. These render in a PDF with limited space — concise is better.
+- Use "the checkup found" or "your site" framing — never "I noticed" or "I found." Forward-looking first-person is OK ("I'd rewrite this as...")
+- Don't exaggerate performance issues — a 3-4s load time is moderate, not catastrophic. Reserve urgent language for scores below 50 or LCP above 5s.
+- Keep each recommendation to one short sentence, max two.
 
-Return ONLY a JSON array of 3-5 strings. No markdown, no explanation, no preamble.`,
+## Response format
+Return ONLY a JSON object with exactly two keys. No markdown, no explanation, no preamble.
+
+{
+  "scores": {
+    "1.1": { "score": 0|1|2, "rationale": "one sentence" },
+    "2.1": { "score": 0|1|2, "rationale": "one sentence" },
+    "2.2": { "score": 0|1|2, "rationale": "one sentence" },
+    "3.1": { "score": 0|1|2, "rationale": "one sentence" },
+    "4.1": { "score": 0|1|2, "rationale": "one sentence" },
+    "6.1": { "score": 0|1|2, "rationale": "one sentence" },
+    "6.2": { "score": 0|1|2, "rationale": "one sentence" }
+  },
+  "recommendations": ["string", "string", "string"]
+}`,
         messages: [{ role: "user", content: userMessage }],
       }),
       signal: AbortSignal.timeout(12000),
     });
 
     if (!response.ok) {
-      return NextResponse.json({ recommendations: [] }, { status: 200 });
+      return NextResponse.json({ recommendations: [], claudeScores: undefined }, { status: 200 });
     }
 
     const data = await response.json();
-    const text = data.content?.[0]?.text ?? "";
+    const text = (data.content?.[0]?.text ?? "").trim();
 
-    // Parse JSON array from response
     let recommendations: string[] = [];
+    let claudeScores: Record<string, { score: number; rationale: string }> | undefined;
+
+    // Parse as full object first
     try {
       const parsed = JSON.parse(text);
-      if (Array.isArray(parsed) && parsed.every((s: unknown) => typeof s === "string")) {
-        recommendations = parsed.slice(0, 5);
+      if (parsed && typeof parsed === "object") {
+        if (Array.isArray(parsed.recommendations)) {
+          recommendations = parsed.recommendations
+            .filter((s: unknown) => typeof s === "string")
+            .slice(0, 5);
+        }
+        if (parsed.scores && typeof parsed.scores === "object") {
+          claudeScores = {};
+          for (const [id, val] of Object.entries(parsed.scores)) {
+            const v = val as { score?: unknown; rationale?: unknown };
+            if (typeof v?.score === "number" && typeof v?.rationale === "string") {
+              claudeScores[id] = { score: v.score, rationale: v.rationale };
+            }
+          }
+          if (Object.keys(claudeScores).length === 0) claudeScores = undefined;
+        }
       }
     } catch {
-      // Try extracting JSON array from text
+      // Full parse failed — try to salvage a recommendations array from the text
       const match = text.match(/\[[\s\S]*\]/);
       if (match) {
         try {
@@ -185,8 +213,8 @@ Return ONLY a JSON array of 3-5 strings. No markdown, no explanation, no preambl
       }
     }
 
-    return NextResponse.json({ recommendations });
+    return NextResponse.json({ recommendations, claudeScores });
   } catch {
-    return NextResponse.json({ recommendations: [] }, { status: 200 });
+    return NextResponse.json({ recommendations: [], claudeScores: undefined }, { status: 200 });
   }
 }
