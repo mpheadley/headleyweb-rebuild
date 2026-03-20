@@ -260,9 +260,9 @@ export default function ServicesPage() {
                 <Video className="w-7 h-7 text-hw-secondary" />
                 <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-secondary text-white text-xs font-bold flex items-center justify-center">1</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Request Your Free Checkup</h3>
+              <h3 className="text-xl font-bold mb-2">Run Your Free Site Audit</h3>
               <p className="text-hw-text-light">
-                Take the quiz or fill out the form. I&apos;ll record a personalized video showing exactly where you stand online.
+                Check your site in 30 seconds. I&apos;ll follow up with a personalized video showing exactly where you stand online.
               </p>
             </div>
             {/* Connector 1→2 */}
@@ -438,7 +438,7 @@ export default function ServicesPage() {
                 </li>
               </ul>
               <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$79/mo</span></span>
+                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$99/mo</span></span>
                 <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
@@ -516,7 +516,7 @@ export default function ServicesPage() {
             Serving Jacksonville, Anniston, and Northeast Alabama
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
-            <Link href="/contact" className="btn-primary text-lg px-8">
+            <Link href="/audit" className="btn-primary text-lg px-8">
               Get Your Free Site Checkup <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <Link href="/quiz" className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8">
@@ -524,6 +524,9 @@ export default function ServicesPage() {
               Take the Quiz
             </Link>
           </div>
+          <p className="text-gray-400 text-sm mt-4 animate-on-scroll">
+            Want instant results? <Link href="/audit" className="text-hw-primary hover:text-hw-primary/80 underline transition-colors">Try the free automated audit</Link>
+          </p>
         </div>
       </section>
 

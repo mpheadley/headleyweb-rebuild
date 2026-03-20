@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Headley Web & SEO. Schedule a free call, send a message, or call (256) 644-7334. Web design and SEO for local businesses in Jacksonville, Anniston, and Northeast Alabama.",
+    "Get in touch with Headley Web & SEO. Request a free site checkup, send a message, or call (256) 644-7334. Web design and SEO for local businesses in Jacksonville, Anniston, and Northeast Alabama.",
   alternates: {
     canonical: "/contact",
   },

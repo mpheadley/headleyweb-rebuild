@@ -31,7 +31,7 @@ export default function NotFound() {
               Back to Home
             </Link>
             <Link
-              href="/contact"
+              href="/audit"
               className="btn-secondary !text-white !border-white/30 hover:!bg-white/10 text-lg px-8"
             >
               Get Your Free Site Checkup <ArrowRight className="w-5 h-5 ml-2" />

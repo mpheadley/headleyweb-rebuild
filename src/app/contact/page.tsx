@@ -60,7 +60,7 @@ export default function ContactPage() {
             Let&apos;s <span className="text-hw-primary hand-accent">Talk</span>
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
-            Ready to get your business found online? Start with a quick conversation — no pressure, no sales pitch.
+            Ready to get your business found online? Start with a free site checkup — no pressure, no sales pitch.
           </p>
         </div>
       </section>

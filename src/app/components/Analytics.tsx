@@ -83,12 +83,28 @@ export default function Analytics({ enabled }: { enabled: boolean }) {
       }
     }
 
+    function handleToggle(e: Event) {
+      if (!window.gtag) return;
+      const details = e.target as HTMLDetailsElement;
+      if (details?.tagName === "DETAILS" && details.open) {
+        const question = details.querySelector("summary")?.textContent?.trim();
+        if (question) {
+          window.gtag("event", "faq_open", {
+            event_category: "engagement",
+            event_label: question,
+          });
+        }
+      }
+    }
+
     document.addEventListener("click", handleClick, true);
     document.addEventListener("submit", handleSubmit, true);
+    document.addEventListener("toggle", handleToggle, true);
 
     return () => {
       document.removeEventListener("click", handleClick, true);
       document.removeEventListener("submit", handleSubmit, true);
+      document.removeEventListener("toggle", handleToggle, true);
     };
   }, [enabled]);
 

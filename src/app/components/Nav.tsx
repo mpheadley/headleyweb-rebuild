@@ -74,7 +74,7 @@ export default function Nav() {
               );
             })}
             <Link
-              href="/contact"
+              href="/audit"
               className="btn-primary text-sm !py-2 !px-4"
             >
               Get Your Free Site Checkup
@@ -132,7 +132,7 @@ export default function Nav() {
             );
           })}
           <Link
-            href="/contact"
+            href="/audit"
             className="btn-primary text-lg mt-4"
             onClick={() => setMobileOpen(false)}
           >
