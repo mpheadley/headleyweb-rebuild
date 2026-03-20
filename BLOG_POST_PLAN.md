@@ -222,7 +222,7 @@ Posts marked with * are higher priority.
 - "The One Page Your Website Is Probably Missing" (dedicated services/pricing page)
 - "How to Write Your Own About Page (Template)"
 - "Local SEO Checklist: 10 Things You Can Do This Week"
-- "Why I Don't Build on WordPress (And What I Use Instead)"
+- "Why I Build on Next.js Instead of WordPress (And What That Means for Your Site Speed)" — DRAFTED in `content/blog/drafts/`
 - "What Happens After Your Website Launches (Hint: That's When the Work Starts)"
 - Trade: Roofers
 - Trade: Auto repair / detailing
@@ -239,14 +239,21 @@ Posts marked with * are higher priority.
 > Your target audience (local business owners) finds you through Facebook groups and word of mouth,
 > not by searching for "answer engine optimization." Prioritize content they'll actually share.
 
-1. **Foundation posts (1-5)** — already live or in progress. Core SEO play.
-2. **Hyperlocal & shareable posts (10b-10d)** — highest share potential in local Facebook groups. Write these before the AEO posts.
-3. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
-4. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
-5. **Viral build posts (22-25)** — write alongside the speed-build projects as they happen.
-6. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
-7. **Audit content (19-21)** — requires the landing page template to be built first.
-8. **Quiz content (26-29)** — requires the quiz components to be built first.
+1. **#10d "I Asked ChatGPT to Recommend a Plumber in Anniston"** — DRAFTED. Highest share potential of any post on this list. Matt action items before publishing:
+   - [ ] Open ChatGPT, Perplexity, and Google. Type "recommend a plumber in Anniston, Alabama." Screenshot each result.
+   - [ ] Fill in the bracketed placeholders in the draft with real business names and your real observations.
+   - [ ] Record a 60-second Reel — you at your desk, typing the query, reacting to the results. The Reel is probably worth more than the blog post.
+   - [ ] Reference the MarketingCode.com study (March 2026) — zero overlap across 4 AI tools. Real data, published source.
+   - [ ] Repeat for other trades/cities after this one lands (HVAC in Gadsden, contractor in Oxford — same format, new post each time).
+2. **Foundation posts (1-5)** — already live or in progress. Core SEO play.
+3. **Remaining hyperlocal posts (10b-10c)** — high share potential in local Facebook groups.
+4. **Differentiation posts** — "Why I Build on Next.js Instead of WordPress," "5 Questions Before Hiring a Web Designer," "Agency vs. Solo Designer," "Template vs. Custom-Built." Drafted in `content/blog/drafts/`.
+5. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
+6. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
+7. **Viral build posts (22-25)** — write alongside the speed-build projects as they happen.
+8. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
+9. **Audit content (19-21)** — requires the landing page template to be built first.
+10. **Quiz content (26-29)** — requires the quiz components to be built first.
 
 ### Distribution Checklist (every post)
 
