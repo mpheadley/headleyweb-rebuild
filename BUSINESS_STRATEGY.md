@@ -163,6 +163,9 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [x] GA4 event tracking added to starter kit
 - [ ] Finish 2 in-progress vanilla client builds
 - [ ] Copy updated script.js into in-progress sites for event tracking
+- [ ] **Build AI visibility callout bar on homepage** — after Pain Points section. "Want to see what AI says about your business?" → links to checkup form. HIGH PRIORITY — Plexamedia is claiming this space with buzzwords; we need to claim it with proof.
+- [ ] **Add "two battlefields" sales pitch to homepage** — "When someone searches 'plumber near me,' the map pack decides. When someone searches 'my pipes are leaking,' AI decides. I make sure you show up in both." Use in services copy, sales calls, and social.
+- [ ] **Reframe all AI messaging as outcomes, not process** — audit all customer-facing copy. Replace jargon ("analyze conversational AI patterns") with results ("I make sure ChatGPT recommends your business"). Plexamedia sells the tool; we sell the result.
 - [ ] Rebuild headleyweb.com on Next.js + Tailwind + daisyUI + MDX
 - [ ] Publish first 2 blog posts on headleyweb.com
 - [ ] Get professional headshot taken

@@ -51,7 +51,7 @@ Higher priority than AEO/technical posts — your Phase 1 leads come from local 
 |---|-------|-----------------|--------------|--------|
 | 10b | "What Happens When You Google Your Own Business (And How to Fix What You See)" | google my business, google yourself | Top | Planned |
 | 10c | "The 5 Local Businesses in Anniston That Are Crushing It Online (And What You Can Learn)" | Anniston business, local business website | Top | Planned |
-| 10d | "I Asked ChatGPT to Recommend a Plumber in Anniston — Here's What It Said" | chatgpt local business, AI recommend plumber | Top | Planned |
+| 10d | "I Asked ChatGPT to Recommend a Plumber in Anniston — Here's What It Said" | chatgpt local business, AI recommend plumber | Top | Drafted — `content/blog/drafts/i-asked-chatgpt-to-recommend-a-plumber-in-anniston.mdx`. Matt needs to run the actual queries, screenshot results, and record the Reel. |
 
 **Why these are high priority:**
 - **#10b** is the most shareable post on this entire list. Every business owner will try it immediately. Pairs with your audit content (Phase 3) and AI Visibility Audit lead magnet.
