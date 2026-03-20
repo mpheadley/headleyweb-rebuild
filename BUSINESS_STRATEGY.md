@@ -173,11 +173,15 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [x] Pre-meeting discovery workflow documented — [DISCOVERY_WORKFLOW.md](DISCOVERY_WORKFLOW.md) (run this before every sales call)
 - [ ] Build "Website Report Card" PDF template (Idea #6) — attach to every video audit
 - [ ] Formalize referral incentive structure (Gap #1) — "$100 off care plan per referral"
-- [ ] Research Calhoun County / Jacksonville Chamber of Commerce membership (Idea #9)
+- [ ] Submit business info to BBB for free profile (Idea #9a)
+- [ ] Create LinkedIn company page — logo, brand descriptor, website link (Idea #9b)
+- [ ] Update personal LinkedIn profile — headline, about, employer (Idea #9b)
+- [ ] Research Calhoun County / Jacksonville Chamber of Commerce membership (Idea #9c)
 - [ ] Launch "GBP Rescue" micro-offer at $149-$249 (Idea #10)
 - [ ] Start "build in public" Facebook posts for every project completion (Idea #8)
 - [ ] Identify 3 adjacent service providers for partnership (Idea #7) — photographer, printer, bookkeeper
-- [ ] First competitor audit: search "web design Anniston AL" + 3 variants, document results (Gap #3)
+- [x] First competitor audit: Plexamedia (Gadsden) — see `content/blog/drafts/competitor-research-plexamedia.md` (Gap #3)
+- [ ] Search "web design Anniston AL" + 3 variants, document full SERP results (Gap #3)
 - [ ] Start weekly LinkedIn post cadence repurposing blog content (Gap #5)
 
 ### Phase 2: Proof Engine (Month 2-4)
@@ -637,7 +641,61 @@ Instead of a standalone "how I build websites" blog, do a lightweight version: p
 - This is the connective tissue between builds. Viral content is the spike; "build in public" is the steady drumbeat.
 - **When:** Start immediately. Post for every project completion, including free builds.
 
-### Idea 9: Chamber of Commerce Membership
+### Idea 9a: BBB Profile & Accreditation
+
+Your top local competitor (Plexamedia) has an A+ BBB rating. A BBB profile adds a high-authority .org backlink with your NAP data and a trust badge for your site.
+
+**Option A — Free Profile (no accreditation):**
+- BBB creates profiles automatically when reviews are submitted or complaints filed
+- You can claim/update your profile info but can't display the "BBB Accredited" seal
+- No cost. Still provides the backlink and review platform.
+- **Do this immediately** — submit your business info at bbb.org
+
+**Option B — Accredited ($400-600/year):**
+- Apply at [bbb.org/get-accredited](https://www.bbb.org/get-accredited)
+- BBB reviews your business (complaints, licensing, etc.)
+- You get the A+ seal for your website + enhanced profile
+- Annual fee scales by revenue and employee count — for a solo shop in a small market, expect ~$400-600/yr
+- **When:** Phase 2 (after first paying clients). The annual fee is justified once you have revenue and need the trust signal for higher-ticket sales.
+
+**What you get either way:**
+- High-authority `.org` backlink with your NAP (name, address, phone)
+- Review platform (another place for clients to leave reviews)
+- Shows up in "headley web seo" search results — looks legitimate
+
+**Action items:**
+- [ ] Submit business info to BBB for free profile (now)
+- [ ] Apply for accreditation when revenue justifies the $400-600/yr (Phase 2)
+- [ ] Add BBB badge to footer once accredited
+
+### Idea 9b: LinkedIn Company Page (Headley Web & SEO)
+
+Create a LinkedIn company page — not for active posting, but for three specific purposes:
+
+**Why:**
+1. **Backlink** — high-authority link with your business NAP. Helps local SEO signals.
+2. **Trust signal** — when someone Googles "Headley Web & SEO," a LinkedIn company page in results looks established.
+3. **Employee listing** — you (and any future contractors) can list it as your workplace, which looks more professional.
+
+**Your personal LinkedIn profile is where the engagement happens.** The company page is passive infrastructure.
+
+**Personal profile strategy:**
+- Post 1x/week repurposing blog content (shorter format, link in first comment for algorithm)
+- Connect with local business owners, Chamber members, adjacent service providers
+- Share case study metrics and AI/AEO insights — LinkedIn audience responds to that
+- Comment on local business content — be visible in the feed
+
+**Company page:**
+- Set up once with logo, description (brand descriptor), website link, service area
+- Post occasionally by sharing from your personal profile
+- Don't stress about company page engagement — it's a directory listing, not a content channel
+
+**Action items:**
+- [ ] Create LinkedIn company page with brand descriptor, logo, and link (now)
+- [ ] Update personal LinkedIn profile — headline, about section, list Headley Web & SEO as employer
+- [ ] Start 1x/week LinkedIn post cadence (Phase 1-2)
+
+### Idea 9c: Chamber of Commerce Membership
 
 If not already a member of the Calhoun County Chamber (or Jacksonville's), this is a low-cost play ($200-400/year).
 

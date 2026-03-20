@@ -222,7 +222,7 @@ Posts marked with * are higher priority.
 - "The One Page Your Website Is Probably Missing" (dedicated services/pricing page)
 - "How to Write Your Own About Page (Template)"
 - "Local SEO Checklist: 10 Things You Can Do This Week"
-- "Why I Don't Build on WordPress Anymore"
+- "Why I Don't Build on WordPress (And What I Use Instead)"
 - "What Happens After Your Website Launches (Hint: That's When the Work Starts)"
 - Trade: Roofers
 - Trade: Auto repair / detailing
