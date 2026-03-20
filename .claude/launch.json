@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "headleyweb-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3555"],
+      "port": 3555,
+      "cwd": "headleyweb"
+    }
+  ]
+}

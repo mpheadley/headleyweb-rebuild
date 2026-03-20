@@ -270,9 +270,11 @@ h1, h2, h3, h4, h5, h6 {
   transform: rotate(-1deg) scale(1);
 }
 
-/* ─── Decorative Ampersand (Playfair Display) ─── */
+/* ─── Decorative Ampersand (Fraunces) ─── */
 .amp {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-heading), Georgia, serif;
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 144 !important;
 }
 
 /* ─── Blur-to-clear reveal (scroll-triggered) ─── */

@@ -8,6 +8,8 @@ export type StoryBrandItem = {
   signals: string[]; // what the auto-scorer detected
   passLabel: string; // plain-English label when passing (e.g. "Your headline speaks to a real problem")
   failLabel: string; // plain-English label when failing (e.g. "Visitors can't tell what you do in 5 seconds")
+  partialLabel?: string; // shown when autoScore === 1; falls back to failLabel if absent
+  scoredBy?: "keyword" | "claude" | "manual"; // tracks which system produced the score
 };
 
 export type StoryBrandScore = {
@@ -25,14 +27,15 @@ export type StoryBrandScore = {
     phoneNumbers: string[];
     firstPersonCount: number;
     secondPersonCount: number;
-    fullText: string; // truncated to ~2000 chars
+    fullText: string; // truncated to ~4000 chars
   };
 };
 
 export type AuditResult = {
   url: string;
   // Scores (0-100)
-  performance: number;
+  performance: number;       // mobile
+  performanceDesktop: number; // desktop
   seo: number;
   accessibility: number;
   // Timing metrics

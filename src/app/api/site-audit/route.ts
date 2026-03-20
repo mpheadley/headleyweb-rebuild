@@ -58,6 +58,10 @@ function isValidUrl(str: string): boolean {
   }
 }
 
+/* ── Vercel function config ── */
+
+export const maxDuration = 60; // Vercel Hobby max — PageSpeed can take 15-30s
+
 /* ── Main Handler ── */
 
 export async function POST(request: NextRequest) {
@@ -92,17 +96,30 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Run PageSpeed and copy scrape in parallel
-    const [pageSpeedResult, copyResult] = await Promise.allSettled([
-      fetchPageSpeed(normalizedUrl),
+    const t0 = Date.now();
+    console.log(`[audit] Starting audit for ${normalizedUrl}`);
+
+    // Run mobile PageSpeed, desktop PageSpeed, and copy scrape in parallel
+    const [pageSpeedResult, pageSpeedDesktopResult, copyResult] = await Promise.allSettled([
+      fetchPageSpeed(normalizedUrl, "mobile"),
+      fetchPageSpeed(normalizedUrl, "desktop"),
       fetchAndScrapeCopy(normalizedUrl),
     ]);
+
+    console.log(`[audit] PageSpeed mobile: ${pageSpeedResult.status === "fulfilled" ? "ok" : `failed (${pageSpeedResult.reason})`} — ${Date.now() - t0}ms`);
+    console.log(`[audit] PageSpeed desktop: ${pageSpeedDesktopResult.status === "fulfilled" ? "ok" : `failed (${pageSpeedDesktopResult.reason})`} — ${Date.now() - t0}ms`);
+    console.log(`[audit] Copy scrape: ${copyResult.status === "fulfilled" ? "ok" : `failed (${copyResult.reason})`} — ${Date.now() - t0}ms`);
 
     // Process PageSpeed
     let lighthouse = getDefaultLighthouse();
     if (pageSpeedResult.status === "fulfilled") {
       lighthouse = pageSpeedResult.value;
     }
+
+    const performanceDesktop =
+      pageSpeedDesktopResult.status === "fulfilled"
+        ? pageSpeedDesktopResult.value.performance
+        : 0;
 
     // Process copy scrape + StoryBrand scoring
     let storyBrand: StoryBrandScore | null = null;
@@ -115,10 +132,12 @@ export async function POST(request: NextRequest) {
     const result: AuditResult = {
       url: normalizedUrl,
       ...lighthouse,
+      performanceDesktop,
       hasLocalBusinessSchema,
       storyBrand,
     };
 
+    console.log(`[audit] Complete — ${Date.now() - t0}ms total`);
     return NextResponse.json(result);
   } catch (err) {
     if (err instanceof DOMException && err.name === "TimeoutError") {
@@ -137,13 +156,13 @@ export async function POST(request: NextRequest) {
 
 /* ── PageSpeed Fetch ── */
 
-async function fetchPageSpeed(normalizedUrl: string) {
+async function fetchPageSpeed(normalizedUrl: string, strategy: "mobile" | "desktop" = "mobile") {
   const apiUrl = new URL(PAGESPEED_API);
   apiUrl.searchParams.set("url", normalizedUrl);
   apiUrl.searchParams.set("category", "performance");
   apiUrl.searchParams.append("category", "seo");
   apiUrl.searchParams.append("category", "accessibility");
-  apiUrl.searchParams.set("strategy", "mobile");
+  apiUrl.searchParams.set("strategy", strategy);
 
   const apiKey = process.env.PAGESPEED_API_KEY?.trim();
   if (apiKey) {
