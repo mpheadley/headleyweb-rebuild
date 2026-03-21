@@ -3,7 +3,7 @@
 import { useCallback } from "react";
 import { Download } from "lucide-react";
 import type { AuditResult } from "@/lib/audit-types";
-import type { ReportArchetype, ReportTradeEstimate, ReportCompetitor } from "@/lib/generate-report-pdf";
+import type { ReportArchetype, ReportTradeEstimate } from "@/lib/generate-report-pdf";
 
 type Props = {
   archetype: ReportArchetype;
@@ -12,7 +12,6 @@ type Props = {
   recommendedTier: string;
   tierPrice: number;
   recommendations: string[];
-  competitors?: ReportCompetitor[];
 };
 
 export default function QuizReportPdf({
@@ -22,12 +21,11 @@ export default function QuizReportPdf({
   recommendedTier,
   tierPrice,
   recommendations,
-  competitors,
 }: Props) {
   const handleDownload = useCallback(async () => {
     // Dynamic import keeps jsPDF out of the initial bundle
     const { buildReportDoc } = await import("@/lib/generate-report-pdf");
-    const doc = buildReportDoc({ archetype, auditResult, tradeData, recommendedTier, tierPrice, recommendations, competitors });
+    const doc = buildReportDoc({ archetype, auditResult, tradeData, recommendedTier, tierPrice, recommendations });
 
     const filename = auditResult?.url
       ? `site-readiness-report-${new URL(auditResult.url).hostname}.pdf`

@@ -145,7 +145,7 @@ export function extractTextFromHtml(html: string): ExtractedCopy {
   const ctaTexts: string[] = [];
   const seen = new Set<string>();
 
-  $("a, button, [role='button']").each((_, el) => {
+  $("a, button").each((_, el) => {
     const $el = $(el);
     const classes = ($el.attr("class") ?? "").toLowerCase();
     const text = $el.text().replace(/\s+/g, " ").trim();
@@ -219,7 +219,6 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     autoScore: heroScore, signals: [...heroFailSignals, ...heroPassSignals],
     passLabel: "Your headline speaks to a real customer problem",
     failLabel: "Headline doesn't connect to a real customer pain",
-    scoredBy: "keyword",
   });
 
   // 1.2 Clear Value Proposition
@@ -329,7 +328,6 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     autoScore: painScore, signals: painSignals,
     passLabel: "You name the problem your customers are facing",
     failLabel: "Doesn't name the problem your customers face",
-    scoredBy: "keyword",
   });
 
   // 2.2 Internal/Emotional Problem
@@ -350,7 +348,6 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     autoScore: emotionScore, signals: emotionSignals,
     passLabel: "You speak to how the problem makes customers feel",
     failLabel: "Doesn't speak to how the problem makes customers feel",
-    scoredBy: "keyword",
   });
 
   // 3.1 Empathy
@@ -371,16 +368,12 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     autoScore: empathyScore, signals: empathySignals,
     passLabel: "You show customers you understand their situation",
     failLabel: "Doesn't show customers you understand what they're going through",
-    scoredBy: "keyword",
   });
 
   // 3.2 Authority
   const authoritySignals: string[] = [];
   let authorityScore: number | null = null;
-  // Require review-specific language near quoted text, or an explicit testimonial/review section heading
-  const hasTestimonialSection = /testimonial|review|what (clients?|customers?|people) say/i.test(bodyText);
-  const hasReviewLanguage = /(said|says|told us|wrote|★|⭐|\d\s*\/\s*5|\d\s*out\s*of\s*5|stars?|rated|rating|recommended?s?)\b/i.test(bodyText);
-  const hasTestimonial = hasTestimonialSection || hasReviewLanguage;
+  const hasTestimonial = /"[^"]{20,}"/.test(bodyText) || /testimonial|review/i.test(bodyText);
   const hasYearsExp = /\d+\+?\s*years?\s*(of\s+)?experience/i.test(bodyText);
   const hasNumbers = /helped?\s+\d+|served?\s+\d+|\d+\s*\+?\s*(clients?|customers?|businesses?|projects?|families|parties|events)/i.test(bodyText);
   const hasSocialProof = /real\s+(kids|people|results|customers|clients)|gallery|photos|portfolio/i.test(bodyText);
@@ -424,7 +417,6 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     autoScore: planScore, signals: planSignals,
     passLabel: "You show visitors exactly how to get started",
     failLabel: "No clear 'here's how it works' steps",
-    scoredBy: "keyword",
   });
 
   // 4.2 Plan Reduces Risk
@@ -499,7 +491,6 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     autoScore: consequenceScore, signals: consequenceSignals,
     passLabel: "You show what happens if visitors do nothing",
     failLabel: "Doesn't show what happens if they do nothing",
-    scoredBy: "keyword",
   });
 
   // 6.2 Success/Transformation Painted
@@ -520,7 +511,6 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     autoScore: successScore, signals: successSignals,
     passLabel: "You paint a picture of what life looks like after",
     failLabel: "Doesn't show visitors what success looks like",
-    scoredBy: "keyword",
   });
 
   // 7.1 No Jargon
@@ -563,8 +553,7 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     id: "7.2", label: "Phone Number Visible", section: "Messaging",
     autoScore: phoneScore, signals: phoneSignals,
     passLabel: "Phone number is easy to find",
-    failLabel: "No phone number found on the page",
-    partialLabel: "Phone number found but not prominently placed in the header",
+    failLabel: "No phone number visible on the page",
   });
 
   // Calculate totals
@@ -596,7 +585,7 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
       phoneNumbers,
       firstPersonCount,
       secondPersonCount,
-      fullText: bodyText.slice(0, 4000),
+      fullText: bodyText.slice(0, 2000),
     },
   };
 }

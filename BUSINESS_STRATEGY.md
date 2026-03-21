@@ -309,13 +309,13 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 **6. Launch Day Push (Client Deliverable)**
 - **What:** A 15-minute checklist handed to the client on launch day. Three actions: share on social media, ask 2-3 past customers for Google reviews, update links everywhere (GBP, Facebook, Instagram, email signature).
 - **Why it works:** Google sees a spike in traffic + new reviews in the first week and accelerates indexing and local ranking. Also builds the client's ownership of their online presence.
-- **Template:** `~/Documents/Web Development/starter-kit/LAUNCH_DAY_PUSH.md` — fill in client name, domain, date, review link.
+- **Template:** `~/Developer/webdev/starter-kit/LAUNCH_DAY_PUSH.md` — fill in client name, domain, date, review link.
 - **When:** Every launch, starting Phase 1. Zero cost, high impact.
 
 **7. Domain Name Strategy (Pre-Purchase Guide)**
 - **What:** Walk clients through brand vs. SEO vs. hybrid domain options before purchasing.
 - **Key insight:** The domain provides a minor SEO signal at best — the `<title>` tag, GBP, and page content do the real work.
-- **Template:** `~/Documents/Web Development/starter-kit/DOMAIN_STRATEGY.md`
+- **Template:** `~/Developer/webdev/starter-kit/DOMAIN_STRATEGY.md`
 - **When:** Before every build. Part of the initial discovery call.
 
 **8. Testimonial System (Automated Collection)**

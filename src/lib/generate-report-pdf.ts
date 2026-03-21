@@ -10,7 +10,6 @@
  *   5. Scores (speed, SEO, accessibility)
  *   6. What your customers experience (speed callout + checks)
  *   7. The stakes / ROI (trade-specific, when available)
- *   7b. Who's outranking you (optional — pass competitors[] to ReportInput)
  *   8. What I'd fix first (recommendations)
  *   9. What success looks like (transformation)
  *  10. Archetype (quiz only)
@@ -51,13 +50,6 @@ export type ReportTradeEstimate = {
   paybackJobs: Record<string, number>;
 };
 
-export type ReportCompetitor = {
-  name: string;
-  url?: string;
-  ranking: string;   // e.g. "Ranks #1 for 'Alabama workers comp interpreter'"
-  advantage: string; // e.g. "Has /alabama-interpreter-translator/ page, speaks directly to adjusters"
-};
-
 export type ReportInput = {
   archetype: ReportArchetype;
   auditResult: AuditResult | null;
@@ -65,12 +57,11 @@ export type ReportInput = {
   recommendedTier: string;
   tierPrice: number;
   recommendations: string[];
-  competitors?: ReportCompetitor[]; // optional — omit to hide section
 };
 
 /** Build a jsPDF document with the full report. Caller decides output format. */
 export function buildReportDoc(input: ReportInput): jsPDF {
-  const { archetype, auditResult, tradeData, recommendedTier, tierPrice, recommendations, competitors } = input;
+  const { archetype, auditResult, tradeData, recommendedTier, tierPrice, recommendations } = input;
 
   const doc = new jsPDF({ unit: "pt", format: "letter" });
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -326,50 +317,27 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       y += 8;
     }
 
-    // What needs work — only hard fails (score === 0)
-    const msgHardFails = scoredItems.filter(i => i.autoScore === 0);
-    if (msgHardFails.length > 0) {
-      checkPageBreak(20 + msgHardFails.length * 18);
+    // What needs work (failures + warnings)
+    const msgFailItems = scoredItems.filter(i => i.autoScore !== null && i.autoScore < 2);
+    if (msgFailItems.length > 0) {
+      checkPageBreak(20 + msgFailItems.length * 18);
       doc.setTextColor(...red);
       doc.setFontSize(10);
       doc.setFont("helvetica", "bold");
       doc.text("WHAT NEEDS WORK", margin, y);
       y += 16;
-      for (const item of msgHardFails) {
+      for (const item of msgFailItems) {
         checkPageBreak(20);
-        doc.setTextColor(...red);
+        const color = item.autoScore === 0 ? red : yellow;
+        const symbol = item.autoScore === 0 ? "-" : "!";
+        doc.setTextColor(...color);
         doc.setFontSize(10);
         doc.setFont("helvetica", "bold");
-        doc.text("!", margin, y);
+        doc.text(symbol, margin, y);
         doc.setTextColor(...textColor);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(10);
         doc.text(item.failLabel, margin + 15, y);
-        y += 18;
-      }
-      y += 5;
-    }
-
-    // Worth a look — partial credit items (score === 1)
-    const msgSoftWarns = scoredItems.filter(i => i.autoScore === 1);
-    if (msgSoftWarns.length > 0) {
-      checkPageBreak(20 + msgSoftWarns.length * 18);
-      doc.setTextColor(...yellow);
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "bold");
-      doc.text("WORTH A LOOK", margin, y);
-      y += 16;
-      for (const item of msgSoftWarns) {
-        checkPageBreak(20);
-        doc.setTextColor(...yellow);
-        doc.setFontSize(10);
-        doc.setFont("helvetica", "bold");
-        doc.text("?", margin, y);
-        doc.setTextColor(...textColor);
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(10);
-        const displayLabel = item.partialLabel ?? item.failLabel;
-        doc.text(displayLabel, margin + 15, y);
         y += 18;
       }
       y += 5;
@@ -402,12 +370,9 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.text("How Your Site Performs", margin, y);
     y += 25;
 
-    const hasDesktop = auditResult.performanceDesktop > 0;
-    const gaugeCount = hasDesktop ? 4 : 3;
-    const gaugeWidth = (contentWidth - 15 * (gaugeCount - 1)) / gaugeCount;
+    const gaugeWidth = (contentWidth - 30) / 3;
     const gauges = [
-      { label: "Speed (Mobile)", score: auditResult.performance },
-      ...(hasDesktop ? [{ label: "Speed (Desktop)", score: auditResult.performanceDesktop }] : []),
+      { label: "Speed", score: auditResult.performance },
       { label: "SEO", score: auditResult.seo },
       { label: "Accessibility", score: auditResult.accessibility },
     ];
@@ -526,64 +491,6 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     y += 15;
   }
 
-  // ── 7b. Who's Outranking You ──
-  if (competitors && competitors.length > 0) {
-    checkPageBreak(competitors.length * 60 + 80);
-    drawLine();
-    doc.setTextColor(...dark);
-    doc.setFontSize(16);
-    doc.setFont("helvetica", "bold");
-    doc.text("Who's Outranking You — and Why", margin, y);
-    y += 14;
-    doc.setTextColor(...mutedText);
-    doc.setFontSize(10);
-    doc.setFont("helvetica", "normal");
-    doc.text(
-      "These aren't bigger companies — they just built pages that speak directly to your buyers.",
-      margin, y
-    );
-    y += 22;
-
-    for (const comp of competitors) {
-      checkPageBreak(55);
-      // Competitor name bar
-      doc.setFillColor(28, 40, 38); // hw-dark
-      doc.roundedRect(margin, y, contentWidth, 22, 4, 4, "F");
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "bold");
-      doc.text(comp.name, margin + 10, y + 14);
-      if (comp.url) {
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(8.5);
-        doc.setTextColor(180, 200, 190);
-        doc.text(comp.url, margin + contentWidth - 10, y + 14, { align: "right" });
-      }
-      y += 26;
-
-      // Ranking line
-      doc.setTextColor(...mutedText);
-      doc.setFontSize(9);
-      doc.setFont("helvetica", "italic");
-      const rankLines = doc.splitTextToSize(`📍 ${comp.ranking}`, contentWidth - 10);
-      doc.text(rankLines, margin + 6, y);
-      y += rankLines.length * 13 + 2;
-
-      // Advantage line
-      doc.setFillColor(245, 240, 235); // hw-light
-      const advLines = doc.splitTextToSize(comp.advantage, contentWidth - 24);
-      const advBoxH = advLines.length * 13 + 14;
-      doc.roundedRect(margin, y, contentWidth, advBoxH, 4, 4, "F");
-      doc.setFillColor(224, 123, 60); // terracotta left bar
-      doc.rect(margin, y, 3, advBoxH, "F");
-      doc.setTextColor(...textColor);
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(9.5);
-      doc.text(advLines, margin + 12, y + 10);
-      y += advBoxH + 12;
-    }
-  }
-
   // ── 7. What I'd Fix First (the plan) ──
   if (recommendations.length > 0) {
     checkPageBreak(recommendations.length * 25 + 60);
@@ -626,18 +533,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
   }
 
   // ── 8. What Success Looks Like (the transformation) ──
-  // Only show for sites that aren't already scoring well — avoids redundant filler on strong sites
-  const _overallScoreForSuccessSection = (() => {
-    if (!auditResult) return 0;
-    const s: number[] = [];
-    if (auditResult.performance > 0) s.push(auditResult.performance);
-    if (auditResult.seo > 0) s.push(auditResult.seo);
-    if (auditResult.accessibility > 0) s.push(auditResult.accessibility);
-    const _m: Record<string, number> = { A: 95, B: 82, C: 68, D: 55, F: 35 };
-    if (auditResult.storyBrand) s.push(_m[auditResult.storyBrand.grade] ?? 50);
-    return s.length > 0 ? Math.round(s.reduce((a, b) => a + b, 0) / s.length) : 0;
-  })();
-  if (auditResult && _overallScoreForSuccessSection < 90) {
+  if (auditResult) {
     checkPageBreak(100);
     drawLine();
     doc.setTextColor(...dark);

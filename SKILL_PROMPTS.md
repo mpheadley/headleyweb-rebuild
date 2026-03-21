@@ -12,7 +12,7 @@ I want to create a custom Cowork skill called "discovery-prep" that automates my
 Context: I run Headley Web & SEO, a local web design + SEO business in Calhoun County, Alabama. Before every sales call I run a discovery process that involves researching the prospect's current web presence, Google Business Profile, competitors, and local SEO gaps.
 
 My CRM is in Airtable (connected via MCP). My discovery workflow is documented in:
-~/Documents/Web Development/headleyweb-rebuild/DISCOVERY_WORKFLOW.md
+~/Developer/webdev/headleyweb-rebuild/DISCOVERY_WORKFLOW.md
 
 The skill should:
 1. Take a business name and location as input
@@ -32,7 +32,7 @@ Read my DISCOVERY_WORKFLOW.md and BUSINESS_STRATEGY.md first to understand the f
 I want to create a custom Cowork skill called "case-study" that generates case study content from my client data.
 
 Context: I run Headley Web & SEO. Case studies with real numbers are the core of my sales strategy — I need 2-3 strong ones to justify raising prices. My business strategy is in:
-~/Documents/Web Development/headleyweb-rebuild/BUSINESS_STRATEGY.md
+~/Developer/webdev/headleyweb-rebuild/BUSINESS_STRATEGY.md
 
 The skill should:
 1. Ask which client (pull from Airtable CRM if connected)

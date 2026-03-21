@@ -65,7 +65,7 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 - Don't use "StoryBrand" in hero or customer-facing headlines. Use it on About page, Services page, blog posts.
 
 ### Blog Writing Workflow
-- **Voice guide:** `~/Documents/Web Development/local-legends/content/AUTHENTIC-VOICE-GUIDE.md` — same guide as Southern Legends, applies here too.
+- **Voice guide:** `~/Developer/webdev/local-legends/content/AUTHENTIC-VOICE-GUIDE.md` — same guide as Southern Legends, applies here too.
 - **AI kill list applies:** No delve, foster, leverage, tapestry, "it's worth noting," tricolon groups, mirror paragraphs, summary conclusions, em dashes, semicolons in casual copy, marketing hedges, uniform paragraph lengths. See Part 5 of the voice guide.
 - **AI-written posts (6):** All current published blog posts were written entirely by Claude and tagged `aiWritten: true` in frontmatter. They need Matt's review and proofing before being treated as final. Don't reference them as voice examples.
 - **Draft in progress:** `drafts/why-i-build-for-local-businesses.mdx` — outline only, needs Matt's voice.
@@ -158,10 +158,10 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
   - Labels must be honest about what the code actually checks — if it reads HTML, don't claim "above the fold" or "visible right away"
 - **Lead funnel:** Automated PDF (step 1) → free personal follow-up by Matt (step 2, video/call/in-person)
 - **Desktop PageSpeed:** `route.ts` now fetches mobile + desktop in parallel. `performanceDesktop` field added to `AuditResult`. Report PDF shows both scores side by side. Mobile is the primary number (most visitors are on phones).
-- **Quick terminal audit script:** `Documents/Web Development/between-worlds/fetch-site-audit.py` — run with `python3 fetch-site-audit.py` from Claude Code for any new prospect site. Pulls meta description, JSON-LD schema, viewport/mobile signal, and both mobile + desktop PageSpeed in one shot. No API key needed (uses public PSI endpoint). Copy to each new client project folder as a starting point.
+- **Quick terminal audit script:** `Developer/webdev/between-worlds/fetch-site-audit.py` — run with `python3 fetch-site-audit.py` from Claude Code for any new prospect site. Pulls meta description, JSON-LD schema, viewport/mobile signal, and both mobile + desktop PageSpeed in one shot. No API key needed (uses public PSI endpoint). Copy to each new client project folder as a starting point.
 - **Competitor section (PDF report):** `generate-report-pdf.ts` has a "Who's Outranking You" section (Section 7b) that renders when `competitors[]` is passed to `buildReportDoc`. The section is fully built — styling, per-competitor blocks, advantage callouts. What is NOT built: auto-fetching competitors. The audit API scrapes the target URL and runs PageSpeed, but it does not research who's ranking for their keywords. Competitor data has to be passed in manually from wherever `buildReportDoc` is called (e.g., the quiz results page). Automating this would require either a search API (e.g., DataForSEO, SerpAPI) or hardcoded industry presets. Until then, populate `competitors[]` manually before generating the report.
 
 ## Existing Site Assets
-Copy from `~/Documents/Web Development/headley-web-seo/`:
+Copy from `~/Developer/webdev/headley-web-seo/`:
 - `images/` — headshot, brand mark, project screenshots, OG image
 - `lead-tracker-setup.gs` — Google Apps Script for lead tracking

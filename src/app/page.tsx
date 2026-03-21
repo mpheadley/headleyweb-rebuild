@@ -6,6 +6,7 @@ import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
 import LazyPageSpeedProof from "./components/LazyPageSpeedProof";
 import { projects } from "@/app/data/projects";
+import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Northeast Alabama Web Design & Local SEO",
@@ -15,9 +16,6 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    type: "website",
-    siteName: "Headley Web & SEO",
-    locale: "en_US",
     url: "/",
     images: [
       {
@@ -27,11 +25,6 @@ export const metadata: Metadata = {
         alt: "Headley Web & SEO — Web Design for Local Businesses",
       },
     ],
-  },
-  twitter: {
-    title: "Northeast Alabama Web Design & Local SEO",
-    description:
-      "Headley Web & SEO builds StoryBrand-powered websites for local service businesses in Jacksonville, Anniston & Northeast Alabama. Get found, get calls, get booked.",
   },
 };
 
@@ -445,54 +438,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Success / Transformation (Before/After) ═══ */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "rgba(107,143,113,0.06)" }}>
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-hw-secondary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">The Transformation</p>
-            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">What Changes When You Show Up</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {/* Before */}
-            <div className="animate-on-scroll" style={{ transitionDelay: "0.1s" }}>
-              <h3 className="text-sm font-bold text-hw-text-light uppercase tracking-wider mb-4">Before</h3>
-              <ul className="space-y-3 text-hw-text-light">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">&#x2717;</span>
-                  Invisible online — losing leads to competitors who aren&apos;t better, just easier to find
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">&#x2717;</span>
-                  Overwhelmed by changing technology and jargon you didn&apos;t ask for
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">&#x2717;</span>
-                  Embarrassed when someone asks for your website
-                </li>
-              </ul>
-            </div>
-            {/* After */}
-            <div className="animate-on-scroll" style={{ transitionDelay: "0.2s" }}>
-              <h3 className="text-sm font-bold text-hw-secondary uppercase tracking-wider mb-4">After</h3>
-              <ul className="space-y-3 text-hw-text">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Found at the top of Google and recommended by AI — your phone actually rings
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Confident and proud when sharing your website with customers and referrals
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Stable and in control — your online presence works while you work
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ═══ Trust (Empathy + Benefit Cards) ═══ */}
       <section className="py-28 md:py-36 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
@@ -520,7 +465,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg text-hw-text-light mb-6">
-                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. I started Headley Web &amp; SEO because great local businesses deserve a website that works as hard as they do.
+                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. I started Headley Web <span className="amp">&amp;</span> SEO because great local businesses deserve a website that works as hard as they do.
               </p>
               <ul className="space-y-3 text-hw-text-light">
                 <li className="flex items-start gap-3">
@@ -575,6 +520,24 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ Google Review Nudge ═══ */}
+      <section className="py-10 px-6 bg-hw-light border-y border-black/5">
+        <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left animate-on-scroll">
+          <span className="text-3xl" aria-hidden="true">⭐</span>
+          <p className="text-hw-text-light text-sm">
+            Happy with your experience? A Google review helps other local businesses find me —&nbsp;
+            <a
+              href="https://g.page/r/CZcynt10WKMIEAE/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-hw-primary hover:text-hw-primary-dark underline underline-offset-2 transition-colors font-medium"
+            >
+              Leave a quick review
+            </a>
+          </p>
         </div>
       </section>
 
@@ -783,7 +746,7 @@ export default function Home() {
               </ul>
               {/* Paired care plan */}
               <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$99/mo</span></span>
+                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$79/mo</span></span>
                 <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
                 <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
               </div>
@@ -897,6 +860,26 @@ export default function Home() {
           <p className="text-center text-gray-400 text-xs mt-2 animate-on-scroll">
             *Timelines begin once all content (text, photos, logos) is received.
           </p>
+        </div>
+      </section>
+
+      {/* ═══ Quiz CTA ═══ */}
+      <section className="py-14 md:py-16 px-6 bg-hw-light">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8 p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-sm animate-on-scroll">
+            <div className="shrink-0 w-14 h-14 rounded-2xl bg-hw-primary/10 flex items-center justify-center">
+              <Sparkles className="w-7 h-7 text-hw-primary" />
+            </div>
+            <div className="text-center sm:text-left flex-grow">
+              <h3 className="text-lg font-bold mb-1">Not sure what you need?</h3>
+              <p className="text-hw-text-light text-sm">
+                Take our 60-second quiz to find your business&apos;s online personality — and get a personalized recommendation.
+              </p>
+            </div>
+            <Link href="/quiz" className="btn-secondary whitespace-nowrap shrink-0 !py-2.5 !px-5 text-sm">
+              Take the Quiz <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -1028,12 +1011,105 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ Latest from the Blog ═══ */}
+      <section className="py-24 md:py-32 px-6 bg-hw-light">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Blog</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Latest from the Blog</h2>
+            <p className="text-hw-text-light mt-4 animate-on-scroll">
+              Practical tips to help your business get found online.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto">
+            {getAllPosts().slice(0, 2).map((post, i) => (
+              <article
+                key={post.frontmatter.slug}
+                className="card-glow flex flex-col animate-on-scroll"
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                <p className="text-xs text-hw-text-light mb-2">
+                  {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
+                <h3 className="text-lg font-bold mb-2">{post.frontmatter.title}</h3>
+                <p className="text-hw-text-light text-sm mb-4 flex-1">
+                  {post.frontmatter.description}
+                </p>
+                <Link
+                  href={`/blog/${post.frontmatter.slug}`}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-hw-primary hover:text-hw-primary-dark transition-colors mt-auto"
+                >
+                  Read more<span className="sr-only">: {post.frontmatter.title}</span> <ArrowRight className="w-4 h-4" />
+                </Link>
+              </article>
+            ))}
+          </div>
+          <div className="text-center mt-10 animate-on-scroll">
+            <Link href="/blog" className="btn-secondary">
+              View All Posts <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Success / Transformation ═══ */}
+      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "rgba(107,143,113,0.06)" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-hw-secondary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">The Transformation</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">What Changes When You Show Up</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {/* Before */}
+            <div className="animate-on-scroll" style={{ transitionDelay: "0.1s" }}>
+              <h3 className="text-sm font-bold text-hw-text-light uppercase tracking-wider mb-4">Before</h3>
+              <ul className="space-y-3 text-hw-text-light">
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 mt-0.5">&#x2717;</span>
+                  Invisible online — losing leads to competitors who aren&apos;t better, just easier to find
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 mt-0.5">&#x2717;</span>
+                  Overwhelmed by changing technology and jargon you didn&apos;t ask for
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-red-400 mt-0.5">&#x2717;</span>
+                  Embarrassed when someone asks for your website
+                </li>
+              </ul>
+            </div>
+            {/* After */}
+            <div className="animate-on-scroll" style={{ transitionDelay: "0.2s" }}>
+              <h3 className="text-sm font-bold text-hw-secondary uppercase tracking-wider mb-4">After</h3>
+              <ul className="space-y-3 text-hw-text">
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                  Found at the top of Google and recommended by AI — your phone actually rings
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                  Confident and proud when sharing your website with customers and referrals
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                  Stable and in control — your online presence works while you work
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ Final CTA ═══ */}
       <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">Ready to Get Found?</h2>
           <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
-            Stop losing customers to competitors with better websites. Get an instant report on your site&apos;s speed, SEO, and messaging — free, no strings attached.
+            Stop losing customers to competitors with better websites. Let&apos;s get your business online the right way.
           </p>
           <p className="text-gray-400 mb-2 animate-on-scroll">
             Flat-rate builds from $495. Care plan included free for 3 months, then from $49/mo — cancel anytime.
@@ -1054,10 +1130,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ Free Site Checkup CTA ═══ */}
+      <section className="py-24 md:py-32 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Free Site Checkup</p>
+          <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">See How Your Website Stacks Up</h2>
+          <p className="text-hw-text-light mt-4 max-w-xl mx-auto mb-8 animate-on-scroll">
+            Get an instant report on your site&apos;s speed, SEO, and messaging — free, no strings attached.
+          </p>
+          <Link href="/audit" className="btn-primary text-lg px-8 animate-on-scroll">
+            Check Your Site <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
+        </div>
+      </section>
+
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only">
         <p>
-          Headley Web &amp; SEO is a Jacksonville, Alabama web design studio that builds
+          Headley Web <span className="amp">&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
           StoryBrand-powered websites for local service businesses in Northeast Alabama. We
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business
           Profile optimization for plumbers, HVAC companies, contractors, restaurants, and other

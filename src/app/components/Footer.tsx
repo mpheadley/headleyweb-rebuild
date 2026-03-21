@@ -82,7 +82,7 @@ export default function Footer() {
         </p>
 
         <div className="flex items-center justify-center gap-4 text-xs text-gray-400 pt-2">
-          <span>&copy; {new Date().getFullYear()} <span className="font-heading">Headley Web <span className="amp">&amp;</span> SEO</span>. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Headley Web <span className="amp">&amp;</span> SEO. All rights reserved.</span>
           <Link href="/audit" className="hover:text-white transition-colors">
             Free Site Audit
           </Link>

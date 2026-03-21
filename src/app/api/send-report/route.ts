@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
 
     // Send email via Resend
     const { error } = await resend.emails.send({
-      from: "Headley Web & SEO <reports@headleyweb.com>",
+      from: "Headley Web & SEO <reports@send.headleyweb.com>",
       to: [body.email],
       subject: `Your Site Readiness Report — ${hostname}`,
       html: `

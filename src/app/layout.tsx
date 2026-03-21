@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, Rock_Salt } from "next/font/google";
+import { Inter, Fraunces, Rock_Salt, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ScrollReveal from "./components/ScrollReveal";
 import Nav from "./components/Nav";
@@ -26,6 +26,13 @@ const rockSalt = Rock_Salt({
   display: "swap",
 });
 
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  weight: "700",
+  subsets: ["latin"],
+  display: "optional",
+  preload: false,
+});
 
 export const metadata: Metadata = {
   title: {
@@ -71,7 +78,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} antialiased`}>
+      <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} ${playfairDisplay.variable} antialiased`}>
         <script dangerouslySetInnerHTML={{ __html: "" }} />
         {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={{ __html: "<!-- Built by Headley Web & SEO | headleyweb.com -->" }} />

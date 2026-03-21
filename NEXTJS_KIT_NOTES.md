@@ -206,7 +206,7 @@ it's time to formalize the Next.js starter kit.
 
 ## Next.js Starter Kit Plan
 
-A full migration plan exists at: `~/Documents/Web Development/nextjs-starter-kit/PLAN.md`
+A full migration plan exists at: `~/Developer/webdev/nextjs-starter-kit/PLAN.md`
 
 It includes:
 - Component library (core layout + page sections + widgets)
