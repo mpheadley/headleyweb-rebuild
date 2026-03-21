@@ -50,6 +50,12 @@ export type ReportTradeEstimate = {
   paybackJobs: Record<string, number>;
 };
 
+export type ReportCompetitor = {
+  name: string;
+  url: string;
+  advantage?: string;
+};
+
 export type ReportInput = {
   archetype: ReportArchetype;
   auditResult: AuditResult | null;
@@ -57,6 +63,7 @@ export type ReportInput = {
   recommendedTier: string;
   tierPrice: number;
   recommendations: string[];
+  competitors?: ReportCompetitor[];
 };
 
 /** Build a jsPDF document with the full report. Caller decides output format. */
