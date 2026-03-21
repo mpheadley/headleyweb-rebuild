@@ -119,6 +119,9 @@ export async function generateMetadata({
       canonical: `/blog/${slug}`,
     },
     openGraph: {
+      type: "website",
+      locale: "en_US",
+      siteName: "Headley Web & SEO",
       url: `/blog/${slug}`,
       title,
       description,

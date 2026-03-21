@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     canonical: "/portfolio",
   },
   openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Headley Web & SEO",
     url: "/portfolio",
     images: [
       {
