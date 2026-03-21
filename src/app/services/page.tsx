@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Monitor, Search, MapPin, Check, ArrowRight, Video, Shield, Users, FileText, BrainCircuit, Sparkles, Wrench, TrendingUp } from "lucide-react";
+import { Monitor, Search, MapPin, Check, ArrowRight, Video, Shield, Users, FileText, BrainCircuit, Sparkles, Wrench, TrendingUp, CalendarCheck, Zap, MessageSquare, BarChart2, HelpCircle, BookOpen, Navigation, Bot, Star, Globe, type LucideProps } from "lucide-react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
+
+type LucideIcon = ForwardRefExoticComponent<LucideProps & RefAttributes<SVGSVGElement>>;
+const buildIconMap: Record<string, LucideIcon> = { Monitor, MessageSquare, BarChart2, MapPin, Shield, Search, HelpCircle, BookOpen, Navigation, Bot, Star, Globe };
+import { buildTiers, carePlans } from "@/app/data/pricing";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Custom web design, local SEO optimization, and Google Business Profile management for local businesses in Jacksonville, Anniston, and Northeast Alabama. Flat-rate pricing from $495.",
+    "Custom web design, local SEO, Google Business Profile management, monthly care plans, and AI visibility for local businesses in Northeast Alabama. Flat-rate pricing from $495.",
   alternates: {
     canonical: "/services",
   },
@@ -123,6 +128,15 @@ const serviceSchema = {
           areaServed,
         },
       },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Monthly Website Care Plans",
+          description: "Optional ongoing care plans included free for 3 months with every build. Essential Care ($49/mo): hosting, security, and up to 30 min of edits/month. Growth Care ($99/mo): adds Google Business Profile management and monthly results report. Accelerate ($199/mo): adds 2 blog posts/month, monthly strategy call, and AI visibility monitoring.",
+          areaServed,
+        },
+      },
     ],
   },
 };
@@ -163,7 +177,33 @@ const services = [
       "Category and service area configuration",
       "Review response coaching and strategy",
       "Photo optimization for your listing",
-      "Monthly management available via care plans",
+      "Ongoing management included in Growth Care & Accelerate plans",
+    ],
+    accent: "bg-hw-primary/10 text-hw-primary",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Monthly Care & Growth",
+    oneLiner: "I keep your site secure, your Google listing active, and your content working — month after month.",
+    details: [
+      "Hosting, security & uptime monitoring handled for you",
+      "Google Business Profile managed — posts, responses, Q&A",
+      "Monthly results report — calls, clicks & impressions",
+      "2 blog posts/month that help you rank (Accelerate plan)",
+      "AI visibility monitoring — ChatGPT & Perplexity (Accelerate plan)",
+    ],
+    accent: "bg-hw-secondary/10 text-hw-secondary",
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI Recommends You",
+    oneLiner: "I structure your content so AI tools like ChatGPT and Google recommend your business when someone searches for your trade.",
+    details: [
+      "Answer-first content built to be cited by AI tools",
+      "Schema markup that AI parsers read and trust",
+      "Entity coverage — Google knows your trade, town, and hours",
+      "Blog posts written to answer the questions AI gets asked",
+      "Monitoring whether ChatGPT & Perplexity recommend you (Accelerate plan)",
     ],
     accent: "bg-hw-primary/10 text-hw-primary",
   },
@@ -213,20 +253,18 @@ export default function ServicesPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">What I Do</p>
-            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Three Services, One Goal</h2>
-            <p className="text-hw-text-light mt-4 max-w-2xl mx-auto animate-on-scroll">Each one designed to put your business in front of customers who are already searching for what you do.</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Every Service, One Goal</h2>
+            <p className="text-hw-text-light mt-4 max-w-2xl mx-auto animate-on-scroll">Put your business in front of customers who are already searching for what you do — and keep it there.</p>
           </div>
           <div className="space-y-16">
-            {services.map((svc, i) => (
+            {services.map((svc) => (
               <div
                 key={svc.title}
-                className={`flex flex-col md:flex-row gap-8 items-start animate-on-scroll ${
-                  i % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
+                className="flex flex-col md:flex-row gap-8 items-start animate-on-scroll"
               >
                 <div className="shrink-0">
-                  <div className={`w-16 h-16 rounded-2xl ${svc.accent} flex items-center justify-center`}>
-                    <svc.icon className="w-8 h-8" />
+                  <div className={`w-20 h-20 rounded-2xl ${svc.accent} flex items-center justify-center`}>
+                    <svc.icon className="w-10 h-10" />
                   </div>
                 </div>
                 <div className="flex-grow">
@@ -347,150 +385,75 @@ export default function ServicesPage() {
           <div className="text-center mb-12">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Pricing</p>
             <h2 className="text-3xl md:text-4xl font-bold !text-white animate-on-scroll">
-              Compare Your Options
+              Build Plans
             </h2>
             <p className="text-gray-300 mt-4 max-w-2xl mx-auto animate-on-scroll">
-              Every tier includes mobile-ready design, search optimization, and full site ownership.
-              You own your website from day one — no contracts, no monthly traps.
+              Flat-rate, one-time build. No ongoing fees unless you want them.
+              You own your website from day one.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 items-start">
-            {/* Get Found */}
-            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0s" }}>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Found</h3>
-              <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$495</p>
-              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
-              <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Get online. Get visible. Get found.
-              </p>
-              <p className="text-xs text-gray-400 mb-5">Typically 1 page · ~1–2 weeks*</p>
-              <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Professional, mobile-friendly design
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Clear messaging that converts visitors
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Basic search optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Contact form setup
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  You own your website
-                </li>
-              </ul>
-              <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Essential Care — <span className="text-hw-primary font-normal">$49/mo</span></span>
-                <span className="text-xs text-gray-300">Hosting, security, &amp; minor updates</span>
-                <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
+            {buildTiers.map((tier) => (
+              <div
+                key={tier.name}
+                className={`${
+                  tier.bestValue
+                    ? "bg-hw-primary/[0.07] backdrop-blur-sm border border-hw-primary/30 hover:shadow-[0_12px_40px_rgba(224,123,60,0.15)]"
+                    : "bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)]"
+                } rounded-2xl p-8 flex flex-col relative transition-all hover:-translate-y-1 animate-on-scroll`}
+                style={{ transitionDelay: tier.animationDelay }}
+              >
+                {tier.bestValue && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-hw-primary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    Best Value
+                  </span>
+                )}
+                <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">{tier.name}</h3>
+                <p className="font-heading text-[42px] font-extrabold !text-white mb-2">{tier.priceDisplay}</p>
+                <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
+                <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">{tier.tagline}</p>
+                <p className="text-xs text-gray-400 mb-5">{tier.timeline}</p>
+                <ul className="space-y-3 text-sm text-gray-300 flex-grow">
+                  {tier.features.map((feature) => {
+                    const Icon = buildIconMap[feature.iconName] ?? Check;
+                    return (
+                      <li key={feature.text} className="flex items-start gap-2">
+                        <Icon className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                        {feature.text}
+                      </li>
+                    );
+                  })}
+                  {tier.inheritedFeatures && (
+                    <>
+                      <li className="border-t border-white/[0.07] pt-3 mt-1">
+                        <span className="text-[11px] text-gray-500 uppercase tracking-wider">Also includes</span>
+                      </li>
+                      {tier.inheritedFeatures.map((f) => (
+                        <li key={f} className="flex items-start gap-2">
+                          <Check className="w-3.5 h-3.5 text-hw-secondary shrink-0 mt-0.5" />
+                          <span className="text-xs text-gray-300">{f}</span>
+                        </li>
+                      ))}
+                      {tier.inheritedNote && (
+                        <li className="text-xs text-gray-400 italic pl-5">{tier.inheritedNote}</li>
+                      )}
+                    </>
+                  )}
+                </ul>
+                <div className="mt-6 mb-0"></div>
+                <div className="border-t border-white/[0.07] pt-4 mb-5">
+                  <p className="text-xs text-gray-400">
+                    Paired with{" "}
+                    <Link href="#care-plans" className="text-hw-primary hover:underline">
+                      {tier.carePlan.name} — ${tier.carePlan.price}/mo
+                    </Link>
+                  </p>
+                  <p className="text-xs text-hw-primary font-semibold mt-1">First 3 months included free</p>
+                </div>
+                <Link href={tier.ctaHref} className="btn-primary w-full text-center">{tier.cta}</Link>
               </div>
-              <Link href="/contact" className="btn-primary w-full text-center">Get Found Now</Link>
-            </div>
-
-            {/* Get Calls — Best Value */}
-            <div className="bg-hw-primary/[0.07] backdrop-blur-sm border border-hw-primary/30 rounded-2xl p-8 flex flex-col relative transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.15)] animate-on-scroll" style={{ transitionDelay: "0.12s" }}>
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-hw-primary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                Best Value
-              </span>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Calls</h3>
-              <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$795</p>
-              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
-              <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Show up in search. Start getting calls.
-              </p>
-              <p className="text-xs text-gray-400 mb-5">Typically 3–5 pages · ~2–3 weeks*</p>
-              <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Search optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  FAQ section that Google features in search
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Professional, mobile-friendly design
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Clear messaging that converts visitors
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  You own your website
-                </li>
-              </ul>
-              <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$79/mo</span></span>
-                <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
-                <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
-              </div>
-              <Link href="/contact" className="btn-primary w-full text-center">Start Getting Calls</Link>
-            </div>
-
-            {/* Get Booked */}
-            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0.24s" }}>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Booked</h3>
-              <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$1,195</p>
-              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
-              <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Dominate local search. Stay booked solid.
-              </p>
-              <p className="text-xs text-gray-400 mb-5">Typically 5–7 pages · ~3–4 weeks*</p>
-              <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Advanced search optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Content written for AI visibility
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google knows your trade, your town, and your hours
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Professional, mobile-friendly design
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Clear messaging that converts visitors
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup &amp; optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  You own your website
-                </li>
-              </ul>
-              <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Accelerate — <span className="text-hw-primary font-normal">$149/mo</span></span>
-                <span className="text-xs text-gray-300">Growth + AI visibility &amp; strategy</span>
-                <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
-              </div>
-              <Link href="/contact" className="btn-primary w-full text-center">Dominate Local Search</Link>
-            </div>
+            ))}
           </div>
 
           <p className="text-center text-gray-400 text-sm mt-8 animate-on-scroll">
@@ -498,6 +461,63 @@ export default function ServicesPage() {
           </p>
           <p className="text-center text-gray-400 text-xs mt-2 animate-on-scroll">
             *Timelines begin once all content (text, photos, logos) is received.
+          </p>
+          <div className="mt-10 max-w-xl mx-auto border border-hw-primary/25 rounded-xl px-6 py-5 text-center animate-on-scroll">
+            <p className="text-white font-semibold text-sm mb-1">Currently accepting founding clients</p>
+            <p className="text-gray-400 text-sm">I&rsquo;m building sites for a small number of founding clients at a significantly reduced rate in exchange for a testimonial and case study. <Link href="/contact" className="text-hw-primary hover:underline">Ask about availability &rarr;</Link></p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Care Plans ═══ */}
+      <section id="care-plans" className="py-24 md:py-32 px-6 bg-hw-light grain">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Monthly Care Plans</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Care Plans</h2>
+            <p className="text-hw-text-light mt-4 max-w-2xl mx-auto animate-on-scroll">
+              Every build includes 3 months free. After that, stay on the plan that fits where your business is headed — or cancel anytime.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 items-start">
+            {carePlans.map((plan, i) => (
+              <div
+                key={plan.name}
+                className={`card-glow flex flex-col relative animate-on-scroll${i === 1 ? " ring-2 ring-hw-primary/30" : ""}`}
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                {i === 1 && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-hw-primary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    Best Value
+                  </span>
+                )}
+                <div className="w-12 h-12 rounded-xl bg-hw-primary/10 flex items-center justify-center mb-4">
+                  {plan.iconName === "shield" && <Shield className="w-6 h-6 text-hw-primary" />}
+                  {plan.iconName === "trending-up" && <TrendingUp className="w-6 h-6 text-hw-primary" />}
+                  {plan.iconName === "zap" && <Zap className="w-6 h-6 text-hw-primary" />}
+                </div>
+                <h3 className="text-xl font-bold mb-1">{plan.name}</h3>
+                <p className="font-heading text-[36px] font-extrabold text-hw-primary mb-1">
+                  ${plan.price}<span className="text-base font-normal text-hw-text-light">/mo</span>
+                </p>
+                <p className="text-hw-text-light text-sm mb-2">{plan.tagline}</p>
+                <p className="text-sm text-hw-text mb-5 pb-5 border-b border-gray-200">{plan.upgradeReason}</p>
+                <ul className="space-y-2.5 flex-grow mb-6">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-hw-text">
+                      <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/contact" className={i === 2 ? "btn-primary text-center" : "btn-secondary text-center"}>
+                  Start with {plan.name}
+                </Link>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-hw-text-light text-sm mt-8 animate-on-scroll">
+            Care plans are optional. Your site is yours — no hosting lock-in, no contracts.
           </p>
         </div>
       </section>
@@ -534,7 +554,7 @@ export default function ServicesPage() {
       <section className="sr-only">
         <h2>Web Design and SEO Services in Northeast Alabama</h2>
         <p>
-          Headley Web <span className="amp">&amp;</span> SEO offers three core services for local businesses in Northeast Alabama: custom web design (clean, mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), and Google Business Profile setup and management. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 for a Get Found site, $795 for a Get Calls site, and $1,195 for a Get Booked site. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
+          Headley Web <span className="amp">&amp;</span> SEO offers five core services for local businesses in Northeast Alabama: custom web design (clean, mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), Google Business Profile setup and management, monthly care plans for ongoing maintenance and growth, and AI visibility optimization so your business gets recommended by tools like ChatGPT and Perplexity. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 (Get Found), $1,495 (Get Calls), and $1,995 (Get Booked). Monthly care plans start at $49/mo — first 3 months included free with every build. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
         </p>
       </section>
     </main>

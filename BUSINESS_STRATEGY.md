@@ -17,39 +17,116 @@
 
 ---
 
+## Site Types — What You Actually Build
+
+> **For internal clarity only.** Clients never see these labels.
+> Tier names on the site describe outcomes. This section defines what's inside each tier.
+
+### Brochure Site
+A clear, professional online presence. You exist, you look credible, and people can reach you.
+
+**What's included:** 3–5 pages (Home, Services, About, Contact), mobile-optimized, Google Business Profile setup or optimization, basic local SEO (meta tags, schema, map embed), contact form or click-to-call.
+
+**What it is NOT:** It doesn't actively pull in search traffic or nurture visitors into leads. It's a digital business card that passes the "are they real?" test.
+
+**Maps to:** Get Found ($495) and Get Calls ($795) at current pricing.
+
+---
+
+### Marketing Site
+Built to convert. Visitors arrive with a problem; the site turns them into a phone call or a form submission.
+
+**What's included:** StoryBrand-structured copy and layout, 5–7 pages (including a dedicated Services page and a landing page for the primary offer), local SEO throughout, schema markup, GA4 event tracking, lead gen form with email notification, Google Business Profile management setup.
+
+**What makes it different from a brochure site:** Every page has a job. The hero answers "what do you do and who is it for." The services page builds the case. The CTA is repeated and clear. The site is designed around the question a prospect is actually asking — not around what the business owner wants to talk about.
+
+**Maps to:** Get Booked ($1,195 current / $2,995 target). HTML stack at current pricing.
+
+---
+
+### Content Marketing Site (Sales Engine)
+A full digital sales system. The site doesn't just answer questions — it creates them, ranks for them, and positions the business as the obvious answer in both Google and AI tools.
+
+**What's included:** Everything in Marketing Site + Next.js stack (fast, SEO-optimized), blog or resource section for ongoing content, multi-audience landing pages (e.g., separate pages for residential vs. commercial, or for two different service areas), lead magnet or email capture, full StoryBrand workshop session, AEO (answer-engine optimization) — schema, entity alignment, answer-first content blocks.
+
+**What makes it different from a marketing site:** The site compounds over time. Blog posts rank. Landing pages target specific keywords. The client can brief you on a new service and get a targeted page within 48 hours. This is infrastructure, not just a website.
+
+**Maps to:** Sales Engine ($7,495 target). Next.js stack required.
+
+---
+
 ## Pricing Tiers
 
-### Current Live Pricing (headleyweb.com)
-
-> **Naming principle (March 2026):** Tier names describe the OUTCOME, not the deliverable.
+> **Naming principle:** Tier names describe the OUTCOME, not the deliverable.
 > Page counts are implementation details — YOU decide scope, not the client.
 > Inspired by Lee Blue's revenue engine model. See `memory/lee-blue-revenue-model.md`.
 
-- **Get Found** — $495 — "Get online and start getting calls"
-- **Get Calls** (Best Value) — $795 — "Show up where customers search"
-- **Get Booked** — $1,195 — "Dominate your market in search and AI"
+### Current Live Pricing (headleyweb.com)
+
+- **Get Found** — $495 — Entry product. 1–2 pages, mobile-ready, GBP setup. For side hustles and micro-businesses. Simpler scope by design.
+- **Get Calls** — $1,495 — Full marketing site. 3–5 pages, SEO, FAQ schema, blog built, 2 launch posts written.
+- **Get Booked** — $1,995 — Local authority build. 5–7 pages, service area/trade landing pages, 4 launch posts for AI visibility, full GA4 event tracking, comprehensive schema, GBP setup + optimization, Search Console submitted.
+
+> **Founding client strategy:** Prices shown are target rates. A small number of founding
+> clients are being offered a significantly reduced rate in exchange for a testimonial and
+> case study. This is communicated via a callout on the site (not strike-through pricing)
+> and in personal outreach. Discounts ease down progressively as case studies accumulate —
+> free → heavily discounted → moderately discounted → slightly discounted → full price.
+> Never announce "prices are going up" publicly — the offer just quietly becomes less generous.
 
 ### Target Pricing (raise after 2–3 case studies with measurable ROI)
-- **Get Found** — $495
-- **Get Calls** — $1,495
-- **Get Booked** — $2,995
-- **Sales Engine** — $7,495 — Next.js stack, includes StoryBrand session
+
+| Tier | Price | Site Type | Stack |
+|------|-------|-----------|-------|
+| **Get Found** | $495 | Brochure site | HTML |
+| **Get Calls** | $1,495 | Brochure + stronger local SEO | HTML |
+| **Get Booked** | $2,995 | Marketing site | HTML or Next.js |
+| **Sales Engine** | $7,495 | Content marketing site | Next.js, includes Clarity Sprint |
+
+> **The missing middle:** As you build more Next.js marketing sites (full StoryBrand, lead gen,
+> multi-page), those builds fall between $2,995 and $7,495. A Next.js marketing site without
+> a blog or content system is legitimately a $3,500–4,500 build. Don't force it into "Get Booked"
+> — price it honestly and explain why it's different.
 
 > **When to raise prices:** Once you have 2–3 case studies showing real numbers
-> (GA4 events, search ranking improvements, lead increases). The proof justifies
-> the jump. Until then, current pricing + free builds for the first 3 clients.
+> (GA4 events, search ranking improvements, lead increases). The proof justifies the jump.
+> Until then, current pricing + free builds for the first 3 clients.
+
+> **Founding client discount strategy (keep OFF the website):** Early builds are discounted
+> or free in exchange for testimonials and case studies — but this is a private, personal offer,
+> never a public price. Putting discounts on the site anchors future clients to lower prices
+> and signals you need clients. The move: in outreach or discovery calls, say "I'm taking on
+> 2–3 founding clients at a significantly reduced rate in exchange for a testimonial and case
+> study." It feels like an invitation, not a sale.
+
+> **Blog deliverable decision (resolved):** Get Calls includes blog section built + 2 launch
+> posts written as a one-time build deliverable. Get Booked includes 4 launch posts. Ongoing
+> monthly posts are Accelerate's job ($199/mo). No cannibalizing — the launch posts seed the
+> site with indexable content at launch and make the Accelerate upsell natural ("here's what
+> month 2, 3, 4 looks like if we keep going").
+
+---
 
 ### Monthly Care Plans (current live pricing)
 
-| Tier | Price | Key Deliverables |
-|------|-------|-----------------|
-| **Essential Care** | $49/mo | Hosting, security, 30 min edits, uptime monitoring |
-| **Growth Care** | $99/mo | + GBP management, monthly report, review coaching, 1 hr edits |
-| **Accelerate** | $149/mo | + AI Visibility monitoring, quarterly entity audit, answer-first content refresh, strategy call |
+> **Naming principle:** Plans are described by what the client experiences, not by feature lists.
+
+| Tier | Price | What the client gets |
+|------|-------|---------------------|
+| **Essential Care** | $49/mo | Your site stays live, secure, and up to date. I handle hosting, security patches, and up to 30 minutes of edits per month (hours changes, text updates, that kind of thing). Uptime monitoring so I know if it goes down before you do. |
+| **Growth Care** | $99/mo | Everything in Essential, plus I actively manage your Google Business Profile — posts, Q&A, and review coaching. You get a monthly report showing how many people found you that month and where they came from. |
+| **Accelerate** | $199/mo | Everything in Growth, plus 2 blog posts/month done for you, a 30-minute strategy call each month, and monitoring whether AI tools like ChatGPT and Perplexity are recommending your business. Quarterly content refreshes on existing pages. |
+
+**Why someone upgrades:**
+
+- **Essential → Growth:** When they realize Google Maps matters as much as the website. Once a business gets calls from their GBP listing, the $50 difference is obvious.
+- **Growth → Accelerate:** When they want to stay ahead of how people search — not just Google, but AI tools. Also for clients who want a monthly touchpoint and ongoing guidance instead of just a report.
 
 > First 3 months free with any build. Cancel anytime.
 > **Accelerate** is the bridge to high-value retainers — positions AI Visibility
-> early without requiring $2,500/mo proof yet. Raise to $249-$349 after case studies.
+> early without requiring $2,500/mo proof yet. Raise to $249–$349 after case studies.
+
+---
 
 ### Target Retainers (Phase 3+: $2,500/mo)
 Monthly deliverables:
@@ -61,8 +138,9 @@ Monthly deliverables:
 
 ### Clarity Sprint (standalone: $1,500)
 - StoryBrand workshop as a separate 2-day deliverable
-- De-risks the sale — client commits $1,500 before the $6,000 build
+- De-risks the sale — client commits $1,500 before the $6,000+ build
 - If they like the strategy, the build is a natural upsell
+- Included in Sales Engine tier at target pricing
 
 ---
 
@@ -76,7 +154,7 @@ Monthly deliverables:
 
 | Phase | Timeline | Client Type | Build Price | Monthly | Your Goal |
 |-------|----------|-------------|-------------|---------|-----------|
-| **1 — Reps & Reviews** | Now – Month 6 | Local startups, side-hustles | $495 – $1,195 | $49 – $149 | 5–10 live case studies, build recurring revenue floor |
+| **1 — Reps & Reviews** | Now – Month 6 | Local startups, side-hustles | $495 – $1,195 | $49 – $199 | 5–10 live case studies, build recurring revenue floor |
 | **2 — Market Competitor** | Months 6–12 | Established local services | $2,200 – $4,000 | $149 – $349 | Compete with local agencies (Lake City Web Designs, etc.) |
 | **3 — Strategic Partner** | Years 1–2 | Regional / niche companies ($1M+ revenue) | $5,000 – $10,000 | $1,500 – $2,500 | Pivot to "Sales Engine" + Fractional CMO model |
 
@@ -100,7 +178,7 @@ often matters more than the website itself.
 4. Price sensitivity evaporates — upsell to Get Calls / Get Booked / Sales Engine
 
 **The math to $400K:** You don't need 300 local shops. You need **10 high-value
-partnerships**. Once recurring revenue from $49–$149/mo plans covers living expenses,
+partnerships**. Once recurring revenue from $49–$199/mo plans covers living expenses,
 you gain the financial margin to stop taking low-budget work and pitch larger
 regional companies using the case studies you built locally.
 
@@ -119,11 +197,11 @@ regional companies using the case studies you built locally.
 - [ ] Permission to use site as a before/after case study
 - [ ] Agreement to be a verbal reference for future leads
 
-**On the proposal:** Show the full retail price crossed out (e.g. ~~$795 build + $149/mo~~). The client sees the value; you set the anchor for paid clients.
+**On the proposal:** Show the full retail price crossed out (e.g. ~~$795 build + $99/mo~~). The client sees the value; you set the anchor for paid clients.
 
 **Scope cap:** Starter tier max (5 pages). No scope creep into Professional/Sales Engine territory.
 
-**After 6 months:** Natural conversion point — they're already in the habit and seeing value. Pitch Essential Care ($49/mo) or Accelerate ($149/mo).
+**After 6 months:** Natural conversion point — they're already in the habit and seeing value. Pitch Essential Care ($49/mo) or Growth Care ($99/mo). Accelerate ($199/mo) is the right pitch for clients who want ongoing content.
 
 ### Case Study Build Pitch (verbal framing)
 
@@ -131,13 +209,14 @@ regional companies using the case studies you built locally.
 
 Use this when presenting a free build to a prospect. Anchor value first, then reveal the arrangement.
 
-> "A site like this typically runs **$795 to $1,195**. I'm building yours free as part of a case study — I document the before/after and use it on my site. After 3 months, the site is yours. At that point you can take everything and host it yourself, or stay on an optional care plan: **$49/mo** covers updates and hosting, **$149/mo** adds Google Business Profile management and ongoing SEO."
+> "A site like this typically runs **$795 to $1,195**. I'm building yours free as part of a case study — I document the before/after and use it on my site. After 3 months, the site is yours. At that point you can take everything and host it yourself, or stay on an optional care plan: **$49/mo** covers updates and hosting, **$99/mo** adds Google Business Profile management and a monthly results report."
 
 **Why this order matters:** Lead with the retail value so the prospect understands what they're getting. If you lead with "it's free," they anchor to zero and the care plan feels like a bait-and-switch. If you lead with $795–$1,195 and *then* say it's free, the care plan feels cheap by comparison.
 
 **Care plan framing after anchor:**
 - $49/mo = updates + hosting. "Basically just keeping the lights on."
-- $149/mo = adds GBP management + ongoing SEO. "This is where you actually keep moving up in search."
+- $99/mo = adds GBP management + monthly report. "This is where you actually keep moving up in search."
+- $199/mo = adds 2 blog posts/month + strategy call + AI visibility. "For clients who want to keep compounding."
 
 ### Nonprofit / Community Builds (Portfolio + Goodwill)
 
@@ -303,7 +382,7 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - **Phase A — Manual (launch immediately):** When a lead submits the audit form, search their business name in ChatGPT, Gemini, and Perplexity. Screen-record a 2-minute Loom showing what AI says (or doesn't say) about them. Include this as part of the free site checkup — one lead magnet, two hooks ("Get Your Free Site Checkup" + "Want to see what AI says about your business?").
 - **Why manual first:** Takes 5 minutes per lead, feels incredibly personal, proves your expertise before they ever talk to you. No one else in NE Alabama is offering this.
 - **Phase B — Automated (Phase 3, month 3-6):** Build AEO Brand Grader MVP — prospect enters business name, tool queries AI APIs and returns a report. Captures the lead and auto-generates a score. Reduces per-lead time from 5 min to near-zero.
-- **Upsell path:** AI visibility check → free site checkup → Accelerate care plan ($149/mo includes AI visibility monitoring, quarterly entity audit, answer-first content refresh).
+- **Upsell path:** AI visibility check → free site checkup → Accelerate care plan ($199/mo includes AI visibility monitoring, quarterly entity audit, answer-first content refresh).
 - **Website integration:** AI callout bar on homepage after Pain Points section. "Want to see what AI says about your business?" → links to the checkup form. Same form, different emotional hook.
 
 **6. Launch Day Push (Client Deliverable)**
@@ -508,7 +587,7 @@ Three layers of search visibility, each building on the last:
 | **GEO** (Generative Engine Optimization) | Authority signals so LLMs cite your business in generated responses | "ChatGPT and Perplexity recommend you" |
 
 **How this maps to your tiers:**
-- **Phase 1 clients ($495–$1,195):** SEO + basic AEO baked into every build (JSON-LD, FAQ schema, GBP). They don't need to know the terminology.
+- **Phase 1 clients ($495–$1,195 build / $49–$199/mo care):** SEO + basic AEO baked into every build (JSON-LD, FAQ schema, GBP). They don't need to know the terminology.
 - **Phase 2–3 clients ($2,500/mo retainers):** Sell "AI Visibility" as a named service — AEO + GEO monitoring, structured content strategy, citation tracking. This justifies higher retainers.
 
 **Client-friendly language:** *"I make sure AI recommends your business, not just Google."*
