@@ -42,7 +42,7 @@ const demos = [
     tag: "Flagship",
     tagColor: "text-hw-primary",
     description:
-      "A full scrollytelling experience. 1,800 gold particles drift and respond to your cursor — then gather into a sphere as you scroll. Puccini's Humming Chorus plays throughout, scheduled note-by-note via Web Audio API. Click anywhere to send a ripple through the field. The outro strips the music back to silence, then blooms a soft Bb major chord.",
+      "A full scrollytelling experience. 1,800 gold particles drift and respond to your cursor — then gather into a sphere as you scroll. Puccini's Humming Chorus plays live through the page. Click anywhere to send a ripple through the field. The outro strips the music back to silence, then resolves into a single held chord.",
     tech: ["GSAP", "ScrollTrigger", "Three.js", "WebGL", "Web Audio API"],
     href: "/labs/convergence/",
     gradient: "from-[#1a1428] via-[#0f0c1a] to-[#08080f]",
