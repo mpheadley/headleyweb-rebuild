@@ -42,7 +42,7 @@ const demos = [
     tag: "Flagship",
     tagColor: "text-hw-primary",
     description:
-      "1,800 gold particles, Puccini, and a journey from chaos to convergence.",
+      "1,800 stars, Puccini, and a journey from chaos to convergence.",
     tech: ["GSAP", "ScrollTrigger", "Three.js", "WebGL", "Web Audio API"],
     href: "/labs/convergence/",
     gradient: "from-[#1a1428] via-[#0f0c1a] to-[#08080f]",
