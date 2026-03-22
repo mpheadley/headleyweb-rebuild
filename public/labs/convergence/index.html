@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convergence — GSAP + Three.js</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Zone 1: Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="eyebrow">An experiment in motion</p>
+      <h1>Convergence</h1>
+      <button class="mute-btn" id="mute-btn" aria-label="Toggle sound">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        </svg>
+      </button>
+      <p class="scroll-hint">scroll slowly to explore<br><span class="scroll-arrow">↓</span></p>
+    </div>
+  </section>
+
+  <!-- Zone 2: Three.js (pinned by GSAP — 300vh of scroll) -->
+  <section class="threejs-section" id="threejs-section">
+    <div id="canvas-container"></div>
+    <div class="overlay" id="o1">Lost in the space between.</div>
+    <div class="overlay" id="o2">Connections form.</div>
+    <div class="overlay" id="o3">A world takes shape.</div>
+    <p class="scroll-cue" id="scroll-cue">Scroll slowly — let it breathe</p>
+    <p class="click-cue" id="click-cue">touch it</p>
+  </section>
+
+  <!-- Zone 3: Outro -->
+  <section class="outro" id="outro">
+    <div class="outro-glow" id="outro-glow"></div>
+    <div class="outro-card" id="outro-card">
+      <h2 id="outro-heading">Ready to build something that moves?</h2>
+      <a href="https://headleyweb.com/labs" target="_blank" rel="noopener noreferrer" id="outro-cta">See more →</a>
+      <p class="outro-label" id="outro-label">Headley Web &amp; SEO</p>
+    </div>
+    <p class="outro-attribution">
+      <em>Humming Chorus</em> — Puccini &middot; MIDI arrangement via <a href="https://www.classicalmidi.co.uk" target="_blank" rel="noopener noreferrer">classicalmidi.co.uk</a>
+    </p>
+  </section>
+
+  <!-- Fixed audio controls — appears after audio starts -->
+  <div class="audio-controls" id="audio-controls">
+    <button class="mute-btn mute-btn--fixed" id="mute-btn-fixed" aria-label="Toggle sound">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      </svg>
+    </button>
+    <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume">
+  </div>
+
+  <!-- GSAP via CDN (global, loads before the module script) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js via importmap -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
