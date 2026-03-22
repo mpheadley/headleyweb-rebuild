@@ -42,12 +42,12 @@ const demos = [
     tag: "Flagship",
     tagColor: "text-hw-primary",
     description:
-      "A full scrollytelling experience. 1,800 gold particles drift and respond to your cursor — then gather into a single point of light as you scroll. Generative audio breathes with the page. Tilt-card outro with magnetic CTA.",
+      "A full scrollytelling experience. 1,800 gold particles drift and respond to your cursor — then gather into a sphere as you scroll. Puccini's Humming Chorus plays throughout, scheduled note-by-note via Web Audio API. Click anywhere to send a ripple through the field. The outro strips the music back to silence, then blooms a soft Bb major chord.",
     tech: ["GSAP", "ScrollTrigger", "Three.js", "WebGL", "Web Audio API"],
-    href: `${BASE}/convergence/`,
+    href: "/labs/convergence/",
     gradient: "from-[#1a1428] via-[#0f0c1a] to-[#08080f]",
     accent: "rgba(200,169,110,0.15)",
-    note: "Move your cursor through the stars. Scroll slowly.",
+    note: "Move your cursor through the stars. Scroll slowly. Click the sphere.",
   },
   {
     title: "Stardust: Enhanced",
@@ -109,6 +109,18 @@ const demos = [
     accent: "rgba(181,97,28,0.12)",
     note: "Scroll slowly through each panel.",
   },
+  {
+    title: "Bad Art Club",
+    tag: "Shipped",
+    tagColor: "text-emerald-400",
+    description:
+      "The party game where terrible drawings win. Draw prompts on your phone, vote on the big screen — no app, no install, 3–16 players. Also includes Hot Take, Pictionary, and Night Falls (hidden roles) modes.",
+    tech: ["Node.js", "Express", "Socket.io", "Real-time Multiplayer"],
+    href: "https://tv-party-game.onrender.com",
+    gradient: "from-[#081a0e] via-[#060f09] to-[#040a06]",
+    accent: "rgba(52,211,153,0.1)",
+    note: "One TV, everyone's phone. Free, no account needed.",
+  },
 ];
 
 export default function LabsPage() {
@@ -153,8 +165,6 @@ export default function LabsPage() {
             <a
               key={demo.title}
               href={demo.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group block mb-8 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_40px_rgba(200,169,110,0.08)] md:flex"
             >
               {/* Preview */}
