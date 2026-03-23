@@ -1013,30 +1013,30 @@ const MOBILE_TILT = 8;  // degrees — gyroscope tilt
 const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
 // ── Gyroscope tilt for mobile ─────────────────────────────────────────────────
-// Attaches deviceorientation listener; requests iOS 13+ permission on first touch
-if (isTouchDevice) {
-  function attachGyro() {
-    window.addEventListener("deviceorientation", (e) => {
-      if (!outroCard) return;
-      // gamma = left/right (-90→90), beta = front/back (-180→180)
-      // Subtract 45 from beta: neutral holding angle for a phone is ~45°
-      const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
-      const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 30));
-      outroCard.style.transform = `rotateX(${-ny * MOBILE_TILT}deg) rotateY(${nx * MOBILE_TILT}deg)`;
-    });
-  }
-  // iOS 13+ requires a permission request from a user gesture
-  document.addEventListener("touchstart", () => {
-    if (typeof DeviceOrientationEvent !== "undefined" &&
-        typeof DeviceOrientationEvent.requestPermission === "function") {
-      DeviceOrientationEvent.requestPermission()
-        .then(state => { if (state === "granted") attachGyro(); })
-        .catch(() => {});
-    } else {
-      attachGyro(); // Android + older iOS — no permission needed
-    }
-  }, { once: true });
+// Always attached — desktop never fires deviceorientation so it's harmless.
+// iOS 13+ (Safari) needs permission; Chrome on iOS grants automatically.
+function attachGyro() {
+  window.addEventListener("deviceorientation", (e) => {
+    if (!outroCard) return;
+    // gamma = left/right (-90→90), beta = front/back (-180→180)
+    // Subtract 45 from beta: neutral holding angle for a phone is ~45°
+    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
+    const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 30));
+    outroCard.style.transform = `rotateX(${-ny * MOBILE_TILT}deg) rotateY(${nx * MOBILE_TILT}deg)`;
+  });
 }
+
+// iOS Safari 13+ requires requestPermission from a user gesture
+document.addEventListener("touchstart", () => {
+  if (typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission()
+      .then(state => { if (state === "granted") attachGyro(); })
+      .catch(() => {});
+  } else {
+    attachGyro(); // Android, Chrome on iOS, older iOS — no permission needed
+  }
+}, { once: true });
 
 // Global mousemove — desktop only
 window.addEventListener("mousemove", (e) => {
