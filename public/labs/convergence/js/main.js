@@ -618,7 +618,7 @@ function initAudio() {
 
   // ── Noise texture: bandpass-filtered white noise, subtle undertone ──────────
   noiseBus = audioCtx.createGain();
-  noiseBus.gain.value = 0.7;
+  noiseBus.gain.value = 0.35;
   noiseBus.connect(pannerNode);
 
   const bufSize   = audioCtx.sampleRate * 2;
@@ -986,7 +986,7 @@ function restoreFromOutro() {
   }
 
   // Restore noise and pad (updateAudio restores shimmers via scrollProgress)
-  if (noiseBus) noiseBus.gain.setTargetAtTime(0.7, now, 1.0);
+  if (noiseBus) noiseBus.gain.setTargetAtTime(0.35, now, 1.0);
   if (padBus)   padBus.gain.setTargetAtTime(0.55, now, 1.0);
 }
 
