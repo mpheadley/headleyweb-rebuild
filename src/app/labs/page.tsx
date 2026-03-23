@@ -47,7 +47,7 @@ const demos = [
     href: "/labs/convergence/",
     gradient: "from-[#1a1428] via-[#0f0c1a] to-[#08080f]",
     accent: "rgba(200,169,110,0.15)",
-    note: "Move your cursor through the stars. Scroll slowly. Click the sphere.",
+    note: "Scroll slowly. Tap or click the sphere.",
   },
   {
     title: "Stardust: Enhanced",
