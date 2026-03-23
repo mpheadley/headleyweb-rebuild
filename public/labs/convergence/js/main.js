@@ -1008,10 +1008,13 @@ const outroCta     = document.getElementById("outro-cta");
 const outroLabel   = document.getElementById("outro-label");
 const outroGlow    = document.getElementById("outro-glow");
 
-const MAX_TILT = 75; // degrees — card rotation creates the depth parallax via perspective
+const MAX_TILT = 12; // degrees — subtle tilt, card stays readable
+const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
 // Global mousemove — tilt begins before cursor enters the outro section
+// Skipped entirely on touch devices (mobile gets a flat, stationary card)
 window.addEventListener("mousemove", (e) => {
+  if (isTouchDevice) return;
   const rect   = outro.getBoundingClientRect();
   const cardCx = rect.left + rect.width  / 2;
   const cardCy = rect.top  + rect.height / 2;
