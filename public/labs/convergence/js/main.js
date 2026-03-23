@@ -248,9 +248,8 @@ function setMouseFromEvent(clientX, clientY) {
 window.addEventListener("mousemove", (e) => setMouseFromEvent(e.clientX, e.clientY));
 
 window.addEventListener("touchmove", (e) => {
-  e.preventDefault();
   setMouseFromEvent(e.touches[0].clientX, e.touches[0].clientY);
-}, { passive: false });
+}, { passive: true });
 
 window.addEventListener("touchstart", (e) => {
   mouseActive = true;
