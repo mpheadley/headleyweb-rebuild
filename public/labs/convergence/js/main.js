@@ -618,7 +618,7 @@ function initAudio() {
 
   // ── Noise texture: bandpass-filtered white noise, subtle undertone ──────────
   noiseBus = audioCtx.createGain();
-  noiseBus.gain.value = 1.4;
+  noiseBus.gain.value = 0.7;
   noiseBus.connect(pannerNode);
 
   const bufSize   = audioCtx.sampleRate * 2;
@@ -986,7 +986,7 @@ function restoreFromOutro() {
   }
 
   // Restore noise and pad (updateAudio restores shimmers via scrollProgress)
-  if (noiseBus) noiseBus.gain.setTargetAtTime(1.4, now, 1.0);
+  if (noiseBus) noiseBus.gain.setTargetAtTime(0.7, now, 1.0);
   if (padBus)   padBus.gain.setTargetAtTime(0.55, now, 1.0);
 }
 
@@ -1008,8 +1008,8 @@ const outroCta     = document.getElementById("outro-cta");
 const outroLabel   = document.getElementById("outro-label");
 const outroGlow    = document.getElementById("outro-glow");
 
-const MAX_TILT    = 12; // degrees — desktop mouse tilt
-const MOBILE_TILT = 8;  // degrees — gyroscope tilt
+const MAX_TILT    = 24; // degrees — desktop mouse tilt
+const MOBILE_TILT = 16; // degrees — touch drag tilt
 const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
 // ── Touch drag tilt for mobile ────────────────────────────────────────────────
