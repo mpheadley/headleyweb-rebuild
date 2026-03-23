@@ -285,4 +285,31 @@ For **every** published post, run through this checklist:
 
 ---
 
-*Last updated: March 18, 2026 (added 3-month editorial calendar)*
+---
+
+## Phase 6 — Labs / Design Playground Content
+
+Content tied to the `design-playground/` builds. Each post demonstrates technical capability while being visually shareable. Video-first — record the demo live, write the post around the recording.
+
+| # | Title | Format | Status |
+|---|-------|--------|--------|
+| 30 | "I Built a Particle Field That Reacts to Your Cursor (Here's How)" | Blog + screen recording demo of stardust-enhanced | Planned |
+| 31 | "What Happens When You Combine GSAP Scroll Animation and Three.js in One Page" | Blog + between-worlds walkthrough video | Planned |
+| 32 | "Between Worlds: A Demo I Built to Show What's Possible on the Web" | Short-form showcase post, links to live demo | Planned — publish when deployed to Netlify |
+| 33 | "The Breathing App Idea That Won't Leave My Head" | Personal/behind-the-scenes post about Heather's mindfulness app concept | Planned — write when build starts |
+| 34 | "How I Add Generative Audio to Web Experiences (No Audio Files Required)" | Technical post, Web Audio API walkthrough | Planned |
+
+**Distribution strategy for Labs content:**
+- Screen-record the live demo in browser (cursor interaction visible) — that IS the Reel
+- Post the recording as a Reel/TikTok with a hook like "Most websites don't do this"
+- Blog post explains the tech without being a tutorial — position as capability proof
+- Link to the live demo from every post
+
+**Why these matter for the business:**
+- Prospects who see between-worlds understand immediately that you're not a template builder
+- Labs content attracts other designers/developers who refer clients
+- The "wow" demo is a closer — something to show in a discovery call or send as a follow-up link
+
+---
+
+*Last updated: March 21, 2026 (added Labs/Design Playground content phase)*

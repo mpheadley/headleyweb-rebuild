@@ -199,20 +199,28 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   }
 
   // 1.1 Customer Problem in Headline
+  // Checks h1 text + subheadline together (both are visually part of the hero).
+  // We can detect structure (second-person, pain words, outcome words, question format)
+  // but NOT whether the headline emotionally resonates — so we don't claim that.
   const heroFailSignals: string[] = [];
   const heroPassSignals: string[] = [];
   let heroScore: number | null = null;
   if (lowerHero.startsWith("welcome")) heroFailSignals.push("Starts with 'Welcome'");
   if (lowerHero.match(/since \d{4}/)) heroFailSignals.push("Contains founding year");
   if (lowerHero.match(/^(we|our|i|my)\b/)) heroFailSignals.push("Leads with first person");
-  if (lowerHero.match(/\b(you|your)\b/)) heroPassSignals.push("Uses second-person language");
-  if (countMatches(lowerHero, PAIN_WORDS) > 0) heroPassSignals.push("Contains pain-point language");
-  // Benefit/outcome framing in headline counts as customer-focused
-  if (countMatches(lowerHero, SUCCESS_WORDS) > 0) heroPassSignals.push("Outcome/benefit language in headline");
+  // Check both headline and subheadline — they're a single visual unit
+  const lowerHeroSection = heroSection; // already = (heroHeadline + " " + heroSubheadline).toLowerCase()
+  if (lowerHeroSection.match(/\b(you|your)\b/)) heroPassSignals.push("Uses second-person language");
+  if (countMatches(lowerHeroSection, PAIN_WORDS) > 0) heroPassSignals.push("Contains pain-point language");
+  if (countMatches(lowerHeroSection, SUCCESS_WORDS) > 0) heroPassSignals.push("Outcome/benefit language in hero");
+  // Rhetorical questions and implied-problem framing (e.g. "Can they find you?")
+  if (/\?/.test(heroSection) && lowerHeroSection.match(/\b(you|your|they|find|call|book|reach)\b/)) {
+    heroPassSignals.push("Question format implies customer problem");
+  }
   if (heroFailSignals.length > 0) heroScore = 0;
-  else if (heroPassSignals.length >= 2) heroScore = 2;
-  else if (heroPassSignals.length >= 1) heroScore = 1;
-  // No signals at all but also no fail signals → give partial credit (neutral headline)
+  // Any customer-focused signal with no fail signals = passes (scoring 1 vs 2 isn't meaningful here)
+  else if (heroPassSignals.length >= 1) heroScore = 2;
+  // No signals at all — neutral headline, can't tell either way
   else heroScore = 1;
   items.push({
     id: "1.1", label: "Customer Problem in Headline", section: "Hero",
@@ -397,16 +405,21 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   });
 
   // 4.1 Simple Step-by-Step Plan
+  // Detects a labeled process/steps section. Finding the section title is sufficient evidence
+  // that the section exists — we don't require the step labels to also match a narrow pattern.
   const planSignals: string[] = [];
   let planScore: number | null = null;
   const hasHowItWorks = /how it works|how we work|our process|simple steps|easy steps|step [123]|the plan|the process|here'?s how|what to expect/i.test(bodyText);
   const hasNumberedSteps = /step\s*[123]|1\.\s+\w|first[\s,].*second[\s,].*third/i.test(bodyText);
-  // Detect heading-based plans ("Book", "Pickup", "Return" or "1. X", "2. Y")
-  const planHeadings = allHeadings.filter(h => /^(step\s*\d|[123]\.|book|order|pick\s*up|return|schedule|choose|get\s+started)/i.test(h));
+  // Heading-based plans: numbered ("1.", "Step 1") or action-verb steps (Book, Schedule, Call, Build, Launch, etc.)
+  const planHeadings = allHeadings.filter(h =>
+    /^(step\s*\d|[123]\.|book|order|pick\s*up|return|schedule|choose|get\s+started|call|sign|build|launch|start|contact|meet|consult)/i.test(h)
+  );
   if (hasHowItWorks) planSignals.push("'How it works' section detected");
   if (hasNumberedSteps) planSignals.push("Numbered steps detected");
   if (planHeadings.length >= 2) planSignals.push(`Plan headings found: ${planHeadings.slice(0, 3).join(", ")}`);
-  if (planSignals.length >= 2) planScore = 2;
+  // A labeled process section is sufficient to pass — extra signals confirm but aren't required
+  if (hasHowItWorks || planSignals.length >= 2) planScore = 2;
   else if (planSignals.length >= 1) planScore = 1;
   else {
     planScore = 0;
@@ -534,26 +547,23 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
   });
 
   // 7.2 Phone Number Visible
+  // Static HTML analysis can detect whether a phone number exists in the markup,
+  // but cannot reliably determine visual placement (cheerio renders in DOM parse order,
+  // not visual order — a sticky-header phone may appear anywhere in the text stream).
+  // Whether a phone is needed at all depends on the business type.
+  // Marked as manual so we don't produce false failures on non-trade sites.
   const phoneSignals: string[] = [];
-  let phoneScore = 0;
   if (phoneNumbers.length > 0) {
-    const firstChunk = bodyText.slice(0, 500);
-    const phoneInHeader = phoneNumbers.some(p => firstChunk.includes(p));
-    if (phoneInHeader) {
-      phoneScore = 2;
-      phoneSignals.push(`Phone in header/hero: ${phoneNumbers[0]}`);
-    } else {
-      phoneScore = 1;
-      phoneSignals.push(`Phone found but not prominent: ${phoneNumbers[0]}`);
-    }
+    phoneSignals.push(`Phone number found in HTML: ${phoneNumbers[0]}`);
   } else {
-    phoneSignals.push("No phone number detected on the page");
+    phoneSignals.push("No phone number detected in page HTML");
   }
   items.push({
     id: "7.2", label: "Phone Number Visible", section: "Messaging",
-    autoScore: phoneScore, signals: phoneSignals,
-    passLabel: "Phone number is easy to find",
-    failLabel: "No phone number visible on the page",
+    autoScore: null,
+    signals: phoneSignals,
+    passLabel: "Phone number is easy to find for customers who prefer to call",
+    failLabel: "No phone number on the page — customers who prefer calling have no easy option",
   });
 
   // Calculate totals

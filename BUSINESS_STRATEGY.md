@@ -934,4 +934,36 @@ Testimonial: "[Quote]" — [Client name, business]
 
 ---
 
-*Last updated: March 13, 2026 (added Growth Gaps & New Ideas section)*
+---
+
+## Labs Strategy — Portfolio Differentiation
+
+**The Labs section** (`headleyweb.com/labs`) is a positioning tool, not just a portfolio. It shows prospects a category of work that template builders and most local web designers simply can't do.
+
+### What's in Labs (design-playground builds)
+- **editorial-parallax** — Virginia wine country GSAP scrollytelling
+- **stardust-enhanced** — Three.js particle field, spring physics, click-to-explode
+- **stardust-constellation** — constellation lines, ambient drift, cursor glow
+- **scrollytelling-card-tilt** — Next.js 3D card flip scroll demo
+- **between-worlds** — GSAP + Three.js combined: particles gather on scroll, generative audio, cinematic hero, interactive outro (tilt, magnetic CTA, cursor glow)
+
+### Business use cases
+- **Discovery calls:** Open between-worlds live during the call. It closes conversations.
+- **Follow-up link:** After a first meeting, send `labs.headleyweb.com/between-worlds` — "Here's the kind of thing I build."
+- **Premium tier justification:** Labs = proof that the Sales Engine tier is worth $7,495. Anyone who can do this can build a site that converts.
+- **Niche clients:** Animation-forward industries (events, hospitality, luxury real estate, agencies needing subcontractors) — Labs is the pitch.
+
+### Future Labs pieces planned
+- Mindfulness/breathing app with haptic feedback and drawable zen garden (Heather's idea — genuine product, not just a demo)
+- Ragdoll physics toy (Matter.js / Rapier)
+- WebGL / GLSL shader piece (Awwwards-tier generative art)
+- Expanded between-worlds: text depth approach, multi-layer parallax tilt
+
+### Social content from Labs
+- Screen-record each demo with cursor visible → Reel/TikTok hook: "Most websites don't do this"
+- between-worlds specifically: the particle gathering + generative audio is a 15-second clip that stops thumbs
+- Blog posts for each piece: capability proof, not tutorials
+
+---
+
+*Last updated: March 21, 2026 (added Labs strategy section)*

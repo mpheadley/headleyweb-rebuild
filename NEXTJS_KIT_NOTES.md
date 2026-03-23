@@ -82,10 +82,55 @@ export default async function Page({ params }: { params: Params }) {
 
 ---
 
-## MDX Blog Setup
+## MDX Blog Setup [EXTRACT]
 
-<!-- What was the setup process? What would you template for next time? -->
-<!-- Frontmatter fields that every post needs? -->
+Proven across HeadleyWeb, Southern Legends, and Between Worlds. Use this pattern in the starter kit.
+
+### Two MDX approaches — pick one per project
+
+| Approach | Package | When to use |
+|----------|---------|-------------|
+| **Static imports** (`@next/mdx`) | `@next/mdx` | Simple blog, metadata as JS exports, no gray-matter |
+| **Remote** (`next-mdx-remote`) | `next-mdx-remote` + `gray-matter` | Need raw content string for reading time, heading extraction, richer processing |
+
+Between Worlds uses static imports. HeadleyWeb + Southern Legends use next-mdx-remote. **next-mdx-remote is easier to extend** — prefer it for new builds.
+
+### Required frontmatter fields
+```ts
+{
+  title: string;
+  description: string;      // SEO meta description ~150 chars
+  date: string;             // YYYY-MM-DD
+  author: string;
+  tags: string[];
+  coverImage?: string;      // "/images/filename.webp" — used in listing, post hero, OG
+  // next-mdx-remote only:
+  slug: string;
+  tldr?: string;            // speakable summary for AI engines + voice assistants
+  lastModified?: string;    // auto-set from git if omitted
+}
+```
+
+### Standard blog features (all three sites have these)
+- **Reading time** — `reading-time` package, calculated from raw markdown body
+- **Table of contents** — regex extracts H2s, rendered as anchor list when 3+ headings; custom `h2` MDX component adds `id` + `scroll-mt-24`
+- **Cover image** — listing thumbnail + post hero + OG image, all from one `coverImage` field
+- **`BlogPosting` JSON-LD schema** — `headline`, `description`, `datePublished`, `author`, `publisher`, `mainEntityOfPage`, `image`
+- **RSS feed** — `app/blog/feed.xml/route.ts`, cache `s-maxage=3600`
+- **OG + Twitter meta** — `openGraph.type: "article"` with `publishedTime`, cover image
+
+### Google Docs → publish workflow (client sites)
+Client writes in Google Docs → Matt runs Docs to Markdown add-on → paste into publish prompt → Claude writes MDX file → push to main → Vercel auto-deploys. No CMS login needed. See Between Worlds CLAUDE.md for the full prompt template.
+
+### Content loader pattern (`posts.ts`)
+```ts
+// With @next/mdx: read raw file to get heading/reading-time data, dynamic import for metadata
+const raw = fs.readFileSync(path.join(contentDir, file), "utf-8");
+const body = raw.replace(/^export const metadata\s*=\s*\{[\s\S]*?\}[\s\n]*/, "").trim();
+const stats = readingTime(body);
+const headings = extractHeadings(raw); // regex on ## headings
+const { metadata } = await import(`@/content/${slug}.mdx`);
+```
 
 ---
 
