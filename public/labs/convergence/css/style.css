@@ -363,6 +363,16 @@ body {
   pointer-events: none;
 }
 
+@media (max-width: 480px) {
+  .outro-attribution {
+    white-space: normal;
+    text-align: center;
+    width: 90%;
+    left: 5%;
+    transform: none;
+  }
+}
+
 .outro-attribution a {
   font-family: system-ui, sans-serif;
   font-size: inherit;
