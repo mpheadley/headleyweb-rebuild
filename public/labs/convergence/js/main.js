@@ -1012,31 +1012,21 @@ const MAX_TILT    = 12; // degrees — desktop mouse tilt
 const MOBILE_TILT = 8;  // degrees — gyroscope tilt
 const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
-// ── Gyroscope tilt for mobile ─────────────────────────────────────────────────
-// Always attached — desktop never fires deviceorientation so it's harmless.
-// iOS 13+ (Safari) needs permission; Chrome on iOS grants automatically.
-function attachGyro() {
-  window.addEventListener("deviceorientation", (e) => {
-    if (!outroCard) return;
-    // gamma = left/right (-90→90), beta = front/back (-180→180)
-    // Subtract 45 from beta: neutral holding angle for a phone is ~45°
-    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
-    const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 30));
+// ── Touch drag tilt for mobile ────────────────────────────────────────────────
+// Drag finger across the outro section to tilt the card. No permissions needed.
+if (outro) {
+  outro.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
+    const rect  = outro.getBoundingClientRect();
+    const nx = Math.max(-1, Math.min(1, (touch.clientX - rect.left - rect.width  / 2) / (rect.width  / 2)));
+    const ny = Math.max(-1, Math.min(1, (touch.clientY - rect.top  - rect.height / 2) / (rect.height / 2)));
     outroCard.style.transform = `rotateX(${-ny * MOBILE_TILT}deg) rotateY(${nx * MOBILE_TILT}deg)`;
-  });
-}
+  }, { passive: true });
 
-// iOS Safari 13+ requires requestPermission from a user gesture
-document.addEventListener("touchstart", () => {
-  if (typeof DeviceOrientationEvent !== "undefined" &&
-      typeof DeviceOrientationEvent.requestPermission === "function") {
-    DeviceOrientationEvent.requestPermission()
-      .then(state => { if (state === "granted") attachGyro(); })
-      .catch(() => {});
-  } else {
-    attachGyro(); // Android, Chrome on iOS, older iOS — no permission needed
-  }
-}, { once: true });
+  outro.addEventListener("touchend", () => {
+    outroCard.style.transform = "rotateX(0deg) rotateY(0deg)";
+  }, { passive: true });
+}
 
 // Global mousemove — desktop only
 window.addEventListener("mousemove", (e) => {
