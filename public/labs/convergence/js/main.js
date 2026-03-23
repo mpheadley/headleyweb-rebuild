@@ -111,10 +111,10 @@ const clickNDC   = new THREE.Vector2();
 const rippleSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 0), 16);
 let   rippleOrigin = new THREE.Vector3(0, 1, 0); // normalized direction in group-local space
 
-canvasContainer.addEventListener("click", (e) => {
+function fireRipple(clientX, clientY) {
   const rect = canvasContainer.getBoundingClientRect();
-  clickNDC.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
-  clickNDC.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+  clickNDC.x =  ((clientX - rect.left) / rect.width)  * 2 - 1;
+  clickNDC.y = -((clientY - rect.top)  / rect.height) * 2 + 1;
 
   raycaster.setFromCamera(clickNDC, camera);
   const hit = new THREE.Vector3();
@@ -129,7 +129,18 @@ canvasContainer.addEventListener("click", (e) => {
 
   clickTime = clock.getElapsedTime();
   playRippleSound();
-});
+}
+
+// Desktop click
+canvasContainer.addEventListener("click", (e) => fireRipple(e.clientX, e.clientY));
+
+// Mobile tap — use touchend for precise coordinates (avoids synthetic click delay)
+canvasContainer.addEventListener("touchend", (e) => {
+  if (e.changedTouches.length > 0) {
+    const touch = e.changedTouches[0];
+    fireRipple(touch.clientX, touch.clientY);
+  }
+}, { passive: true });
 
 // Pointer cursor — always clickable
 function updateCanvasCursor() {
@@ -1007,32 +1018,32 @@ const outroGlow    = document.getElementById("outro-glow");
 
 const MAX_TILT = 75; // degrees — card rotation creates the depth parallax via perspective
 
-// Global mousemove — tilt begins before cursor enters the outro section
-window.addEventListener("mousemove", (e) => {
+// Shared handler for outro tilt, glow, and magnetic CTA — works with mouse and touch
+function handleOutroPointer(clientX, clientY) {
   const rect   = outro.getBoundingClientRect();
   const cardCx = rect.left + rect.width  / 2;
   const cardCy = rect.top  + rect.height / 2;
 
   // Offset from outro center, normalized by half-viewport so distance feels natural
-  const nx = Math.max(-1, Math.min(1, (e.clientX - cardCx) / (window.innerWidth  / 2)));
-  const ny = Math.max(-1, Math.min(1, (e.clientY - cardCy) / (window.innerHeight / 2)));
+  const nx = Math.max(-1, Math.min(1, (clientX - cardCx) / (window.innerWidth  / 2)));
+  const ny = Math.max(-1, Math.min(1, (clientY - cardCy) / (window.innerHeight / 2)));
 
   // Card rotation — perspective + translateZ on children = natural parallax
   outroCard.style.transform = `rotateX(${-ny * MAX_TILT}deg) rotateY(${nx * MAX_TILT}deg)`;
 
-  // Glow + magnetic only when cursor is actually inside the outro
-  const inside = e.clientX >= rect.left && e.clientX <= rect.right &&
-                 e.clientY >= rect.top  && e.clientY <= rect.bottom;
+  // Glow + magnetic only when pointer is actually inside the outro
+  const inside = clientX >= rect.left && clientX <= rect.right &&
+                 clientY >= rect.top  && clientY <= rect.bottom;
 
   outroGlow.style.opacity = inside ? "1" : "0";
 
   if (inside) {
-    outroGlow.style.left = (e.clientX - rect.left) + "px";
-    outroGlow.style.top  = (e.clientY - rect.top)  + "px";
+    outroGlow.style.left = (clientX - rect.left) + "px";
+    outroGlow.style.top  = (clientY - rect.top)  + "px";
 
     const ctaRect = outroCta.getBoundingClientRect();
-    const dx      = e.clientX - (ctaRect.left + ctaRect.width  / 2);
-    const dy      = e.clientY - (ctaRect.top  + ctaRect.height / 2);
+    const dx      = clientX - (ctaRect.left + ctaRect.width  / 2);
+    const dy      = clientY - (ctaRect.top  + ctaRect.height / 2);
     const dist    = Math.sqrt(dx * dx + dy * dy);
     const MAGNETIC_RADIUS   = 120;
     const MAGNETIC_STRENGTH = 0.35;
@@ -1046,7 +1057,22 @@ window.addEventListener("mousemove", (e) => {
   } else {
     outroCta.style.transform = "translateZ(80px)";
   }
-});
+}
+
+// Desktop — tilt begins before cursor enters the outro section
+window.addEventListener("mousemove", (e) => handleOutroPointer(e.clientX, e.clientY));
+
+// Mobile — touch tilt on the outro section
+outro.addEventListener("touchmove", (e) => {
+  handleOutroPointer(e.touches[0].clientX, e.touches[0].clientY);
+}, { passive: true });
+
+// Reset card to neutral when touch ends (no lingering tilt)
+outro.addEventListener("touchend", () => {
+  outroCard.style.transform = "rotateX(0deg) rotateY(0deg)";
+  outroGlow.style.opacity = "0";
+  outroCta.style.transform = "translateZ(80px)";
+}, { passive: true });
 
 // ── 12. START ─────────────────────────────────────────────────────────────────
 animate();
