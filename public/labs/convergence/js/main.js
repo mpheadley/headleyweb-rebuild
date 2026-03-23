@@ -1008,11 +1008,37 @@ const outroCta     = document.getElementById("outro-cta");
 const outroLabel   = document.getElementById("outro-label");
 const outroGlow    = document.getElementById("outro-glow");
 
-const MAX_TILT = 12; // degrees — subtle tilt, card stays readable
+const MAX_TILT    = 12; // degrees — desktop mouse tilt
+const MOBILE_TILT = 8;  // degrees — gyroscope tilt
 const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
-// Global mousemove — tilt begins before cursor enters the outro section
-// Skipped entirely on touch devices (mobile gets a flat, stationary card)
+// ── Gyroscope tilt for mobile ─────────────────────────────────────────────────
+// Attaches deviceorientation listener; requests iOS 13+ permission on first touch
+if (isTouchDevice) {
+  function attachGyro() {
+    window.addEventListener("deviceorientation", (e) => {
+      if (!outroCard) return;
+      // gamma = left/right (-90→90), beta = front/back (-180→180)
+      // Subtract 45 from beta: neutral holding angle for a phone is ~45°
+      const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
+      const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 30));
+      outroCard.style.transform = `rotateX(${-ny * MOBILE_TILT}deg) rotateY(${nx * MOBILE_TILT}deg)`;
+    });
+  }
+  // iOS 13+ requires a permission request from a user gesture
+  document.addEventListener("touchstart", () => {
+    if (typeof DeviceOrientationEvent !== "undefined" &&
+        typeof DeviceOrientationEvent.requestPermission === "function") {
+      DeviceOrientationEvent.requestPermission()
+        .then(state => { if (state === "granted") attachGyro(); })
+        .catch(() => {});
+    } else {
+      attachGyro(); // Android + older iOS — no permission needed
+    }
+  }, { once: true });
+}
+
+// Global mousemove — desktop only
 window.addEventListener("mousemove", (e) => {
   if (isTouchDevice) return;
   const rect   = outro.getBoundingClientRect();
