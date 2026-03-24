@@ -886,9 +886,9 @@ function updateAudio() {
 
   // Star shimmer and convergence shimmer — stop updating once outro takes over
   if (!outroAudioFired) {
-    const starAmt = Math.min(1, scrollProgress * 8) * 0.12;
+    const starAmt = Math.min(1, scrollProgress * 8) * 0.06;
     starShimmerBus.gain.setTargetAtTime(starAmt, audioCtx.currentTime, 0.8);
-    shimmerBus.gain.setTargetAtTime(scrollProgress * 0.16, audioCtx.currentTime, 1.5);
+    shimmerBus.gain.setTargetAtTime(scrollProgress * 0.08, audioCtx.currentTime, 1.5);
   }
 }
 

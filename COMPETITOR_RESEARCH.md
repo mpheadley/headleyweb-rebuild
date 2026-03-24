@@ -122,6 +122,153 @@ Almost no freelancer serving local/trade businesses publishes hard metrics. Most
 
 ---
 
+---
+
+## SERP Analysis — March 24, 2026
+
+> Live Google searches run from Jacksonville, AL (36265). Screenshots captured on phone. Web research layered in for depth. Use this in sales calls.
+
+---
+
+### Query 1: "web design Anniston AL"
+
+**Ads (top)**
+| Ad | Claim | Price |
+|---|---|---|
+| Network Solutions | "Built for Small Businesses" | — (4.5★/7,374 reviews) |
+| Website Design Pulse | "You Dream It, We Build It" | $149 |
+| Digital Footwork | "Ranked #1 Web Design Agency" | $299 |
+
+**Map Pack**
+| Business | Stars/Reviews | Notes |
+|---|---|---|
+| Digital Marketing Agency – Anniston/Oxford | 5.0★ / 8 | 930 Wilmer Ave, 20+ years, online appointments |
+| Willingham Creative, LLC | 5.0★ / 21 | "Outstanding work and work ethic!" |
+| Carbon & Clay Design Co. | 5.0★ / 19 | 7+ years, Closed Wed |
+
+**Organic (page 1)**
+WideNet Consulting, Yelp "Best 10" list (mentions WideNet, Network Technology, Potts Marketing Group, Wallace Web Consulting), Thumbtack, WRIS Web Services, FreshySites, Accel Graphics, Appeal Design, DreamCo Design, Contractor Website Services, 702 Pros
+
+**Key gaps:** No local specialist in map pack. Top 3 are agencies. Review counts are thin (8–21). None mention AEO or StoryBrand.
+
+---
+
+### Query 2: "web designer near me" (location: Jacksonville, AL 36265)
+
+**Ads**
+| Ad | Claim |
+|---|---|
+| GoDaddy | "We Design, You Stand Out" (4.9★/76,230) |
+| Bark.com | "Jacksonville Web Designers" (4.2★/6,690) |
+| WebDesignTorque | $149 Custom Website Design |
+| Website Design Pulse | $149 Professional Website |
+
+**Map Pack (All tab — our most important search)**
+| Business | Stars/Reviews | Location | Notes |
+|---|---|---|---|
+| **Headley Web & SEO** | **5.0★ / 1** | Jacksonville | **"Recently opened" — WE ARE IN THE MAP PACK** |
+| Your BizWeb Guy | 5.0★ / 25 | Jacksonville (3.9mi) | 25+ years, strongest local competitor |
+| Twentytwo Media Co. | 5.0★ / 2 | — | Closes 5PM |
+
+**Extended map results (Places tab)**
+| Business | Stars/Reviews | Distance | Notes |
+|---|---|---|---|
+| Your BizWeb Guy | 5.0★ / 25 | Jacksonville | YOURBIZWEB brand, strong visual identity |
+| Gadsden Web Designer | 5.0★ / 6 | 14.7mi | Gadsden |
+| Alabama Website Marketing | 5.0★ / 14 | 17.3mi | Rainbow City, "Full Service Web Design" |
+| Carbon & Clay Design Co. | 5.0★ / 19 | — | 7+ years |
+| Global Developing | No reviews | Jacksonville (4.3mi) | Open 24 hours — no review presence |
+| Willingham Creative, LLC | 5.0★ / 21 | — | "Outstanding work and work ethic!" |
+| Digital Marketing Agency – Anniston | 5.0★ / 8 | 15.1mi | 20+ years |
+| Alabama Logo & Website Design | 5.0★ / 13 | Birmingham | Out-of-market |
+
+**Bottom of organic:** Yelp "Best 10" points to Birmingham results — no Jacksonville-specific editorial lists exist yet. "People also search for: Web designer near Jacksonville, AL" — a keyword gap to own.
+
+**Key insight:** We're IN the map pack with 1 review. Your BizWeb Guy (25 reviews, also Jacksonville) is the one competitor to watch and close the gap on.
+
+---
+
+### Query 3: "website design Gadsden AL"
+
+**Ads**
+| Ad | Claim | Price |
+|---|---|---|
+| Website Design Pulse | "Professional Website Designer" | $149 |
+| WebDesignTorque | "High-End Website Design" | $149 |
+| Digital Footwork | "Ranked #1 Web Design Agency" | $299 |
+| PromoWebDesigns | "Ranked #1 Web Design Company" | $199 |
+
+**Map Pack**
+| Business | Stars/Reviews | Address | Phone | Notes |
+|---|---|---|---|---|
+| Gadsden Web Designer | 5.0★ / 6 | 430 Chestnut St, Gadsden AL 35901 | (256) 290-7242 | Closes 7PM — wins with just 6 reviews |
+| Alabama Website Marketing | 5.0★ / 14 | Rainbow City | — | "Full Service Web Design" |
+| Simple Pixel Media | — | Gadsden (Southside) | — | **Expired SSL cert** |
+
+**Organic (page 1)**
+Alabama Website Marketing, Yelp Top 10 (mentions **Plexamedia**, Lookout IT, Church Web Fuel, Bama Graphics — 4.4★/5 reviews), Simple Pixel, Appeal Design, Lookout IT, Jessica Leigh Web Design (Arizona-based doorway pages), Zellius Marketing, Accel Graphics, Howard Design Group LLC, Thumbtack
+
+**Key insight:** Gadsden map pack is winnable with 6–14 reviews. Plexamedia doesn't appear in map pack — they show up in a Yelp editorial list only. Simple Pixel has an expired SSL cert and is still ranking.
+
+---
+
+### Query 4: "small business website designer Calhoun County" (within 20mi of 36265)
+
+**Ads**
+WebDesignTorque ($149), VegaSolutions (contractor sites), Bark.com
+
+**Map Pack**
+| Business | Stars/Reviews | Location | Notes |
+|---|---|---|---|
+| Your BizWeb Guy | 5.0★ / 25 | Jacksonville | 25+ years in business |
+| Carbon & Clay Design Co. | 5.0★ / 19 | Anniston area | 7+ years |
+| Digital Marketing Agency – Anniston | 5.0★ / 8 | Anniston | 20+ years |
+
+**Organic (page 1)**
+WideNet Consulting, Nostalgia Media, Yelp, Lost Highway Media (Alexandria AL), DDAone.com ("Calhoun County Web Design Agency"), GetCalhoun.com (**typo "Aboout" in page title**, still ranks), Calhoun County Chamber (SCORE listing), Kushel Digi Solutions, North AL Social, FreshySites
+
+**Key insight:** Map pack dominated by Your BizWeb Guy. "Calhoun County web design" keyword is wide open in organic — DDAone and GetCalhoun rank with thin/broken sites. A well-optimized location page + blog post could take P1 here.
+
+---
+
+### Competitor Quick-Reference (Sales Calls)
+
+| Competitor | Stars / Reviews | Location | Pricing Visible | AEO/AI | Weaknesses |
+|---|---|---|---|---|---|
+| **Your BizWeb Guy** | 5.0★ / 25 | Jacksonville, AL | No | No | Appears in 3 of 4 map packs — most dangerous local rival |
+| Willingham Creative, LLC | 5.0★ / 21 | Anniston area | No | No | Good reviews, no pricing, generic copy |
+| Carbon & Clay Design Co. | 5.0★ / 19 | Anniston area | No | No | Strong reviews, closed Wednesdays, no pricing |
+| Alabama Website Marketing | 5.0★ / 14 | Rainbow City | No | No | Repetitive copy, no AEO awareness |
+| Alabama Logo & Website Design | 5.0★ / 13 | Birmingham | No | No | Out of market |
+| Digital Marketing Agency – Anniston | 5.0★ / 8 | Anniston | No | No | Agency positioning, not freelancer |
+| Gadsden Web Designer | 5.0★ / 6 | Gadsden | No | No | Wins Gadsden map with only 6 reviews |
+| **Headley Web & SEO** | **5.0★ / 1** | **Jacksonville** | **YES** | **YES** | **Recently opened — building review base** |
+| Twentytwo Media Co. | 5.0★ / 2 | — | No | No | Thin presence |
+| Global Developing | No reviews | Jacksonville (4.3mi) | No | No | No GBP presence despite listing |
+| WideNet Consulting | Unconfirmed | Anniston | No | No | Lorem ipsum on live homepage, broken counters |
+| Simple Pixel Media | Unconfirmed | Gadsden | No | No | **Expired SSL cert — still ranking** |
+| GetCalhoun.com | None | Oxford | ~$160/yr | No | Typo in page title ("Aboout"), no reviews |
+| Plexamedia | ~3 reviews | Gadsden | No | YES (AI agents) | JS-rendered site, bad for real SEO despite AI claims |
+| Mahar Digital Media | Unconfirmed | Jacksonville | No | Vague ("AI-powered") | Full React/Vite app renders blank to crawlers |
+
+---
+
+### Strategic Takeaways (March 2026)
+
+**We're already in the map pack.** "Web designer near me" from Jacksonville shows Headley Web & SEO in position 1 of the map pack with 1 review. This is the most important local search term — we're visible now. Every new review accelerates our lead.
+
+**Your BizWeb Guy is the #1 threat.** 25 reviews, Jacksonville address, strong visual brand (YOURBIZWEB logo), appears in 3 of 4 map packs. They have a head start on reviews. Close that gap first — 10 more reviews puts us in striking distance.
+
+**The Gadsden map pack is winnable with 6–14 reviews.** Gadsden Web Designer wins #1 with only 6 reviews. Getting into the Gadsden map pack is a near-term reachable goal.
+
+**No local competitor mentions AEO.** Plexamedia uses AI language but sells it as a bolt-on platform product, not baked-in methodology. Mahar Digital Media says "AI-powered" but means CRM automation. Zero competitors talk about AI answer engines (ChatGPT, Claude, Perplexity) as a traffic channel. This is a white space.
+
+**Pricing transparency is a hard differentiator.** Every competitor says "call for a quote." We publish prices. That alone filters for better clients and disqualifies tire-kickers before they waste our time.
+
+**"Calhoun County web design" keyword gap.** DDAone.com ranks for it with thin content. GetCalhoun.com has a typo in the page title and still ranks. A focused blog post or location page could take position 1.
+
+---
+
 ## Reference Links (Bookmark These)
 
 **StoryBrand galleries:**

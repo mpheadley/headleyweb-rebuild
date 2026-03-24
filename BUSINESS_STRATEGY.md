@@ -88,6 +88,74 @@ A full digital sales system. The site doesn't just answer questions — it creat
 > a blog or content system is legitimately a $3,500–4,500 build. Don't force it into "Get Booked"
 > — price it honestly and explain why it's different.
 
+> **The Between Worlds lesson (March 2026):** The Between Worlds build — 16 pages, B2B landing
+> pages, specialist service pages, MDX blog, industry-researched copy, Three.js scrollytelling —
+> doesn't fit any current tier. It was delivered as a free founding client build (right call — the
+> case study value exceeds any realistic charge). But it revealed a gap: there's no tier for
+> enterprise-scale or cinematic work. Action items after April 3:
+>
+> 1. **Add a Custom / Premium project option** — no fixed price on the site, "starting at $3,500,
+>    scoped to your project." This is for 10+ page enterprise sites, dual-audience B2B/B2C builds,
+>    or anything requiring scrollytelling/3D animation. Between Worlds is the anchor example.
+> 2. **Scrollytelling/convergence as a standalone add-on** — not bundled into any monthly plan.
+>    It warrants its own conversation and its own number. Don't let it get absorbed into a $199/mo
+>    care plan description.
+> 3. **Don't add the new tier to the website until the case study exists.** A premium tier without
+>    a live example is a claim with no proof. After April 3 and the testimonial, add Between Worlds
+>    to Portfolio AND add the Custom tier to the pricing page simultaneously.
+>
+> **Structure of the Custom tier (resolved March 2026):**
+> - **Not a 4th tier card** — a "Let's talk" callout below the 3 build tier cards. 4 tiers breaks
+>   Goldilocks psychology. A separate callout keeps the clean 3-tier architecture and invites a
+>   conversation rather than having the prospect self-select at a price.
+> - **Card framing (without live example):** Describe project type, not a price. "For multi-audience
+>   businesses, enterprise-scale sites, or projects that need scroll animation and motion design.
+>   Scoped to your project — let's talk." Add a price after the Between Worlds case study is live.
+> - **Internal target range:** $3,500–$7,500 depending on scope. Not on the site until proven.
+>
+> **Scrollytelling as a named add-on (resolved March 2026):**
+> - Named price range: **starting at $2,500** — not "ask about availability." A range gives
+>   prospects a realistic anchor to self-qualify; "ask about availability" signals scarcity and
+>   prices people out of asking.
+> - Framing on the site: "Available as a Phase 2 upgrade after your site is live." This protects
+>   Matt from prospects trying to lead with it as the only deliverable, and positions it as a
+>   natural upgrade, not a standalone product.
+> - Internal range: $2,500 (existing site integration) – $4,500 (custom scene, brand storytelling).
+>
+> **Lead gen add-on (resolved March 2026):**
+> - Named add-on: **$295 — Lead Magnet Setup.** Email-gated resource + Formspree capture + thank-you
+>   flow. NOT included in Get Booked — not every local service business needs a lead magnet, and
+>   making it included buries the value. As a named add-on, the client sees exactly what they're
+>   getting and why it's worth it.
+> - Between Worlds checklist (workers' comp adjuster resource) is the proof of concept.
+>
+> **On overdelivering for founding clients:** You're not undercharging Giovanna. You're building
+> the proof that lets you charge correctly for the next one. Honor whatever price you quoted at
+> the discovery meeting — changing it after delivery is a bait-and-switch regardless of scope.
+> The case study + testimonial are worth more right now than the delta between tiers.
+>
+> **On the $149 vs $199 discrepancy (resolved March 2026):**
+> Honor $149 explicitly as the founding client rate. At April 3, say: "I quoted you $149/mo at our
+> first meeting — that's your rate. The plan is $199 now but that's what I committed to you."
+> Clean, honest, no fishing for Giovanna's memory. The $50/mo delta over 12 months is $600 —
+> worth far less than her referral network and testimonial. The site stays at $199 (Accelerate).
+> Giovanna's $149 is a private founding client rate, communicated personally, never on the site.
+
+> **Post-April 3 site copy (ready to implement — do not add before case study is live):**
+>
+> *"Let's talk" callout card (below the 3 build tier cards):*
+> "Something bigger in mind? Some projects don't fit a tier — multi-audience sites, dual B2B/B2C
+> builds, or anything that calls for scroll animation and motion design. These are scoped to your
+> project, not a package. [Let's talk about what you need →]"
+>
+> *Scrollytelling add-on line item:*
+> "Scrollytelling & Motion — starting at $2,500. Cinematic scroll animations that tell your brand
+> story. Available as a Phase 2 upgrade after your site is live. Scoped to your project."
+>
+> *Lead Magnet add-on line item:*
+> "Lead Magnet Setup — $295. An email-gated resource (checklist, guide, or template) that turns
+> visitors into leads. Formspree capture + thank-you flow included."
+>
 > **When to raise prices:** Once you have 2–3 case studies showing real numbers
 > (GA4 events, search ranking improvements, lead increases). The proof justifies the jump.
 > Until then, current pricing + free builds for the first 3 clients.
