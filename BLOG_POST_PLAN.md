@@ -72,6 +72,7 @@ Higher priority than AEO/technical posts — your Phase 1 leads come from local 
 | 10b | "What Happens When You Google Your Own Business (And How to Fix What You See)" | google my business, google yourself | Top | Planned |
 | 10c | "The 5 Local Businesses in Anniston That Are Crushing It Online (And What You Can Learn)" | Anniston business, local business website | Top | Planned |
 | 10d | "I Asked ChatGPT to Recommend a Plumber in Anniston — Here's What It Said" | chatgpt local business, AI recommend plumber | Top | Drafted — `content/blog/drafts/i-asked-chatgpt-to-recommend-a-plumber-in-anniston.mdx`. Matt needs to run the actual queries, screenshot results, and record the Reel. |
+| 10e | "That Call About Your Google Listing? It's Probably a Scam." | google business profile scam calls, google listing spam | Top | Outlined — `content/blog/drafts/google-business-profile-scam-calls.mdx`. High share potential. Trust-building angle: warn about scams → soft CTA to free profile check. Pairs with #GBP-setup post. |
 
 **Why these are high priority:**
 - **#10b** is the most shareable post on this entire list. Every business owner will try it immediately. Pairs with your audit content (Phase 3) and AI Visibility Audit lead magnet.
@@ -272,14 +273,15 @@ Posts marked with * are higher priority.
    - [ ] Reference the MarketingCode.com study (March 2026) — zero overlap across 4 AI tools. Real data, published source.
    - [ ] Repeat for other trades/cities after this one lands (HVAC in Gadsden, contractor in Oxford — same format, new post each time).
 2. **Foundation posts (1-5)** — already live or in progress. Core SEO play.
-3. **Remaining hyperlocal posts (10b-10c)** — high share potential in local Facebook groups.
-4. **Differentiation posts** — "Why I Build on Next.js Instead of WordPress," "5 Questions Before Hiring a Web Designer," "Agency vs. Solo Designer," "Template vs. Custom-Built." Drafted in `content/blog/drafts/`.
-5. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
-6. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
-7. **Viral build posts (22-25)** — write alongside the speed-build projects as they happen.
-8. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
-9. **Audit content (19-21)** — requires the landing page template to be built first.
-10. **Quiz content (26-29)** — requires the quiz components to be built first.
+3. **#10e "That Call About Your Google Listing? It's Probably a Scam."** — OUTLINED. Extremely shareable in Facebook groups. Every business owner has gotten these calls. Trust-building angle that naturally leads to your audit/GBP services without sounding like the scammers.
+4. **Remaining hyperlocal posts (10b-10c)** — high share potential in local Facebook groups.
+5. **Differentiation posts** — "Why I Build on Next.js Instead of WordPress," "5 Questions Before Hiring a Web Designer," "Agency vs. Solo Designer," "Template vs. Custom-Built." Drafted in `content/blog/drafts/`.
+6. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
+7. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
+8. **Viral build posts (22-25)** — write alongside the speed-build projects as they happen.
+9. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
+10. **Audit content (19-21)** — requires the landing page template to be built first.
+11. **Quiz content (26-29)** — requires the quiz components to be built first.
 
 ### Distribution Checklist (every post)
 
@@ -311,4 +313,4 @@ For **every** published post, run through this checklist:
 
 ---
 
-*Last updated: March 18, 2026 (added 3-month editorial calendar)*
+*Last updated: March 24, 2026 (added #10e GBP scam calls outline, updated editorial calendar and priority order)*
