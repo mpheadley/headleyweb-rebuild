@@ -74,30 +74,6 @@ const demos = [
     note: "Hold your cursor still and watch them settle.",
   },
   {
-    title: "Stardust: Constellation",
-    tag: "Three.js",
-    tagColor: "text-hw-secondary",
-    description:
-      "Lines connect nearby particles as they move — a living constellation that shifts with every cursor movement. 3,000 precomputed pairs, updated every frame.",
-    tech: ["Three.js", "WebGL", "Constellation Lines"],
-    href: `${BASE}/stardust/constellation/`,
-    gradient: "from-[#050a14] via-[#04080f] to-[#02050a]",
-    accent: "rgba(144,184,255,0.08)",
-    note: "Move slowly to see the web form.",
-  },
-  {
-    title: "Stardust: Flip",
-    tag: "Three.js",
-    tagColor: "text-hw-secondary",
-    description:
-      "Click to tip the entire particle field 90° on its axis — the field becomes a glowing razor-thin disc edge-on to the viewer, then flips back through. Cursor tilt works in both states.",
-    tech: ["Three.js", "WebGL", "3D Rotation"],
-    href: `${BASE}/stardust/flip/`,
-    gradient: "from-[#0a0a14] via-[#080810] to-[#05050a]",
-    accent: "rgba(200,169,110,0.1)",
-    note: "Click to flip. Click again to continue.",
-  },
-  {
     title: "Editorial Parallax",
     tag: "Scrollytelling",
     tagColor: "text-amber-400",
@@ -168,36 +144,15 @@ export default function LabsPage() {
               className="group block mb-8 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_40px_rgba(200,169,110,0.08)] md:flex"
             >
               {/* Preview */}
-              <div
-                className={`relative aspect-[16/9] md:aspect-auto md:w-1/2 bg-gradient-to-br ${demo.gradient} flex items-center justify-center border-b md:border-b-0 md:border-r border-white/[0.08] overflow-hidden`}
-              >
-                <div
-                  className="absolute inset-0 opacity-60"
-                  style={{ background: `radial-gradient(ellipse at center, ${demo.accent} 0%, transparent 70%)` }}
+              <div className="relative aspect-[16/9] md:aspect-auto md:w-1/2 border-b md:border-b-0 md:border-r border-white/[0.08] overflow-hidden bg-[#08080f]">
+                <video
+                  src="/labs/convergence-preview.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                 />
-                <div className="relative z-10 text-center">
-                  <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center mx-auto mb-3 group-hover:border-hw-primary/60 transition-colors duration-300">
-                    <ExternalLink className="w-6 h-6 text-white/40 group-hover:text-hw-primary transition-colors duration-300" />
-                  </div>
-                  <p className="text-white/30 text-xs tracking-widest uppercase group-hover:text-white/50 transition-colors duration-300">
-                    Open demo
-                  </p>
-                </div>
-                {/* Particle suggestion — CSS dots */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                  {[...Array(18)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute rounded-full bg-[#c8a96e] opacity-20"
-                      style={{
-                        width: Math.random() * 3 + 1 + "px",
-                        height: Math.random() * 3 + 1 + "px",
-                        left: Math.random() * 100 + "%",
-                        top: Math.random() * 100 + "%",
-                      }}
-                    />
-                  ))}
-                </div>
               </div>
 
               {/* Info */}
