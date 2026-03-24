@@ -194,10 +194,10 @@ Posts marked with * are higher priority.
 
 | Week | Type | Title | CTA |
 |------|------|-------|-----|
-| 1 | Broad | * "Nobody Reads Your Website (Here's What They Actually Do)" | Audit |
-| 2 | Trade | "What Every Electrician's Website Gets Wrong" | Audit |
+| 1 | Hyperlocal | * "I Asked ChatGPT to Recommend a Plumber in Anniston — Here's What It Said" (#10d) — DRAFTED, Matt needs to run the queries + record Reel | Audit |
+| 2 | Broad | * "Nobody Reads Your Website (Here's What They Actually Do)" | Audit |
 | 3 | Broad | * "When to DIY Your Website and When to Hire Someone" | Quiz/Audit |
-| 4 | Broad | "What 'SEO' Actually Means for a Small Business (No Jargon)" | Audit |
+| 4 | Trade | "What Every Electrician's Website Gets Wrong" | Audit |
 
 ### Month 2 — May 2026
 
@@ -212,16 +212,20 @@ Posts marked with * are higher priority.
 
 | Week | Type | Title | CTA |
 |------|------|-------|-----|
-| 1 | Broad | "The Free Google Tool Most Small Businesses Ignore" (GBP) | Audit |
-| 2 | Trade | "Marketing Your Cleaning Business Online: What Actually Works" | Audit |
+| 1 | Broad | * "That Call About Your Google Listing? It's Probably a Scam." (#10e) | Audit |
+| 2 | Local SEO | * "5 Red Flags When Hiring a Web Designer (That Most Alabama Business Owners Miss)" — targets PAA: "Which company is best for web designing?" + buyer education that mirrors competitor weaknesses without naming anyone | Audit |
 | 3 | Broad | * "Why I Show My Prices (And Why Most Web Designers Don't)" — Matt should write/heavy rewrite | Audit |
 | 4 | Broad | "5 Signs It's Time to Rebuild Your Website" | Audit |
 
 ### Backlog (Unscheduled)
 
+- "Why Your Website Has 3 Seconds to Make a First Impression" — PAA: "What is the 3 second rule in website design?" from SERP screenshots. Ties into PageSpeed content and pairs with audit CTA.
+- "The Best Web Designers in Calhoun County, Alabama (And What to Look For)" — location page / blog hybrid. DDAone + GetCalhoun currently rank for this with broken/thin content. Own it.
 - "What to Put on Your Homepage (And What to Leave Off)"
 - "Why Reviews Matter More Than Your Website Design"
 - "The One Page Your Website Is Probably Missing" (dedicated services/pricing page)
+- "The Free Google Tool Most Small Businesses Ignore" (GBP) — Audit CTA
+- "Marketing Your Cleaning Business Online: What Actually Works" — Trade niche
 - "How to Write Your Own About Page (Template)"
 - "Local SEO Checklist: 10 Things You Can Do This Week"
 - "Why I Build on Next.js Instead of WordPress (And What That Means for Your Site Speed)" — DRAFTED in `content/blog/drafts/`
