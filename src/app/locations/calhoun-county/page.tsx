@@ -81,6 +81,16 @@ const cities = [
     slug: "piedmont",
     desc: "Eastern Calhoun County. Cheaha gateway, loyal local market.",
   },
+  {
+    name: "Alexandria",
+    slug: "alexandria",
+    desc: "Between Jacksonville and Anniston on 431. Low online competition.",
+  },
+  {
+    name: "Weaver",
+    slug: "weaver",
+    desc: "Highway 431 corridor. Where I built my first website.",
+  },
 ];
 
 const whyPoints = [
@@ -167,7 +177,7 @@ export default function CalhounCountyPage() {
               Every site is built with location-specific SEO — so you rank in your city, not just somewhere in Alabama.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {cities.map((city) => (
               <Link
                 key={city.slug}

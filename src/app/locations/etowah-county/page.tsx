@@ -76,6 +76,16 @@ const cities = [
     slug: "attalla",
     desc: "Right next door to Gadsden — Coosa River corridor, strong trades and service market.",
   },
+  {
+    name: "Southside",
+    slug: "southside",
+    desc: "One of Etowah County's larger cities, between Gadsden and Rainbow City.",
+  },
+  {
+    name: "Glencoe",
+    slug: "glencoe",
+    desc: "Between Gadsden and Attalla — most businesses here are invisible online.",
+  },
 ];
 
 const whyPoints = [
@@ -162,7 +172,7 @@ export default function EtowahCountyPage() {
               Every site is built with location-specific SEO — so you rank in your city, not just somewhere in Alabama.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {cities.map((city) => (
               <Link
                 key={city.slug}

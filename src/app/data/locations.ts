@@ -37,8 +37,9 @@ export const locations: Location[] = [
       { title: "Army Depot & Defense Economy", desc: "Thousands of families and contractors depend on the Depot. A strong web presence puts you in front of that market." },
       { title: "Noble Street Revival", desc: "Downtown Anniston is growing again. New businesses need websites that match the momentum." },
       { title: "Oxford Next Door", desc: "Anniston and Oxford share customers. Ranking in both cities doubles your reach." },
+      { title: "I Ran a Business Here", desc: "Headley Flower Farm operated out of Anniston for four years. I know this market and this community firsthand." },
     ],
-    nearby: ["oxford", "jacksonville", "talladega"],
+    nearby: ["oxford", "jacksonville", "talladega", "weaver"],
   },
   {
     slug: "oxford",
@@ -259,6 +260,72 @@ export const locations: Location[] = [
       { title: "Leesburg & Cedar Bluff Reach", desc: "Serve the whole county? Your site should rank across all of Cherokee County — not just Centre." },
     ],
     nearby: ["gadsden"],
+  },
+  {
+    slug: "weaver",
+    name: "Weaver",
+    county: "Calhoun County",
+    zip: "36277",
+    metaTitle: "Web Design in Weaver, AL",
+    metaDescription:
+      "Custom web design and local SEO for Weaver, Alabama businesses. Get found on Google by Calhoun County customers on the 431 corridor. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Weaver Businesses",
+    heroSub:
+      "Weaver sits on one of the busiest corridors in Calhoun County. Your customers are already driving past — make sure they can also find you online.",
+    heroImage: { src: "/images/locations/anniston-hero.webp", alt: "Calhoun County, Alabama", credit: "Rivers Langley / CC BY-SA 3.0" },
+    localIntro:
+      "Weaver is a small city on the Highway 431 corridor between Anniston and Jacksonville — and I know it well. I built my first website for a church here. That's where this all started: figuring out how to get people to find a small organization online, with no budget and no technical background. What I learned there is the same thing I build into every client site now — clear messaging, fast load times, and local SEO that makes sure you show up when someone nearby searches for what you do. Most Weaver businesses don't have a real web presence. They rely on Facebook and word of mouth, which works until it doesn't. A professional site with local SEO puts you ahead of that entire field for a flat rate and no monthly trap.",
+    whyHere: [
+      { title: "A Community I Know Personally", desc: "I built my first website for a church in Weaver. This is where my web career started — I know this community." },
+      { title: "Highway 431 Corridor", desc: "Thousands of cars pass through Weaver daily. Your online presence should capture the traffic your location already gets." },
+      { title: "Between Two Markets", desc: "Weaver sits between Anniston and Jacksonville. A well-built site can pull customers from both without extra effort." },
+      { title: "Weak Online Competition", desc: "Most Weaver businesses are invisible on Google. A professional site and GBP profile sets you apart immediately." },
+    ],
+    nearby: ["anniston", "jacksonville", "oxford"],
+  },
+  {
+    slug: "southside",
+    name: "Southside",
+    county: "Etowah County",
+    zip: "35907",
+    metaTitle: "Web Design in Southside, AL",
+    metaDescription:
+      "Custom web design and local SEO for Southside, Alabama businesses. Get found on Google by Etowah County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Southside Businesses",
+    heroSub:
+      "Southside is one of Etowah County's larger cities — your customers are searching Google, and most of your competitors aren't showing up.",
+    heroImage: { src: "/images/locations/gadsden-hero.webp", alt: "Etowah County, Alabama", credit: "Thejammer / Public Domain" },
+    localIntro:
+      "Southside is one of the larger cities in Etowah County, sitting between Gadsden and Rainbow City along the Coosa River corridor. It's a city with real commercial activity — trades, restaurants, retail, and service businesses — but most of them are nearly invisible online. Facebook pages and word of mouth still drive most local business here, which means the business that shows up on Google has a significant advantage. When someone new to Southside searches for a plumber, an HVAC company, or a cleaning service, they call whoever they find. I build websites that make sure that's you: clean, fast, mobile-friendly, with local SEO targeting Southside, Etowah County, and nearby cities. Flat-rate pricing, no contracts, you own your site.",
+    whyHere: [
+      { title: "One of Etowah County's Larger Cities", desc: "Southside has real search volume — enough to make a dedicated location page worth every cent." },
+      { title: "Gadsden & Rainbow City Adjacency", desc: "Your customers overlap with both cities. A site that ranks in all three multiplies your reach." },
+      { title: "Coosa River Growth Corridor", desc: "New development along the Coosa River corridor is bringing new residents and new search activity." },
+      { title: "First Mover Advantage", desc: "Most Southside businesses have no professional web presence. A strong site immediately puts you at the top of local results." },
+    ],
+    nearby: ["gadsden", "rainbow-city", "attalla"],
+  },
+  {
+    slug: "glencoe",
+    name: "Glencoe",
+    county: "Etowah County",
+    zip: "35905",
+    metaTitle: "Web Design in Glencoe, AL",
+    metaDescription:
+      "Custom web design and local SEO for Glencoe, Alabama businesses. Get found on Google by Etowah County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Glencoe Businesses",
+    heroSub:
+      "Glencoe businesses serve the whole Gadsden-Attalla corridor. Your website should be pulling customers from every direction.",
+    heroImage: { src: "/images/locations/gadsden-hero.webp", alt: "Etowah County, Alabama", credit: "Thejammer / Public Domain" },
+    localIntro:
+      "Glencoe sits between Gadsden and Attalla in the heart of Etowah County, and it's the kind of community where most businesses still run on reputation and referrals. That works — until a competitor with a decent website starts showing up at the top of Google. The shift in how people find local businesses has happened fast, and most Glencoe businesses haven't caught up. Someone moving to the area doesn't ask neighbors for a recommendation — they search on their phone. Whoever shows up first gets the call. I build websites specifically for this market: mobile-first, fast, with local SEO that targets Glencoe, Etowah County, and the surrounding cities. Flat-rate pricing, no monthly traps, and you own your site from day one.",
+    whyHere: [
+      { title: "Gadsden-Attalla Corridor", desc: "Glencoe businesses draw from both neighboring cities. A website that ranks across the corridor multiplies your reach." },
+      { title: "New Residents Search First", desc: "People relocating to Etowah County don't have existing loyalties — they call whoever Google shows them." },
+      { title: "Low Online Competition", desc: "Most Glencoe businesses have no real web presence. A professional site immediately makes you the obvious choice." },
+      { title: "Etowah County Network", desc: "Rank in Glencoe, Attalla, and Gadsden and you cover the whole western Etowah County market." },
+    ],
+    nearby: ["gadsden", "attalla", "southside"],
   },
 ];
 
