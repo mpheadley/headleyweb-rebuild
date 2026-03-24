@@ -114,10 +114,10 @@ const clickNDC   = new THREE.Vector2();
 const rippleSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 0), 16);
 let   rippleOrigin = new THREE.Vector3(0, 1, 0); // normalized direction in group-local space
 
-canvasContainer.addEventListener("click", (e) => {
+function fireRipple(clientX, clientY) {
   const rect = canvasContainer.getBoundingClientRect();
-  clickNDC.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
-  clickNDC.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+  clickNDC.x =  ((clientX - rect.left) / rect.width)  * 2 - 1;
+  clickNDC.y = -((clientY - rect.top)  / rect.height) * 2 + 1;
 
   raycaster.setFromCamera(clickNDC, camera);
   const hit = new THREE.Vector3();
@@ -132,7 +132,18 @@ canvasContainer.addEventListener("click", (e) => {
 
   clickTime = clock.getElapsedTime();
   playRippleSound();
-});
+}
+
+// Desktop click
+canvasContainer.addEventListener("click", (e) => fireRipple(e.clientX, e.clientY));
+
+// Mobile tap — use touchend for precise coordinates (avoids synthetic click delay)
+canvasContainer.addEventListener("touchend", (e) => {
+  if (e.changedTouches.length > 0) {
+    const touch = e.changedTouches[0];
+    fireRipple(touch.clientX, touch.clientY);
+  }
+}, { passive: true });
 
 // Pointer cursor — always clickable
 function updateCanvasCursor() {
@@ -251,8 +262,9 @@ function setMouseFromEvent(clientX, clientY) {
 window.addEventListener("mousemove", (e) => setMouseFromEvent(e.clientX, e.clientY));
 
 window.addEventListener("touchmove", (e) => {
+  e.preventDefault();
   setMouseFromEvent(e.touches[0].clientX, e.touches[0].clientY);
-}, { passive: true });
+}, { passive: false });
 
 window.addEventListener("touchstart", (e) => {
   mouseActive = true;
@@ -1069,6 +1081,14 @@ window.addEventListener("mousemove", (e) => {
     outroCta.style.transform = "translateZ(80px)";
   }
 });
+
+// Reset card, glow, and CTA when touch ends (no lingering tilt)
+outro.addEventListener("touchend", () => {
+  outroCard.style.transform = "rotateX(0deg) rotateY(0deg)";
+  outroGlow.style.opacity = "0";
+  outroCta.style.transform = "translateZ(80px)";
+}, { passive: true });
+
 
 // ── 12. START ─────────────────────────────────────────────────────────────────
 animate();
