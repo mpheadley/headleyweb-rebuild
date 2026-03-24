@@ -71,6 +71,11 @@ const cities = [
     slug: "rainbow-city",
     desc: "One of Etowah County's fastest-growing communities along the Coosa River.",
   },
+  {
+    name: "Attalla",
+    slug: "attalla",
+    desc: "Right next door to Gadsden — Coosa River corridor, strong trades and service market.",
+  },
 ];
 
 const whyPoints = [
@@ -129,7 +134,7 @@ export default function EtowahCountyPage() {
             Businesses
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-10 animate-on-scroll">
-            Gadsden. Rainbow City. Attalla. Southside. Wherever you are in Etowah County, your customers are searching Google — and finding your competitors first.
+            Gadsden. Rainbow City. Attalla. Southside. Wherever you are in Etowah County, your customers are searching Google first — and finding your competitors instead.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">
@@ -157,7 +162,7 @@ export default function EtowahCountyPage() {
               Every site is built with location-specific SEO — so you rank in your city, not just somewhere in Alabama.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {cities.map((city) => (
               <Link
                 key={city.slug}

@@ -129,6 +129,28 @@ export const locations: Location[] = [
     nearby: ["anniston", "oxford"],
   },
   {
+    slug: "alexandria",
+    name: "Alexandria",
+    county: "Calhoun County",
+    zip: "36250",
+    metaTitle: "Web Design in Alexandria, AL",
+    metaDescription:
+      "Custom web design and local SEO for Alexandria, Alabama businesses. Get found on Google by Calhoun County customers between Jacksonville and Anniston. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Alexandria Businesses",
+    heroSub:
+      "Alexandria sits right between Jacksonville and Anniston — your customers are already searching. Make sure they find you.",
+    heroImage: { src: "/images/locations/alexandria-hero.webp", alt: "Janney Furnace Park, Calhoun County, Alabama", credit: "dofftoubab / Wikimedia Commons / CC BY-SA 3.0" },
+    localIntro:
+      "Alexandria is a growing community in the heart of Calhoun County, tucked between Jacksonville and Anniston along Highway 21. It's a town where people know their neighbors and still largely find local businesses through word of mouth — but that's changing fast. More and more, new residents and people relocating from Anniston or Jacksonville are searching Google before they make a call. A landscaper, a mechanic, a cleaning service, a contractor — whoever shows up first in search gets the call. Most Alexandria businesses don't have a real web presence yet. That's your advantage. I build clean, fast websites with local SEO that targets Alexandria, Calhoun County, and the surrounding area — so when someone searches for what you do, you're the one they find.",
+    whyHere: [
+      { title: "Between Two Markets", desc: "Alexandria sits between Jacksonville and Anniston. A well-built site can pull customers from both cities." },
+      { title: "Growing Residential Base", desc: "New residents search online for everything — and they don't have existing loyalties to local businesses yet." },
+      { title: "Low Online Competition", desc: "Almost no Alexandria businesses have a professional web presence. First mover advantage is yours for the taking." },
+      { title: "Highway 21 Visibility", desc: "Traffic through town is real. Your online presence should match your physical one on the main corridor." },
+    ],
+    nearby: ["jacksonville", "anniston", "oxford"],
+  },
+  {
     slug: "piedmont",
     name: "Piedmont",
     county: "Calhoun County",
@@ -149,6 +171,28 @@ export const locations: Location[] = [
       { title: "Under-Served Online", desc: "Most Piedmont businesses have no real web presence. That's your opportunity — first mover advantage is real." },
     ],
     nearby: ["anniston", "jacksonville"],
+  },
+  {
+    slug: "attalla",
+    name: "Attalla",
+    county: "Etowah County",
+    zip: "35954",
+    metaTitle: "Web Design in Attalla, AL",
+    metaDescription:
+      "Custom web design and local SEO for Attalla, Alabama businesses. Get found on Google by Etowah County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Attalla Businesses",
+    heroSub:
+      "Attalla businesses serve the whole Gadsden area — your website should be working just as hard to bring customers in.",
+    heroImage: { src: "/images/locations/attalla-hero.webp", alt: "Noccalula Falls, Gadsden, Alabama (near Attalla)", credit: "Gentry George / U.S. Fish and Wildlife Service / Public Domain" },
+    localIntro:
+      "Attalla is right next door to Gadsden — sharing customers, sharing roads, and competing for the same searches. The businesses that win those searches are the ones with a professional website and a verified Google Business Profile. Most Attalla businesses still rely entirely on Facebook and word of mouth. That worked for a long time, but search behavior has shifted. When someone new to the area needs a plumber, an HVAC company, or a contractor, they go to Google — not Facebook. I build websites specifically for this market: fast-loading, mobile-friendly, with local SEO that tells Google your business serves Attalla, Etowah County, and the surrounding area. Flat-rate pricing, no contracts, and you own your site from day one.",
+    whyHere: [
+      { title: "Gadsden Adjacency", desc: "Attalla and Gadsden share a customer base. Rank in both and you double your reach across Etowah County." },
+      { title: "Coosa River Corridor", desc: "Industrial and commercial activity along the river keeps Attalla's economy active year-round." },
+      { title: "Underserved Online Market", desc: "Most Attalla businesses have no real web presence. A professional site immediately sets you apart." },
+      { title: "New Residents Search First", desc: "People new to the area don't have existing loyalties — they call whoever Google shows them first." },
+    ],
+    nearby: ["gadsden", "rainbow-city"],
   },
   {
     slug: "rainbow-city",
