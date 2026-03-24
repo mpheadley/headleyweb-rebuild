@@ -8,6 +8,7 @@
 
 | Competitor | Location | URL | Key Weakness |
 |---|---|---|---|
+| Twentytwo Media Co. | Gadsden | twentytwomedia.net | Solo (Josh Dunaway). Portfolio site, not a business tool. No GBP, no pricing, no location pages, About page 404s. Meta description is literally "the work of josh dunaway." Divi 5 beta + WooCommerce loaded for no reason. Appeared in map pack for "web designer near me" Jacksonville with 5.0★/2 reviews — beatable. |
 | 702 Pros | Anniston | — | Agency-centric language; positions themselves as hero |
 | WideNet Consulting | Anniston | widenetconsulting.com | Particle.js hero (slow), broken stat counters |
 | LaunchUX | Gadsden | — | Technical jargon barrier ("engineering") |
@@ -19,6 +20,8 @@
 | Accel Graphics | Anniston | accelgraphics.net | Image carousel hero, generic |
 | Jessica Leigh Web Design | Statewide | jessicaleighwebdesign.com | Good location page SEO strategy |
 | GetCalhoun.com | Oxford | getcalhoun.com | Local but limited portfolio |
+| Willingham Creative | Heflin, AL | willinghamcreative.com | WordPress + Elementor (performance liability). No pricing, no location pages, generic hero copy, About page is a credential resume. Faith positioning limits secular market reach. Zero AI/AEO mention. |
+| J. Alexandria Creative | Huntsville, AL | jalexandriacreative.com | Showit stack = canvas-based = SEO liability. Multiple broken internal links. Aesthetic/personality-led copy, not guide-positioned. No GBP signal, no pricing, no location pages. Zero AI/AEO mention. |
 
 ### What We Already Beat Them On
 - **Transparent pricing** — none of them publish prices on homepage
@@ -32,7 +35,41 @@
 
 ---
 
-## StoryBrand Web Designers (National)
+## Deep-Dive: Willingham Creative & J. Alexandria Creative (March 2026)
+
+### Willingham Creative — willinghamcreative.com
+- **Location:** Heflin, AL (Cleburne County — rural East AL, not a metro)
+- **Stack:** WordPress + Elementor Pro — known performance drag, commonly 60–75 PageSpeed mobile without aggressive tuning
+- **Services:** Web design, hosting, SEO, digital marketing, graphic design. No pricing published anywhere.
+- **Copy pattern:** Benefit language on services ("so you don't have to worry about the tech"), but About page pivots into resume-dropping (decade of experience, degree, past employers, faith values). Generic hero: "Building a strong online presence is essential."
+- **GBP:** Confirmed, Trustindex widget present. Count unclear (renders dynamically), likely under 30 reviews.
+- **Location pages:** Zero. One homepage with "East Alabama, West Georgia & Beyond" tagline.
+- **AI/AEO:** No mention anywhere.
+- **Key weaknesses:** No pricing, Elementor bloat, generic positioning, no local SEO structure, faith angle limits secular audience, zero AI/AEO awareness.
+
+### J. Alexandria Creative — jalexandriacreative.com
+- **Location:** Huntsville, AL (metro, boutique studio positioning)
+- **Stack:** Showit (canvas-based builder) + WordPress for blog — canvas layout = poor semantic HTML, weak heading hierarchy, thin on-page SEO. SVG animations + custom fonts + Instagram feed = heavy payload.
+- **Services:** Brand design, web design (WordPress/Elementor/Showit), e-commerce (Shopify), maintenance training, "Branded by JAC" transformation program. No pricing — custom quotes via Dubsado.
+- **Copy pattern:** Aspirational, aesthetics-first, personality-led ("for the luxe business owner"). Warm tone but copy is about Jade's creative identity, not client problems. Not StoryBrand-structured.
+- **GBP:** Effectively absent. A 4.75-star figure appeared in JSON on one page — likely a site-hosted testimonial aggregate, not verified GBP.
+- **Broken links:** Multiple internal 404s — `/work-with-us#investment`, `/services`, `/web-design-huntsville-al`, `/branded`. Crawlability and trust signal problem.
+- **Location pages:** Zero. Only Huntsville homepage mentions.
+- **AI/AEO:** No mention anywhere.
+- **Key weaknesses:** Showit SEO liability, broken links throughout, no conversion architecture, no GBP signal, no pricing, no local SEO structure, zero AI/AEO awareness.
+
+### Cross-Competitor Pattern (All 14 Reviewed)
+| Gap | Status across all competitors |
+|---|---|
+| Transparent pricing | **0 of 14** publish prices — Headley Web is alone in this |
+| AI / AEO positioning | **0 of 14** mention it |
+| Location/service area pages | Only Jessica Leigh — no one in the core NE Alabama market |
+| StoryBrand guide framing | 0 of 14 — all position themselves as the hero |
+| Next.js / performance-first stack | 0 of 14 — all use WordPress, Elementor, Divi, Showit, or Squarespace |
+
+---
+
+
 
 | Name | URL | Why Study Them |
 |---|---|---|
