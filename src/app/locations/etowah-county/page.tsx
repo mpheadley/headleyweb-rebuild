@@ -4,23 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Web Design for Calhoun County, AL Businesses",
+  title: "Web Design for Etowah County, AL Businesses",
   description:
-    "Custom web design and local SEO for small businesses across Calhoun County, Alabama — Jacksonville, Anniston, Oxford, and Piedmont. Flat-rate pricing from $495. No contracts.",
+    "Custom web design and local SEO for small businesses across Etowah County, Alabama — Gadsden, Rainbow City, Attalla, and surrounding communities. Flat-rate pricing from $495. No contracts.",
   alternates: {
-    canonical: "/locations/calhoun-county",
+    canonical: "/locations/etowah-county",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Headley Web & SEO",
-    url: "/locations/calhoun-county",
+    url: "/locations/etowah-county",
     images: [
       {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Web Design for Calhoun County, AL",
+        alt: "Headley Web & SEO — Web Design for Etowah County, AL",
       },
     ],
   },
@@ -32,7 +32,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
     { "@type": "ListItem", position: 2, name: "Locations", item: "https://headleyweb.com/locations" },
-    { "@type": "ListItem", position: 3, name: "Calhoun County", item: "https://headleyweb.com/locations/calhoun-county" },
+    { "@type": "ListItem", position: 3, name: "Etowah County", item: "https://headleyweb.com/locations/etowah-county" },
   ],
 };
 
@@ -41,7 +41,7 @@ const localBusinessSchema = {
   "@type": "ProfessionalService",
   name: "Headley Web & SEO",
   description:
-    "Headley Web & SEO provides custom web design and local SEO for small businesses across Calhoun County, Alabama — including Jacksonville, Anniston, Oxford, and Piedmont.",
+    "Headley Web & SEO provides custom web design and local SEO for small businesses across Etowah County, Alabama — including Gadsden, Rainbow City, and Attalla.",
   url: "https://headleyweb.com",
   telephone: "+1-256-644-7334",
   email: "matt@headleyweb.com",
@@ -54,7 +54,7 @@ const localBusinessSchema = {
   },
   areaServed: {
     "@type": "AdministrativeArea",
-    name: "Calhoun County",
+    name: "Etowah County",
     addressRegion: "AL",
     addressCountry: "US",
   },
@@ -62,47 +62,37 @@ const localBusinessSchema = {
 
 const cities = [
   {
-    name: "Jacksonville",
-    slug: "jacksonville",
-    desc: "College town, JSU market, local trades. My home base.",
+    name: "Gadsden",
+    slug: "gadsden",
+    desc: "Etowah County seat. Noccalula Falls, Broad Street, strong trades market.",
   },
   {
-    name: "Anniston",
-    slug: "anniston",
-    desc: "Calhoun County's largest city. Army Depot economy, Noble Street revival.",
-  },
-  {
-    name: "Oxford",
-    slug: "oxford",
-    desc: "Retail hub of the county. Oxford Exchange, Honda workforce.",
-  },
-  {
-    name: "Piedmont",
-    slug: "piedmont",
-    desc: "Eastern Calhoun County. Cheaha gateway, loyal local market.",
+    name: "Rainbow City",
+    slug: "rainbow-city",
+    desc: "One of Etowah County's fastest-growing communities along the Coosa River.",
   },
 ];
 
 const whyPoints = [
   {
-    title: "I Live Here",
-    desc: "Headley Web & SEO is based in Jacksonville — I'm not a remote agency targeting your area from Arizona. I know this county, these towns, and these customers.",
+    title: "I Know the Gadsden Market",
+    desc: "I've researched every web design competitor in Etowah County. Most have weak GBP presence, no pricing, and sites that rank poorly on mobile. You can outrank them.",
   },
   {
-    title: "No Other Local Web Designer Publishes Prices",
-    desc: "Every competitor says 'call for a quote.' I post flat-rate pricing from $495. You know what you're getting before you contact me.",
+    title: "No Pricing Games",
+    desc: "Every competitor in Etowah County says 'call for a quote.' I publish flat-rate pricing from $495 — you know exactly what you're getting.",
   },
   {
-    title: "Built to Rank in Calhoun County",
-    desc: "Every site I build includes local SEO targeting your specific city and county — not just generic optimization that could be for anyone, anywhere.",
+    title: "Built to Rank in Etowah County",
+    desc: "Every site includes local SEO targeting your specific city — Gadsden, Rainbow City, Attalla, Southside. Not generic statewide optimization.",
   },
   {
     title: "You Own Everything",
-    desc: "No monthly hosting traps, no locked-in contracts. Your domain, your code, your site. I build it, you own it.",
+    desc: "No monthly hosting traps, no locked-in contracts. Your domain, your code, your site — from day one.",
   },
 ];
 
-export default function CalhounCountyPage() {
+export default function EtowahCountyPage() {
   return (
     <main id="main-content">
       <script
@@ -118,8 +108,8 @@ export default function CalhounCountyPage() {
       <section className="relative pt-32 pb-20 md:pt-36 md:pb-24 px-6 text-white overflow-hidden">
         <div className="absolute inset-0 ken-burns-subtle" aria-hidden="true">
           <Image
-            src="/images/locations/anniston-hero.webp"
-            alt="Anniston, Alabama — Calhoun County"
+            src="/images/locations/gadsden-hero.webp"
+            alt="Gadsden, Alabama — Etowah County seat"
             fill
             priority
             sizes="100vw"
@@ -131,15 +121,15 @@ export default function CalhounCountyPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-4 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
-            Calhoun County, Alabama
+            Etowah County, Alabama
           </p>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
             Web Design for{" "}
-            <span className="text-hw-primary">Calhoun County</span>{" "}
+            <span className="text-hw-primary">Etowah County</span>{" "}
             Businesses
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-10 animate-on-scroll">
-            Jacksonville. Anniston. Oxford. Piedmont. Wherever you are in Calhoun County, your customers are searching Google — and finding your competitors instead.
+            Gadsden. Rainbow City. Attalla. Southside. Wherever you are in Etowah County, your customers are searching Google — and finding your competitors first.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">
@@ -161,13 +151,13 @@ export default function CalhounCountyPage() {
               Where I Work
             </p>
             <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">
-              Cities Across Calhoun County
+              Cities Across Etowah County
             </h2>
             <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
               Every site is built with location-specific SEO — so you rank in your city, not just somewhere in Alabama.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {cities.map((city) => (
               <Link
                 key={city.slug}
@@ -200,7 +190,7 @@ export default function CalhounCountyPage() {
               What I Build
             </p>
             <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">
-              Services for Calhoun County Businesses
+              Services for Etowah County Businesses
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -208,17 +198,17 @@ export default function CalhounCountyPage() {
               {
                 icon: Monitor,
                 title: "Custom Web Design",
-                desc: "Clean, mobile-friendly websites built for your specific Calhoun County market — not a template anyone can buy.",
+                desc: "Clean, mobile-friendly websites built for your specific Etowah County market — not a template anyone can buy.",
               },
               {
                 icon: Search,
                 title: "Local SEO",
-                desc: "On-page optimization so you rank when Calhoun County customers search for what you do — not just statewide traffic.",
+                desc: "On-page optimization so you rank when Gadsden and Etowah County customers search for what you do.",
               },
               {
                 icon: Map,
                 title: "Google Business Profile",
-                desc: "Full GBP setup and optimization so you show up in the map pack for Jacksonville, Anniston, Oxford, and Piedmont searches.",
+                desc: "Full GBP setup and optimization so you show up in the map pack for Gadsden, Rainbow City, and Etowah County searches.",
               },
             ].map((svc) => (
               <div key={svc.title} className="card-glow text-center animate-on-scroll">
@@ -269,7 +259,7 @@ export default function CalhounCountyPage() {
       <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">
-            Ready to Get Found in Calhoun County?
+            Ready to Get Found in Etowah County?
           </h2>
           <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
             Stop losing customers to competitors with better websites. Let&apos;s build yours the right way.
@@ -291,14 +281,13 @@ export default function CalhounCountyPage() {
 
       {/* ═══ Answer-First AEO Block (sr-only, crawlable) ═══ */}
       <section className="sr-only">
-        <h2>Web Design for Calhoun County, Alabama Small Businesses</h2>
+        <h2>Web Design for Etowah County, Alabama Small Businesses</h2>
         <p>
           Headley Web &amp; SEO is a Jacksonville, Alabama web design studio serving small businesses
-          across Calhoun County — including Anniston, Oxford, Jacksonville, and Piedmont. Services include
+          across Etowah County — including Gadsden, Rainbow City, Attalla, and Southside. Services include
           custom website design starting at $495, local SEO optimization, and Google Business Profile setup
-          and management. Every build includes mobile-friendly design, on-page SEO targeting Calhoun County
-          searches, and full site ownership with no contracts. Based in Jacksonville, AL — serving the
-          entire county at flat-rate pricing.
+          and management. Every build includes mobile-friendly design, on-page SEO targeting Etowah County
+          searches, and full site ownership with no contracts. Flat-rate pricing, no monthly traps.
         </p>
       </section>
     </main>
