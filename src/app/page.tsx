@@ -377,21 +377,8 @@ export default function Home() {
       </section>
 
       {/* ═══ How It Works ═══ */}
-      <section className="py-24 md:py-32 px-6 relative overflow-hidden">
-        {/* Background video — muted desk atmosphere loop */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          aria-hidden="true"
-        >
-          <source src="/videos/desk-loop.mp4" type="video/mp4" />
-        </video>
-        {/* Overlay — preserves readability, lets video breathe through */}
-        <div className="absolute inset-0 bg-hw-light/70" aria-hidden="true" />
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+      <section className="py-24 md:py-32 px-6 bg-hw-light grain">
+        <div className="max-w-4xl mx-auto text-center">
           <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">The Plan</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-16 animate-on-scroll">
             How We Get You <span className="font-light">More Leads</span>
