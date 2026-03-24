@@ -36,7 +36,7 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "Headley Web & SEO | Web Design for Northeast Alabama Businesses",
+    default: "Headley Web & SEO | Web Design for Local Businesses in Jacksonville & Anniston, AL",
     template: "%s | Headley Web & SEO",
   },
   description:

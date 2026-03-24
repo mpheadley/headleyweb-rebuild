@@ -55,7 +55,7 @@ export default function Footer() {
 
         <p className="text-xs text-gray-400 flex items-center justify-center gap-1">
           <MapPin className="w-3 h-3" />
-          Jacksonville, Alabama &middot; Serving Northeast Alabama
+          Jacksonville, Alabama &middot; Serving Calhoun County &amp; Beyond
         </p>
 
         {/* Service Areas */}

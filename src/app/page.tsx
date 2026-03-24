@@ -12,9 +12,9 @@ import { projects } from "@/app/data/projects";
 import { buildTiers } from "@/app/data/pricing";
 
 export const metadata: Metadata = {
-  title: "Northeast Alabama Web Design & Local SEO",
+  title: "Web Design for Jacksonville, Anniston & Calhoun County, AL",
   description:
-    "Headley Web & SEO builds StoryBrand-powered websites for local service businesses in Jacksonville, Anniston & Northeast Alabama. Get found, get calls, get booked.",
+    "Headley Web & SEO builds clear, mobile-friendly websites for local service businesses in Jacksonville, Anniston, Gadsden, and Calhoun County, AL. Get found, get calls, get booked.",
   alternates: {
     canonical: "/",
   },
@@ -204,7 +204,7 @@ export default function Home() {
             {/* Left — Copy */}
             <div className="text-center md:text-left min-w-0">
               <p className="text-hw-secondary font-semibold text-sm tracking-widest uppercase mb-5 md:mb-4">
-                Web Design &amp; SEO for Northeast Alabama
+                Web Design &amp; SEO for Jacksonville, Anniston &amp; Calhoun County
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 !text-white">
                 Your Customers Are Searching.
@@ -973,7 +973,7 @@ export default function Home() {
           </p>
           <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
-            Serving Jacksonville, Anniston, and Northeast Alabama
+            Serving Jacksonville, Anniston, Gadsden, and Calhoun County
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">
@@ -991,7 +991,7 @@ export default function Home() {
       <section className="sr-only">
         <p>
           Headley Web <span className="amp">&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
-          StoryBrand-powered websites for local service businesses in Northeast Alabama. We
+          StoryBrand-powered websites for local service businesses in Anniston, Gadsden, Jacksonville, and across Calhoun County. We
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business
           Profile optimization for plumbers, HVAC companies, contractors, restaurants, and other
           service providers in Calhoun, Etowah, Cherokee, and Talladega counties. Every site is

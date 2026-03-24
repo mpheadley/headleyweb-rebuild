@@ -226,7 +226,7 @@ export default function PortfolioPage() {
           </p>
           <p className="text-hw-text-light text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
-            Serving Jacksonville, Anniston, and Northeast Alabama
+            Serving Jacksonville, Anniston, Gadsden, and Calhoun County
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">

@@ -60,7 +60,7 @@ export const locations: Location[] = [
       { title: "Superspeedway Weekends", desc: "Race traffic brings thousands of visitors searching for local services. A strong website captures that demand." },
       { title: "Highway 21 Corridor", desc: "The busiest commercial stretch in the county — your digital storefront should work as hard as your physical one." },
     ],
-    nearby: ["anniston", "jacksonville", "talladega"],
+    nearby: ["anniston", "jacksonville", "talladega", "piedmont"],
   },
   {
     slug: "gadsden",
@@ -82,7 +82,7 @@ export const locations: Location[] = [
       { title: "Broad Street Revitalization", desc: "Downtown Gadsden is reinventing itself. A modern website signals you're part of that growth." },
       { title: "Attalla & Rainbow City Overlap", desc: "Serving neighboring cities? Your site should rank in all of them — not just one." },
     ],
-    nearby: ["anniston", "centre"],
+    nearby: ["anniston", "centre", "rainbow-city"],
   },
   {
     slug: "jacksonville",
@@ -104,7 +104,7 @@ export const locations: Location[] = [
       { title: "Small Town, Big Competition", desc: "Even in a small town, the business with the best online presence wins the call." },
       { title: "Pelham Road & Town Square", desc: "Whether you're on the main drag or a side street, Google doesn't care about your physical location — just your digital one." },
     ],
-    nearby: ["anniston", "oxford"],
+    nearby: ["anniston", "oxford", "piedmont"],
   },
   {
     slug: "talladega",
@@ -127,6 +127,72 @@ export const locations: Location[] = [
       { title: "Historic Downtown", desc: "Talladega's downtown is full of character. Your website should have the same — professional, clear, and built to convert." },
     ],
     nearby: ["anniston", "oxford"],
+  },
+  {
+    slug: "piedmont",
+    name: "Piedmont",
+    county: "Calhoun County",
+    zip: "36272",
+    metaTitle: "Web Design in Piedmont, AL",
+    metaDescription:
+      "Custom web design and local SEO for Piedmont, Alabama businesses. Get found on Google by Calhoun County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Piedmont Businesses",
+    heroSub:
+      "Piedmont is a tight-knit community where word travels fast — but your next customer is still searching Google first.",
+    heroImage: { src: "/images/locations/piedmont-hero.webp", alt: "Piedmont, Alabama" },
+    localIntro:
+      "Piedmont sits at the foot of Cheaha Mountain in the eastern corner of Calhoun County, and its businesses have always punched above their weight — tight community, loyal customer base, and a work-hard culture that shows up in every trade and service in town. What often doesn't show up is those businesses online. Most Piedmont companies are invisible on Google, relying entirely on word of mouth while potential customers drive past and search on their phones. I build websites that fix that — clean, mobile-friendly, fast, and structured so Google knows exactly what you do and where you do it. Flat-rate pricing, no contracts, and you own your site outright from day one.",
+    whyHere: [
+      { title: "Calhoun County's Eastern Anchor", desc: "Piedmont serves the eastern edge of the county — customers searching nearby should find you, not a competitor in Anniston." },
+      { title: "Cheaha Mountain Gateway", desc: "Outdoor visitors and Cheaha State Park traffic search locally. A website puts your business in front of that audience." },
+      { title: "Loyal Local Market", desc: "Piedmont customers stay local when they can find local. A professional site is often all it takes." },
+      { title: "Under-Served Online", desc: "Most Piedmont businesses have no real web presence. That's your opportunity — first mover advantage is real." },
+    ],
+    nearby: ["anniston", "jacksonville"],
+  },
+  {
+    slug: "rainbow-city",
+    name: "Rainbow City",
+    county: "Etowah County",
+    zip: "35906",
+    metaTitle: "Web Design in Rainbow City, AL",
+    metaDescription:
+      "Custom web design and local SEO for Rainbow City, Alabama businesses. Get found on Google by Etowah County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Rainbow City Businesses",
+    heroSub:
+      "Rainbow City is growing fast. Your website should be growing with it — not stuck on a template from 2015.",
+    heroImage: { src: "/images/locations/rainbow-city-hero.webp", alt: "Rainbow City, Alabama" },
+    localIntro:
+      "Rainbow City is one of Etowah County's fastest-growing communities, sitting just south of Gadsden along the Coosa River. What was once a quiet suburb has become a destination for new construction, retail, and service businesses drawn by the growth along Rainbow Drive and the city's reputation for safety and livability. If you run a business in Rainbow City — whether it's a trade, a restaurant, a service company, or a specialty shop — your customers are searching Google before they call. Most Rainbow City businesses still rely on Facebook posts and word of mouth. A clean, SEO-optimized website puts you ahead of that entire field. I build sites that load fast, rank locally, and turn searches into phone calls.",
+    whyHere: [
+      { title: "One of Etowah County's Fastest-Growing Cities", desc: "New residents and new businesses mean new customers actively searching online for local services." },
+      { title: "Gadsden Adjacency", desc: "Rainbow City and Gadsden share a customer base. Rank in both and you double your reach." },
+      { title: "Rainbow Drive Corridor", desc: "Heavy commercial activity along Rainbow Drive means real search volume for trades, restaurants, and services." },
+      { title: "Thin Online Competition", desc: "Most Rainbow City businesses have weak or nonexistent websites. A professional site stands out immediately." },
+    ],
+    nearby: ["gadsden", "anniston"],
+  },
+  {
+    slug: "fort-payne",
+    name: "Fort Payne",
+    county: "DeKalb County",
+    zip: "35967",
+    metaTitle: "Web Design in Fort Payne, AL",
+    metaDescription:
+      "Custom web design and local SEO for Fort Payne, Alabama businesses. Get found on Google by DeKalb County customers near Little River Canyon. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Fort Payne Businesses",
+    heroSub:
+      "Fort Payne sits at the edge of Little River Canyon and the gateway to the Appalachians. Your website should work as hard as the people who built this town.",
+    heroImage: { src: "/images/locations/fort-payne-hero.webp", alt: "Little River Canyon near Fort Payne, Alabama" },
+    localIntro:
+      "Fort Payne is the seat of DeKalb County — a manufacturing town turned outdoor-recreation gateway, anchored by Little River Canyon National Preserve and DeSoto State Park. The city's economy runs on trades, restaurants, outdoor outfitters, and the service businesses that keep DeKalb County moving. Tourism from the canyon brings in visitors who search on their phones before they arrive, and locals search just as constantly for plumbers, HVAC, and contractors. The biggest web design presence in DeKalb County today is a sign shop that does websites on the side. That's a gap. I build websites purpose-built for service businesses — fast, mobile-friendly, with local SEO that targets Fort Payne, Rainsville, Fyffe, and the surrounding county.",
+    whyHere: [
+      { title: "Little River Canyon Tourism", desc: "Outdoor visitors search for local restaurants, outfitters, and services before and during their visit. Be what they find." },
+      { title: "DeKalb County Seat", desc: "Fort Payne is the commercial hub for the whole county. Your online presence should match your real-world position." },
+      { title: "Weak Local Web Competition", desc: "The strongest web design presence in DeKalb County is a sign shop. A purpose-built business site wins by default." },
+      { title: "DeSoto State Park Traffic", desc: "Year-round park visitors mean year-round search traffic for local businesses willing to show up online." },
+    ],
+    nearby: ["gadsden", "centre"],
   },
   {
     slug: "centre",
