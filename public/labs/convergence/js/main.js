@@ -69,8 +69,10 @@ gsap.fromTo(".outro",
     scrollTrigger: { trigger: ".outro", start: "top 75%", once: true } }
 );
 
-// Stabilize scroll on iOS Safari — prevents browser chrome from fighting the pin
-ScrollTrigger.normalizeScroll(true);
+// Stabilize scroll on iOS Safari only — normalizeScroll on desktop causes jitter
+if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+  ScrollTrigger.normalizeScroll(true);
+}
 
 // Pin the Three.js section — 300vh of scroll = scrollProgress goes 0→1
 ScrollTrigger.create({
@@ -114,10 +116,10 @@ const clickNDC   = new THREE.Vector2();
 const rippleSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 0), 16);
 let   rippleOrigin = new THREE.Vector3(0, 1, 0); // normalized direction in group-local space
 
-canvasContainer.addEventListener("click", (e) => {
+function fireRipple(clientX, clientY) {
   const rect = canvasContainer.getBoundingClientRect();
-  clickNDC.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1;
-  clickNDC.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+  clickNDC.x =  ((clientX - rect.left) / rect.width)  * 2 - 1;
+  clickNDC.y = -((clientY - rect.top)  / rect.height) * 2 + 1;
 
   raycaster.setFromCamera(clickNDC, camera);
   const hit = new THREE.Vector3();
@@ -132,7 +134,18 @@ canvasContainer.addEventListener("click", (e) => {
 
   clickTime = clock.getElapsedTime();
   playRippleSound();
-});
+}
+
+// Desktop click
+canvasContainer.addEventListener("click", (e) => fireRipple(e.clientX, e.clientY));
+
+// Mobile tap — use touchend for precise coordinates (avoids synthetic click delay)
+canvasContainer.addEventListener("touchend", (e) => {
+  if (e.changedTouches.length > 0) {
+    const touch = e.changedTouches[0];
+    fireRipple(touch.clientX, touch.clientY);
+  }
+}, { passive: true });
 
 // Pointer cursor — always clickable
 function updateCanvasCursor() {
@@ -251,8 +264,9 @@ function setMouseFromEvent(clientX, clientY) {
 window.addEventListener("mousemove", (e) => setMouseFromEvent(e.clientX, e.clientY));
 
 window.addEventListener("touchmove", (e) => {
+  e.preventDefault();
   setMouseFromEvent(e.touches[0].clientX, e.touches[0].clientY);
-}, { passive: true });
+}, { passive: false });
 
 window.addEventListener("touchstart", (e) => {
   mouseActive = true;
@@ -572,15 +586,15 @@ const PUCCINI_VOICES = [
   { notes: PUCCINI_SOPRANO,  type: "sine",     gain: 0.18, filter: null, attack: 0.35, release: 1.2  },
   { notes: PUCCINI_TENOR,    type: "sine",     gain: 0.14, filter: null, attack: 0.35, release: 1.2  },
   { notes: PUCCINI_HARMONY,  type: "sine",     gain: 0.06, filter: null, attack: 0.2,  release: 0.8  },
-  { notes: PUCCINI_STRINGS1, type: "sawtooth", gain: 0.03, filter: 1800, attack: 0.12, release: 0.5  },
-  { notes: PUCCINI_STRINGS2, type: "sawtooth", gain: 0.03, filter: 1800, attack: 0.12, release: 0.5  },
-  { notes: PUCCINI_STRINGS3, type: "sawtooth", gain: 0.025,filter: 1800, attack: 0.12, release: 0.5  },
+  { notes: PUCCINI_STRINGS1, type: "triangle", gain: 0.03, filter: 1800, attack: 0.12, release: 0.5  },
+  { notes: PUCCINI_STRINGS2, type: "triangle", gain: 0.03, filter: 1800, attack: 0.12, release: 0.5  },
+  { notes: PUCCINI_STRINGS3, type: "triangle", gain: 0.025,filter: 1800, attack: 0.12, release: 0.5  },
   { notes: PUCCINI_BASS,     type: "sine",     gain: 0.16, filter: 600,  attack: 0.5,  release: 1.5  },
 ];
 
 // Puccini scheduler state
 const PUCCINI_TEMPO  = 1.4; // 1.0 = original, 2.0 = double speed
-const PUCCINI_GAIN   = 2.0; // overall volume multiplier for all Puccini voices
+const PUCCINI_GAIN   = 0.7; // overall volume multiplier for all Puccini voices
 let pucciniStartTime = 0;   // audioCtx.currentTime when piece started
 let pucciniLoopOffset = 0;  // accumulates PUCCINI_DURATION each loop
 let pucciniPointers = [];   // next-note index per voice
@@ -618,7 +632,7 @@ function initAudio() {
 
   // ── Noise texture: bandpass-filtered white noise, subtle undertone ──────────
   noiseBus = audioCtx.createGain();
-  noiseBus.gain.value = 0.35;
+  noiseBus.gain.value = 0.04;
   noiseBus.connect(pannerNode);
 
   const bufSize   = audioCtx.sampleRate * 2;
@@ -652,14 +666,14 @@ function initAudio() {
 
   // ── Pad layer: 5 detuned sines, Bb1→Bb3 with scroll ────────────────────────
   padBus = audioCtx.createGain();
-  padBus.gain.value = 0.55;
+  padBus.gain.value = 0;
   padBus.connect(pannerNode);
 
   // Slow breath LFO on pad volume
   const breathLFO     = audioCtx.createOscillator();
   const breathLFOGain = audioCtx.createGain();
   breathLFO.frequency.value = 0.11;
-  breathLFOGain.gain.value  = 0.07;
+  breathLFOGain.gain.value  = 0.003;
   breathLFO.connect(breathLFOGain);
   breathLFOGain.connect(padBus.gain);
   breathLFO.start();
@@ -680,7 +694,7 @@ function initAudio() {
 
   // ── Constant root: Bb1 + Bb2 — anchors the Puccini key throughout ───────────
   const rootBus = audioCtx.createGain();
-  rootBus.gain.value = 0.22;
+  rootBus.gain.value = 0.04;
   rootBus.connect(pannerNode);
   [58.27, 58.57, 57.97].forEach(f => {          // Bb1 cluster
     const osc = audioCtx.createOscillator();
@@ -748,7 +762,7 @@ function initAudio() {
 // ── Puccini lookahead scheduler ───────────────────────────────────────────────
 // Runs every 25ms, schedules notes up to 150ms ahead.
 // Each note gets its own OscillatorNode + GainNode (fire-and-forget, auto-GC on stop).
-const SCHEDULE_AHEAD = 0.15; // seconds
+const SCHEDULE_AHEAD = 0.5; // seconds
 
 function runPucciniScheduler() {
   if (!audioReady || audioCtx.state === "closed") return;
@@ -825,7 +839,7 @@ function playRippleSound() {
   const convolver = audioCtx.createConvolver();
   convolver.buffer = irBuf;
   const reverbWet = audioCtx.createGain();
-  reverbWet.gain.value = 1.0; // wet level — boosted since dry is lower
+  reverbWet.gain.value = 0.35; // wet level
   convolver.connect(reverbWet); reverbWet.connect(pannerNode);
 
   // Low thud — deep sine click, very short
@@ -834,7 +848,7 @@ function playRippleSound() {
   thud.type = "sine";
   thud.frequency.setValueAtTime(120, now);
   thud.frequency.exponentialRampToValueAtTime(40, now + 0.18);
-  thudEnv.gain.setValueAtTime(0.34, now);
+  thudEnv.gain.setValueAtTime(0.16, now);
   thudEnv.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
   thud.connect(thudEnv);
   thudEnv.connect(pannerNode);   // dry signal
@@ -849,7 +863,7 @@ function playRippleSound() {
   ping.type = "triangle";
   ping.frequency.value = 932.33; // Bb5
   pingEnv.gain.setValueAtTime(0.0, now);
-  pingEnv.gain.linearRampToValueAtTime(0.36, now + 0.01);
+  pingEnv.gain.linearRampToValueAtTime(0.16, now + 0.01);
   pingEnv.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
   ping.connect(pingEnv); pingEnv.connect(pannerNode);
   ping.start(now); ping.stop(now + 1.85);
@@ -874,7 +888,7 @@ function updateAudio() {
   if (!outroAudioFired) {
     const starAmt = Math.min(1, scrollProgress * 8) * 0.12;
     starShimmerBus.gain.setTargetAtTime(starAmt, audioCtx.currentTime, 0.8);
-    shimmerBus.gain.setTargetAtTime(scrollProgress * 0.32, audioCtx.currentTime, 1.5);
+    shimmerBus.gain.setTargetAtTime(scrollProgress * 0.16, audioCtx.currentTime, 1.5);
   }
 }
 
@@ -986,8 +1000,8 @@ function restoreFromOutro() {
   }
 
   // Restore noise and pad (updateAudio restores shimmers via scrollProgress)
-  if (noiseBus) noiseBus.gain.setTargetAtTime(0.35, now, 1.0);
-  if (padBus)   padBus.gain.setTargetAtTime(0.55, now, 1.0);
+  if (noiseBus) noiseBus.gain.setTargetAtTime(0.04, now, 1.0);
+  if (padBus)   padBus.gain.setTargetAtTime(0, now, 1.0);
 }
 
 // Trigger/restore as outro enters and leaves view
@@ -1069,6 +1083,14 @@ window.addEventListener("mousemove", (e) => {
     outroCta.style.transform = "translateZ(80px)";
   }
 });
+
+// Reset card, glow, and CTA when touch ends (no lingering tilt)
+outro.addEventListener("touchend", () => {
+  outroCard.style.transform = "rotateX(0deg) rotateY(0deg)";
+  outroGlow.style.opacity = "0";
+  outroCta.style.transform = "translateZ(80px)";
+}, { passive: true });
+
 
 // ── 12. START ─────────────────────────────────────────────────────────────────
 animate();
