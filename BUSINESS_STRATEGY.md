@@ -142,6 +142,32 @@ Monthly deliverables:
 - If they like the strategy, the build is a natural upsell
 - Included in Sales Engine tier at target pricing
 
+### AI Add-On Services (Phase 2+)
+
+These are upsells to existing builds or standalone products. All use tools already in the studio workflow (Replicate, Claude API, Vercel AI SDK).
+
+**1. Brand Image Model** ($500–800 one-time + $50/mo)
+- Train a private FLUX model on 15–20 photos of the client's product, space, or staff
+- Client gets unlimited on-brand image generation without hiring a photographer
+- Replicate training cost: ~$10–20. Hosting: ~$5–10/mo
+- Best fit: restaurants, product businesses, rental properties, contractors with finished work to show
+- Upsell angle: "Never pay for a stock photo again"
+
+**2. AI Chatbot Add-On** ($300–600 build + $30–60/mo)
+- FAQ/intake bot on the client's site — answers questions about hours, services, pricing
+- Stack: Next.js API route + Claude API + Vercel AI SDK (streaming)
+- Basic tier ($300): answers from a structured FAQ doc
+- Smart tier ($600): reads client's site content, handles follow-up questions
+- Monthly fee covers Claude API usage + maintenance
+
+**3. AI Content Engine** ($200–300/mo retainer)
+- Sits between $149 Accelerate and $2,500 full retainer
+- Monthly deliverables: 1 blog post (Claude-drafted, Matt edits) + 4 social images (FLUX) + 1 short video reel (Kling/MiniMax via generate-video.py)
+- Mostly automated once the workflow is dialed in
+- Good bridge offer for clients who want consistent content but aren't ready for full retainer
+
+> Note: chatbot and content engine are not yet tested on live client projects. Prove the workflow on headleyweb.com first before selling.
+
 ---
 
 ## Market Segmentation & Value Ladder

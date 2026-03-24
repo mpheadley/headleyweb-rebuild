@@ -536,7 +536,7 @@ export default function ServicesPage() {
           </p>
           <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
-            Serving Jacksonville, Anniston, and Northeast Alabama
+            Serving Jacksonville, Anniston, Gadsden, and Calhoun County
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">
@@ -555,7 +555,7 @@ export default function ServicesPage() {
 
       {/* ═══ Answer-First AEO Block (hidden, crawlable) ═══ */}
       <section className="sr-only">
-        <h2>Web Design and SEO Services in Northeast Alabama</h2>
+        <h2>Web Design and SEO Services in Anniston, Gadsden &amp; Calhoun County</h2>
         <p>
           Headley Web <span className="amp">&amp;</span> SEO offers five core services for local businesses in Northeast Alabama: custom web design (clean, mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), Google Business Profile setup and management, monthly care plans for ongoing maintenance and growth, and AI visibility optimization so your business gets recommended by tools like ChatGPT and Perplexity. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 (Get Found), $1,495 (Get Calls), and $1,995 (Get Booked). Monthly care plans start at $49/mo — first 3 months included free with every build. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
         </p>

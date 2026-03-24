@@ -55,13 +55,13 @@ export default function Footer() {
 
         <p className="text-xs text-gray-400 flex items-center justify-center gap-1">
           <MapPin className="w-3 h-3" />
-          Jacksonville, Alabama &middot; Serving Northeast Alabama
+          Jacksonville, Alabama &middot; Serving Calhoun County &amp; Beyond
         </p>
 
         {/* Service Areas */}
         <div className="pt-2">
           <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-2">Service Areas</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs mb-2">
             {locations.map((loc, i) => (
               <span key={loc.slug} className="flex items-center gap-x-3">
                 <Link
@@ -73,6 +73,11 @@ export default function Footer() {
                 {i < locations.length - 1 && <span className="text-gray-600">&middot;</span>}
               </span>
             ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs">
+            <Link href="/locations/calhoun-county" className="text-gray-500 hover:text-white transition-colors">Calhoun County</Link>
+            <span className="text-gray-600">&middot;</span>
+            <Link href="/locations/etowah-county" className="text-gray-500 hover:text-white transition-colors">Etowah County</Link>
           </div>
         </div>
 

@@ -120,6 +120,8 @@ Posts tied to the satirical speed-build projects. Each one is a blog post AND a 
 | 23 | "I Asked AI to Build a Website About Itself — Here's What Happened" | Blog post + screen recording | Planned |
 | 24 | "I Built My Wife a Fake Business Website and It Looks Better Than Most Real Ones" | Blog post + couple content video | Planned |
 | 25 | "I Built a Local Storytelling Site to Prove Small Businesses Deserve Better Websites" | Blog post + site walkthrough | Planned — Local Legends (local-legends/). Write when site has 5+ real profiles. See `local-legends/PLAN.md` Phase 6 → Cross-Promotion. |
+| 26 | "How I Stopped Using Stock Photos on Client Sites (And What I Use Instead)" | Blog post | Planned — explains FLUX/AI image gen workflow, approachable for non-technical clients, positions studio as resourceful. Write after first client site ships with AI-generated images. |
+| 27 | "What AI Chatbots Can (and Can't) Do for Your Local Business Website" | Blog post | Planned — honest take on chatbot limitations and real use cases (FAQ, intake, after-hours). Targets business owners who've heard the hype. Write after first chatbot is built and tested. AEO-friendly: answers a specific question. |
 
 **Why these work as blog posts:**
 - They demonstrate skill while being entertaining enough to share

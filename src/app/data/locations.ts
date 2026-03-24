@@ -60,7 +60,7 @@ export const locations: Location[] = [
       { title: "Superspeedway Weekends", desc: "Race traffic brings thousands of visitors searching for local services. A strong website captures that demand." },
       { title: "Highway 21 Corridor", desc: "The busiest commercial stretch in the county — your digital storefront should work as hard as your physical one." },
     ],
-    nearby: ["anniston", "jacksonville", "talladega"],
+    nearby: ["anniston", "jacksonville", "talladega", "piedmont"],
   },
   {
     slug: "gadsden",
@@ -82,7 +82,7 @@ export const locations: Location[] = [
       { title: "Broad Street Revitalization", desc: "Downtown Gadsden is reinventing itself. A modern website signals you're part of that growth." },
       { title: "Attalla & Rainbow City Overlap", desc: "Serving neighboring cities? Your site should rank in all of them — not just one." },
     ],
-    nearby: ["anniston", "centre"],
+    nearby: ["anniston", "centre", "rainbow-city"],
   },
   {
     slug: "jacksonville",
@@ -104,7 +104,7 @@ export const locations: Location[] = [
       { title: "Small Town, Big Competition", desc: "Even in a small town, the business with the best online presence wins the call." },
       { title: "Pelham Road & Town Square", desc: "Whether you're on the main drag or a side street, Google doesn't care about your physical location — just your digital one." },
     ],
-    nearby: ["anniston", "oxford"],
+    nearby: ["anniston", "oxford", "piedmont"],
   },
   {
     slug: "talladega",
@@ -127,6 +127,116 @@ export const locations: Location[] = [
       { title: "Historic Downtown", desc: "Talladega's downtown is full of character. Your website should have the same — professional, clear, and built to convert." },
     ],
     nearby: ["anniston", "oxford"],
+  },
+  {
+    slug: "alexandria",
+    name: "Alexandria",
+    county: "Calhoun County",
+    zip: "36250",
+    metaTitle: "Web Design in Alexandria, AL",
+    metaDescription:
+      "Custom web design and local SEO for Alexandria, Alabama businesses. Get found on Google by Calhoun County customers between Jacksonville and Anniston. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Alexandria Businesses",
+    heroSub:
+      "Alexandria sits right between Jacksonville and Anniston — your customers are already searching. Make sure they find you.",
+    heroImage: { src: "/images/locations/alexandria-hero.webp", alt: "Janney Furnace Park, Calhoun County, Alabama", credit: "dofftoubab / Wikimedia Commons / CC BY-SA 3.0" },
+    localIntro:
+      "Alexandria is a growing community in the heart of Calhoun County, tucked between Jacksonville and Anniston along Highway 21. It's a town where people know their neighbors and still largely find local businesses through word of mouth — but that's changing fast. More and more, new residents and people relocating from Anniston or Jacksonville are searching Google before they make a call. A landscaper, a mechanic, a cleaning service, a contractor — whoever shows up first in search gets the call. Most Alexandria businesses don't have a real web presence yet. That's your advantage. I build clean, fast websites with local SEO that targets Alexandria, Calhoun County, and the surrounding area — so when someone searches for what you do, you're the one they find.",
+    whyHere: [
+      { title: "Between Two Markets", desc: "Alexandria sits between Jacksonville and Anniston. A well-built site can pull customers from both cities." },
+      { title: "Growing Residential Base", desc: "New residents search online for everything — and they don't have existing loyalties to local businesses yet." },
+      { title: "Low Online Competition", desc: "Almost no Alexandria businesses have a professional web presence. First mover advantage is yours for the taking." },
+      { title: "Highway 21 Visibility", desc: "Traffic through town is real. Your online presence should match your physical one on the main corridor." },
+    ],
+    nearby: ["jacksonville", "anniston", "oxford"],
+  },
+  {
+    slug: "piedmont",
+    name: "Piedmont",
+    county: "Calhoun County",
+    zip: "36272",
+    metaTitle: "Web Design in Piedmont, AL",
+    metaDescription:
+      "Custom web design and local SEO for Piedmont, Alabama businesses. Get found on Google by Calhoun County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Piedmont Businesses",
+    heroSub:
+      "Piedmont is a tight-knit community where word travels fast — but your next customer is still searching Google first.",
+    heroImage: { src: "/images/locations/piedmont-hero.webp", alt: "Cheaha Mountain near Piedmont, Alabama", credit: "Skye Marthaler / CC BY-SA 4.0" },
+    localIntro:
+      "Piedmont sits at the foot of Cheaha Mountain in the eastern corner of Calhoun County, and its businesses have always punched above their weight — tight community, loyal customer base, and a work-hard culture that shows up in every trade and service in town. What often doesn't show up is those businesses online. Most Piedmont companies are invisible on Google, relying entirely on word of mouth while potential customers drive past and search on their phones. I build websites that fix that — clean, mobile-friendly, fast, and structured so Google knows exactly what you do and where you do it. Flat-rate pricing, no contracts, and you own your site outright from day one.",
+    whyHere: [
+      { title: "Calhoun County's Eastern Anchor", desc: "Piedmont serves the eastern edge of the county — customers searching nearby should find you, not a competitor in Anniston." },
+      { title: "Cheaha Mountain Gateway", desc: "Outdoor visitors and Cheaha State Park traffic search locally. A website puts your business in front of that audience." },
+      { title: "Loyal Local Market", desc: "Piedmont customers stay local when they can find local. A professional site is often all it takes." },
+      { title: "Under-Served Online", desc: "Most Piedmont businesses have no real web presence. That's your opportunity — first mover advantage is real." },
+    ],
+    nearby: ["anniston", "jacksonville"],
+  },
+  {
+    slug: "attalla",
+    name: "Attalla",
+    county: "Etowah County",
+    zip: "35954",
+    metaTitle: "Web Design in Attalla, AL",
+    metaDescription:
+      "Custom web design and local SEO for Attalla, Alabama businesses. Get found on Google by Etowah County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Attalla Businesses",
+    heroSub:
+      "Attalla businesses serve the whole Gadsden area — your website should be working just as hard to bring customers in.",
+    heroImage: { src: "/images/locations/attalla-hero.webp", alt: "Noccalula Falls, Gadsden, Alabama (near Attalla)", credit: "Gentry George / U.S. Fish and Wildlife Service / Public Domain" },
+    localIntro:
+      "Attalla is right next door to Gadsden — sharing customers, sharing roads, and competing for the same searches. The businesses that win those searches are the ones with a professional website and a verified Google Business Profile. Most Attalla businesses still rely entirely on Facebook and word of mouth. That worked for a long time, but search behavior has shifted. When someone new to the area needs a plumber, an HVAC company, or a contractor, they go to Google — not Facebook. I build websites specifically for this market: fast-loading, mobile-friendly, with local SEO that tells Google your business serves Attalla, Etowah County, and the surrounding area. Flat-rate pricing, no contracts, and you own your site from day one.",
+    whyHere: [
+      { title: "Gadsden Adjacency", desc: "Attalla and Gadsden share a customer base. Rank in both and you double your reach across Etowah County." },
+      { title: "Coosa River Corridor", desc: "Industrial and commercial activity along the river keeps Attalla's economy active year-round." },
+      { title: "Underserved Online Market", desc: "Most Attalla businesses have no real web presence. A professional site immediately sets you apart." },
+      { title: "New Residents Search First", desc: "People new to the area don't have existing loyalties — they call whoever Google shows them first." },
+    ],
+    nearby: ["gadsden", "rainbow-city"],
+  },
+  {
+    slug: "rainbow-city",
+    name: "Rainbow City",
+    county: "Etowah County",
+    zip: "35906",
+    metaTitle: "Web Design in Rainbow City, AL",
+    metaDescription:
+      "Custom web design and local SEO for Rainbow City, Alabama businesses. Get found on Google by Etowah County customers. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Rainbow City Businesses",
+    heroSub:
+      "Rainbow City is growing fast. Your website should be growing with it — not stuck on a template from 2015.",
+    heroImage: { src: "/images/locations/rainbow-city-hero.webp", alt: "Coosa River near Rainbow City, Alabama", credit: "Carol M. Highsmith / Library of Congress" },
+    localIntro:
+      "Rainbow City is one of Etowah County's fastest-growing communities, sitting just south of Gadsden along the Coosa River. What was once a quiet suburb has become a destination for new construction, retail, and service businesses drawn by the growth along Rainbow Drive and the city's reputation for safety and livability. If you run a business in Rainbow City — whether it's a trade, a restaurant, a service company, or a specialty shop — your customers are searching Google before they call. Most Rainbow City businesses still rely on Facebook posts and word of mouth. A clean, SEO-optimized website puts you ahead of that entire field. I build sites that load fast, rank locally, and turn searches into phone calls.",
+    whyHere: [
+      { title: "One of Etowah County's Fastest-Growing Cities", desc: "New residents and new businesses mean new customers actively searching online for local services." },
+      { title: "Gadsden Adjacency", desc: "Rainbow City and Gadsden share a customer base. Rank in both and you double your reach." },
+      { title: "Rainbow Drive Corridor", desc: "Heavy commercial activity along Rainbow Drive means real search volume for trades, restaurants, and services." },
+      { title: "Thin Online Competition", desc: "Most Rainbow City businesses have weak or nonexistent websites. A professional site stands out immediately." },
+    ],
+    nearby: ["gadsden", "anniston"],
+  },
+  {
+    slug: "fort-payne",
+    name: "Fort Payne",
+    county: "DeKalb County",
+    zip: "35967",
+    metaTitle: "Web Design in Fort Payne, AL",
+    metaDescription:
+      "Custom web design and local SEO for Fort Payne, Alabama businesses. Get found on Google by DeKalb County customers near Little River Canyon. Flat-rate pricing from $495.",
+    heroHeadline: "Web Design for Fort Payne Businesses",
+    heroSub:
+      "Fort Payne sits at the edge of Little River Canyon and the gateway to the Appalachians. Your website should work as hard as the people who built this town.",
+    heroImage: { src: "/images/locations/fort-payne-hero.webp", alt: "Little River Canyon near Fort Payne, Alabama", credit: "Thomson200 / CC0" },
+    localIntro:
+      "Fort Payne is the seat of DeKalb County — a manufacturing town turned outdoor-recreation gateway, anchored by Little River Canyon National Preserve and DeSoto State Park. The city's economy runs on trades, restaurants, outdoor outfitters, and the service businesses that keep DeKalb County moving. Tourism from the canyon brings in visitors who search on their phones before they arrive, and locals search just as constantly for plumbers, HVAC, and contractors. The biggest web design presence in DeKalb County today is a sign shop that does websites on the side. That's a gap. I build websites purpose-built for service businesses — fast, mobile-friendly, with local SEO that targets Fort Payne, Rainsville, Fyffe, and the surrounding county.",
+    whyHere: [
+      { title: "Little River Canyon Tourism", desc: "Outdoor visitors search for local restaurants, outfitters, and services before and during their visit. Be what they find." },
+      { title: "DeKalb County Seat", desc: "Fort Payne is the commercial hub for the whole county. Your online presence should match your real-world position." },
+      { title: "Weak Local Web Competition", desc: "The strongest web design presence in DeKalb County is a sign shop. A purpose-built business site wins by default." },
+      { title: "DeSoto State Park Traffic", desc: "Year-round park visitors mean year-round search traffic for local businesses willing to show up online." },
+    ],
+    nearby: ["gadsden", "centre"],
   },
   {
     slug: "centre",

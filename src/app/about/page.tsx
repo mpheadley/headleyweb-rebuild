@@ -46,7 +46,7 @@ const credentials = [
   {
     icon: MapPin,
     title: "Local to Jacksonville",
-    desc: "I know the NE Alabama market firsthand.",
+    desc: "I know the Calhoun County market firsthand.",
     accent: "bg-hw-secondary/10 text-hw-secondary",
     span: "",
   },
@@ -66,7 +66,7 @@ const credentials = [
   },
   {
     icon: Globe,
-    title: "Northeast Alabama",
+    title: "Calhoun County & Beyond",
     desc: "Serving Calhoun, Etowah, Cherokee & Talladega counties.",
     accent: "bg-hw-primary/10 text-hw-primary",
     span: "",
@@ -120,7 +120,7 @@ export default function AboutPage() {
                 I started Headley Web <span className="amp">&amp;</span> SEO because I kept watching great local businesses lose leads to competitors who were simply easier to find online. It wasn&apos;t because those competitors did better work — they just had a better digital front door.
               </p>
               <p className="text-lg leading-relaxed">
-                I built this service to be a straightforward partnership for my neighbors in Northeast Alabama. I handle the technical heavy lifting — from the initial build to ongoing security and maintenance — so you can focus on running your business. That same persistence I bring to everything else, I bring to every site I build.
+                I built this service to be a straightforward partnership for my neighbors in Anniston, Jacksonville, and Calhoun County. I handle the technical heavy lifting — from the initial build to ongoing security and maintenance — so you can focus on running your business. That same persistence I bring to everything else, I bring to every site I build.
               </p>
             </div>
           </div>
@@ -202,7 +202,7 @@ export default function AboutPage() {
           </p>
           <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
-            Jacksonville, Alabama &middot; Serving Northeast Alabama
+            Jacksonville, Alabama &middot; Serving Calhoun County &amp; Beyond
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">
