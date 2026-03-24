@@ -173,6 +173,12 @@ Source: `starter-kit/case-study.html`
 
 ---
 
+### Services Page — Phase 2 Visual Upgrade
+- [ ] Replace Web Design service card icon with a real project screenshot (Dart Side, ESC, etc.)
+- [ ] Replace Google Business Profile icon with a GBP listing screenshot showing reviews/map pack
+- [ ] Leave SEO and Monthly Care as icons (concepts too abstract to photograph well)
+- [ ] Mixed icon/image treatment needs intentional layout — revisit card design at that point
+
 ### Portfolio Data Collection (Ongoing)
 - [ ] Screenshot client sites before your build goes live (the "before")
 - [ ] Ask for testimonials immediately after launch
