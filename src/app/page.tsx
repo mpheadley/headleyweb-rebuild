@@ -6,8 +6,13 @@ type LucideIcon = ForwardRefExoticComponent<LucideProps & RefAttributes<SVGSVGEl
 const buildIconMap: Record<string, LucideIcon> = { Monitor, MessageSquare, BarChart2, MapPin, Shield, Search, HelpCircle, BookOpen, Navigation, Bot, Star, Globe };
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
+
+const ParticleField = dynamic(() => import("./components/ParticleField"), {
+  ssr: false,
+});
 import { projects } from "@/app/data/projects";
 import { buildTiers } from "@/app/data/pricing";
 
@@ -199,6 +204,7 @@ export default function Home() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(28,40,38,0.85)] via-[rgba(28,40,38,0.7)] to-[rgba(28,40,38,0.9)]" />
+        <ParticleField className="absolute inset-0 z-[1]" />
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-[1fr_22rem] gap-12 items-center">
             {/* Left — Copy */}
