@@ -139,7 +139,7 @@ export const locations: Location[] = [
     heroHeadline: "Web Design for Piedmont Businesses",
     heroSub:
       "Piedmont is a tight-knit community where word travels fast — but your next customer is still searching Google first.",
-    heroImage: { src: "/images/locations/piedmont-hero.webp", alt: "Piedmont, Alabama" },
+    heroImage: { src: "/images/locations/piedmont-hero.webp", alt: "Cheaha Mountain near Piedmont, Alabama", credit: "Skye Marthaler / CC BY-SA 4.0" },
     localIntro:
       "Piedmont sits at the foot of Cheaha Mountain in the eastern corner of Calhoun County, and its businesses have always punched above their weight — tight community, loyal customer base, and a work-hard culture that shows up in every trade and service in town. What often doesn't show up is those businesses online. Most Piedmont companies are invisible on Google, relying entirely on word of mouth while potential customers drive past and search on their phones. I build websites that fix that — clean, mobile-friendly, fast, and structured so Google knows exactly what you do and where you do it. Flat-rate pricing, no contracts, and you own your site outright from day one.",
     whyHere: [
@@ -161,7 +161,7 @@ export const locations: Location[] = [
     heroHeadline: "Web Design for Rainbow City Businesses",
     heroSub:
       "Rainbow City is growing fast. Your website should be growing with it — not stuck on a template from 2015.",
-    heroImage: { src: "/images/locations/rainbow-city-hero.webp", alt: "Rainbow City, Alabama" },
+    heroImage: { src: "/images/locations/rainbow-city-hero.webp", alt: "Coosa River near Rainbow City, Alabama", credit: "Carol M. Highsmith / Library of Congress" },
     localIntro:
       "Rainbow City is one of Etowah County's fastest-growing communities, sitting just south of Gadsden along the Coosa River. What was once a quiet suburb has become a destination for new construction, retail, and service businesses drawn by the growth along Rainbow Drive and the city's reputation for safety and livability. If you run a business in Rainbow City — whether it's a trade, a restaurant, a service company, or a specialty shop — your customers are searching Google before they call. Most Rainbow City businesses still rely on Facebook posts and word of mouth. A clean, SEO-optimized website puts you ahead of that entire field. I build sites that load fast, rank locally, and turn searches into phone calls.",
     whyHere: [
@@ -183,7 +183,7 @@ export const locations: Location[] = [
     heroHeadline: "Web Design for Fort Payne Businesses",
     heroSub:
       "Fort Payne sits at the edge of Little River Canyon and the gateway to the Appalachians. Your website should work as hard as the people who built this town.",
-    heroImage: { src: "/images/locations/fort-payne-hero.webp", alt: "Little River Canyon near Fort Payne, Alabama" },
+    heroImage: { src: "/images/locations/fort-payne-hero.webp", alt: "Little River Canyon near Fort Payne, Alabama", credit: "Thomson200 / CC0" },
     localIntro:
       "Fort Payne is the seat of DeKalb County — a manufacturing town turned outdoor-recreation gateway, anchored by Little River Canyon National Preserve and DeSoto State Park. The city's economy runs on trades, restaurants, outdoor outfitters, and the service businesses that keep DeKalb County moving. Tourism from the canyon brings in visitors who search on their phones before they arrive, and locals search just as constantly for plumbers, HVAC, and contractors. The biggest web design presence in DeKalb County today is a sign shop that does websites on the side. That's a gap. I build websites purpose-built for service businesses — fast, mobile-friendly, with local SEO that targets Fort Payne, Rainsville, Fyffe, and the surrounding county.",
     whyHere: [
