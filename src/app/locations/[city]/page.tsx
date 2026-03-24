@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       canonical: `/locations/${loc.slug}`,
     },
     openGraph: {
+      type: "website",
+      locale: "en_US",
+      siteName: "Headley Web & SEO",
       url: `/locations/${loc.slug}`,
       images: [
         {

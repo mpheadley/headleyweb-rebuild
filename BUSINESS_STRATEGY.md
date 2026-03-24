@@ -17,39 +17,116 @@
 
 ---
 
+## Site Types — What You Actually Build
+
+> **For internal clarity only.** Clients never see these labels.
+> Tier names on the site describe outcomes. This section defines what's inside each tier.
+
+### Brochure Site
+A clear, professional online presence. You exist, you look credible, and people can reach you.
+
+**What's included:** 3–5 pages (Home, Services, About, Contact), mobile-optimized, Google Business Profile setup or optimization, basic local SEO (meta tags, schema, map embed), contact form or click-to-call.
+
+**What it is NOT:** It doesn't actively pull in search traffic or nurture visitors into leads. It's a digital business card that passes the "are they real?" test.
+
+**Maps to:** Get Found ($495) and Get Calls ($795) at current pricing.
+
+---
+
+### Marketing Site
+Built to convert. Visitors arrive with a problem; the site turns them into a phone call or a form submission.
+
+**What's included:** StoryBrand-structured copy and layout, 5–7 pages (including a dedicated Services page and a landing page for the primary offer), local SEO throughout, schema markup, GA4 event tracking, lead gen form with email notification, Google Business Profile management setup.
+
+**What makes it different from a brochure site:** Every page has a job. The hero answers "what do you do and who is it for." The services page builds the case. The CTA is repeated and clear. The site is designed around the question a prospect is actually asking — not around what the business owner wants to talk about.
+
+**Maps to:** Get Booked ($1,195 current / $2,995 target). HTML stack at current pricing.
+
+---
+
+### Content Marketing Site (Sales Engine)
+A full digital sales system. The site doesn't just answer questions — it creates them, ranks for them, and positions the business as the obvious answer in both Google and AI tools.
+
+**What's included:** Everything in Marketing Site + Next.js stack (fast, SEO-optimized), blog or resource section for ongoing content, multi-audience landing pages (e.g., separate pages for residential vs. commercial, or for two different service areas), lead magnet or email capture, full StoryBrand workshop session, AEO (answer-engine optimization) — schema, entity alignment, answer-first content blocks.
+
+**What makes it different from a marketing site:** The site compounds over time. Blog posts rank. Landing pages target specific keywords. The client can brief you on a new service and get a targeted page within 48 hours. This is infrastructure, not just a website.
+
+**Maps to:** Sales Engine ($7,495 target). Next.js stack required.
+
+---
+
 ## Pricing Tiers
 
-### Current Live Pricing (headleyweb.com)
-
-> **Naming principle (March 2026):** Tier names describe the OUTCOME, not the deliverable.
+> **Naming principle:** Tier names describe the OUTCOME, not the deliverable.
 > Page counts are implementation details — YOU decide scope, not the client.
 > Inspired by Lee Blue's revenue engine model. See `memory/lee-blue-revenue-model.md`.
 
-- **Get Found** — $495 — "Get online and start getting calls"
-- **Get Calls** (Best Value) — $795 — "Show up where customers search"
-- **Get Booked** — $1,195 — "Dominate your market in search and AI"
+### Current Live Pricing (headleyweb.com)
+
+- **Get Found** — $495 — Entry product. 1–2 pages, mobile-ready, GBP setup. For side hustles and micro-businesses. Simpler scope by design.
+- **Get Calls** — $1,495 — Full marketing site. 3–5 pages, SEO, FAQ schema, blog built, 2 launch posts written.
+- **Get Booked** — $1,995 — Local authority build. 5–7 pages, service area/trade landing pages, 4 launch posts for AI visibility, full GA4 event tracking, comprehensive schema, GBP setup + optimization, Search Console submitted.
+
+> **Founding client strategy:** Prices shown are target rates. A small number of founding
+> clients are being offered a significantly reduced rate in exchange for a testimonial and
+> case study. This is communicated via a callout on the site (not strike-through pricing)
+> and in personal outreach. Discounts ease down progressively as case studies accumulate —
+> free → heavily discounted → moderately discounted → slightly discounted → full price.
+> Never announce "prices are going up" publicly — the offer just quietly becomes less generous.
 
 ### Target Pricing (raise after 2–3 case studies with measurable ROI)
-- **Get Found** — $495
-- **Get Calls** — $1,495
-- **Get Booked** — $2,995
-- **Sales Engine** — $7,495 — Next.js stack, includes StoryBrand session
+
+| Tier | Price | Site Type | Stack |
+|------|-------|-----------|-------|
+| **Get Found** | $495 | Brochure site | HTML |
+| **Get Calls** | $1,495 | Brochure + stronger local SEO | HTML |
+| **Get Booked** | $2,995 | Marketing site | HTML or Next.js |
+| **Sales Engine** | $7,495 | Content marketing site | Next.js, includes Clarity Sprint |
+
+> **The missing middle:** As you build more Next.js marketing sites (full StoryBrand, lead gen,
+> multi-page), those builds fall between $2,995 and $7,495. A Next.js marketing site without
+> a blog or content system is legitimately a $3,500–4,500 build. Don't force it into "Get Booked"
+> — price it honestly and explain why it's different.
 
 > **When to raise prices:** Once you have 2–3 case studies showing real numbers
-> (GA4 events, search ranking improvements, lead increases). The proof justifies
-> the jump. Until then, current pricing + free builds for the first 3 clients.
+> (GA4 events, search ranking improvements, lead increases). The proof justifies the jump.
+> Until then, current pricing + free builds for the first 3 clients.
+
+> **Founding client discount strategy (keep OFF the website):** Early builds are discounted
+> or free in exchange for testimonials and case studies — but this is a private, personal offer,
+> never a public price. Putting discounts on the site anchors future clients to lower prices
+> and signals you need clients. The move: in outreach or discovery calls, say "I'm taking on
+> 2–3 founding clients at a significantly reduced rate in exchange for a testimonial and case
+> study." It feels like an invitation, not a sale.
+
+> **Blog deliverable decision (resolved):** Get Calls includes blog section built + 2 launch
+> posts written as a one-time build deliverable. Get Booked includes 4 launch posts. Ongoing
+> monthly posts are Accelerate's job ($199/mo). No cannibalizing — the launch posts seed the
+> site with indexable content at launch and make the Accelerate upsell natural ("here's what
+> month 2, 3, 4 looks like if we keep going").
+
+---
 
 ### Monthly Care Plans (current live pricing)
 
-| Tier | Price | Key Deliverables |
-|------|-------|-----------------|
-| **Essential Care** | $49/mo | Hosting, security, 30 min edits, uptime monitoring |
-| **Growth Care** | $79/mo | + GBP management, monthly report, review coaching, 1 hr edits |
-| **Accelerate** | $149/mo | + AI Visibility monitoring, quarterly entity audit, answer-first content refresh, strategy call |
+> **Naming principle:** Plans are described by what the client experiences, not by feature lists.
+
+| Tier | Price | What the client gets |
+|------|-------|---------------------|
+| **Essential Care** | $49/mo | Your site stays live, secure, and up to date. I handle hosting, security patches, and up to 30 minutes of edits per month (hours changes, text updates, that kind of thing). Uptime monitoring so I know if it goes down before you do. |
+| **Growth Care** | $99/mo | Everything in Essential, plus I actively manage your Google Business Profile — posts, Q&A, and review coaching. You get a monthly report showing how many people found you that month and where they came from. |
+| **Accelerate** | $199/mo | Everything in Growth, plus 2 blog posts/month done for you, a 30-minute strategy call each month, and monitoring whether AI tools like ChatGPT and Perplexity are recommending your business. Quarterly content refreshes on existing pages. |
+
+**Why someone upgrades:**
+
+- **Essential → Growth:** When they realize Google Maps matters as much as the website. Once a business gets calls from their GBP listing, the $50 difference is obvious.
+- **Growth → Accelerate:** When they want to stay ahead of how people search — not just Google, but AI tools. Also for clients who want a monthly touchpoint and ongoing guidance instead of just a report.
 
 > First 3 months free with any build. Cancel anytime.
 > **Accelerate** is the bridge to high-value retainers — positions AI Visibility
-> early without requiring $2,500/mo proof yet. Raise to $249-$349 after case studies.
+> early without requiring $2,500/mo proof yet. Raise to $249–$349 after case studies.
+
+---
 
 ### Target Retainers (Phase 3+: $2,500/mo)
 Monthly deliverables:
@@ -61,8 +138,9 @@ Monthly deliverables:
 
 ### Clarity Sprint (standalone: $1,500)
 - StoryBrand workshop as a separate 2-day deliverable
-- De-risks the sale — client commits $1,500 before the $6,000 build
+- De-risks the sale — client commits $1,500 before the $6,000+ build
 - If they like the strategy, the build is a natural upsell
+- Included in Sales Engine tier at target pricing
 
 ### AI Add-On Services (Phase 2+)
 
@@ -102,7 +180,7 @@ These are upsells to existing builds or standalone products. All use tools alrea
 
 | Phase | Timeline | Client Type | Build Price | Monthly | Your Goal |
 |-------|----------|-------------|-------------|---------|-----------|
-| **1 — Reps & Reviews** | Now – Month 6 | Local startups, side-hustles | $495 – $1,195 | $49 – $109 | 5–10 live case studies, build recurring revenue floor |
+| **1 — Reps & Reviews** | Now – Month 6 | Local startups, side-hustles | $495 – $1,195 | $49 – $199 | 5–10 live case studies, build recurring revenue floor |
 | **2 — Market Competitor** | Months 6–12 | Established local services | $2,200 – $4,000 | $149 – $349 | Compete with local agencies (Lake City Web Designs, etc.) |
 | **3 — Strategic Partner** | Years 1–2 | Regional / niche companies ($1M+ revenue) | $5,000 – $10,000 | $1,500 – $2,500 | Pivot to "Sales Engine" + Fractional CMO model |
 
@@ -126,7 +204,7 @@ often matters more than the website itself.
 4. Price sensitivity evaporates — upsell to Get Calls / Get Booked / Sales Engine
 
 **The math to $400K:** You don't need 300 local shops. You need **10 high-value
-partnerships**. Once recurring revenue from $109/mo plans covers living expenses,
+partnerships**. Once recurring revenue from $49–$199/mo plans covers living expenses,
 you gain the financial margin to stop taking low-budget work and pitch larger
 regional companies using the case studies you built locally.
 
@@ -145,11 +223,26 @@ regional companies using the case studies you built locally.
 - [ ] Permission to use site as a before/after case study
 - [ ] Agreement to be a verbal reference for future leads
 
-**On the proposal:** Show the full retail price crossed out (e.g. ~~$795 build + $149/mo~~). The client sees the value; you set the anchor for paid clients.
+**On the proposal:** Show the full retail price crossed out (e.g. ~~$795 build + $99/mo~~). The client sees the value; you set the anchor for paid clients.
 
 **Scope cap:** Starter tier max (5 pages). No scope creep into Professional/Sales Engine territory.
 
-**After 6 months:** Natural conversion point — they're already in the habit and seeing value. Pitch Maintain ($49/mo) or Grow ($149/mo).
+**After 6 months:** Natural conversion point — they're already in the habit and seeing value. Pitch Essential Care ($49/mo) or Growth Care ($99/mo). Accelerate ($199/mo) is the right pitch for clients who want ongoing content.
+
+### Case Study Build Pitch (verbal framing)
+
+> **Pre-meeting research:** Before any discovery call, run the 8-step process in [DISCOVERY_WORKFLOW.md](DISCOVERY_WORKFLOW.md). It takes 30–60 minutes and gives you the audit numbers, competitor names, and GBP status you need to make the pitch concrete. The baseline metrics you capture also become the "before" numbers for the case study.
+
+Use this when presenting a free build to a prospect. Anchor value first, then reveal the arrangement.
+
+> "A site like this typically runs **$795 to $1,195**. I'm building yours free as part of a case study — I document the before/after and use it on my site. After 3 months, the site is yours. At that point you can take everything and host it yourself, or stay on an optional care plan: **$49/mo** covers updates and hosting, **$99/mo** adds Google Business Profile management and a monthly results report."
+
+**Why this order matters:** Lead with the retail value so the prospect understands what they're getting. If you lead with "it's free," they anchor to zero and the care plan feels like a bait-and-switch. If you lead with $795–$1,195 and *then* say it's free, the care plan feels cheap by comparison.
+
+**Care plan framing after anchor:**
+- $49/mo = updates + hosting. "Basically just keeping the lights on."
+- $99/mo = adds GBP management + monthly report. "This is where you actually keep moving up in search."
+- $199/mo = adds 2 blog posts/month + strategy call + AI visibility. "For clients who want to keep compounding."
 
 ### Nonprofit / Community Builds (Portfolio + Goodwill)
 
@@ -175,6 +268,9 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [x] GA4 event tracking added to starter kit
 - [ ] Finish 2 in-progress vanilla client builds
 - [ ] Copy updated script.js into in-progress sites for event tracking
+- [ ] **Build AI visibility callout bar on homepage** — after Pain Points section. "Want to see what AI says about your business?" → links to checkup form. HIGH PRIORITY — Plexamedia is claiming this space with buzzwords; we need to claim it with proof.
+- [ ] **Add "two battlefields" sales pitch to homepage** — "When someone searches 'plumber near me,' the map pack decides. When someone searches 'my pipes are leaking,' AI decides. I make sure you show up in both." Use in services copy, sales calls, and social.
+- [ ] **Reframe all AI messaging as outcomes, not process** — audit all customer-facing copy. Replace jargon ("analyze conversational AI patterns") with results ("I make sure ChatGPT recommends your business"). Plexamedia sells the tool; we sell the result.
 - [ ] Rebuild headleyweb.com on Next.js + Tailwind + daisyUI + MDX
 - [ ] Publish first 2 blog posts on headleyweb.com
 - [ ] Get professional headshot taken
@@ -182,13 +278,18 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [x] Choose email platform — **Mailchimp free tier** (one account, all clients get separate Audiences). Added to Launch Checklist Phase 15.
 
 ### Phase 1b: New Growth Initiatives (Now - Month 3)
+- [x] Pre-meeting discovery workflow documented — [DISCOVERY_WORKFLOW.md](DISCOVERY_WORKFLOW.md) (run this before every sales call)
 - [ ] Build "Website Report Card" PDF template (Idea #6) — attach to every video audit
 - [ ] Formalize referral incentive structure (Gap #1) — "$100 off care plan per referral"
-- [ ] Research Calhoun County / Jacksonville Chamber of Commerce membership (Idea #9)
+- [ ] Submit business info to BBB for free profile (Idea #9a)
+- [ ] Create LinkedIn company page — logo, brand descriptor, website link (Idea #9b)
+- [ ] Update personal LinkedIn profile — headline, about, employer (Idea #9b)
+- [ ] Research Calhoun County / Jacksonville Chamber of Commerce membership (Idea #9c)
 - [ ] Launch "GBP Rescue" micro-offer at $149-$249 (Idea #10)
 - [ ] Start "build in public" Facebook posts for every project completion (Idea #8)
 - [ ] Identify 3 adjacent service providers for partnership (Idea #7) — photographer, printer, bookkeeper
-- [ ] First competitor audit: search "web design Anniston AL" + 3 variants, document results (Gap #3)
+- [x] First competitor audit: Plexamedia (Gadsden) — see `content/blog/drafts/competitor-research-plexamedia.md` (Gap #3)
+- [ ] Search "web design Anniston AL" + 3 variants, document full SERP results (Gap #3)
 - [ ] Start weekly LinkedIn post cadence repurposing blog content (Gap #5)
 
 ### Phase 2: Proof Engine (Month 2-4)
@@ -206,6 +307,11 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [ ] Draft year-long nurture sequence (12-24 evergreen emails beyond the initial 5)
 - [ ] Build win-back email templates: 60-day silence + 90-day re-engagement + annual health check (Gap #2)
 - [ ] Evaluate standalone `/pricing` page based on GSC data for price-intent keywords (Gap #4)
+
+### Automation Skills (Cowork)
+- [ ] Build "discovery-prep" skill — automates pre-call research using Airtable CRM + DISCOVERY_WORKFLOW.md
+- [ ] Build "case-study" skill — generates case study content in multiple formats from client data
+- See [SKILL_PROMPTS.md](SKILL_PROMPTS.md) for ready-to-use prompts
 
 ### Phase 3: High-Ticket Pivot (Month 3-6)
 - [ ] 3 case studies showing measurable lead increase
@@ -302,7 +408,7 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - **Phase A — Manual (launch immediately):** When a lead submits the audit form, search their business name in ChatGPT, Gemini, and Perplexity. Screen-record a 2-minute Loom showing what AI says (or doesn't say) about them. Include this as part of the free site checkup — one lead magnet, two hooks ("Get Your Free Site Checkup" + "Want to see what AI says about your business?").
 - **Why manual first:** Takes 5 minutes per lead, feels incredibly personal, proves your expertise before they ever talk to you. No one else in NE Alabama is offering this.
 - **Phase B — Automated (Phase 3, month 3-6):** Build AEO Brand Grader MVP — prospect enters business name, tool queries AI APIs and returns a report. Captures the lead and auto-generates a score. Reduces per-lead time from 5 min to near-zero.
-- **Upsell path:** AI visibility check → free site checkup → Accelerate care plan ($149/mo includes AI visibility monitoring, quarterly entity audit, answer-first content refresh).
+- **Upsell path:** AI visibility check → free site checkup → Accelerate care plan ($199/mo includes AI visibility monitoring, quarterly entity audit, answer-first content refresh).
 - **Website integration:** AI callout bar on homepage after Pain Points section. "Want to see what AI says about your business?" → links to the checkup form. Same form, different emotional hook.
 
 **6. Launch Day Push (Client Deliverable)**
@@ -327,6 +433,7 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 
 **9. Case Study Pipeline (Proof Engine)**
 - **What:** A structured process to turn every client project into a metrics-first case study that justifies higher pricing.
+- **Pre-meeting research:** Use [DISCOVERY_WORKFLOW.md](DISCOVERY_WORKFLOW.md) to capture baseline metrics, competitor gaps, and GBP status before the discovery call. These become your "before" numbers automatically.
 - **Baseline "before" snapshot:** On day 1, save Lighthouse scores + full-page screenshots of the old site (or document "no site"). Store in `before-screenshots/` in the project folder. Added to Launch Checklist Phase 0.
 - **AI Share of Voice (SOV) tracking:** At launch and at 30/60/90 days, query ChatGPT and Perplexity for the client's services + city. Screenshot results. Track whether the client appears as a recommendation. This is raw proof for the Accelerate care plan and AEO positioning.
 - **Signed agreement as commitment filter:** Free builds require a signed agreement: testimonial upon completion + care plan commitment after the 3-month grace period. Filters out tire-kickers and guarantees you get the testimonial and recurring revenue. Added to Launch Checklist Phase 0.
@@ -506,7 +613,7 @@ Three layers of search visibility, each building on the last:
 | **GEO** (Generative Engine Optimization) | Authority signals so LLMs cite your business in generated responses | "ChatGPT and Perplexity recommend you" |
 
 **How this maps to your tiers:**
-- **Phase 1 clients ($495–$1,195):** SEO + basic AEO baked into every build (JSON-LD, FAQ schema, GBP). They don't need to know the terminology.
+- **Phase 1 clients ($495–$1,195 build / $49–$199/mo care):** SEO + basic AEO baked into every build (JSON-LD, FAQ schema, GBP). They don't need to know the terminology.
 - **Phase 2–3 clients ($2,500/mo retainers):** Sell "AI Visibility" as a named service — AEO + GEO monitoring, structured content strategy, citation tracking. This justifies higher retainers.
 
 **Client-friendly language:** *"I make sure AI recommends your business, not just Google."*
@@ -600,22 +707,26 @@ Distribution checklist mentions LinkedIn but doesn't treat it seriously. For B2B
 - Share case study metrics and AI/AEO insights — LinkedIn audience eats that up.
 - **When:** Phase 1-2. Low effort, high signal for the Phase 2-3 client segment.
 
-### Idea 6: "Website Report Card" — 1-Page PDF Leave-Behind
+### Idea 6: "Website Report Card" — PDF Leave-Behind ✅ BUILT
 
-You have the quiz and the video audit. What's missing is a **leave-behind document** that gets forwarded to business partners and spouses — the people who actually approve the spend. A video audit doesn't get forwarded the same way.
+**Status:** Live. The automated site checkup at headleyweb.com/audit generates a branded PDF report and emails it via Resend. No manual template needed.
 
-**Format (branded 1-page PDF):**
-- Lighthouse scores (mobile + desktop)
-- GBP status (complete / incomplete / missing)
-- Schema status
-- AI visibility check (does ChatGPT mention them?)
-- 3 specific recommendations
-- Your logo, contact info, and CTA at the bottom
+**What the PDF includes:**
+- Overall letter grade (A-F) with executive summary
+- Mobile screenshot of their site
+- Messaging analysis (clarity, CTA placement, empathy, authority — 16 scored items)
+- Lighthouse scores (Speed, SEO, Accessibility)
+- Core Web Vitals (LCP, FCP, CLS, TBT)
+- HTTPS, meta description, viewport, crawlability, local business schema checks
+- "What I'd Fix First" recommendations
+- Trade-specific ROI estimates (when trade data available)
+- Headley Web branding + contact info footer
 
-**Actions:**
-- Build a PDF template (Canva or programmatic with a simple HTML-to-PDF script).
-- Generate one for every video audit. Attach to the follow-up email.
-- **When:** Phase 1. Build the template before the next audit.
+**Two-step lead funnel:**
+1. **Automated PDF** — prospect enters URL + email at headleyweb.com/audit → instant branded report emailed. This is the lead capture.
+2. **Free video review (manual follow-up)** — Matt records a personalized 3-5 minute Loom walking through their specific site, referencing the PDF scores. Offered as a free follow-up to every audit lead. This is the trust-builder that converts.
+
+**Why 2 steps:** The PDF is the scalable lead magnet that captures the email. The video is the personal touch that closes. The PDF gets forwarded to business partners and spouses — the video builds the relationship with the decision-maker.
 
 ### Idea 7: Strategic Partnerships with Adjacent Providers
 
@@ -638,7 +749,61 @@ Instead of a standalone "how I build websites" blog, do a lightweight version: p
 - This is the connective tissue between builds. Viral content is the spike; "build in public" is the steady drumbeat.
 - **When:** Start immediately. Post for every project completion, including free builds.
 
-### Idea 9: Chamber of Commerce Membership
+### Idea 9a: BBB Profile & Accreditation
+
+Your top local competitor (Plexamedia) has an A+ BBB rating. A BBB profile adds a high-authority .org backlink with your NAP data and a trust badge for your site.
+
+**Option A — Free Profile (no accreditation):**
+- BBB creates profiles automatically when reviews are submitted or complaints filed
+- You can claim/update your profile info but can't display the "BBB Accredited" seal
+- No cost. Still provides the backlink and review platform.
+- **Do this immediately** — submit your business info at bbb.org
+
+**Option B — Accredited ($400-600/year):**
+- Apply at [bbb.org/get-accredited](https://www.bbb.org/get-accredited)
+- BBB reviews your business (complaints, licensing, etc.)
+- You get the A+ seal for your website + enhanced profile
+- Annual fee scales by revenue and employee count — for a solo shop in a small market, expect ~$400-600/yr
+- **When:** Phase 2 (after first paying clients). The annual fee is justified once you have revenue and need the trust signal for higher-ticket sales.
+
+**What you get either way:**
+- High-authority `.org` backlink with your NAP (name, address, phone)
+- Review platform (another place for clients to leave reviews)
+- Shows up in "headley web seo" search results — looks legitimate
+
+**Action items:**
+- [ ] Submit business info to BBB for free profile (now)
+- [ ] Apply for accreditation when revenue justifies the $400-600/yr (Phase 2)
+- [ ] Add BBB badge to footer once accredited
+
+### Idea 9b: LinkedIn Company Page (Headley Web & SEO)
+
+Create a LinkedIn company page — not for active posting, but for three specific purposes:
+
+**Why:**
+1. **Backlink** — high-authority link with your business NAP. Helps local SEO signals.
+2. **Trust signal** — when someone Googles "Headley Web & SEO," a LinkedIn company page in results looks established.
+3. **Employee listing** — you (and any future contractors) can list it as your workplace, which looks more professional.
+
+**Your personal LinkedIn profile is where the engagement happens.** The company page is passive infrastructure.
+
+**Personal profile strategy:**
+- Post 1x/week repurposing blog content (shorter format, link in first comment for algorithm)
+- Connect with local business owners, Chamber members, adjacent service providers
+- Share case study metrics and AI/AEO insights — LinkedIn audience responds to that
+- Comment on local business content — be visible in the feed
+
+**Company page:**
+- Set up once with logo, description (brand descriptor), website link, service area
+- Post occasionally by sharing from your personal profile
+- Don't stress about company page engagement — it's a directory listing, not a content channel
+
+**Action items:**
+- [ ] Create LinkedIn company page with brand descriptor, logo, and link (now)
+- [ ] Update personal LinkedIn profile — headline, about section, list Headley Web & SEO as employer
+- [ ] Start 1x/week LinkedIn post cadence (Phase 1-2)
+
+### Idea 9c: Chamber of Commerce Membership
 
 If not already a member of the Calhoun County Chamber (or Jacksonville's), this is a low-cost play ($200-400/year).
 
@@ -663,7 +828,7 @@ Your strategy buries GBP setup inside the build tiers. A standalone GBP-only pro
 - A business owner who won't spend $495 on a website WILL spend $149 to "fix my Google listing."
 - Once they see results (calls, map pack visibility), the website conversation starts naturally.
 - Sits below Get Found on the value ladder and feeds directly into it.
-- Can be offered as an upsell from the free video audit: "Your GBP is a mess — I can fix it in 48 hours for $149."
+- Can be offered as an upsell from the free site checkup: "Your GBP is a mess — I can fix it in 48 hours for $149."
 - **When:** Phase 1. Can launch immediately — you already know how to do this.
 
 ### Idea 11: White-Label Site Audit Tool (SaaS / Productized Service)

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Video, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles } from "lucide-react";
+import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Video, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles, MessageSquare, BarChart2, Shield, HelpCircle, BookOpen, Navigation, Bot, Star, Globe, type LucideProps } from "lucide-react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
+
+type LucideIcon = ForwardRefExoticComponent<LucideProps & RefAttributes<SVGSVGElement>>;
+const buildIconMap: Record<string, LucideIcon> = { Monitor, MessageSquare, BarChart2, MapPin, Shield, Search, HelpCircle, BookOpen, Navigation, Bot, Star, Globe };
 import Image from "next/image";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
-import LazyPageSpeedProof from "./components/LazyPageSpeedProof";
 import { projects } from "@/app/data/projects";
+import { buildTiers } from "@/app/data/pricing";
 
 export const metadata: Metadata = {
   title: "Northeast Alabama Web Design & Local SEO",
@@ -16,8 +20,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "Headley Web & SEO",
     locale: "en_US",
+    siteName: "Headley Web & SEO",
     url: "/",
     images: [
       {
@@ -27,11 +31,6 @@ export const metadata: Metadata = {
         alt: "Headley Web & SEO — Web Design for Local Businesses",
       },
     ],
-  },
-  twitter: {
-    title: "Northeast Alabama Web Design & Local SEO",
-    description:
-      "Headley Web & SEO builds StoryBrand-powered websites for local service businesses in Jacksonville, Anniston & Northeast Alabama. Get found, get calls, get booked.",
   },
 };
 
@@ -458,7 +457,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Success / Transformation (Before/After) ═══ */}
+      {/* ═══ Success / Transformation ═══ */}
       <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "rgba(107,143,113,0.06)" }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -533,7 +532,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg text-hw-text-light mb-6">
-                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. I started Headley Web &amp; SEO because great local businesses deserve a website that works as hard as they do.
+                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. I started Headley Web <span className="amp">&amp;</span> SEO because great local businesses deserve a website that works as hard as they do.
               </p>
               <ul className="space-y-3 text-hw-text-light">
                 <li className="flex items-start gap-3">
@@ -694,8 +693,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ PageSpeed Proof ═══ */}
-      <LazyPageSpeedProof variant="light" />
+      {/* ═══ Consequences ═══ */}
+      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "rgba(28,40,38,0.04)" }}>
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Don&apos;t Wait</p>
+          <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">What Happens If You Wait</h2>
+          <p className="text-hw-text-light mt-4 animate-on-scroll">Every month without a clear online presence...</p>
+        </div>
+        {/* Timeline with red connecting line */}
+        <div className="relative max-w-3xl mx-auto flex flex-col">
+          {/* Vertical connecting line */}
+          <div className="absolute left-[23px] top-7 bottom-7 w-[2px]" style={{ background: "linear-gradient(to bottom, rgba(220,38,38,0.35) 0%, rgba(220,38,38,0.1) 100%)" }} aria-hidden="true" />
+          {/* Risk 1 */}
+          <div className="flex gap-7 items-start py-5 animate-on-scroll" style={{ transitionDelay: "0.1s" }}>
+            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center relative z-10" style={{ background: "rgba(220,38,38,0.07)", border: "2px solid rgba(220,38,38,0.2)" }} aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div className="pt-2.5">
+              <h3 className="text-lg font-bold mb-2">Competitors rank above you</h3>
+              <p className="text-hw-text-light leading-relaxed">
+                Every search is a chance for them to win a customer that could&apos;ve been yours — and it keeps happening every day. They&apos;re getting stronger in the map pack AND in AI answers.
+              </p>
+            </div>
+          </div>
+          {/* Risk 2 */}
+          <div className="flex gap-7 items-start py-5 animate-on-scroll" style={{ transitionDelay: "0.2s" }}>
+            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center relative z-10" style={{ background: "rgba(220,38,38,0.07)", border: "2px solid rgba(220,38,38,0.2)" }} aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div className="pt-2.5">
+              <h3 className="text-lg font-bold mb-2">Customers move on to whoever shows up next</h3>
+              <p className="text-hw-text-light leading-relaxed">
+                Without a clear online presence, potential customers can&apos;t find you — and they&apos;re not waiting around. They call whoever shows up first.
+              </p>
+            </div>
+          </div>
+          {/* Risk 3 */}
+          <div className="flex gap-7 items-start py-5 animate-on-scroll" style={{ transitionDelay: "0.3s" }}>
+            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center relative z-10" style={{ background: "rgba(220,38,38,0.07)", border: "2px solid rgba(220,38,38,0.2)" }} aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div className="pt-2.5">
+              <h3 className="text-lg font-bold mb-2">Your time stays tied up</h3>
+              <p className="text-hw-text-light leading-relaxed">
+                Without a website to answer routine questions, you&apos;re fielding the same calls and texts — time you can&apos;t spend on the work that actually grows your business.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ═══ Pricing ═══ */}
       <section className="relative py-28 md:py-36 px-6 overflow-hidden" style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 15%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.82) 100%), url('/images/background-dark-oak.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
@@ -706,150 +758,83 @@ export default function Home() {
               Compare Your Options
             </h2>
             <p className="text-gray-300 mt-4 max-w-2xl mx-auto animate-on-scroll">
-              Every tier includes mobile-ready design, search optimization, and full site ownership.
-              You own your website from day one — no contracts, no monthly traps.
+              Flat-rate, one-time build. No ongoing fees unless you want them.
+              You own your website from day one.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 items-start">
-            {/* Get Found */}
-            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0s" }}>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Found</h3>
-              <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$495</p>
-              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
-              <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Get online. Get visible. Get found.
-              </p>
-              <p className="text-xs text-gray-400 mb-5">Typically 1 page · ~1–2 weeks*</p>
-              <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Professional, mobile-friendly design
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Clear messaging that converts visitors
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Basic search optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Contact form setup
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  You own your website
-                </li>
-              </ul>
-              {/* Paired care plan */}
-              <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Essential Care — <span className="text-hw-primary font-normal">$49/mo</span></span>
-                <span className="text-xs text-gray-300">Hosting, security, &amp; minor updates</span>
-                <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
+            {buildTiers.map((tier) => (
+              <div
+                key={tier.name}
+                className={`${
+                  tier.bestValue
+                    ? "bg-hw-primary/[0.07] backdrop-blur-sm border border-hw-primary/30 hover:shadow-[0_12px_40px_rgba(224,123,60,0.15)]"
+                    : "bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)]"
+                } rounded-2xl p-8 flex flex-col relative transition-all hover:-translate-y-1 animate-on-scroll`}
+                style={{ transitionDelay: tier.animationDelay }}
+              >
+                {tier.bestValue && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-hw-primary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    Best Value
+                  </span>
+                )}
+                <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">{tier.name}</h3>
+                <p className="font-heading text-[42px] font-extrabold !text-white mb-2">{tier.priceDisplay}</p>
+                <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
+                <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">{tier.tagline}</p>
+                <p className="text-xs text-gray-400 mb-5">{tier.timeline}</p>
+                <ul className="space-y-3 text-sm text-gray-300 flex-grow">
+                  {tier.features.map((feature) => {
+                    const Icon = buildIconMap[feature.iconName] ?? Check;
+                    return (
+                      <li key={feature.text} className="flex items-start gap-2">
+                        <Icon className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
+                        {feature.text}
+                      </li>
+                    );
+                  })}
+                  {tier.inheritedFeatures && (
+                    <>
+                      <li className="border-t border-white/[0.07] pt-3 mt-1">
+                        <span className="text-[11px] text-gray-500 uppercase tracking-wider">Also includes</span>
+                      </li>
+                      {tier.inheritedFeatures.map((f) => (
+                        <li key={f} className="flex items-start gap-2">
+                          <Check className="w-3.5 h-3.5 text-hw-secondary shrink-0 mt-0.5" />
+                          <span className="text-xs text-gray-300">{f}</span>
+                        </li>
+                      ))}
+                      {tier.inheritedNote && (
+                        <li className="text-xs text-gray-400 italic pl-5">{tier.inheritedNote}</li>
+                      )}
+                    </>
+                  )}
+                </ul>
+                <div className="mt-6 mb-0"></div>
+                {/* Paired care plan */}
+                <div className="flex flex-col gap-2 py-4 border-t border-white/[0.07] mb-5">
+                  <span className="text-xs font-semibold text-gray-300">
+                    {tier.carePlan.name} — <span className="text-hw-primary font-normal">${tier.carePlan.price}/mo</span>
+                  </span>
+                  <ul className="space-y-1">
+                    {tier.carePlan.highlights.map((h) => (
+                      <li key={h} className="flex items-start gap-1.5 text-xs text-gray-400">
+                        <Check className="w-3 h-3 text-hw-secondary shrink-0 mt-0.5" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="text-xs text-hw-primary font-semibold">First 3 months included</span>
+                    <Link href="/services#care-plans" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+                      Full details →
+                    </Link>
+                  </div>
+                </div>
+                <Link href={tier.ctaHref} className="btn-primary w-full text-center">{tier.cta}</Link>
               </div>
-              <Link href="/contact" className="btn-primary w-full text-center">Get Found Now</Link>
-            </div>
-
-            {/* Get Calls — Best Value */}
-            <div className="bg-hw-primary/[0.07] backdrop-blur-sm border border-hw-primary/30 rounded-2xl p-8 flex flex-col relative transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.15)] animate-on-scroll" style={{ transitionDelay: "0.12s" }}>
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-hw-primary text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                Best Value
-              </span>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Calls</h3>
-              <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$795</p>
-              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
-              <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Show up in search. Start getting calls.
-              </p>
-              <p className="text-xs text-gray-400 mb-5">Typically 3–5 pages · ~2–3 weeks*</p>
-              <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Search optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  FAQ section that Google features in search
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Professional, mobile-friendly design
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Clear messaging that converts visitors
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  You own your website
-                </li>
-              </ul>
-              {/* Paired care plan */}
-              <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Growth Care — <span className="text-hw-primary font-normal">$99/mo</span></span>
-                <span className="text-xs text-gray-300">Essential + monthly traffic reports</span>
-                <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
-              </div>
-              <Link href="/contact" className="btn-primary w-full text-center">Start Getting Calls</Link>
-            </div>
-
-            {/* Get Booked */}
-            <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)] animate-on-scroll" style={{ transitionDelay: "0.24s" }}>
-              <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">Get Booked</h3>
-              <p className="font-heading text-[42px] font-extrabold !text-white mb-2">$1,195</p>
-              <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
-              <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">
-                Dominate local search. Stay booked solid.
-              </p>
-              <p className="text-xs text-gray-400 mb-5">Typically 5–7 pages · ~3–4 weeks*</p>
-              <ul className="space-y-3 text-sm text-gray-300 mb-6 flex-grow">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Advanced search optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Content written for AI visibility
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google knows your trade, your town, and your hours
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Professional, mobile-friendly design
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Clear messaging that converts visitors
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Google Business Profile setup &amp; optimization
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  You own your website
-                </li>
-              </ul>
-              {/* Paired care plan */}
-              <div className="flex flex-col gap-1 py-4 border-t border-white/[0.07] mb-5">
-                <span className="text-xs font-semibold text-gray-300">Accelerate — <span className="text-hw-primary font-normal">$149/mo</span></span>
-                <span className="text-xs text-gray-300">Growth + AI visibility &amp; strategy</span>
-                <span className="text-xs text-hw-primary font-semibold">First 3 months included, cancel anytime</span>
-              </div>
-              <Link href="/contact" className="btn-primary w-full text-center">Dominate Local Search</Link>
-            </div>
+            ))}
           </div>
 
           {/* Quick Comparison */}
@@ -910,61 +895,9 @@ export default function Home() {
           <p className="text-center text-gray-400 text-xs mt-2 animate-on-scroll">
             *Timelines begin once all content (text, photos, logos) is received.
           </p>
-        </div>
-      </section>
-
-      {/* ═══ Consequences ═══ */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "rgba(28,40,38,0.04)" }}>
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Don&apos;t Wait</p>
-          <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">What Happens If You Wait</h2>
-          <p className="text-hw-text-light mt-4 animate-on-scroll">Every month without a clear online presence...</p>
-        </div>
-        {/* Timeline with red connecting line */}
-        <div className="relative max-w-3xl mx-auto flex flex-col">
-          {/* Vertical connecting line */}
-          <div className="absolute left-[23px] top-7 bottom-7 w-[2px]" style={{ background: "linear-gradient(to bottom, rgba(220,38,38,0.35) 0%, rgba(220,38,38,0.1) 100%)" }} aria-hidden="true" />
-          {/* Risk 1 */}
-          <div className="flex gap-7 items-start py-5 animate-on-scroll" style={{ transitionDelay: "0.1s" }}>
-            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center relative z-10" style={{ background: "rgba(220,38,38,0.07)", border: "2px solid rgba(220,38,38,0.2)" }} aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div className="pt-2.5">
-              <h3 className="text-lg font-bold mb-2">Competitors rank above you</h3>
-              <p className="text-hw-text-light leading-relaxed">
-                Every search is a chance for them to win a customer that could&apos;ve been yours — and it keeps happening every day. They&apos;re getting stronger in the map pack AND in AI answers.
-              </p>
-            </div>
-          </div>
-          {/* Risk 2 */}
-          <div className="flex gap-7 items-start py-5 animate-on-scroll" style={{ transitionDelay: "0.2s" }}>
-            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center relative z-10" style={{ background: "rgba(220,38,38,0.07)", border: "2px solid rgba(220,38,38,0.2)" }} aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div className="pt-2.5">
-              <h3 className="text-lg font-bold mb-2">Customers move on to whoever shows up next</h3>
-              <p className="text-hw-text-light leading-relaxed">
-                Without a clear online presence, potential customers can&apos;t find you — and they&apos;re not waiting around. They call whoever shows up first.
-              </p>
-            </div>
-          </div>
-          {/* Risk 3 */}
-          <div className="flex gap-7 items-start py-5 animate-on-scroll" style={{ transitionDelay: "0.3s" }}>
-            <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center relative z-10" style={{ background: "rgba(220,38,38,0.07)", border: "2px solid rgba(220,38,38,0.2)" }} aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div className="pt-2.5">
-              <h3 className="text-lg font-bold mb-2">Your time stays tied up</h3>
-              <p className="text-hw-text-light leading-relaxed">
-                Without a website to answer routine questions, you&apos;re fielding the same calls and texts — time you can&apos;t spend on the work that actually grows your business.
-              </p>
-            </div>
+          <div className="mt-10 max-w-xl mx-auto border border-hw-primary/25 rounded-xl px-6 py-5 text-center animate-on-scroll">
+            <p className="text-white font-semibold text-sm mb-1">Currently accepting founding clients</p>
+            <p className="text-gray-400 text-sm">I&rsquo;m building sites for a small number of founding clients at a significantly reduced rate in exchange for a testimonial and case study. <Link href="/contact" className="text-hw-primary hover:underline">Ask about availability &rarr;</Link></p>
           </div>
         </div>
       </section>
@@ -1046,7 +979,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold !text-white mb-4 animate-on-scroll">Ready to Get Found?</h2>
           <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
-            Stop losing customers to competitors with better websites. Get an instant report on your site&apos;s speed, SEO, and messaging — free, no strings attached.
+            Stop losing customers to competitors with better websites. Let&apos;s get your business online the right way.
           </p>
           <p className="text-gray-400 mb-2 animate-on-scroll">
             Flat-rate builds from $495. Care plan included free for 3 months, then from $49/mo — cancel anytime.
@@ -1070,7 +1003,7 @@ export default function Home() {
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only">
         <p>
-          Headley Web &amp; SEO is a Jacksonville, Alabama web design studio that builds
+          Headley Web <span className="amp">&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
           StoryBrand-powered websites for local service businesses in Northeast Alabama. We
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business
           Profile optimization for plumbers, HVAC companies, contractors, restaurants, and other

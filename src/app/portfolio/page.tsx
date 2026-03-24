@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     canonical: "/portfolio",
   },
   openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Headley Web & SEO",
     url: "/portfolio",
     images: [
       {
@@ -185,6 +188,27 @@ export default function PortfolioPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ Labs Callout ═══ */}
+      <section className="px-6 pb-16 bg-hw-dark">
+        <div className="max-w-5xl mx-auto">
+          <Link
+            href="/labs"
+            className="group flex flex-col sm:flex-row items-center justify-between gap-6 rounded-2xl border border-white/[0.08] hover:border-hw-primary/30 bg-white/[0.02] hover:bg-white/[0.04] px-8 py-7 transition-all duration-300 animate-on-scroll"
+          >
+            <div>
+              <span className="text-xs font-semibold text-hw-primary uppercase tracking-widest">Also worth a look</span>
+              <h3 className="text-xl font-bold !text-white mt-1">The Labs →</h3>
+              <p className="text-white/50 text-sm mt-1">
+                Cursor-reactive 3D particles, scroll-driven animation, generative audio. The experimental side of this work.
+              </p>
+            </div>
+            <span className="shrink-0 text-sm font-semibold text-hw-secondary group-hover:text-white transition-colors duration-200 whitespace-nowrap">
+              View experiments →
+            </span>
+          </Link>
         </div>
       </section>
 

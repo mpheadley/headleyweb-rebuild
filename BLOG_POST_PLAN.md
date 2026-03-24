@@ -51,7 +51,7 @@ Higher priority than AEO/technical posts — your Phase 1 leads come from local 
 |---|-------|-----------------|--------------|--------|
 | 10b | "What Happens When You Google Your Own Business (And How to Fix What You See)" | google my business, google yourself | Top | Planned |
 | 10c | "The 5 Local Businesses in Anniston That Are Crushing It Online (And What You Can Learn)" | Anniston business, local business website | Top | Planned |
-| 10d | "I Asked ChatGPT to Recommend a Plumber in Anniston — Here's What It Said" | chatgpt local business, AI recommend plumber | Top | Planned |
+| 10d | "I Asked ChatGPT to Recommend a Plumber in Anniston — Here's What It Said" | chatgpt local business, AI recommend plumber | Top | Drafted — `content/blog/drafts/i-asked-chatgpt-to-recommend-a-plumber-in-anniston.mdx`. Matt needs to run the actual queries, screenshot results, and record the Reel. |
 
 **Why these are high priority:**
 - **#10b** is the most shareable post on this entire list. Every business owner will try it immediately. Pairs with your audit content (Phase 3) and AI Visibility Audit lead magnet.
@@ -185,6 +185,55 @@ See [BUSINESS_STRATEGY.md](BUSINESS_STRATEGY.md) Case Study Template for format.
 
 ---
 
+## 3-Month Editorial Calendar (April–June 2026)
+
+Target: ~60% broad small business topics (reach), ~40% trade-specific (local SEO).
+Posts marked with * are higher priority.
+
+### Month 1 — April 2026
+
+| Week | Type | Title | CTA |
+|------|------|-------|-----|
+| 1 | Broad | * "Nobody Reads Your Website (Here's What They Actually Do)" | Audit |
+| 2 | Trade | "What Every Electrician's Website Gets Wrong" | Audit |
+| 3 | Broad | * "When to DIY Your Website and When to Hire Someone" | Quiz/Audit |
+| 4 | Broad | "What 'SEO' Actually Means for a Small Business (No Jargon)" | Audit |
+
+### Month 2 — May 2026
+
+| Week | Type | Title | CTA |
+|------|------|-------|-----|
+| 1 | Broad | * "Why Your Website Looks Fine But Doesn't Get Calls" | Audit |
+| 2 | Trade | "Your Lawn Care Website Needs These 5 Things Before Summer" | Audit |
+| 3 | Broad | "Is Your Website Slow? Here's What It's Costing You" | Audit |
+| 4 | Broad | * "Your Customer Is the Hero, Not Your Business" | Audit |
+
+### Month 3 — June 2026
+
+| Week | Type | Title | CTA |
+|------|------|-------|-----|
+| 1 | Broad | "The Free Google Tool Most Small Businesses Ignore" (GBP) | Audit |
+| 2 | Trade | "Marketing Your Cleaning Business Online: What Actually Works" | Audit |
+| 3 | Broad | * "Why I Show My Prices (And Why Most Web Designers Don't)" — Matt should write/heavy rewrite | Audit |
+| 4 | Broad | "5 Signs It's Time to Rebuild Your Website" | Audit |
+
+### Backlog (Unscheduled)
+
+- "What to Put on Your Homepage (And What to Leave Off)"
+- "Why Reviews Matter More Than Your Website Design"
+- "The One Page Your Website Is Probably Missing" (dedicated services/pricing page)
+- "How to Write Your Own About Page (Template)"
+- "Local SEO Checklist: 10 Things You Can Do This Week"
+- "Why I Build on Next.js Instead of WordPress (And What That Means for Your Site Speed)" — DRAFTED in `content/blog/drafts/`
+- "What Happens After Your Website Launches (Hint: That's When the Work Starts)"
+- Trade: Roofers
+- Trade: Auto repair / detailing
+- Trade: Restaurants / food trucks
+- Trade: Real estate agents
+- Trade: Dentists / chiropractors
+
+---
+
 ## Publishing Notes
 
 ### Priority Order (what to write next)
@@ -192,14 +241,21 @@ See [BUSINESS_STRATEGY.md](BUSINESS_STRATEGY.md) Case Study Template for format.
 > Your target audience (local business owners) finds you through Facebook groups and word of mouth,
 > not by searching for "answer engine optimization." Prioritize content they'll actually share.
 
-1. **Foundation posts (1-5)** — already live or in progress. Core SEO play.
-2. **Hyperlocal & shareable posts (10b-10d)** — highest share potential in local Facebook groups. Write these before the AEO posts.
-3. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
-4. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
-5. **Viral build posts (22-25)** — write alongside the speed-build projects as they happen.
-6. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
-7. **Audit content (19-21)** — requires the landing page template to be built first.
-8. **Quiz content (26-29)** — requires the quiz components to be built first.
+1. **#10d "I Asked ChatGPT to Recommend a Plumber in Anniston"** — DRAFTED. Highest share potential of any post on this list. Matt action items before publishing:
+   - [ ] Open ChatGPT, Perplexity, and Google. Type "recommend a plumber in Anniston, Alabama." Screenshot each result.
+   - [ ] Fill in the bracketed placeholders in the draft with real business names and your real observations.
+   - [ ] Record a 60-second Reel — you at your desk, typing the query, reacting to the results. The Reel is probably worth more than the blog post.
+   - [ ] Reference the MarketingCode.com study (March 2026) — zero overlap across 4 AI tools. Real data, published source.
+   - [ ] Repeat for other trades/cities after this one lands (HVAC in Gadsden, contractor in Oxford — same format, new post each time).
+2. **Foundation posts (1-5)** — already live or in progress. Core SEO play.
+3. **Remaining hyperlocal posts (10b-10c)** — high share potential in local Facebook groups.
+4. **Differentiation posts** — "Why I Build on Next.js Instead of WordPress," "5 Questions Before Hiring a Web Designer," "Agency vs. Solo Designer," "Template vs. Custom-Built." Drafted in `content/blog/drafts/`.
+5. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
+6. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
+7. **Viral build posts (22-25)** — write alongside the speed-build projects as they happen.
+8. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
+9. **Audit content (19-21)** — requires the landing page template to be built first.
+10. **Quiz content (26-29)** — requires the quiz components to be built first.
 
 ### Distribution Checklist (every post)
 
@@ -231,4 +287,4 @@ For **every** published post, run through this checklist:
 
 ---
 
-*Last updated: March 13, 2026*
+*Last updated: March 18, 2026 (added 3-month editorial calendar)*

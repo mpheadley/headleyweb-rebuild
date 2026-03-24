@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     canonical: "/quiz",
   },
   openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Headley Web & SEO",
     url: "/quiz",
     images: [
       {

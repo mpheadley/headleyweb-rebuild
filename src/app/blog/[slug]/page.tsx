@@ -119,10 +119,12 @@ export async function generateMetadata({
       canonical: `/blog/${slug}`,
     },
     openGraph: {
+      type: "article",
+      locale: "en_US",
+      siteName: "Headley Web & SEO",
       url: `/blog/${slug}`,
       title,
       description,
-      type: "article",
       publishedTime: date,
       ...(lastModified && { modifiedTime: lastModified }),
       images: image

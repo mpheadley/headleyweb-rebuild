@@ -32,8 +32,8 @@ export type StoryBrandScore = {
 export type AuditResult = {
   url: string;
   // Scores (0-100)
-  performance: number;       // mobile
-  performanceDesktop: number; // desktop
+  performance: number;
+  performanceDesktop?: number;
   seo: number;
   accessibility: number;
   // Timing metrics

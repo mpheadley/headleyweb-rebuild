@@ -12,6 +12,7 @@ function getGitLastModified(filePath: string): string | null {
     const result = execSync(`git log -1 --format=%aI -- "${filePath}"`, {
       encoding: "utf-8",
       cwd: process.cwd(),
+      stdio: "pipe",
     }).trim();
     if (!result) return null;
     return result.slice(0, 10);

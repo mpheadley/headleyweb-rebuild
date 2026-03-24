@@ -191,6 +191,7 @@ Keep `og-preview.html` as a local design tool (gitignored). Design at 1200x630, 
 
 - [ ] **AI/zero-click problem framing** — STORYBRAND_PROMPT.md now prompts for the "search has changed" angle (80%+ zero-click, AI answers, map pack). Port this into the Next.js StoryBrand process so client BrandScripts naturally include the AI dimension. The old "outdated website" framing is a symptom; "the way people search has changed" is the root cause. Blend both.
 - [ ] **83% stat usage guide** — 83% zero-click rate when AI Overviews trigger (source: click-vision.com, cited in AEO_RESEARCH.md). Use "over 80%" in customer-facing copy; cite 83% in blog posts and data contexts. Good for: blog posts, YouTube video hooks, stats sections, AI Visibility service descriptions.
+- [ ] **Site Audit Tool [EXTRACT]** — Full automated audit page with API routes. Components: `/audit` page, `/api/site-audit` (PageSpeed + cheerio StoryBrand scorer), `/api/send-report` (Resend email + PDF), `generate-report-pdf.ts`, `QuizScoreGauge`, `AuditCheck`, `StoryBrandItemRow`, `QuizReportPdf`. For starter kit: make branding configurable (colors, logo, company name, phone, from-email) via `site.config.ts`. Internal view key via env var. Optional trade selector for ROI estimates. This is the top-of-funnel lead gen tool — every client site could have one if white-labeled.
 - [ ] **AEO Brand Grader as CTA option** — secondary transitional CTA for AI/search-aware contexts
 - [ ] **Launch Day Push deliverable** — client-facing checklist for day-of-launch social/review push
 
