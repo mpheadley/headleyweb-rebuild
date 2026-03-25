@@ -87,6 +87,7 @@ const demos = [
     gradient: "from-[#0a0a1a] via-[#0a0a0f] to-[#05050a]",
     accent: "rgba(200,169,110,0.12)",
     note: "Click anywhere to explode.",
+    video: "/labs/stardust-enhanced-preview.mp4",
   },
   {
     title: "Stardust: Gravity",
@@ -99,6 +100,7 @@ const demos = [
     gradient: "from-[#080a1a] via-[#06080f] to-[#04060a]",
     accent: "rgba(144,184,255,0.1)",
     note: "Hold your cursor still and watch them settle.",
+    video: "/labs/stardust-gravity-preview.mp4",
   },
   {
     title: "Editorial Parallax",
