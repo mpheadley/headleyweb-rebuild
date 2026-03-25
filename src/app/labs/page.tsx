@@ -52,6 +52,18 @@ const PARTICLES = [
 
 const demos = [
   {
+    title: "Headley Web 3D",
+    tag: "R3F",
+    tagColor: "text-hw-primary",
+    description:
+      "A full StoryBrand pitch built in Three.js. Physics-driven words fall into the problem section — drag and throw them. Scroll into the CTA and a gold & glyph auto-rotates behind the button.",
+    tech: ["React Three Fiber", "Rapier Physics", "GSAP", "Next.js"],
+    href: "https://headleyweb-3d.vercel.app",
+    gradient: "from-[#1a1208] via-[#0f0c06] to-[#08080f]",
+    accent: "rgba(200,169,110,0.18)",
+    note: "Drag a word to throw it.",
+  },
+  {
     title: "Convergence",
     tag: "Flagship",
     tagColor: "text-hw-primary",
