@@ -36,6 +36,20 @@ const breadcrumbSchema = {
 
 const BASE = "https://headley-labs.vercel.app";
 
+// Fixed positions — Math.random() causes SSR/client hydration mismatch
+const PARTICLES = [
+  { w: "2px",   h: "2px",   left: "12%",  top: "18%" },
+  { w: "1.5px", h: "1.5px", left: "34%",  top: "72%" },
+  { w: "2.5px", h: "2.5px", left: "55%",  top: "35%" },
+  { w: "1px",   h: "1px",   left: "78%",  top: "58%" },
+  { w: "2px",   h: "2px",   left: "91%",  top: "22%" },
+  { w: "1.5px", h: "1.5px", left: "6%",   top: "84%" },
+  { w: "2px",   h: "2px",   left: "47%",  top: "91%" },
+  { w: "1px",   h: "1px",   left: "63%",  top: "14%" },
+  { w: "2.5px", h: "2.5px", left: "82%",  top: "77%" },
+  { w: "1.5px", h: "1.5px", left: "23%",  top: "46%" },
+];
+
 const demos = [
   {
     title: "Convergence",
@@ -202,16 +216,11 @@ export default function LabsPage() {
                     <span className="text-xs tracking-widest uppercase">Open demo</span>
                   </div>
                   <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                    {[...Array(10)].map((_, i) => (
+                    {PARTICLES.map((p, i) => (
                       <div
                         key={i}
                         className="absolute rounded-full bg-[#c8a96e] opacity-15"
-                        style={{
-                          width: Math.random() * 2 + 1 + "px",
-                          height: Math.random() * 2 + 1 + "px",
-                          left: Math.random() * 100 + "%",
-                          top: Math.random() * 100 + "%",
-                        }}
+                        style={{ width: p.w, height: p.h, left: p.left, top: p.top }}
                       />
                     ))}
                   </div>
