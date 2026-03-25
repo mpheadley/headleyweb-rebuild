@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, Rock_Salt, Playfair_Display } from "next/font/google";
+import { Inter, Fraunces, Rock_Salt } from "next/font/google";
 import "./globals.css";
 import ScrollReveal from "./components/ScrollReveal";
 import Nav from "./components/Nav";
@@ -24,14 +24,6 @@ const rockSalt = Rock_Salt({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
-  weight: "700",
-  subsets: ["latin"],
-  display: "optional",
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -77,11 +69,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head />
-      <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} ${playfairDisplay.variable} antialiased`}>
-        <script dangerouslySetInnerHTML={{ __html: "" }} />
-        {/* eslint-disable-next-line react/no-danger */}
-        <div dangerouslySetInnerHTML={{ __html: "<!-- Built by Headley Web & SEO | headleyweb.com -->" }} />
+      <head>
+        <link rel="author" href="https://headleyweb.com" />
+      </head>
+      <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} antialiased`}>
+        {/* Built by Headley Web & SEO | headleyweb.com */}
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hw-primary focus:text-white focus:px-4 focus:py-2 focus:rounded">
           Skip to content
         </a>
