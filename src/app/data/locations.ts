@@ -28,16 +28,16 @@ export const locations: Location[] = [
       "Custom web design and local SEO for Anniston, Alabama businesses. Get found on Google by customers searching in Calhoun County. Flat-rate pricing from $495.",
     heroHeadline: "Web Design for Anniston Businesses",
     heroSub:
-      "Your customers are searching Google for what you do — right here in Anniston. I build websites that make sure they find you first.",
+      "Your customers are searching Google for what you do, right here in Anniston. I build websites that make sure they find you first.",
     heroImage: { src: "/images/locations/anniston-hero.webp", alt: "Anniston, Alabama", credit: "Rivers Langley / CC BY-SA 3.0" },
     localIntro:
-      "Anniston is the heart of Calhoun County — home to the Anniston Army Depot, the Museum of Natural History, and a downtown that's been rebuilding with new energy along Noble Street. Whether you're a contractor serving the neighborhoods around Quintard Avenue, a restaurant near the Oxford-Anniston corridor, or a service business covering zip codes from 36201 to 36207, your customers are searching Google before they pick up the phone. If your business doesn't show up, you're handing those calls to a competitor who does. I build clean, mobile-friendly websites with local SEO baked in — so when someone searches \"plumber in Anniston\" or \"HVAC repair near me,\" your business is what they find.",
+      "Anniston is Calhoun County's largest city, and the customer base here is real. Army Depot families, Noble Street foot traffic, neighborhoods stretching across every zip code in the 362 exchange. They all search Google before they make a call. If your business doesn't show up in those searches, that call goes to whoever does. I ran a business here for four years. I know this market.",
     whyHere: [
-      { title: "Calhoun County's Largest City", desc: "Anniston anchors the county — your website should anchor your online presence just as strongly." },
+      { title: "Calhoun County's Largest City", desc: "Anniston anchors the county. Your website should anchor your online presence just as strongly." },
       { title: "Army Depot & Defense Economy", desc: "Thousands of families and contractors depend on the Depot. A strong web presence puts you in front of that market." },
       { title: "Noble Street Revival", desc: "Downtown Anniston is growing again. New businesses need websites that match the momentum." },
       { title: "Oxford Next Door", desc: "Anniston and Oxford share customers. Ranking in both cities doubles your reach." },
-      { title: "I Ran a Business Here", desc: "Headley Flower Farm operated out of Anniston for four years. I know this market and this community firsthand." },
+      { title: "I Ran a Business Here", desc: "Headley Flower Farm operated out of Anniston for four years. I know this market firsthand." },
     ],
     nearby: ["oxford", "jacksonville", "talladega", "weaver"],
   },
@@ -54,12 +54,12 @@ export const locations: Location[] = [
       "Oxford is where Calhoun County shops. If your business isn't showing up when locals search, you're losing customers every day.",
     heroImage: { src: "/images/locations/oxford-hero.webp", alt: "Oxford, Alabama", credit: "Rivers Langley / CC BY-SA 3.0" },
     localIntro:
-      "Oxford is the retail and commercial hub of Calhoun County. The Oxford Exchange — a 775,000 square foot shopping center anchored by Target, Kohl's, Home Depot, and Dick's Sporting Goods — Honda Manufacturing, and the Talladega Superspeedway traffic all funnel through here, bringing customers who are searching on their phones before they ever pull into a parking lot. Whether you run a service business off Highway 21, a restaurant near the Oxford Exchange, or a home services company covering Oxford and the surrounding area, your online presence is your first impression. I build websites that load fast, look professional on any device, and are structured so Google knows exactly what you do and where you do it. No templates, no page builders — just clean code and clear messaging that turns searches into phone calls.",
+      "Oxford is the commercial center of Calhoun County, and the numbers back that up. The Oxford Exchange alone brings hundreds of thousands of shoppers through the 36203 zip code every year. Honda Manufacturing is a few miles away. The Talladega Superspeedway pulls race traffic through the corridor twice a year. All of those people are searching on their phones for local services before they ever pull into a parking lot. I build websites for the businesses that want to be what they find.",
     whyHere: [
       { title: "Retail & Commercial Hub", desc: "Oxford is where the county comes to spend money. Your website needs to capture that traffic online too." },
       { title: "Honda Manufacturing Workforce", desc: "Thousands of Honda employees live and spend locally. Be the business they find first." },
       { title: "Superspeedway Weekends", desc: "Race traffic brings thousands of visitors searching for local services. A strong website captures that demand." },
-      { title: "Highway 21 Corridor", desc: "The busiest commercial stretch in the county — your digital storefront should work as hard as your physical one." },
+      { title: "Highway 21 Corridor", desc: "The busiest commercial stretch in the county. Your digital storefront should work as hard as your physical one." },
     ],
     nearby: ["anniston", "jacksonville", "talladega", "piedmont"],
   },
@@ -76,12 +76,12 @@ export const locations: Location[] = [
       "Gadsden businesses deserve better than a Facebook page and a prayer. I build websites that actually get you found on Google.",
     heroImage: { src: "/images/locations/gadsden-hero.webp", alt: "Noccalula Falls, Gadsden, Alabama", credit: "Thejammer / Public Domain" },
     localIntro:
-      "Gadsden is the seat of Etowah County and one of Northeast Alabama's most recognizable cities — home to Noccalula Falls, the Broad Street downtown district, and a strong base of trade professionals, restaurants, and service businesses. The Coosa River runs right through town, and so does the competition for local customers. If someone searches \"electrician in Gadsden\" or \"best restaurant near Noccalula Falls,\" they're going to call whoever shows up first. I build websites that are structured for exactly that — clean design, fast load times, and local SEO that tells Google your business serves Gadsden, Attalla, Rainbow City, and the surrounding Etowah County communities. You get a professional site you own outright, with no monthly traps or contracts.",
+      "Gadsden is the seat of Etowah County, and it's been here long enough to have an opinion about things. Noccalula Falls. Broad Street. A trades market that runs deep. The problem isn't a lack of customers. It's that most Gadsden businesses are invisible to people who are new in town or searching from their phone. When someone types \"electrician in Gadsden\" or \"best HVAC near me,\" they call whoever Google shows them. Right now, that's often not the best business in town. It's the one with the best website.",
     whyHere: [
       { title: "Etowah County Seat", desc: "Gadsden is the center of commerce for the whole county. Your website should reflect that." },
       { title: "Noccalula Falls Tourism", desc: "Visitors searching for things to do nearby also search for local services. Capture that traffic." },
       { title: "Broad Street Revitalization", desc: "Downtown Gadsden is reinventing itself. A modern website signals you're part of that growth." },
-      { title: "Attalla & Rainbow City Overlap", desc: "Serving neighboring cities? Your site should rank in all of them — not just one." },
+      { title: "Attalla & Rainbow City Overlap", desc: "Serving neighboring cities? Your site should rank in all of them, not just one." },
     ],
     nearby: ["anniston", "centre", "rainbow-city"],
   },
@@ -98,12 +98,12 @@ export const locations: Location[] = [
       "I live here. I work here. And I build websites for businesses right here in Jacksonville that actually show up when locals search.",
     heroImage: { src: "/images/locations/jacksonville-hero.webp", alt: "Jacksonville, Alabama public square", credit: "Thomson200 / CC0" },
     localIntro:
-      "Jacksonville is home — it's where I live, where my kids go to school, and where I built Headley Web & SEO. It's also a college town with Jacksonville State University bringing in thousands of students and their families, plus a steady local economy of trades, restaurants, and professional services along Pelham Road and the town square. The challenge for Jacksonville businesses isn't a lack of customers — it's being invisible online when those customers search. I build websites that fix that. Clean, mobile-ready design with local SEO targeting so that when someone searches \"landscaper in Jacksonville AL\" or \"pizza near JSU,\" your business shows up — not a directory listing or a competitor from Anniston. This is my hometown market, and I know it inside and out.",
+      "Jacksonville is home. My kids go to school here. I built Headley Web & SEO here. I know who the competition is and where the foot traffic flows. Jacksonville State keeps a steady stream of students and families cycling through town, and Pelham Road carries more search volume than most local businesses realize. Your next customer is probably searching right now. They're going to call whoever shows up first.",
     whyHere: [
       { title: "JSU Student & Family Market", desc: "Thousands of students and their families search locally every day. Your website should be what they find." },
       { title: "Your Web Designer Lives Here", desc: "I'm not a remote agency. I'm a neighbor who knows Jacksonville's market firsthand." },
       { title: "Small Town, Big Competition", desc: "Even in a small town, the business with the best online presence wins the call." },
-      { title: "Pelham Road & Town Square", desc: "Whether you're on the main drag or a side street, Google doesn't care about your physical location — just your digital one." },
+      { title: "Pelham Road & Town Square", desc: "On the main drag or a side street, Google doesn't care about your physical location. Only your digital one." },
     ],
     nearby: ["anniston", "oxford", "piedmont"],
   },
@@ -120,12 +120,12 @@ export const locations: Location[] = [
       "Talladega gets millions of visitors a year for the Superspeedway. Your website should be working just as hard to bring in local customers year-round.",
     heroImage: { src: "/images/locations/talladega-hero.webp", alt: "Talladega, Alabama courthouse square", credit: "Rivers Langley / CC BY-SA 3.0" },
     localIntro:
-      "Talladega is known worldwide for the Superspeedway, but the local economy runs on the trades, service businesses, and restaurants that serve this community every day of the year. The courthouse square, the historic district, and the residential neighborhoods stretching toward Lincoln and Sylacauga are full of businesses that depend on word of mouth — but word of mouth now starts with a Google search. If your business doesn't have a professional website with local SEO, you're invisible to the customers searching right now. I build websites that are fast, mobile-friendly, and structured so Google knows you serve Talladega, Talladega County, and the surrounding area. Flat-rate pricing, no contracts, and you own everything from day one.",
+      "Talladega has the Superspeedway, and that's what the rest of the country knows it for. The local economy runs on something quieter. Every contractor and HVAC company and restaurant in the county serves customers who search Google before they make a call. The business that shows up first wins. Most Talladega businesses aren't showing up at all. The courthouse square and the neighborhoods stretching out toward Lincoln and Sylacauga aren't going to search themselves. I build websites for businesses that want to be found when they do.",
     whyHere: [
       { title: "Superspeedway Traffic", desc: "Race weekends bring massive search volume. A strong website captures visitors looking for local services." },
-      { title: "Talladega County Seat", desc: "As the county hub, your business should dominate local search — not hide behind a Facebook page." },
+      { title: "Talladega County Seat", desc: "As the county hub, your business should dominate local search, not hide behind a Facebook page." },
       { title: "Lincoln & Sylacauga Reach", desc: "Serve the surrounding area? Your website should rank across the whole county, not just one zip code." },
-      { title: "Historic Downtown", desc: "Talladega's downtown is full of character. Your website should have the same — professional, clear, and built to convert." },
+      { title: "Historic Downtown", desc: "Talladega's downtown is full of character. Your website should have the same: professional, clear, built to convert." },
     ],
     nearby: ["anniston", "oxford"],
   },
@@ -164,12 +164,12 @@ export const locations: Location[] = [
       "Piedmont is a tight-knit community where word travels fast. Your next customer is still searching Google first.",
     heroImage: { src: "/images/locations/piedmont-hero.webp", alt: "Cheaha Mountain near Piedmont, Alabama", credit: "Skye Marthaler / CC BY-SA 4.0" },
     localIntro:
-      "Piedmont sits at the foot of Cheaha Mountain in the eastern corner of Calhoun County, and its businesses have always punched above their weight — tight community, loyal customer base, and a work-hard culture that shows up in every trade and service in town. What often doesn't show up is those businesses online. Most Piedmont companies are invisible on Google, relying entirely on word of mouth while potential customers drive past and search on their phones. I build websites that fix that — clean, mobile-friendly, fast, and structured so Google knows exactly what you do and where you do it. Flat-rate pricing, no contracts, and you own your site outright from day one.",
+      "Piedmont sits at the foot of Cheaha Mountain in the eastern corner of Calhoun County. It's a tight community. People know each other and they refer business to people they trust. That works fine until someone moves in and doesn't know anyone to ask. They search Google instead. Most Piedmont businesses aren't showing up for those searches. A well-built website changes that.",
     whyHere: [
-      { title: "Calhoun County's Eastern Anchor", desc: "Piedmont serves the eastern edge of the county — customers searching nearby should find you, not a competitor in Anniston." },
+      { title: "Calhoun County's Eastern Anchor", desc: "Piedmont serves the eastern edge of the county. Customers searching nearby should find you, not a competitor in Anniston." },
       { title: "Cheaha Mountain Gateway", desc: "Outdoor visitors and Cheaha State Park traffic search locally. A website puts your business in front of that audience." },
       { title: "Loyal Local Market", desc: "Piedmont customers stay local when they can find local. A professional site is often all it takes." },
-      { title: "Under-Served Online", desc: "Most Piedmont businesses have no real web presence. That's your opportunity — first mover advantage is real." },
+      { title: "Under-Served Online", desc: "Most Piedmont businesses have no real web presence. First mover advantage is real here." },
     ],
     nearby: ["anniston", "jacksonville"],
   },
@@ -205,10 +205,10 @@ export const locations: Location[] = [
       "Custom web design and local SEO for Rainbow City, Alabama businesses. Get found on Google by Etowah County customers. Flat-rate pricing from $495.",
     heroHeadline: "Web Design for Rainbow City Businesses",
     heroSub:
-      "Rainbow City is growing fast. Your website should be growing with it — not stuck on a template from 2015.",
+      "Rainbow City is growing fast. Your website should be growing with it, not stuck on a template from 2015.",
     heroImage: { src: "/images/locations/rainbow-city-hero.webp", alt: "Coosa River near Rainbow City, Alabama", credit: "Carol M. Highsmith / Library of Congress" },
     localIntro:
-      "Rainbow City is one of Etowah County's fastest-growing communities, sitting just south of Gadsden along the Coosa River. What was once a quiet suburb has become a destination for new construction, retail, and service businesses drawn by the growth along Rainbow Drive and the city's reputation for safety and livability. If you run a business in Rainbow City — whether it's a trade, a restaurant, a service company, or a specialty shop — your customers are searching Google before they call. Most Rainbow City businesses still rely on Facebook posts and word of mouth. A clean, SEO-optimized website puts you ahead of that entire field. I build sites that load fast, rank locally, and turn searches into phone calls.",
+      "Rainbow City is one of Etowah County's fastest-growing cities. The growth along Rainbow Drive is the real kind: new construction, new residents, people relocating from Gadsden because the schools and safety numbers are good. Those new residents don't know the local plumber. They don't have a neighbor to ask. They search Google. A business with a clean, optimized website is the automatic first call for every one of them.",
     whyHere: [
       { title: "One of Etowah County's Fastest-Growing Cities", desc: "New residents and new businesses mean new customers actively searching online for local services." },
       { title: "Gadsden Adjacency", desc: "Rainbow City and Gadsden share a customer base. Rank in both and you double your reach." },
@@ -230,7 +230,7 @@ export const locations: Location[] = [
       "Fort Payne sits at the edge of Little River Canyon and the gateway to the Appalachians. Your website should work as hard as the people who built this town.",
     heroImage: { src: "/images/locations/fort-payne-hero.webp", alt: "Little River Canyon near Fort Payne, Alabama", credit: "Thomson200 / CC0" },
     localIntro:
-      "Fort Payne is the seat of DeKalb County — a manufacturing town turned outdoor-recreation gateway, anchored by Little River Canyon National Preserve and DeSoto State Park. The city's economy runs on trades, restaurants, outdoor outfitters, and the service businesses that keep DeKalb County moving. Tourism from the canyon brings in visitors who search on their phones before they arrive, and locals search just as constantly for plumbers, HVAC, and contractors. The biggest web design presence in DeKalb County today is a sign shop that does websites on the side. That's a gap. I build websites purpose-built for service businesses — fast, mobile-friendly, with local SEO that targets Fort Payne, Rainsville, Fyffe, and the surrounding county.",
+      "Fort Payne is the seat of DeKalb County. Manufacturing town turned outdoor gateway, sitting at the edge of Little River Canyon National Preserve with DeSoto State Park up the road. The economy runs on service businesses and restaurants and the outfitters that show up for canyon season. But it also runs on the plumber someone calls on a Tuesday in February when there's no tourist in sight. Both kinds of customers search Google. The biggest web design presence in DeKalb County right now is a sign shop that does websites on the side. That's a gap I build into.",
     whyHere: [
       { title: "Little River Canyon Tourism", desc: "Outdoor visitors search for local restaurants, outfitters, and services before and during their visit. Be what they find." },
       { title: "DeKalb County Seat", desc: "Fort Payne is the commercial hub for the whole county. Your online presence should match your real-world position." },

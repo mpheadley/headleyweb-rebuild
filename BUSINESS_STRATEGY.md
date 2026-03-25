@@ -583,6 +583,18 @@ Don't kill the vanilla kit. It's the volume play and the fastest path to testimo
 - The StoryBrand framework is the differentiator, not the code
 - Photography > code for perceived value at $7.5K
 
+### Business Name & Branding (decided March 2026)
+
+**Keep "Headley Web & SEO" until 12+ months of track record.** The name is descriptive and clear (Miller principle). Renaming before results exist means the new name has nothing to stand on. Revisit when the work warrants a broader or more strategic identity.
+
+**Future options when ready:** "Headley Studio" (craft/design signal, scalable), "Headley Digital" (broader), or "Matt Headley" (pure personal brand — if people hire you, the brand is you).
+
+**URL:** headleyweb.com stays regardless of future name change.
+
+**Card tagline:** "Local business websites that get results" — where a tagline is needed. Ruled out: "Get Found. Get Calls. Get Booked." (belongs on website, too pitchy for personal network), "Websites built around your story" (backwards from StoryBrand — client is guide not hero), clever/metaphor options (too high cognitive load for a card). Miller principle: clarity over cuteness.
+
+**Card title:** Web Design & SEO — mirrors the brand, covers both services.
+
 ### The Two Battlefields (March 2026 — validated by live testing)
 
 Local search now has two distinct battlefields. Understanding which one you're fighting on changes what you build and how you sell it.

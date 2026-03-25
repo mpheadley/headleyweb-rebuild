@@ -6,6 +6,26 @@
 
 ---
 
+## Personal Thought Leadership (Matt writes from scratch — LinkedIn-first, trust-building)
+
+These are NOT SEO plays. They exist to signal craft and differentiation to referral-network clients and the Giovanna-type audience. Distribute primarily on LinkedIn, link back to blog. Matt writes these — Claude does not draft them.
+
+**The differentiator:** Matt spent 19 years in pastoral ministry and music before touching code. He understands how people are moved by a story. That's not a typical web designer's background, and it's invisible in the current site copy. These posts surface it.
+
+| # | Title | Primary Channel | Status |
+|---|-------|----------------|--------|
+| L1 | "What 19 Years of Pastoral Ministry Taught Me About Building Websites" | LinkedIn → blog | Planned — Matt writes |
+| L2 | "Why I Became a Web Designer After Leading a Church" | LinkedIn → blog | Planned — Matt writes (career narrative, referral audience) |
+| L3 | "What Music Taught Me About Website Copy" | LinkedIn → blog | Planned — rhythm, pacing, silence; the melody/harmony/percussion analogy for headline/sub/CTA |
+
+**Notes:**
+- One of these should go live before or alongside the LinkedIn About section — they reinforce each other
+- Keep tone personal and specific (real stories, real people, real moments from ministry/music). Not inspirational fluff.
+- These posts do double duty: LinkedIn content + the "About" story on the website can link to them
+- Don't over-produce these. They work because they're honest, not because they're polished.
+
+---
+
 ## Phase 1 — Foundation Posts (launch with 2, publish rest in months 1-3)
 
 These establish expertise and target high-intent local keywords.
