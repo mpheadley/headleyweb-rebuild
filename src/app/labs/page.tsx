@@ -135,7 +135,7 @@ const demos = [
     description:
       "Scroll-pinned cards with GSAP ScrollTrigger. Each card tilts toward the cursor and snaps into focus as you scroll — the kind of interaction that makes a services section feel alive.",
     tech: ["GSAP", "ScrollTrigger", "Next.js", "CSS 3D"],
-    href: "https://headleyweb-3d.vercel.app",
+    href: `${BASE}/`,
     gradient: "from-[#0a0f1a] via-[#070c12] to-[#05080f]",
     accent: "rgba(96,165,250,0.12)",
     note: "Scroll slowly through each card.",
@@ -148,7 +148,7 @@ const demos = [
     description:
       "Three service cards with MeshTransmissionMaterial glass. Cursor tilt, frosted-to-clear on hover, floating orbs in the background, camera dolly between cards.",
     tech: ["React Three Fiber", "MeshTransmissionMaterial", "Next.js"],
-    href: "https://headleyweb-3d.vercel.app",
+    href: `${BASE}/`,
     gradient: "from-[#0a0814] via-[#07060f] to-[#05040a]",
     accent: "rgba(163,139,250,0.15)",
     note: "Hover a card to clear the glass.",
