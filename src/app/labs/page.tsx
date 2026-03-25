@@ -111,6 +111,7 @@ const demos = [
     gradient: "from-[#1a0d08] via-[#120a06] to-[#0d0805]",
     accent: "rgba(181,97,28,0.12)",
     note: "Scroll slowly through each panel.",
+    video: "/labs/editorial-parallax-preview.mp4",
   },
   {
     title: "Bad Art Club",
