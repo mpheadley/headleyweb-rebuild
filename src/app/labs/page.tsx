@@ -114,6 +114,19 @@ const demos = [
     video: "/labs/editorial-parallax-preview.mp4",
   },
   {
+    title: "Glass Cards",
+    tag: "R3F",
+    tagColor: "text-hw-primary",
+    description:
+      "Three service cards with MeshTransmissionMaterial glass. Cursor tilt, frosted-to-clear on hover, floating orbs in the background, camera dolly between cards.",
+    tech: ["React Three Fiber", "MeshTransmissionMaterial", "Next.js"],
+    href: "https://headleyweb-3d.vercel.app",
+    gradient: "from-[#0a0814] via-[#07060f] to-[#05040a]",
+    accent: "rgba(163,139,250,0.15)",
+    note: "Hover a card to clear the glass.",
+    video: "/labs/glass-card-preview.mp4",
+  },
+  {
     title: "Bad Art Club",
     tag: "Shipped",
     tagColor: "text-emerald-400",
