@@ -62,6 +62,7 @@ const demos = [
     gradient: "from-[#1a1208] via-[#0f0c06] to-[#08080f]",
     accent: "rgba(200,169,110,0.18)",
     note: "Drag a word to throw it.",
+    video: "/labs/headleyweb-3d-preview.mp4",
   },
   {
     title: "Convergence",
@@ -219,23 +220,36 @@ export default function LabsPage() {
                 <div
                   className={`relative aspect-[16/7] bg-gradient-to-br ${demo.gradient} flex items-center justify-center border-b border-white/[0.08] overflow-hidden`}
                 >
-                  <div
-                    className="absolute inset-0 opacity-60"
-                    style={{ background: `radial-gradient(ellipse at center, ${demo.accent} 0%, transparent 70%)` }}
-                  />
-                  <div className="relative z-10 flex items-center gap-2 text-white/30 group-hover:text-white/50 transition-colors duration-300">
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-xs tracking-widest uppercase">Open demo</span>
-                  </div>
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                    {PARTICLES.map((p, i) => (
+                  {demo.video ? (
+                    <video
+                      src={demo.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                  ) : (
+                    <>
                       <div
-                        key={i}
-                        className="absolute rounded-full bg-[#c8a96e] opacity-15"
-                        style={{ width: p.w, height: p.h, left: p.left, top: p.top }}
+                        className="absolute inset-0 opacity-60"
+                        style={{ background: `radial-gradient(ellipse at center, ${demo.accent} 0%, transparent 70%)` }}
                       />
-                    ))}
-                  </div>
+                      <div className="relative z-10 flex items-center gap-2 text-white/30 group-hover:text-white/50 transition-colors duration-300">
+                        <ExternalLink className="w-4 h-4" />
+                        <span className="text-xs tracking-widest uppercase">Open demo</span>
+                      </div>
+                      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+                        {PARTICLES.map((p, i) => (
+                          <div
+                            key={i}
+                            className="absolute rounded-full bg-[#c8a96e] opacity-15"
+                            style={{ width: p.w, height: p.h, left: p.left, top: p.top }}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Info */}
