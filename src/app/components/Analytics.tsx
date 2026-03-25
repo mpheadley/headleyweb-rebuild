@@ -28,12 +28,13 @@ export function loadGA4() {
   document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
-  function gtag(...args: unknown[]) {
-    window.dataLayer.push(args);
-  }
-  window.gtag = gtag;
-  gtag("js", new Date());
-  gtag("config", GA4_ID, { anonymize_ip: true });
+  // GA4 requires the native `arguments` object — plain arrays are ignored
+  window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", GA4_ID);
 }
 
 /**

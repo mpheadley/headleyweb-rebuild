@@ -91,6 +91,9 @@ export default function Footer() {
           <Link href="/audit" className="hover:text-white transition-colors">
             Free Site Audit
           </Link>
+          <Link href="/labs" className="hover:text-white transition-colors">
+            Labs
+          </Link>
           <Link href="/privacy" className="hover:text-white transition-colors">
             Privacy Policy
           </Link>
