@@ -165,6 +165,7 @@ const demos = [
     gradient: "from-[#081a0e] via-[#060f09] to-[#040a06]",
     accent: "rgba(52,211,153,0.1)",
     note: "One TV, everyone's phone. Free, no account needed.",
+    image: "/labs/bad-art-club-preview.webp",
   },
 ];
 
@@ -269,6 +270,12 @@ export default function LabsPage() {
                       muted
                       loop
                       playsInline
+                      className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                  ) : demo.image ? (
+                    <img
+                      src={demo.image}
+                      alt={demo.title}
                       className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                     />
                   ) : (
