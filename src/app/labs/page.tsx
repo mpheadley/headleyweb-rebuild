@@ -114,6 +114,19 @@ const demos = [
     video: "/labs/editorial-parallax-preview.mp4",
   },
   {
+    title: "Scrollytelling Card Tilt",
+    tag: "Scrollytelling",
+    tagColor: "text-amber-400",
+    description:
+      "Scroll-pinned cards with GSAP ScrollTrigger. Each card tilts toward the cursor and snaps into focus as you scroll — the kind of interaction that makes a services section feel alive.",
+    tech: ["GSAP", "ScrollTrigger", "Next.js", "CSS 3D"],
+    href: "https://headleyweb-3d.vercel.app",
+    gradient: "from-[#0a0f1a] via-[#070c12] to-[#05080f]",
+    accent: "rgba(96,165,250,0.12)",
+    note: "Scroll slowly through each card.",
+    video: "/labs/scrollytelling-card-tilt-preview.mp4",
+  },
+  {
     title: "Glass Cards",
     tag: "R3F",
     tagColor: "text-hw-primary",
