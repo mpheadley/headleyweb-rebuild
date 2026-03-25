@@ -114,6 +114,19 @@ const demos = [
     video: "/labs/editorial-parallax-preview.mp4",
   },
   {
+    title: "Globe Locator",
+    tag: "R3F",
+    tagColor: "text-hw-primary",
+    description:
+      "An interactive 3D globe with location markers. Drag to spin, click a pin to fly the camera to that region. Built as a proof-of-concept for local business service area maps.",
+    tech: ["React Three Fiber", "Three.js", "Gestures", "Next.js"],
+    href: "https://globe-locator-nine.vercel.app",
+    gradient: "from-[#08101a] via-[#060c12] to-[#04080f]",
+    accent: "rgba(56,189,248,0.12)",
+    note: "Drag to spin. Click a pin to zoom in.",
+    video: "/labs/globe-locator-preview.mp4",
+  },
+  {
     title: "Scrollytelling Card Tilt",
     tag: "Scrollytelling",
     tagColor: "text-amber-400",
