@@ -111,6 +111,16 @@ const howToSchema = {
   ],
 };
 
+const homeSpeakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Web Design for Jacksonville, Anniston & Calhoun County, AL | Headley Web & SEO",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='true']", "h1"],
+  },
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -182,6 +192,10 @@ export default function Home() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSpeakableSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* ═══ Hero Section ═══ */}
@@ -213,7 +227,7 @@ export default function Home() {
                   Can They <LetterReveal text="Find You?" className="" delay={1100} trigger="load" />
                 </span>
               </h1>
-              <p className="text-lg text-gray-300 max-w-xl mb-8 mx-auto md:mx-0">
+              <p className="text-lg text-gray-300 max-w-xl mb-8 mx-auto md:mx-0" data-speakable="true">
                 Stop losing leads to a website that isn&apos;t working for you. I
                 build clear, mobile-friendly sites that help you get found, get calls, and get booked — for a
                 predictable flat rate.
@@ -989,7 +1003,7 @@ export default function Home() {
 
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only">
-        <p>
+        <p data-speakable="true">
           Headley Web <span className="amp">&amp;</span> SEO is a Jacksonville, Alabama web design studio that builds
           StoryBrand-powered websites for local service businesses in Anniston, Gadsden, Jacksonville, and across Calhoun County. We
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business

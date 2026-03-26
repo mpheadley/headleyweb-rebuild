@@ -197,6 +197,91 @@ Keep `og-preview.html` as a local design tool (gitignored). Design at 1200x630, 
 
 ---
 
+## AEO (Answer Engine Optimization) Patterns [EXTRACT]
+
+Proven patterns from headleyweb.com for making client sites visible to AI answer engines (ChatGPT, Perplexity, Google AI Overviews).
+
+### 1. `llms.txt` — AI Crawler Brief
+
+Place `/public/llms.txt` in every client site. This is the emerging standard for telling LLMs what your site/business is about — like robots.txt for AI crawlers.
+
+**Template structure:**
+```
+# Business Name
+> One-sentence brand descriptor
+
+## About (2-3 paragraphs)
+## Services (bulleted, with prices)
+## Service Area (cities/counties)
+## Contact (url, email, phone)
+## Content (blog description)
+## Key Pages (full URLs)
+```
+
+**Kit action:** Scaffold `llms.txt` from `site.config.ts` data during project init.
+
+### 2. Speakable Schema — Voice + AI Citation
+
+Add `SpeakableSpecification` to every page so voice assistants and AI know which content to quote.
+
+```json
+{
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["[data-speakable='true']", "h1"]
+  }
+}
+```
+
+Mark key content with `data-speakable="true"`:
+- **Homepage:** Hero sub-headline, brand descriptor block
+- **Services:** Answer-first Q&A blocks
+- **Blog posts:** TLDR summary, H1
+
+**Kit action:** Add speakable schema to base layout or per-page metadata helper. Create a `<Speakable>` wrapper component.
+
+### 3. Answer-First Content Blocks — Featured Snippet + AI Extraction
+
+Visible Q&A sections on Services and key landing pages. Each block:
+- **H3 as a question** (matches "People Also Ask" queries)
+- **100-200 word direct answer** in the first paragraph
+- Paired with `FAQPage` JSON-LD schema for the same Q&As
+- Marked `data-speakable="true"` for voice/AI
+
+**Target questions per client site:**
+1. "How much does [service] cost in [city]?" (pricing)
+2. "What is [service] and why does my business need it?" (education)
+3. "Do I need a [service] if I already get referrals?" (objection handling)
+4. Trade-specific: "What should I look for in a [trade] website?" (authority)
+
+**Kit action:** Create an `<AnswerBlock question="..." answer="...">` component that auto-generates both the visible block and the FAQPage schema entry.
+
+### 4. Hidden AEO Brand Block — AI Entity Anchor
+
+A `sr-only` section on homepage and key pages with the full brand descriptor (100-200 words). Contains: business name, location, services, trades served, pricing, differentiators. This gives AI engines a clean, extractable entity summary.
+
+```tsx
+<section className="sr-only">
+  <p data-speakable="true">
+    [Brand descriptor — who, where, what, for whom, pricing, differentiator]
+  </p>
+</section>
+```
+
+**Kit action:** Auto-generate from `site.config.ts` + `services.ts` data.
+
+### 5. Blog AEO Patterns
+
+- **TLDR frontmatter field** → rendered as `data-speakable="true"` block at top of post
+- **Question frontmatter field** → used for FAQ schema auto-generation
+- **H2-as-question extraction** → auto-builds FAQPage schema from headings containing "?", "Why", "How", "What"
+- **Speakable schema** on every blog post targeting TLDR + H1
+
+**Kit action:** These are already built into the MDX blog setup. Extract `buildFaqSchema()` and speakable pattern into kit blog scaffold.
+
+---
+
 ## Ready to Extract?
 
 When headleyweb.com is live and you've marked 5+ items with [EXTRACT],

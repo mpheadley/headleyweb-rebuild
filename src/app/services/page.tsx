@@ -52,6 +52,43 @@ const areaServed = [
   { "@type": "AdministrativeArea", name: "Talladega County", addressRegion: "AL", addressCountry: "US" },
 ];
 
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Web Design & SEO Services for Local Businesses | Headley Web & SEO",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='true']", "h1"],
+  },
+};
+
+const serviceFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How much does a small business website cost?",
+      acceptedAnswer: { "@type": "Answer", text: "A professional small business website from Headley Web & SEO costs between $495 and $1,195 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($795) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,195) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one — no contracts." },
+    },
+    {
+      "@type": "Question",
+      name: "What is local SEO and why does my business need it?",
+      acceptedAnswer: { "@type": "Answer", text: "Local SEO is the process of optimizing your website and online presence so customers in your area find you when they search for your services. It includes on-page optimization (titles, meta descriptions, schema markup), Google Business Profile management, and content structured around the specific trades and towns you serve. Without local SEO, even a great-looking website won't generate phone calls." },
+    },
+    {
+      "@type": "Question",
+      name: "What is AI visibility and how does it help my business?",
+      acceptedAnswer: { "@type": "Answer", text: "AI visibility means structuring your website so AI tools — Google AI Overviews, ChatGPT, Perplexity — can read, understand, and recommend your business. Over 80% of Google searches now end without a click. AI visibility includes answer-first content, schema markup that AI parsers trust, and entity optimization so AI knows your trade, your town, and your hours." },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a website if I already get referrals?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Referrals are your best leads — but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else's customer. A professional website confirms you're legitimate, shows your work, and makes it easy to call or book in one tap." },
+    },
+  ],
+};
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -229,6 +266,14 @@ export default function ServicesPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceFaqSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
@@ -371,6 +416,46 @@ export default function ServicesPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Answer-First AEO Blocks ═══ */}
+      <section className="py-24 md:py-32 px-6 bg-hw-light grain">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 text-center animate-on-scroll">Common Questions</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">
+            Straight Answers for Local Business Owners
+          </h2>
+
+          <div className="space-y-12">
+            <div className="animate-on-scroll">
+              <h3 className="text-xl font-bold mb-3" data-speakable="true">How much does a small business website cost?</h3>
+              <p className="text-hw-text leading-relaxed" data-speakable="true">
+                A professional small business website from Headley Web &amp; SEO costs between $495 and $1,195 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($795) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,195) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one — no contracts.
+              </p>
+            </div>
+
+            <div className="animate-on-scroll">
+              <h3 className="text-xl font-bold mb-3" data-speakable="true">What is local SEO and why does my business need it?</h3>
+              <p className="text-hw-text leading-relaxed" data-speakable="true">
+                Local SEO is the process of optimizing your website and online presence so customers in your area find you when they search for your services. When someone in Anniston searches &ldquo;HVAC repair near me,&rdquo; local SEO determines whether your business appears in Google&apos;s Map Pack or gets buried on page two. It includes on-page optimization (titles, meta descriptions, schema markup), Google Business Profile management, and content structured around the specific trades and towns you serve. Without local SEO, even a great-looking website won&apos;t generate phone calls.
+              </p>
+            </div>
+
+            <div className="animate-on-scroll">
+              <h3 className="text-xl font-bold mb-3" data-speakable="true">What is AI visibility and how does it help my business?</h3>
+              <p className="text-hw-text leading-relaxed" data-speakable="true">
+                AI visibility means structuring your website so AI tools — Google AI Overviews, ChatGPT, Perplexity — can read, understand, and recommend your business. Over 80% of Google searches now end without a click, often because AI answers the question directly. If your business isn&apos;t structured for AI to cite, you&apos;re invisible in the fastest-growing search channel. AI visibility includes answer-first content, schema markup that AI parsers trust, and entity optimization so AI knows your trade, your town, and your hours.
+              </p>
+            </div>
+
+            <div className="animate-on-scroll">
+              <h3 className="text-xl font-bold mb-3" data-speakable="true">Do I need a website if I already get referrals?</h3>
+              <p className="text-hw-text leading-relaxed" data-speakable="true">
+                Yes. Referrals are your best leads — but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else&apos;s customer. A professional website is the closer your referrals need. It confirms you&apos;re legitimate, shows your work, and makes it easy to call or book in one tap.
+              </p>
+            </div>
           </div>
         </div>
       </section>
