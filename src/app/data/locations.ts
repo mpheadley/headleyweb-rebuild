@@ -9,8 +9,14 @@ export type Location = {
   heroSub: string;
   /** Path to hero background image in /public/images/locations/ */
   heroImage: { src: string; alt: string; credit?: string };
-  /** ~150-200 words of unique local context */
+  /** Opening paragraph of local context */
   localIntro: string;
+  /** Additional body paragraphs for richer city-specific content (300–500 words total with localIntro) */
+  bodyParagraphs?: string[];
+  /** Client types commonly served in this market */
+  clientTypes?: { type: string; examples: string }[];
+  /** Outbound editorial links (e.g., Southern Legends profiles) shown in an "Explore [City]" block */
+  editorialLinks?: { label: string; href: string; description: string }[];
   /** 3-4 bullet points about why businesses in this city need a website */
   whyHere: { title: string; desc: string }[];
   /** Nearby cities to cross-link */
@@ -23,21 +29,45 @@ export const locations: Location[] = [
     name: "Anniston",
     county: "Calhoun County",
     zip: "36201",
-    metaTitle: "Web Design in Anniston, AL",
+    metaTitle: "Web Design in Anniston, AL | Headley Web & SEO",
     metaDescription:
-      "Custom web design and local SEO for Anniston, Alabama businesses. Get found on Google by customers searching in Calhoun County. Flat-rate pricing from $495.",
+      "Custom web design and local SEO for Anniston, Alabama businesses. Get found on Google by Army Depot families, Noble Street foot traffic, and Calhoun County customers. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Anniston Businesses",
     heroSub:
-      "Your customers are searching Google for what you do, right here in Anniston. I build websites that make sure they find you first.",
+      "Calhoun County's largest city deserves a web presence to match. I build websites that make sure your Anniston customers find you first.",
     heroImage: { src: "/images/locations/anniston-hero.webp", alt: "Anniston, Alabama", credit: "Rivers Langley / CC BY-SA 3.0" },
     localIntro:
-      "Anniston is Calhoun County's largest city, and the customer base here is real. Army Depot families, Noble Street foot traffic, neighborhoods stretching across every zip code in the 362 exchange. They all search Google before they make a call. If your business doesn't show up in those searches, that call goes to whoever does. I ran a business here for four years. I know this market.",
+      "Anniston is Calhoun County's largest city, and the customer base here is real. Army Depot families, Noble Street foot traffic, neighborhoods stretching across every zip code in the 362 exchange — they all search Google before they make a call. If your business doesn't show up, that call goes to whoever does. I ran a business in Anniston for four years. I know this market.",
+    bodyParagraphs: [
+      "The Anniston Army Depot is the economic anchor of this city. Thousands of civilian employees, contractors, and military families live in and around Anniston — and they spend locally. A family that relocates for a Depot position doesn't know a plumber or a dentist or a good mechanic yet. They search Google. Businesses that show up in those searches get calls before they've even hung out a sign.",
+      "Noble Street is having a moment. The downtown revival is real — new restaurants, small shops, creative businesses filling storefronts that sat empty for years. That momentum brings foot traffic, but it also brings search traffic. People drive to Anniston specifically looking for what's new, and they discover it the same way they discover everything else: on their phone, before they leave home.",
+      "The residential neighborhoods stretching out from downtown toward Oxford, toward Bynum, toward Golden Springs — those are working families who need trades, services, healthcare, and food. They're loyal customers once you earn them. But earning them starts with being findable. Most Anniston businesses have a Facebook page and maybe a Google Business Profile that hasn't been touched in two years. That's not a web presence. That's a placeholder. I build the real thing.",
+    ],
+    clientTypes: [
+      { type: "Trades & Contractors", examples: "HVAC, plumbing, electrical, roofing, insulation, pest control" },
+      { type: "Healthcare & Medical", examples: "Family practices, dentists, chiropractors, urgent care, specialists" },
+      { type: "Auto & Transportation", examples: "Auto repair, tire shops, towing, detailing, car lots" },
+      { type: "Restaurants & Food", examples: "Downtown dining, takeout, catering, food trucks" },
+      { type: "Beauty & Personal Care", examples: "Hair salons, barbers, nail salons, spas, tattoo studios" },
+      { type: "Professional Services", examples: "Law offices, insurance agencies, financial advisors, CPAs" },
+    ],
+    editorialLinks: [
+      {
+        label: "Freedom Riders National Monument",
+        href: "https://southernlegends.blog/profiles/freedom-riders-national-monument",
+        description: "The Greyhound station where Freedom Riders were attacked in 1961 is now a national monument — one of the most significant civil rights sites in Alabama.",
+      },
+      {
+        label: "Anniston Museum of Natural History & Arts",
+        href: "https://southernlegends.blog/profiles/anniston-museums-gardens",
+        description: "Two world-class museums and a garden in a mid-size Alabama city. The kind of thing that surprises people who've written Anniston off.",
+      },
+    ],
     whyHere: [
-      { title: "Calhoun County's Largest City", desc: "Anniston anchors the county. Your website should anchor your online presence just as strongly." },
-      { title: "Army Depot & Defense Economy", desc: "Thousands of families and contractors depend on the Depot. A strong web presence puts you in front of that market." },
-      { title: "Noble Street Revival", desc: "Downtown Anniston is growing again. New businesses need websites that match the momentum." },
-      { title: "Oxford Next Door", desc: "Anniston and Oxford share customers. Ranking in both cities doubles your reach." },
-      { title: "I Ran a Business Here", desc: "Headley Flower Farm operated out of Anniston for four years. I know this market firsthand." },
+      { title: "Calhoun County's Largest City", desc: "Anniston anchors the county. More population, more search volume, more calls to win — if you're showing up." },
+      { title: "Army Depot Economy", desc: "Thousands of Depot employees and military families search locally for everything from HVAC to haircuts. A strong web presence puts you first in line." },
+      { title: "Noble Street Revival", desc: "Downtown Anniston is growing again. New foot traffic means new search traffic — and new customers who don't know anyone to ask for a recommendation." },
+      { title: "I Know This Market", desc: "Headley Flower Farm operated in Anniston for four years. I'm not guessing at the customer base here. I lived it." },
     ],
     nearby: ["oxford", "jacksonville", "talladega", "weaver"],
   },
@@ -68,20 +98,40 @@ export const locations: Location[] = [
     name: "Gadsden",
     county: "Etowah County",
     zip: "35901",
-    metaTitle: "Web Design in Gadsden, AL",
+    metaTitle: "Web Design in Gadsden, AL | Headley Web & SEO",
     metaDescription:
-      "Custom web design and local SEO for Gadsden, Alabama businesses. Get found on Google in Etowah County. Flat-rate pricing from $495.",
+      "Custom web design and local SEO for Gadsden, Alabama businesses. Get found on Google by Etowah County customers near Noccalula Falls and Broad Street. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Gadsden Businesses",
     heroSub:
       "Gadsden businesses deserve better than a Facebook page and a prayer. I build websites that actually get you found on Google.",
     heroImage: { src: "/images/locations/gadsden-hero.webp", alt: "Noccalula Falls, Gadsden, Alabama", credit: "Thejammer / Public Domain" },
     localIntro:
-      "Gadsden is the seat of Etowah County, and it's been here long enough to have an opinion about things. Noccalula Falls. Broad Street. A trades market that runs deep. The problem isn't a lack of customers. It's that most Gadsden businesses are invisible to people who are new in town or searching from their phone. When someone types \"electrician in Gadsden\" or \"best HVAC near me,\" they call whoever Google shows them. Right now, that's often not the best business in town. It's the one with the best website.",
+      "Gadsden is the seat of Etowah County — it's been here long enough to have an opinion about things. Noccalula Falls. Broad Street. A trades market that runs deep. The problem isn't a lack of customers. It's that most Gadsden businesses are invisible to anyone who's new in town or searching from their phone. When someone types \"HVAC in Gadsden\" or \"best dentist near me,\" they call whoever Google shows them. That's usually not the best business in town. It's the one with the best website.",
+    bodyParagraphs: [
+      "In a city Gadsden's size, the gap between showing up and not showing up is measurable. The phone either rings or it doesn't, and the website is usually the reason. Most established Gadsden businesses run on reputation and referrals — which works fine until someone new to the area needs what you do. They don't ask around. They search Google, call the first result that looks credible, and move on. That's a customer your reputation never got a chance to earn.",
+      "Noccalula Falls Park draws visitors from across the Southeast — families on weekend trips, hikers, school groups, people making a day of it from Birmingham or Huntsville. Those visitors are searching on their phones before they ever arrive: where to eat, what's nearby, where to stop on the way home. Businesses close to the Falls with a clean, optimized website are the ones they find. Most don't have one.",
+      "Broad Street is finding itself again — new restaurants, renovated storefronts, a downtown earning a second look. But Gadsden's real economy runs on trades. The plumbers, HVAC companies, roofers, and electricians covering Etowah County — Attalla, Rainbow City, Glencoe, Southside — need a web presence that matches their actual service area, not just their city limits. I build sites that rank across the whole county, because that's where the work is.",
+    ],
+    clientTypes: [
+      { type: "Trades & Contractors", examples: "HVAC, plumbing, electrical, roofing, pest control, landscaping" },
+      { type: "Restaurants & Food", examples: "Broad Street dining, takeout, catering, coffee shops, food trucks" },
+      { type: "Healthcare & Medical", examples: "Family practices, dentists, chiropractors, physical therapists, urgent care" },
+      { type: "Auto & Marine", examples: "Auto repair, towing, detailing, boat service and repair" },
+      { type: "Retail & Specialty", examples: "Boutiques, hardware, outdoor gear, pet services, sporting goods" },
+      { type: "Home Services", examples: "Painters, house cleaners, handymen, pressure washing, pool service" },
+    ],
+    editorialLinks: [
+      {
+        label: "Noccalula Falls Park",
+        href: "https://southernlegends.blog/profiles/noccalula-falls",
+        description: "Gadsden's signature landmark — a 90-foot waterfall inside a park that's been drawing visitors since the 1930s. One of the most photographed places in Northeast Alabama.",
+      },
+    ],
     whyHere: [
-      { title: "Etowah County Seat", desc: "Gadsden is the center of commerce for the whole county. Your website should reflect that." },
-      { title: "Noccalula Falls Tourism", desc: "Visitors searching for things to do nearby also search for local services. Capture that traffic." },
-      { title: "Broad Street Revitalization", desc: "Downtown Gadsden is reinventing itself. A modern website signals you're part of that growth." },
-      { title: "Attalla & Rainbow City Overlap", desc: "Serving neighboring cities? Your site should rank in all of them, not just one." },
+      { title: "Etowah County Seat", desc: "Gadsden is the commercial center for the whole county. A website built for this market should rank across Attalla, Rainbow City, Glencoe, and Southside — not just one zip code." },
+      { title: "Noccalula Falls Tourism", desc: "Visitors from across the Southeast search for food, services, and experiences nearby. A well-optimized site puts your business in front of that traffic before they arrive." },
+      { title: "Broad Street Revival", desc: "Downtown Gadsden is earning a second look. New foot traffic means customers who don't have existing loyalties — they find whoever shows up online." },
+      { title: "Deep Trades Market", desc: "Gadsden's trades economy is strong and underserved online. First-mover advantage is real for any contractor willing to show up on Google." },
     ],
     nearby: ["anniston", "centre", "rainbow-city"],
   },
@@ -90,20 +140,33 @@ export const locations: Location[] = [
     name: "Jacksonville",
     county: "Calhoun County",
     zip: "36265",
-    metaTitle: "Web Design in Jacksonville, AL",
+    metaTitle: "Web Design in Jacksonville, AL | Headley Web & SEO",
     metaDescription:
-      "Custom web design and local SEO for Jacksonville, Alabama businesses. Get found on Google by JSU students, families, and locals. Flat-rate pricing from $495.",
+      "Custom web design and local SEO for Jacksonville, Alabama businesses. Get found on Google by JSU students, families, and locals searching right now. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Jacksonville Businesses",
     heroSub:
       "I live here. I work here. And I build websites for businesses right here in Jacksonville that actually show up when locals search.",
     heroImage: { src: "/images/locations/jacksonville-hero.webp", alt: "Jacksonville, Alabama public square", credit: "Thomson200 / CC0" },
     localIntro:
-      "Jacksonville is home. My kids go to school here. I built Headley Web & SEO here. I know who the competition is and where the foot traffic flows. Jacksonville State keeps a steady stream of students and families cycling through town, and Pelham Road carries more search volume than most local businesses realize. Your next customer is probably searching right now. They're going to call whoever shows up first.",
+      "Jacksonville is home. My kids go to school here. I built Headley Web & SEO here because I watched good local businesses lose customers to competitors with worse work but better websites. I know who the competition is and where the foot traffic flows. Your next customer is probably searching Google right now. They're going to call whoever shows up first.",
+    bodyParagraphs: [
+      "Jacksonville State University sets the rhythm for this town. The student population keeps restaurants, coffee shops, and service businesses busy through the school year. Gamecock football weekends bring traffic that rivals any market day. Every August, a new class of students and families arrives — and every one of them is searching Google for the nearest pizza place, a trusted mechanic, a good dentist. They don't have a neighbor to ask yet. They call whoever shows up first.",
+      "Beyond JSU, Jacksonville runs on a solid trades economy. HVAC companies, plumbers, electricians, roofers, and lawn services cover the neighborhoods stretching toward Weaver, Alexandria, and Piedmont. The square still draws lunch crowds. Local medical offices, chiropractors, and dental practices compete for patients who'd rather stay close to home than drive 20 minutes to Anniston. Most of those patients make that decision on their phone — based on what Google shows them, not a yard sign.",
+      "Most Jacksonville businesses still run on referrals and a Facebook page that last got updated before the pandemic. That holds onto existing customers. It does nothing for the person searching Google right now who doesn't know you exist. Even in a small town, the business with the best online presence wins the call. I built Headley Web & SEO here precisely because I know this market — and I know how much is being left on the table.",
+    ],
+    clientTypes: [
+      { type: "Trades & Contractors", examples: "HVAC, plumbing, electrical, roofing, lawn care and landscaping" },
+      { type: "Restaurants & Food Service", examples: "Campus-area restaurants, coffee shops, food trucks, catering" },
+      { type: "Health & Wellness", examples: "Chiropractors, dentists, physical therapists, family medical practices" },
+      { type: "Beauty & Personal Care", examples: "Hair salons, barbers, nail salons, massage therapists" },
+      { type: "Home Services", examples: "Painters, handymen, house cleaners, pest control" },
+      { type: "Specialty & Retail", examples: "Auto repair, florists, pet grooming, tutoring services" },
+    ],
     whyHere: [
-      { title: "JSU Student & Family Market", desc: "Thousands of students and their families search locally every day. Your website should be what they find." },
-      { title: "Your Web Designer Lives Here", desc: "I'm not a remote agency. I'm a neighbor who knows Jacksonville's market firsthand." },
-      { title: "Small Town, Big Competition", desc: "Even in a small town, the business with the best online presence wins the call." },
-      { title: "Pelham Road & Town Square", desc: "On the main drag or a side street, Google doesn't care about your physical location. Only your digital one." },
+      { title: "JSU Student & Family Market", desc: "Thousands of students and their families search locally every day — for food, trades, health services, and more. Your website should be what they find." },
+      { title: "Your Web Designer Lives Here", desc: "I'm not a remote agency pitching Jacksonville from three states away. I'm a neighbor who knows this market, these streets, and these search patterns firsthand." },
+      { title: "Small Town, Real Competition", desc: "Even in a town this size, the business with the best online presence wins the call. Word of mouth gets you started. Google keeps the phone ringing." },
+      { title: "Pelham Road & Town Square", desc: "On the main commercial drag or a side street, Google doesn't care about your physical location. Only your digital one." },
     ],
     nearby: ["anniston", "oxford", "piedmont"],
   },
@@ -244,20 +307,33 @@ export const locations: Location[] = [
     name: "Centre",
     county: "Cherokee County",
     zip: "35960",
-    metaTitle: "Web Design in Centre, AL",
+    metaTitle: "Web Design in Centre, AL | Headley Web & SEO",
     metaDescription:
-      "Custom web design and local SEO for Centre, Alabama businesses. Get found on Google by Weiss Lake visitors and Cherokee County locals. Flat-rate pricing from $495.",
+      "Custom web design and local SEO for Centre, Alabama businesses. Get found on Google by Weiss Lake anglers, tournament visitors, and Cherokee County locals. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Centre Businesses",
     heroSub:
       "Centre sits on Weiss Lake and serves all of Cherokee County. Your website should be pulling in customers from both.",
     heroImage: { src: "/images/locations/centre-hero.webp", alt: "Sunset over Weiss Lake, Centre, Alabama", credit: "Alabama Tourism Department" },
     localIntro:
-      "Centre is the seat of Cherokee County and the gateway to Weiss Lake — the \"Crappie Capital of the World\" — drawing anglers, weekend visitors, and lake house owners from across the Southeast. That seasonal traffic is a goldmine for local businesses, but only if those visitors can find you online. Beyond the lake, Centre serves a county of trades, farms, and small businesses that make up the backbone of the local economy. Whether you're a dock builder on the lake, a contractor in town, or a restaurant on the square, your website is how new customers decide whether to call you or scroll past. I build clean, fast websites with local SEO that targets Centre, Leesburg, Cedar Bluff, and the rest of Cherokee County — so your phone rings year-round, not just during tournament season.",
+      "Centre is the seat of Cherokee County and the gateway to Weiss Lake — the \"Crappie Capital of the World\" — drawing anglers, weekend visitors, and lake house owners from across the Southeast. That seasonal traffic is a goldmine for local businesses, but only if those visitors can find you online. Beyond the lake, Centre serves a county of trades, farms, and small businesses that make up the backbone of the local economy. Whether you're a dock builder on the lake, a contractor in town, or a restaurant on the square, your website is how new customers decide whether to call you or scroll past.",
+    bodyParagraphs: [
+      "Weiss Lake hosts some of the most competitive crappie tournaments in the Southeast. When a major tournament comes to town, anglers and their families flood into Cherokee County from Georgia, Tennessee, Mississippi, and beyond. They need fuel, food, ice, lodging, and boat repair — and they find all of it the same way: by searching Google before they cross the county line. The businesses that show up in those searches get the calls. The ones that don't are invisible to an audience that drove five hours specifically to spend money here.",
+      "Tournament season is the peak, but it's not the whole picture. Cherokee County has year-round residents who need trades, healthcare, and services just like anywhere else. The plumber who ranks well on Google doesn't just get tournament-season calls — they get calls every Tuesday in February when a pipe bursts and nobody knows a neighbor to ask anymore. A website built for this market should work all twelve months, not just the ones when the crappie are biting.",
+      "Cherokee County stretches from Centre out through Leesburg, Cedar Bluff, and Gaylesville. If you serve the whole county — or the whole lake — your website should rank across all of it. Most local businesses have a Google Business Profile that covers their city and maybe the surrounding area. A properly built site with county-wide local SEO closes that gap, so the person searching from a lake house on the Georgia side of the county finds your business before they find one across the state line.",
+    ],
+    clientTypes: [
+      { type: "Lake & Marine Services", examples: "Dock builders, boat repair, marine supplies, fishing guides, outfitters" },
+      { type: "Lodging & Vacation Rentals", examples: "Cabins, lake house rentals, motels, RV parks, campgrounds" },
+      { type: "Restaurants & Food", examples: "Lakeside dining, catfish houses, bait shops with deli, takeout" },
+      { type: "Trades & Contractors", examples: "HVAC, plumbing, electrical, roofing, lake house construction and renovation" },
+      { type: "Healthcare & Wellness", examples: "Family practices, dentists, chiropractors, urgent care" },
+      { type: "Retail & Specialty", examples: "Tackle shops, farm supply, hardware, auto parts, outdoor gear" },
+    ],
     whyHere: [
-      { title: "Weiss Lake Tourism", desc: "Anglers and lake visitors search before they arrive. A strong website captures that traffic before competitors do." },
-      { title: "Cherokee County Seat", desc: "Centre is the commercial hub for the county. Your online presence should match." },
-      { title: "Seasonal + Year-Round", desc: "Lake traffic boosts spring through fall, but a good website works 12 months a year." },
-      { title: "Leesburg & Cedar Bluff Reach", desc: "Serve the whole county? Your site should rank across all of Cherokee County — not just Centre." },
+      { title: "Weiss Lake Tournament Traffic", desc: "Major crappie tournaments bring competitors and families from across the Southeast. They search for food, lodging, guides, and services before they arrive. Show up in those searches." },
+      { title: "Cherokee County Seat", desc: "Centre is the commercial hub for Leesburg, Cedar Bluff, and Gaylesville too. A well-built site ranks across the whole county — not just your zip code." },
+      { title: "Seasonal Peaks, Year-Round Business", desc: "Tournament season brings spikes, but a properly optimized site keeps the phone ringing in the off-season when your competitors go quiet." },
+      { title: "Lake House Owner Market", desc: "Seasonal owners search for contractors, cleaners, and services remotely before they visit. A professional site puts you on their list before they cross the county line." },
     ],
     nearby: ["gadsden"],
   },

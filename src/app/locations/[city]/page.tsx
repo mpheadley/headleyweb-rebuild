@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Check, ArrowRight, Sparkles, Monitor, Search, Map } from "lucide-react";
+import { MapPin, Check, ArrowRight, Sparkles, Monitor, Search, Map, Users, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -192,6 +192,15 @@ export default async function LocationPage({ params }: { params: Params }) {
             <p className="text-lg text-hw-text leading-relaxed animate-on-scroll">
               {loc.localIntro}
             </p>
+            {loc.bodyParagraphs && loc.bodyParagraphs.length > 0 && (
+              <div className="mt-6 space-y-4">
+                {loc.bodyParagraphs.map((para, i) => (
+                  <p key={i} className="text-hw-text leading-relaxed animate-on-scroll">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -222,6 +231,78 @@ export default async function LocationPage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
+
+      {/* ═══ Client Types ═══ */}
+      {loc.clientTypes && loc.clientTypes.length > 0 && (
+        <section className="py-24 md:py-32 px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">
+                Who I Build For
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">
+                {loc.name} Businesses I Work With
+              </h2>
+              <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
+                Every site is built around your specific trade and your specific market — not a generic template anyone can buy.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {loc.clientTypes.map((ct) => (
+                <div key={ct.type} className="card-glow flex gap-4 animate-on-scroll">
+                  <div className="shrink-0">
+                    <Users className="w-5 h-5 text-hw-primary mt-1" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold mb-1">{ct.type}</h3>
+                    <p className="text-hw-text-light text-sm">{ct.examples}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══ Editorial Links ═══ */}
+      {loc.editorialLinks && loc.editorialLinks.length > 0 && (
+        <section className="py-16 px-6 bg-hw-light grain">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-hw-secondary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">
+                Local History
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold animate-on-scroll">
+                Explore {loc.name}
+              </h2>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {loc.editorialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-glow flex gap-4 group animate-on-scroll"
+                >
+                  <div className="shrink-0">
+                    <ExternalLink className="w-5 h-5 text-hw-secondary mt-1" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold mb-1 group-hover:text-hw-primary transition-colors">
+                      {link.label}
+                    </h3>
+                    <p className="text-hw-text-light text-sm">{link.description}</p>
+                    <span className="text-hw-secondary text-xs mt-2 inline-block">
+                      southernlegends.blog
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ═══ Services ═══ */}
       <section className="py-24 md:py-32 px-6 bg-white">
