@@ -497,7 +497,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           {/* Top — Headshot + Empathy */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
-            <div className="relative mx-auto md:mx-0 animate-on-scroll overflow-hidden rounded-2xl shadow-lg h-72 md:h-80">
+            <div className="relative mx-auto md:mx-0 animate-on-scroll overflow-hidden rounded-2xl shadow-lg w-full h-72 md:h-80">
               <Image
                 src="/images/laptop-matt-headley.webp"
                 alt="Matt Headley working on a laptop at a local coffee shop"
