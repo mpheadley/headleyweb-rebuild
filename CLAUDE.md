@@ -64,8 +64,8 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 - Keep hero headline broad (no geo). Geo goes in JSON-LD `areaServed`, answer-first blocks, footer, trade pages.
 - Don't use "StoryBrand" in hero or customer-facing headlines. Use it on About page, Services page, blog posts.
 
-### Blog Writing Workflow
-- **Voice guide:** `content/BLOG-VOICE-GUIDE.md` — read this before drafting or editing any blog post. Covers role constraints, kill list, brochure failure mode, opening rules, TLDR requirements, and self-audit checklist.
+### Voice & Writing
+- **Voice guide:** `content/BLOG-VOICE-GUIDE.md` — applies to ALL site copy (homepage, services, FAQ, CTAs, meta descriptions, JSON-LD) and blog posts. Read before writing or editing any copy. Covers kill list, brochure failure mode, structural patterns, and self-audit checklist.
 - **AI-written posts (6):** All current published blog posts were written entirely by Claude and tagged `aiWritten: true` in frontmatter. They need Matt's review and proofing before being treated as final. Don't reference them as voice examples.
 
 **When Matt removes `aiWritten: true` from a post, it's been proofed and can be treated as final/publishable.**

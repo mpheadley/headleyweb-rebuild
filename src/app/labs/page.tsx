@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/labs",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

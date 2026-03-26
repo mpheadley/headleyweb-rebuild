@@ -14,6 +14,35 @@ const breadcrumbSchema = {
   ],
 };
 
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Headley Web & SEO",
+  url: "https://headleyweb.com",
+  telephone: "+1-256-644-7334",
+  email: "matt@headleyweb.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jacksonville",
+    addressRegion: "AL",
+    postalCode: "36265",
+    addressCountry: "US",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "09:00",
+    closes: "17:00",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+1-256-644-7334",
+    email: "matt@headleyweb.com",
+    contactType: "customer service",
+    availableLanguage: "English",
+  },
+};
+
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -45,6 +74,10 @@ export default function ContactPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
 
       {/* ═══ Hero ═══ */}

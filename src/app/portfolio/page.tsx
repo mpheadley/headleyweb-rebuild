@@ -58,7 +58,7 @@ export default function PortfolioPage() {
             Work That Gets{" "}
             <span className="text-hw-primary hand-accent">Results</span>
           </h1>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll" data-speakable="true">
             Every project starts with a clear goal: make your phone ring. Here&apos;s what that looks like in practice.
           </p>
         </div>

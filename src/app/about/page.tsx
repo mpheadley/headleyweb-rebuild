@@ -35,6 +35,39 @@ const breadcrumbSchema = {
   ],
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Matt Headley",
+  jobTitle: "Web Designer & SEO Specialist",
+  worksFor: {
+    "@type": "Organization",
+    name: "Headley Web & SEO",
+    url: "https://headleyweb.com",
+  },
+  url: "https://headleyweb.com/about",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jacksonville",
+    addressRegion: "AL",
+    addressCountry: "US",
+  },
+  sameAs: [
+    "https://share.google/Dqh6aBASaey4yQXzm",
+  ],
+  description: "Matt Headley is a Jacksonville, Alabama web designer who builds StoryBrand-powered websites for local service businesses in Northeast Alabama.",
+};
+
+const aboutSpeakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "About Matt Headley | Headley Web & SEO",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='true']", "h1"],
+  },
+};
+
 const credentials = [
   {
     icon: BookOpen,
@@ -80,6 +113,14 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSpeakableSchema) }}
+      />
 
       {/* ═══ Hero ═══ */}
       <section className="relative pt-32 pb-20 md:pt-36 md:pb-24 px-6 text-white overflow-hidden">
@@ -94,7 +135,7 @@ export default function AboutPage() {
             A Local Business Owner,{" "}
             <span className="text-hw-primary">Just Like You</span>
           </h1>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll" data-speakable="true">
             I started Headley Web <span className="amp">&amp;</span> SEO because I kept watching great local businesses lose leads to competitors who were simply easier to find online.
           </p>
         </div>
