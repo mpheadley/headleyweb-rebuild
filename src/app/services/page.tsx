@@ -69,7 +69,7 @@ const serviceFaqSchema = {
     {
       "@type": "Question",
       name: "How much does a small business website cost?",
-      acceptedAnswer: { "@type": "Answer", text: "A professional small business website from Headley Web & SEO costs between $495 and $1,195 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($795) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,195) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one. No contracts." },
+      acceptedAnswer: { "@type": "Answer", text: "A professional small business website from Headley Web & SEO costs between $495 and $1,995 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($1,495) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,995) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one. No contracts." },
     },
     {
       "@type": "Question",
@@ -85,6 +85,16 @@ const serviceFaqSchema = {
       "@type": "Question",
       name: "Do I need a website if I already get referrals?",
       acceptedAnswer: { "@type": "Answer", text: "Yes. Referrals are your best leads, but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else's customer. A professional website confirms you're legitimate, shows your work, and makes it easy to call or book in one tap." },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need to pay for hosting?",
+      acceptedAnswer: { "@type": "Answer", text: "Nope. Hosting is included. Your site goes live and stays live. I'm not going to build you a house and then charge you rent for the driveway." },
+    },
+    {
+      "@type": "Question",
+      name: "I already have a website. Do we have to start from scratch?",
+      acceptedAnswer: { "@type": "Answer", text: "Not always. Sometimes a renovation beats a rebuild. I'll take an honest look at what you've got and tell you whether it's worth saving or if we're better off starting fresh. No hard sell either way." },
     },
   ],
 };
@@ -607,6 +617,54 @@ export default function ServicesPage() {
           <p className="text-center text-hw-text-light text-sm mt-8 animate-on-scroll">
             Care plans are optional. Your site is yours. No hosting lock-in, no contracts.
           </p>
+        </div>
+      </section>
+
+      {/* ═══ FAQ ═══ */}
+      <section id="faq" className="py-24 md:py-32 px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">FAQ</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Common Questions About Our Services</h2>
+          </div>
+          <div className="animate-on-scroll">
+            <details className="faq-item">
+              <summary>How much does a small business website cost?</summary>
+              <div className="faq-answer">
+                A professional small business website costs between $495 and $1,995 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($1,495) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,995) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one. No contracts.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>What is local SEO and why does my business need it?</summary>
+              <div className="faq-answer">
+                Local SEO is the process of optimizing your website and online presence so customers in your area find you when they search for your services. It includes on-page optimization (titles, meta descriptions, schema markup), Google Business Profile management, and content structured around the specific trades and towns you serve. Without local SEO, even a great-looking website won&apos;t generate phone calls.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>What is AI visibility and how does it help my business?</summary>
+              <div className="faq-answer">
+                You know how people are starting to ask ChatGPT and Google&apos;s AI for recommendations instead of scrolling through search results? AI visibility means structuring your website so those tools can read, understand, and recommend your business. It includes answer-first content, schema markup that AI parsers trust, and entity optimization so AI knows your trade, your town, and your hours.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>Do I need a website if I already get referrals?</summary>
+              <div className="faq-answer">
+                Referrals are gold, but the person still Googles you before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else&apos;s customer. A professional site confirms you&apos;re legitimate, shows your work, and makes it easy to call or book in one tap.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>Do I need to pay for hosting?</summary>
+              <div className="faq-answer">
+                Nope. Hosting is included. Your site goes live and stays live. I&apos;m not going to build you a house and then charge you rent for the driveway.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>I already have a website. Do we have to start from scratch?</summary>
+              <div className="faq-answer">
+                Not always. Sometimes a renovation beats a rebuild. I&apos;ll take an honest look at what you&apos;ve got and tell you whether it&apos;s worth saving or if we&apos;re better off starting fresh. No hard sell either way.
+              </div>
+            </details>
+          </div>
         </div>
       </section>
 
