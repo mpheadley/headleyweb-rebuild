@@ -180,7 +180,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     }
     // Speed second
     if (auditResult.lcp > 4) {
-      summaryParts.push(`your site takes ${auditResult.lcp}s to load — even ready-to-hire customers may bounce at that speed`);
+      summaryParts.push(`your site takes ${auditResult.lcp}s to load, and even ready-to-hire customers may bounce at that speed`);
     } else if (auditResult.lcp > 2.5) {
       summaryParts.push(`your site is a bit slow at ${auditResult.lcp}s to load`);
     }
@@ -193,11 +193,11 @@ export function buildReportDoc(input: ReportInput): jsPDF {
 
     let summary: string;
     if (summaryParts.length === 0 && recommendations.length > 0) {
-      summary = `Your site is in solid shape. The checkup still found ${recommendations.length} thing${recommendations.length > 1 ? "s" : ""} worth tightening — see "What I'd Fix First" below.`;
+      summary = `Your site is in solid shape. The checkup still found ${recommendations.length} thing${recommendations.length > 1 ? "s" : ""} worth tightening. See "What I'd Fix First" below.`;
     } else if (summaryParts.length === 0) {
-      summary = "Your site is in solid shape — speed, SEO, and messaging are all working for you.";
+      summary = "Your site is in solid shape. Speed, SEO, and messaging are all working for you.";
     } else {
-      summary = `Your website is your hardest-working employee — but right now, ${summaryParts.slice(0, 2).join(" and ")}. Here's what the checkup found.`;
+      summary = `Your website is your hardest-working employee, but right now, ${summaryParts.slice(0, 2).join(" and ")}. Here's what the checkup found.`;
     }
 
     const summaryLines = doc.splitTextToSize(summary, contentWidth - 95);
@@ -291,11 +291,11 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     doc.setFontSize(11);
     doc.setFont("helvetica", "normal");
     const msgGradeLabels: Record<string, string> = {
-      A: "Your messaging is clear and compelling — this site sells",
+      A: "Your messaging is clear and compelling. This site sells.",
       B: "Good foundation, but a few gaps are holding you back",
       C: "The right pieces are there, but the message is muddled",
-      D: "Key messaging elements are missing — visitors get confused",
-      F: "No clear message — visitors won't know what to do",
+      D: "Key messaging elements are missing, and visitors get confused",
+      F: "No clear message. Visitors won't know what to do.",
     };
     doc.text(msgGradeLabels[msgGrade] ?? msgGradeLabels.F, margin + 60, y + 30);
     y += 65;
@@ -412,9 +412,9 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     const lcpColor: [number, number, number] = auditResult.lcp <= 2.5 ? green : auditResult.lcp <= 4 ? yellow : red;
     const lcpBg: [number, number, number] = auditResult.lcp <= 2.5 ? [240, 249, 240] : auditResult.lcp <= 4 ? [254, 249, 235] : [254, 242, 242];
     const speedLabel = auditResult.lcp <= 2.5
-      ? "When someone finds you on Google, your site loads quickly — they'll stick around."
+      ? "When someone finds you on Google, your site loads quickly. They'll stick around."
       : auditResult.lcp <= 4
-      ? `Your site takes ${auditResult.lcp}s to load — not terrible, but faster competitors may get the edge.`
+      ? `Your site takes ${auditResult.lcp}s to load. Not terrible, but faster competitors may get the edge.`
       : `When someone Googles you on their phone, they wait ${auditResult.lcp}s for your site to load. Even customers ready to hire may bounce at that speed.`;
     doc.setFillColor(...lcpBg);
     const speedLines = doc.splitTextToSize(speedLabel, contentWidth - 30);
@@ -428,10 +428,10 @@ export function buildReportDoc(input: ReportInput): jsPDF {
 
     // Basic checks — reframed for customer impact
     const checks = [
-      { passed: auditResult.isHttps, passText: "Your site is secure — visitors see the lock icon", failText: "No security lock — browsers may warn visitors away" },
-      { passed: auditResult.hasMetaDescription, passText: "You have a search description that shows on Google", failText: "No search description — Google shows random text from your page" },
-      { passed: auditResult.hasViewport, passText: "Your site is set up for mobile devices", failText: "Not mobile-friendly — over half your visitors are on phones" },
-      { passed: auditResult.isLinkCrawlable, passText: "Search engines can follow your links", failText: "Some links aren't crawlable — Google may miss parts of your site" },
+      { passed: auditResult.isHttps, passText: "Your site is secure. Visitors see the lock icon.", failText: "No security lock. Browsers may warn visitors away." },
+      { passed: auditResult.hasMetaDescription, passText: "You have a search description that shows on Google", failText: "No search description. Google shows random text from your page." },
+      { passed: auditResult.hasViewport, passText: "Your site is set up for mobile devices", failText: "Not mobile-friendly. Over half your visitors are on phones." },
+      { passed: auditResult.isLinkCrawlable, passText: "Search engines can follow your links", failText: "Some links aren't crawlable. Google may miss parts of your site." },
       { passed: auditResult.hasLocalBusinessSchema, passText: "Google knows your business name, address, and hours", failText: "Google can't verify your business details for local search results" },
     ];
 
@@ -551,7 +551,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
 
     doc.setFillColor(240, 249, 240);
     const successItems = [
-      "Loads in under 3 seconds — visitors stay and explore",
+      "Loads in under 3 seconds so visitors stay and explore",
       "Clear headline that speaks to your customer's problem",
       "Phone number and call-to-action visible without scrolling",
       "Google can verify your business for local search results",

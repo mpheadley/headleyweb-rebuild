@@ -8,7 +8,7 @@ import LazyPageSpeedProof from "@/app/components/LazyPageSpeedProof";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "See websites I've built for local businesses in Northeast Alabama. Custom web design, local SEO, and Google Business Profile optimization — real results for real businesses.",
+    "See websites I've built for local businesses in Northeast Alabama. Custom web design, local SEO, and Google Business Profile optimization: real results for real businesses.",
   alternates: {
     canonical: "/portfolio",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Portfolio",
+        alt: "Headley Web & SEO: Portfolio",
       },
     ],
   },

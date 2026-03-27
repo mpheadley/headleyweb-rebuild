@@ -6,7 +6,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Web Design for Etowah County, AL Businesses",
   description:
-    "Custom web design and local SEO for small businesses across Etowah County, Alabama — Gadsden, Rainbow City, Attalla, and surrounding communities. Flat-rate pricing from $495. No contracts.",
+    "Custom web design and local SEO for small businesses across Etowah County, Alabama: Gadsden, Rainbow City, Attalla, and surrounding communities. Flat-rate pricing from $495. No contracts.",
   alternates: {
     canonical: "/locations/etowah-county",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Web Design for Etowah County, AL",
+        alt: "Headley Web & SEO, Web Design for Etowah County, AL",
       },
     ],
   },
@@ -41,7 +41,7 @@ const localBusinessSchema = {
   "@type": "ProfessionalService",
   name: "Headley Web & SEO",
   description:
-    "Headley Web & SEO provides custom web design and local SEO for small businesses across Etowah County, Alabama — including Gadsden, Rainbow City, and Attalla.",
+    "Headley Web & SEO provides custom web design and local SEO for small businesses across Etowah County, Alabama, including Gadsden, Rainbow City, and Attalla.",
   url: "https://headleyweb.com",
   telephone: "+1-256-644-7334",
   email: "matt@headleyweb.com",
@@ -74,7 +74,7 @@ const cities = [
   {
     name: "Attalla",
     slug: "attalla",
-    desc: "Right next door to Gadsden — Coosa River corridor, strong trades and service market.",
+    desc: "Right next door to Gadsden. Coosa River corridor, strong trades and service market.",
   },
   {
     name: "Southside",
@@ -84,7 +84,7 @@ const cities = [
   {
     name: "Glencoe",
     slug: "glencoe",
-    desc: "Between Gadsden and Attalla — most businesses here are invisible online.",
+    desc: "Between Gadsden and Attalla. Most businesses here are invisible online.",
   },
 ];
 
@@ -95,15 +95,15 @@ const whyPoints = [
   },
   {
     title: "No Pricing Games",
-    desc: "Every competitor in Etowah County says 'call for a quote.' I publish flat-rate pricing from $495 — you know exactly what you're getting.",
+    desc: "Every competitor in Etowah County says 'call for a quote.' I publish flat-rate pricing from $495. You know exactly what you're getting.",
   },
   {
     title: "Built to Rank in Etowah County",
-    desc: "Every site includes local SEO targeting your specific city — Gadsden, Rainbow City, Attalla, Southside. Not generic statewide optimization.",
+    desc: "Every site includes local SEO targeting your specific city: Gadsden, Rainbow City, Attalla, Southside. Not generic statewide optimization.",
   },
   {
     title: "You Own Everything",
-    desc: "No monthly hosting traps, no locked-in contracts. Your domain, your code, your site — from day one.",
+    desc: "No monthly hosting traps, no locked-in contracts. Your domain, your code, your site. Yours from day one.",
   },
 ];
 
@@ -124,7 +124,7 @@ export default function EtowahCountyPage() {
         <div className="absolute inset-0 ken-burns-subtle" aria-hidden="true">
           <Image
             src="/images/locations/gadsden-hero.webp"
-            alt="Gadsden, Alabama — Etowah County seat"
+            alt="Gadsden, Alabama, Etowah County seat"
             fill
             priority
             sizes="100vw"
@@ -144,7 +144,7 @@ export default function EtowahCountyPage() {
             Businesses
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-10 animate-on-scroll">
-            Gadsden. Rainbow City. Attalla. Southside. Wherever you are in Etowah County, your customers are searching Google first — and finding your competitors instead.
+            Gadsden. Rainbow City. Attalla. Southside. Wherever you are in Etowah County, your customers are searching Google first and finding your competitors instead.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">
@@ -169,7 +169,7 @@ export default function EtowahCountyPage() {
               Cities Across Etowah County
             </h2>
             <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
-              Every site is built with location-specific SEO — so you rank in your city, not just somewhere in Alabama.
+              Every site is built with location-specific SEO, so you rank in your city, not just somewhere in Alabama.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -213,7 +213,7 @@ export default function EtowahCountyPage() {
               {
                 icon: Monitor,
                 title: "Custom Web Design",
-                desc: "Clean, mobile-friendly websites built for your specific Etowah County market — not a template anyone can buy.",
+                desc: "Clean, mobile-friendly websites built for your specific Etowah County market, not a template anyone can buy.",
               },
               {
                 icon: Search,
@@ -299,7 +299,7 @@ export default function EtowahCountyPage() {
         <h2>Web Design for Etowah County, Alabama Small Businesses</h2>
         <p>
           Headley Web &amp; SEO is a Jacksonville, Alabama web design studio serving small businesses
-          across Etowah County — including Gadsden, Rainbow City, Attalla, and Southside. Services include
+          across Etowah County, including Gadsden, Rainbow City, Attalla, and Southside. Services include
           custom website design starting at $495, local SEO optimization, and Google Business Profile setup
           and management. Every build includes mobile-friendly design, on-page SEO targeting Etowah County
           searches, and full site ownership with no contracts. Flat-rate pricing, no monthly traps.

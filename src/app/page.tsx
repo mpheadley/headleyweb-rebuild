@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Video, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles, MessageSquare, BarChart2, Shield, HelpCircle, BookOpen, Navigation, Bot, Star, Globe, type LucideProps } from "lucide-react";
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
-
-type LucideIcon = ForwardRefExoticComponent<LucideProps & RefAttributes<SVGSVGElement>>;
-const buildIconMap: Record<string, LucideIcon> = { Monitor, MessageSquare, BarChart2, MapPin, Shield, Search, HelpCircle, BookOpen, Navigation, Bot, Star, Globe };
+import { MapPin, BrainCircuit, Frown, Monitor, Search, Map, ArrowRight, Clock, Video, Wrench, TrendingUp, DollarSign, Smartphone, MapPinned, ExternalLink, Check, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
@@ -28,7 +24,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Web Design for Local Businesses",
+        alt: "Headley Web & SEO, Web Design for Local Businesses",
       },
     ],
   },
@@ -100,7 +96,7 @@ const howToSchema = {
       "@type": "HowToStep",
       position: 2,
       name: "I Build Your System",
-      text: "Based on what I find, I build your website, local SEO, and Google Business Profile — flat rate, no surprises.",
+      text: "Based on what I find, I build your website, local SEO, and Google Business Profile. Flat rate, no surprises.",
     },
     {
       "@type": "HowToStep",
@@ -128,7 +124,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "Do I really need a website if I'm already getting referrals?",
-      acceptedAnswer: { "@type": "Answer", text: "Referrals are gold — and then the person Googles you before they call. If what they find is a dead Facebook page from 2019, that referral just became someone else's customer. A professional site is the closer your referrals need." },
+      acceptedAnswer: { "@type": "Answer", text: "Referrals are gold, but the person still Googles you before they call. If what they find is a dead Facebook page from 2019, that referral just became someone else's customer. A professional site is the closer your referrals need." },
     },
     {
       "@type": "Question",
@@ -142,23 +138,13 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "Do I need to pay for hosting?",
-      acceptedAnswer: { "@type": "Answer", text: "Nope. Hosting is included. Your site goes live and stays live — I'm not going to build you a house and then charge you rent for the driveway." },
-    },
-    {
-      "@type": "Question",
-      name: "I already have a website. Do we have to start from scratch?",
-      acceptedAnswer: { "@type": "Answer", text: "Not always. Sometimes a renovation beats a rebuild. I'll take an honest look at what you've got and tell you whether it's worth saving or if we're better off starting fresh. No hard sell either way." },
-    },
-    {
-      "@type": "Question",
       name: "How long does a website project take?",
       acceptedAnswer: { "@type": "Answer", text: "3-4 weeks from 'let's do it' to 'holy cow that's my website.' The biggest variable is usually how fast we can round up your photos and business info. I'll tell you exactly what I need so nothing holds us up." },
     },
     {
       "@type": "Question",
       name: "What happens if I need edits after launch?",
-      acceptedAnswer: { "@type": "Answer", text: "First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help — or you can just call me when something comes up. I'm not going to leave you hanging." },
+      acceptedAnswer: { "@type": "Answer", text: "First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help, or you can just call me when something comes up. I'm not going to leave you hanging." },
     },
     {
       "@type": "Question",
@@ -168,12 +154,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "What makes you different from a big agency?",
-      acceptedAnswer: { "@type": "Answer", text: "A big agency puts you on a project board and assigns you to whoever's free. I'm one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you're not opening a support ticket — you're texting me." },
-    },
-    {
-      "@type": "Question",
-      name: "What does AI visibility mean? Should I care?",
-      acceptedAnswer: { "@type": "Answer", text: "You know how people are starting to ask ChatGPT and Google's AI for recommendations instead of scrolling through search results? Yeah — I make sure your business shows up in those answers. You don't need to understand how it works. That's literally what you're paying me for." },
+      acceptedAnswer: { "@type": "Answer", text: "A big agency puts you on a project board and assigns you to whoever's free. I'm one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you're not opening a support ticket. You're texting me." },
     },
   ],
 };
@@ -229,16 +210,12 @@ export default function Home() {
               </h1>
               <p className="text-lg text-gray-300 max-w-xl mb-8 mx-auto md:mx-0" data-speakable="true">
                 Stop losing leads to a website that isn&apos;t working for you. I
-                build clear, mobile-friendly sites that help you get found, get calls, and get booked — for a
+                build clear, mobile-friendly sites that help you get found, get calls, and get booked, all for a
                 predictable flat rate.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Link href="/audit" className="btn-primary">
                   Get Your Free Site Checkup
-                </Link>
-                <Link href="/quiz" className="btn-secondary !text-white !border-white/80 hover:!bg-hw-secondary hover:!border-hw-secondary">
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  Take the Quiz
                 </Link>
               </div>
             </div>
@@ -283,28 +260,28 @@ export default function Home() {
                 <div className="flex gap-4 animate-on-scroll" style={{ transitionDelay: "0s" }}>
                   <MapPin className="w-6 h-6 text-hw-primary shrink-0 mt-0.5" />
                   <p className="text-lg">
-                    <strong>Competitors show up first</strong> — you&apos;re losing
+                    <strong>Competitors show up first,</strong> and you&apos;re losing
                     calls to businesses no better than yours.
                   </p>
                 </div>
                 <div className="flex gap-4 animate-on-scroll" style={{ transitionDelay: "0.1s" }}>
                   <BrainCircuit className="w-6 h-6 text-hw-primary shrink-0 mt-0.5 rotate-90" />
                   <p className="text-lg">
-                    <strong>AI is changing how people search</strong> — and most
+                    <strong>AI is changing how people search,</strong> and most
                     local businesses aren&apos;t ready for what&apos;s coming.
                   </p>
                 </div>
                 <div className="flex gap-4 animate-on-scroll" style={{ transitionDelay: "0.2s" }}>
                   <Frown className="w-6 h-6 text-hw-primary shrink-0 mt-0.5" />
                   <p className="text-lg">
-                    <strong>Your site doesn&apos;t match your work</strong> — you do
+                    <strong>Your site doesn&apos;t match your work.</strong> You do
                     great work, but your online presence doesn&apos;t show it.
                   </p>
                 </div>
                 <div className="flex gap-4 animate-on-scroll" style={{ transitionDelay: "0.3s" }}>
                   <Clock className="w-6 h-6 text-hw-primary shrink-0 mt-0.5" />
                   <p className="text-lg">
-                    <strong>Every month costs you</strong> — competitors get stronger
+                    <strong>Every month costs you.</strong> Competitors get stronger
                     in the map pack and AI answers while you wait.
                   </p>
                 </div>
@@ -342,7 +319,7 @@ export default function Home() {
               How I Help Local Businesses Get Found
             </h2>
             <p className="text-gray-200">
-              Three focused services — each one designed to put your business in
+              Three focused services, each one designed to put your business in
               front of customers who are already searching for what you do.
             </p>
           </div>
@@ -428,7 +405,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-2">I Build Your System</h3>
               <p className="text-hw-text-light">
-                Based on what I find, I build your website, local SEO, and Google Business Profile — flat rate, no surprises.
+                Based on what I find, I build your website, local SEO, and Google Business Profile. Flat rate, no surprises.
               </p>
             </div>
             {/* Connector 2→3 */}
@@ -472,7 +449,7 @@ export default function Home() {
               <ul className="space-y-3 text-hw-text-light">
                 <li className="flex items-start gap-2">
                   <span className="text-red-400 mt-0.5">&#x2717;</span>
-                  Invisible online — losing leads to competitors who aren&apos;t better, just easier to find
+                  Invisible online, losing leads to competitors who aren&apos;t better, just easier to find
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-400 mt-0.5">&#x2717;</span>
@@ -490,7 +467,7 @@ export default function Home() {
               <ul className="space-y-3 text-hw-text">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Found at the top of Google and recommended by AI — your phone actually rings
+                  Found at the top of Google and recommended by AI. Your phone actually rings
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
@@ -498,7 +475,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                  Stable and in control — your online presence works while you work
+                  Stable and in control. Your online presence works while you work
                 </li>
               </ul>
             </div>
@@ -533,20 +510,20 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg text-hw-text-light mb-6">
-                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. I started Headley Web <span className="amp">&amp;</span> SEO because great local businesses deserve a website that works as hard as they do.
+                As a husband, dad, and small business owner right here in Jacksonville, I&apos;ve spent 19 years building things for people who needed someone to show up and do the work. Churches, a flower farm, community events. Now I build websites for local businesses because I&apos;m good at it and I care about the people.
               </p>
               <ul className="space-y-3 text-hw-text-light">
                 <li className="flex items-start gap-3">
                   <span className="w-5 h-5 rounded-full bg-hw-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-3.5 h-3.5 text-hw-primary" />
                   </span>
-                  StoryBrand messaging framework — your website makes the customer the hero, not you
+                  StoryBrand messaging framework. Your website makes the customer the hero, not you
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-5 h-5 rounded-full bg-hw-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-3.5 h-3.5 text-hw-primary" />
                   </span>
-                  Local to Jacksonville, AL — I know your market, your customers, your community
+                  Local to Jacksonville, AL. I know your market, your customers, your community
                 </li>
               </ul>
             </div>
@@ -559,7 +536,7 @@ export default function Home() {
               <MapPinned className="w-10 h-10 text-hw-primary mb-4" />
               <h3 className="text-xl font-bold mb-3">Show Up on Google Maps</h3>
               <p className="text-hw-text-light">
-                A website is only half the battle. I optimize your Google Business Profile so you land in the top 3 on Maps — where most local customers actually click.
+                A website is only half the battle. I optimize your Google Business Profile so you land in the top 3 on Maps, where most local customers actually click.
               </p>
             </div>
             {/* Wide top-right — ownership */}
@@ -568,7 +545,7 @@ export default function Home() {
               <div>
                 <h3 className="text-lg font-bold mb-1">You Own Everything</h3>
                 <p className="text-hw-text-light text-sm">
-                  No contracts, no hostage situations. You own your site, your domain, and your data from day one. Optional care plans are there if you want them — not because you&apos;re trapped.
+                  No contracts, no hostage situations. You own your site, your domain, and your data from day one. Optional care plans are there if you want them, not because you&apos;re trapped.
                 </p>
               </div>
             </div>
@@ -584,7 +561,7 @@ export default function Home() {
               <MapPin className="w-8 h-8 text-hw-primary mx-auto mb-3" />
               <h3 className="text-lg font-bold mb-2">Built for Your Market</h3>
               <p className="text-hw-text-light text-sm">
-                Not a generic template. Every page targets the terms your local customers actually search — Jacksonville to Gadsden and everywhere in between.
+                Not a generic template. Every page targets the terms your local customers actually search, from Jacksonville to Gadsden and everywhere in between.
               </p>
             </div>
           </div>
@@ -715,7 +692,7 @@ export default function Home() {
             <div className="pt-2.5">
               <h3 className="text-lg font-bold mb-2">Competitors rank above you</h3>
               <p className="text-hw-text-light leading-relaxed">
-                Every search is a chance for them to win a customer that could&apos;ve been yours — and it keeps happening every day. They&apos;re getting stronger in the map pack AND in AI answers.
+                Every search is a chance for them to win a customer that could&apos;ve been yours, and it keeps happening every day. They&apos;re getting stronger in the map pack AND in AI answers.
               </p>
             </div>
           </div>
@@ -729,7 +706,7 @@ export default function Home() {
             <div className="pt-2.5">
               <h3 className="text-lg font-bold mb-2">Customers move on to whoever shows up next</h3>
               <p className="text-hw-text-light leading-relaxed">
-                Without a clear online presence, potential customers can&apos;t find you — and they&apos;re not waiting around. They call whoever shows up first.
+                Without a clear online presence, potential customers can&apos;t find you, and they&apos;re not waiting around. They call whoever shows up first.
               </p>
             </div>
           </div>
@@ -743,7 +720,7 @@ export default function Home() {
             <div className="pt-2.5">
               <h3 className="text-lg font-bold mb-2">Your time stays tied up</h3>
               <p className="text-hw-text-light leading-relaxed">
-                Without a website to answer routine questions, you&apos;re fielding the same calls and texts — time you can&apos;t spend on the work that actually grows your business.
+                Without a website to answer routine questions, you&apos;re fielding the same calls and texts. That&apos;s time you can&apos;t spend on the work that actually grows your business.
               </p>
             </div>
           </div>
@@ -770,9 +747,9 @@ export default function Home() {
                 key={tier.name}
                 className={`${
                   tier.bestValue
-                    ? "bg-hw-primary/[0.07] backdrop-blur-sm border border-hw-primary/30 hover:shadow-[0_12px_40px_rgba(224,123,60,0.15)]"
-                    : "bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] hover:shadow-[0_12px_40px_rgba(224,123,60,0.1)]"
-                } rounded-2xl p-8 flex flex-col relative transition-all hover:-translate-y-1 animate-on-scroll`}
+                    ? "bg-hw-primary/[0.07] backdrop-blur-sm border border-hw-primary/30"
+                    : "bg-white/[0.04] backdrop-blur-sm border border-white/[0.08]"
+                } rounded-2xl p-8 flex flex-col items-center text-center relative transition-all hover:-translate-y-1 animate-on-scroll`}
                 style={{ transitionDelay: tier.animationDelay }}
               >
                 {tier.bestValue && (
@@ -781,120 +758,22 @@ export default function Home() {
                   </span>
                 )}
                 <h3 className="text-base font-bold !text-hw-primary uppercase tracking-wider mb-1">{tier.name}</h3>
-                <p className="font-heading text-[42px] font-extrabold !text-white mb-2">{tier.priceDisplay}</p>
+                <p className="font-heading text-[42px] font-extrabold !text-white mb-1">{tier.priceDisplay}</p>
                 <p className="text-xs text-gray-300 uppercase tracking-wide mb-4">one-time</p>
-                <p className="text-sm text-white italic border-l-3 border-hw-primary pl-3 mb-3">{tier.tagline}</p>
-                <p className="text-xs text-gray-400 mb-5">{tier.timeline}</p>
-                <ul className="space-y-3 text-sm text-gray-300 flex-grow">
-                  {tier.features.map((feature) => {
-                    const Icon = buildIconMap[feature.iconName] ?? Check;
-                    return (
-                      <li key={feature.text} className="flex items-start gap-2">
-                        <Icon className="w-4 h-4 text-hw-secondary shrink-0 mt-0.5" />
-                        {feature.text}
-                      </li>
-                    );
-                  })}
-                  {tier.inheritedFeatures && (
-                    <>
-                      <li className="border-t border-white/[0.07] pt-3 mt-1">
-                        <span className="text-[11px] text-gray-500 uppercase tracking-wider">Also includes</span>
-                      </li>
-                      {tier.inheritedFeatures.map((f) => (
-                        <li key={f} className="flex items-start gap-2">
-                          <Check className="w-3.5 h-3.5 text-hw-secondary shrink-0 mt-0.5" />
-                          <span className="text-xs text-gray-300">{f}</span>
-                        </li>
-                      ))}
-                      {tier.inheritedNote && (
-                        <li className="text-xs text-gray-400 italic pl-5">{tier.inheritedNote}</li>
-                      )}
-                    </>
-                  )}
-                </ul>
-                <div className="mt-6 mb-0"></div>
-                {/* Paired care plan */}
-                <div className="flex flex-col gap-2 py-4 border-t border-white/[0.07] mb-5">
-                  <span className="text-xs font-semibold text-gray-300">
-                    {tier.carePlan.name} — <span className="text-hw-primary font-normal">${tier.carePlan.price}/mo</span>
-                  </span>
-                  <ul className="space-y-1">
-                    {tier.carePlan.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-1.5 text-xs text-gray-400">
-                        <Check className="w-3 h-3 text-hw-secondary shrink-0 mt-0.5" />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex items-center justify-between pt-1">
-                    <span className="text-xs text-hw-primary font-semibold">First 3 months included</span>
-                    <Link href="/services#care-plans" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
-                      Full details →
-                    </Link>
-                  </div>
-                </div>
+                <p className="text-sm text-gray-300 mb-6">{tier.tagline}</p>
                 <Link href={tier.ctaHref} className="btn-primary w-full text-center">{tier.cta}</Link>
               </div>
             ))}
           </div>
 
-          {/* Quick Comparison */}
-          <div className="mt-10 overflow-x-auto animate-on-scroll">
-            <table className="w-full text-sm text-left border-collapse">
-              <thead>
-                <tr className="border-b border-white/10">
-                  <th className="py-3 pr-4 text-gray-400 font-medium" />
-                  <th className="py-3 px-4 text-gray-300 font-semibold text-center">Get Found</th>
-                  <th className="py-3 px-4 text-hw-primary font-semibold text-center">Get Calls</th>
-                  <th className="py-3 px-4 text-gray-300 font-semibold text-center">Get Booked</th>
-                </tr>
-              </thead>
-              <tbody className="text-gray-300">
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">Pages</td>
-                  <td className="py-2.5 px-4 text-center">1</td>
-                  <td className="py-2.5 px-4 text-center">3–5</td>
-                  <td className="py-2.5 px-4 text-center">5–7</td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">Timeline</td>
-                  <td className="py-2.5 px-4 text-center">1–2 weeks</td>
-                  <td className="py-2.5 px-4 text-center">2–3 weeks</td>
-                  <td className="py-2.5 px-4 text-center">3–4 weeks</td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">SEO</td>
-                  <td className="py-2.5 px-4 text-center">Basic</td>
-                  <td className="py-2.5 px-4 text-center">Full</td>
-                  <td className="py-2.5 px-4 text-center">Advanced + AI</td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">GBP Setup</td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">FAQ Schema</td>
-                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                </tr>
-                <tr>
-                  <td className="py-2.5 pr-4 text-gray-400">AI Visibility</td>
-                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
-                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="text-center mt-8 animate-on-scroll">
+            <Link href="/services" className="text-hw-primary font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">
+              See what&apos;s included in each tier <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <p className="text-center text-gray-400 text-sm mt-8 animate-on-scroll">
+          <p className="text-center text-gray-400 text-sm mt-6 animate-on-scroll">
             Flat-rate build. No surprises. 50% upfront, 50% at launch.
-          </p>
-          <p className="text-center text-gray-400 text-xs mt-2 animate-on-scroll">
-            *Timelines begin once all content (text, photos, logos) is received.
           </p>
           <div className="mt-10 max-w-xl mx-auto border border-hw-primary/25 rounded-xl px-6 py-5 text-center animate-on-scroll">
             <p className="text-white font-semibold text-sm mb-1">Currently accepting founding clients</p>
@@ -914,7 +793,7 @@ export default function Home() {
             <details className="faq-item">
               <summary>Do I really need a website if I&apos;m already getting referrals?</summary>
               <div className="faq-answer">
-                Referrals are gold — and then the person Googles you before they call. If what they find is a dead Facebook page from 2019, that referral just became someone else&apos;s customer. A professional site is the closer your referrals need.
+                Referrals are gold, but the person still Googles you before they call. If what they find is a dead Facebook page from 2019, that referral just became someone else&apos;s customer. A professional site is the closer your referrals need.
               </div>
             </details>
             <details className="faq-item">
@@ -930,18 +809,6 @@ export default function Home() {
               </div>
             </details>
             <details className="faq-item">
-              <summary>Do I need to pay for hosting?</summary>
-              <div className="faq-answer">
-                Nope. Hosting is included. Your site goes live and stays live — I&apos;m not going to build you a house and then charge you rent for the driveway.
-              </div>
-            </details>
-            <details className="faq-item">
-              <summary>I already have a website. Do we have to start from scratch?</summary>
-              <div className="faq-answer">
-                Not always. Sometimes a renovation beats a rebuild. I&apos;ll take an honest look at what you&apos;ve got and tell you whether it&apos;s worth saving or if we&apos;re better off starting fresh. No hard sell either way.
-              </div>
-            </details>
-            <details className="faq-item">
               <summary>How long does a website project take?</summary>
               <div className="faq-answer">
                 3-4 weeks from &ldquo;let&apos;s do it&rdquo; to &ldquo;holy cow that&apos;s my website.&rdquo; The biggest variable is usually how fast we can round up your photos and business info. I&apos;ll tell you exactly what I need so nothing holds us up.
@@ -950,7 +817,7 @@ export default function Home() {
             <details className="faq-item">
               <summary>What happens if I need edits after launch?</summary>
               <div className="faq-answer">
-                First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help — or you can just call me when something comes up. I&apos;m not going to leave you hanging.
+                First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help, or you can just call me when something comes up. I&apos;m not going to leave you hanging.
               </div>
             </details>
             <details className="faq-item">
@@ -962,13 +829,7 @@ export default function Home() {
             <details className="faq-item">
               <summary>What makes you different from a big agency?</summary>
               <div className="faq-answer">
-                A big agency puts you on a project board and assigns you to whoever&apos;s free. I&apos;m one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you&apos;re not opening a support ticket — you&apos;re texting me.
-              </div>
-            </details>
-            <details className="faq-item">
-              <summary>What does &ldquo;AI visibility&rdquo; mean? Should I care?</summary>
-              <div className="faq-answer">
-                You know how people are starting to ask ChatGPT and Google&apos;s AI for recommendations instead of scrolling through search results? Yeah — I make sure your business shows up in those answers. You don&apos;t need to understand how it works. That&apos;s literally what you&apos;re paying me for.
+                A big agency puts you on a project board and assigns you to whoever&apos;s free. I&apos;m one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you&apos;re not opening a support ticket. You&apos;re texting me.
               </div>
             </details>
           </div>
@@ -983,7 +844,7 @@ export default function Home() {
             Stop losing customers to competitors with better websites. Let&apos;s get your business online the right way.
           </p>
           <p className="text-gray-400 mb-2 animate-on-scroll">
-            Flat-rate builds from $495. Care plan included free for 3 months, then from $49/mo — cancel anytime.
+            Flat-rate builds from $495. Care plan included free for 3 months, then from $49/mo. Cancel anytime.
           </p>
           <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />
@@ -1009,7 +870,7 @@ export default function Home() {
           specialize in clear, mobile-friendly sites with built-in local SEO and Google Business
           Profile optimization for plumbers, HVAC companies, contractors, restaurants, and other
           service providers in Calhoun, Etowah, Cherokee, and Talladega counties. Every site is
-          built to generate leads — not just look good. Flat-rate pricing from $495 with full
+          built to generate leads, not just look good. Flat-rate pricing from $495 with full
           site ownership. No contracts, no monthly traps. Our StoryBrand approach makes your
           customer the hero of the story, so your messaging connects and your phone actually rings.
         </p>

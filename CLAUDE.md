@@ -65,7 +65,7 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 - Don't use "StoryBrand" in hero or customer-facing headlines. Use it on About page, Services page, blog posts.
 
 ### Voice & Writing
-- **Voice guide:** `content/BLOG-VOICE-GUIDE.md` — applies to ALL site copy (homepage, services, FAQ, CTAs, meta descriptions, JSON-LD) and blog posts. Read before writing or editing any copy. Covers kill list, brochure failure mode, structural patterns, and self-audit checklist.
+- **Voice guide:** `content/VOICE-GUIDE.md` — applies to ALL site copy (homepage, services, FAQ, CTAs, meta descriptions, JSON-LD) and blog posts. Read before writing or editing any copy. Covers kill list, brochure failure mode, structural patterns, and self-audit checklist.
 - **AI-written posts (6):** All current published blog posts were written entirely by Claude and tagged `aiWritten: true` in frontmatter. They need Matt's review and proofing before being treated as final. Don't reference them as voice examples.
 
 **When Matt removes `aiWritten: true` from a post, it's been proofed and can be treated as final/publishable.**

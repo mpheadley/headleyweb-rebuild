@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy policy for headleyweb.com — how Headley Web & SEO collects, uses, and protects your information.",
+    "Privacy policy for headleyweb.com. How Headley Web & SEO collects, uses, and protects your information.",
   alternates: {
     canonical: "/privacy",
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Privacy Policy",
+        alt: "Headley Web & SEO: Privacy Policy",
       },
     ],
   },
@@ -83,9 +83,9 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-bold mt-8 mb-3">Third-Party Services</h2>
         <ul className="list-disc pl-6 space-y-1">
-          <li><strong>Formspree</strong> — processes form submissions (<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-hw-primary hover:text-hw-primary-dark">their privacy policy</a>)</li>
-          <li><strong>Google Analytics</strong> — website analytics, consent-gated (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-hw-primary hover:text-hw-primary-dark">their privacy policy</a>)</li>
-          <li><strong>Vercel</strong> — website hosting (<a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-hw-primary hover:text-hw-primary-dark">their privacy policy</a>)</li>
+          <li><strong>Formspree</strong> processes form submissions (<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-hw-primary hover:text-hw-primary-dark">their privacy policy</a>)</li>
+          <li><strong>Google Analytics</strong> provides website analytics, consent-gated (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-hw-primary hover:text-hw-primary-dark">their privacy policy</a>)</li>
+          <li><strong>Vercel</strong> provides website hosting (<a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-hw-primary hover:text-hw-primary-dark">their privacy policy</a>)</li>
         </ul>
 
         <h2 className="text-xl font-bold mt-8 mb-3">Data Retention</h2>

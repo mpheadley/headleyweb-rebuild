@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     const { error } = await resend.emails.send({
       from: "Headley Web & SEO <reports@headleyweb.com>",
       to: [body.email],
-      subject: `Your Site Readiness Report — ${hostname}`,
+      subject: `Your Site Readiness Report for ${hostname}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: #1C2826; padding: 24px 30px; border-radius: 8px 8px 0 0;">
@@ -76,18 +76,18 @@ export async function POST(request: NextRequest) {
             </p>
             ${body.auditResult.storyBrand ? `
             <p style="color: #2D2D2D; font-size: 15px; line-height: 1.6; margin: 0 0 16px;">
-              <strong>Messaging Grade: ${body.auditResult.storyBrand.grade}</strong> — ${
-                body.auditResult.storyBrand.grade === "A" ? "your site is StoryBrand-aligned." :
+              <strong>Messaging Grade: ${body.auditResult.storyBrand.grade}.</strong> ${
+                body.auditResult.storyBrand.grade === "A" ? "your messaging is clear and compelling." :
                 body.auditResult.storyBrand.grade === "B" ? "good foundation, needs tightening." :
                 body.auditResult.storyBrand.grade === "C" ? "has pieces, but the message is muddled." :
                 "your site is talking about you, not your customer."
               }
             </p>` : ""}
             <p style="color: #2D2D2D; font-size: 15px; line-height: 1.6; margin: 0 0 20px;">
-              Want me to walk you through the results? I&apos;m happy to do a quick call — no pitch, no pressure.
+              Want me to walk you through the results? I&apos;m happy to do a quick call. No pitch, no pressure.
             </p>
             <a href="tel:+12566447334" style="display: inline-block; background: #E07B3C; color: #1C2826; font-weight: bold; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-size: 14px;">
-              Call Me — (256) 644-7334
+              Call Me: (256) 644-7334
             </a>
             <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">
               Headley Web &amp; SEO &middot; headleyweb.com &middot; Jacksonville, AL

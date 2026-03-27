@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Matt Headley — husband, dad, and former pastor turned web designer in Jacksonville, Alabama. I build StoryBrand-powered websites for local service businesses in Northeast Alabama.",
+    "Meet Matt Headley, husband, dad, and former pastor turned web designer in Jacksonville, Alabama. I build StoryBrand-powered websites for local service businesses in Northeast Alabama.",
   alternates: {
     canonical: "/about",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — About Matt Headley",
+        alt: "Headley Web & SEO, About Matt Headley",
       },
     ],
   },
@@ -72,7 +72,7 @@ const credentials = [
   {
     icon: BookOpen,
     title: "StoryBrand Framework",
-    desc: "Every site makes the customer the hero — not you.",
+    desc: "Your site talks about your customer's problem first and makes the next step obvious.",
     accent: "bg-hw-primary/10 text-hw-primary",
     span: "sm:col-span-2",
   },
@@ -136,7 +136,7 @@ export default function AboutPage() {
             <span className="text-hw-primary">Just Like You</span>
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll" data-speakable="true">
-            I started Headley Web <span className="amp">&amp;</span> SEO because I kept watching great local businesses lose leads to competitors who were simply easier to find online.
+            I build websites for local businesses. I&apos;m good at it, I care about getting it right, and I like knowing the people I work with.
           </p>
         </div>
       </section>
@@ -155,13 +155,13 @@ export default function AboutPage() {
             />
             <div className="space-y-5">
               <p className="text-lg leading-relaxed">
-                I&apos;m Matt Headley — husband, dad, and small business owner in Jacksonville, Alabama. I&apos;ve spent 19 years building things for other people — churches, a flower farm, community events — and every one of them needed a website that actually worked. That&apos;s how I got here.
+                I&apos;m Matt Headley. Husband, dad, and small business owner in Jacksonville, Alabama. I spent 19 years in ministry and ran a family flower farm with my wife. Every one of those needed a website, and I was the one who figured it out. Turns out I was pretty good at it.
               </p>
               <p className="text-lg leading-relaxed">
-                I started Headley Web <span className="amp">&amp;</span> SEO because I kept watching great local businesses lose leads to competitors who were simply easier to find online. It wasn&apos;t because those competitors did better work — they just had a better digital front door.
+                The people I know need websites. I need work I actually enjoy. I like building things, I care about getting them right, and I like knowing the people I work with.
               </p>
               <p className="text-lg leading-relaxed">
-                I built this service to be a straightforward partnership for my neighbors in Anniston, Jacksonville, and Calhoun County. I handle the technical heavy lifting — from the initial build to ongoing security and maintenance — so you can focus on running your business. That same persistence I bring to everything else, I bring to every site I build.
+                That&apos;s what I do. I build your website, set up your Google Business Profile, and make sure the right people can find you. You get the calls. I handle the tech. Flat rate, no contracts. If something breaks, you text me.
               </p>
             </div>
           </div>
@@ -199,7 +199,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8">
           <Image
             src="/images/headshot-matt-headley.webp"
-            alt="Matt Headley — owner of Headley Web & SEO, Jacksonville, Alabama"
+            alt="Matt Headley, owner of Headley Web & SEO, Jacksonville, Alabama"
             width={768}
             height={1025}
             className="rounded-2xl shadow-lg w-40 md:w-48 h-auto shrink-0 animate-on-scroll"
@@ -207,9 +207,9 @@ export default function AboutPage() {
           />
           <div className="animate-on-scroll">
             <p className="text-lg text-hw-text-light">
-              I&apos;d love to help your business be the first thing people find when they search. Let&apos;s start with a free look at where you stand online.
+              If you want to see where you stand online, I&apos;ll take a look. No pitch, no pressure. Just a straight answer.
             </p>
-            <p className="mt-4 text-xl text-hw-primary hand-accent">— Matt</p>
+            <p className="mt-4 text-xl text-hw-primary hand-accent">Matt</p>
           </div>
         </div>
       </section>
@@ -219,7 +219,7 @@ export default function AboutPage() {
         <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left animate-on-scroll">
           <span className="text-3xl" aria-hidden="true">⭐</span>
           <p className="text-hw-text-light text-sm">
-            Already a client? A Google review means the world to a small business —&nbsp;
+            Already a client? A Google review means the world to a small business.&nbsp;
             <a
               href="https://g.page/r/CZcynt10WKMIEAE/review"
               target="_blank"
@@ -239,7 +239,7 @@ export default function AboutPage() {
             See Where You Stand Online
           </h2>
           <p className="text-gray-300 text-lg mb-3 animate-on-scroll">
-            Get a free checkup of your website — no sales pitch, no strings attached.
+            Get a free checkup of your website. No sales pitch, no strings attached.
           </p>
           <p className="text-gray-300 text-sm mb-8 animate-on-scroll">
             <MapPin className="inline w-4 h-4 mr-1 -mt-0.5" />

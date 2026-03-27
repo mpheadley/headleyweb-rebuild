@@ -22,11 +22,11 @@ function getGradeColor(grade: string): string {
 }
 
 function getGradeLabel(grade: string): string {
-  if (grade === "A") return "Clear and compelling — this site sells";
+  if (grade === "A") return "Clear and compelling. This site sells.";
   if (grade === "B") return "Good foundation, needs tightening";
   if (grade === "C") return "Has pieces, but the message is muddled";
   if (grade === "D") return "Missing key messaging elements";
-  return "No clear message — visitors won't know what to do";
+  return "No clear message. Visitors won't know what to do.";
 }
 
 /* ── Overall Grade Helpers ── */
@@ -40,22 +40,22 @@ function getLetterGrade(score: number): string {
 
 /* ── StoryBrand Recommendations ── */
 const storyBrandRecommendations: Record<string, string> = {
-  "1.1": "Lead your headline with the customer's problem — not your company name",
-  "1.2": "Make it clear what you do, who you help, and where — in the first sentence",
+  "1.1": "Lead your headline with the customer's problem, not your company name",
+  "1.2": "Make it clear what you do, who you help, and where, all in the first sentence",
   "1.3": "Add a strong call-to-action button above the fold (\"Call Now\", \"Get a Free Quote\")",
   "1.5": "Rewrite your hero section to say \"you\" and \"your\" instead of \"we\" and \"our\"",
-  "2.1": "Name the problem your customer is actually dealing with — don't assume they know",
+  "2.1": "Name the problem your customer is actually dealing with. Don't assume they know.",
   "2.2": "Speak to how the problem makes your customer feel (frustrated, overwhelmed, stuck)",
-  "3.1": "Show empathy — let customers know you understand what they're going through",
+  "3.1": "Show empathy. Let customers know you understand what they're going through.",
   "3.2": "Add proof: testimonials, years of experience, or number of customers served",
   "4.1": "Add a simple 3-step plan so customers know exactly what to expect",
   "4.2": "Reduce risk with language like \"free estimate\", \"no obligation\", or \"satisfaction guaranteed\"",
-  "5.1": "Repeat your main call-to-action throughout the page — not just at the top",
-  "5.2": "Use action words in your buttons: \"Get\", \"Call\", \"Book\", \"Schedule\" — not \"Learn More\"",
-  "6.1": "Show what's at stake — what happens if they don't fix this problem?",
-  "6.2": "Paint the picture of success — what does life look like after they hire you?",
-  "7.1": "Cut the jargon — write like you talk to a customer, not a conference room",
-  "7.2": "Put your phone number where people can see it — header, hero, and footer",
+  "5.1": "Repeat your main call-to-action throughout the page, not just at the top",
+  "5.2": "Use action words in your buttons: \"Get\", \"Call\", \"Book\", \"Schedule\", not \"Learn More\"",
+  "6.1": "Show what's at stake. What happens if they don't fix this problem?",
+  "6.2": "Paint the picture of success. What does life look like after they hire you?",
+  "7.1": "Cut the jargon. Write like you talk to a customer, not a conference room.",
+  "7.2": "Put your phone number where people can see it: header, hero, and footer",
 };
 
 export default function AuditPage() {
@@ -173,7 +173,7 @@ export default function AuditPage() {
     } catch (err) {
       clearTimeout(timeout);
       if (err instanceof DOMException && err.name === "AbortError") {
-        setAuditError("The audit timed out. The site may be slow or unreachable — please try again.");
+        setAuditError("The audit timed out. The site may be slow or unreachable. Please try again.");
       } else {
         setAuditError("Something went wrong. Please try again.");
       }
@@ -290,7 +290,7 @@ export default function AuditPage() {
     if (!auditResult) return "";
     const parts: string[] = [];
     if (auditResult.lcp > 4) {
-      parts.push(`your site takes ${auditResult.lcp}s to load — even ready-to-hire customers may bounce at that speed`);
+      parts.push(`your site takes ${auditResult.lcp}s to load, and even ready-to-hire customers may bounce at that speed`);
     } else if (auditResult.lcp > 2.5) {
       parts.push(`your site is a bit slow at ${auditResult.lcp}s`);
     }
@@ -304,7 +304,7 @@ export default function AuditPage() {
       parts.push("Google can\u2019t verify your business details for local search");
     }
     if (!auditResult.isHttps) {
-      parts.push("your site isn\u2019t secure — browsers may warn visitors away");
+      parts.push("your site isn\u2019t secure, and browsers may warn visitors away");
     }
     if (parts.length === 0) {
       return "Your site is in solid shape. A few tweaks could make it even stronger \u2014 get the full report to see exactly where.";
@@ -324,7 +324,7 @@ export default function AuditPage() {
             Free Site Audit
           </h1>
           <p className="text-gray-300">
-            Paste your website URL and get an instant report — speed, SEO, mobile setup, and messaging analysis.
+            Paste your website URL and get an instant report: speed, SEO, mobile setup, and messaging analysis.
           </p>
         </div>
       </section>
@@ -368,7 +368,7 @@ export default function AuditPage() {
               {/* Optional trade selector */}
               <div className="mt-4">
                 <label htmlFor="audit-trade" className="block text-sm font-semibold text-hw-dark mb-2">
-                  What type of business? <span className="text-hw-text-light font-normal">(optional — unlocks ROI estimates)</span>
+                  What type of business? <span className="text-hw-text-light font-normal">(optional, unlocks ROI estimates)</span>
                 </label>
                 <select
                   id="audit-trade"
@@ -377,7 +377,7 @@ export default function AuditPage() {
                   className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text"
                   disabled={auditLoading}
                 >
-                  <option value="">Skip — just audit the site</option>
+                  <option value="">Skip, just audit the site</option>
                   {tradeOptions.map((t) => (
                     <option key={t.key} value={t.key}>{t.label}</option>
                   ))}
@@ -475,7 +475,7 @@ export default function AuditPage() {
                       <CheckCircle2 className="w-4 h-4" /> Report sent to {email}
                     </p>
                     <p className="text-xs text-hw-text-light mt-2 mb-3">
-                      Check your inbox — your full report is on the way.
+                      Check your inbox. Your full report is on the way.
                     </p>
                     <button
                       onClick={handleDownloadPdf}
@@ -489,7 +489,7 @@ export default function AuditPage() {
                   <div className="text-center">
                     <p className="text-base font-semibold text-hw-text mb-1">Get Your Full Report</p>
                     <p className="text-xs text-hw-text-light mb-4">
-                      Your detailed PDF includes speed analysis, messaging breakdown, and exactly what I&apos;d fix first — free, no strings.
+                      Your detailed PDF includes speed analysis, messaging breakdown, and exactly what I&apos;d fix first. Free, no strings.
                     </p>
                     <form onSubmit={handleSendEmail} className="flex flex-col sm:flex-row gap-2 justify-center items-center">
                       <div className="relative w-full sm:w-auto">
@@ -529,7 +529,7 @@ export default function AuditPage() {
                   Want to talk through your results?
                 </p>
                 <a href="tel:+12566447334" className="text-sm font-semibold text-hw-primary hover:text-hw-primary-dark transition-colors">
-                  Call me — (256) 644-7334
+                  Call me: (256) 644-7334
                 </a>
               </div>
 
@@ -582,7 +582,7 @@ export default function AuditPage() {
                 </p>
               </div>
               <p className="text-xs text-hw-text-light text-center mt-3">
-                Your results may vary — these numbers reflect typical businesses in our area.
+                Your results may vary. These numbers reflect typical businesses in our area.
               </p>
             </div>
           )}
@@ -592,7 +592,7 @@ export default function AuditPage() {
             <div ref={resultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
               <div className="flex items-center justify-between mb-1">
                 <h3 className="text-lg font-bold">
-                  Site Audit — Internal View
+                  Site Audit, Internal View
                 </h3>
                 <span className="text-xs bg-hw-primary/10 text-hw-primary px-2 py-1 rounded font-mono">
                   INTERNAL
@@ -703,7 +703,7 @@ export default function AuditPage() {
                       StoryBrand Copy Analysis
                     </p>
                     <span className={`text-lg font-bold px-3 py-1 rounded border ${getGradeColor(auditResult.storyBrand.grade)}`}>
-                      {auditResult.storyBrand.grade} — {auditResult.storyBrand.autoTotal}/{auditResult.storyBrand.autoMax} auto-scored
+                      {auditResult.storyBrand.grade}: {auditResult.storyBrand.autoTotal}/{auditResult.storyBrand.autoMax} auto-scored
                     </span>
                   </div>
 
@@ -843,7 +843,7 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
             <div className="card-glow !p-8 md:!p-10">
               <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
                 <a href="tel:+12566447334" className="btn-primary text-center">
-                  Call Me — (256) 644-7334
+                  Call Me: (256) 644-7334
                 </a>
                 <Link href="/contact" className="btn-secondary text-center">
                   Send Me a Message

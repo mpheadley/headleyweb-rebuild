@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Site Readiness Quiz",
   description:
-    "Take a 60-second quiz to find out how your business's online presence stacks up — and get a personalized recommendation for what to fix first.",
+    "Take a 60-second quiz to find out how your business's online presence stacks up, and get a personalized recommendation for what to fix first.",
   alternates: {
     canonical: "/quiz",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Site Readiness Quiz",
+        alt: "Headley Web & SEO: Site Readiness Quiz",
       },
     ],
   },

@@ -36,7 +36,7 @@ export const carePlans: CarePlan[] = [
     tagline: "Your site stays live and up to date.",
     iconName: "shield" as const,
     upgradeReason:
-      "For businesses that want hands-off hosting — a professional has it covered. No Squarespace login, no guessing if your site is still running.",
+      "For businesses that want hands-off hosting. A professional has it covered. No Squarespace login, no guessing if your site is still running.",
     highlights: [
       "Hosting & security handled",
       "Up to 30 min of updates/month",
@@ -44,8 +44,8 @@ export const carePlans: CarePlan[] = [
     ],
     features: [
       "Hosting & security handled for you",
-      "Up to 30 min of updates/month — text, photos, hours, prices",
-      "Uptime monitoring — I know if it goes down before you do",
+      "Up to 30 min of updates/month (text, photos, hours, prices)",
+      "Uptime monitoring, so I know if it goes down before you do",
       "Email support",
     ],
   },
@@ -55,7 +55,7 @@ export const carePlans: CarePlan[] = [
     tagline: "Your Google Maps presence, actively managed.",
     iconName: "trending-up" as const,
     upgradeReason:
-      "Google Maps often drives more calls than the website itself. This plan keeps your listing active, accurate, and building reviews — without you lifting a finger.",
+      "Google Maps often drives more calls than the website itself. This plan keeps your listing active, accurate, and building reviews, without you lifting a finger.",
     highlights: [
       "Google Business Profile managed",
       "Monthly results report",
@@ -63,9 +63,9 @@ export const carePlans: CarePlan[] = [
     ],
     features: [
       "Everything in Essential Care",
-      "Google Business Profile managed — posts, review responses, Q&A",
-      "Monthly results report — calls, clicks & impressions",
-      "Review acquisition coaching — I tell you what to ask and when",
+      "Google Business Profile managed (posts, review responses, Q&A)",
+      "Monthly results report: calls, clicks & impressions",
+      "Review acquisition coaching. I tell you what to ask and when",
       "Up to 1 hr of edits/month",
     ],
   },
@@ -75,7 +75,7 @@ export const carePlans: CarePlan[] = [
     tagline: "Content that compounds. Visibility that grows.",
     iconName: "zap" as const,
     upgradeReason:
-      "For businesses that want to keep climbing — in Google search, Google Maps, and AI tools like ChatGPT. Two new posts a month means more pages ranking, more questions answered, more reasons for customers to find you.",
+      "For businesses that want to keep climbing in Google search, Google Maps, and AI tools like ChatGPT. Two new posts a month means more pages ranking, more questions answered, more reasons for customers to find you.",
     highlights: [
       "2 blog posts/month, done for you",
       "Monthly strategy call",
@@ -83,9 +83,9 @@ export const carePlans: CarePlan[] = [
     ],
     features: [
       "Everything in Growth Care",
-      "2 blog posts/month — researched, drafted, published for you",
+      "2 blog posts/month, researched, drafted, and published for you",
       "Monthly 30-min strategy call",
-      "AI visibility monitoring — ChatGPT & Perplexity",
+      "AI visibility monitoring (ChatGPT & Perplexity)",
       "Quarterly content refresh on existing pages",
     ],
   },
@@ -107,7 +107,7 @@ export const buildTiers: BuildTier[] = [
       { iconName: "MessageSquare", text: "Clear messaging that converts visitors" },
       { iconName: "BarChart2", text: "Analytics so you can see who's visiting" },
       { iconName: "MapPin", text: "Google Business Profile setup" },
-      { iconName: "Shield", text: "You own everything — no contracts" },
+      { iconName: "Shield", text: "You own everything. No contracts" },
     ],
     carePlan: carePlans[0],
   },
@@ -131,7 +131,7 @@ export const buildTiers: BuildTier[] = [
       "Clear messaging that converts visitors",
       "Analytics so you can see who's visiting",
       "Google Business Profile setup",
-      "You own everything — no contracts",
+      "You own everything. No contracts",
     ],
     carePlan: carePlans[1],
   },
@@ -146,7 +146,7 @@ export const buildTiers: BuildTier[] = [
     ctaHref: "/contact",
     animationDelay: "0.24s",
     features: [
-      { iconName: "Navigation", text: "Pages for your city and trade — so locals find you first" },
+      { iconName: "Navigation", text: "Pages for your city and trade, so locals find you first" },
       { iconName: "Bot", text: "4 blog posts written so AI tools recommend you" },
       { iconName: "Star", text: "Google Maps listing fully built out" },
       { iconName: "Globe", text: "Google knows your trade, your town, and your hours" },

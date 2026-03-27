@@ -15,9 +15,9 @@ import QuizReportPdf from "../components/QuizReportPdf";
 
 /* ── Plain-English Metric Labels ── */
 function getSpeedLabel(lcp: number): string {
-  if (lcp <= 2.5) return "Your site loads fast — visitors won't wait around";
-  if (lcp <= 4) return "Your site is a bit slow — some visitors are leaving before it loads";
-  return "Your site is slow — most visitors leave before they ever see your content";
+  if (lcp <= 2.5) return "Your site loads fast. Visitors won't wait around.";
+  if (lcp <= 4) return "Your site is a bit slow. Some visitors are leaving before it loads.";
+  return "Your site is slow. Most visitors leave before they ever see your content.";
 }
 
 function getScoreLabel(score: number, category: string): string {
@@ -36,11 +36,11 @@ function getGradeColor(grade: string): string {
 }
 
 function getGradeLabel(grade: string): string {
-  if (grade === "A") return "StoryBrand-aligned — this site sells";
+  if (grade === "A") return "StoryBrand-aligned. This site sells.";
   if (grade === "B") return "Good foundation, needs tightening";
   if (grade === "C") return "Has pieces, but the message is muddled";
   if (grade === "D") return "Missing key messaging elements";
-  return "No clear message — visitors won't know what to do";
+  return "No clear message. Visitors won't know what to do.";
 }
 
 function getLetterGrade(score: number): string {
@@ -53,22 +53,22 @@ function getLetterGrade(score: number): string {
 
 /* ── StoryBrand Recommendations (client-facing) ── */
 const storyBrandRecommendations: Record<string, string> = {
-  "1.1": "Lead your headline with the customer's problem — not your company name",
-  "1.2": "Make it clear what you do, who you help, and where — in the first sentence",
+  "1.1": "Lead your headline with the customer's problem, not your company name",
+  "1.2": "Make it clear what you do, who you help, and where, all in the first sentence",
   "1.3": "Add a strong call-to-action button above the fold (\"Call Now\", \"Get a Free Quote\")",
   "1.5": "Rewrite your hero section to say \"you\" and \"your\" instead of \"we\" and \"our\"",
-  "2.1": "Name the problem your customer is actually dealing with — don't assume they know",
+  "2.1": "Name the problem your customer is actually dealing with. Don't assume they know.",
   "2.2": "Speak to how the problem makes your customer feel (frustrated, overwhelmed, stuck)",
-  "3.1": "Show empathy — let customers know you understand what they're going through",
+  "3.1": "Show empathy. Let customers know you understand what they're going through.",
   "3.2": "Add proof: testimonials, years of experience, or number of customers served",
   "4.1": "Add a simple 3-step plan so customers know exactly what to expect",
   "4.2": "Reduce risk with language like \"free estimate\", \"no obligation\", or \"satisfaction guaranteed\"",
-  "5.1": "Repeat your main call-to-action throughout the page — not just at the top",
-  "5.2": "Use action words in your buttons: \"Get\", \"Call\", \"Book\", \"Schedule\" — not \"Learn More\"",
-  "6.1": "Show what's at stake — what happens if they don't fix this problem?",
-  "6.2": "Paint the picture of success — what does life look like after they hire you?",
-  "7.1": "Cut the jargon — write like you talk to a customer, not a conference room",
-  "7.2": "Put your phone number where people can see it — header, hero, and footer",
+  "5.1": "Repeat your main call-to-action throughout the page, not just at the top",
+  "5.2": "Use action words in your buttons: \"Get\", \"Call\", \"Book\", \"Schedule\", not \"Learn More\"",
+  "6.1": "Show what's at stake. What happens if they don't fix this problem?",
+  "6.2": "Paint the picture of success. What does life look like after they hire you?",
+  "7.1": "Cut the jargon. Write like you talk to a customer, not a conference room.",
+  "7.2": "Put your phone number where people can see it: header, hero, and footer",
 };
 
 export default function QuizPage() {
@@ -441,7 +441,7 @@ export default function QuizPage() {
             What&apos;s Your Business&apos;s Online Personality?
           </h1>
           <p className="text-gray-300 mb-8">
-            A few quick questions. 60 seconds. Find out where you stand — and what to do next.
+            A few quick questions. 60 seconds. Find out where you stand and what to do next.
           </p>
           <Image
             src="/images/quiz-website-checkup-1200-630.webp"
@@ -554,7 +554,7 @@ export default function QuizPage() {
                 Got a website?
               </h2>
               <p className="text-hw-text-light mb-6 max-w-md mx-auto">
-                Paste your URL and I&apos;ll run a quick checkup — speed, SEO, mobile-friendliness — so you can see exactly where you stand.
+                Paste your URL and I&apos;ll run a quick checkup (speed, SEO, mobile-friendliness) so you can see exactly where you stand.
               </p>
               <div className="max-w-md mx-auto">
                 <div className="flex gap-2">
@@ -586,7 +586,7 @@ export default function QuizPage() {
                   onClick={handleSkipUrl}
                   className="text-sm text-gray-400 hover:text-hw-text-light transition-colors underline"
                 >
-                  Skip — I don&apos;t have one
+                  Skip, I don&apos;t have one
                 </button>
               </div>
             </div>
@@ -631,7 +631,7 @@ export default function QuizPage() {
                 onClick={() => setEmailSubmitted(true)}
                 className="mt-4 text-xs text-gray-400 hover:text-hw-text-light transition-colors underline"
               >
-                Skip — just show my results
+                Skip, just show my results
               </button>
             </div>
           )}
@@ -734,7 +734,7 @@ export default function QuizPage() {
                     </p>
                   </div>
                   <p className="text-xs text-hw-text-light text-center mt-3">
-                    Your results may vary — these numbers reflect typical businesses in our area.
+                    Your results may vary. These numbers reflect typical businesses in our area.
                   </p>
                 </div>
               )}
@@ -812,7 +812,7 @@ export default function QuizPage() {
                           <CheckCircle2 className="w-4 h-4" /> Full report sent to {email}
                         </p>
                         <p className="text-xs text-hw-text-light mt-2 mb-3">
-                          Check your inbox — your detailed PDF is on the way.
+                          Check your inbox. Your detailed PDF is on the way.
                         </p>
                         <button
                           onClick={handleDownloadPdf}
@@ -826,7 +826,7 @@ export default function QuizPage() {
                       <>
                         <p className="text-base font-semibold text-hw-text mb-1">Get Your Full Report</p>
                         <p className="text-xs text-hw-text-light mb-4">
-                          Detailed PDF with speed analysis, messaging breakdown, and what I&apos;d fix first — sent to {email || "your email"}.
+                          Detailed PDF with speed analysis, messaging breakdown, and what I&apos;d fix first, sent to {email || "your email"}.
                         </p>
                         <button
                           onClick={handleSendReport}
@@ -852,7 +852,7 @@ export default function QuizPage() {
                 <div ref={auditResultsRef} className="card-glow !p-8 md:!p-10 scroll-mt-24">
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="text-lg font-bold">
-                      Site Audit — Internal View
+                      Site Audit, Internal View
                     </h3>
                     <span className="text-xs bg-hw-primary/10 text-hw-primary px-2 py-1 rounded font-mono">
                       INTERNAL
@@ -963,7 +963,7 @@ export default function QuizPage() {
                           StoryBrand Copy Analysis
                         </p>
                         <span className={`text-lg font-bold px-3 py-1 rounded border ${getGradeColor(auditResult.storyBrand.grade)}`}>
-                          {auditResult.storyBrand.grade} — {auditResult.storyBrand.autoTotal}/{auditResult.storyBrand.autoMax} auto-scored
+                          {auditResult.storyBrand.grade}: {auditResult.storyBrand.autoTotal}/{auditResult.storyBrand.autoMax} auto-scored
                         </span>
                       </div>
 
@@ -1025,7 +1025,7 @@ export default function QuizPage() {
                       Manual Audit Checklist
                     </p>
                     <p className="text-xs text-hw-text-light mb-4">
-                      Check these items during your call with the client. Items above are automated — these need your eyes.
+                      Check these items during your call with the client. Items above are automated. These need your eyes.
                     </p>
                     {manualChecklist.map((group) => (
                       <div key={group.section} className="mb-4">
@@ -1073,7 +1073,7 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                     <AlertTriangle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-hw-text">{auditError}</p>
-                      <p className="text-xs text-hw-text-light mt-1">No worries — your quiz results and recommendation are still valid.</p>
+                      <p className="text-xs text-hw-text-light mt-1">No worries. Your quiz results and recommendation are still valid.</p>
                     </div>
                   </div>
                 </div>
@@ -1090,7 +1090,7 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                     href="tel:+12566447334"
                     className="btn-secondary text-center"
                   >
-                    Call Me — (256) 644-7334
+                    Call Me: (256) 644-7334
                   </a>
                 </div>
 

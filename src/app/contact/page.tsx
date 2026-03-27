@@ -93,7 +93,7 @@ export default function ContactPage() {
             Let&apos;s <span className="text-hw-primary hand-accent">Talk</span>
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
-            Ready to get your business found online? Start with a free site checkup — no pressure, no sales pitch.
+            Ready to get your business found online? Start with a free site checkup. No pressure, no sales pitch.
           </p>
         </div>
       </section>
@@ -106,7 +106,7 @@ export default function ContactPage() {
             <div className="animate-on-scroll">
               <h2 className="text-2xl font-bold mb-3">Send Me a Message</h2>
               <p className="text-hw-text-light mb-6">
-                I&apos;ll personally review your online presence and send you a short video showing exactly what&apos;s keeping customers from finding you — no sales pitch, no strings attached.
+                I&apos;ll personally review your online presence and send you a short video showing exactly what&apos;s keeping customers from finding you. No sales pitch, no strings attached.
               </p>
 
               {status === "sent" ? (
@@ -163,7 +163,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-semibold mb-1">
-                      Phone Number <span className="text-hw-text-light font-normal">(optional — so I can text you the link)</span>
+                      Phone Number <span className="text-hw-text-light font-normal">(optional, so I can text you the link)</span>
                     </label>
                     <input
                       type="tel"
@@ -231,7 +231,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold">Response Time</p>
-                    <p className="text-sm text-hw-text-light">Usually within a few hours. I&apos;m a real person — not a chatbot.</p>
+                    <p className="text-sm text-hw-text-light">Usually within a few hours. I&apos;m a real person, not a chatbot.</p>
                   </div>
                 </div>
               </div>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LinkedIn Banner — 1584x396 — Headley Web & SEO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700&family=Inter:wght@400;600&family=Rock+Salt&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      gap: 16px;
+      padding: 40px;
+    }
+
+    .instructions {
+      color: #ccc;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .instructions strong { color: #E07B3C; }
+
+    /* ─── The banner canvas — 1584x396 ─── */
+    .banner {
+      width: 1584px;
+      height: 396px;
+      position: relative;
+      overflow: hidden;
+      background: #1C2826;
+      display: flex;
+      align-items: stretch;
+      flex-shrink: 0;
+    }
+
+    /* Left: brand + headline — starts at ~160px to clear the square logo */
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 60px 0 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .banner-brand-name {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.75);
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .banner-brand-name .hw-accent { color: #E07B3C; }
+    .banner-brand-name .amp {
+      font-optical-sizing: none;
+      font-variation-settings: "opsz" 144;
+    }
+
+    .banner-divider {
+      width: 220px;
+      height: 3px;
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+      border-radius: 2px;
+    }
+
+    .banner-headline {
+      font-family: 'Fraunces', serif;
+      font-size: 68px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.05;
+    }
+    .banner-headline .accent {
+      font-family: 'Rock Salt', cursive;
+      color: #E07B3C;
+      font-size: 60px;
+      font-weight: 400;
+    }
+
+    .banner-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+
+    /* Right: headshot — safe from logo overlap */
+    .banner-photo-wrap {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 700px;
+      z-index: 1;
+    }
+    .banner-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 42%;
+      display: block;
+    }
+    /* Fade left edge into dark background */
+    .banner-photo-fade {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 420px;
+      background: linear-gradient(to right, #1C2826 0%, transparent 100%);
+      z-index: 2;
+    }
+
+    /* Bottom accent bar */
+    .banner-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+      z-index: 4;
+    }
+
+    /* Grain */
+    .banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <p class="instructions">
+    LinkedIn banner at exact size (1584 × 396).<br>
+    Screenshot just the banner: <strong>Cmd + Shift + 4</strong> → drag to select.
+  </p>
+
+  <div class="banner">
+    <!-- Left: brand + headline (offset to clear the square logo at bottom-left) -->
+    <div class="banner-content">
+      <div class="banner-brand-name">Headley <span class="hw-accent">Web <span class="amp">&amp;</span> SEO</span></div>
+      <div class="banner-divider"></div>
+      <h1 class="banner-headline">
+        Get Found. Get Calls.<br>
+        Get <span class="accent">Booked.</span>
+      </h1>
+      <p class="banner-sub">Web design &amp; local SEO for Northeast Alabama</p>
+    </div>
+
+    <!-- Right: headshot — well clear of the logo zone -->
+    <div class="banner-photo-wrap">
+      <img class="banner-photo" src="public/images/headshot-matt-headley.webp" alt="">
+      <div class="banner-photo-fade"></div>
+    </div>
+
+    <div class="banner-bar"></div>
+  </div>
+</body>
+</html>

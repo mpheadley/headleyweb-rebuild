@@ -66,7 +66,7 @@ export default function CheckupForm() {
         <input type="text" id="website" name="website" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="www.yourbusiness.com" />
       </div>
       <div>
-        <label htmlFor="phone" className="block text-sm font-semibold text-hw-dark mb-1">Phone Number <span className="text-hw-text-light font-normal">(optional — so I can text you the link)</span></label>
+        <label htmlFor="phone" className="block text-sm font-semibold text-hw-dark mb-1">Phone Number <span className="text-hw-text-light font-normal">(optional, so I can text you the link)</span></label>
         <input type="tel" id="phone" name="phone" className="form-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-hw-text" placeholder="(256) 555-1234" />
       </div>
       <button type="submit" disabled={status === "sending"} className="btn-primary w-full text-lg inline-flex items-center justify-center gap-2">

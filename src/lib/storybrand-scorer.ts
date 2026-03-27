@@ -449,7 +449,7 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     id: "5.1", label: "CTA Repeated Throughout Page", section: "Call to Action",
     autoScore: ctaRepeatScore, signals: ctaRepeatSignals,
     passLabel: "Call-to-action buttons appear throughout the page",
-    failLabel: "Not enough call-to-action buttons — visitors lose interest",
+    failLabel: "Not enough call-to-action buttons. Visitors lose interest.",
   });
 
   // 5.2 CTA Language is Action-Oriented
@@ -470,7 +470,7 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     id: "5.2", label: "CTA Language is Action-Oriented", section: "Call to Action",
     autoScore: ctaLangScore, signals: ctaLangSignals,
     passLabel: "Your buttons use strong, clear action words",
-    failLabel: "Button text is vague — visitors aren't sure what happens next",
+    failLabel: "Button text is vague. Visitors aren't sure what happens next.",
   });
 
   // 6.1 Failure/Consequences Stated
@@ -524,13 +524,13 @@ export function scoreStoryBrand(extracted: ExtractedCopy): StoryBrandScore {
     jargonScore = 1;
     jargonSignals.push(`Some jargon: ${jargonMatches.join(", ")}`);
   } else {
-    jargonSignals.push("No jargon detected — plain English");
+    jargonSignals.push("No jargon detected. Plain English.");
   }
   items.push({
-    id: "7.1", label: "No Jargon — Plain English", section: "Messaging",
+    id: "7.1", label: "No Jargon: Plain English", section: "Messaging",
     autoScore: jargonScore, signals: jargonSignals,
     passLabel: "Your site uses plain, easy-to-understand language",
-    failLabel: "Too much jargon — customers won't understand what you're saying",
+    failLabel: "Too much jargon. Customers won't understand what you're saying.",
   });
 
   // 7.2 Phone Number Visible

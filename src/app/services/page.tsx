@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Services for Local Businesses",
+        alt: "Headley Web & SEO: Services for Local Businesses",
       },
     ],
   },
@@ -69,7 +69,7 @@ const serviceFaqSchema = {
     {
       "@type": "Question",
       name: "How much does a small business website cost?",
-      acceptedAnswer: { "@type": "Answer", text: "A professional small business website from Headley Web & SEO costs between $495 and $1,195 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($795) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,195) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one — no contracts." },
+      acceptedAnswer: { "@type": "Answer", text: "A professional small business website from Headley Web & SEO costs between $495 and $1,195 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($795) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,195) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one. No contracts." },
     },
     {
       "@type": "Question",
@@ -79,12 +79,12 @@ const serviceFaqSchema = {
     {
       "@type": "Question",
       name: "What is AI visibility and how does it help my business?",
-      acceptedAnswer: { "@type": "Answer", text: "AI visibility means structuring your website so AI tools — Google AI Overviews, ChatGPT, Perplexity — can read, understand, and recommend your business. Over 80% of Google searches now end without a click. AI visibility includes answer-first content, schema markup that AI parsers trust, and entity optimization so AI knows your trade, your town, and your hours." },
+      acceptedAnswer: { "@type": "Answer", text: "AI visibility means structuring your website so AI tools like Google AI Overviews, ChatGPT, and Perplexity can read, understand, and recommend your business. Over 80% of Google searches now end without a click. AI visibility includes answer-first content, schema markup that AI parsers trust, and entity optimization so AI knows your trade, your town, and your hours." },
     },
     {
       "@type": "Question",
       name: "Do I need a website if I already get referrals?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Referrals are your best leads — but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else's customer. A professional website confirms you're legitimate, shows your work, and makes it easy to call or book in one tap." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Referrals are your best leads, but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else's customer. A professional website confirms you're legitimate, shows your work, and makes it easy to call or book in one tap." },
     },
   ],
 };
@@ -119,7 +119,7 @@ const serviceSchema = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Get Found — Single-Page Website",
+              name: "Get Found: Single-Page Website",
               description: "Professional, mobile-friendly single-page website with clear messaging, basic search optimization, contact form setup, and Google Business Profile setup. You own your website from day one.",
               areaServed,
             },
@@ -130,7 +130,7 @@ const serviceSchema = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Get Calls — Multi-Page Website",
+              name: "Get Calls: Multi-Page Website",
               description: "3-5 page website with search optimization, FAQ sections featured in Google search results, professional mobile-friendly design, clear messaging that converts visitors, and Google Business Profile setup.",
               areaServed,
             },
@@ -141,7 +141,7 @@ const serviceSchema = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Get Booked — Full SEO Website",
+              name: "Get Booked: Full SEO Website",
               description: "5-7 page website with advanced search optimization, content written for AI visibility, structured data so Google knows your trade and town, professional design, and full Google Business Profile setup and optimization.",
               areaServed,
             },
@@ -188,10 +188,10 @@ const services = [
     oneLiner: "I build clean, mobile-ready sites that look professional and actually work for your business.",
     details: [
       "StoryBrand messaging that makes customers the hero",
-      "Mobile-first design — looks great on every device",
+      "Mobile-first design that looks great on every device",
       "Fast load times that keep visitors on your site",
       "Clear calls to action that drive phone calls",
-      "You own your website from day one — no contracts",
+      "You own your website from day one. No contracts",
     ],
     accent: "bg-hw-primary/10 text-hw-primary",
   },
@@ -201,7 +201,7 @@ const services = [
     oneLiner: "I optimize your site's structure so local customers find you first when searching for your trade.",
     details: [
       "Keyword research for your specific trade and market",
-      "On-page optimization — titles, meta, schema markup",
+      "On-page optimization: titles, meta, schema markup",
       "Content structured for Google AND AI answers",
       "Local search targeting for your service area",
       "FAQ sections that Google features in search results",
@@ -224,13 +224,13 @@ const services = [
   {
     icon: CalendarCheck,
     title: "Monthly Care & Growth",
-    oneLiner: "I keep your site secure, your Google listing active, and your content working — month after month.",
+    oneLiner: "I keep your site secure, your Google listing active, and your content working, month after month.",
     details: [
       "Hosting, security & uptime monitoring handled for you",
-      "Google Business Profile managed — posts, responses, Q&A",
-      "Monthly results report — calls, clicks & impressions",
+      "Google Business Profile managed: posts, responses, Q&A",
+      "Monthly results report: calls, clicks, and impressions",
       "2 blog posts/month that help you rank (Accelerate plan)",
-      "AI visibility monitoring — ChatGPT & Perplexity (Accelerate plan)",
+      "AI visibility monitoring for ChatGPT and Perplexity (Accelerate plan)",
     ],
     accent: "bg-hw-secondary/10 text-hw-secondary",
   },
@@ -241,7 +241,7 @@ const services = [
     details: [
       "Answer-first content built to be cited by AI tools",
       "Schema markup that AI parsers read and trust",
-      "Entity coverage — Google knows your trade, town, and hours",
+      "Entity coverage so Google knows your trade, town, and hours",
       "Blog posts written to answer the questions AI gets asked",
       "Monitoring whether ChatGPT & Perplexity recommend you (Accelerate plan)",
     ],
@@ -251,10 +251,10 @@ const services = [
 
 
 const whyMe = [
-  { icon: Shield, title: "You Own Everything", desc: "No contracts, no hostage situations. Your site, your domain, your data — from day one." },
-  { icon: Users, title: "One Person, Not an Agency", desc: "I answer my own phone. I live in Jacksonville. If your site has a problem, you're texting me — not opening a ticket." },
-  { icon: FileText, title: "StoryBrand Messaging", desc: "Every site uses the StoryBrand framework to make your customer the hero — so your message actually connects." },
-  { icon: BrainCircuit, title: "Built for AI Visibility", desc: "I structure your content so you show up in AI answers from Google and ChatGPT — not just traditional search." },
+  { icon: Shield, title: "You Own Everything", desc: "No contracts, no hostage situations. Your site, your domain, your data. From day one." },
+  { icon: Users, title: "One Person, Not an Agency", desc: "I answer my own phone. I live in Jacksonville. If your site has a problem, you're texting me, not opening a ticket." },
+  { icon: FileText, title: "StoryBrand Messaging", desc: "Every site uses the StoryBrand framework to make your customer the hero, so your message actually connects." },
+  { icon: BrainCircuit, title: "Built for AI Visibility", desc: "I structure your content so you show up in AI answers from Google and ChatGPT, not just traditional search." },
 ];
 
 export default function ServicesPage() {
@@ -291,7 +291,7 @@ export default function ServicesPage() {
             <span className="text-hw-primary hand-accent">Get Found</span>
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">
-            Clear websites. Local SEO. Google Business Profile. Everything your business needs to show up when customers search — for a flat, predictable rate.
+            Clear websites. Local SEO. Google Business Profile. Everything your business needs to show up when customers search, for a flat, predictable rate.
           </p>
         </div>
       </section>
@@ -302,7 +302,7 @@ export default function ServicesPage() {
           <div className="text-center mb-16">
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">What I Do</p>
             <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Every Service, One Goal</h2>
-            <p className="text-hw-text-light mt-4 max-w-2xl mx-auto animate-on-scroll">Put your business in front of customers who are already searching for what you do — and keep it there.</p>
+            <p className="text-hw-text-light mt-4 max-w-2xl mx-auto animate-on-scroll">Put your business in front of customers who are already searching for what you do, and keep it there.</p>
           </div>
           <div className="space-y-16">
             {services.map((svc) => (
@@ -369,7 +369,7 @@ export default function ServicesPage() {
               </div>
               <h3 className="text-xl font-bold mb-2">I Build Your System</h3>
               <p className="text-hw-text-light">
-                Based on what I find, I build your website, local SEO, and Google Business Profile — flat rate, no surprises.
+                Based on what I find, I build your website, local SEO, and Google Business Profile. Flat rate, no surprises.
               </p>
             </div>
             {/* Connector 2→3 */}
@@ -432,7 +432,7 @@ export default function ServicesPage() {
             <div className="animate-on-scroll">
               <h3 className="text-xl font-bold mb-3" data-speakable="true">How much does a small business website cost?</h3>
               <p className="text-hw-text leading-relaxed" data-speakable="true">
-                A professional small business website from Headley Web &amp; SEO costs between $495 and $1,195 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($795) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,195) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one — no contracts.
+                A professional small business website from Headley Web &amp; SEO costs between $495 and $1,195 as a one-time flat rate. The Get Found plan ($495) is a single-page site with clear messaging and mobile-friendly design. Get Calls ($795) adds 3-5 pages with search optimization and FAQ sections. Get Booked ($1,195) is a full 5-7 page site with advanced SEO, AI visibility, and structured data. Every plan includes Google Business Profile setup, and you own your website from day one. No contracts.
               </p>
             </div>
 
@@ -446,14 +446,14 @@ export default function ServicesPage() {
             <div className="animate-on-scroll">
               <h3 className="text-xl font-bold mb-3" data-speakable="true">What is AI visibility and how does it help my business?</h3>
               <p className="text-hw-text leading-relaxed" data-speakable="true">
-                AI visibility means structuring your website so AI tools — Google AI Overviews, ChatGPT, Perplexity — can read, understand, and recommend your business. Over 80% of Google searches now end without a click, often because AI answers the question directly. If your business isn&apos;t structured for AI to cite, you&apos;re invisible in the fastest-growing search channel. AI visibility includes answer-first content, schema markup that AI parsers trust, and entity optimization so AI knows your trade, your town, and your hours.
+                AI visibility means structuring your website so AI tools like Google AI Overviews, ChatGPT, and Perplexity can read, understand, and recommend your business. Over 80% of Google searches now end without a click, often because AI answers the question directly. If your business isn&apos;t structured for AI to cite, you&apos;re invisible in the fastest-growing search channel. AI visibility includes answer-first content, schema markup that AI parsers trust, and entity optimization so AI knows your trade, your town, and your hours.
               </p>
             </div>
 
             <div className="animate-on-scroll">
               <h3 className="text-xl font-bold mb-3" data-speakable="true">Do I need a website if I already get referrals?</h3>
               <p className="text-hw-text leading-relaxed" data-speakable="true">
-                Yes. Referrals are your best leads — but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else&apos;s customer. A professional website is the closer your referrals need. It confirms you&apos;re legitimate, shows your work, and makes it easy to call or book in one tap.
+                Yes. Referrals are your best leads, but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else&apos;s customer. A professional website is the closer your referrals need. It confirms you&apos;re legitimate, shows your work, and makes it easy to call or book in one tap.
               </p>
             </div>
           </div>
@@ -534,7 +534,7 @@ export default function ServicesPage() {
                   <p className="text-xs text-gray-400">
                     Paired with{" "}
                     <Link href="#care-plans" className="text-hw-primary hover:underline">
-                      {tier.carePlan.name} — ${tier.carePlan.price}/mo
+                      {tier.carePlan.name}: ${tier.carePlan.price}/mo
                     </Link>
                   </p>
                   <p className="text-xs text-hw-primary font-semibold mt-1">First 3 months included free</p>
@@ -564,7 +564,7 @@ export default function ServicesPage() {
             <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Monthly Care Plans</p>
             <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">Care Plans</h2>
             <p className="text-hw-text-light mt-4 max-w-2xl mx-auto animate-on-scroll">
-              Every build includes 3 months free. After that, stay on the plan that fits where your business is headed — or cancel anytime.
+              Every build includes 3 months free. After that, stay on the plan that fits where your business is headed, or cancel anytime.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 items-start">
@@ -605,7 +605,7 @@ export default function ServicesPage() {
             ))}
           </div>
           <p className="text-center text-hw-text-light text-sm mt-8 animate-on-scroll">
-            Care plans are optional. Your site is yours — no hosting lock-in, no contracts.
+            Care plans are optional. Your site is yours. No hosting lock-in, no contracts.
           </p>
         </div>
       </section>
@@ -642,7 +642,7 @@ export default function ServicesPage() {
       <section className="sr-only">
         <h2>Web Design and SEO Services in Anniston, Gadsden &amp; Calhoun County</h2>
         <p>
-          Headley Web <span className="amp">&amp;</span> SEO offers five core services for local businesses in Northeast Alabama: custom web design (clean, mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), Google Business Profile setup and management, monthly care plans for ongoing maintenance and growth, and AI visibility optimization so your business gets recommended by tools like ChatGPT and Perplexity. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 (Get Found), $1,495 (Get Calls), and $1,995 (Get Booked). Monthly care plans start at $49/mo — first 3 months included free with every build. All sites include full ownership — no contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
+          Headley Web <span className="amp">&amp;</span> SEO offers five core services for local businesses in Northeast Alabama: custom web design (clean, mobile-ready sites), local SEO optimization (on-page structure, keyword targeting, and search visibility), Google Business Profile setup and management, monthly care plans for ongoing maintenance and growth, and AI visibility optimization so your business gets recommended by tools like ChatGPT and Perplexity. Every build includes local SEO foundations, mobile responsiveness, and clear calls to action designed using the StoryBrand messaging framework. Pricing starts at $495 (Get Found), $1,495 (Get Calls), and $1,995 (Get Booked). Monthly care plans start at $49/mo. First 3 months included free with every build. All sites include full ownership. No contracts or monthly hosting traps. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding communities.
         </p>
       </section>
     </main>

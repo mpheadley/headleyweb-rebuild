@@ -13,14 +13,14 @@ export default function NotFound() {
       <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 px-6 bg-hw-dark text-white min-h-[70vh] flex items-center">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-4 animate-on-scroll">
-            404 — Page Not Found
+            404. Page Not Found
           </p>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
             Well, This Is{" "}
             <span className="text-hw-primary">Awkward.</span>
           </h1>
           <p className="text-lg text-gray-300 mb-4 max-w-xl mx-auto animate-on-scroll">
-            This page doesn&apos;t exist — kind of like your competitor&apos;s mobile optimization.
+            This page doesn&apos;t exist, kind of like your competitor&apos;s mobile optimization.
           </p>
           <p className="text-sm text-gray-400 mb-10 animate-on-scroll">
             You found the one page on this site that can&apos;t help you. Unlike the rest of them.

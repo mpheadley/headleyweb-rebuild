@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: "Dart Side Rentals",
     description:
-      "Nerf party rental site with online booking, stat counters, and a sticky mobile CTA — built to turn local searches into weekend bookings.",
+      "Nerf party rental site with online booking, stat counters, and a sticky mobile CTA, built to turn local searches into weekend bookings.",
     desktop: "/images/project-dart-side-800w.webp",
     mobile: "/images/project-dart-side-mobile-480w.webp",
     url: "https://dartsiderentals.com",
@@ -27,7 +27,7 @@ export const projects: Project[] = [
   {
     title: "Valley Small Engine Repair",
     description:
-      "Local service site with customer testimonials and easy contact — built to convert search traffic into phone calls.",
+      "Local service site with customer testimonials and easy contact, built to convert search traffic into phone calls.",
     desktop: "/images/desktop-screenshot-valley-800w.webp",
     mobile: "/images/mobile-sreenshot-valley-480w.webp",
     url: "https://mpheadley.github.io/valley-small-engine-repair/",

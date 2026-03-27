@@ -43,7 +43,7 @@ export default function PageSpeedProof({ variant = "light" }: PageSpeedProofProp
           >
             Google PageSpeed Insights
           </a>
-          {" "}&mdash; updated after each build
+          {" "}, updated after each build
         </p>
       </div>
     </section>

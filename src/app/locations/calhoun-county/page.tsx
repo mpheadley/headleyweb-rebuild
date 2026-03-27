@@ -6,7 +6,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Web Design for Calhoun County, AL Businesses",
   description:
-    "Custom web design and local SEO for small businesses across Calhoun County, Alabama — Jacksonville, Anniston, Oxford, and Piedmont. Flat-rate pricing from $495. No contracts.",
+    "Custom web design and local SEO for small businesses across Calhoun County, Alabama: Jacksonville, Anniston, Oxford, and Piedmont. Flat-rate pricing from $495. No contracts.",
   alternates: {
     canonical: "/locations/calhoun-county",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Web Design for Calhoun County, AL",
+        alt: "Headley Web & SEO, Web Design for Calhoun County, AL",
       },
     ],
   },
@@ -41,7 +41,7 @@ const localBusinessSchema = {
   "@type": "ProfessionalService",
   name: "Headley Web & SEO",
   description:
-    "Headley Web & SEO provides custom web design and local SEO for small businesses across Calhoun County, Alabama — including Jacksonville, Anniston, Oxford, and Piedmont.",
+    "Headley Web & SEO provides custom web design and local SEO for small businesses across Calhoun County, Alabama, including Jacksonville, Anniston, Oxford, and Piedmont.",
   url: "https://headleyweb.com",
   telephone: "+1-256-644-7334",
   email: "matt@headleyweb.com",
@@ -96,7 +96,7 @@ const cities = [
 const whyPoints = [
   {
     title: "I Live Here",
-    desc: "Headley Web & SEO is based in Jacksonville — I'm not a remote agency targeting your area from Arizona. I know this county, these towns, and these customers.",
+    desc: "Headley Web & SEO is based in Jacksonville. I'm not a remote agency targeting your area from Arizona. I know this county, these towns, and these customers.",
   },
   {
     title: "No Other Local Web Designer Publishes Prices",
@@ -104,7 +104,7 @@ const whyPoints = [
   },
   {
     title: "Built to Rank in Calhoun County",
-    desc: "Every site I build includes local SEO targeting your specific city and county — not just generic optimization that could be for anyone, anywhere.",
+    desc: "Every site I build includes local SEO targeting your specific city and county, not just generic optimization that could be for anyone, anywhere.",
   },
   {
     title: "You Own Everything",
@@ -129,7 +129,7 @@ export default function CalhounCountyPage() {
         <div className="absolute inset-0 ken-burns-subtle" aria-hidden="true">
           <Image
             src="/images/locations/anniston-hero.webp"
-            alt="Anniston, Alabama — Calhoun County"
+            alt="Anniston, Alabama, Calhoun County"
             fill
             priority
             sizes="100vw"
@@ -149,7 +149,7 @@ export default function CalhounCountyPage() {
             Businesses
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-10 animate-on-scroll">
-            Jacksonville. Anniston. Oxford. Piedmont. Wherever you are in Calhoun County, your customers are searching Google — and finding your competitors instead.
+            Jacksonville. Anniston. Oxford. Piedmont. Wherever you are in Calhoun County, your customers are searching Google and finding your competitors instead.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link href="/audit" className="btn-primary text-lg px-8">
@@ -174,7 +174,7 @@ export default function CalhounCountyPage() {
               Cities Across Calhoun County
             </h2>
             <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
-              Every site is built with location-specific SEO — so you rank in your city, not just somewhere in Alabama.
+              Every site is built with location-specific SEO, so you rank in your city, not just somewhere in Alabama.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -218,12 +218,12 @@ export default function CalhounCountyPage() {
               {
                 icon: Monitor,
                 title: "Custom Web Design",
-                desc: "Clean, mobile-friendly websites built for your specific Calhoun County market — not a template anyone can buy.",
+                desc: "Clean, mobile-friendly websites built for your specific Calhoun County market, not a template anyone can buy.",
               },
               {
                 icon: Search,
                 title: "Local SEO",
-                desc: "On-page optimization so you rank when Calhoun County customers search for what you do — not just statewide traffic.",
+                desc: "On-page optimization so you rank when Calhoun County customers search for what you do, not just statewide traffic.",
               },
               {
                 icon: Map,
@@ -304,10 +304,10 @@ export default function CalhounCountyPage() {
         <h2>Web Design for Calhoun County, Alabama Small Businesses</h2>
         <p>
           Headley Web &amp; SEO is a Jacksonville, Alabama web design studio serving small businesses
-          across Calhoun County — including Anniston, Oxford, Jacksonville, and Piedmont. Services include
+          across Calhoun County, including Anniston, Oxford, Jacksonville, and Piedmont. Services include
           custom website design starting at $495, local SEO optimization, and Google Business Profile setup
           and management. Every build includes mobile-friendly design, on-page SEO targeting Calhoun County
-          searches, and full site ownership with no contracts. Based in Jacksonville, AL — serving the
+          searches, and full site ownership with no contracts. Based in Jacksonville, AL, serving the
           entire county at flat-rate pricing.
         </p>
       </section>

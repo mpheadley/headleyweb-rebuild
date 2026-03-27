@@ -3,9 +3,9 @@ import { ExternalLink, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Labs — Interactive Web Experiments",
+  title: "Labs: Interactive Web Experiments",
   description:
-    "A collection of interactive demos built with GSAP, Three.js, and WebGL. Scroll-driven animation, cursor-reactive 3D particle fields, and generative audio — the kind of work that makes websites memorable.",
+    "A collection of interactive demos built with GSAP, Three.js, and WebGL. Scroll-driven animation, cursor-reactive 3D particle fields, and generative audio. The kind of work that makes websites memorable.",
   alternates: {
     canonical: "/labs",
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO — Labs",
+        alt: "Headley Web & SEO, Labs",
       },
     ],
   },
@@ -60,7 +60,7 @@ const demos = [
     tag: "R3F",
     tagColor: "text-hw-primary",
     description:
-      "A full StoryBrand pitch built in Three.js. Physics-driven words fall into the problem section — drag and throw them. Scroll into the CTA and a gold & glyph auto-rotates behind the button.",
+      "A full StoryBrand pitch built in Three.js. Physics-driven words fall into the problem section. Drag and throw them. Scroll into the CTA and a gold & glyph auto-rotates behind the button.",
     tech: ["React Three Fiber", "Rapier Physics", "GSAP", "Next.js"],
     href: "https://headleyweb-3d.vercel.app",
     gradient: "from-[#1a1208] via-[#0f0c06] to-[#08080f]",
@@ -98,7 +98,7 @@ const demos = [
     tag: "Three.js",
     tagColor: "text-hw-secondary",
     description:
-      "Same particle field, inverted physics. Stars flow toward your cursor instead of fleeing it — held in tension by a spring pulling them home. Click to scatter; gravity immediately pulls them back.",
+      "Same particle field, inverted physics. Stars flow toward your cursor instead of fleeing it, held in tension by a spring pulling them home. Click to scatter; gravity immediately pulls them back.",
     tech: ["Three.js", "WebGL", "Attraction Physics"],
     href: `${BASE}/stardust/gravity/`,
     gradient: "from-[#080a1a] via-[#06080f] to-[#04060a]",
@@ -111,7 +111,7 @@ const demos = [
     tag: "Scrollytelling",
     tagColor: "text-amber-400",
     description:
-      "A pinned scroll experience with five photographic panels. Each panel reveals text and drifts at a different rate — the kind of depth that makes editorial sites feel alive.",
+      "A pinned scroll experience with five photographic panels. Each panel reveals text and drifts at a different rate, the kind of depth that makes editorial sites feel alive.",
     tech: ["GSAP", "ScrollTrigger", "Parallax"],
     href: `${BASE}/editorial-parallax/`,
     gradient: "from-[#1a0d08] via-[#120a06] to-[#0d0805]",
@@ -137,7 +137,7 @@ const demos = [
     tag: "Scrollytelling",
     tagColor: "text-amber-400",
     description:
-      "Scroll-pinned cards with GSAP ScrollTrigger. Each card tilts toward the cursor and snaps into focus as you scroll — the kind of interaction that makes a services section feel alive.",
+      "Scroll-pinned cards with GSAP ScrollTrigger. Each card tilts toward the cursor and snaps into focus as you scroll, the kind of interaction that makes a services section feel alive.",
     tech: ["GSAP", "ScrollTrigger", "Next.js", "CSS 3D"],
     href: "https://scrollytelling-card-tilt.vercel.app",
     gradient: "from-[#0a0f1a] via-[#070c12] to-[#05080f]",
@@ -163,7 +163,7 @@ const demos = [
     tag: "Shipped",
     tagColor: "text-emerald-400",
     description:
-      "The party game where terrible drawings win. Draw prompts on your phone, vote on the big screen — no app, no install, 3–16 players. Also includes Hot Take, Pictionary, and Night Falls (hidden roles) modes.",
+      "The party game where terrible drawings win. Draw prompts on your phone, vote on the big screen. No app, no install, 3-16 players. Also includes Hot Take, Pictionary, and Night Falls (hidden roles) modes.",
     tech: ["Node.js", "Express", "Socket.io", "Real-time Multiplayer"],
     href: "https://tv-party-game.onrender.com",
     gradient: "from-[#081a0e] via-[#060f09] to-[#040a06]",
@@ -193,7 +193,7 @@ export default function LabsPage() {
         />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="inline-block text-xs font-semibold text-hw-primary uppercase tracking-widest mb-4">
-            Headley Web &amp; SEO — Labs
+            Headley Web &amp; SEO, Labs
           </span>
           <h1 className="text-4xl md:text-6xl font-bold !text-white mb-6 animate-on-scroll">
             Where the interesting{" "}
@@ -201,7 +201,7 @@ export default function LabsPage() {
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto animate-on-scroll">
             Experiments in scroll-driven animation, cursor-reactive 3D, and generative audio.
-            Built to explore what&apos;s possible — and to show clients what a website can feel like
+            Built to explore what&apos;s possible, and to show clients what a website can feel like
             when it&apos;s built with real craft.
           </p>
         </div>
@@ -334,7 +334,7 @@ export default function LabsPage() {
       <section className="py-20 px-6 bg-hw-dark border-t border-white/[0.06]">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-white/40 text-sm leading-relaxed mb-6">
-            These experiments are how I stay sharp between client projects — and how I show clients
+            These experiments are how I stay sharp between client projects, and how I show clients
             what&apos;s possible before they ask. If something here caught your eye for a project,
             let&apos;s talk.
           </p>

@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
           url: "/images/headley_web_seo_clean-1200-630.webp",
           width: 1200,
           height: 630,
-          alt: `Headley Web & SEO — ${loc.metaTitle}`,
+          alt: `Headley Web & SEO, ${loc.metaTitle}`,
         },
       ],
     },
@@ -113,7 +113,7 @@ export default async function LocationPage({ params }: { params: Params }) {
     {
       icon: Monitor,
       title: "Custom Web Design",
-      desc: `A clean, mobile-friendly website built for your ${loc.name} business — with clear messaging that turns visitors into customers.`,
+      desc: `A clean, mobile-friendly website built for your ${loc.name} business, with clear messaging that turns visitors into customers.`,
     },
     {
       icon: Search,
@@ -244,7 +244,7 @@ export default async function LocationPage({ params }: { params: Params }) {
                 {loc.name} Businesses I Work With
               </h2>
               <p className="text-hw-text-light mt-4 max-w-xl mx-auto animate-on-scroll">
-                Every site is built around your specific trade and your specific market — not a generic template anyone can buy.
+                Every site is built around your specific trade and your specific market, not a generic template anyone can buy.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
