@@ -10,11 +10,12 @@ Every website is built using the StoryBrand messaging framework, which positions
 
 ## Services
 
-- **Custom Web Design** — Clean, mobile-ready websites with clear messaging and calls to action. Flat-rate pricing: $495 (single page), $795 (3-5 pages), $1,195 (5-7 pages with full SEO).
+- **Get Found ($495)** — Single-page, mobile-ready website with clear messaging, analytics, and Google Business Profile setup. You own everything, no contracts.
+- **Get Calls ($1,495)** — 3–5 page site built to show up in local search. Includes FAQ section, blog with 2 launch posts, and on-page SEO. Best value.
+- **Get Booked ($1,995)** — 5–7 page site with city/trade landing pages, 4 blog posts, full Google Maps buildout, and AI visibility so tools like ChatGPT recommend your business.
+- **Monthly Care Plans** — Essential Care ($49/mo): hosting, security, up to 30 min of updates. Growth Care ($99/mo): adds Google Business Profile management and monthly report. Accelerate ($199/mo): adds 2 blog posts/month, strategy call, and AI visibility monitoring. First 3 months included free with every build.
 - **Local SEO Optimization** — On-page structure, keyword targeting, schema markup, and content optimized for local search and AI answers.
-- **Google Business Profile Setup & Management** — Full profile optimization, review strategy, photo optimization, and ongoing management.
-- **Monthly Care Plans** — Hosting, security, content updates, and growth reporting. Starting at $49/mo. First 3 months included free with every build.
-- **AI Visibility** — Answer-first content, schema markup, and entity optimization so AI tools like ChatGPT and Google recommend your business.
+- **AI Visibility** — Answer-first content, schema markup, and entity optimization so AI answer engines recommend your business.
 
 ## Service Area
 
