@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "Headley Web & SEO",
     images: [
       {
-        url: "/images/headley_web_seo_clean-1200-630.webp",
+        url: "/images/headley-web-og-v2.webp",
         width: 1200,
         height: 630,
         alt: "Headley Web & SEO: Get Found. Get Calls. Get Booked.",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/images/headley_web_seo_clean-1200-630.webp"],
+    images: ["/images/headley-web-og-v2.webp"],
   },
   authors: [{ name: "Headley Web & SEO", url: "https://headleyweb.com" }],
   robots: {

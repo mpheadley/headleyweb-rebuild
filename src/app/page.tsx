@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/images/headley_web_seo_clean-1200-630.webp",
+        url: "/images/headley-web-og-v2.webp",
         width: 1200,
         height: 630,
         alt: "Headley Web & SEO, Web Design for Local Businesses",
@@ -130,6 +130,11 @@ const faqSchema = {
       "@type": "Question",
       name: "Will I own my website, or will I be locked into a contract?",
       acceptedAnswer: { "@type": "Answer", text: "You own it. Day one. If I got hit by a bus tomorrow (or just moved to Montana), your website keeps running. No hostage situations, no 'you need us to export your files' nonsense." },
+    },
+    {
+      "@type": "Question",
+      name: "Can I take my website to another developer if I want to?",
+      acceptedAnswer: { "@type": "Answer", text: "Absolutely. Your site is built with clean, standard code — the same technology used by major companies. You own your hosting account and all your files. Any qualified developer can pick it up and keep going." },
     },
     {
       "@type": "Question",
@@ -800,6 +805,12 @@ export default function Home() {
               <summary>Will I own my website, or will I be locked into a contract?</summary>
               <div className="faq-answer">
                 You own it. Day one. If I got hit by a bus tomorrow (or just moved to Montana), your website keeps running. No hostage situations, no &ldquo;you need us to export your files&rdquo; nonsense.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>Can I take my website to another developer if I want to?</summary>
+              <div className="faq-answer">
+                Absolutely. Your site is built with clean, standard code &mdash; the same technology used by major companies. You own your hosting account and all your files. Any qualified developer can pick it up and keep going.
               </div>
             </details>
             <details className="faq-item">

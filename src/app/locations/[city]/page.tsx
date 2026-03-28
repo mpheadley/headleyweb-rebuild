@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       url: `/locations/${loc.slug}`,
       images: [
         {
-          url: "/images/headley_web_seo_clean-1200-630.webp",
+          url: "/images/headley-web-og-v2.webp",
           width: 1200,
           height: 630,
           alt: `Headley Web & SEO, ${loc.metaTitle}`,
