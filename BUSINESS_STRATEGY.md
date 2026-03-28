@@ -924,12 +924,14 @@ existing websites in a trade, add design commentary through a **StoryBrand lens*
 - Business owners in that trade find the post, see your expertise, hit your CTA
 - As you build client sites, add your own work to the roundups as proof
 
-**Target roundup posts (Phase 1-2):**
-1. "Best HVAC Websites in Alabama (And What Makes Them Work)"
-2. "7 Plumber Websites That Actually Get Phone Calls"
-3. "Top Contractor Websites in Northeast Alabama"
-4. "Lawn Care & Landscaping Websites That Convert Visitors to Customers"
-5. "Restaurant Websites That Make You Want to Book a Table"
+**Target roundup posts (prioritized by active pipeline + outreach targets):**
+1. **"Best Law Firm Websites in Alabama"** — NEXT. Cold targets: Ghee Draper (no website), other local attorneys. Warm target: Will Clay (Phase 2, full price). Attorneys have money.
+2. "Restaurant & Food Business Websites That Make You Want to Book a Table" — Jean (Mom-To-Go), Justin (Old Noble), Jerod (Called Coffee) all active in pipeline.
+3. "Best Farm & Agriculture Websites in Alabama" — Sam Sawyer (Aquality Farms) in pipeline. Matt's farm background gives credibility.
+4. "Lawn Care & Landscaping Websites That Convert Visitors to Customers" — Mack (H3) in pipeline.
+5. "Best HVAC Websites in Alabama (And What Makes Them Work)" — already have `hvac-website-seo.mdx` published, roundup complements it.
+6. "7 Plumber Websites That Actually Get Phone Calls" — already have `web-design-for-plumbers.mdx` published, roundup complements it.
+7. "Top Contractor Websites in Northeast Alabama" — Ramon (R.E.D. Enterprise) in pipeline.
 
 **Template per entry:**
 - Screenshot + link
@@ -937,6 +939,9 @@ existing websites in a trade, add design commentary through a **StoryBrand lens*
 - "Does the hero show the customer's success? Is the CTA clear? Can you find the phone number in 3 seconds?"
 
 **CTA at bottom of every roundup:** "Want a site that outperforms these? Get Your Free Site Checkup."
+
+**Outreach integration (Hormozi + Lee Blue small favor):**
+Roundup posts double as outreach tools. After publishing a post like "Best Attorney Websites in Alabama," send it directly to warm/cold leads in that industry: "Hey [Name], I wrote a piece on what makes a great [industry] website — thought you might find it interesting." This positions you as the authority before any sales conversation. The lead reads the post, sees the gap between great and their own site, and you've already given value before asking for anything. Pair with Southern Legends profiles for business owners (profile = gift, roundup post = expertise).
 
 ### AEO / AI Visibility Posts (from [AEO_RESEARCH.md](AEO_RESEARCH.md))
 6. "Why Your Small Business Needs to Show Up in AI Answers, Not Just Google"

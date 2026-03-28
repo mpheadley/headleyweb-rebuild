@@ -84,8 +84,50 @@ export default async function Page({ params }: { params: Params }) {
 
 ## MDX Blog Setup
 
-<!-- What was the setup process? What would you template for next time? -->
-<!-- Frontmatter fields that every post needs? -->
+### Frontmatter SEO fields — decouple editorial from search [EXTRACT]
+
+**Problem:** `excerpt` does double duty on content/editorial sites — it shows on card grids AND becomes `<meta name="description">`. These are different jobs. A good lede is literary. A good meta description is factual, 150–160 chars, front-loads the keyword, and gives a reason to click.
+
+**Pattern:** Add a `metaDescription` field to frontmatter, fall back to `excerpt` if absent:
+
+```ts
+// profiles/[slug]/page.tsx
+const { title, excerpt, metaDescription, name, location } = profile.frontmatter;
+const seoDescription = metaDescription ?? excerpt;
+
+return {
+  title: `${name} — ${location}`,
+  description: seoDescription,
+  openGraph: { description: seoDescription },
+  twitter: { description: seoDescription },
+};
+```
+
+**In frontmatter:**
+```yaml
+excerpt: "The literary lede shown on card grids — can be as long as it needs to be."
+metaDescription: "The 150–160 char search-optimized version. Front-load the keyword."
+```
+
+**Rules:**
+- `metaDescription` hard cap: 160 chars. Google truncates anything longer, mid-sentence.
+- If no `metaDescription` is set, `excerpt` fires as fallback — so existing content doesn't break.
+- Front-load the entity name or primary keyword in the first 60 chars (shown in mobile SERPs).
+- Don't write `metaDescription` and `excerpt` as the same sentence — if they're identical, just use `excerpt`.
+
+### `name` vs `title` field split — entity name vs literary headline
+
+For editorial/content sites with creative H1s ("The Burning Bus," "Where Wonder Grows Wild"):
+
+- `title` → literary headline, used as H1 on the page
+- `name` → actual entity name ("Freedom Riders National Monument"), used in `<title>` tag and OG
+
+```ts
+title: `${name} — ${location}`, // "Freedom Riders National Monument — Anniston, Alabama"
+// H1 on page still renders frontmatter.title ("The Burning Bus")
+```
+
+This lets the design be editorial while keeping the `<title>` tag findable. Particularly useful for: place profiles, business profiles, person profiles, event pages.
 
 ---
 
