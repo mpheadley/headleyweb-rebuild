@@ -48,6 +48,24 @@ Create city-specific landing pages targeting "[service] + [city]" keywords. Each
 
 ---
 
+### Social Media Reintroduction (Pre-Marketing)
+
+Break radio silence with an honest reintroduction before promoting the business. Three-post sequence:
+
+1. **Post 1 — The Reintroduction** (no CTA)
+   - [ ] Write and publish. Honest, short. Where you've been, where you are. "Broken and becoming" energy — acknowledge the grief and the silence without over-explaining, then name what you're building. No sales pitch.
+2. **Post 2 — What You're Building** (a few days later)
+   - [ ] Light, forward-looking. This is where Headley Web enters naturally. Let the reintroduction do the emotional work — this one just says "here's what I'm doing now."
+3. **Post 3+ — Normal posting resumes**
+   - [ ] Business content, viral builds, blog shares, etc. The reintroduction did its job — stop circling back to it.
+
+**Rules:**
+- Don't let the hard season become the brand. One strong reintroduction, maybe one callback, then shift to the work.
+- Post to personal Facebook first (that's where the silence was noticed), then headleyweb.com socials.
+- This sequence should run BEFORE the viral speed-build posts or blog distribution pushes.
+
+---
+
 ### Blog Content (Ongoing)
 
 > Full blog post plan with status tracking: [BLOG_POST_PLAN.md](BLOG_POST_PLAN.md)
@@ -170,6 +188,15 @@ Source: `starter-kit/case-study.html`
 - [ ] Port before/after slider widget to React component
 - [ ] Create Storybook or preview page showing all variants side-by-side
 - [ ] Document variant options in component props/README
+
+---
+
+### "Broken and Becoming" Copy Updates
+Thread the honest origin story into the right places at the right depth:
+
+- [ ] **About page bio** — Replace Paragraph 1 with revised version that names the loss and connects it to the work. One paragraph, steady and forward-looking. (Draft in `content/blog/drafts/copy-updates.md`, needs further revision to include the "broken and becoming" angle rather than just generic resilience.)
+- [ ] **Southern Legends self-profile** — Write Matt's own profile as the first Southern Legends piece (500-800 words). This is where the full weight of the story lives — grief, excitement, both at once. Sets the editorial tone for every profile after.
+- [ ] **Homepage** — Don't touch. Customer is the hero there.
 
 ---
 
