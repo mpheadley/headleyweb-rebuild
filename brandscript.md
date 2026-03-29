@@ -131,7 +131,7 @@ Get found. Get calls. Get booked. I help Northeast Alabama service businesses sh
 > "Hi, you've reached Matt at Headley Web & SEO. I help local service businesses in Northeast Alabama get found, get calls, and get booked, with websites that actually generate leads. Leave a message and I'll call you back within 24 hours."
 
 **Casual intro (what to say when someone asks "what do you do?"):**
-I build websites for local businesses — plumbers, contractors, guys like that. Most of them have a site that's not really doing anything for them, so I fix that.
+I build websites for local businesses. Most of them have a site they built themselves or its not really doing anything for them, so I fix that.
 
 **Elevator pitch** (30 seconds, Problem + Solution + Result, spoken naturally):
 Most service businesses around here, plumbers, HVAC guys, contractors, are losing leads because their website isn't set up for how people actually search today. When someone in Anniston or Gadsden searches "plumber near me," the map pack decides who gets the call. And now AI is answering questions before people even see a local business. I make sure my clients show up in both places. Flat rate, you own the site. Get found, get calls, get booked.
