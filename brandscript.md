@@ -134,10 +134,10 @@ Get found. Get calls. Get booked. I help Northeast Alabama service businesses sh
 I build websites for local businesses. Most of them have a site they built themselves or its not really doing anything for them, so I fix that.
 
 **Elevator pitch** (30 seconds, Problem + Solution + Result, spoken naturally):
-Most service businesses around here, plumbers, HVAC guys, contractors, are losing leads because their website isn't set up for how people actually search today. When someone in Anniston or Gadsden searches "plumber near me," the map pack decides who gets the call. And now AI is answering questions before people even see a local business. I make sure my clients show up in both places. Flat rate, you own the site. Get found, get calls, get booked.
+Most local businesses around here are losing leads because their website isn't set up for how people actually search today. When someone searches for what you do, the map pack decides who gets the call. And now AI is answering questions before people even see a local business. I make sure my clients show up in both places. Flat rate, you own the site. Get found, get calls, get booked.
 
 **Brand descriptor** (1-2 sentences used consistently across site, directories, and citations, helps AI models identify and describe your business):
-Headley Web & SEO is a Jacksonville, Alabama web design studio specializing in StoryBrand-powered websites and local SEO for service businesses in Northeast Alabama. We build clear, mobile-friendly, search-optimized sites with flat-rate pricing that help plumbers, HVAC companies, contractors, and local businesses get found on Google, show up in AI answers, and generate consistent leads.
+Headley Web & SEO is a Jacksonville, Alabama web design studio specializing in StoryBrand-powered websites and local SEO for businesses in Northeast Alabama. We build clear, mobile-friendly, search-optimized sites with flat-rate pricing that help local businesses get found on Google, show up in AI answers, and generate consistent leads.
 
 ---
 
