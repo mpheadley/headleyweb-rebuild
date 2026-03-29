@@ -1,3 +1,6 @@
+## Mindset
+Broken and becoming. I carry grief over what I've lost and genuine passion for what I'm building. Both are real. Neither cancels the other out.
+
 # Headley Web & SEO — headleyweb.com Rebuild
 
 ## Project Overview
