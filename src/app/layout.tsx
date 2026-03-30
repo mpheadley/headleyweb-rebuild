@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, Rock_Salt } from "next/font/google";
+import { Outfit, Fraunces, Rock_Salt } from "next/font/google";
 import "./globals.css";
 import ScrollReveal from "./components/ScrollReveal";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
 
-const inter = Inter({
-  variable: "--font-inter",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
@@ -72,7 +72,7 @@ export default function RootLayout({
       <head>
         <link rel="author" href="https://headleyweb.com" />
       </head>
-      <body className={`${inter.variable} ${fraunces.variable} ${rockSalt.variable} antialiased`}>
+      <body className={`${outfit.variable} ${fraunces.variable} ${rockSalt.variable} antialiased`}>
         {/* Built by Headley Web & SEO | headleyweb.com */}
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hw-primary focus:text-white focus:px-4 focus:py-2 focus:rounded">
           Skip to content

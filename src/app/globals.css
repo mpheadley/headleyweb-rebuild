@@ -54,14 +54,14 @@ html {
   /* Fallback font stacks for Tailwind classes (font-heading, font-body).
      These are overridden on <body> below where next/font CSS vars are available. */
   --font-heading: "Fraunces", serif;
-  --font-body: "Inter", sans-serif;
+  --font-body: "Outfit", sans-serif;
 }
 
 /* ─── Base Styles ─── */
 body {
   /* Override @theme font stacks with next/font CSS vars (set on <body> by Next.js) */
   --font-heading: var(--font-fraunces), serif;
-  --font-body: var(--font-inter), sans-serif;
+  --font-body: var(--font-outfit), sans-serif;
 
   background: var(--color-light);
   color: var(--color-text);
