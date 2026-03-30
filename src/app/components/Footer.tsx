@@ -82,7 +82,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-2">
+        <div id="newsletter" className="pt-2">
           <p className="text-xs text-gray-500 mb-2">Get local web tips — no spam, unsubscribe anytime.</p>
           <NewsletterSignup />
         </div>
