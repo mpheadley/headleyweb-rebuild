@@ -152,6 +152,52 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
 - **Quick terminal audit script:** `Developer/webdev/between-worlds/fetch-site-audit.py` — run with `python3 fetch-site-audit.py` from Claude Code for any new prospect site. Pulls meta description, JSON-LD schema, viewport/mobile signal, and both mobile + desktop PageSpeed in one shot. No API key needed (uses public PSI endpoint). Copy to each new client project folder as a starting point.
 - **Competitor section (PDF report):** `generate-report-pdf.ts` has a "Who's Outranking You" section (Section 7b) that renders when `competitors[]` is passed to `buildReportDoc`. The section is fully built — styling, per-competitor blocks, advantage callouts. What is NOT built: auto-fetching competitors. The audit API scrapes the target URL and runs PageSpeed, but it does not research who's ranking for their keywords. Competitor data has to be passed in manually from wherever `buildReportDoc` is called (e.g., the quiz results page). Automating this would require either a search API (e.g., DataForSEO, SerpAPI) or hardcoded industry presets. Until then, populate `competitors[]` manually before generating the report.
 
+## Build Status
+
+### Launch (2026-03-12)
+- **LIVE** at headleyweb.com (Vercel, deploys from GitHub)
+- Domain: headleyweb.com via Namecheap DNS -> Vercel (A + CNAME records)
+- SSL: Both bare domain and www working
+- GA4: G-GQHFBKEGLC, consent-gated, env var set in Vercel dashboard
+- Formspree: ID `xyknwdgp` (homepage, quiz, contact)
+
+### Contact Info (use in ALL client reports)
+- **Phone:** (256) 644-7334
+- **Email:** matt@headleyweb.com
+- **URL:** headleyweb.com
+
+### Completed Pages
+- Homepage, Services, About, Portfolio, Contact, Privacy, Quiz, Blog (2 posts)
+- All pages have: meta tags, canonical, OG/Twitter, JSON-LD
+
+### Quiz & Audit Enhancements
+- AI recommendations prompt: full StoryBrand SB7 framework, scoring context, explicit task instructions
+- PDF download button on audit and quiz pages (dynamic import for jsPDF)
+- Email delivery: `/api/send-report` sends PDF via Resend + Formspree lead notification. Resend `from` address is `reports@headleyweb.com` (NOT `reports@send.headleyweb.com`)
+- Vercel env vars: `ANTHROPIC_API_KEY`, `RESEND_API_KEY`, `PAGESPEED_API_KEY`, `NEXT_PUBLIC_INTERNAL_KEY`
+
+### StoryBrand Scorer Fixes (2026-03-25)
+- **1.1 Customer Problem in Headline** — checks `heroSection` (h1 + subheadline together). Rhetorical question format as 4th pass signal. Any pass signal with no fail signals scores 2.
+- **4.1 Simple Step-by-Step Plan** — `hasHowItWorks` alone scores 2. Expanded `planHeadings` regex for action-verb headings.
+- **7.2 Phone Number Visible** — `autoScore: null` (manual check). Static HTML can't determine visual placement.
+
+### Local SEO (2026-03-25+)
+- 11 location pages: Jacksonville, Anniston, Oxford, Gadsden, Alexandria, Attalla, Piedmont, Rainbow City, Fort Payne + original 6
+- County hub pages: `/locations/calhoun-county`, `/locations/etowah-county`
+- Location pages support optional `bodyParagraphs`, `clientTypes`, `editorialLinks` fields
+- Jacksonville, Anniston, Gadsden expanded to ~430+ words each with client types and editorial links
+
+### Homepage Section Order (2026-03-21)
+- Reduced from 17 -> 11 sections per StoryBrand audit
+- Order: Hero -> Pain Points -> Services -> How It Works -> Transformation -> Trust -> Portfolio -> Consequences -> Pricing -> FAQ -> Final CTA -> AEO Block
+
+### Pending Work
+- **GBP reviews** — #1 short-term ranking lever
+- **Location page expansions** — Jacksonville editorial links, Weaver (personal story), Oxford, Piedmont
+- **Hero images** — `alexandria-hero.webp` and `attalla-hero.webp` not yet converted
+- **Before/After portfolio section (Between Worlds)** — screenshots saved, add after launch
+- **30/60/90 day check-ins** — traffic/leads tracking for case study
+
 ## Existing Site Assets
 Copy from `~/Developer/webdev/headley-web-seo/`:
 - `images/` — headshot, brand mark, project screenshots, OG image

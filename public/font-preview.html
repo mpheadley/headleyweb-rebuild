@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headley Web — Accent Font Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@400;700&family=Permanent+Marker&family=Homemade+Apple&family=Satisfy&family=Rock+Salt&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #E07B3C;
+      --primary-dark: #B85A24;
+      --secondary: #6B8F71;
+      --dark: #1C2826;
+      --light: #F5F0EB;
+      --text: #2D2D2D;
+      --text-light: #6B7280;
+      --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--text); }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+    h1 { font-family: 'Fraunces', serif; font-weight: 800; color: var(--dark); font-size: 32px; margin-bottom: 8px; }
+    .subtitle { color: var(--text-light); margin-bottom: 40px; font-size: 15px; line-height: 1.6; }
+
+    /* ─── Font Option Cards ─── */
+    .font-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 48px; }
+
+    .font-card {
+      background: var(--white);
+      border: 2px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 28px 32px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .font-card:hover { border-color: var(--secondary); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .font-card.selected { border-color: var(--primary); box-shadow: 0 4px 16px rgba(224,123,60,0.2); }
+    .font-card.selected::after {
+      content: '✓ Selected';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .font-card input[type="radio"] { display: none; }
+
+    .font-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .font-desc {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .font-samples { display: flex; flex-direction: column; gap: 14px; }
+
+    .sample-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .sample-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+    }
+
+    /* ─── Live Preview Section ─── */
+    .preview-section {
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .preview-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 24px;
+    }
+
+    /* Hero Preview */
+    .preview-hero {
+      background: linear-gradient(135deg, var(--dark), #111a18);
+      border-radius: 16px;
+      padding: 48px 40px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-hero .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+    .preview-hero h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 42px;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .preview-hero .accent-text {
+      color: var(--primary);
+      transition: font-family 0.3s ease, font-size 0.3s ease;
+    }
+    .preview-hero .hero-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* Results Preview */
+    .preview-results {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .preview-results .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .preview-results h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .preview-results .accent-text {
+      color: var(--primary);
+      transition: font-family 0.3s ease, font-size 0.3s ease;
+    }
+
+    /* Pain Points Preview */
+    .preview-pain {
+      background: var(--light);
+      border: 2px solid rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 48px 40px;
+      margin-bottom: 24px;
+    }
+    .preview-pain .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .preview-pain h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .preview-pain .accent-text {
+      color: var(--primary);
+      transition: font-family 0.3s ease, font-size 0.3s ease;
+    }
+
+    /* CTA Preview */
+    .preview-cta {
+      background: linear-gradient(135deg, var(--dark), #111a18);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .preview-cta h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .preview-cta .accent-text {
+      transition: font-family 0.3s ease, font-size 0.3s ease;
+    }
+    .preview-cta .cta-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+    .preview-cta .btn {
+      display: inline-block;
+      padding: 16px 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--primary);
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -2px 0 rgba(0,0,0,0.2);
+    }
+
+    /* Trust Section Preview */
+    .preview-trust {
+      background: var(--white);
+      border: 2px solid rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 48px 40px;
+      margin-bottom: 24px;
+    }
+    .preview-trust .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+    .preview-trust h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .preview-trust .accent-text {
+      color: var(--secondary);
+      transition: font-family 0.3s ease, font-size 0.3s ease;
+    }
+
+    /* Animation toggles */
+    .anim-controls {
+      display: flex;
+      gap: 12px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+    .anim-btn {
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--white);
+      border: 2px solid rgba(0,0,0,0.1);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .anim-btn:hover { border-color: var(--secondary); }
+    .anim-btn.active { background: var(--secondary); color: #fff; border-color: var(--secondary); }
+
+    /* ─── Animation keyframes ─── */
+    .anim-fade-rotate {
+      display: inline-block;
+      animation: anim-fade-rotate 0.6s ease-out both;
+    }
+    @keyframes anim-fade-rotate {
+      0%   { opacity: 0; transform: rotate(-2deg) scale(0.9); }
+      60%  { opacity: 1; transform: rotate(1deg) scale(1.05); }
+      100% { opacity: 1; transform: rotate(-1deg) scale(1); }
+    }
+    .anim-scale-bounce {
+      display: inline-block;
+      animation: anim-scale-bounce 0.5s ease-out both;
+    }
+    @keyframes anim-scale-bounce {
+      0%   { opacity: 0; transform: scale(0.7); }
+      70%  { opacity: 1; transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .anim-letter-reveal {
+      display: inline-block;
+    }
+    .anim-letter-reveal .letter {
+      opacity: 0;
+      display: inline-block;
+      animation: letter-pop 0.15s ease-out forwards;
+    }
+    @keyframes letter-pop {
+      0%   { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .sep { height: 1px; background: rgba(0,0,0,0.08); margin: 48px 0; }
+
+    /* Decision Copy */
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--primary);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 32px;
+      transition: all 0.15s ease;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -2px 0 rgba(0,0,0,0.2);
+    }
+    .copy-btn:hover { background: var(--primary-dark); transform: translateY(1px); }
+    .copy-btn:active { transform: translateY(2px); }
+    .copy-btn.copied { background: var(--secondary); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Accent Font — Pick Your Flavor</h1>
+    <p class="subtitle">This font replaces the scribble underlines as the "personality" element. It'll be used sparingly — hero accent ("Find You?"), section headings ("Real Results"), and maybe future CTA moments. Your core fonts (Fraunces + Inter) stay the same.</p>
+
+    <!-- ─── Font Options ─── -->
+    <div class="font-grid">
+
+      <!-- Option A: Caveat -->
+      <label class="font-card" onclick="selectFont('caveat')">
+        <input type="radio" name="accent" value="caveat">
+        <div class="font-name">A — Caveat</div>
+        <div class="font-desc">Natural handwriting. Casual, warm, slightly messy. Like someone jotted a note on a napkin. Most approachable.</div>
+        <div class="font-samples">
+          <div class="sample-row">
+            <span class="sample-label">Hero accent</span>
+            <span style="font-family: 'Caveat', cursive; font-size: 32px; font-weight: 700; color: var(--primary);">Find You?</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Results</span>
+            <span style="font-family: 'Caveat', cursive; font-size: 28px; font-weight: 700; color: var(--primary);">Real Results.</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">CTA accent</span>
+            <span style="font-family: 'Caveat', cursive; font-size: 26px; font-weight: 700; color: var(--secondary);">Let's Talk</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Small</span>
+            <span style="font-family: 'Caveat', cursive; font-size: 20px; color: var(--text-light);">No Guesswork</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Option B: Kalam -->
+      <label class="font-card" onclick="selectFont('kalam')">
+        <input type="radio" name="accent" value="kalam">
+        <div class="font-name">B — Kalam</div>
+        <div class="font-desc">Warm handwriting with more structure. Friendly but not sloppy. Like a teacher's encouraging note. Most readable of the handwritten options.</div>
+        <div class="font-samples">
+          <div class="sample-row">
+            <span class="sample-label">Hero accent</span>
+            <span style="font-family: 'Kalam', cursive; font-size: 32px; font-weight: 700; color: var(--primary);">Find You?</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Results</span>
+            <span style="font-family: 'Kalam', cursive; font-size: 28px; font-weight: 700; color: var(--primary);">Real Results.</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">CTA accent</span>
+            <span style="font-family: 'Kalam', cursive; font-size: 26px; font-weight: 700; color: var(--secondary);">Let's Talk</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Small</span>
+            <span style="font-family: 'Kalam', cursive; font-size: 20px; color: var(--text-light);">No Guesswork</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Option C: Permanent Marker -->
+      <label class="font-card" onclick="selectFont('marker')">
+        <input type="radio" name="accent" value="marker">
+        <div class="font-name">C — Permanent Marker</div>
+        <div class="font-desc">Bold marker energy. Confident, punchy, a little edgy. Like someone circled the important part with a Sharpie. Most impactful.</div>
+        <div class="font-samples">
+          <div class="sample-row">
+            <span class="sample-label">Hero accent</span>
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 28px; color: var(--primary);">Find You?</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Results</span>
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 24px; color: var(--primary);">Real Results.</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">CTA accent</span>
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 22px; color: var(--secondary);">Let's Talk</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Small</span>
+            <span style="font-family: 'Permanent Marker', cursive; font-size: 18px; color: var(--text-light);">No Guesswork</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Option D: Homemade Apple -->
+      <label class="font-card" onclick="selectFont('homemade')">
+        <input type="radio" name="accent" value="homemade">
+        <div class="font-name">D — Homemade Apple</div>
+        <div class="font-desc">Raw, authentic penmanship. Imperfect in the best way. Like a handwritten sign at a farmers market. Most genuine.</div>
+        <div class="font-samples">
+          <div class="sample-row">
+            <span class="sample-label">Hero accent</span>
+            <span style="font-family: 'Homemade Apple', cursive; font-size: 28px; color: var(--primary);">Find You?</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Results</span>
+            <span style="font-family: 'Homemade Apple', cursive; font-size: 24px; color: var(--primary);">Real Results.</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">CTA accent</span>
+            <span style="font-family: 'Homemade Apple', cursive; font-size: 22px; color: var(--secondary);">Let's Talk</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Small</span>
+            <span style="font-family: 'Homemade Apple', cursive; font-size: 18px; color: var(--text-light);">No Guesswork</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Option E: Satisfy -->
+      <label class="font-card" onclick="selectFont('satisfy')">
+        <input type="radio" name="accent" value="satisfy">
+        <div class="font-name">E — Satisfy</div>
+        <div class="font-desc">Smooth retro cursive. Warm and confident, like a Southern diner sign. More polished than handwriting, less formal than script.</div>
+        <div class="font-samples">
+          <div class="sample-row">
+            <span class="sample-label">Hero accent</span>
+            <span style="font-family: 'Satisfy', cursive; font-size: 32px; color: var(--primary);">Find You?</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Results</span>
+            <span style="font-family: 'Satisfy', cursive; font-size: 28px; color: var(--primary);">Real Results.</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">CTA accent</span>
+            <span style="font-family: 'Satisfy', cursive; font-size: 26px; color: var(--secondary);">Let's Talk</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Small</span>
+            <span style="font-family: 'Satisfy', cursive; font-size: 20px; color: var(--text-light);">No Guesswork</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Option F: Rock Salt -->
+      <label class="font-card" onclick="selectFont('rocksalt')">
+        <input type="radio" name="accent" value="rocksalt">
+        <div class="font-name">F — Rock Salt</div>
+        <div class="font-desc">Gritty, textured handwriting. Like chalk on a blackboard or scratched into wood. Most rugged — fits the "Stone" in Sage & Stone.</div>
+        <div class="font-samples">
+          <div class="sample-row">
+            <span class="sample-label">Hero accent</span>
+            <span style="font-family: 'Rock Salt', cursive; font-size: 24px; color: var(--primary);">Find You?</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Results</span>
+            <span style="font-family: 'Rock Salt', cursive; font-size: 20px; color: var(--primary);">Real Results.</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">CTA accent</span>
+            <span style="font-family: 'Rock Salt', cursive; font-size: 18px; color: var(--secondary);">Let's Talk</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Small</span>
+            <span style="font-family: 'Rock Salt', cursive; font-size: 16px; color: var(--text-light);">No Guesswork</span>
+          </div>
+        </div>
+      </label>
+
+      <!-- Option G: No Accent Font -->
+      <label class="font-card" onclick="selectFont('none')">
+        <input type="radio" name="accent" value="none">
+        <div class="font-name">G — No Accent Font</div>
+        <div class="font-desc">Keep it clean. Fraunces italic handles all the personality. Two fonts only = fastest load, most consistent. The safe choice.</div>
+        <div class="font-samples">
+          <div class="sample-row">
+            <span class="sample-label">Hero accent</span>
+            <span style="font-family: 'Fraunces', serif; font-style: italic; font-size: 32px; font-weight: 800; color: var(--primary);">Find You?</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Results</span>
+            <span style="font-family: 'Fraunces', serif; font-style: italic; font-size: 28px; font-weight: 800; color: var(--primary);">Real Results.</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">CTA accent</span>
+            <span style="font-family: 'Fraunces', serif; font-style: italic; font-size: 26px; font-weight: 800; color: var(--secondary);">Let's Talk</span>
+          </div>
+          <div class="sample-row">
+            <span class="sample-label">Small</span>
+            <span style="font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: var(--text-light);">No Guesswork</span>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <!-- ─── Animation Toggle ─── -->
+    <div style="margin-bottom: 32px;">
+      <div class="preview-label">Animation Style</div>
+      <div class="anim-controls">
+        <button class="anim-btn active" onclick="setAnimation('fade-rotate')">Fade + Rotate</button>
+        <button class="anim-btn" onclick="setAnimation('scale-bounce')">Scale Bounce</button>
+        <button class="anim-btn" onclick="setAnimation('letter-reveal')">Letter by Letter</button>
+        <button class="anim-btn" onclick="setAnimation('none')">No Animation</button>
+      </div>
+      <button onclick="replayAnimation()" style="padding: 8px 20px; font-size: 13px; font-weight: 600; background: transparent; border: 2px solid var(--secondary); border-radius: 100px; cursor: pointer; color: var(--secondary); transition: all 0.15s;">Replay Animation</button>
+    </div>
+
+    <!-- ─── Live Preview Section ─── -->
+    <div class="preview-section">
+      <div class="preview-label">Live Preview — Select a Font Above</div>
+
+      <!-- Hero -->
+      <div class="preview-hero">
+        <div class="eyebrow">Web Design & SEO for Northeast Alabama</div>
+        <h2>Your Customers Are Searching.<br>
+          <span style="color: var(--primary);">Can They <span id="heroAccent" class="accent-text">Find You?</span></span>
+        </h2>
+        <p class="hero-sub">Stop losing leads to a website that isn't working for you. I build clear, mobile-friendly sites that make your phone ring — for a predictable flat rate.</p>
+      </div>
+
+      <!-- Pain Points -->
+      <div class="preview-pain">
+        <div class="eyebrow">The Problem</div>
+        <h2>You Work Too Hard to Be <span id="painAccent" class="accent-text">Hidden Online.</span></h2>
+      </div>
+
+      <!-- Results -->
+      <div class="preview-results">
+        <div class="eyebrow">Results</div>
+        <h2>Real Businesses. <span id="resultsAccent" class="accent-text">Real Results.</span></h2>
+      </div>
+
+      <!-- Trust -->
+      <div class="preview-trust">
+        <div class="eyebrow">Why Me</div>
+        <h2>Local Expertise, <span id="trustAccent" class="accent-text">No Guesswork</span></h2>
+      </div>
+
+      <!-- CTA -->
+      <div class="preview-cta">
+        <h2>Ready to Get Found? <span id="ctaAccent" class="accent-text" style="color: var(--primary);">Let's Talk.</span></h2>
+        <p class="cta-sub">Schedule a free 15-minute call. No pressure, no pitch — just answers.</p>
+        <span class="btn">Get Your Free Video Audit</span>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <p style="font-size: 14px; color: var(--text-light); margin-bottom: 8px;"><strong>Tip:</strong> You don't have to use the accent font on ALL of these. Pick the 1-2 spots where it hits hardest (hero + results is the sweet spot).</p>
+
+    <button class="copy-btn" onclick="copyDecision()">
+      <span id="copyText">Copy My Decision</span>
+    </button>
+  </div>
+
+  <script>
+    let selectedFont = null;
+    let selectedAnimation = 'fade-rotate';
+
+    const fontMap = {
+      caveat:   { family: "'Caveat', cursive",           name: "Caveat",           heroSize: "52px", sectionSize: "42px", smallSize: "28px", weight: "700" },
+      kalam:    { family: "'Kalam', cursive",             name: "Kalam",            heroSize: "48px", sectionSize: "40px", smallSize: "26px", weight: "700" },
+      marker:   { family: "'Permanent Marker', cursive",  name: "Permanent Marker", heroSize: "44px", sectionSize: "36px", smallSize: "24px", weight: "400" },
+      homemade: { family: "'Homemade Apple', cursive",    name: "Homemade Apple",   heroSize: "40px", sectionSize: "34px", smallSize: "22px", weight: "400" },
+      satisfy:  { family: "'Satisfy', cursive",           name: "Satisfy",          heroSize: "50px", sectionSize: "40px", smallSize: "26px", weight: "400" },
+      rocksalt: { family: "'Rock Salt', cursive",         name: "Rock Salt",        heroSize: "38px", sectionSize: "32px", smallSize: "22px", weight: "400" },
+      none:     { family: "'Fraunces', serif",            name: "No Accent Font",   heroSize: "42px", sectionSize: "36px", smallSize: "26px", weight: "800", italic: true }
+    };
+
+    const accentIds = ['heroAccent', 'painAccent', 'resultsAccent', 'trustAccent', 'ctaAccent'];
+    // Store original text + inline color for each accent element
+    const originals = {};
+    accentIds.forEach(id => {
+      const el = document.getElementById(id);
+      originals[id] = {
+        text: el.textContent,
+        color: el.style.color || '',
+        className: el.className
+      };
+    });
+
+    function selectFont(key) {
+      selectedFont = key;
+      document.querySelectorAll('.font-card').forEach(c => c.classList.remove('selected'));
+      event.currentTarget.classList.add('selected');
+      replayAnimation();
+    }
+
+    function setAnimation(type) {
+      selectedAnimation = type;
+      document.querySelectorAll('.anim-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      replayAnimation();
+    }
+
+    function replayAnimation() {
+      const f = selectedFont ? fontMap[selectedFont] : null;
+
+      accentIds.forEach((id, i) => {
+        const old = document.getElementById(id);
+        if (!old) return;
+
+        // Create a brand-new <span> — fresh node = fresh animation
+        const fresh = document.createElement('span');
+        fresh.id = id;
+        fresh.className = originals[id].className;
+        if (originals[id].color) fresh.style.color = originals[id].color;
+
+        // Apply selected font
+        if (f) {
+          fresh.style.fontFamily = f.family;
+          fresh.style.fontWeight = f.weight;
+          fresh.style.fontStyle = f.italic ? 'italic' : 'normal';
+          fresh.style.fontSize = (i === 0) ? f.heroSize : f.sectionSize;
+        }
+
+        // Apply animation
+        if (selectedAnimation === 'letter-reveal') {
+          fresh.classList.add('anim-letter-reveal');
+          originals[id].text.split('').forEach((char, ci) => {
+            const s = document.createElement('span');
+            s.className = 'letter';
+            s.textContent = char === ' ' ? '\u00A0' : char;
+            s.style.animationDelay = (ci * 0.04) + 's';
+            fresh.appendChild(s);
+          });
+        } else {
+          fresh.textContent = originals[id].text;
+          if (selectedAnimation && selectedAnimation !== 'none') {
+            fresh.classList.add('anim-' + selectedAnimation);
+          }
+        }
+
+        // Swap in — new DOM node guarantees animation fires
+        old.parentNode.replaceChild(fresh, old);
+      });
+    }
+
+    function copyDecision() {
+      if (!selectedFont) {
+        alert('Pick a font first!');
+        return;
+      }
+      const f = fontMap[selectedFont];
+      const text = `Headley Web — Accent Font Decision\nFont: ${selectedFont.toUpperCase()} — ${f.name}\nAnimation: ${selectedAnimation}\nFont family: ${f.family}\nUsage: Hero "Find You?", Results "Real Results.", sparingly elsewhere`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyText');
+        btn.textContent = 'Copied!';
+        document.querySelector('.copy-btn').classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy My Decision';
+          document.querySelector('.copy-btn').classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
