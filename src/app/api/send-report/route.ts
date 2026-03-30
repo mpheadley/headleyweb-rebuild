@@ -90,6 +90,9 @@ export async function POST(request: NextRequest) {
               Call Me: (256) 644-7334
             </a>
             <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">
+              Want weekly web tips? <a href="https://headleyweb.com/#newsletter" style="color: #E07B3C; text-decoration: underline;">Subscribe here</a>
+            </p>
+            <p style="color: #6B7280; font-size: 12px; margin-top: 8px;">
               Headley Web &amp; SEO &middot; headleyweb.com &middot; Jacksonville, AL
             </p>
           </div>

@@ -83,6 +83,7 @@ export default function AuditPage() {
   const [emailSending, setEmailSending] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [newsletterOptin, setNewsletterOptin] = useState(false);
 
   // Refs
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -203,20 +204,22 @@ export default function AuditPage() {
       if (res.ok) {
         setEmailSent(true);
         // Send lead data with email to Formspree (fire-and-forget)
+        const formspreeData: Record<string, string | boolean> = {
+          _subject: `Site Audit Lead: ${auditResult.url}`,
+          source: "audit-page-email",
+          email: email.trim(),
+          site_url: auditResult.url,
+          trade: trade || "not selected",
+          audit_performance: String(auditResult.performance),
+          audit_seo: String(auditResult.seo),
+          audit_accessibility: String(auditResult.accessibility),
+          storybrand_grade: auditResult.storyBrand?.grade ?? "N/A",
+        };
+        if (newsletterOptin) formspreeData.newsletter = true;
         fetch("https://formspree.io/f/xyknwdgp", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            _subject: `Site Audit Lead: ${auditResult.url}`,
-            source: "audit-page-email",
-            email: email.trim(),
-            site_url: auditResult.url,
-            trade: trade || "not selected",
-            audit_performance: auditResult.performance,
-            audit_seo: auditResult.seo,
-            audit_accessibility: auditResult.accessibility,
-            storybrand_grade: auditResult.storyBrand?.grade ?? "N/A",
-          }),
+          body: JSON.stringify(formspreeData),
         }).catch(() => {});
       } else {
         setEmailError(true);
@@ -514,6 +517,15 @@ export default function AuditPage() {
                         {emailSending ? "Sending..." : "Send My Report"}
                       </button>
                     </form>
+                    <label className="flex items-start gap-2 mt-3 text-xs text-hw-text-light cursor-pointer justify-center">
+                      <input
+                        type="checkbox"
+                        checked={newsletterOptin}
+                        onChange={(e) => setNewsletterOptin(e.target.checked)}
+                        className="mt-0.5 accent-hw-primary"
+                      />
+                      Also send me occasional web tips (no spam, unsubscribe anytime)
+                    </label>
                     {emailError && (
                       <p className="text-xs text-red-500 text-center mt-2">
                         Something went wrong. Try again, or call (256) 644-7334 and I&apos;ll send it manually.
@@ -863,10 +875,10 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                     <p className="text-sm font-semibold text-hw-text mb-1">Email PDF Report</p>
                     <form onSubmit={handleSendEmail} className="flex flex-col sm:flex-row gap-2 justify-center items-center mt-3">
                       <div className="relative w-full sm:w-auto">
-                        <label htmlFor="audit-email" className="sr-only">Email address</label>
+                        <label htmlFor="audit-email-internal" className="sr-only">Email address</label>
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-hw-text-light" aria-hidden="true" />
                         <input
-                          id="audit-email"
+                          id="audit-email-internal"
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -884,6 +896,15 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                         {emailSending ? "Sending..." : "Send Report"}
                       </button>
                     </form>
+                    <label className="flex items-start gap-2 mt-3 text-xs text-hw-text-light cursor-pointer justify-center">
+                      <input
+                        type="checkbox"
+                        checked={newsletterOptin}
+                        onChange={(e) => setNewsletterOptin(e.target.checked)}
+                        className="mt-0.5 accent-hw-primary"
+                      />
+                      Also send me occasional web tips (no spam, unsubscribe anytime)
+                    </label>
                     {emailError && (
                       <p className="text-xs text-red-500 text-center mt-2">
                         Something went wrong.

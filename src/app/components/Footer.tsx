@@ -2,6 +2,7 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { locations } from "@/app/data/locations";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
   return (
@@ -79,6 +80,11 @@ export default function Footer() {
             <span className="text-gray-600">&middot;</span>
             <Link href="/locations/etowah-county" className="text-gray-500 hover:text-white transition-colors">Etowah County</Link>
           </div>
+        </div>
+
+        <div className="pt-2">
+          <p className="text-xs text-gray-500 mb-2">Get local web tips — no spam, unsubscribe anytime.</p>
+          <NewsletterSignup />
         </div>
 
         <p className="text-xs text-gray-400 max-w-lg mx-auto">

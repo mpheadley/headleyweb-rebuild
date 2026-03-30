@@ -84,6 +84,7 @@ export default function QuizPage() {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formspreeError, setFormspreeError] = useState(false);
+  const [newsletterOptin, setNewsletterOptin] = useState(false);
 
   // New state for trade, URL audit, and ROI
   const [trade, setTrade] = useState<string | null>(null);
@@ -277,7 +278,7 @@ export default function QuizPage() {
     setFormspreeError(false);
     try {
       // Flat key-value pairs (no nesting — Formspree renders nested objects as [object Object])
-      const formData: Record<string, string | number> = {
+      const formData: Record<string, string | number | boolean> = {
         email,
         quiz_result: result?.name ?? "",
         quiz_score: totalScore,
@@ -286,6 +287,7 @@ export default function QuizPage() {
         site_url: siteUrl || "not provided",
         _subject: `Quiz Result: ${result?.name}${auditResult ? ` | Site: ${auditResult.url}` : ""}`,
       };
+      if (newsletterOptin) formData.newsletter = true;
 
       // Audit data (flat keys)
       if (auditResult) {
@@ -626,6 +628,15 @@ export default function QuizPage() {
                     {submitting ? "..." : "Show Me"}
                   </button>
                 </div>
+                <label className="flex items-start gap-2 mt-3 text-xs text-hw-text-light cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={newsletterOptin}
+                    onChange={(e) => setNewsletterOptin(e.target.checked)}
+                    className="mt-0.5 accent-hw-primary"
+                  />
+                  Also send me occasional web tips (no spam, unsubscribe anytime)
+                </label>
               </form>
               <button
                 onClick={() => setEmailSubmitted(true)}
