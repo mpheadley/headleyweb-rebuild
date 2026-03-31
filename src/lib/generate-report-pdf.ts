@@ -646,7 +646,40 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     y += 70;
   }
 
-  // ── 10. Footer CTA — always anchored to bottom of last page ──
+  // ── 10. Here's What Happens Next (3-step plan) ──
+  checkPageBreak(100);
+  drawLine();
+  doc.setTextColor(...dark);
+  doc.setFontSize(14);
+  doc.setFont("helvetica", "bold");
+  doc.text("Here\u2019s What Happens Next", margin, y);
+  y += 22;
+
+  const planSteps = [
+    { num: "1", title: "Get your free report", desc: "Speed, SEO, and messaging \u2014 all in one PDF. (You\u2019re reading it.)" },
+    { num: "2", title: "I\u2019ll personally review your site", desc: "And follow up with what I\u2019d fix first." },
+    { num: "3", title: "We fix the biggest gap first", desc: "No pressure, no long contracts. Just results." },
+  ];
+
+  for (const step of planSteps) {
+    checkPageBreak(35);
+    doc.setTextColor(...terracotta);
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text(step.num + ".", margin, y);
+    doc.setTextColor(...dark);
+    doc.setFontSize(11);
+    doc.text(step.title, margin + 18, y);
+    y += 14;
+    doc.setTextColor(...mutedText);
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    doc.text(step.desc, margin + 18, y);
+    y += 20;
+  }
+  y += 5;
+
+  // ── 11. Footer CTA — always anchored to bottom of last page ──
   const footerHeight = 50;
   const finalFooterY = pageHeight - footerHeight;
   doc.setFillColor(...dark);

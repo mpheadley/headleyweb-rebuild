@@ -321,13 +321,13 @@ export default function AuditPage() {
       <section className="bg-hw-dark text-white pt-28 pb-16 px-6 text-center">
         <div className="max-w-2xl mx-auto">
           <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3">
-            Free Tool
+            60-Second Checkup
           </p>
           <h1 className="text-3xl md:text-4xl font-bold !text-white mb-4">
             Free Site Audit
           </h1>
           <p className="text-gray-300">
-            Paste your website URL and get an instant report: speed, SEO, mobile setup, and messaging analysis.
+            Find out if your website is helping you get customers &mdash; or pushing them away. Instant results, no signup required.
           </p>
         </div>
       </section>
@@ -533,6 +533,28 @@ export default function AuditPage() {
                     )}
                   </div>
                 )}
+              </div>
+
+              {/* 3-Step Plan */}
+              <div className="mt-6 border-t border-gray-100 pt-6">
+                <h3 className="text-base font-bold text-center mb-5">Here&apos;s What Happens Next</h3>
+                <div className="grid md:grid-cols-3 gap-5 text-center">
+                  <div>
+                    <div className="w-9 h-9 rounded-full bg-hw-primary/10 text-hw-primary font-bold text-sm flex items-center justify-center mx-auto mb-2">1</div>
+                    <p className="text-sm font-semibold text-hw-dark mb-1">Get your free report</p>
+                    <p className="text-xs text-hw-text-light">Speed, SEO, and messaging &mdash; all in one PDF.</p>
+                  </div>
+                  <div>
+                    <div className="w-9 h-9 rounded-full bg-hw-primary/10 text-hw-primary font-bold text-sm flex items-center justify-center mx-auto mb-2">2</div>
+                    <p className="text-sm font-semibold text-hw-dark mb-1">I&apos;ll personally review your site</p>
+                    <p className="text-xs text-hw-text-light">And follow up with what I&apos;d fix first.</p>
+                  </div>
+                  <div>
+                    <div className="w-9 h-9 rounded-full bg-hw-primary/10 text-hw-primary font-bold text-sm flex items-center justify-center mx-auto mb-2">3</div>
+                    <p className="text-sm font-semibold text-hw-dark mb-1">We fix the biggest gap first</p>
+                    <p className="text-xs text-hw-text-light">No pressure, no long contracts. Just results.</p>
+                  </div>
+                </div>
               </div>
 
               {/* Phone CTA */}

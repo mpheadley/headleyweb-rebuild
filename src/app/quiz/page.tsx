@@ -36,7 +36,7 @@ function getGradeColor(grade: string): string {
 }
 
 function getGradeLabel(grade: string): string {
-  if (grade === "A") return "StoryBrand-aligned. This site sells.";
+  if (grade === "A") return "Clear and compelling. This site sells.";
   if (grade === "B") return "Good foundation, needs tightening";
   if (grade === "C") return "Has pieces, but the message is muddled";
   if (grade === "D") return "Missing key messaging elements";
@@ -681,8 +681,12 @@ export default function QuizPage() {
                   </p>
                 </div>
 
-                <p className="text-hw-text leading-relaxed mb-6">
+                <p className="text-hw-text leading-relaxed mb-4">
                   {result?.description}
+                </p>
+
+                <p className="text-hw-text-light text-sm italic mb-6">
+                  I see this a lot with {tradeData ? tradeData.label.toLowerCase() : "local"} businesses in our area &mdash; and the good news is, it&apos;s fixable.
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-4 mb-8">
@@ -711,7 +715,23 @@ export default function QuizPage() {
                 </div>
               </div>
 
-              {/* ── ROI Estimate (Internal only — client sees this in PDF) ── */}
+              {/* ── ROI Callout (Client-facing — lighter version) ── */}
+              {!isInternal && tradeData && (
+                <div className="bg-red-50 border border-red-200/40 rounded-xl p-6 text-center">
+                  <p className="text-hw-text leading-relaxed">
+                    A weak online presence could be costing your {tradeData.label.toLowerCase()} business{" "}
+                    <span className="font-bold text-red-600">
+                      ${tradeData.estimatedMonthlyLoss[0].toLocaleString()}&ndash;${tradeData.estimatedMonthlyLoss[1].toLocaleString()}/mo
+                    </span>{" "}
+                    in missed leads.
+                  </p>
+                  <p className="text-xs text-hw-text-light mt-2">
+                    Get the full report for the complete breakdown.
+                  </p>
+                </div>
+              )}
+
+              {/* ── ROI Estimate (Internal only — full grid) ── */}
               {isInternal && tradeData && (
                 <div className="card-glow !p-8 md:!p-10">
                   <h3 className="text-lg font-bold mb-1">
@@ -1090,19 +1110,62 @@ Issues Found: ${auditResult.failedAudits.length} | Passing: ${auditResult.passed
                 </div>
               )}
 
+              {/* ── Success / Transformation ── */}
+              {auditResult && !isInternal && (
+                <div className="card-glow !p-8 md:!p-10">
+                  <h3 className="text-lg font-bold mb-4">What a Site That Works Looks Like</h3>
+                  <div className="space-y-3">
+                    {[
+                      "Loads in under 3 seconds so visitors stay and explore",
+                      "Clear headline that speaks to your customer\u2019s problem",
+                      "Phone number and call-to-action visible without scrolling",
+                      "Google can verify your business for local search results",
+                      "Messaging that makes visitors say \u201Cthis is exactly what I need\u201D",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                        <p className="text-sm text-hw-text">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── 3-Step Plan ── */}
+              <div className="card-glow !p-8 md:!p-10">
+                <h3 className="text-lg font-bold text-center mb-6">Here&apos;s What Happens Next</h3>
+                <div className="grid md:grid-cols-3 gap-6 text-center">
+                  <div>
+                    <div className="w-10 h-10 rounded-full bg-hw-primary/10 text-hw-primary font-bold text-lg flex items-center justify-center mx-auto mb-3">1</div>
+                    <p className="text-sm font-semibold text-hw-dark mb-1">Get your free report</p>
+                    <p className="text-xs text-hw-text-light">Speed, SEO, and messaging &mdash; all in one PDF.</p>
+                  </div>
+                  <div>
+                    <div className="w-10 h-10 rounded-full bg-hw-primary/10 text-hw-primary font-bold text-lg flex items-center justify-center mx-auto mb-3">2</div>
+                    <p className="text-sm font-semibold text-hw-dark mb-1">I&apos;ll personally review your site</p>
+                    <p className="text-xs text-hw-text-light">And follow up with what I&apos;d fix first.</p>
+                  </div>
+                  <div>
+                    <div className="w-10 h-10 rounded-full bg-hw-primary/10 text-hw-primary font-bold text-lg flex items-center justify-center mx-auto mb-3">3</div>
+                    <p className="text-sm font-semibold text-hw-dark mb-1">We fix the biggest gap first</p>
+                    <p className="text-xs text-hw-text-light">No pressure, no long contracts. Just results.</p>
+                  </div>
+                </div>
+              </div>
+
               {/* ── CTAs ── */}
               <div className="card-glow !p-8 md:!p-10">
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link href="/audit" className="btn-primary text-center">
-                    Get Your Free Site Checkup
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
                   <a
                     href="tel:+12566447334"
-                    className="btn-secondary text-center"
+                    className="btn-primary text-center"
                   >
                     Call Me: (256) 644-7334
                   </a>
+                  <Link href="/audit" className="btn-secondary text-center">
+                    Get Your Free Site Checkup
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
                 </div>
 
                 {/* PDF Download (Internal only — client gets PDF via email) */}
