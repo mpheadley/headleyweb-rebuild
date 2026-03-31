@@ -52,6 +52,15 @@ export default function Footer() {
           >
             ⭐ Leave a Review
           </a>
+          <span className="text-gray-500">&middot;</span>
+          <a
+            href="https://www.facebook.com/HeadleyWebSEO/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            Facebook
+          </a>
         </div>
 
         <p className="text-xs text-gray-400 flex items-center justify-center gap-1">

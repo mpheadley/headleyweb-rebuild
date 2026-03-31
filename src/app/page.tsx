@@ -75,7 +75,7 @@ const localBusinessSchema = {
   },
   priceRange: "$495-$1,195",
   openingHours: ["Mo-Sa 09:00-17:00"],
-  sameAs: ["https://share.google/Dqh6aBASaey4yQXzm"],
+  sameAs: ["https://share.google/Dqh6aBASaey4yQXzm", "https://www.facebook.com/HeadleyWebSEO/"],
   creator: {
     "@type": "Organization",
     name: "Headley Web & SEO",

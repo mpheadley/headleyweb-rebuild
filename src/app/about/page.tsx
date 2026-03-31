@@ -54,6 +54,7 @@ const personSchema = {
   },
   sameAs: [
     "https://share.google/Dqh6aBASaey4yQXzm",
+    "https://www.facebook.com/HeadleyWebSEO/",
   ],
   description: "Matt Headley is a Jacksonville, Alabama web designer who builds StoryBrand-powered websites for local service businesses in Northeast Alabama.",
 };
