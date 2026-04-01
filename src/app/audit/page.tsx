@@ -387,7 +387,7 @@ export default function AuditPage() {
                 </select>
               </div>
               <p className="text-xs text-hw-text-light mt-2">
-                No signup required. Results appear in 20–30 seconds.
+                No signup required. Results appear in about 1 minute.
               </p>
             </form>
           </div>
@@ -398,7 +398,7 @@ export default function AuditPage() {
               <Loader2 className="w-8 h-8 animate-spin text-hw-primary mx-auto mb-4" />
               <h3 className="text-lg font-bold mb-2">Analyzing your website...</h3>
               <p className="text-sm text-hw-text-light">
-                We&apos;re checking speed, SEO, mobile setup, and messaging. This takes 20–30 seconds.
+                We&apos;re checking speed, SEO, mobile setup, and messaging. This takes about 1 minute.
               </p>
             </div>
           )}
