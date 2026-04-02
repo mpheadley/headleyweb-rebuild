@@ -126,6 +126,15 @@ A full digital sales system. The site doesn't just answer questions — it creat
 > **Accelerate** is the bridge to high-value retainers — positions AI Visibility
 > early without requiring $2,500/mo proof yet. Raise to $249–$349 after case studies.
 
+> **Keyword gap report as Accelerate upsell hook (2026-03-30):** Every Get Calls/Get Booked
+> build now includes a keyword gap analysis during discovery (Step 1b-ii in WORKFLOW.md).
+> At launch, hand the client a report: "Here are 15-20 keywords your competitors rank for
+> that you don't yet. Your launch posts cover the top 4. Accelerate covers the rest at
+> 2 posts/month." This makes the upsell concrete — they can see the traffic they're leaving
+> on the table. The keyword list also drives which blog posts get written each month,
+> so Accelerate content is targeted, not generic. Validated by competitor analysis workflows
+> showing 16K+ monthly organic visits from this exact strategy.
+
 ---
 
 ### Target Retainers (Phase 3+: $2,500/mo)

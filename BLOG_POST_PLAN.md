@@ -30,13 +30,15 @@ These are NOT SEO plays. They exist to signal craft and differentiation to refer
 
 These establish expertise and target high-intent local keywords.
 
-| # | Title | Target Keywords | Funnel Stage | Status |
-|---|-------|-----------------|--------------|--------|
-| 1 | "Why Your Website Isn't Converting (And the Framework That Fixes It)" | website not converting, small business website | Top | Published (2026-03-11) |
-| 2 | "Web Design for Plumbers: What Actually Gets Phone Calls" | web design for plumbers, plumber website | Middle | Published (2026-03-13) |
-| 3 | "StoryBrand for Small Business: A Practical Guide" | storybrand small business, storybrand website | Top | Published (2026-03-12) |
-| 4 | "How Much Should a Small Business Website Cost in 2026?" | small business website cost, website pricing | Middle | Published (2026-03-11) |
-| 5 | "5 Things Your HVAC Website Needs to Rank on Google" | HVAC website, HVAC SEO | Middle | Published (2026-03-13) |
+| # | Title | Target Keywords | Funnel Stage | Status | Ranking Potential |
+|---|-------|-----------------|--------------|--------|-------------------|
+| 1 | "Why Your Website Isn't Converting (And the Framework That Fixes It)" | website not converting, small business website | Top | Published (2026-03-11) | LOW — generic, saturated by SaaS/agency content. Leave as-is. |
+| 2 | "Web Design for Plumbers: What Actually Gets Phone Calls" | web design for plumbers, plumber website | Middle | Published (2026-03-13) | LOW — PlumberSEO, hvacwebsites.com dominate. Leave as-is. |
+| 3 | "StoryBrand for Small Business: A Practical Guide" | storybrand small business, storybrand website | Top | Published (2026-03-12) | MODERATE — gallery sites have high DA, but few posts are from actual builders. Voice-check + index. |
+| 4 | "How Much Should a Small Business Website Cost in 2026?" | small business website cost, website pricing | Middle | Published (2026-03-11) | LOW — 10+ established competitors. Leave as-is. |
+| 5 | "5 Things Your HVAC Website Needs to Rank on Google" | HVAC website, HVAC SEO | Middle | Published (2026-03-13) | MODERATE — trade-specific, less competition. Voice-check + index. |
+
+> **Post-gap-analysis note (2026-03-30):** Don't invest more time improving posts 1, 2, or 4 — they won't outrank established sites at current domain authority. Don't delete them either — they add topical depth and internal linking value. Posts 3 and 5 are worth a voice-check because they target niches with less competition. Future traffic will come from Phase 1d keyword gap posts, not these.
 
 ---
 
@@ -80,6 +82,31 @@ Higher priority than AEO/technical posts — your Phase 1 leads come from local 
 - **#10d** is a concrete, scary, shareable version of your AEO thesis. More compelling than abstract "83% of searches" stats. Record it as a Reel too — the reaction video format works perfectly.
 
 **CTA at bottom:** "Want to see what Google and AI say about YOUR business? Get Your Free Video Audit."
+
+---
+
+## Phase 1d — Keyword Gap Posts (bottom-of-funnel, low local competition)
+
+> Source: keyword gap analysis (2026-03-30). These target high-intent queries where
+> NE Alabama competitors have ZERO blog content. National competitors exist but none
+> are local builders writing from experience. Each post doubles as Accelerate plan
+> proof-of-concept.
+
+| # | Title | Target Keywords | Funnel Stage | Status |
+|---|-------|-----------------|--------------|--------|
+| KG1 | "AI Website Builder vs Hiring a Web Designer — What Contractors Should Know" | AI website builder vs custom, Wix vs web designer, should I use Squarespace | Bottom | **Planned — WRITE FIRST.** Hottest 2026 query. Directly counters #1 objection. No local competitor covers this. |
+| KG2 | "5 Questions to Ask Before You Hire a Web Designer" | how to hire a web designer, what to look for in web designer | Bottom | **Drafted** — `content/blog/drafts/5-questions-before-hiring-web-designer.mdx`. Finish + publish. |
+| KG3 | "Template Websites vs Custom-Built: Which One Is Right for Your Business?" | template website vs custom, Squarespace vs custom website | Bottom | **Drafted** — `content/blog/drafts/template-sites-vs-custom-built.mdx`. Finish + publish. Pairs with KG1. |
+| KG4 | "How to Get More Google Reviews (A Contractor's Playbook)" | how to get more Google reviews, Google reviews for contractors | Middle | **Planned.** Ties directly to Growth Care upsell ($99/mo). Practical, not generic — include the QR code trick, the "golden moment" timing, response templates. |
+| KG5 | "What Your Landscaping Website Needs to Get Phone Calls" | landscaping website, lawn care website design | Middle | **Planned.** Expands trade series (plumber ✓ HVAC ✓ → landscaping). Summer timing = May publish. |
+| KG6 | "That Call About Your Google Listing? It's Probably a Scam." | Google Business Profile scam calls, google listing spam | Top | **Outlined** — same as #10e. Elevated here for keyword priority. |
+
+**Why these first:**
+- Your local competitors (WideNet, Simple Pixel, Alabama Website Marketing, GetCalhoun) have NO active blog. You own this space the moment you publish.
+- KG1-KG3 address the exact objections you hear in discovery calls
+- KG4 feeds the Growth Care upsell pipeline
+- KG5 expands trade coverage before summer busy season
+- Every post becomes an Accelerate pitch artifact: "I did this for my own site — here's the traffic"
 
 ---
 
@@ -213,49 +240,53 @@ Posts marked with * are higher priority.
 
 ### Month 1 — April 2026
 
-| Week | Type | Title | CTA |
-|------|------|-------|-----|
-| 1 | Hyperlocal | * "I Asked ChatGPT to Recommend a Plumber in Anniston — Here's What It Said" (#10d) — DRAFTED, Matt needs to run the queries + record Reel | Audit |
-| 2 | Broad | * "Nobody Reads Your Website (Here's What They Actually Do)" | Audit |
-| 3 | Broad | * "When to DIY Your Website and When to Hire Someone" | Quiz/Audit |
-| 4 | Trade | "What Every Electrician's Website Gets Wrong" | Audit |
+> Alternating SEO (keyword gap) and social (shareable) posts. 2 posts/month minimum.
+
+| Week | Track | Title | CTA | Priority |
+|------|-------|-------|-----|----------|
+| 1 | SEO | * **KG1 "AI Website Builder vs Hiring a Web Designer — What Contractors Should Know"** — NEW, write from scratch | Audit | P1 |
+| 2 | Social | * **#10d "I Asked ChatGPT to Recommend a Plumber in Anniston"** — DRAFTED, Matt runs queries + records Reel | Audit | P1 |
+| 3 | SEO | * **KG2 "5 Questions to Ask Before You Hire a Web Designer"** — DRAFTED, finish + publish | Audit | P2 |
+| 4 | SEO | * **KG3 "Template Websites vs Custom-Built"** — DRAFTED, finish + publish. Pairs with KG1. | Audit | P2 |
 
 ### Month 2 — May 2026
 
-| Week | Type | Title | CTA |
-|------|------|-------|-----|
-| 1 | Broad | * "Why Your Website Looks Fine But Doesn't Get Calls" | Audit |
-| 2 | Trade | "Your Lawn Care Website Needs These 5 Things Before Summer" | Audit |
-| 3 | Broad | "Is Your Website Slow? Here's What It's Costing You" | Audit |
-| 4 | Broad | * "Your Customer Is the Hero, Not Your Business" | Audit |
+| Week | Track | Title | CTA | Priority |
+|------|-------|-------|-----|----------|
+| 1 | Social | * **KG6/#10e "That Call About Your Google Listing? It's Probably a Scam."** — OUTLINED | Audit | P2 |
+| 2 | SEO | * **KG4 "How to Get More Google Reviews (A Contractor's Playbook)"** — NEW | Audit | P2 |
+| 3 | SEO | * **KG5 "What Your Landscaping Website Needs to Get Phone Calls"** — NEW, summer timing | Audit | P2 |
+| 4 | Social | "What Happens When You Google Your Own Business" (#10b) | Audit | P3 |
 
 ### Month 3 — June 2026
 
-| Week | Type | Title | CTA |
-|------|------|-------|-----|
-| 1 | Broad | * "That Call About Your Google Listing? It's Probably a Scam." (#10e) | Audit |
-| 2 | Local SEO | * "5 Red Flags When Hiring a Web Designer (That Most Alabama Business Owners Miss)" — targets PAA: "Which company is best for web designing?" + buyer education that mirrors competitor weaknesses without naming anyone | Audit |
-| 3 | Broad | * "Why I Show My Prices (And Why Most Web Designers Don't)" — Matt should write/heavy rewrite | Audit |
-| 4 | Broad | "5 Signs It's Time to Rebuild Your Website" | Audit |
+| Week | Track | Title | CTA | Priority |
+|------|-------|-------|-----|----------|
+| 1 | SEO | * "What Every Electrician's Website Gets Wrong" — trade series expansion | Audit | P3 |
+| 2 | Social | * "The 5 Local Businesses in Anniston That Are Crushing It Online" (#10c) | Audit | P3 |
+| 3 | Broad | * "Why I Show My Prices (And Why Most Web Designers Don't)" — Matt writes/heavy rewrite | Audit | P3 |
+| 4 | Broad | "5 Signs It's Time to Rebuild Your Website" | Audit | P3 |
 
 ### Backlog (Unscheduled)
 
-- "Why Your Website Has 3 Seconds to Make a First Impression" — PAA: "What is the 3 second rule in website design?" from SERP screenshots. Ties into PageSpeed content and pairs with audit CTA.
+**Worth writing (has a keyword angle or local advantage):**
 - "The Best Web Designers in Calhoun County, Alabama (And What to Look For)" — location page / blog hybrid. DDAone + GetCalhoun currently rank for this with broken/thin content. Own it.
-- "What to Put on Your Homepage (And What to Leave Off)"
-- "Why Reviews Matter More Than Your Website Design"
-- "The One Page Your Website Is Probably Missing" (dedicated services/pricing page)
+- "Why Reviews Matter More Than Your Website Design" — pairs with KG4 (Google reviews playbook)
 - "The Free Google Tool Most Small Businesses Ignore" (GBP) — Audit CTA
-- "Marketing Your Cleaning Business Online: What Actually Works" — Trade niche
-- "How to Write Your Own About Page (Template)"
-- "Local SEO Checklist: 10 Things You Can Do This Week"
-- "Why I Build on Next.js Instead of WordPress (And What That Means for Your Site Speed)" — DRAFTED in `content/blog/drafts/`
-- "What Happens After Your Website Launches (Hint: That's When the Work Starts)"
-- Trade: Roofers
-- Trade: Auto repair / detailing
-- Trade: Restaurants / food trucks
-- Trade: Real estate agents
-- Trade: Dentists / chiropractors
+- "What Happens After Your Website Launches (Hint: That's When the Work Starts)" — feeds care plan upsell
+- Trade: Roofers, Auto repair / detailing, Restaurants / food trucks, Cleaning businesses
+
+**Low priority (competitive keywords or audience doesn't search for this):**
+- "Why Your Website Has 3 Seconds to Make a First Impression" — PAA hook but saturated topic
+- "What to Put on Your Homepage (And What to Leave Off)" — generic
+- "The One Page Your Website Is Probably Missing" — generic
+- "How to Write Your Own About Page (Template)" — generic
+- "Local SEO Checklist: 10 Things You Can Do This Week" — can't outrank Moz/Semrush
+- Trade: Real estate agents, Dentists / chiropractors — outside your current niche
+
+**Deprioritized drafts (don't finish these next):**
+- "Why I Build on Next.js Instead of WordPress" — DRAFTED. Your clients don't care about tech stack. Maybe reframe later as "WordPress vs Custom" (broader appeal) but not a priority.
+- "Agency vs. Solo Web Designer" — DRAFTED. Low search volume, doesn't address a real objection.
 
 ---
 
@@ -263,25 +294,30 @@ Posts marked with * are higher priority.
 
 ### Priority Order (what to write next)
 
-> Your target audience (local business owners) finds you through Facebook groups and word of mouth,
-> not by searching for "answer engine optimization." Prioritize content they'll actually share.
+> Updated 2026-03-30 after keyword gap analysis. Two tracks:
+> **Track A (SEO):** Bottom-of-funnel keyword posts that rank and convert. These compound over time.
+> **Track B (Social):** Shareable posts that get passed around Facebook groups. These drive Phase 1 leads.
+> Alternate between tracks. Don't do 4 SEO posts in a row — your audience isn't reading Google, they're scrolling Facebook.
 
-1. **#10d "I Asked ChatGPT to Recommend a Plumber in Anniston"** — DRAFTED. Highest share potential of any post on this list. Matt action items before publishing:
+1. **KG1 "AI Website Builder vs Hiring a Web Designer"** — NEW. Hottest query in 2026, zero local competition, directly counters your #1 sales objection. Write this week.
+2. **#10d "I Asked ChatGPT to Recommend a Plumber in Anniston"** — DRAFTED. Highest share potential. Matt action items before publishing:
    - [ ] Open ChatGPT, Perplexity, and Google. Type "recommend a plumber in Anniston, Alabama." Screenshot each result.
    - [ ] Fill in the bracketed placeholders in the draft with real business names and your real observations.
    - [ ] Record a 60-second Reel — you at your desk, typing the query, reacting to the results. The Reel is probably worth more than the blog post.
    - [ ] Reference the MarketingCode.com study (March 2026) — zero overlap across 4 AI tools. Real data, published source.
    - [ ] Repeat for other trades/cities after this one lands (HVAC in Gadsden, contractor in Oxford — same format, new post each time).
-2. **Foundation posts (1-5)** — already live or in progress. Core SEO play.
-3. **#10e "That Call About Your Google Listing? It's Probably a Scam."** — OUTLINED. Extremely shareable in Facebook groups. Every business owner has gotten these calls. Trust-building angle that naturally leads to your audit/GBP services without sounding like the scammers.
-4. **Remaining hyperlocal posts (10b-10c)** — high share potential in local Facebook groups.
-5. **Differentiation posts** — "Why I Build on Next.js Instead of WordPress," "5 Questions Before Hiring a Web Designer," "Agency vs. Solo Designer," "Template vs. Custom-Built." Drafted in `content/blog/drafts/`.
-6. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
-7. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
-8. **Viral build posts (22-25)** — write alongside the speed-build projects as they happen.
-9. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
-10. **Audit content (19-21)** — requires the landing page template to be built first.
-11. **Quiz content (26-29)** — requires the quiz components to be built first.
+3. **KG2 "5 Questions to Ask Before You Hire a Web Designer"** — DRAFTED. Finish + publish. Bottom-of-funnel buyer education.
+4. **KG3 "Template vs Custom-Built"** — DRAFTED. Finish + publish. Pairs with KG1.
+5. **KG6 / #10e "GBP Scam Calls"** — OUTLINED. High share potential + trust builder.
+6. **KG4 "How to Get More Google Reviews"** — NEW. Feeds Growth Care upsell.
+7. **KG5 "Landscaping Website"** — NEW. Publish by May for summer timing. Expands trade series.
+8. **Remaining hyperlocal posts (10b-10c)** — high share potential in local Facebook groups.
+9. **Roundup posts (6-10)** — can be written now, no client work needed. Permanent lead magnets.
+10. **Seasonal post (whichever is next on the calendar)** — publish on cadence, refresh annually.
+11. **Viral build posts (22-27)** — write alongside the speed-build projects as they happen.
+12. **AEO posts (11-18)** — important for positioning but your clients don't search for these terms yet. Lower urgency.
+13. **Audit content (19-21)** — requires the landing page template to be built first.
+14. **Quiz content (26-29)** — requires the quiz components to be built first.
 
 ### Distribution Checklist (every post)
 
@@ -313,4 +349,4 @@ For **every** published post, run through this checklist:
 
 ---
 
-*Last updated: March 24, 2026 (added #10e GBP scam calls outline, updated editorial calendar and priority order)*
+*Last updated: March 30, 2026 (added Phase 1d keyword gap posts, ranked existing posts by potential, deprioritized weak drafts, reorganized backlog by ROI)*

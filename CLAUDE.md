@@ -10,7 +10,7 @@ This is both the live business site AND the proving ground for the Next.js start
 ## Tech Stack
 - **Framework:** Next.js 16.1.6 (App Router, `src/app/`)
 - **Styling:** Tailwind CSS v4 (`@tailwindcss/postcss`) — no daisyUI (removed due to class conflicts)
-- **Fonts:** Fraunces (headings + decorative ampersand, `next/font/google` with `axes: ["opsz"]`) + Inter (body, `next/font/google`) + Rock Salt (accent, `next/font/google`). All fonts self-hosted via next/font — no `<link>` stylesheet tags. Playfair Display was removed — ampersand now uses Fraunces with forced `opsz: 144`.
+- **Fonts:** Fraunces (headings + decorative ampersand, `next/font/google` with `axes: ["opsz"]`) + Outfit (body, `next/font/google`) + Rock Salt (accent, `next/font/google`). All fonts self-hosted via next/font — no `<link>` stylesheet tags. Playfair Display was removed — ampersand now uses Fraunces with forced `opsz: 144`.
 - **Hosting:** Vercel (deploy from GitHub)
 - **Analytics:** GA4 (consent-gated — build same pattern as HTML starter kit)
 - **Forms:** Formspree (or Vercel serverless — TBD)
@@ -34,12 +34,12 @@ Use Tailwind classes: `bg-hw-primary`, `text-hw-dark`, `border-hw-secondary`, et
 
 ### Typography
 - **Headings:** `font-family: var(--font-heading)` → Fraunces (set on h1-h6 in globals.css)
-- **Body:** `font-family: var(--font-body)` → Inter (set on body in globals.css)
+- **Body:** `font-family: var(--font-body)` → Outfit (set on body in globals.css)
 - **Hero:** `clamp(2.5rem, 5vw, 4rem)`
 - **H2:** `clamp(1.75rem, 3vw, 2.5rem)`
 - **Body:** `1.125rem` (18px)
 - **Decorative Ampersand:** The `.amp` class uses Fraunces with `font-variation-settings: "opsz" 144 !important` to force the decorative high-contrast ampersand glyph at any size. Without this override, Fraunces auto-switches to a simplified ampersand below ~24px due to optical sizing. The `!important` is required because Tailwind v4 strips `font-variation-settings` without it. Playfair Display was removed — the ampersand now uses the same font family as headings.
-- **Ampersand usage:** Only use the `.amp` class on brand mark instances ("Headley Web & SEO" in nav, footer). Do NOT use it in body text paragraphs — let body text ampersands render in Inter.
+- **Ampersand usage:** Only use the `.amp` class on brand mark instances ("Headley Web & SEO" in nav, footer). Do NOT use it in body text paragraphs — let body text ampersands render in Outfit.
 
 ### Component Classes (defined in `globals.css`)
 - **`.btn-primary`** — Terracotta tactile button with 3D box-shadow, press-down on hover/active
@@ -175,6 +175,16 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
 - PDF download button on audit and quiz pages (dynamic import for jsPDF)
 - Email delivery: `/api/send-report` sends PDF via Resend + Formspree lead notification. Resend `from` address is `reports@headleyweb.com` (NOT `reports@send.headleyweb.com`)
 - Vercel env vars: `ANTHROPIC_API_KEY`, `RESEND_API_KEY`, `PAGESPEED_API_KEY`, `NEXT_PUBLIC_INTERNAL_KEY`
+
+### StoryBrand Copy Alignment (2026-03-31)
+- Removed "StoryBrand" from client-facing grade label (uses "Clear and compelling" now)
+- Added guide-empathy sentence near archetype result, personalized by trade
+- Added lighter ROI/stakes callout (monthly loss estimate) for client-facing quiz results
+- Added "What a Site That Works Looks Like" success/transformation section (quiz results)
+- Added "Here's What Happens Next" 3-step plan to quiz results, audit results, and PDF report
+- Swapped CTA hierarchy: phone call = btn-primary, audit link = btn-secondary
+- Reframed audit page hero sub-headline from feature list to problem-focused copy
+- Audit page eyebrow label changed from "Free Tool" to "60-Second Checkup"
 
 ### StoryBrand Scorer Fixes (2026-03-25)
 - **1.1 Customer Problem in Headline** — checks `heroSection` (h1 + subheadline together). Rhetorical question format as 4th pass signal. Any pass signal with no fail signals scores 2.
