@@ -465,8 +465,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
             <div className="relative mx-auto md:mx-0 animate-on-scroll overflow-hidden rounded-2xl shadow-lg w-full h-72 md:h-80">
               <Image
-                src="/images/laptop-matt-headley.webp"
-                alt="Matt Headley working on a laptop at a local coffee shop"
+                src="/images/headshot-matt-headley.webp"
+                alt="Matt Headley, web designer and SEO specialist"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
                 quality={80}
