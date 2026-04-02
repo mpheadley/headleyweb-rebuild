@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check, MapPin, ArrowRight, Sparkles, BookOpen, DollarSign, Map, Search, Globe } from "lucide-react";
+import { Check, MapPin, ArrowRight, Sparkles, BookOpen, DollarSign, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -80,7 +80,7 @@ const credentials = [
   {
     icon: MapPin,
     title: "Local to Jacksonville",
-    desc: "I know the Calhoun County market firsthand.",
+    desc: "I know the Calhoun County market firsthand. Serving Calhoun, Etowah, Cherokee & Talladega counties.",
     accent: "bg-hw-secondary/10 text-hw-secondary",
     span: "",
   },
@@ -96,13 +96,6 @@ const credentials = [
     title: "Google Business Profile",
     desc: "Optimization included in every build.",
     accent: "bg-hw-secondary/10 text-hw-secondary",
-    span: "",
-  },
-  {
-    icon: Globe,
-    title: "Calhoun County & Beyond",
-    desc: "Serving Calhoun, Etowah, Cherokee & Talladega counties.",
-    accent: "bg-hw-primary/10 text-hw-primary",
     span: "",
   },
 ];
@@ -255,9 +248,6 @@ export default function AboutPage() {
               Take the Quiz
             </Link>
           </div>
-          <p className="text-gray-400 text-sm mt-4 animate-on-scroll">
-            Want instant results? <Link href="/audit" className="text-hw-primary hover:text-hw-primary/80 underline transition-colors">Try the free automated audit</Link>
-          </p>
         </div>
       </section>
     </main>

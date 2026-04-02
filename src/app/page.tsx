@@ -142,26 +142,6 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "How long does a website project take?",
-      acceptedAnswer: { "@type": "Answer", text: "3-4 weeks from 'let's do it' to 'holy cow that's my website.' The biggest variable is usually how fast we can round up your photos and business info. I'll tell you exactly what I need so nothing holds us up." },
-    },
-    {
-      "@type": "Question",
-      name: "What happens if I need edits after launch?",
-      acceptedAnswer: { "@type": "Answer", text: "First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help — or you can just call me when something comes up. I'm not going to leave you hanging." },
-    },
-    {
-      "@type": "Question",
-      name: "How does payment work?",
-      acceptedAnswer: { "@type": "Answer", text: "Half upfront, half when the site goes live. That's it. No retainer, no auto-billing surprises, no 'processing fees' that magically appear." },
-    },
-    {
-      "@type": "Question",
-      name: "What makes you different from a big agency?",
-      acceptedAnswer: { "@type": "Answer", text: "A big agency puts you on a project board and assigns you to whoever's free. I'm one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you're not opening a support ticket — you're texting me." },
-    },
-    {
-      "@type": "Question",
       name: "What does AI visibility mean? Should I care?",
       acceptedAnswer: { "@type": "Answer", text: "You know how people are starting to ask ChatGPT and Google's AI for recommendations instead of scrolling through search results? Yeah — I make sure your business shows up in those answers. You don't need to understand how it works. That's literally what you're paying me for." },
     },
@@ -298,20 +278,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* AI Callout — response to the pain */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-6 bg-hw-dark/5 border border-hw-dark/10 border-l-4 border-l-hw-primary rounded-xl animate-on-scroll">
-            <div className="text-center sm:text-left">
-              <p className="text-lg font-bold">
-                Want to see what AI says about your business?
-              </p>
-              <p className="text-hw-text-light text-sm mt-1">
-                I&apos;ll include an AI visibility check in your free site checkup.
-              </p>
-            </div>
-            <Link href="/audit" className="btn-primary whitespace-nowrap shrink-0">
-              Get Your Free Checkup
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -782,110 +748,32 @@ export default function Home() {
                     );
                   })}
                   {tier.inheritedFeatures && (
-                    <>
-                      <li className="border-t border-white/[0.07] pt-3 mt-1">
-                        <span className="text-[11px] text-gray-500 uppercase tracking-wider">Also includes</span>
-                      </li>
-                      {tier.inheritedFeatures.map((f) => (
-                        <li key={f} className="flex items-start gap-2">
-                          <Check className="w-3.5 h-3.5 text-hw-secondary shrink-0 mt-0.5" />
-                          <span className="text-xs text-gray-300">{f}</span>
-                        </li>
-                      ))}
-                      {tier.inheritedNote && (
-                        <li className="text-xs text-gray-400 italic pl-5">{tier.inheritedNote}</li>
-                      )}
-                    </>
+                    <li className="border-t border-white/[0.07] pt-3 mt-1 text-xs text-gray-400 italic">
+                      + everything in {tier.name === "Get Booked" ? "Get Calls" : "Get Found"}
+                    </li>
                   )}
                 </ul>
                 <div className="mt-6 mb-0"></div>
-                {/* Paired care plan */}
-                <div className="flex flex-col gap-2 py-4 border-t border-white/[0.07] mb-5">
-                  <span className="text-xs font-semibold text-gray-300">
-                    {tier.carePlan.name} — <span className="text-hw-primary font-normal">${tier.carePlan.price}/mo</span>
-                  </span>
-                  <ul className="space-y-1">
-                    {tier.carePlan.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-1.5 text-xs text-gray-400">
-                        <Check className="w-3 h-3 text-hw-secondary shrink-0 mt-0.5" />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex items-center justify-between pt-1">
-                    <span className="text-xs text-hw-primary font-semibold">First 3 months included</span>
-                    <Link href="/services#care-plans" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
-                      Full details →
-                    </Link>
-                  </div>
+                {/* Paired care plan — compact */}
+                <div className="py-4 border-t border-white/[0.07] mb-5">
+                  <p className="text-xs text-gray-300">
+                    Includes {tier.carePlan.name} — <span className="text-hw-primary font-semibold">${tier.carePlan.price}/mo</span> · <span className="text-hw-primary">first 3 months free</span>
+                  </p>
+                  <Link href="/services#care-plans" className="text-xs text-gray-500 hover:text-gray-300 transition-colors mt-1 inline-block">
+                    See care plan details →
+                  </Link>
                 </div>
                 <Link href={tier.ctaHref} className="btn-primary w-full text-center">{tier.cta}</Link>
               </div>
             ))}
           </div>
 
-          {/* Quick Comparison */}
-          <div className="mt-10 overflow-x-auto animate-on-scroll">
-            <table className="w-full text-sm text-left border-collapse">
-              <thead>
-                <tr className="border-b border-white/10">
-                  <th className="py-3 pr-4 text-gray-400 font-medium" />
-                  <th className="py-3 px-4 text-gray-300 font-semibold text-center">Get Found</th>
-                  <th className="py-3 px-4 text-hw-primary font-semibold text-center">Get Calls</th>
-                  <th className="py-3 px-4 text-gray-300 font-semibold text-center">Get Booked</th>
-                </tr>
-              </thead>
-              <tbody className="text-gray-300">
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">Pages</td>
-                  <td className="py-2.5 px-4 text-center">1</td>
-                  <td className="py-2.5 px-4 text-center">3–5</td>
-                  <td className="py-2.5 px-4 text-center">5–7</td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">Timeline</td>
-                  <td className="py-2.5 px-4 text-center">1–2 weeks</td>
-                  <td className="py-2.5 px-4 text-center">2–3 weeks</td>
-                  <td className="py-2.5 px-4 text-center">3–4 weeks</td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">SEO</td>
-                  <td className="py-2.5 px-4 text-center">Basic</td>
-                  <td className="py-2.5 px-4 text-center">Full</td>
-                  <td className="py-2.5 px-4 text-center">Advanced + AI</td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">GBP Setup</td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                </tr>
-                <tr className="border-b border-white/5">
-                  <td className="py-2.5 pr-4 text-gray-400">FAQ Schema</td>
-                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                </tr>
-                <tr>
-                  <td className="py-2.5 pr-4 text-gray-400">AI Visibility</td>
-                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
-                  <td className="py-2.5 px-4 text-center text-gray-500">—</td>
-                  <td className="py-2.5 px-4 text-center"><Check className="w-4 h-4 text-hw-secondary mx-auto" /></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
           <p className="text-center text-gray-400 text-sm mt-8 animate-on-scroll">
             Flat-rate build. No surprises. 50% upfront, 50% at launch.
           </p>
           <p className="text-center text-gray-400 text-xs mt-2 animate-on-scroll">
-            *Timelines begin once all content (text, photos, logos) is received.
+            *Timelines begin once all content (text, photos, logos) is received. <Link href="/services" className="text-hw-primary hover:underline">See full plan comparison →</Link>
           </p>
-          <div className="mt-10 max-w-xl mx-auto border border-hw-primary/25 rounded-xl px-6 py-5 text-center animate-on-scroll">
-            <p className="text-white font-semibold text-sm mb-1">Currently accepting founding clients</p>
-            <p className="text-gray-400 text-sm">I&rsquo;m building sites for a small number of founding clients at a significantly reduced rate in exchange for a testimonial and case study. <Link href="/contact" className="text-hw-primary hover:underline">Ask about availability &rarr;</Link></p>
-          </div>
         </div>
       </section>
 
@@ -925,30 +813,6 @@ export default function Home() {
               <summary>I already have a website. Do we have to start from scratch?</summary>
               <div className="faq-answer">
                 Not always. Sometimes a renovation beats a rebuild. I&apos;ll take an honest look at what you&apos;ve got and tell you whether it&apos;s worth saving or if we&apos;re better off starting fresh. No hard sell either way.
-              </div>
-            </details>
-            <details className="faq-item">
-              <summary>How long does a website project take?</summary>
-              <div className="faq-answer">
-                3-4 weeks from &ldquo;let&apos;s do it&rdquo; to &ldquo;holy cow that&apos;s my website.&rdquo; The biggest variable is usually how fast we can round up your photos and business info. I&apos;ll tell you exactly what I need so nothing holds us up.
-              </div>
-            </details>
-            <details className="faq-item">
-              <summary>What happens if I need edits after launch?</summary>
-              <div className="faq-answer">
-                First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help — or you can just call me when something comes up. I&apos;m not going to leave you hanging.
-              </div>
-            </details>
-            <details className="faq-item">
-              <summary>How does payment work?</summary>
-              <div className="faq-answer">
-                Half upfront, half when the site goes live. That&apos;s it. No retainer, no auto-billing surprises, no &ldquo;processing fees&rdquo; that magically appear.
-              </div>
-            </details>
-            <details className="faq-item">
-              <summary>What makes you different from a big agency?</summary>
-              <div className="faq-answer">
-                A big agency puts you on a project board and assigns you to whoever&apos;s free. I&apos;m one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you&apos;re not opening a support ticket — you&apos;re texting me.
               </div>
             </details>
             <details className="faq-item">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Monitor, Search, MapPin, Check, ArrowRight, Video, Shield, Users, FileText, BrainCircuit, Sparkles, Wrench, TrendingUp, CalendarCheck, Zap, MessageSquare, BarChart2, HelpCircle, BookOpen, Navigation, Bot, Star, Globe, type LucideProps } from "lucide-react";
+import { Monitor, Search, MapPin, Check, ArrowRight, Shield, Users, FileText, BrainCircuit, Sparkles, TrendingUp, CalendarCheck, Zap, MessageSquare, BarChart2, HelpCircle, BookOpen, Navigation, Bot, Star, Globe, type LucideProps } from "lucide-react";
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 
 type LucideIcon = ForwardRefExoticComponent<LucideProps & RefAttributes<SVGSVGElement>>;
@@ -83,18 +83,28 @@ const serviceFaqSchema = {
     },
     {
       "@type": "Question",
-      name: "Do I need a website if I already get referrals?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Referrals are your best leads, but most people still Google your business before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else's customer. A professional website confirms you're legitimate, shows your work, and makes it easy to call or book in one tap." },
-    },
-    {
-      "@type": "Question",
-      name: "Do I need to pay for hosting?",
-      acceptedAnswer: { "@type": "Answer", text: "Nope. Hosting is included. Your site goes live and stays live. I'm not going to build you a house and then charge you rent for the driveway." },
-    },
-    {
-      "@type": "Question",
       name: "I already have a website. Do we have to start from scratch?",
       acceptedAnswer: { "@type": "Answer", text: "Not always. Sometimes a renovation beats a rebuild. I'll take an honest look at what you've got and tell you whether it's worth saving or if we're better off starting fresh. No hard sell either way." },
+    },
+    {
+      "@type": "Question",
+      name: "How long does a website project take?",
+      acceptedAnswer: { "@type": "Answer", text: "3-4 weeks from 'let's do it' to 'holy cow that's my website.' The biggest variable is usually how fast we can round up your photos and business info. I'll tell you exactly what I need so nothing holds us up." },
+    },
+    {
+      "@type": "Question",
+      name: "What happens if I need edits after launch?",
+      acceptedAnswer: { "@type": "Answer", text: "First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help — or you can just call me when something comes up. I'm not going to leave you hanging." },
+    },
+    {
+      "@type": "Question",
+      name: "How does payment work?",
+      acceptedAnswer: { "@type": "Answer", text: "Half upfront, half when the site goes live. That's it. No retainer, no auto-billing surprises, no 'processing fees' that magically appear." },
+    },
+    {
+      "@type": "Question",
+      name: "What makes you different from a big agency?",
+      acceptedAnswer: { "@type": "Answer", text: "A big agency puts you on a project board and assigns you to whoever's free. I'm one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you're not opening a support ticket — you're texting me." },
     },
   ],
 };
@@ -231,32 +241,6 @@ const services = [
     ],
     accent: "bg-hw-primary/10 text-hw-primary",
   },
-  {
-    icon: CalendarCheck,
-    title: "Monthly Care & Growth",
-    oneLiner: "I keep your site secure, your Google listing active, and your content working, month after month.",
-    details: [
-      "Hosting, security & uptime monitoring handled for you",
-      "Google Business Profile managed: posts, responses, Q&A",
-      "Monthly results report: calls, clicks, and impressions",
-      "2 blog posts/month that help you rank (Accelerate plan)",
-      "AI visibility monitoring for ChatGPT and Perplexity (Accelerate plan)",
-    ],
-    accent: "bg-hw-secondary/10 text-hw-secondary",
-  },
-  {
-    icon: BrainCircuit,
-    title: "AI Recommends You",
-    oneLiner: "I structure your content so AI tools like ChatGPT and Google recommend your business when someone searches for your trade.",
-    details: [
-      "Answer-first content built to be cited by AI tools",
-      "Schema markup that AI parsers read and trust",
-      "Entity coverage so Google knows your trade, town, and hours",
-      "Blog posts written to answer the questions AI gets asked",
-      "Monitoring whether ChatGPT & Perplexity recommend you (Accelerate plan)",
-    ],
-    accent: "bg-hw-primary/10 text-hw-primary",
-  },
 ];
 
 
@@ -340,68 +324,22 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ═══ How It Works ═══ */}
-      <section className="py-24 md:py-32 px-6 bg-hw-light grain">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">The Plan</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 animate-on-scroll">
-            How We Get You <span className="font-light">More Leads</span>
-          </h2>
-          <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-y-8 gap-x-0 items-start relative">
-            <div className="flex flex-col items-center text-center animate-on-scroll" style={{ transitionDelay: "0.05s" }}>
-              <div className="w-16 h-16 rounded-full bg-hw-secondary/10 border-2 border-hw-secondary flex items-center justify-center mb-4 relative z-10">
-                <Video className="w-7 h-7 text-hw-secondary" />
-                <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-secondary text-white text-xs font-bold flex items-center justify-center">1</span>
+          {/* Brief pointers to ongoing services */}
+          <div className="mt-16 grid sm:grid-cols-2 gap-6 animate-on-scroll">
+            <div className="flex items-start gap-4">
+              <CalendarCheck className="w-6 h-6 text-hw-secondary shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold mb-1">Monthly Care &amp; Growth</h3>
+                <p className="text-hw-text-light text-sm">Hosting, updates, Google Business Profile management, and content — handled for you month after month. <Link href="#care-plans" className="text-hw-primary hover:underline">See care plans →</Link></p>
               </div>
-              <h3 className="text-xl font-bold mb-2">Run Your Free Site Audit</h3>
-              <p className="text-hw-text-light">
-                Check your site in 30 seconds. I&apos;ll follow up with a personalized video showing exactly where you stand online.
-              </p>
             </div>
-            {/* Connector 1→2 */}
-            <div className="flex items-center justify-center md:mt-5 animate-on-scroll" style={{ transitionDelay: "0.1s" }} aria-hidden="true">
-              <div className="flex flex-col gap-1.5 md:hidden">
-                <span className="w-1.5 h-1.5 rounded-full bg-hw-secondary/40" />
-                <span className="w-1.5 h-1.5 rounded-full bg-hw-secondary/40" />
-                <span className="w-1.5 h-1.5 rounded-full bg-hw-secondary/40" />
+            <div className="flex items-start gap-4">
+              <BrainCircuit className="w-6 h-6 text-hw-primary shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold mb-1">AI Visibility</h3>
+                <p className="text-hw-text-light text-sm">I structure your content so ChatGPT, Google AI, and Perplexity recommend your business. Built into every site, monitored in <Link href="#care-plans" className="text-hw-primary hover:underline">Accelerate</Link>.</p>
               </div>
-              <svg className="hidden md:block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 6l6 6-6 6" stroke="#6B8F71" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
-              </svg>
-            </div>
-            <div className="flex flex-col items-center text-center animate-on-scroll" style={{ transitionDelay: "0.2s" }}>
-              <div className="w-16 h-16 rounded-full bg-hw-secondary/10 border-2 border-hw-secondary flex items-center justify-center mb-4 relative z-10">
-                <Wrench className="w-7 h-7 text-hw-secondary" />
-                <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-secondary text-white text-xs font-bold flex items-center justify-center">2</span>
-              </div>
-              <h3 className="text-xl font-bold mb-2">I Build Your System</h3>
-              <p className="text-hw-text-light">
-                Based on what I find, I build your website, local SEO, and Google Business Profile. Flat rate, no surprises.
-              </p>
-            </div>
-            {/* Connector 2→3 */}
-            <div className="flex items-center justify-center md:mt-5 animate-on-scroll" style={{ transitionDelay: "0.3s" }} aria-hidden="true">
-              <div className="flex flex-col gap-1.5 md:hidden">
-                <span className="w-1.5 h-1.5 rounded-full bg-hw-primary/40" />
-                <span className="w-1.5 h-1.5 rounded-full bg-hw-primary/40" />
-                <span className="w-1.5 h-1.5 rounded-full bg-hw-primary/40" />
-              </div>
-              <svg className="hidden md:block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 6l6 6-6 6" stroke="#E07B3C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
-              </svg>
-            </div>
-            <div className="flex flex-col items-center text-center animate-on-scroll" style={{ transitionDelay: "0.4s" }}>
-              <div className="w-16 h-16 rounded-full bg-hw-primary/10 border-2 border-hw-primary flex items-center justify-center mb-4 relative z-10">
-                <TrendingUp className="w-7 h-7 text-hw-primary" />
-                <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-hw-primary text-white text-xs font-bold flex items-center justify-center">3</span>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Your Phone Starts Ringing</h3>
-              <p className="text-hw-text-light">
-                Customers find you, call you, and book you. You get found online and get back to the work you love.
-              </p>
             </div>
           </div>
         </div>
@@ -647,21 +585,33 @@ export default function ServicesPage() {
               </div>
             </details>
             <details className="faq-item">
-              <summary>Do I need a website if I already get referrals?</summary>
-              <div className="faq-answer">
-                Referrals are gold, but the person still Googles you before they call. If what they find is a dead Facebook page or nothing at all, that referral becomes someone else&apos;s customer. A professional site confirms you&apos;re legitimate, shows your work, and makes it easy to call or book in one tap.
-              </div>
-            </details>
-            <details className="faq-item">
-              <summary>Do I need to pay for hosting?</summary>
-              <div className="faq-answer">
-                Nope. Hosting is included. Your site goes live and stays live. I&apos;m not going to build you a house and then charge you rent for the driveway.
-              </div>
-            </details>
-            <details className="faq-item">
               <summary>I already have a website. Do we have to start from scratch?</summary>
               <div className="faq-answer">
                 Not always. Sometimes a renovation beats a rebuild. I&apos;ll take an honest look at what you&apos;ve got and tell you whether it&apos;s worth saving or if we&apos;re better off starting fresh. No hard sell either way.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>How long does a website project take?</summary>
+              <div className="faq-answer">
+                3-4 weeks from &ldquo;let&apos;s do it&rdquo; to &ldquo;holy cow that&apos;s my website.&rdquo; The biggest variable is usually how fast we can round up your photos and business info. I&apos;ll tell you exactly what I need so nothing holds us up.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>What happens if I need edits after launch?</summary>
+              <div className="faq-answer">
+                First 30 days of tweaks are on me. After that, optional care plans start at $49/mo if you want ongoing help — or you can just call me when something comes up. I&apos;m not going to leave you hanging.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>How does payment work?</summary>
+              <div className="faq-answer">
+                Half upfront, half when the site goes live. That&apos;s it. No retainer, no auto-billing surprises, no &ldquo;processing fees&rdquo; that magically appear.
+              </div>
+            </details>
+            <details className="faq-item">
+              <summary>What makes you different from a big agency?</summary>
+              <div className="faq-answer">
+                A big agency puts you on a project board and assigns you to whoever&apos;s free. I&apos;m one person. I answer my own phone. I live in Jacksonville. If your website has a problem, you&apos;re not opening a support ticket — you&apos;re texting me.
               </div>
             </details>
           </div>
@@ -690,9 +640,6 @@ export default function ServicesPage() {
               Take the Quiz
             </Link>
           </div>
-          <p className="text-gray-400 text-sm mt-4 animate-on-scroll">
-            Want instant results? <Link href="/audit" className="text-hw-primary hover:text-hw-primary/80 underline transition-colors">Try the free automated audit</Link>
-          </p>
         </div>
       </section>
 
