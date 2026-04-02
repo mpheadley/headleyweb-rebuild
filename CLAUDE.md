@@ -207,6 +207,7 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
 - **Hero images** — `alexandria-hero.webp` and `attalla-hero.webp` not yet converted
 - **Before/After portfolio section (Between Worlds)** — screenshots saved, add after launch
 - **30/60/90 day check-ins** — traffic/leads tracking for case study
+- **SVG logos on site** (low priority) — swap WebP logos to SVG in nav/footer for sharper rendering. Use `logo-icon-light.svg` on dark backgrounds (nav, footer). All 4 variants in `public/images/`.
 
 ## Existing Site Assets
 Copy from `~/Developer/webdev/headley-web-seo/`:
