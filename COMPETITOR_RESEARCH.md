@@ -172,16 +172,50 @@
 
 ---
 
+## Prospecting Playbook (April 2026)
+
+### Strategy: Audit-as-Outreach
+Use the free site audit tool (headleyweb.com/audit) to generate branded PDF reports for competitor clients. The audit PDF becomes a warm outreach piece — not "hire me instead" but "here's what I found about your site, thought you'd want to know."
+
+### Hot Prospect List — Competitor Client Sites
+
+**Plexamedia's clients (WordPress, likely aging builds — run audits on all):**
+- [ ] Kings Olive Oil Company — Downtown Gadsden
+- [ ] The Factory Gadsden — entertainment venue
+- [ ] Gadsden Industrial Supply
+
+**WideNet Consulting clients (~450+ in Oxford/Anniston area):**
+- [ ] Search Google for `"designed by widenet"` or `"built by widenet"` to find their client sites
+- [ ] Target the 5-10 weakest-performing ones (low PageSpeed, no mobile optimization)
+- [ ] Run audit on each, send PDF report with personal note
+
+**The pitch writes itself from this research:**
+- You have transparent pricing (they don't)
+- You have StoryBrand messaging (they don't)
+- You have a free audit tool that proves it with numbers
+- The audit PDF already has a "Who's Outranking You" competitor section — use it
+
+### Outreach Sequence (per prospect)
+1. Run headleyweb.com/audit on their site → generates branded PDF
+2. Send PDF via email with a short personal note: "I noticed your site while researching local businesses in [city]. Ran a free checkup — thought you'd want to see the results."
+3. If they respond: offer a free 3-5 min Loom video walking through the findings
+4. If they don't respond: follow up once after 7 days, then move on
+
+### Content That Positions Against Competitors (without naming them)
+- [ ] Finish "5 Questions to Ask Before Hiring a Web Designer" post (draft exists) — every question maps to a competitor weakness. Also works as a leave-behind PDF for prospects.
+- [ ] Write "Agency vs. Solo Web Designer" post (draft exists)
+- [ ] Write "Template Sites vs. Custom-Built" post (draft exists)
+- [ ] Schedule "Why I Don't Build on WordPress Anymore" (in backlog)
+
+---
+
 ## Action Items (Competitive Positioning)
-- [ ] Get BBB accreditation (apply at bbb.org/get-accredited, ~$400-600/yr) — match Plexamedia's trust signal
+- [ ] Get BBB accreditation (apply at bbb.org/get-accredited, ~$400-600/yr) — match Plexamedia's trust signal. Removes their one trust signal advantage + adds high-authority .org backlink.
 - [ ] Create LinkedIn company page for Headley Web & SEO
 - [ ] Build AI visibility callout bar on homepage — "Want to see what AI says about your business?" → links to checkup form. Plexamedia claims this space with buzzwords; claim it with proof.
 - [ ] Reframe all AI messaging as outcomes, not process — Plexamedia sells the tool; we sell the result
 - [ ] Track competitors' GBP listings (reviews, response rate, categories)
-- [ ] Write "5 Questions to Ask Before You Hire a Web Designer" post (draft exists)
-- [ ] Write "Agency vs. Solo Web Designer" post (draft exists)
-- [ ] Write "Template Sites vs. Custom-Built" post (draft exists)
-- [ ] Schedule "Why I Don't Build on WordPress Anymore" (in backlog)
+- [ ] Run audit-as-outreach on Plexamedia and WideNet client sites (see Prospecting Playbook above)
 
 ---
 

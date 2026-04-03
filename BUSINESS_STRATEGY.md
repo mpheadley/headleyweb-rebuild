@@ -698,15 +698,23 @@ Acquisition funnel is mapped thoroughly (lead magnets → audit → build → ca
 - Annual "site health check" email with updated Lighthouse scores as a retention touchpoint.
 - **When:** Build the 3 email templates in Phase 2. Automate when email platform supports it.
 
-### Gap 3: Competitor Intelligence (thin)
+### Gap 3: Competitor Intelligence (thin) — UPDATED April 2026
 
-Lake City Web Designs mentioned once. No systematic tracking of who's competing for the same clients and keywords.
+Full competitor research now in [COMPETITOR_RESEARCH.md](COMPETITOR_RESEARCH.md) — 18 local competitors analyzed with deep-dives on Plexamedia, Twentytwo Media, Willingham Creative, and J. Alexandria Creative.
 
-**Actions:**
+**Ongoing actions:**
 - Monthly: Search "web design Anniston AL," "web designer near me," "website design Gadsden AL" — document who's ranking, what they charge, what they're bad at.
 - Track competitors' GBP listings (reviews, response rate, categories).
 - Their weaknesses become your talking points in sales calls.
-- **When:** Start immediately. 15 minutes/month. Store notes in a dedicated Airtable view or a simple markdown file.
+- **When:** Start immediately. 15 minutes/month. Notes go in COMPETITOR_RESEARCH.md.
+
+**NEW — Audit-as-Outreach (highest-leverage short-term action):**
+- Use headleyweb.com/audit to generate branded PDF reports for competitor clients
+- **Plexamedia's known clients:** Kings Olive Oil Company, The Factory Gadsden, Gadsden Industrial Supply — all WordPress, likely aging builds with poor PageSpeed
+- **WideNet's ~450+ clients:** Search Google for `"designed by widenet"` or `"built by widenet"` to find client sites. Target the 5-10 weakest performers.
+- Send the audit PDF as warm outreach: "I noticed your site while researching local businesses. Ran a free checkup — thought you'd want to see the results."
+- The pitch writes itself: you have transparent pricing (they don't), StoryBrand messaging (they don't), and a free audit tool that proves it with numbers.
+- Full playbook in [COMPETITOR_RESEARCH.md → Prospecting Playbook](COMPETITOR_RESEARCH.md).
 
 ### Gap 4: Pricing Page SEO Strategy (underexploited)
 
