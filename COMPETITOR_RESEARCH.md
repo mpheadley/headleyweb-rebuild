@@ -1,32 +1,169 @@
 # Competitor & Inspiration Research
 
-> Compiled March 2026. Reference during Design Brief and build phases.
+> Compiled March 2026. Updated April 2026.
+> Reference during Design Brief, build phases, and content strategy.
 
 ---
 
 ## Local Competitors (Northeast Alabama)
 
-| Competitor | Location | URL | Key Weakness |
-|---|---|---|---|
-| Twentytwo Media Co. | Gadsden | twentytwomedia.net | Solo (Josh Dunaway). Portfolio site, not a business tool. No GBP, no pricing, no location pages, About page 404s. Meta description is literally "the work of josh dunaway." Divi 5 beta + WooCommerce loaded for no reason. Appeared in map pack for "web designer near me" Jacksonville with 5.0★/2 reviews — beatable. |
-| 702 Pros | Anniston | — | Agency-centric language; positions themselves as hero |
-| WideNet Consulting | Anniston | widenetconsulting.com | Particle.js hero (slow), broken stat counters |
-| LaunchUX | Gadsden | — | Technical jargon barrier ("engineering") |
-| Toucan Design | Gadsden | — | Focuses on tenure, lacks empathy |
-| Lake City Web Designs | North AL | lakecitywebdesigns.com | Divi theme, bloated, template-obvious |
-| Simple Pixel | Gadsden | simplepixel.com | Expired SSL cert, too broad |
-| Lost Highway Media | Jacksonville | — | Leads with agency story, not client pain |
-| Zellus Marketing | Regional | — | $1,500+/mo retainers, wrong market |
-| Accel Graphics | Anniston | accelgraphics.net | Image carousel hero, generic |
-| Jessica Leigh Web Design | Statewide | jessicaleighwebdesign.com | Good location page SEO strategy |
-| GetCalhoun.com | Oxford | getcalhoun.com | Local but limited portfolio |
-| Willingham Creative | Heflin, AL | willinghamcreative.com | WordPress + Elementor (performance liability). No pricing, no location pages, generic hero copy, About page is a credential resume. Faith positioning limits secular market reach. Zero AI/AEO mention. |
-| J. Alexandria Creative | Huntsville, AL | jalexandriacreative.com | Showit stack = canvas-based = SEO liability. Multiple broken internal links. Aesthetic/personality-led copy, not guide-positioned. No GBP signal, no pricing, no location pages. Zero AI/AEO mention. |
+### 1. Plexamedia — plexamedia.com
+- **Owner:** Rick Singleton
+- **Founded:** 2006 as Singleton Technology (computer repair/IT), rebranded 2011
+- **Location:** 116 Court St, Gadsden, AL 35901 (also claims Birmingham: 530 Beacon Pkwy W)
+- **Phone:** (256) 547-0805 (local), (877) 497-4606 (toll-free)
+- **Size:** 2-10 employees
+- **BBB:** A+ rated, accredited — top local competitor with this credential
+- **Platform:** WordPress exclusively since 2009
+- **Services:** WordPress website development and support, SEO, PPC, social media management, content marketing, video production, graphic design, branding, printing
+- **Known local clients:** Kings Olive Oil Company (Downtown Gadsden), The Factory Gadsden (entertainment venue), Gadsden Industrial Supply. Member of Downtown Gadsden business association.
+- **Blog/Content:** Unknown
+- **AI-Focused Messaging (from homepage, March 2026):**
+  - "Identifying high-value keywords across search engines and AI platforms"
+  - "Analyzing both traditional search queries and conversational AI patterns"
+  - "Generating optimized titles, descriptions, and meta tags automatically"
+  - "Content that performs in both search results and AI conversations"
+  - AI-based accessibility widget running in background
+  - WCAG 2.1 AA compliance claim
+- **Strengths:** 20-year track record, BBB A+ rating, Downtown Gadsden physical presence, established local client relationships, broad service offering (web + print + video)
+- **Key weaknesses:** No team transparency (no bios, no faces, no personal story). AI messaging is tool-focused not outcome-focused — reads like a SaaS pitch, not a service business. WordPress only (bloated themes, slower PageSpeed). No messaging framework — copy talks about what they do, not what the customer gets. Generalist positioning (serves everyone: businesses + ministries + nationwide). No visible pricing.
+- **Strategic notes (from BUSINESS_STRATEGY.md):**
+  - Plexamedia is claiming the AI/AEO space with buzzwords — we need to claim it with proof
+  - Reframe all AI messaging as outcomes, not process: replace jargon ("analyze conversational AI patterns") with results ("I make sure ChatGPT recommends your business"). Plexamedia sells the tool; we sell the result.
+  - Their BBB A+ rating is a trust signal we should match (apply at bbb.org/get-accredited, ~$400-600/yr)
+
+### 2. Twentytwo Media Co. — twentytwomedia.net
+- **Owner:** Josh Dunaway (solo)
+- **Location:** Gadsden, AL
+- **Platform:** Divi 5 beta + WooCommerce (loaded for no reason)
+- **GBP:** Appeared in map pack for "web designer near me" Jacksonville with 5.0★/2 reviews — beatable
+- **Key weaknesses:** Portfolio site, not a business tool. No GBP optimization, no pricing, no location pages. About page 404s. Meta description is literally "the work of josh dunaway."
+- **Blog/Content:** No
+
+### 3. WideNet Consulting — widenetconsulting.com
+- **Location:** Oxford/Anniston, AL
+- **Founded:** 2005
+- **Platform:** WordPress
+- **Size:** Claims 450+ clients
+- **Blog/Content:** Yes, but stale — generic social media tips
+- **Key weaknesses:** Particle.js hero (slow), broken stat counters
+- **Strategic notes:** Biggest local threat by client volume. However, NO active content strategy — a few old social media posts is all they have.
+
+### 4. 702 Pros — Anniston, AL
+- **Key weaknesses:** Agency-centric language; positions themselves as hero
+- **Blog/Content:** Unknown
+
+### 5. LaunchUX — Gadsden, AL
+- **Key weaknesses:** Technical jargon barrier ("engineering"). Intimidating for trade business owners.
+- **Blog/Content:** Unknown
+
+### 6. Toucan Design — Gadsden, AL
+- **Key weaknesses:** Focuses on tenure, lacks empathy
+- **Blog/Content:** Unknown
+
+### 7. Lake City Web Designs — lakecitywebdesigns.com
+- **Location:** North AL
+- **Platform:** WordPress + Divi theme
+- **Key weaknesses:** Bloated, template-obvious
+- **Blog/Content:** Unknown
+- **Strategic notes:** Mentioned in BUSINESS_STRATEGY.md as a market competitor at the $2,200–$4,000 project range
+
+### 8. Simple Pixel — simplepixel.com
+- **Location:** Gadsden, AL
+- **Key weaknesses:** Expired SSL cert, too broad positioning
+- **Blog/Content:** No — small shop, portfolio-focused, no content strategy
+
+### 9. Lost Highway Media — Jacksonville, AL
+- **Key weaknesses:** Leads with agency story, not client pain
+- **Blog/Content:** Unknown
+
+### 10. Zellus Marketing — Regional AL
+- **Key weaknesses:** $1,500+/mo retainers — wrong market (too expensive for our target clients, which is an advantage for us in the local trades space)
+- **Blog/Content:** Unknown
+
+### 11. Accel Graphics — accelgraphics.net
+- **Location:** Anniston, AL
+- **Key weaknesses:** Image carousel hero, generic positioning
+- **Blog/Content:** Unknown
+
+### 12. Jessica Leigh Web Design — jessicaleighwebdesign.com
+- **Location:** Statewide (serves Anniston + Gadsden)
+- **Key strengths:** Good location page SEO strategy — one of the only local competitors doing this
+- **Blog/Content:** No visible blog
+- **Strategic notes:** Referenced in PLAN.md as an example of location-specific landing pages for "[web design] + [city name]" search traffic
+
+### 13. GetCalhoun.com — getcalhoun.com
+- **Location:** Oxford, AL
+- **Key weaknesses:** Local but limited portfolio. Calhoun County community site with web services. Barely active.
+- **Blog/Content:** 1 test post — effectively none
+
+### 14. Willingham Creative — willinghamcreative.com
+- **Location:** Heflin, AL (Cleburne County — rural East AL, not a metro)
+- **Platform:** WordPress + Elementor Pro — known performance drag, commonly 60–75 PageSpeed mobile without aggressive tuning
+- **Services:** Web design, hosting, SEO, digital marketing, graphic design. No pricing published anywhere.
+- **Copy pattern:** Benefit language on services ("so you don't have to worry about the tech"), but About page pivots into resume-dropping (decade of experience, degree, past employers, faith values). Generic hero: "Building a strong online presence is essential."
+- **GBP:** Confirmed, Trustindex widget present. Count unclear (renders dynamically), likely under 30 reviews.
+- **Key weaknesses:** No pricing, Elementor bloat, generic positioning, no local SEO structure, faith angle limits secular audience, zero AI/AEO awareness
+- **Location pages:** Zero. One homepage with "East Alabama, West Georgia & Beyond" tagline
+- **Blog/Content:** Unknown
+
+### 15. J. Alexandria Creative — jalexandriacreative.com
+- **Location:** Huntsville, AL (metro, boutique studio positioning)
+- **Platform:** Showit (canvas-based builder) + WordPress for blog — canvas layout = poor semantic HTML, weak heading hierarchy, thin on-page SEO. SVG animations + custom fonts + Instagram feed = heavy payload.
+- **Services:** Brand design, web design (WordPress/Elementor/Showit), e-commerce (Shopify), maintenance training, "Branded by JAC" transformation program. No pricing — custom quotes via Dubsado.
+- **Copy pattern:** Aspirational, aesthetics-first, personality-led ("for the luxe business owner"). Warm tone but copy is about Jade's creative identity, not client problems. Not StoryBrand-structured.
+- **GBP:** Effectively absent. A 4.75-star figure appeared in JSON on one page — likely a site-hosted testimonial aggregate, not verified GBP.
+- **Broken links:** Multiple internal 404s — `/work-with-us#investment`, `/services`, `/web-design-huntsville-al`, `/branded`. Crawlability and trust signal problem.
+- **Key weaknesses:** Showit SEO liability, broken links throughout, no conversion architecture, no GBP signal, no pricing, no local SEO structure, zero AI/AEO awareness
+- **Location pages:** Zero. Only Huntsville homepage mentions.
+- **Blog/Content:** WordPress blog exists (via Showit integration), quality/activity unknown
+
+### 16. Alabama Website Marketing — Gadsden, AL
+- **Services:** Marketing + design
+- **Blog/Content:** No — no content strategy
+- **Key weaknesses:** Unknown beyond lack of content
+
+### 17. ICS Creative Agency — Jacksonville area, AL
+- **Founded:** 2009
+- **Services:** Full-service
+- **Blog/Content:** Unknown
+
+### 18. BoomClient — Jacksonville, AL
+- **Founded:** 2001
+- **Services:** Web design + hosting
+- **Blog/Content:** Unknown
+
+---
+
+## Cross-Competitor Analysis
+
+### Gap Analysis (All 18 Local Competitors)
+| Gap | Status across all competitors |
+|---|---|
+| Transparent pricing | **0 of 18** publish prices — Headley Web is alone in this |
+| AI / AEO positioning | **Only Plexamedia** (but tool-focused, not outcome-focused) |
+| Active blog / content strategy | **0 of 18** have an active blog. WideNet has a few stale posts. Everyone else is portfolio + service pages only. |
+| Location/service area pages | Only Jessica Leigh — no one else in the core NE Alabama market |
+| StoryBrand guide framing | **0 of 18** — all position themselves as the hero |
+| Next.js / performance-first stack | **0 of 18** — all use WordPress, Elementor, Divi, Showit, or Squarespace |
+| BBB accreditation | Only Plexamedia has A+ rating |
 
 ### What We Already Beat Them On
 - **Transparent pricing** — none of them publish prices on homepage
 - **Portfolio with device mockups** — most show flat thumbnails
 - **StoryBrand messaging** — they all position themselves as the hero
+- **Active content strategy** — none have an active blog; 6 targeted posts in 60 days makes us #1
+- **Performance-first stack** — Next.js vs WordPress/Elementor/Divi/Showit across the board
+
+### How We Differentiate From Plexamedia (without naming them)
+| Their approach | Our approach | Blog post angle |
+|---------------|-------------|-----------------|
+| Hide behind logo | Show face, story, process | "Can I see who's building my site?" |
+| AI is the headline | AI is a tool, strategy is human | "Am I paying for tools or expertise?" |
+| WordPress templates | Next.js, performance-first | "Will my site be fast on mobile?" |
+| No messaging framework | StoryBrand-powered copy | "Is the copy for my customer or for Google?" |
+| Call-us-if-it-breaks | Care Plans with defined scope | "What happens after launch?" |
+| Generalist | Local service business specialist | "Do they understand my market?" |
 
 ### What to Borrow From Local Competitors
 1. **Location-specific landing pages** (Jessica Leigh, Jay Forde) — DONE, added to rebuild plan
@@ -35,41 +172,20 @@
 
 ---
 
-## Deep-Dive: Willingham Creative & J. Alexandria Creative (March 2026)
-
-### Willingham Creative — willinghamcreative.com
-- **Location:** Heflin, AL (Cleburne County — rural East AL, not a metro)
-- **Stack:** WordPress + Elementor Pro — known performance drag, commonly 60–75 PageSpeed mobile without aggressive tuning
-- **Services:** Web design, hosting, SEO, digital marketing, graphic design. No pricing published anywhere.
-- **Copy pattern:** Benefit language on services ("so you don't have to worry about the tech"), but About page pivots into resume-dropping (decade of experience, degree, past employers, faith values). Generic hero: "Building a strong online presence is essential."
-- **GBP:** Confirmed, Trustindex widget present. Count unclear (renders dynamically), likely under 30 reviews.
-- **Location pages:** Zero. One homepage with "East Alabama, West Georgia & Beyond" tagline.
-- **AI/AEO:** No mention anywhere.
-- **Key weaknesses:** No pricing, Elementor bloat, generic positioning, no local SEO structure, faith angle limits secular audience, zero AI/AEO awareness.
-
-### J. Alexandria Creative — jalexandriacreative.com
-- **Location:** Huntsville, AL (metro, boutique studio positioning)
-- **Stack:** Showit (canvas-based builder) + WordPress for blog — canvas layout = poor semantic HTML, weak heading hierarchy, thin on-page SEO. SVG animations + custom fonts + Instagram feed = heavy payload.
-- **Services:** Brand design, web design (WordPress/Elementor/Showit), e-commerce (Shopify), maintenance training, "Branded by JAC" transformation program. No pricing — custom quotes via Dubsado.
-- **Copy pattern:** Aspirational, aesthetics-first, personality-led ("for the luxe business owner"). Warm tone but copy is about Jade's creative identity, not client problems. Not StoryBrand-structured.
-- **GBP:** Effectively absent. A 4.75-star figure appeared in JSON on one page — likely a site-hosted testimonial aggregate, not verified GBP.
-- **Broken links:** Multiple internal 404s — `/work-with-us#investment`, `/services`, `/web-design-huntsville-al`, `/branded`. Crawlability and trust signal problem.
-- **Location pages:** Zero. Only Huntsville homepage mentions.
-- **AI/AEO:** No mention anywhere.
-- **Key weaknesses:** Showit SEO liability, broken links throughout, no conversion architecture, no GBP signal, no pricing, no local SEO structure, zero AI/AEO awareness.
-
-### Cross-Competitor Pattern (All 14 Reviewed)
-| Gap | Status across all competitors |
-|---|---|
-| Transparent pricing | **0 of 14** publish prices — Headley Web is alone in this |
-| AI / AEO positioning | **0 of 14** mention it |
-| Location/service area pages | Only Jessica Leigh — no one in the core NE Alabama market |
-| StoryBrand guide framing | 0 of 14 — all position themselves as the hero |
-| Next.js / performance-first stack | 0 of 14 — all use WordPress, Elementor, Divi, Showit, or Squarespace |
+## Action Items (Competitive Positioning)
+- [ ] Get BBB accreditation (apply at bbb.org/get-accredited, ~$400-600/yr) — match Plexamedia's trust signal
+- [ ] Create LinkedIn company page for Headley Web & SEO
+- [ ] Build AI visibility callout bar on homepage — "Want to see what AI says about your business?" → links to checkup form. Plexamedia claims this space with buzzwords; claim it with proof.
+- [ ] Reframe all AI messaging as outcomes, not process — Plexamedia sells the tool; we sell the result
+- [ ] Track competitors' GBP listings (reviews, response rate, categories)
+- [ ] Write "5 Questions to Ask Before You Hire a Web Designer" post (draft exists)
+- [ ] Write "Agency vs. Solo Web Designer" post (draft exists)
+- [ ] Write "Template Sites vs. Custom-Built" post (draft exists)
+- [ ] Schedule "Why I Don't Build on WordPress Anymore" (in backlog)
 
 ---
 
-
+## StoryBrand & Design Inspiration (National)
 
 | Name | URL | Why Study Them |
 |---|---|---|
