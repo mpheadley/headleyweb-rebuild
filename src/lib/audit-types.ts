@@ -48,6 +48,15 @@ export type AuditResult = {
   hasHreflang: boolean;
   isLinkCrawlable: boolean;
   hasLocalBusinessSchema: boolean;
+  // SEO checks (from HTML scrape)
+  hasCanonical: boolean;
+  hasOgTags: boolean;
+  hasSitemap: boolean;
+  hasRobotsTxt: boolean;
+  h1Count: number;
+  wordCount: number;
+  imgTotal: number;
+  imgWithoutAlt: number;
   // Detailed audits for internal view
   failedAudits: { id: string; title: string; description: string; score: number | null }[];
   passedAudits: { id: string; title: string }[];

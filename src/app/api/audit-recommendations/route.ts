@@ -72,6 +72,8 @@ export async function POST(request: NextRequest) {
 PERFORMANCE: ${auditResult.performance}/100 | SEO: ${auditResult.seo}/100 | Accessibility: ${auditResult.accessibility}/100
 Load time (LCP): ${auditResult.lcp}s | First paint: ${auditResult.fcp}s | Layout shift: ${auditResult.cls}
 HTTPS: ${auditResult.isHttps ? "Yes" : "No"} | Meta description: ${auditResult.hasMetaDescription ? "Yes" : "No"} | Local business schema: ${auditResult.hasLocalBusinessSchema ? "Yes" : "No"}
+Canonical tag: ${auditResult.hasCanonical ? "Yes" : "No"} | Open Graph tags: ${auditResult.hasOgTags ? "Yes" : "No"} | Sitemap: ${auditResult.hasSitemap ? "Yes" : "No"} | Robots.txt: ${auditResult.hasRobotsTxt ? "Yes" : "No"}
+H1 tags: ${auditResult.h1Count} | Word count: ${auditResult.wordCount} | Images: ${auditResult.imgTotal} total, ${auditResult.imgWithoutAlt} missing alt text
 
 STORYBRAND GRADE: ${sb.grade}
 Hero headline: "${ec.heroHeadline || "none found"}"

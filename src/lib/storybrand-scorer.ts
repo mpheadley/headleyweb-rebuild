@@ -84,6 +84,13 @@ export type ExtractedCopy = {
   phoneNumbers: string[];
   bodyText: string;
   hasLocalBusinessSchema: boolean;
+  // SEO signals
+  hasCanonical: boolean;
+  hasOgTags: boolean;
+  h1Count: number;
+  wordCount: number;
+  imgTotal: number;
+  imgWithoutAlt: number;
 };
 
 export function extractTextFromHtml(html: string): ExtractedCopy {
@@ -115,6 +122,21 @@ export function extractTextFromHtml(html: string): ExtractedCopy {
     }
   });
 
+  // Check for canonical tag
+  const hasCanonical = $('link[rel="canonical"]').length > 0;
+
+  // Check for Open Graph tags (need at least og:title or og:description)
+  const hasOgTags = $('meta[property="og:title"]').length > 0 || $('meta[property="og:description"]').length > 0;
+
+  // Count images and missing alt text (before removing elements)
+  let imgTotal = 0;
+  let imgWithoutAlt = 0;
+  $("img").each((_, el) => {
+    imgTotal++;
+    const alt = $(el).attr("alt");
+    if (!alt || alt.trim() === "") imgWithoutAlt++;
+  });
+
   // Remove non-content elements
   $("script, style, noscript, svg, iframe").remove();
 
@@ -124,6 +146,9 @@ export function extractTextFromHtml(html: string): ExtractedCopy {
     const text = $(el).text().replace(/\s+/g, " ").trim();
     if (text) allHeadings.push(text);
   });
+
+  // Count H1 tags
+  const h1Count = $("h1").length;
 
   // Hero headline = first h1
   const heroHeadline = $("h1").first().text().replace(/\s+/g, " ").trim();
@@ -175,7 +200,13 @@ export function extractTextFromHtml(html: string): ExtractedCopy {
     .replace(/\s+/g, " ")
     .trim();
 
-  return { heroHeadline, heroSubheadline, allHeadings, ctaTexts, phoneNumbers, bodyText, hasLocalBusinessSchema };
+  // Word count (split on whitespace, filter empty)
+  const wordCount = bodyText.split(/\s+/).filter(w => w.length > 0).length;
+
+  return {
+    heroHeadline, heroSubheadline, allHeadings, ctaTexts, phoneNumbers, bodyText,
+    hasLocalBusinessSchema, hasCanonical, hasOgTags, h1Count, wordCount, imgTotal, imgWithoutAlt,
+  };
 }
 
 /* ── StoryBrand Scoring ── */
