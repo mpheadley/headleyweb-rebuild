@@ -78,7 +78,7 @@ Higher priority than AEO/technical posts — your Phase 1 leads come from local 
 
 **Why these are high priority:**
 - **#10b** is the most shareable post on this entire list. Every business owner will try it immediately. Pairs with your audit content (Phase 3) and AI Visibility Audit lead magnet.
-- **#10c** cross-pollinates with Local Legends. Featured businesses share the post. Backlink magnet. Repeat for other cities (Oxford, Gadsden, Jacksonville). See `local-legends/PLAN.md` Phase 6 → Cross-Promotion for the full linking strategy.
+- **#10c** cross-pollinates with Local Legends. Featured businesses share the post. Backlink magnet. Repeat for other cities (Oxford, Gadsden, Jacksonville). See `southern-legends/PLAN.md` Phase 6 → Cross-Promotion for the full linking strategy.
 - **#10d** is a concrete, scary, shareable version of your AEO thesis. More compelling than abstract "83% of searches" stats. Record it as a Reel too — the reaction video format works perfectly.
 
 **CTA at bottom:** "Want to see what Google and AI say about YOUR business? Get Your Free Video Audit."
@@ -167,7 +167,7 @@ Posts tied to the satirical speed-build projects. Each one is a blog post AND a 
 | 22 | "I Built a Professional Website for Emotional Support Chickens" | Blog post + time-lapse video | Planned — also a portfolio piece (Creative Showcase card) |
 | 23 | "I Asked AI to Build a Website About Itself — Here's What Happened" | Blog post + screen recording | Planned |
 | 24 | "I Built My Wife a Fake Business Website and It Looks Better Than Most Real Ones" | Blog post + couple content video | Planned |
-| 25 | "I Built a Local Storytelling Site to Prove Small Businesses Deserve Better Websites" | Blog post + site walkthrough | Planned — Local Legends (local-legends/). Write when site has 5+ real profiles. See `local-legends/PLAN.md` Phase 6 → Cross-Promotion. |
+| 25 | "I Built a Local Storytelling Site to Prove Small Businesses Deserve Better Websites" | Blog post + site walkthrough | Planned — Local Legends (southern-legends/). Write when site has 5+ real profiles. See `southern-legends/PLAN.md` Phase 6 → Cross-Promotion. |
 | 26 | "How I Stopped Using Stock Photos on Client Sites (And What I Use Instead)" | Blog post | Planned — explains FLUX/AI image gen workflow, approachable for non-technical clients, positions studio as resourceful. Write after first client site ships with AI-generated images. |
 | 27 | "What AI Chatbots Can (and Can't) Do for Your Local Business Website" | Blog post | Planned — honest take on chatbot limitations and real use cases (FAQ, intake, after-hours). Targets business owners who've heard the hype. Write after first chatbot is built and tested. AEO-friendly: answers a specific question. |
 

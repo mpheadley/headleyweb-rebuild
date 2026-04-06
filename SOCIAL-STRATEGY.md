@@ -2,7 +2,7 @@
 
 > Unified strategy covering Matt's personal profile, Southern Legends Page, Headley Web & SEO Page, and future platforms.
 > Detailed Facebook Page setup and copy are in `FACEBOOK-PLAN.md` and `FACEBOOK-COPY.md`.
-> Per-profile distribution checklist is in `local-legends/PLAN.md` Phase 6.
+> Per-profile distribution checklist is in `southern-legends/PLAN.md` Phase 6.
 
 ---
 
