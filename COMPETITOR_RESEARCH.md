@@ -133,19 +133,44 @@
 - **Services:** Web design + hosting
 - **Blog/Content:** Unknown
 
+### 19. YourBizWebGuy / Les Blevins — yourbizwebguy.com
+- **Owner:** Les Blevins, 251 Wildwood Ln, Jacksonville, AL 36265
+- **Phone:** (256) 453-7110
+- **Background:** Claims 30 years marketing/graphic arts experience. Also runs "Blevins Wagyu Beef." Previously "Palette Arts" in Nipomo, CA — likely a recent transplant to Alabama. Also operates as or with "Greg Simmons Art" (name appears in schema markup on client sites).
+- **Stack:** WordPress + Divi (Elegant Themes) on every client site. LiteSpeed caching. Gravity Forms. No custom code, no modern frameworks.
+- **Portfolio:** 15 sites. All cookie-cutter Divi builds with different colors. Heavy inline CSS, plugin bloat. Divi sites typically score 30-50 on mobile PageSpeed.
+- **AL clients (audit targets):** Klean Co of Alabama (Anniston, water damage), Addison Lawncare (Hokes Bluff), Nails and Spa Salon (Jacksonville — schema literally says "Greg Simmons Art" instead of salon name), Little River Canyon Jeep Outfitters (Fort Payne), West Side Baptist Church, Amy McCurdy Chiropractic (Piedmont).
+- **Services:** Web design, hosting, SEO, e-commerce, graphic design, photography, free portfolio sites for artists.
+- **Pricing:** Completely hidden. Every page forces a call.
+- **Blog:** None.
+- **GBP:** Thin. Yahoo Local and Yelp listings exist but no substantial review count. All 9 visible reviews are self-curated on his own site.
+- **Key weaknesses:** Divi bloat (performance), no pricing, no blog, no niche/positioning, schema markup errors across client sites, no StoryBrand, free artist builds suggest low pricing power, reviews only self-hosted.
+- **Threat level:** Low. Competes on personal relationships and affordability, not quality or strategy. Closest geographic competitor (same town), but different class of product.
+
+### 20. Travis The Web Guy — Anniston, AL
+- **Location:** Anniston, AL (Calhoun County)
+- **Web presence:** No website of his own. Entire presence is [Facebook](https://www.facebook.com/travisthewebguy/) — significant credibility gap for a web designer.
+- **Reviews:** 51 Facebook reviews, 100% recommendation rate. Solid social proof but Facebook-only.
+- **Services:** WordPress sites, Facebook/Adwords marketing, SEO, logo design, vehicle wraps, GBP optimization.
+- **Pricing model:** "No Monthly Payments, No Contracts, Only 50% Down" — one-time project fees, likely $500-$1,500 range. No recurring revenue.
+- **GBP:** None found despite selling GBP optimization as a service.
+- **Portfolio:** No identifiable portfolio beyond a pressure washing client.
+- **Key weaknesses:** No website, no portfolio, no GBP, Facebook-dependent lead gen, project-treadmill business model.
+- **Threat level:** Low. Different tier — his $500-$1,500 template clients become Headley Web prospects when they outgrow the one-and-done WordPress builds.
+
 ---
 
 ## Cross-Competitor Analysis
 
-### Gap Analysis (All 18 Local Competitors)
+### Gap Analysis (All 20 Local Competitors)
 | Gap | Status across all competitors |
 |---|---|
-| Transparent pricing | **0 of 18** publish prices — Headley Web is alone in this |
+| Transparent pricing | **0 of 20** publish prices — Headley Web is alone in this |
 | AI / AEO positioning | **Only Plexamedia** (but tool-focused, not outcome-focused) |
-| Active blog / content strategy | **0 of 18** have an active blog. WideNet has a few stale posts. Everyone else is portfolio + service pages only. |
+| Active blog / content strategy | **0 of 20** have an active blog. WideNet has a few stale posts. Everyone else is portfolio + service pages only. |
 | Location/service area pages | Only Jessica Leigh — no one else in the core NE Alabama market |
-| StoryBrand guide framing | **0 of 18** — all position themselves as the hero |
-| Next.js / performance-first stack | **0 of 18** — all use WordPress, Elementor, Divi, Showit, or Squarespace |
+| StoryBrand guide framing | **0 of 20** — all position themselves as the hero |
+| Next.js / performance-first stack | **0 of 20** — all use WordPress, Elementor, Divi, Showit, or Squarespace |
 | BBB accreditation | Only Plexamedia has A+ rating |
 
 ### What We Already Beat Them On

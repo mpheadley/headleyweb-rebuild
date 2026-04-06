@@ -301,6 +301,41 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [ ] Search "web design Anniston AL" + 3 variants, document full SERP results (Gap #3)
 - [ ] Start weekly LinkedIn post cadence repurposing blog content (Gap #5)
 
+### Phase 1c: Audit Outreach Campaign (April 2026)
+
+Three outreach channels, ranked by conversion likelihood:
+
+**Channel 1 — Orphaned clients (HIGHEST priority)**
+Find local web designers/agencies that have closed, gone inactive, or abandoned clients.
+Their clients have no provider, likely a broken/stale site, and already proved they'll pay.
+- Search for defunct local agencies (dead sites, expired domains, no GBP activity)
+- Find "designed by [name]" footers still on live client sites
+- Cross-reference: outdated copyright, expired SSL, broken contact pages
+- Zero competition for attention — no active provider to defend
+
+**Channel 2 — Builder-platform businesses (HIGH priority)**
+Local businesses on Wix, Squarespace, GoDaddy, Weebly — DIY sites with known limitations.
+- Search Google Maps for service businesses in Calhoun/Etowah counties
+- Run website analyzer to detect builder platform fingerprints
+- Target service businesses specifically (contractors, trades, professional services)
+- Pitch angle: "Your site is working against you — here's how" (free audit PDF)
+
+**Channel 3 — Active competitor clients (MEDIUM priority, DEFERRED)**
+Clients of WideNet, Plexamedia, YourBizWebGuy, and other local agencies.
+- These businesses have an active provider — hardest sell, highest bridge-burning risk
+- Run audit on their sites, send PDF as value-first touch — NOT "hire me instead"
+- PREREQUISITES before activating:
+  1. Between Worlds launched (real portfolio piece)
+  2. 2-3 Google Business Profile reviews
+  3. BBB application submitted
+- Research in progress (April 2026) — contacts being seeded into CRM
+
+**Shared execution for all channels:**
+- Run headleyweb.com/audit on each prospect site → generate PDF report
+- Send personalized note with PDF — value-first, no pitch
+- Add all prospects to CRM with source="Competitor Research" or "Orphaned Client" or "Builder Platform"
+- Follow up with discovery call offer if they engage
+
 ### Phase 2: Proof Engine (Month 2-4)
 - [ ] Set up GA4 event tracking on all client sites
 - [ ] Screenshot "before" state of client sites pre-launch
