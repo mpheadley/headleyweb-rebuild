@@ -27,6 +27,26 @@ Create city-specific landing pages targeting "[service] + [city]" keywords. Each
 
 ---
 
+### Prospecting: Audit-as-Outreach (Fastest Path to Revenue)
+
+> Full playbook in [COMPETITOR_RESEARCH.md → Prospecting Playbook](COMPETITOR_RESEARCH.md)
+
+Use the existing audit tool (headleyweb.com/audit) to generate branded PDF reports for competitor clients. No new code needed — the tool is built, the prospect list is identified.
+
+**Priority targets:**
+- [ ] Run audits on Plexamedia's clients: Kings Olive Oil Company, The Factory Gadsden, Gadsden Industrial Supply
+- [ ] Search Google for `"designed by widenet"` / `"built by widenet"` — identify 5-10 weak client sites, run audits
+- [ ] Send PDF + personal note to each prospect ("I noticed your site while researching local businesses — thought you'd want to see this free checkup")
+- [ ] Follow up with free Loom video walkthrough for anyone who responds
+
+**Supporting content (publish ASAP):**
+- [ ] Finish "5 Questions to Ask Before Hiring a Web Designer" blog post (draft exists) — bottom-of-funnel, every question maps to a competitor weakness. Works as both a blog post and a leave-behind PDF.
+
+**Trust signal:**
+- [ ] Get BBB accreditation (~$400-600/yr) — only Plexamedia has this locally. Removes their one advantage + adds .org backlink.
+
+---
+
 ### Lead Generator & Email Nurture
 
 #### Lead Generator for headleyweb.com
