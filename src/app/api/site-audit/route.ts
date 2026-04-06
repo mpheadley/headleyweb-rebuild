@@ -92,10 +92,13 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Run PageSpeed and copy scrape in parallel
-    const [pageSpeedResult, copyResult] = await Promise.allSettled([
+    // Run PageSpeed, copy scrape, and sitemap/robots checks in parallel
+    const origin = new URL(normalizedUrl).origin;
+    const [pageSpeedResult, copyResult, sitemapResult, robotsResult] = await Promise.allSettled([
       fetchPageSpeed(normalizedUrl),
       fetchAndScrapeCopy(normalizedUrl),
+      fetchHeadCheck(`${origin}/sitemap.xml`),
+      fetchHeadCheck(`${origin}/robots.txt`),
     ]);
 
     // Process PageSpeed
@@ -107,15 +110,38 @@ export async function POST(request: NextRequest) {
     // Process copy scrape + StoryBrand scoring
     let storyBrand: StoryBrandScore | null = null;
     let hasLocalBusinessSchema = false;
+    let hasCanonical = false;
+    let hasOgTags = false;
+    let h1Count = 0;
+    let wordCount = 0;
+    let imgTotal = 0;
+    let imgWithoutAlt = 0;
     if (copyResult.status === "fulfilled" && copyResult.value) {
       storyBrand = scoreStoryBrand(copyResult.value);
       hasLocalBusinessSchema = copyResult.value.hasLocalBusinessSchema;
+      hasCanonical = copyResult.value.hasCanonical;
+      hasOgTags = copyResult.value.hasOgTags;
+      h1Count = copyResult.value.h1Count;
+      wordCount = copyResult.value.wordCount;
+      imgTotal = copyResult.value.imgTotal;
+      imgWithoutAlt = copyResult.value.imgWithoutAlt;
     }
+
+    const hasSitemap = sitemapResult.status === "fulfilled" && sitemapResult.value;
+    const hasRobotsTxt = robotsResult.status === "fulfilled" && robotsResult.value;
 
     const result: AuditResult = {
       url: normalizedUrl,
       ...lighthouse,
       hasLocalBusinessSchema,
+      hasCanonical,
+      hasOgTags,
+      hasSitemap,
+      hasRobotsTxt,
+      h1Count,
+      wordCount,
+      imgTotal,
+      imgWithoutAlt,
       storyBrand,
     };
 
@@ -215,6 +241,8 @@ async function fetchPageSpeed(normalizedUrl: string) {
     performance, seo, accessibility,
     fcp, lcp, cls, tbt,
     isHttps, hasMetaDescription, hasViewport, hasHreflang, isLinkCrawlable, hasLocalBusinessSchema: false,
+    hasCanonical: false, hasOgTags: false, hasSitemap: false, hasRobotsTxt: false,
+    h1Count: 0, wordCount: 0, imgTotal: 0, imgWithoutAlt: 0,
     failedAudits, passedAudits,
     screenshot,
   };
@@ -225,6 +253,8 @@ function getDefaultLighthouse() {
     performance: 0, seo: 0, accessibility: 0,
     fcp: 0, lcp: 0, cls: 0, tbt: 0,
     isHttps: false, hasMetaDescription: false, hasViewport: false, hasHreflang: false, isLinkCrawlable: false, hasLocalBusinessSchema: false,
+    hasCanonical: false, hasOgTags: false, hasSitemap: false, hasRobotsTxt: false,
+    h1Count: 0, wordCount: 0, imgTotal: 0, imgWithoutAlt: 0,
     failedAudits: [] as AuditResult["failedAudits"],
     passedAudits: [] as AuditResult["passedAudits"],
     screenshot: null as string | null,
@@ -264,4 +294,30 @@ async function fetchAndScrapeCopy(normalizedUrl: string) {
     }
   }
   return null;
+}
+
+/* ── Quick HEAD/GET check for sitemap.xml / robots.txt ── */
+
+async function fetchHeadCheck(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, {
+      method: "HEAD",
+      signal: AbortSignal.timeout(8000),
+      headers: { "User-Agent": "HeadleyWebAudit/1.0 (site-checkup)" },
+    });
+    // Some servers don't support HEAD — fall back to GET with range
+    if (response.status === 405) {
+      const getResponse = await fetch(url, {
+        signal: AbortSignal.timeout(8000),
+        headers: {
+          "User-Agent": "HeadleyWebAudit/1.0 (site-checkup)",
+          "Range": "bytes=0-512",
+        },
+      });
+      return getResponse.ok || getResponse.status === 206;
+    }
+    return response.ok;
+  } catch {
+    return false;
+  }
 }

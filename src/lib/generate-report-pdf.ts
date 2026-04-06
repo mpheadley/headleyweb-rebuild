@@ -190,6 +190,9 @@ export function buildReportDoc(input: ReportInput): jsPDF {
     if (!auditResult.hasMetaDescription) {
       summaryParts.push("your site is missing a search description");
     }
+    if (!auditResult.hasSitemap) {
+      summaryParts.push("there's no sitemap to help Google find your pages");
+    }
 
     let summary: string;
     if (summaryParts.length === 0 && recommendations.length > 0) {
@@ -433,6 +436,12 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       { passed: auditResult.hasViewport, passText: "Your site is set up for mobile devices", failText: "Not mobile-friendly. Over half your visitors are on phones." },
       { passed: auditResult.isLinkCrawlable, passText: "Search engines can follow your links", failText: "Some links aren't crawlable. Google may miss parts of your site." },
       { passed: auditResult.hasLocalBusinessSchema, passText: "Google knows your business name, address, and hours", failText: "Google can't verify your business details for local search results" },
+      { passed: auditResult.hasCanonical, passText: "Canonical tag set — no duplicate content issues", failText: "No canonical tag. Google may see duplicate versions of your pages." },
+      { passed: auditResult.hasOgTags, passText: "Social sharing tags set up (Open Graph)", failText: "No Open Graph tags. Shared links on Facebook look plain." },
+      { passed: auditResult.hasSitemap, passText: "Sitemap found — Google can discover all your pages", failText: "No sitemap. Google has to guess which pages exist." },
+      { passed: auditResult.hasRobotsTxt, passText: "Robots.txt found — search engines know what to crawl", failText: "No robots.txt. Search engines get no crawl guidance." },
+      { passed: auditResult.h1Count === 1, passText: "Single H1 heading — correct page structure", failText: `${auditResult.h1Count === 0 ? "No" : auditResult.h1Count} H1 heading${auditResult.h1Count !== 1 ? "s" : ""}. Each page should have exactly one.` },
+      { passed: auditResult.imgWithoutAlt === 0 && auditResult.imgTotal > 0, passText: `All ${auditResult.imgTotal} images have alt text for accessibility and SEO`, failText: `${auditResult.imgWithoutAlt} of ${auditResult.imgTotal} images missing alt text — hurts accessibility and SEO` },
     ];
 
     for (const check of checks) {
@@ -446,6 +455,27 @@ export function buildReportDoc(input: ReportInput): jsPDF {
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
       doc.text(check.passed ? check.passText : check.failText, margin + 15, y);
+      y += 18;
+    }
+
+    // Word count callout
+    if (auditResult.wordCount > 0) {
+      checkPageBreak(30);
+      y += 4;
+      const wcLabel = auditResult.wordCount < 300
+        ? `Only ${auditResult.wordCount} words on the page. Thin content makes it hard to rank.`
+        : auditResult.wordCount < 600
+        ? `${auditResult.wordCount} words — decent, but more content could help you rank for more searches.`
+        : `${auditResult.wordCount} words — solid content depth for search engines.`;
+      const wcColor: [number, number, number] = auditResult.wordCount < 300 ? red : auditResult.wordCount < 600 ? yellow : green;
+      doc.setTextColor(...wcColor);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text(auditResult.wordCount < 600 ? "!" : "+", margin, y);
+      doc.setTextColor(...textColor);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.text(wcLabel, margin + 15, y);
       y += 18;
     }
     y += 10;
