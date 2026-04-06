@@ -22,6 +22,8 @@
 | GetCalhoun.com | Oxford | getcalhoun.com | Local but limited portfolio |
 | Willingham Creative | Heflin, AL | willinghamcreative.com | WordPress + Elementor (performance liability). No pricing, no location pages, generic hero copy, About page is a credential resume. Faith positioning limits secular market reach. Zero AI/AEO mention. |
 | J. Alexandria Creative | Huntsville, AL | jalexandriacreative.com | Showit stack = canvas-based = SEO liability. Multiple broken internal links. Aesthetic/personality-led copy, not guide-positioned. No GBP signal, no pricing, no location pages. Zero AI/AEO mention. |
+| YourBizWebGuy (Les Blevins) | Jacksonville, AL | yourbizwebguy.com | WordPress + Divi on all 15 clients. No pricing, no blog, no StoryBrand, no niche. Schema markup errors ("Greg Simmons Art" on client sites). Divi bloat = poor PageSpeed. Reviews all self-hosted. Free artist portfolios suggest low pricing power. Same town as Headley Web — closest geographic competitor. |
+| Travis The Web Guy | Anniston, AL | (no website — Facebook only) | No website of his own. 51 FB reviews/100% rec rate shows volume. WordPress template sites, one-time fees ("no monthly payments"), likely $500-$1,500 range. No GBP despite selling GBP optimization. No portfolio visible. Past clients with aging sites = prospects. |
 
 ### What We Already Beat Them On
 - **Transparent pricing** — none of them publish prices on homepage
@@ -58,14 +60,29 @@
 - **AI/AEO:** No mention anywhere.
 - **Key weaknesses:** Showit SEO liability, broken links throughout, no conversion architecture, no GBP signal, no pricing, no local SEO structure, zero AI/AEO awareness.
 
-### Cross-Competitor Pattern (All 14 Reviewed)
+### Deep-Dive: YourBizWebGuy / Les Blevins (April 2026)
+- **Owner:** Les Blevins, 251 Wildwood Ln, Jacksonville, AL 36265
+- **Phone:** (256) 453-7110
+- **Background:** Claims 30 years marketing/graphic arts experience. Also runs "Blevins Wagyu Beef." Previously "Palette Arts" in Nipomo, CA — likely a recent transplant to Alabama. Also operates as or with "Greg Simmons Art" (name appears in schema markup on client sites).
+- **Stack:** WordPress + Divi (Elegant Themes) on every client site. LiteSpeed caching. Gravity Forms. No custom code, no modern frameworks.
+- **Portfolio:** 15 sites. All cookie-cutter Divi builds with different colors. Heavy inline CSS, plugin bloat (Super Socializer, jQuery polyfills, multiple animation libraries). Divi sites typically score 30-50 on mobile PageSpeed.
+- **AL clients (audit targets):** Klean Co of Alabama (Anniston, water damage), Addison Lawncare (Hokes Bluff), Nails and Spa Salon (Jacksonville — schema says "Greg Simmons Art"), Little River Canyon Jeep Outfitters (Fort Payne), West Side Baptist Church, Amy McCurdy Chiropractic (Piedmont).
+- **Services:** Web design, hosting, SEO, e-commerce, graphic design, photography, free portfolio sites for artists.
+- **Pricing:** Completely hidden. Every page forces a call.
+- **Blog:** None.
+- **GBP:** Thin. Yahoo Local and Yelp listings exist but no substantial review count. All 9 visible reviews are self-curated on his own site.
+- **Copy:** Generic, AI-cliche heavy ("powerful tool for reaching more customers"). No messaging framework. SEO page is a generic explainer, not a persuasive service page.
+- **Key weaknesses:** Divi bloat (performance), no pricing, no blog, no niche/positioning, schema markup errors across client sites, no StoryBrand, free artist builds suggest low pricing power, reviews only self-hosted.
+- **Threat level:** Low. Competes on personal relationships and affordability, not quality or strategy. Closest geographic competitor (same town), but different class of product.
+
+### Cross-Competitor Pattern (All 17 Reviewed)
 | Gap | Status across all competitors |
 |---|---|
-| Transparent pricing | **0 of 14** publish prices — Headley Web is alone in this |
-| AI / AEO positioning | **0 of 14** mention it |
+| Transparent pricing | **0 of 17** publish prices — Headley Web is alone in this |
+| AI / AEO positioning | **0 of 17** mention it |
 | Location/service area pages | Only Jessica Leigh — no one in the core NE Alabama market |
-| StoryBrand guide framing | 0 of 14 — all position themselves as the hero |
-| Next.js / performance-first stack | 0 of 14 — all use WordPress, Elementor, Divi, Showit, or Squarespace |
+| StoryBrand guide framing | 0 of 16 — all position themselves as the hero |
+| Next.js / performance-first stack | 0 of 16 — all use WordPress, Elementor, Divi, Showit, or Squarespace |
 
 ---
 
