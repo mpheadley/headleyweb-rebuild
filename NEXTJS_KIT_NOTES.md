@@ -324,6 +324,102 @@ A `sr-only` section on homepage and key pages with the full brand descriptor (10
 
 ---
 
+## Mobile Hero Patterns (Southern Legends, April 2026)
+
+### Safari dvh gap on pinned GSAP scroll sections [EXTRACT]
+
+`100dvh` recalculates when Safari's bottom chrome hides/shows during scroll, causing GSAP's pinned section to show a gap at the bottom (white or whatever color is behind it). Fix:
+
+1. Capture `window.innerHeight` once at mount in a `stableVh` ref — never recalculate
+2. Set section height inline: `sectionRef.current.style.height = \`${stableVh.current}px\``
+3. Use the captured value as a **static string** for the ScrollTrigger `end` — arrow functions get re-evaluated on `ScrollTrigger.refresh()` (which fires on resize)
+
+```tsx
+const stableVh = useRef<number>(0);
+
+useEffect(() => {
+  stableVh.current = window.innerHeight;
+  if (sectionRef.current) {
+    sectionRef.current.style.height = \`${stableVh.current}px\`;
+  }
+}, []);
+
+// Inside useGSAP:
+end: \`+=${(totalPanels - 1) * stableVh.current}\`, // static string — not a function
+```
+
+Set the document background color to match the section so any residual gap is invisible.
+
+---
+
+### `translateZ` + `preserve-3d` + GSAP stagger
+
+When a parent has `transform-style: preserve-3d` (e.g., for GSAP `rotationX` flip transitions), child elements need a minimal `translateZ` to maintain their GPU compositing layer. Removing it entirely causes GSAP `opacity`/`y` stagger animations on those children to delay by the full parent animation duration before firing.
+
+Fix: keep `translateZ(2px)` on content overlays inside `preserve-3d` parents — small enough to avoid visual displacement, large enough to maintain the 3D layer.
+
+---
+
+### iOS Safari: `background-attachment: fixed` doesn't work
+
+`background-attachment: fixed` is not supported on iOS Safari (touch devices generally). Use `@media (hover: hover)` to apply it only on pointer devices:
+
+```css
+.grid-topo {
+  background-attachment: scroll; /* default — works everywhere */
+}
+@media (hover: hover) {
+  .grid-topo {
+    background-attachment: fixed; /* parallax on desktop only */
+  }
+}
+```
+
+---
+
+### Carousel swipe on iOS [EXTRACT]
+
+Native touch swipe for a CSS sliding carousel (no library needed):
+
+```tsx
+const touchStartX = useRef<number | null>(null);
+
+const handleTouchStart = (e: React.TouchEvent) => {
+  touchStartX.current = e.touches[0].clientX;
+  setPaused(true);
+};
+
+const handleTouchEnd = (e: React.TouchEvent) => {
+  if (touchStartX.current === null) return;
+  const delta = e.changedTouches[0].clientX - touchStartX.current;
+  if (delta < -50) next();
+  else if (delta > 50) prev();
+  touchStartX.current = null;
+  setPaused(false);
+};
+```
+
+Apply `onTouchStart` / `onTouchEnd` to the sliding track div. Threshold of 50px prevents accidental swipes on vertical scroll.
+
+---
+
+### React hydration: don't initialize mobile state with useState
+
+`useState(false)` for a mobile check runs server-side. Flipping it in `useEffect` causes a hydration mismatch when the boolean affects inline styles. Move device checks inside `useGSAP` or other client-only callbacks where they never run server-side.
+
+---
+
+### Fraunces `opsz` axis consistency
+
+Fraunces is an optical size variable font. The same font-size at `opsz: 144` vs `opsz: 72` looks dramatically different (high-contrast display vs softer text form). If multiple headline classes use Fraunces, normalize them to the same `opsz` value to avoid inconsistent appearance across cards/components.
+
+```css
+/* All headline classes — standardize on opsz: 72 */
+font-variation-settings: "opsz" 72;
+```
+
+---
+
 ## Ready to Extract?
 
 When headleyweb.com is live and you've marked 5+ items with [EXTRACT],
