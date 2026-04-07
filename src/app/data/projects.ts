@@ -3,6 +3,7 @@ export type Project = {
   description: string;
   desktop: string;
   mobile: string;
+  video?: string;
   url: string;
   tag: string;
   featured: boolean;
@@ -18,7 +19,7 @@ export const projects: Project[] = [
     mobile: "/images/portfolio/project-dart-side-mobile-480w.webp",
     url: "https://dartsiderentals.com",
     tag: "Local Service",
-    featured: true,
+    featured: false,
     stats: [
       { value: "100", label: "SEO Score" },
       { value: "1 wk", label: "To Launch" },
@@ -68,10 +69,11 @@ export const projects: Project[] = [
     title: "Southern Legends",
     description:
       "Editorial storytelling site profiling small business owners and community figures across Northeast Alabama. Custom Next.js build with longform layouts and rich photography.",
-    desktop: "/images/portfolio/sl-aquality-farms-desktop.webp",
-    mobile: "/images/portfolio/sl-aquality-farms-mobile.webp",
+    desktop: "/images/portfolio/sl-jean-ellison-desktop.webp",
+    mobile: "/images/portfolio/sl-freedom-riders-mobile.webp",
+    video: "/images/portfolio/sl-southern-legends.mp4",
     url: "https://southernlegends.blog",
     tag: "Editorial",
-    featured: false,
+    featured: true,
   },
 ];

@@ -73,8 +73,31 @@ export default function PortfolioPage() {
               key={project.title}
               className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl overflow-hidden animate-on-scroll md:flex mb-8"
             >
-              {/* Screenshot */}
-              {project.desktop ? (
+              {/* Screenshot / Video */}
+              {project.video ? (
+                <div className="relative aspect-[16/10] md:aspect-auto md:w-1/2 bg-hw-dark/60 border-b md:border-b-0 md:border-r border-white/10 overflow-hidden">
+                  <video
+                    src={project.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover object-top"
+                  />
+                  {project.mobile && (
+                    <Image
+                      src={project.mobile}
+                      alt={`${project.title} on mobile`}
+                      width={480}
+                      height={914}
+                      sizes="62px"
+                      quality={80}
+                      fill={false}
+                      className="absolute bottom-0 right-4 w-[22%] rounded-t-lg shadow-2xl border-t-2 border-x-2 border-white/20"
+                    />
+                  )}
+                </div>
+              ) : project.desktop ? (
                 <div className="relative aspect-[16/10] md:aspect-auto md:w-1/2 bg-hw-dark/60 border-b md:border-b-0 md:border-r border-white/10 overflow-hidden">
                   <Image
                     src={project.desktop}
