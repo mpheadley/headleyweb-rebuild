@@ -5,6 +5,7 @@ import ScrollReveal from "./components/ScrollReveal";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
+import LenisProvider from "./components/LenisProvider";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -77,11 +78,13 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hw-primary focus:text-white focus:px-4 focus:py-2 focus:rounded">
           Skip to content
         </a>
-        <Nav />
-        {children}
-        <Footer />
-        <CookieBanner />
-        <ScrollReveal />
+        <LenisProvider>
+          <Nav />
+          {children}
+          <Footer />
+          <CookieBanner />
+          <ScrollReveal />
+        </LenisProvider>
       </body>
     </html>
   );
