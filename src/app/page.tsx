@@ -463,14 +463,15 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           {/* Top — Headshot + Empathy */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
-            <div className="relative mx-auto md:mx-0 animate-on-scroll overflow-hidden rounded-2xl shadow-lg w-full h-72 md:h-80">
+            <div className="mx-auto md:mx-0 animate-on-scroll overflow-hidden rounded-2xl shadow-lg w-full max-w-sm md:max-w-none">
               <Image
                 src="/images/headshot-matt-headley.webp"
                 alt="Matt Headley, web designer and SEO specialist"
-                fill
+                width={768}
+                height={1025}
                 sizes="(min-width: 768px) 50vw, 100vw"
                 quality={80}
-                className="object-cover object-[50%_20%]"
+                className="w-full h-auto"
               />
             </div>
             <div className="animate-on-scroll" style={{ transitionDelay: "0.15s" }}>
