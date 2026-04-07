@@ -558,15 +558,26 @@ export default function Home() {
           <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="group rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-hw-primary/40 transition-colors mb-8 animate-on-scroll block">
             <div className="grid md:grid-cols-[1.2fr_1fr]">
               <div className="relative aspect-[16/10] md:aspect-auto bg-hw-dark/60 border-b md:border-b-0 md:border-r border-white/10 overflow-hidden">
-                <Image
-                  src={project.desktop}
-                  alt={`${project.title} website screenshot`}
-                  width={800}
-                  height={456}
-                  sizes="(min-width: 768px) 55vw, 100vw"
-                  quality={80}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                />
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover object-top"
+                  />
+                ) : (
+                  <Image
+                    src={project.desktop}
+                    alt={`${project.title} website screenshot`}
+                    width={800}
+                    height={456}
+                    sizes="(min-width: 768px) 55vw, 100vw"
+                    quality={80}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                )}
                 <Image
                   src={project.mobile}
                   alt={`${project.title} on mobile`}
