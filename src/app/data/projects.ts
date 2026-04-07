@@ -70,7 +70,7 @@ export const projects: Project[] = [
     description:
       "Editorial storytelling site profiling small business owners and community figures across Northeast Alabama. Custom Next.js build with longform layouts and rich photography.",
     desktop: "/images/portfolio/sl-jean-ellison-desktop.webp",
-    mobile: "/images/portfolio/sl-freedom-riders-mobile.webp",
+    mobile: "/images/portfolio/sl-jean-ellison-mobile.webp",
     video: "/images/portfolio/sl-southern-legends.mp4",
     url: "https://southernlegends.blog",
     tag: "Editorial",
