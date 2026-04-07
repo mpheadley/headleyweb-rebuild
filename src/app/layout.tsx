@@ -72,6 +72,22 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="author" href="https://headleyweb.com" />
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [{
+                where: {
+                  and: [
+                    { href_matches: "/*" },
+                    { not: { href_matches: "/api/*" } },
+                  ],
+                },
+                eagerness: "moderate",
+              }],
+            }),
+          }}
+        />
       </head>
       <body className={`${outfit.variable} ${fraunces.variable} ${rockSalt.variable} antialiased`}>
         {/* Built by Headley Web & SEO | headleyweb.com */}
