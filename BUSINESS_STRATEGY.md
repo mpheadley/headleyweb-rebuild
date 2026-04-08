@@ -563,13 +563,19 @@ Clients of WideNet, Plexamedia, YourBizWebGuy, and other local agencies.
 - **Selection criteria:** Pick a trade you want to target (e.g., HVAC). Find the worst site in the area. Pitch the owner: "I'll rebuild your site for free if I can document the process."
 - **When:** Phase 2. One challenge per quarter. Each one targets a different trade vertical.
 
-**18. Local Legends (Community Content Engine)**
+**18. Southern Legends (Community Content Engine)**
 - **What:** A standalone website spotlighting local businesses, makers, and community figures across Northeast Alabama. Not clients — just people doing great work. Exists separately from headleyweb.com on purpose: business owners are more likely to participate in a community project than a page on a web designer's blog. Transparency is core — Matt's a web designer who loves this community, and that's in the About page, not hidden.
-- **Name decision:** "Foothills Profiles" was the original name but conflicts with the Anniston Star's existing *Foothills* magazine (annistonstar.com/foothills/). "Local Legends" is catchier, more shareable, and has zero local competition. The name is aspirational — it says "you're already doing legendary work, let's make sure people know about it."
+- **Name decision:** "Foothills Profiles" was the original name but conflicts with the Anniston Star's existing *Foothills* magazine. "Local Legends" was the second name — replaced by **Southern Legends** (April 2026). Catchier, regional without being county-locked, and has zero local competition.
+- **Current status (April 2026):** 6 profiles published. Two subjects have gone through the full two-touch follow-up sequence: Jean Ellison (Mom-To-Go) and Samuel Sawyer (Aquality Farms). Jean Ellison spontaneously created a Facebook reel from her profile — strong unsolicited social proof, shared publicly, tagged Southern Legends. Profile quality (longform with real interviews and photography) is the right call for credibility — don't dilute it for speed.
+- **Two-touch follow-up framework:** Documented and working. Run it on every published profile without exception.
 - **Format:**
-  - **Standalone site:** `locallegends[tbd].com` — Next.js + Tailwind v4, deployed to Vercel. Curated profiles with photos, stories, and links to each business's site/GBP. Each profile links back to headleyweb.com in footer/about (backlink engine). Domain TBD — check availability for locallegends.co, locallegendsalabama.com, etc.
-  - **Profile pages:** 500-800 words, 2-3 photos, the owner's story, what makes them unique. SEO targets "[business name] [city] Alabama" keywords. Social sharing meta tags on every profile.
-  - **Social clips:** 60-second interview reels or "day in the life" shorts from each feature. Cross-post to Facebook groups, Instagram, TikTok.
+  - **Standalone site:** Next.js + Tailwind v4, deployed to Vercel. Curated profiles with photos, stories, and links to each business's site/GBP. Each profile links back to headleyweb.com in footer/about (backlink engine).
+  - **Profile pages:** Longform (Jean Ellison length), real interviews, real photography. SEO targets "[business name] [city] Alabama" keywords. Social sharing meta tags on every profile.
+  - **Social clips:** Short reels from each feature (screen record mobile site scroll, edit in Facebook native reel editor, instrumental background music). Cross-post to Southern Legends page, then share to personal. Skip groups where the link is already posted.
+- **Syndication partnerships (April 2026):**
+  - **Calhoun Journal** — 120,000 weekly readers. Matt accepted syndication invitation. Confirm submission process. Usable as a credential immediately — don't wait for the Star.
+  - **Anniston Star** — Matt has an existing relationship with editor Donna Barton, was published there, was briefly on stringer payroll. Reconnect with Donna. Star byline is more prestigious for cold outreach to businesses with no web presence. No conflict between CJ and Star syndication.
+- **Media-as-door-opener strategy:** Star and Calhoun Journal bylines create a legitimate reason to approach cold businesses — interview them for a piece, publish it, then follow up as a web designer. Don't pitch web services inside paid editorial content. Keep them separate. The sequence: feature them → publish → two-touch follow-up → web design conversation.
 - **Why standalone from day one:**
   1. **Authenticity** — on headleyweb.com, every profile sits inside a sales funnel no matter how genuine the content is. Standalone says "this exists to celebrate NE Alabama businesses." The web designer behind it is secondary.
   2. **Participation** — business owners (especially those with weak online presence) are more willing to be featured on a community project than on a web designer's blog. Reduces "sales pitch" smell.
@@ -581,9 +587,10 @@ Clients of WideNet, Plexamedia, YourBizWebGuy, and other local agencies.
   4. **Lead pipeline** — after featuring a business, the natural follow-up is: "Hey, I noticed your site could use some work — want me to take a look?" You've already given them value.
   5. **Content flywheel** — each feature generates a profile page, social content, a potential testimonial, and a relationship. One interview = 4-5 pieces of content.
   6. **Year-long nurture content** — featured business profiles slot perfectly into the email nurture sequence (Gap #2) as "local business spotlights."
-- **Selection strategy:** Mix businesses with strong AND weak online presence. Strong businesses give the series credibility and shareability. Weak-presence businesses are where leads come from — but they never feel targeted because they're featured alongside the strong ones. Everyone's a "legend" for the same reason: they do great work. Mix trades — don't just feature potential web design clients. Start with 3-5 people you already know (friends, church community, local contacts).
+- **Bottlenecks (honest):** Social anxiety and perfectionism slow the publishing cadence more than the system does. The system works. The constraint is initiating conversations and hitting publish. Outreach is the core problem — not content quality.
+- **Selection strategy:** Mix businesses with strong AND weak online presence. Strong businesses give the series credibility and shareability. Weak-presence businesses are where leads come from — but they never feel targeted because they're featured alongside the strong ones. Everyone's a "legend" for the same reason: they do great work. Mix trades — don't just feature potential web design clients.
 - **Pairs with:** Worst to First Challenge (#17), year-long nurture emails (Gap #2), trade-specific landing pages (#19), viral content builds (#11).
-- **When:** Phase 1-2. Start immediately — one feature per month costs nothing but time. Scale to biweekly in Phase 2.
+- **When:** Active — Phase 1-2. One feature per month minimum. Scale to biweekly in Phase 2.
 - **Phase 2 additions:** Newsletter/email capture, directory/search features, social media integration beyond OG tags.
 
 **19. Trade-Specific Landing Pages (SEO Play)**
