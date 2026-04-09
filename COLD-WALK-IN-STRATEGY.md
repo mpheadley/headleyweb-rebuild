@@ -28,6 +28,17 @@ Use the Google Business profile scraper to identify targets before each walk-in 
 1. Build a short target list for that day — prioritize geographic clusters to save drive time
 1. Note the business name, address, and owner name if available
 
+### AL Spark Program — Pre-Qualified Leads
+
+The AL Spark program (SBA-funded, managed by Main Street Alabama) gives $1,000 marketing grants to small businesses in Anniston and Oxford that complete digital marketing training. Past recipients include local retail, design, and specialty businesses.
+
+These are warm prospects by definition — they already know they need digital help and have been given money to spend on it. Worth a call to Main Street Alabama to:
+- Ask for a list of past/current recipients
+- Offer to present to the next cohort ("here's what to do with your grant")
+- Position yourself as the local implementation guy for businesses that go through the program
+
+Contact: Main Street Alabama — mainstreetalabama.org
+
 ---
 
 ## The Approach
