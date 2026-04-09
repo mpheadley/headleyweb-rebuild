@@ -122,7 +122,7 @@ A full digital sales system. The site doesn't just answer questions — it creat
 - **Essential → Growth:** When they realize Google Maps matters as much as the website. Once a business gets calls from their GBP listing, the $50 difference is obvious.
 - **Growth → Accelerate:** When they want to stay ahead of how people search — not just Google, but AI tools. Also for clients who want a monthly touchpoint and ongoing guidance instead of just a report.
 
-> First 3 months free with any build. Cancel anytime.
+> First month free with any paid build. For free/case study builds: 3 months free, then charge from month 4. Cancel anytime.
 > **Accelerate** is the bridge to high-value retainers — positions AI Visibility
 > early without requiring $2,500/mo proof yet. Raise to $249–$349 after case studies.
 
@@ -223,7 +223,7 @@ regional companies using the case studies you built locally.
 
 > **Pre-launch:** Before announcing the business publicly, follow the personal social re-entry sequence in Claude memory (`social-launch-strategy.md`). That plan builds visible credibility through shipped projects before this phase begins.
 
-**Goal:** Build reps and social proof fast. First 3 client builds are free — no build fee, no monthly charges for 6 months.
+**Goal:** Build reps and social proof fast. First 3 client builds are free — no build fee. Care plans start at month 4 ($49–$199/mo). Give 3 months free to collect baseline metrics, then the care plan conversation is easy because you have data to show.
 
 **What to get in writing (before starting):**
 - [ ] Google review within 1 week of launch
@@ -236,7 +236,7 @@ regional companies using the case studies you built locally.
 
 **Scope cap:** Starter tier max (5 pages). No scope creep into Professional/Sales Engine territory.
 
-**After 6 months:** Natural conversion point — they're already in the habit and seeing value. Pitch Essential Care ($49/mo) or Growth Care ($99/mo). Accelerate ($199/mo) is the right pitch for clients who want ongoing content.
+**After 3 months:** Natural conversion point — you have 90 days of GBP impressions, GA4 events, and ranking movement to show them. Pitch Essential Care ($49/mo) or Growth Care ($99/mo). Accelerate ($199/mo) is the right pitch for clients who want ongoing content. By this point they've seen value and the care plan feels like a no-brainer, not a sales pitch.
 
 ### Case Study Build Pitch (verbal framing)
 
