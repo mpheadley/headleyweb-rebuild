@@ -41,13 +41,35 @@ Contact: Main Street Alabama — mainstreetalabama.org
 
 ---
 
+## Before You Start — Have Something to Show
+
+Don't do walk-ins with the free build offer until you have at least one live client site to pull up on your phone. Without it, you're asking a cold stranger to trust an unknown quantity.
+
+**The trigger:** Ship Between Worlds (Giovanna's site). That's the case study. Once it's live, you walk in with a real URL, a real client you can name, and optionally a testimonial quote. That changes the conversation from "trust me" to "here's what I did."
+
+**If you're days away from shipping** — wait. Finish it first.
+
+**If shipping is weeks out** — you can start walking in now, but reference the work honestly: "I just wrapped my first local client site and I'm taking on a few more as case studies." Don't pull up a half-finished site.
+
+---
+
 ## The Approach
 
-- Walk in friendly and relaxed — no pitch energy
-- Introduce yourself briefly
-- Hand over your leave-behind materials
-- Exit without pressure
-- If the owner isn't there, be warm to whoever is and leave your info anyway
+The whole visit should take under 3 minutes. You are not closing a deal — you are making a name stick.
+
+1. Walk in friendly and relaxed — no pitch energy
+2. Introduce yourself in one sentence
+3. Ask what they do — make them talk
+4. Hand over your leave-behind materials
+5. Exit without pressure
+
+**What to say:**
+> "Hi, I'm Matt — I do websites and Google for local service businesses. Just dropping by to introduce myself." *(hand over card + one-pager)* "What kind of work do you all do?"
+
+That last question is the most important part. People remember conversations, not pitches. Let them talk.
+
+**Exit line:**
+> "I'll let you get back to it — if you ever want a free look at your site, just text me."
 
 ---
 
@@ -57,44 +79,25 @@ Contact: Main Street Alabama — mainstreetalabama.org
 - **One-pager / one-sheet** including:
   - Your name and business name (Headley Web & SEO)
   - What you do: web design and local SEO for service businesses
-  - One before-and-after example or client result
+  - One before-and-after example or client result (needs Between Worlds shipped first)
   - Clear contact info (phone, email, website)
   - Simple call to action: "Call or text me if you'd like a free look at your site"
 
 ---
 
-## Talking Points
+## Talking Points — Free Build Offer
 
-Keep it short. You are not closing a deal — you are making an introduction.
+When the owner engages and you want to go further, introduce the case study offer. Keep it three sentences.
 
-**If owner is present:**
+> "I'm building a few free sites right now as case studies — normally runs $800 to $1,200. If you're interested I'd love to take a look at what you've got."
 
-> "Hi, I'm Matt. I help service companies like yours get better websites and show up higher in local search. I just wanted to drop off some info in case it's ever useful."
+**Handling follow-up questions:**
 
-**If owner is not there:**
+- **"Why free?"** — "I'm building my portfolio in this area and I want the before-and-after data. You get a real site, I get a case study. Fair trade."
+- **"What's the catch?"** — "Three months in I'll show you what moved — calls, Google ranking, whatever changed. After that it's $49 to $199 a month to keep it running depending on what you need. No pressure, no contract."
+- **"We already have a website"** — "Mind if I take a quick look?" Pull it up on your phone. If it's bad, you'll both see it without you having to say a word.
 
-> "No problem — could I leave this for them? Who should I address it to?"
-> *(Clip your card to the one-pager. Write their name on it if you get it.)*
-
-**If they ask questions:**
-
-> Answer briefly, keep it conversational, and offer a follow-up call rather than a long on-the-spot explanation.
-
----
-
-## Free Build Offer for Case Studies
-
-When warm leads are limited, combine walk-ins with a free build offer to remove the trust barrier cold prospects face.
-
-**The framing (anchor value first):**
-
-> "A site like this typically runs $795 to $1,195. I'm building a few free right now as case studies — I document the before/after and use it on my site. Your first 3 months of hosting and care are on me. After that it's $49 to $199 a month depending on what you need. Want me to take a look at what you've got?"
-
-**Why this works cold:**
-- Removes price as the objection
-- The retail anchor makes the care plan feel cheap, not like a bait-and-switch
-- 3 months gives you real data (GBP impressions, GA4 events, ranking movement) to show at the care plan conversation
-- Some owners will say "just let me pay you" — let them
+**The filter:** Owners who ask follow-up questions are your prospects. Owners who just nod and take the one-pager might convert from a follow-up later — don't spend 20 minutes in their lobby chasing them.
 
 **Care plan conversation at month 3:**
 > "Your site has been live 3 months. Here's what moved. To keep it going it's $49/mo for hosting and updates, or $99 if you want me managing your Google listing too."
