@@ -5,6 +5,20 @@
 
 ---
 
+## Market Context
+
+### AL Spark Program
+SBA-funded marketing grants ($1,000 each) for small businesses in Anniston/Oxford, managed by Main Street Alabama. Recipients complete digital marketing training and receive grant money to spend on implementation. Past recipients include local retail, specialty, and design businesses.
+
+**Strategic relevance:** These businesses are pre-qualified prospects — they have budget, they know they need digital help, and no local web agency is positioned as the go-to implementation partner for the program. See `COLD-WALK-IN-STRATEGY.md` for outreach approach.
+
+### Anniston Market Data (2022)
+- Resident population: ~7,400 (declining ~1.2% by 2027 vs. statewide +1.1% growth)
+- Daytime population within 5 minutes: ~15,660 — more than double the resident count
+- Implication: commercial/service traffic is the growth opportunity, not residential expansion
+
+---
+
 ## Local Competitors (Northeast Alabama)
 
 ### 1. Plexamedia — plexamedia.com
