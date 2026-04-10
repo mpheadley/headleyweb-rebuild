@@ -109,7 +109,8 @@ Full log of pricing structure decisions, considerations explored, and positions 
 
 ## Open Questions (unresolved as of March 2026)
 
-1. **Build pricing Phase 2 target:** $2,995 for Get Booked once service area page ROI is proven. No timeline set.
+1. **Website published pricing update (Phase 2 action):** Current site shows $500–$2,000. Resolved direction: update to $5,000–$8,000 builds + $150–$300/month care plans before first Phase 2 paid client conversation. See PLAN.md for checklist.
+2. **Build pricing Phase 2 target:** $2,995 for Get Booked once service area page ROI is proven. No timeline set.
 2. **Bundled pricing:** Revisit at Phase 2 when recurring revenue is established.
 3. **Speed model:** Revisit at Phase 3.
 4. **Get Found stack:** HTML vs Next.js still loosely "probably HTML" but not locked. Matt leans toward all Next.js for scalability.

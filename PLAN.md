@@ -7,6 +7,19 @@
 
 ## Post-Launch Roadmap
 
+### Website Pricing Update (Phase 2 — Before First Paid Client)
+
+Current published pricing (`$500-$2,000`) anchors too low and contradicts StoryBrand expert positioning. Update before pitching any Phase 2 paid work.
+
+- [ ] Update services/pricing section: **Web builds → $5,000–$8,000**
+- [ ] Update care plans: **$150–$300/month** (tiered: maintenance / SEO focus / content+marketing)
+- [ ] Add nonprofit flexibility language: *"For community organizations, we offer tiered options. Let's discuss what makes sense for your impact and budget."*
+- [ ] Review all site copy for references to old price range
+
+**Why Phase 2, not now:** No paid clients yet — raising prices before delivering paid work is the right order. Warm network (Sebastian, SL subjects) doesn't need a price signal yet. Activate before the first Phase 2 outreach conversation.
+
+---
+
 ### Location Pages (Local SEO)
 Create city-specific landing pages targeting "[service] + [city]" keywords. Each page should:
 - Target a specific city in the service area
