@@ -61,6 +61,15 @@ export default function Footer() {
           >
             Facebook
           </a>
+          <span className="text-gray-500">&middot;</span>
+          <a
+            href="https://www.linkedin.com/in/mpheadley/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            LinkedIn
+          </a>
         </div>
 
         <p className="text-xs text-gray-400 flex items-center justify-center gap-1">

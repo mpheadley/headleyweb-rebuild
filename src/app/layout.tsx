@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Fraunces, Rock_Salt } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import ScrollReveal from "./components/ScrollReveal";
 import Nav from "./components/Nav";
@@ -63,11 +64,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? "";
+  const isMinimal = pathname === "/card";
+
   return (
     <html lang="en">
       <head>
@@ -95,11 +100,11 @@ export default function RootLayout({
           Skip to content
         </a>
         <LenisProvider>
-          <Nav />
+          {!isMinimal && <Nav />}
           {children}
-          <Footer />
+          {!isMinimal && <Footer />}
           <CookieBanner />
-          <ScrollReveal />
+          {!isMinimal && <ScrollReveal />}
         </LenisProvider>
       </body>
     </html>

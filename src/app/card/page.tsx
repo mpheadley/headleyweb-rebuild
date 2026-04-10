@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Phone, Mail, Globe, MapPin } from "lucide-react";
+import Link from "next/link";
+import { Mail, Facebook, Linkedin, UserPlus } from "lucide-react";
+import CardScanTracker from "./CardScanTracker";
 
 export const metadata: Metadata = {
   title: "Connect with Matt Headley",
@@ -12,101 +14,177 @@ export const metadata: Metadata = {
 
 const links = [
   {
-    href: "tel:+12566447334",
-    icon: Phone,
-    label: "(256) 644-7334",
-    subtitle: "Call or text",
-  },
-  {
     href: "mailto:matt@headleyweb.com",
     icon: Mail,
     label: "matt@headleyweb.com",
     subtitle: "Email me",
   },
   {
-    href: "https://headleyweb.com?utm_source=business_card&utm_medium=qr&utm_campaign=networking",
-    icon: Globe,
-    label: "headleyweb.com",
-    subtitle: "Web design & SEO for local businesses",
+    href: "/portfolio",
+    icon: null,
+    label: "See my work",
+    subtitle: "Recent client sites",
   },
   {
-    href: "https://southernlegends.blog?utm_source=business_card&utm_medium=qr&utm_campaign=networking",
-    icon: MapPin,
-    label: "southernlegends.blog",
-    subtitle: "Stories from Northeast Alabama",
+    href: "https://www.facebook.com/HeadleyWebSEO/?utm_source=business_card&utm_medium=qr&utm_campaign=networking",
+    icon: Facebook,
+    label: "Headley Web & SEO",
+    subtitle: "Facebook page",
+  },
+  {
+    href: "https://www.linkedin.com/in/mpheadley/",
+    icon: Linkedin,
+    label: "Matt Headley",
+    subtitle: "Connect on LinkedIn",
   },
 ];
 
 export default function CardPage() {
   return (
-    <main
-      id="main-content"
-      className="min-h-[100dvh] flex items-center justify-center px-4 py-12"
-      style={{ background: "var(--color-light)" }}
-    >
-      <div className="w-full max-w-sm">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <Image
-            src="/images/logo-icon.webp"
-            alt="Headley Web & SEO"
-            width={80}
-            height={80}
-            className="mx-auto mb-4 rounded-full"
-            priority
-          />
-          <h1
-            className="text-2xl font-bold mb-1"
-            style={{ fontFamily: "var(--font-heading)", color: "var(--color-dark)" }}
-          >
-            Matt Headley
-          </h1>
+    <main id="main-content" className="min-h-[100dvh] flex flex-col">
+      <CardScanTracker />
+
+      {/* ── Dark editorial header ── */}
+      <div style={{ background: "var(--color-dark)" }}>
+
+        {/* Text content */}
+        <div className="px-6 pb-0 pt-16">
           <p
-            className="text-sm tracking-wide uppercase font-medium"
+            className="text-xs tracking-widest uppercase font-semibold mb-4"
             style={{ color: "var(--color-secondary)" }}
           >
-            Web Design &amp; SEO
+            Thanks for connecting.
+          </p>
+
+          <div className="flex items-center justify-between gap-4">
+            <h1
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: "clamp(3.5rem, 14vw, 5rem)",
+                fontWeight: 700,
+                lineHeight: 0.88,
+                letterSpacing: "-3px",
+                color: "#ffffff",
+              }}
+            >
+              Matt
+              <br />
+              <span style={{ color: "var(--color-primary)" }}>Headley</span>
+            </h1>
+            <Image
+              src="/images/headshot-matt-headley.webp"
+              alt="Matt Headley"
+              width={80}
+              height={80}
+              className="rounded-full object-cover shrink-0"
+              style={{ border: "2px solid var(--color-primary)" }}
+              priority
+            />
+          </div>
+
+          <p
+            className="text-xs tracking-widest uppercase mt-4 mb-2"
+            style={{ color: "rgba(255,255,255,0.45)" }}
+          >
+            Web Design &amp; SEO &nbsp;·&nbsp; Jacksonville, AL
           </p>
           <p
-            className="text-sm mt-1"
-            style={{ color: "var(--color-text-light)" }}
+            className="text-sm font-medium mb-6"
+            style={{ color: "rgba(255,255,255,0.65)" }}
           >
-            Jacksonville, Alabama
+            Get found. Get calls. Get booked.
           </p>
         </div>
 
-        {/* Gradient divider */}
+        {/* Sage → terracotta gradient bar — full bleed */}
         <div
-          className="h-1 w-16 mx-auto rounded-full mb-8"
+          className="w-full"
           style={{
+            height: "12px",
             background: "linear-gradient(to right, var(--color-secondary), var(--color-primary))",
           }}
         />
+      </div>
 
-        {/* Link cards */}
-        <div className="flex flex-col gap-3">
+      {/* ── Gradient cards section ── */}
+      <div
+        className="flex-1 px-6 py-8"
+        style={{
+          background: "linear-gradient(160deg, var(--color-secondary), var(--color-primary))",
+        }}
+      >
+        <div className="max-w-xs mx-auto flex flex-col gap-3">
+
+          {/* Primary CTAs */}
+          <a
+            href="sms:+12566447334"
+            className="btn-primary text-center mb-1"
+          >
+            Text me — (256) 644-7334
+          </a>
+          <Link
+            href="/audit"
+            className="text-center text-sm font-semibold py-3 px-6 rounded-xl border-2 transition-colors duration-200"
+            style={{
+              borderColor: "rgba(255,255,255,0.5)",
+              color: "#ffffff",
+              background: "rgba(255,255,255,0.1)",
+            }}
+          >
+            Get a Free Site Checkup
+          </Link>
+
+          {/* Save to Contacts — utility, lower visual weight */}
+          <a
+            href="/matt-headley.vcf"
+            download="Matt Headley.vcf"
+            className="flex items-center justify-center gap-2 py-2 px-6 rounded-xl text-xs font-medium transition-opacity duration-200 hover:opacity-100"
+            style={{
+              color: "rgba(255,255,255,0.5)",
+            }}
+          >
+            <UserPlus size={13} />
+            Save to Contacts
+          </a>
+
+          {/* Divider */}
+          <div
+            className="h-px w-full my-1"
+            style={{ background: "rgba(255,255,255,0.2)" }}
+          />
+
+          {/* Link cards */}
           {links.map(({ href, icon: Icon, label, subtitle }) => (
             <a
               key={label}
               href={href}
-              className="flex items-center gap-4 px-5 py-4 rounded-xl transition-shadow duration-200 hover:shadow-lg"
+              className="flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
               style={{
-                background: "var(--color-white)",
-                boxShadow: "var(--card-shadow)",
+                background: "rgba(255,255,255,0.92)",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.12)",
               }}
             >
-              <span
-                className="flex items-center justify-center w-10 h-10 rounded-full shrink-0"
-                style={{
-                  background: "var(--color-secondary)",
-                  color: "var(--color-white)",
-                }}
-              >
-                <Icon size={20} />
-              </span>
+              {Icon ? (
+                <span
+                  className="flex items-center justify-center w-10 h-10 rounded-full shrink-0"
+                  style={{ background: "var(--color-dark)", color: "var(--color-white)" }}
+                >
+                  <Icon size={18} />
+                </span>
+              ) : (
+                <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
+                  <Image
+                    src="/images/portfolio/project-salon-800w.webp"
+                    alt="Client site preview"
+                    width={40}
+                    height={40}
+                    className="object-cover object-top w-full h-full"
+                  />
+                </div>
+              )}
               <span className="min-w-0">
                 <span
-                  className="block text-base font-medium truncate"
+                  className="block text-sm font-semibold truncate"
                   style={{ color: "var(--color-dark)" }}
                 >
                   {label}
@@ -120,18 +198,70 @@ export default function CardPage() {
               </span>
             </a>
           ))}
-        </div>
 
-        {/* Footer */}
-        <p
-          className="text-center text-xs mt-10"
-          style={{ color: "var(--color-text-light)" }}
-        >
-          Headley{" "}
-          <span style={{ color: "var(--color-primary)" }}>
-            Web <span className="amp">&amp;</span> SEO
-          </span>
-        </p>
+          {/* Southern Legends — SL brand treatment */}
+          <div className="mt-6 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}>
+            <a
+              href="https://southernlegends.blog/nominate?utm_source=business_card&utm_medium=qr&utm_campaign=networking"
+              className="relative flex items-center gap-4 px-5 py-4 rounded-xl overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.2)" }}
+            >
+              {/* Pine → gold gradient background */}
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to right, #3D6B4F, #CA8A04)" }}
+              />
+              {/* Topo overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage: "url('/images/sl-topo.png')",
+                  backgroundRepeat: "repeat",
+                  backgroundSize: "400px 400px",
+                  opacity: 0.35,
+                  mixBlendMode: "multiply",
+                }}
+              />
+              {/* Content */}
+              <div className="relative z-10 flex items-center gap-4 w-full">
+                <Image
+                  src="/images/sl-logo.webp"
+                  alt="Southern Legends"
+                  width={40}
+                  height={40}
+                  className="rounded-full shrink-0"
+                  style={{ border: "1.5px solid rgba(255,255,255,0.3)" }}
+                />
+                <span className="min-w-0">
+                  <span className="block text-sm font-semibold text-white">
+                    Southern Legends
+                  </span>
+                  <span className="block text-xs" style={{ color: "rgba(255,255,255,0.75)" }}>
+                    Nominate a local story →
+                  </span>
+                </span>
+              </div>
+            </a>
+          </div>
+
+          {/* Footer — branded link to homepage */}
+          <a
+            href="https://headleyweb.com?utm_source=business_card&utm_medium=qr&utm_campaign=networking"
+            className="flex flex-col items-center mt-4 gap-1 opacity-70 hover:opacity-100 transition-opacity duration-200"
+          >
+            <Image
+              src="/images/logo-icon-light.svg"
+              alt="Headley Web & SEO"
+              width={224}
+              height={224}
+              style={{ mixBlendMode: "screen" }}
+            />
+            <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.8)" }}>
+              headleyweb.com →
+            </span>
+          </a>
+
+        </div>
       </div>
     </main>
   );
