@@ -437,3 +437,83 @@ It includes:
 - Site config pattern (replaces `{{PLACEHOLDER}}` tokens)
 - Project structure and scaffold CLI design
 - Migration priority order
+
+---
+
+### [EXTRACT] Minimal layout pages (suppress Nav/Footer on specific routes)
+
+Middleware sets a `x-pathname` response header, async root layout reads it and conditionally renders Nav/Footer/ScrollReveal.
+
+**`src/middleware.ts`:**
+```ts
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  const response = NextResponse.next();
+  response.headers.set("x-pathname", request.nextUrl.pathname);
+  return response;
+}
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};
+```
+
+**`src/app/layout.tsx`** (make async):
+```ts
+import { headers } from "next/headers";
+
+export default async function RootLayout({ children }) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? "";
+  const isMinimal = pathname === "/card";
+  // ...
+  return (
+    <>
+      {!isMinimal && <Nav />}
+      {children}
+      {!isMinimal && <Footer />}
+    </>
+  );
+}
+```
+
+Use for: business card landing pages, campaign pages, embed-only pages.
+
+---
+
+### Logo background removal — Pillow saturation-aware method
+
+When a logo has a white/cream background and you need it transparent on a colored background, use this instead of `mix-blend-mode` hacks:
+
+```python
+from PIL import Image
+import numpy as np
+
+img = Image.open("input.webp").convert("RGBA")
+data = np.array(img).astype(np.float64)
+r, g, b = data[:,:,0], data[:,:,1], data[:,:,2]
+max_rgb = np.maximum(np.maximum(r, g), b)
+min_rgb = np.minimum(np.minimum(r, g), b)
+saturation = max_rgb - min_rgb
+luminance = 0.299 * r + 0.587 * g + 0.114 * b
+bg_mask = (luminance > 180) & (saturation < 40)
+data[bg_mask, 3] = 0
+edge_mask = (luminance > 160) & (luminance <= 180) & (saturation < 40)
+edge_alpha = ((180 - luminance[edge_mask]) / 20.0 * 255).clip(0, 255).astype(np.uint8)
+data[edge_mask, 3] = edge_alpha
+# Crop to content bounding box
+alpha = data[:,:,3]
+rows = np.any(alpha > 0, axis=1)
+cols = np.any(alpha > 0, axis=0)
+rmin, rmax = np.where(rows)[0][[0, -1]]
+cmin, cmax = np.where(cols)[0][[0, -1]]
+pad = 10
+result = Image.fromarray(data.astype(np.uint8))
+result = result.crop((cmin-pad, rmin-pad, cmax+pad, rmax+pad))
+result.save("output.png")
+```
+
+**Why crop matters:** SVG exports and some design tools embed a large canvas (e.g. 2816×1536) around a small icon — the crop step finds the actual content bounds. Always check `img.size` before/after.
+

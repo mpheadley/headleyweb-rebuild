@@ -169,6 +169,7 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
 ### Completed Pages
 - Homepage, Services, About, Portfolio, Contact, Privacy, Quiz, Blog (2 posts)
 - All pages have: meta tags, canonical, OG/Twitter, JSON-LD
+- **/card** — QR code business card landing page. Editorial dark header + sage→terracotta gradient. Nav/Footer suppressed via middleware. GA4 `card_scan` event (consent-gated). VCF download with embedded headshot. SL brand card.
 
 ### Quiz & Audit Enhancements
 - AI recommendations prompt: full StoryBrand SB7 framework, scoring context, explicit task instructions
