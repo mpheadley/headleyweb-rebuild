@@ -6,7 +6,10 @@ ORG:Headley Web & SEO
 TITLE:Web Design & SEO
 TEL;TYPE=CELL,VOICE:(256) 644-7334
 EMAIL;TYPE=WORK:matt@headleyweb.com
-URL:https://headleyweb.com
+URL;TYPE=WORK:https://headleyweb.com
 ADR;TYPE=WORK:;;Jacksonville;AL;;;USA
+PHOTO;VALUE=URI:https://headleyweb.com/images/headshot-matt-headley.webp
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/mpheadley/
+X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/HeadleyWebSEO/
 NOTE:Web design & SEO for local businesses in Northeast Alabama. Get found. Get calls. Get booked.
 END:VCARD
