@@ -94,6 +94,11 @@ Full log of pricing structure decisions, considerations explored, and positions 
 - Site stays at $199. Her $149 is a private founding client rate, never published.
 - $600/year delta is worth less than her testimonial and referral network.
 
+### Giovanna Care Plan — Decision Framework (resolved April 2026)
+- **If she picks $149:** $149 includes GBP management + 2 blog posts/month (already committed). Do both. Use keyword gap report from discovery to drive post topics — not generic content. This produces the better long-term case study: GBP data in 30-60 days + blog SEO compounding over 6-9 months. That's the chart that closes Phase 3 clients.
+- **If she picks $49:** Do GBP work anyway for the first 90 days. Tell her upfront: "I'm managing your GBP for 90 days as part of the founding arrangement — I need the case study numbers and I want you to have real results." Pitch upgrade to $149 at 90 days with the data. Don't do blog work at $49 — GBP only. This produces a shorter, narrower case study (calls/impressions) — usable for Phase 2, not Phase 3.
+- **90-day upgrade conversation (both scenarios):** Show the data, pitch $300/month GBP + citations + review responses + quarterly content updates. Natural escalation, not a surprise.
+
 ### Between Worlds Case Study Framing (resolved March 2026)
 - Frame: "From referral-only to a full digital sales system."
 - Structure: who Giovanna is -> business challenge -> what was built (matter-of-fact) -> Phase 2 anchor (scrollytelling demo) -> Giovanna's quote -> CTA.

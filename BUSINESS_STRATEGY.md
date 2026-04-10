@@ -179,6 +179,45 @@ These are upsells to existing builds or standalone products. All use tools alrea
 
 ---
 
+## Active Opportunities (April 2026)
+
+### Sebastian (Warm Referral — Act This Week)
+Videographer. Connected through Giovanna's network. Has clients who need SEO. Exchanged phone numbers.
+
+**Pitch:**
+> "I help Northeast Alabama service businesses clarify their story and get found locally — through custom websites, local SEO, and Southern Legends, community business profiles I'm syndicating through local publications. Your videography clients would benefit from both your video production and a solid web presence where people can actually find them. Who's your biggest frustrated client right now? Let me show you what I can do."
+
+**Ask:** Who are his typical clients? What's their pain point? Can he intro you to one person?
+**Why it works:** Complementary service (video + web), shared client base, positions Southern Legends as authority signal.
+
+### Giovanna Retainer Upgrade (90 Days Post-Launch)
+Site launched ~March 2026. At 90 days, propose upgrade from founding rate to:
+> "I've set up your local SEO foundation. Going forward I can manage your Google Business Profile, local citations, review responses, and quarterly content updates for $300/month. That keeps you competitive and visible to people searching for interpretation services in our area."
+
+This converts a founding client into the first real-rate retainer.
+
+---
+
+## Media Credentials & Authority Assets (April 2026)
+
+These are real leverage for Phase 2–3 client acquisition. Not useful for local service businesses in Calhoun County — useful for moving upmarket.
+
+- **Anniston Star stringer** — local newspaper byline, builds community authority. After each byline, soft-pitch subjects on web/SEO needs.
+- **Calhoun Journal syndication** — 120K+ audience. Syndicating Southern Legends profiles here extends reach and positions Matt as a regional voice, not just a local freelancer.
+- **Southern Legends** — 2 published profiles (Gene Ellison/Music Box & Mom to Go, Samuel Sawyer/Quality Farm), real social traction. Top-of-funnel lead gen, not a revenue product yet. Each profile = relationship with a business owner = natural web design conversation. Do NOT charge for profiles until portfolio proof + established syndication (Phase 3+).
+
+**How this moves the needle:** Media credentials don't close $1,500 deals with local HVAC companies. They do close $5,000–8,000 deals with regional businesses, nonprofits with real budgets, and professional services firms who've worked with agencies before and understand narrative value. That's Phase 3. Build the credentials now, deploy them then.
+
+---
+
+## StoryBrand Certification — Resolved Decision (April 2026)
+
+**Decision: Not now.** $10K upfront. Revisit after $20–30K in revenue.
+
+**Why:** No income yet to justify the investment. Credibility is already real — Anniston Star, Southern Legends, media syndication, one delivered client (Giovanna). The certification badge doesn't change what you can deliver; it just formalizes it for buyers who need that signal. Those buyers are Phase 3 clients. Get there first.
+
+---
+
 ## Market Segmentation & Value Ladder
 
 > Context: Calhoun County median household income is ~$55K (36% below national
