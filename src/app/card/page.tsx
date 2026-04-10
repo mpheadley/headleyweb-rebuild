@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Facebook, Linkedin, UserPlus } from "lucide-react";
+import { Mail, Globe, Facebook, Linkedin, UserPlus } from "lucide-react";
 import CardScanTracker from "./CardScanTracker";
 
 export const metadata: Metadata = {
@@ -14,28 +14,28 @@ export const metadata: Metadata = {
 
 const links = [
   {
-    href: "mailto:matt@headleyweb.com",
-    icon: Mail,
-    label: "matt@headleyweb.com",
-    subtitle: "Email me",
-  },
-  {
     href: "/portfolio",
     icon: null,
     label: "See my work",
     subtitle: "Recent client sites",
   },
   {
-    href: "https://www.facebook.com/HeadleyWebSEO/?utm_source=business_card&utm_medium=qr&utm_campaign=networking",
-    icon: Facebook,
-    label: "Headley Web & SEO",
-    subtitle: "Facebook page",
+    href: "mailto:matt@headleyweb.com",
+    icon: Mail,
+    label: "matt@headleyweb.com",
+    subtitle: "Email me",
   },
   {
     href: "https://www.linkedin.com/in/mpheadley/",
     icon: Linkedin,
     label: "Matt Headley",
     subtitle: "Connect on LinkedIn",
+  },
+  {
+    href: "https://www.facebook.com/HeadleyWebSEO/?utm_source=business_card&utm_medium=qr&utm_campaign=networking",
+    icon: Facebook,
+    label: "Headley Web & SEO",
+    subtitle: "Facebook page",
   },
 ];
 
@@ -247,17 +247,17 @@ export default function CardPage() {
           {/* Footer — branded link to homepage */}
           <a
             href="https://headleyweb.com?utm_source=business_card&utm_medium=qr&utm_campaign=networking"
-            className="flex flex-col items-center mt-4 gap-1 opacity-70 hover:opacity-100 transition-opacity duration-200"
+            className="flex flex-col items-center mt-4 gap-2 opacity-80 hover:opacity-100 transition-opacity duration-200"
           >
             <Image
-              src="/images/logo-icon-light.svg"
+              src="/images/logo-icon-transparent.png"
               alt="Headley Web & SEO"
               width={224}
               height={224}
-              style={{ mixBlendMode: "screen" }}
             />
-            <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.8)" }}>
-              headleyweb.com →
+            <span className="flex items-center gap-1.5 text-sm font-medium" style={{ color: "#ffffff" }}>
+              <Globe size={14} />
+              headleyweb.com
             </span>
           </a>
 
