@@ -130,7 +130,7 @@ export default function AboutPage() {
             <span className="text-hw-primary">Just Like You</span>
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll" data-speakable="true">
-            I build websites for local businesses. I&apos;m good at it, I care about getting it right, and I like knowing the people I work with.
+            I got tired of watching good businesses send money to agencies that don&apos;t know their town and disappear after the check clears. So I started one that doesn&apos;t.
           </p>
         </div>
       </section>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                 I&apos;m Matt Headley. Husband, dad, and small business owner in Jacksonville, Alabama. I spent 19 years in ministry and ran a family flower farm with my wife. Every one of those needed a website, and I was the one who figured it out. Turns out I was pretty good at it.
               </p>
               <p className="text-lg leading-relaxed">
-                The people I know need websites. I need work I actually enjoy. I like building things, I care about getting them right, and I like knowing the people I work with.
+                I got tired of watching good businesses send money to agencies that don&apos;t know their town, don&apos;t know their customers, and disappear after the check clears. So I started Headley Web &amp; SEO. Local, accountable, and still here after the invoice is paid.
               </p>
               <p className="text-lg leading-relaxed">
                 That&apos;s what I do. I build your website, set up your Google Business Profile, and make sure the right people can find you. You get the calls. I handle the tech. Flat rate, no contracts. If something breaks, you text me.

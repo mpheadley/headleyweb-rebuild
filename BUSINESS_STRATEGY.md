@@ -5,6 +5,12 @@
 
 ---
 
+## Weekly Operating Rhythm
+
+See `~/Developer/webdev/southern-legends/STRATEGY.md` — Weekly Rhythm section. This is a shared rhythm across both SL and HW. The outreach strategy, business type opener table, and Tuesday field cadence all live there.
+
+---
+
 ## The $400K Solo Model
 
 **Revenue target:** $402,000/year as a solo operator
@@ -406,6 +412,9 @@ Clients of WideNet, Plexamedia, YourBizWebGuy, and other local agencies.
 - [ ] Build AEO Brand Grader MVP (lead magnet — "Is AI recommending your business?") — see AI Visibility Audit plan below
 - [ ] Record evergreen webinar: "How the StoryBrand Framework Gets Your Phone Ringing" (requires 2-3 case studies for examples section)
 - [ ] Reposition $2,500/mo retainer as "Fractional CMO" — you're their marketing department, not a maintenance plan
+- [ ] Add ad management as an optional service (Phase 3 only — requires track record + capacity to manage campaigns)
+
+> **On ad management (decided April 2026):** Don't offer it in Phase 1-2. Current positioning is organic-first ("sites that rank without ad spend") — adding ads before you have proof dilutes the differentiation and puts you in a commodity market. When you evolve into a StoryBrand marketing consultant (Phase 3+), ads fit naturally as part of the full funnel. Refer ad requests out for now and take a referral fee if possible.
 
 ### Phase 4: Scale to $400K (Month 6+)
 - [ ] 3-5 retainer clients at $1,500-2,500/mo

@@ -29,14 +29,14 @@ Their business is invisible in the Google map pack, the #1 way local customers c
 Frustration and confusion. Frustrated that the rules keep changing, embarrassed when someone asks for their website, confused by "SEO" and "AI visibility" jargon, and anxious that they're falling behind in ways they can't even see.
 
 **Philosophical problem** (why it's just wrong):
-A hardworking Alabama business shouldn't lose customers because the technology shifted underneath them. A craftsman's success should be determined by the quality of their work, not by whether their website was built for the way people search today.
+A hardworking Alabama business owner shouldn't be paying for something that works against them. Your success should be determined by the quality of your work — not by whether someone sold you the right website.
 
 ---
 
 ## 3. Guide (The Business)
 
 **Empathy statement** (prove you understand their frustration):
-As a husband, dad, and former pastor living right here in Jacksonville, I know that running a small business isn't just about "marketing." It's about providing for your family and serving your community. I started Headley Web & SEO because I grew tired of seeing great local businesses get ignored by high-priced agencies.
+As a husband, dad, and former pastor living right here in Jacksonville, I know that running a small business isn't just about "marketing." It's about providing for your family and serving your community. I got tired of watching good businesses send money to agencies that don't know their town, don't know their customers, and disappear after the check clears.
 
 **Authority markers** (why they should trust you):
 - Show Up on Google Maps: GBP optimization so you land in the top 3 on Maps
@@ -45,6 +45,7 @@ As a husband, dad, and former pastor living right here in Jacksonville, I know t
 - Built for Your Market: every page targets local search terms, Jacksonville to Gadsden and everywhere in between
 - StoryBrand messaging framework (customer-first, not agency-first)
 - AI Visibility: I make sure Google AND AI recommend your business, not just index it
+- Reviews Feed AI: as of 2025, GBP reviews directly influence what AI search tools (ChatGPT, Perplexity, Google AI Overviews) recommend. More recent reviews = stronger AI citation signal. This makes review coaching (Growth Care plan) a technical SEO necessity, not a soft perk.
 
 ---
 
@@ -117,6 +118,13 @@ Get found. Get calls. Get booked.
 > Use it verbatim in: footer, GBP description, social media bios, email signature,
 > business cards, Loom intro, pitch deck title slide. StoryBrand principle:
 > repetition breeds clarity, clarity breeds trust.
+
+**Emotional tagline (hero eyebrow, business card, sales conversations):**
+Your website should show up like you do.
+
+> Speaks to the embarrassment/pride axis in the brandscript. Pairs well with the
+> functional tagline — lead with this emotionally, follow with "Get found. Get calls.
+> Get booked." as the outcome statement.
 
 **Google Business Profile description** (750 char max):
 Get found. Get calls. Get booked. Headley Web & SEO helps local service businesses in Northeast Alabama show up on Google and start getting leads. I build clear, mobile-friendly websites using the StoryBrand framework, making your customer the hero. Every build includes local SEO and Google Business Profile setup. Flat-rate pricing, you own your site outright. Serving Jacksonville, Anniston, Oxford, Gadsden, and surrounding areas.
