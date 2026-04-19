@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SearchTypewriter from "./components/SearchTypewriter";
 import LetterReveal from "./components/LetterReveal";
+import SubscribeCTA from "./components/SubscribeCTA";
 import { projects } from "@/app/data/projects";
 import { buildTiers } from "@/app/data/pricing";
 
@@ -886,6 +887,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SubscribeCTA variant="section" />
 
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only">

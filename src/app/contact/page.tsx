@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { MapPin, Mail, Phone, Clock, Send, HelpCircle } from "lucide-react";
+import SubscribeCTA from "@/app/components/SubscribeCTA";
 import type { Metadata } from "next";
 
 const breadcrumbSchema = {
@@ -274,6 +275,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <SubscribeCTA variant="section" />
     </main>
   );
 }

@@ -11,13 +11,13 @@ export default function NewsletterSignup() {
     setStatus("sending");
 
     const form = e.currentTarget;
-    const data = new FormData(form);
+    const data = Object.fromEntries(new FormData(form));
 
     try {
-      const res = await fetch("https://formspree.io/f/xyknwdgp", {
+      const res = await fetch("/api/subscribe", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: data.email }),
       });
       if (res.ok) {
         setStatus("success");
@@ -40,10 +40,6 @@ export default function NewsletterSignup() {
 
   return (
     <form onSubmit={handleSubmit} className="flex items-center justify-center gap-2 max-w-sm mx-auto">
-      <input type="hidden" name="newsletter" value="true" />
-      <input type="hidden" name="source" value="footer" />
-      <input type="hidden" name="_subject" value="New Newsletter Signup from headleyweb.com" />
-      <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
       <input
         type="email"
         name="email"
