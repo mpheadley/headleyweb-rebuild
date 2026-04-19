@@ -1,5 +1,17 @@
 # Email Nurture Sequence — Headley Web & SEO
 
+## When to Add More Emails
+
+**Audit funnel (Days 0–21):** Complete. Revisit Email 4 (proof/case study) when Between Worlds or another client hits 30-day data. One real metric changes conversion significantly.
+
+**Newsletter sequence (welcome + Day 3):** Add Days 7, 14, 21 when 3-4 proofed blog posts are live. Pull the best paragraph from each post, add a link. Don't write emails without content to back them up.
+
+**Trigger to expand:** 3-4 proofed blog posts live, or first case study with real data.
+
+---
+
+
+
 > Drafted April 2026. Claude draft — Matt to proof voice before activating.
 > Sequence triggers after audit tool lead capture (headleyweb.com/audit).
 > Voice guide: `content/VOICE-GUIDE.md`. BrandScript: `brandscript.md`.
