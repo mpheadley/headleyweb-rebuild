@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Check, MapPin, ArrowRight, Sparkles, BookOpen, DollarSign, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import SubscribeCTA from "@/app/components/SubscribeCTA";
 
 export const metadata: Metadata = {
   title: "About",
@@ -250,6 +251,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <SubscribeCTA variant="section" />
     </main>
   );
 }
