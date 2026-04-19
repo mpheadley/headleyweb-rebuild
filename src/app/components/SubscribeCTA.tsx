@@ -6,9 +6,10 @@ import { Loader2, CheckCircle2 } from "lucide-react";
 interface SubscribeCTAProps {
   variant?: "section" | "inline";
   className?: string;
+  source?: string;
 }
 
-export default function SubscribeCTA({ variant = "section", className = "" }: SubscribeCTAProps) {
+export default function SubscribeCTA({ variant = "section", className = "", source }: SubscribeCTAProps) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -22,7 +23,7 @@ export default function SubscribeCTA({ variant = "section", className = "" }: Su
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: data.email, firstName: data.firstName }),
+        body: JSON.stringify({ email: data.email, firstName: data.firstName, source: source ?? (variant === "inline" ? "footer" : "homepage") }),
       });
       if (res.ok) {
         setStatus("success");

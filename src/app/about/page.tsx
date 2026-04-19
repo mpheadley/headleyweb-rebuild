@@ -251,7 +251,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <SubscribeCTA variant="section" />
+      <SubscribeCTA variant="section" source="about" />
     </main>
   );
 }

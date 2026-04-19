@@ -888,7 +888,7 @@ export default function Home() {
         </div>
       </section>
 
-      <SubscribeCTA variant="section" />
+      <SubscribeCTA variant="section" source="homepage" />
 
       {/* ═══ Answer-First Content Block (AEO / SEO) — visually hidden, crawlable ═══ */}
       <section className="sr-only">

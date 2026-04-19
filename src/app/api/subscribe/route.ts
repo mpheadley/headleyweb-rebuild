@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Email service not configured" }, { status: 500 });
   }
 
-  let body: { email: string; firstName?: string };
+  let body: { email: string; firstName?: string; source?: string };
   try {
     body = await request.json();
   } catch {
@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
 
   const email = body.email?.trim();
   const firstName = body.firstName?.trim() ?? "";
+  const source = body.source?.trim() ?? "unknown";
 
   if (!email) {
     return NextResponse.json({ error: "Email is required" }, { status: 400 });
@@ -77,6 +78,14 @@ Headley Web & SEO
       html: welcomeHtml,
       text: welcomeText,
     }).catch((err) => console.error("Welcome email error:", err));
+
+    // Notify Matt of new subscriber + source
+    await resend.emails.send({
+      from: "Headley Web <matt@headleyweb.com>",
+      to: "matt@headleyweb.com",
+      subject: `New HW subscriber — ${source}`,
+      text: `New newsletter subscriber on Headley Web.\n\nEmail: ${email}\nName: ${firstName || "not provided"}\nSource: ${source}`,
+    }).catch((err) => console.error("Subscriber notify error:", err));
 
     return NextResponse.json({ success: true });
   } catch (err) {
