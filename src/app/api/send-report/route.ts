@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { createClient } from "@supabase/supabase-js";
 import { generateReportPdf } from "@/lib/generate-report-pdf";
 import type { AuditResult } from "@/lib/audit-types";
 
@@ -109,6 +110,31 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error("Resend error:", error);
       return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+    }
+
+    // Capture lead into nurture sequence (best-effort — don't fail the request if this errors)
+    try {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+      const audienceId = process.env.HW_RESEND_AUDIENCE_ID?.trim();
+
+      if (supabaseUrl && supabaseKey) {
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        await supabase.from("hw_nurture_leads").upsert(
+          { email: body.email, added_at: new Date().toISOString(), sequence_step: 0, active: true },
+          { onConflict: "email", ignoreDuplicates: true }
+        );
+      }
+
+      if (audienceId) {
+        await resend.contacts.create({
+          audienceId,
+          email: body.email,
+          unsubscribed: false,
+        });
+      }
+    } catch (captureErr) {
+      console.error("Lead capture error (non-fatal):", captureErr);
     }
 
     return NextResponse.json({ success: true });
