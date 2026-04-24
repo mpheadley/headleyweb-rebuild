@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
     try {
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
       const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
-      const audienceId = process.env.HW_RESEND_AUDIENCE_ID?.trim();
+      const audienceId = process.env.HW_NEWSLETTER_AUDIENCE_ID?.trim();
 
       if (supabaseUrl && supabaseKey) {
         const supabase = createClient(supabaseUrl, supabaseKey);
