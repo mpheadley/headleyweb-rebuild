@@ -66,6 +66,16 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    title: "Heather Florals",
+    description:
+      "Full-service florist site for a Northeast Alabama flower farm. Custom Next.js build with seasonal gallery, service pages, and a mobile-first layout built to drive inquiry calls.",
+    desktop: "/images/portfolio/project-heather-florals-800w.webp",
+    mobile: "/images/portfolio/project-heather-florals-mobile-480w.webp",
+    url: "https://heatherflorals.com",
+    tag: "Local Service",
+    featured: false,
+  },
+  {
     title: "Southern Legends",
     description:
       "Editorial storytelling site profiling small business owners and community figures across Northeast Alabama. Custom Next.js build with longform layouts and rich photography.",

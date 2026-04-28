@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/quiz`, lastModified: new Date("2026-03-17"), changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/audit`, lastModified: new Date("2026-03-17"), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/privacy`, lastModified: new Date("2026-03-21"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/colophon`, lastModified: new Date("2026-04-28"), changeFrequency: "yearly", priority: 0.2 },
     { url: `${baseUrl}/locations/calhoun-county`, lastModified: new Date("2026-03-20"), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/locations/etowah-county`, lastModified: new Date("2026-03-20"), changeFrequency: "monthly", priority: 0.7 },
     ...locationPages,

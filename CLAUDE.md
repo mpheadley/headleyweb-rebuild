@@ -176,6 +176,7 @@ Prompt the user: "Want to add anything to the Next.js kit notes?"
 - PDF download button on audit and quiz pages (dynamic import for jsPDF)
 - Email delivery: `/api/send-report` sends PDF via Resend + Formspree lead notification. Resend `from` address is `reports@headleyweb.com` (NOT `reports@send.headleyweb.com`)
 - Vercel env vars: `ANTHROPIC_API_KEY`, `RESEND_API_KEY`, `PAGESPEED_API_KEY`, `NEXT_PUBLIC_INTERNAL_KEY`
+- **Resend audiences:** The "General" default audience was renamed to "Southern Legends" and is used for the SL newsletter. When headleyweb needs an email list (blog newsletter, lead nurture, etc.), create a new audience in Resend — don't reuse the SL one. Audiences are free.
 
 ### StoryBrand Copy Alignment (2026-03-31)
 - Removed "StoryBrand" from client-facing grade label (uses "Clear and compelling" now)

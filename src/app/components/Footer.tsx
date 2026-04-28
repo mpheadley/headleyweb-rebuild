@@ -121,6 +121,9 @@ export default function Footer() {
           <Link href="/privacy" className="hover:text-white transition-colors">
             Privacy Policy
           </Link>
+          <Link href="/colophon" className="hover:text-white transition-colors">
+            Colophon
+          </Link>
         </div>
 
         <a

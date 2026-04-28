@@ -1,7 +1,24 @@
 # Headley Web & SEO — Business Growth Strategy
 
-> Consolidated from strategy sessions with Claude Code and Gemini (March 2026).
+> Merged from BUSINESS_STRATEGY.md + business-strategy-april-2026.md + PLAN.md (April 2026).
 > Review quarterly. Update as pricing, services, and proof evolve.
+
+---
+
+## Current Status (April 2026)
+
+- **Active clients:** Giovanna / Between Worlds (site complete, happy; $49–$199/mo retainer pending)
+- **In pipeline:** Jacksonville Christian Outreach Center (free build committed)
+- **Revenue to date:** $0 from web builds; care plan starting
+- **Proof of concept:** Southern Legends (4 published profiles), Anniston Star stringer, Calhoun Journal syndication invitation
+
+**What you actually have — stop underestimating this:**
+- One satisfied client (Giovanna) — proof you can deliver
+- Two complete business profiles with real social traction
+- Media syndication invitations (Calhoun Journal 120K+ readers + Anniston Star)
+- Clear positioning: StoryBrand expert + hand-coded web designer + local SEO specialist for NE Alabama service businesses
+
+**This is not "early stage with nothing to show." This is established proof with pricing that doesn't match the work yet.**
 
 ---
 
@@ -187,6 +204,19 @@ These are upsells to existing builds or standalone products. All use tools alrea
 
 ## Active Opportunities (April 2026)
 
+### Anniston City Market — Part-Time Marketing (NEW — April 2026)
+Sara Woolmaker (AD at AMAG) offered Matt a part-time marketing role via Heather. $17/hour, up to 30 hours/week (flexible, not required). Matt said yes.
+- **Why it matters:** Income stability while building HW client base. More importantly: direct access to every vendor and business owner coming through the market — pipeline in the room.
+- **Strategic value:** Local credibility, community visibility, potential web design clients from vendor relationships.
+
+### Between Worlds (Giovanna) — In Pipeline, Holding Pattern
+Site built. Giovanna in holding pattern for personal reasons (April 2026). Don't push — wait for her signal to re-engage.
+- When she re-engages, first priority is getting the site live so it can serve as a reference client.
+- Retainer conversation happens at 90 days post-launch.
+
+### H3 Landscaping — False Start
+Never launched. Not a reference client. Remove from pipeline until further notice.
+
 ### Sebastian (Warm Referral — Act This Week)
 Videographer. Connected through Giovanna's network. Has clients who need SEO. Exchanged phone numbers.
 
@@ -195,12 +225,6 @@ Videographer. Connected through Giovanna's network. Has clients who need SEO. Ex
 
 **Ask:** Who are his typical clients? What's their pain point? Can he intro you to one person?
 **Why it works:** Complementary service (video + web), shared client base, positions Southern Legends as authority signal.
-
-### Giovanna Retainer Upgrade (90 Days Post-Launch)
-Site launched ~March 2026. At 90 days, propose upgrade from founding rate to:
-> "I've set up your local SEO foundation. Going forward I can manage your Google Business Profile, local citations, review responses, and quarterly content updates for $300/month. That keeps you competitive and visible to people searching for interpretation services in our area."
-
-This converts a founding client into the first real-rate retainer.
 
 ---
 
@@ -340,6 +364,8 @@ Nonprofit and community organization builds are high-value portfolio pieces even
 - [ ] Update personal LinkedIn profile — headline, about, employer (Idea #9b)
 - [ ] Research Calhoun County / Jacksonville Chamber of Commerce membership (Idea #9c)
 - [ ] Launch "GBP Rescue" micro-offer at $149-$249 (Idea #10)
+- [ ] **Start Facebook selfie video content** — short 30-60 sec reels, face in the feed, filmed at recognizable Jacksonville locations. One per week minimum. Match Adam Harper's cadence. This is the #1 short-term visibility move.
+- [ ] **Get one video testimonial from a client** — text a satisfied client (Giovanna when she re-engages, or Anniston City Market contact once onboarded). Video > written testimonial on Facebook.
 - [ ] Start "build in public" Facebook posts for every project completion (Idea #8)
 - [ ] Identify 3 adjacent service providers for partnership (Idea #7) — photographer, printer, bookkeeper
 - [x] First competitor audit: Plexamedia (Gadsden) — see `content/blog/drafts/competitor-research-plexamedia.md` (Gap #3)
@@ -792,6 +818,15 @@ Acquisition funnel is mapped thoroughly (lead magnets → audit → build → ca
 
 Full competitor research now in [COMPETITOR_RESEARCH.md](COMPETITOR_RESEARCH.md) — 18 local competitors analyzed with deep-dives on Plexamedia, Twentytwo Media, Willingham Creative, and J. Alexandria Creative.
 
+**NEW — Adam Harper / Profit Flow AI (confirmed local, April 2026)**
+Most direct competitor. Jacksonville, AL. Phone (256) 472-9111. profitflowai.net. Facebook: @ProfitFlowAI.
+- 12 years in digital marketing. Flagship case study: C Mac Plumbing ranked #1 Google since 2014.
+- Model: free website (loss-leader) → monthly GoHighLevel-based AI marketing system (review funnels + 1-year follow-up sequences).
+- Positioning: AEO/AI search visibility — getting businesses into ChatGPT, Perplexity results. "23x conversion from AI traffic."
+- Content: 5 Facebook reels in 6 weeks (started March 11, 2026), all customer video testimonials. Selfie video at Jacksonville welcome sign.
+- Weakness: funnel-heavy pitch style, template sites, 12-year-old flagship case study.
+- **Your play:** Don't compete on AI hype. Compete on craft, relationship, and consistent video presence. Match his reel cadence on Facebook. Talk about AEO out loud — your sites already have it baked in. Consider formalizing monthly AEO visibility as a named recurring service.
+
 **Ongoing actions:**
 - Monthly: Search "web design Anniston AL," "web designer near me," "website design Gadsden AL" — document who's ranking, what they charge, what they're bad at.
 - Track competitors' GBP listings (reviews, response rate, categories).
@@ -1084,4 +1119,166 @@ Testimonial: "[Quote]" — [Client name, business]
 
 ---
 
-*Last updated: March 13, 2026 (added Growth Gaps & New Ideas section)*
+---
+
+## Post-Launch Website Roadmap
+
+### Website Pricing Update (Before First Phase 2 Paid Client)
+
+Current published pricing (`$495–$1,995`) anchors too low and contradicts StoryBrand expert positioning. Update before pitching any Phase 2 paid work.
+
+- [ ] Update services/pricing section: **Web builds → $5,000–$8,000**
+- [ ] Update care plans: **$150–$300/month** (tiered: maintenance / SEO focus / content+marketing)
+- [ ] Add nonprofit flexibility language: *"For community organizations, we offer tiered options. Let's discuss what makes sense for your impact and budget."*
+- [ ] Review all site copy for references to old price range
+
+**Why Phase 2, not now:** No paid clients yet — raising prices before delivering paid work is the right order.
+
+---
+
+### Location Pages (Local SEO)
+
+- [ ] `/locations/anniston/` — "Web Design in Anniston, AL"
+- [ ] `/locations/oxford/` — "Web Design in Oxford, AL"
+- [ ] `/locations/gadsden/` — "Web Design in Gadsden, AL"
+- [ ] `/locations/jacksonville/` — "Web Design in Jacksonville, AL"
+- [ ] `/locations/talladega/` — "Web Design in Talladega, AL"
+- [ ] `/locations/centre/` — "Web Design in Centre, AL"
+
+**SEO rationale:** Each page ranks independently for "[web design] + [city name]" search traffic.
+
+---
+
+### Social Media Reintroduction
+
+**Three-post sequence (before viral content or blog distribution pushes):**
+
+1. **Heather's 40th birthday post** — natural, personal, warms up the profile first
+2. **SL share (a few days later)** — one line about the hard season, weave into a profile share
+3. **Normal posting resumes** — post to personal Facebook first, then headleyweb.com socials
+
+**Rules:** Don't let the hard season become the brand. One strong re-entry, then shift to the work.
+
+---
+
+### "Broken and Becoming" Copy Updates
+
+- [ ] **About page bio** — Replace Paragraph 1 with revised version that names the loss and connects it to the work. Draft in `content/blog/drafts/copy-updates.md`.
+- [ ] **Southern Legends self-profile** — Matt's own profile (500-800 words). Where the full weight of the story lives.
+- [ ] **Homepage** — Don't touch. Customer is the hero there.
+
+---
+
+### Services Page — Phase 2 Visual Upgrade
+
+- [ ] Replace Web Design service card icon with a real project screenshot (Dart Side, ESC, etc.)
+- [ ] Replace Google Business Profile icon with a GBP listing screenshot showing reviews/map pack
+- [ ] Leave SEO and Monthly Care as icons (concepts too abstract to photograph well)
+
+---
+
+### Portfolio Data Collection (Ongoing)
+
+- [ ] Screenshot client sites before your build goes live (the "before")
+- [ ] Ask for testimonials immediately after launch
+- [ ] Check metrics at 30 and 60 days post-launch
+- [ ] Add Southern Legends to portfolio page — personal project / creative showcase card
+
+---
+
+### Blog Features Still Open
+
+- [ ] Tag/category filtering
+- [ ] RSS feed
+
+---
+
+### Audit Landing Page Template (Phase 3)
+
+- [ ] Build reusable `/audit/[trade]-[city]` page template (video embed + observations + CTA)
+- [ ] First instance: "I Googled [Plumber] in Anniston" — screen record + landing page
+- [ ] Component: `<AuditLandingPage trade="" city="" videoUrl="" observations={[]} />`
+
+---
+
+### Vanilla Starter Kit AEO Updates
+
+- [ ] Update `index.html` — add `FAQPage` schema to FAQ section
+- [ ] Update `index.html` — add `HowTo` schema to process section
+- [ ] Update `index.html` — upgrade `LocalBusiness` to use `{{CLIENT_SCHEMA_TYPE}}` token
+- [ ] Update `services.html` — add answer-first content block + `Service` schema
+- [ ] Add `{{BRAND_DESCRIPTOR}}` token to templates
+- [ ] Add `{{CLIENT_SCHEMA_TYPE}}` token to `create-site.sh` wizard
+
+---
+
+### Viral Content Builds (Weekend Speed-Builds)
+
+| Build | Status |
+|-------|--------|
+| Emotional Support Chicken | DEPLOYED to Vercel |
+| Wife's Fake Business | Planned — feet pics or similar |
+| "AI Builds Its Own Website" | Planned — screen record Claude building a site about itself |
+
+**Idea backlog:** Professional Porch Sitting, Waffle House Sommelier, Professional Church Potluck Judging, Competitive Napping League, Professional Apology Writer, Artisanal Ice Cubes, Kids' Lemonade Stand: Enterprise Edition, Marriage Referee Service, Premium Dirt, The Infinite Portfolio
+
+---
+
+## Reference Material
+
+### Tech Stack
+
+| Layer | Tool | Why |
+|-------|------|-----|
+| Framework | Next.js (App Router) | SSG/SSR, image optimization, MDX support, future-proof |
+| Styling | Tailwind CSS v4 | Utility classes, build-time CSS |
+| Blog | MDX | Markdown + React components, lives in Git, no CMS overhead |
+| Hosting | Vercel (free tier) | Zero-config deploys from GitHub |
+| Analytics | GA4 (consent-gated) + Search Console | Event tracking on CTAs |
+| Forms | Formspree | Contact form submissions |
+| Domain | headleyweb.com | Point DNS to Vercel |
+
+### Analytics & Tracking
+
+```javascript
+// GA4 event tracking — add to all sites
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'phone_click', { event_category: 'contact', event_label: link.href });
+  });
+});
+
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', () => {
+    gtag('event', 'form_submit', { event_category: 'contact', event_label: form.action });
+  });
+});
+
+document.querySelectorAll('.btn-primary, .cta-button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'engagement', event_label: btn.textContent.trim() });
+  });
+});
+```
+
+**For case study data (track per client):** GA4 events: phone clicks, form submissions, CTA clicks. Google Search Console: impressions, clicks, average position. GBP: views, direction requests, calls (manual check).
+
+---
+
+## Mindset
+
+**You have proof. Stop waiting for more.**
+
+- One happy client (Giovanna)
+- Four published profiles with traction
+- Media syndication offers
+- Anniston Star byline
+- A process that works (StoryBrand → copy → build)
+- Warm referrals (Sebastian, local network)
+
+When you raise prices and move into paid work, you're not overcharging. You're correcting a pricing gap that's been holding you back.
+
+---
+
+*Sources merged: BUSINESS_STRATEGY.md + business-strategy-april-2026.md + PLAN.md*
+*Last updated: April 2026*

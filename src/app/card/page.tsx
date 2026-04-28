@@ -147,6 +147,23 @@ export default function CardPage() {
             Save to Contacts
           </a>
 
+          {/* Intro video — upload to public/videos/what-im-against.mp4 when filmed */}
+          {/* Remove this comment block and uncomment the video element below */}
+          {/*
+          <div className="mt-2 rounded-xl overflow-hidden" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.2)" }}>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="/images/headshot-matt-headley.webp"
+              className="w-full block"
+              style={{ aspectRatio: "9/16", objectFit: "cover", background: "var(--color-dark)" }}
+            >
+              <source src="/videos/what-im-against.mp4" type="video/mp4" />
+            </video>
+          </div>
+          */}
+
           {/* Divider */}
           <div
             className="h-px w-full my-1"

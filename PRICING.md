@@ -107,6 +107,43 @@ Full log of pricing structure decisions, considerations explored, and positions 
 
 ---
 
+---
+
+## Social Media Management Add-On (April 2026)
+
+**Status:** Phase 1 test — Between Worlds is the proof of concept. Don't add to site until BW delivers 60 days of results.
+
+**Why it's worth adding:** Multiple prospects already ask about social media management. Between Worlds specifically requested it. Recurring revenue, natural add-on to existing builds. GHL competitors are offering this as their main product — we can offer it on owned infrastructure at a lower price point.
+
+**Positioning:** Not a replacement for GHL. An add-on for clients who already have a site and want their social presence managed by the same person who knows their brand.
+
+### Pricing
+
+| Tier | Price | What's included |
+|---|---|---|
+| Social Starter | $199/mo | 3x/week Facebook posting, Canva templates, scheduling via Buffer, monthly content calendar |
+| Social Pro | $399/mo | Everything in Starter + bilingual content (English/Spanish), engagement monitoring, story posts, monthly strategy call |
+
+**Note:** Social Starter is priced to match Accelerate care plan — clients shouldn't have both unless they want blog + social. Natural conversation: "Do you want content that ranks on Google (Accelerate) or content that reaches people on Facebook (Social Starter)? Or both ($499/mo bundled)?"
+
+### Between Worlds Specifics
+- Spanish-primary, English-secondary content
+- Facebook only to start
+- 3x/week = 12 posts/month
+- $399/mo (Social Pro — bilingual premium justified)
+- See `between-worlds/SOCIAL-MEDIA-SYSTEM.md` for full content system
+
+### Tools (owned infrastructure, no GHL needed)
+- **Canva** — templates per client, brand colors locked in
+- **Buffer free plan** — schedules up to 10 posts free, $6/mo Essentials for more
+- **Google Drive** — content calendar, client approval folder
+- **Time per client:** ~3 hrs/week once templates built (2 hrs/week at steady state)
+
+### When to add to the site
+After Between Worlds delivers 60 days of engagement data. One real result ("engagement up 3x in 60 days") makes this a sellable service. Until then it's a private offering — don't publish pricing.
+
+---
+
 ## Open Questions (unresolved as of March 2026)
 
 1. **Website published pricing update (Phase 2 action):** Current site shows $500–$2,000. Resolved direction: update to $5,000–$8,000 builds + $150–$300/month care plans before first Phase 2 paid client conversation. See PLAN.md for checklist.
