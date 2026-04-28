@@ -1,0 +1,387 @@
+/* ─── Cheat sheet print styles ───
+   Designed for a single 8.5x11 sheet, double-sided.
+   Reuses the brand palette via inline CSS variables (independent of style.css). */
+
+:root {
+  --orange: #FF8C00;
+  --dark-wood: #2a1a0a;
+  --cream: #FAF7F2;
+  --light-grey: #F3F0EB;
+  --white: #FFFFFF;
+  --muted: #6B5C4D;
+  --border: #D4C9B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--light-grey);
+  color: var(--dark-wood);
+  line-height: 1.5;
+  padding: 24px 16px;
+}
+
+/* Top toolbar — only visible on screen */
+.toolbar {
+  max-width: 850px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+}
+.toolbar a, .toolbar button {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark-wood);
+  text-decoration: none;
+  padding: 8px 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar button.primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+
+/* The sheet itself */
+.sheet {
+  max-width: 850px;
+  min-height: 1100px;
+  margin: 0 auto 24px;
+  padding: 48px 56px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 18px rgba(26, 16, 8, 0.08);
+  page-break-after: always;
+  position: relative;
+}
+.sheet:last-of-type { page-break-after: auto; }
+
+.sheet-side-label {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.sheet-eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--orange);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.sheet-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--dark-wood);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.sheet-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.sheet-divider {
+  height: 3px;
+  width: 56px;
+  background: var(--orange);
+  margin-bottom: 22px;
+}
+
+.sheet-section {
+  margin-bottom: 22px;
+}
+.sheet-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-wood);
+  margin-bottom: 8px;
+}
+.sheet-section p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.sheet-list {
+  list-style: none;
+  padding: 0;
+}
+.sheet-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--dark-wood);
+}
+.sheet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--orange);
+  border-radius: 2px;
+}
+.sheet-list li strong {
+  color: var(--dark-wood);
+  font-weight: 700;
+}
+
+.sheet-numbered {
+  list-style: none;
+  padding: 0;
+  counter-reset: sheetnum;
+}
+.sheet-numbered li {
+  counter-increment: sheetnum;
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.sheet-numbered li::before {
+  content: counter(sheetnum);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--dark-wood);
+  color: var(--white);
+  border-radius: 50%;
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sheet-numbered li .label {
+  display: block;
+  font-weight: 700;
+  color: var(--dark-wood);
+  margin-bottom: 2px;
+}
+.sheet-numbered li .body {
+  display: block;
+  color: var(--muted);
+}
+
+.sheet-formula {
+  background: var(--cream);
+  border-left: 3px solid var(--orange);
+  padding: 14px 18px;
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+  margin: 12px 0;
+}
+.sheet-formula em {
+  color: var(--orange);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.sheet-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--dark-wood);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+  margin: 18px 0;
+  line-height: 1.4;
+}
+.sheet-quote span { color: var(--orange); font-style: normal; }
+
+.sheet-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.sheet-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.sheet-card {
+  background: var(--cream);
+  padding: 14px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.sheet-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark-wood);
+  margin-bottom: 6px;
+}
+.sheet-card p, .sheet-card li {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.sheet-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 4px;
+}
+.sheet-card ul li {
+  padding-left: 12px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.sheet-card ul li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.sheet-prompt-block {
+  background: var(--dark-wood);
+  color: var(--cream);
+  padding: 12px 14px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  font-family: 'DM Sans', monospace;
+  white-space: pre-wrap;
+  margin: 8px 0 12px;
+}
+
+.sheet-footer {
+  position: absolute;
+  bottom: 24px;
+  left: 56px;
+  right: 56px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+.sheet-footer strong { color: var(--orange); }
+
+/* Print rules */
+@media print {
+  body { background: var(--white); padding: 0; }
+  .toolbar, .no-print { display: none !important; }
+  .sheet {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 36px 44px;
+    max-width: none;
+    min-height: 100vh;
+    page-break-after: always;
+  }
+  .sheet:last-of-type { page-break-after: auto; }
+}
+
+/* Comparison index page */
+.compare-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+.compare-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.compare-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark-wood);
+  margin-bottom: 6px;
+}
+.compare-card .compare-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.compare-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+.compare-card .compare-tradeoffs {
+  background: var(--cream);
+  padding: 12px 14px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+.compare-card .compare-tradeoffs strong { color: var(--dark-wood); }
+.compare-card a.compare-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.compare-intro {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+  padding: 0 16px;
+}
+.compare-intro h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--dark-wood);
+  margin-bottom: 10px;
+}
+.compare-intro p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+}
