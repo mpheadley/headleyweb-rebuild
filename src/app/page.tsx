@@ -862,6 +862,61 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ Wedding Vendor Tools ═══ */}
+      <section className="py-24 md:py-32 px-6 bg-hw-light grain">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-hw-primary font-semibold text-sm tracking-widest uppercase mb-3 animate-on-scroll">Also Built for Wedding Vendors</p>
+            <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">
+              Software for your trade. A site to match.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-10 animate-on-scroll" style={{ transitionDelay: "0.1s" }}>
+            <p className="text-hw-text-light leading-relaxed">
+              If you&apos;re a photographer, venue, DJ, coordinator, or other wedding vendor — I build custom websites AND maintain a suite of business tools built specifically for your trade. You don&apos;t have to manage two vendors.
+            </p>
+            <p className="text-hw-text-light leading-relaxed">
+              Each tool is purpose-built: ShootStudio for photographers, VenueStudio for venues, BeatStudio for DJs, AisleStudio for coordinators. Flat pricing, no booking fees, no lock-in.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+            {[
+              { trade: "Photographer", app: "ShootStudio", desc: "Client management, galleries, timelines" },
+              { trade: "Venue", app: "VenueStudio", desc: "Bookings, availability, proposals" },
+              { trade: "DJ", app: "BeatStudio", desc: "Music planning, questionnaires, day-of sheets" },
+              { trade: "Coordinator", app: "AisleStudio", desc: "From first inquiry to final timeline" },
+              { trade: "Hair & Makeup", app: "GlowStudio", desc: "Every bride and bridesmaid in one place" },
+              { trade: "Bridal Boutique", app: "DressStudio", desc: "Measurements, fittings, client management" },
+            ].map((item, i) => (
+              <div
+                key={item.app}
+                className="bg-white border border-black/10 rounded-xl p-4 animate-on-scroll"
+                style={{ transitionDelay: `${i * 0.07}s` }}
+              >
+                <p className="text-xs font-semibold text-hw-text-light uppercase tracking-widest mb-1">{item.trade}</p>
+                <p className="font-bold text-hw-dark mb-1">{item.app}</p>
+                <p className="text-sm text-hw-text-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center animate-on-scroll" style={{ transitionDelay: "0.45s" }}>
+            <a
+              href="https://weddingstudio.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary inline-flex items-center gap-2"
+            >
+              See all wedding vendor tools <ArrowRight className="w-4 h-4" />
+            </a>
+            <p className="text-hw-text-light text-sm mt-4">
+              Already a Headley Web client? Ask about bundling your site with the software for your trade.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ Final CTA ═══ */}
       <section className="py-24 md:py-32 px-6 bg-hw-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
