@@ -1,0 +1,35 @@
+## **The View from the Boat: Jean Ellison, The Music Box and Mom-to-Go**
+
+Jean Ellison is the kind of entrepreneur who makes people in Calhoun County wonder how she does it. She is the co-founder of The Music Box. She is the Mom-to-Go. She makes jerk chicken that people ask for by name. She manages travel soccer schedules in Pell City and runs cooking classes and sends out weekly grocery lists that simplify other people’s lives. She talks about building a hot pink empire of retail shelves and aprons and cutlery. She looks like a success story because she is one.
+
+I have known Jean for twenty years. We were at Jacksonville State Music Department together when the world felt like it was still in front of us. When I called her last week, she did not lead with her business plan. She led with a joke. "Am I late for practice? What is it? No. No, no, no. We’d be calling you Matt." I was a sketchball back then. I was the one sliding into the seat as the door was closing. Jean remembers that version of me. I told her I grew up. At least we will put it that way.
+
+It would be easy to let the story sit there. Two old friends talking about the good days at JSU and the businesses we are building now. But Jean is not interested in a brochure version of her life. She is successful today because she survived a time when the ground was not solid. She is building an empire now, but she is building it with the specific knowledge of what it feels like when the walls start to move.
+
+Jean had the plan. It was a perfect, Type-A, Southeast Alabama success story. Finish the degrees. Marry her college sweetheart. Have the baby. Land the dream job. She and her husband Steve were both teaching. They had their Master’s degrees. They were finally making it. In August, right as she was starting as the choir director at Weaver High School, she had her first son, Kingston. She was pregnant with him in July and in the classroom by August.
+
+"When you plan, God laughs," she says.
+
+I told her about my own year. I told her about the bipolar diagnosis and the flower farm we lost and the way everything just flew off the handle. I told her we were rebuilding in Pleasant Valley, living next to the in-laws, just trying to get stable. I told her that life goes on but it has been a hell of a year. Jean did not offer a brochure-ready platitude. She just leaned into the honesty.
+
+"Welcome to the club," she said.
+
+For Jean, the club started with a silence so heavy she could not leave her house. It was not the postpartum depression people usually talk about. It was a hyper-vigilant, razor-edged anxiety. She was the only person who could care for the baby. If someone else touched him, they were bringing germs. They were going to give him a brain-eating disease. She nursed him all day and all night until her husband, Steve, finally told her, "Ain't no baby in this world that hungry, Jean".
+
+She tried to white-knuckle it. She would wake up at 5:00 AM to nurse. Then she would drive to Weaver to teach choir to seventy-five teenagers. She was trying to save the world, but she was realizing that some of her students had not eaten in three days. One girl told her that her mom had been gone for three days and she had to give her siblings the only food in the house. Jean realized she could not teach choir to someone who was hungry. The weight of feeling too deeply began to pull her under.
+
+Then the walls started moving.
+
+"I was in the classroom, and I thought I was on a boat," she says. "Literally. I couldn't walk. I had to go to the hospital." The doctors called it sleep exhaustion. Jean’s response was pure, stubborn denial. She told them she was Type A and she had her Master's. She told them she did not get exhausted. But the exhaustion did not care about her personality. She was too sick to work. She could not walk. The income stopped. The perfect plan began to peel away in the form of a car repossession. It was a brand-new Altima with a push-start. The kind of car you buy when you think you have finally made it.
+
+She spent days in the nursery, refusing to let anyone see her. When her best friend came over, Jean would spiral into a panic and tell her not to get near. The friend was a newly minted therapist. She would just tell Jean to lay on her back on the floor. She would talk Jean through her breathing until the panic receded.
+
+It is from that floor, and from the loss of that job, that The Music Box was born. It started out of necessity because there was no income.
+
+Jean does not want to be a symbol of resilience. She does not want the sanitized version of her life to be the takeaway. She is still building, but she is building with the knowledge that the ground can move at any time. When her second son, Maverick, was born, she did not wait for the boat to start rocking. Six hours after delivery, she looked at the doctors and told them she needed to start her regimen. She wants to be a person who takes her medicine and remembers what it felt like when the floor was not solid.
+
+She still talks about the people who hurt her during those years at JSU. She has not moved past it in the way people expect. She carries the grievance and the vision at the same time. She says she is not going to minimize herself anymore. We talked about the future. We talked about the empire she is planning. She does not soften the ambition or laugh it off to make it more comfortable for the listener. She looks me right in the eye when she says it.
+
+"I want to be a millionaire, Matt. Like, I’m not even playing."
+
+Then she goes back to work. She is building something her kids can take and run with if they want to. Something that lasts. Something that stays on the land even when the boat starts to rock.
