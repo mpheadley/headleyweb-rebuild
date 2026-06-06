@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>North Star — Headley Ventures</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg:#07110D; --surface:#0D1F18; --border:#1A3328;
+      --gold:#C8A97E; --sage:#4A7C6F; --rust:#8B4513;
+      --cream:#E8DCC8; --dim:#4A6058; --accent:#2C5F52;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px}
+    nav{position:sticky;top:0;z-index:100;background:rgba(7,17,13,.97);backdrop-filter:blur(8px);
+        border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none}
+    nav::-webkit-scrollbar{display:none}
+    nav a{color:var(--dim);text-decoration:none;padding:14px 18px;font-family:'DM Mono',monospace;
+          font-size:10px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;
+          border-bottom:2px solid transparent;transition:all .2s}
+    nav a:hover,nav a.active{color:var(--gold);border-bottom-color:var(--gold)}
+    section{padding:48px 32px;border-bottom:1px solid var(--border);scroll-margin-top:50px}
+    .eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;
+             color:var(--gold);margin-bottom:6px}
+    h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,4vw,2.8rem);
+       color:var(--cream);margin-bottom:4px;line-height:1.1}
+    .tagline{font-size:13px;color:var(--sage);font-style:italic;margin-bottom:28px;
+             padding-bottom:20px;border-bottom:1px solid var(--border)}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 22px}
+    .grid{display:grid;gap:12px}
+    .kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+    .kpi-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+               color:var(--sage);margin-bottom:5px}
+    .kpi-val{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);font-weight:300;line-height:1}
+    .kpi-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--dim);margin-top:3px}
+    .chart-wrap{position:relative;margin-bottom:16px}
+    .chart-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--sage);letter-spacing:3px;
+                 text-transform:uppercase;margin-bottom:14px}
+    table{width:100%;border-collapse:collapse}
+    th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+       color:var(--accent);padding-bottom:10px;text-align:left;border-bottom:1px solid var(--border)}
+    td{padding:9px 6px;border-bottom:1px solid #122018;font-size:12px;vertical-align:top}
+    .bar-track{background:#122018;border-radius:3px;height:5px;overflow:hidden;margin-top:6px}
+    .bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--sage),var(--gold))}
+    .step-row{display:flex;gap:16px;margin-bottom:14px}
+    .step-badge{flex-shrink:0;width:56px;padding-top:2px}
+    .step-num{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-align:center;
+              border-radius:4px;padding:4px 6px}
+    .rule-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #122018}
+    footer{padding:20px 32px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;
+           font-size:9px;color:var(--dim);text-align:center}
+    @media(max-width:600px){section{padding:28px 14px}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#todo">Today</a>
+  <a href="#horizon">Horizon</a>
+  <a href="#flywheel">Flywheel</a>
+  <a href="#equity">SC Equity</a>
+  <a href="#today">Position</a>
+  <a href="#critical">Critical Path</a>
+</nav>
+
+<!-- HERO -->
+<div style="min-height:40dvh;background:linear-gradient(160deg,#07110D,#0D1F18);display:grid;place-items:center;text-align:center;padding:48px 24px;border-bottom:1px solid #1A3328">
+  <div>
+    <p style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:4px;color:#4A7C6F;text-transform:uppercase;margin-bottom:12px">Headley Ventures · Command Dashboard</p>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,9vw,5.5rem);color:#C8A97E;line-height:1;margin-bottom:10px">North Star</h1>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(232,220,200,.55);margin-bottom:32px">What you're building toward. Where you are today.</p>
+    <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap">
+      <div><div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:#C8A97E;text-transform:uppercase;margin-bottom:4px">2030 Net Worth</div><div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#C8A97E;font-weight:300">$1.65M</div></div>
+      <div><div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:#4A7C6F;text-transform:uppercase;margin-bottom:4px">2030 Household</div><div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#4A7C6F;font-weight:300">$630K+</div></div>
+      <div><div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:#8B4513;text-transform:uppercase;margin-bottom:4px">First Cash Event</div><div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#8B4513;font-weight:300">Oct 18</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 0. TODAY / LIVE TODO -->
+<section id="todo" style="background:#080f0b">
+  <div class="eyebrow">Live from CRM · <span id="taskGenerated" style="color:var(--dim)">loading...</span></div>
+  <h2>Today &amp; Critical Path</h2>
+  <p class="tagline">"What needs to happen today. What can't be ignored."</p>
+
+  <div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap">
+    <div class="kpi-grid" id="taskStats" style="margin-bottom:0;flex:1;min-width:300px"></div>
+    <button onclick="refreshTasks()" style="padding:8px 16px;background:transparent;border:1px solid var(--accent);color:var(--sage);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:4px;align-self:flex-start">↻ Refresh</button>
+  </div>
+
+  <!-- TODAY'S TASKS -->
+  <div class="card" style="margin-bottom:14px">
+    <p class="chart-label">Today — <span id="todayCount" style="color:var(--gold)">0</span> tasks</p>
+    <div id="todayList"></div>
+  </div>
+
+  <!-- CRITICAL OPEN -->
+  <div class="card">
+    <p class="chart-label">Critical Open — High Priority, No Date Set</p>
+    <div id="criticalOpenList"></div>
+  </div>
+</section>
+
+<!-- 1. HORIZON -->
+<section id="horizon">
+  <div class="eyebrow">Section 01</div>
+  <h2>The Horizon</h2>
+  <p class="tagline">"What you're building toward. Every venture decision serves this list."</p>
+
+  <div class="card chart-wrap" style="margin-bottom:16px">
+    <p class="chart-label">Net Worth Path — 2026–2030</p>
+    <canvas id="chartNetWorth" height="220"></canvas>
+  </div>
+
+  <div class="card">
+    <p class="chart-label">The Dream List — Sequenced by Income Milestone</p>
+    <table>
+      <thead><tr><th>Goal</th><th>Est. Cost</th><th>When / Gate</th><th style="width:110px">Progress</th></tr></thead>
+      <tbody id="dreamTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 2. FLYWHEEL -->
+<section id="flywheel" style="background:#080f0b">
+  <div class="eyebrow">Section 02</div>
+  <h2>The Flywheel</h2>
+  <p class="tagline">"All 6 ventures. Every line feeds every other line."</p>
+
+  <div class="card chart-wrap" style="margin-bottom:16px">
+    <p class="chart-label">Household Revenue — All Ventures (Base / Conservative)</p>
+    <canvas id="chartFlywheel" height="260"></canvas>
+  </div>
+
+  <div class="kpi-grid" id="houseTotals"></div>
+</section>
+
+<!-- 3. SILVER CREEK EQUITY -->
+<section id="equity">
+  <div class="eyebrow">Section 03</div>
+  <h2>Silver Creek Equity</h2>
+  <p class="tagline">"0% today → 20% by 2031. Built on revenue, not promises."</p>
+
+  <div style="display:flex;gap:14px;align-items:center;margin-bottom:20px;flex-wrap:wrap">
+    <span style="font-family:'DM Mono',monospace;font-size:10px;color:#4A7C6F;letter-spacing:2px">PROPERTY VALUATION</span>
+    <input type="range" id="propSlider" min="400000" max="700000" step="10000" value="500000"
+      style="width:130px;accent-color:#C8A97E;cursor:pointer">
+    <span id="propValDisplay" style="font-family:'DM Mono',monospace;font-size:14px;color:#C8A97E">$500K</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+    <div class="card chart-wrap">
+      <p class="chart-label">Equity Earn-In Path (%)</p>
+      <canvas id="chartEquity" height="200"></canvas>
+    </div>
+    <div class="card chart-wrap">
+      <p class="chart-label">SC Revenue + Owner Return</p>
+      <canvas id="chartSCRev" height="200"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="chart-label">Equity Value at Each Milestone</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Year</th><th>M+H %</th><th>M+H Value</th><th>R+B %</th><th>R+B Value</th><th>Status</th></tr></thead>
+        <tbody id="equityTable"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 4. TODAY -->
+<section id="today" style="background:#080f0b">
+  <div class="eyebrow">Section 04</div>
+  <h2>Today's Position</h2>
+  <p class="tagline">"Where you are right now. June 4, 2026."</p>
+
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="card"><div class="kpi-label">Checking floor</div><div class="kpi-val">$1,500</div><div class="kpi-sub">Minimum before any spend</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:#8B4513;margin-top:6px">⚠ HARD RULE</div></div>
+    <div class="card"><div class="kpi-label">Card debt</div><div class="kpi-val" style="color:#8B4513">$7,741</div><div class="kpi-sub">Pay first — Oct 19</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:#8B4513;margin-top:6px">⚠ Cleared Show 1 net</div></div>
+    <div class="card"><div class="kpi-label">Matt city job</div><div class="kpi-val" style="font-size:20px">$1,750/mo</div><div class="kpi-sub">$18/hr × 30hr/wk</div></div>
+    <div class="card"><div class="kpi-label">Heather city job</div><div class="kpi-val" style="font-size:20px">$2,900/mo</div><div class="kpi-sub">AMAG bi-weekly</div></div>
+    <div class="card"><div class="kpi-label">Combined baseline</div><div class="kpi-val" style="font-size:20px">$4,650/mo</div><div class="kpi-sub">Before any venture revenue</div></div>
+    <div class="card"><div class="kpi-label">Expo floor net</div><div class="kpi-val" style="font-size:20px">$15,570</div><div class="kpi-sub">Minimum Show 1 must clear</div></div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #8B4513">
+    <p class="chart-label" style="color:#8B4513;letter-spacing:2px">Financial Hard Rules</p>
+    <div class="rule-row"><span style="color:#8B4513;flex-shrink:0">▸</span><div><strong style="font-family:'DM Mono',monospace;font-size:10px;color:#C8A97E">Checking floor:</strong> <span style="color:#aaa">Never drop below $1,500. Run `aisle gate &lt;amount&gt;` before any purchase.</span></div></div>
+    <div class="rule-row"><span style="color:#8B4513;flex-shrink:0">▸</span><div><strong style="font-family:'DM Mono',monospace;font-size:10px;color:#C8A97E">Pre-spend gate:</strong> <span style="color:#aaa">&lt; $50: gate check only. ≥ $50: Heather sign-off required. ≥ $250: identify the closed-revenue line that funds it.</span></div></div>
+    <div class="rule-row"><span style="color:#8B4513;flex-shrink:0">▸</span><div><strong style="font-family:'DM Mono',monospace;font-size:10px;color:#C8A97E">Revenue first:</strong> <span style="color:#aaa">Vendor signs → vendor pays → then we spend. Never against projected revenue.</span></div></div>
+    <div class="rule-row"><span style="color:#8B4513;flex-shrink:0">▸</span><div><strong style="font-family:'DM Mono',monospace;font-size:10px;color:#C8A97E">Model cost:</strong> <span style="color:#aaa">Default Haiku. Anthropic cap $50/mo. Google Cloud cap $50/mo. Replicate cap $20/mo.</span></div></div>
+    <div class="rule-row" style="border:none"><span style="color:#8B4513;flex-shrink:0">▸</span><div><strong style="font-family:'DM Mono',monospace;font-size:10px;color:#C8A97E">No pre-inventory:</strong> <span style="color:#aaa">All merch is Fourthwall print-on-demand. Never pre-buy stock.</span></div></div>
+  </div>
+</section>
+
+<!-- 5. CRITICAL PATH -->
+<section id="critical">
+  <div class="eyebrow">Section 05</div>
+  <h2>The Critical Path</h2>
+  <p class="tagline">"Five things. Everything else gates on these."</p>
+
+  <div id="criticalList"></div>
+
+  <div style="margin-top:32px;text-align:center;padding:40px 24px;background:linear-gradient(160deg,#0D1F18,#122018);border-radius:8px;border:1px solid #1A3328">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,3vw,1.8rem);color:#C8A97E;line-height:1.4;margin-bottom:8px">
+      "This is the 7-figure net worth path that starts October 18, 2026."
+    </p>
+    <p style="font-family:'DM Mono',monospace;font-size:9px;color:#4A7C6F;letter-spacing:2px">HEADLEY-PERSONAL-GOALS-TIMELINE.MD</p>
+  </div>
+</section>
+
+<footer>
+  North Star · Headley Ventures Command · June 4, 2026 ·
+  Sources: HEADLEY-VENTURES-FINANCIALS-REVISED-2026-06-03.md · HEADLEY-PERSONAL-GOALS-TIMELINE.md · HEADLEY-VENTURES-MASTER-PLAN-2026-06-03.md
+</footer>
+
+<script>
+// ── PALETTE ──────────────────────────────────────────────────────────────────
+const GOLD="#C8A97E", SAGE="#4A7C6F", RUST="#8B4513", ACCENT="#2C5F52", DIM="#4A6058";
+const SURFACE="#0D1F18", BORDER="#1A3328";
+Chart.defaults.color="#4A7C6F";
+Chart.defaults.font.family="'DM Mono',monospace";
+const gridCfg={color:BORDER};
+
+const fmt=v=>v>=1e6?`$${(v/1e6).toFixed(1)}M`:v>=1e3?`$${(v/1e3).toFixed(0)}K`:`$${Math.round(v)}`;
+
+// ── DATA ─────────────────────────────────────────────────────────────────────
+const NETWORTH=[
+  {yr:"2026",liquid:10000,realestate:0,biz:0},
+  {yr:"2027",liquid:80000,realestate:50000,biz:50000},
+  {yr:"2028",liquid:200000,realestate:200000,biz:200000},
+  {yr:"2029",liquid:300000,realestate:400000,biz:400000},
+  {yr:"2030",liquid:450000,realestate:600000,biz:600000},
+];
+
+// Base/conservative numbers from HEADLEY-VENTURES-FINANCIALS-REVISED-2026-06-03.md
+// 2026: 1 show only (Oct 18). Matt city job starts June. HF base $50K. SC = GC fee only.
+// 2027: Shows 2-6 (Feb/Apr/Jun/Aug/Oct). SC operational. Gather first revenue.
+// 2028: Shows 7-9. SC Airbnb not yet. Gather scaling.
+// 2029: 10-12 shows/yr. SC Homestead coming online. Gather meaningful.
+// 2030: Full mature ops. City jobs gone. Gather compounding.
+const HOUSEHOLD=[
+  {yr:"2026",aisle:13500, hf:50000, sc:1700,  pb:3000,  gather:0,      city:56000},
+  {yr:"2027",aisle:64500, hf:60000, sc:25000, pb:10000, gather:11000,  city:40000},
+  {yr:"2028",aisle:145000,hf:110000,sc:40000, pb:40000, gather:53000,  city:30000},
+  {yr:"2029",aisle:200000,hf:140000,sc:77000, pb:90000, gather:126000, city:15000},
+  {yr:"2030",aisle:260000,hf:160000,sc:95000, pb:135000,gather:200000, city:0},
+];
+
+const EQUITY=[
+  {yr:"Now",mh:0,rb:100},
+  {yr:"2027",mh:0,rb:100},
+  {yr:"2028",mh:6.6,rb:93.4},
+  {yr:"2029",mh:11,rb:89},
+  {yr:"2030",mh:16,rb:84},
+  {yr:"2031",mh:20,rb:80},
+];
+
+// SC revenue: 2026 = GC renovation fee only ($1.7K). 2027 = 12-18 weddings operational.
+const SC_REV=[
+  {yr:"2026",rev:1700,  owner:136},
+  {yr:"2027",rev:25000, owner:2000},
+  {yr:"2028",rev:40000, owner:3200},
+  {yr:"2029",rev:77000, owner:6160},
+  {yr:"2030",rev:95000, owner:7600},
+];
+
+const DREAMS=[
+  {item:"Pay off credit cards",cost:"$7,741",when:"Oct 19 2026",gate:"Show 1 net — first priority",pct:0},
+  {item:"Neil's Cummins truck",cost:"$5K–$6.5K",when:"Nov 2026",gate:"Cards clear first",pct:0},
+  {item:"Mac Studio upgrade",cost:"$2K–$3K",when:"Mid-June 2026",gate:"Apple Card",pct:90},
+  {item:"BCS equipment repurchase",cost:"$2K–$3K",when:"Spring 2027",gate:"Farming season",pct:0},
+  {item:"2025 Toyota Tundra (used)",cost:"$33K–$42K",when:"Apr 2027",gate:"After Show 3",pct:0},
+  {item:"1980s Land Cruiser (FJ60/62)",cost:"$25K–$45K",when:"Jun 2027",gate:"After Show 4",pct:0},
+  {item:"Boat",cost:"$15K–$35K",when:"2027–2028",gate:"6 shows closed, cash only",pct:0},
+  {item:"Silver Creek Homestead",cost:"$3,700/mo seller finance",when:"2027–2028",gate:"ROFP signed + 6 months ops",pct:10},
+  {item:"40-acre land",cost:"$120K–$200K",when:"2028",gate:"Cash from operations",pct:0},
+  {item:"Farmhouse build",cost:"$264K–$363K",when:"2029",gate:"Construction loan",pct:0},
+  {item:"Lakehouse",cost:"$200K–$450K",when:"2029–2030",gate:"After farmstead underway",pct:0},
+];
+
+const CRITICAL=[
+  {num:"01",color:GOLD,due:"Oct 18 2026",label:"Aisle Expo #1 — Vendor Count",
+   target:"25 minimum · 35 target",current:"34 confirmed/pending (28 confirmed + 4 pending + 2 paid). Minimum cleared. Next: collect payment from confirmed-but-unpaid vendors.",
+   pct:97,action:"Shift from recruitment to payment collection. $250 booth fee from each unpaid confirmed vendor."},
+  {num:"02",color:SAGE,due:"This week",label:"Hotel Finial — Presenting Sponsor ($3,500)",
+   target:"Replace Noble Bank (declined)",current:"Jacob Craig contact. Warm. Not called yet.",
+   pct:15,action:"Call Jacob Craig this week."},
+  {num:"03",color:GOLD,due:"Aug 2026",label:"Silver Creek Management Agreement",
+   target:"Signed. Includes Right of First Purchase.",current:"Verbal agreement. Not on paper.",
+   pct:20,action:"Draft with Stephanie (CPA) + Brian Howell (attorney)."},
+  {num:"04",color:RUST,due:"Dec 31 2026",label:"2 PB Retainer Clients",
+   target:"2 retainers signed by year end",current:"Kevin Bussema = $300 founding. No others.",
+   pct:20,action:"Convert Oct 18 vendors into PB clients."},
+  {num:"05",color:SAGE,due:"Apr 2027 (Show 3)",label:"Coordinator Hired",
+   target:"Part-time coordinator for Shows 3–6",current:"Karrie declined. Role open.",
+   pct:0,action:"Post and recruit before Show 2 (Feb 2027)."},
+];
+
+// ── CHART: NET WORTH ─────────────────────────────────────────────────────────
+new Chart(document.getElementById("chartNetWorth"), {
+  type:"bar",
+  data:{
+    labels:NETWORTH.map(d=>d.yr),
+    datasets:[
+      {label:"Liquid",data:NETWORTH.map(d=>d.liquid),backgroundColor:"rgba(200,169,126,.9)",stack:"nw"},
+      {label:"Real Estate",data:NETWORTH.map(d=>d.realestate),backgroundColor:"rgba(74,124,111,.9)",stack:"nw"},
+      {label:"Business",data:NETWORTH.map(d=>d.biz),backgroundColor:"rgba(44,95,82,.9)",stack:"nw"},
+    ]
+  },
+  options:{
+    responsive:true,plugins:{legend:{labels:{color:SAGE,font:{size:11}}}},
+    scales:{
+      x:{stacked:true,grid:gridCfg,ticks:{color:SAGE}},
+      y:{stacked:true,grid:gridCfg,ticks:{color:SAGE,callback:v=>fmt(v)}},
+    }
+  }
+});
+
+// ── DREAM TABLE ───────────────────────────────────────────────────────────────
+const dt=document.getElementById("dreamTable");
+DREAMS.forEach(d=>{
+  dt.innerHTML+=`<tr>
+    <td style="color:${d.pct>0?GOLD:DIM};font-weight:${d.pct>0?500:400}">${d.item}</td>
+    <td style="font-family:'DM Mono',monospace;font-size:11px;color:${SAGE}">${d.cost}</td>
+    <td style="font-size:11px"><span style="font-family:'DM Mono',monospace;font-size:9px;color:${GOLD}">${d.when}</span><br><span style="color:#888">${d.gate}</span></td>
+    <td><div class="bar-track"><div class="bar-fill" style="width:${d.pct}%"></div></div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:${d.pct>0?GOLD:DIM};margin-top:3px">
+          ${d.pct===0?"Not started":d.pct>=100?"Complete":d.pct+"%"}</div></td>
+  </tr>`;
+});
+
+// ── CHART: FLYWHEEL ───────────────────────────────────────────────────────────
+new Chart(document.getElementById("chartFlywheel"),{
+  type:"bar",
+  data:{
+    labels:HOUSEHOLD.map(d=>d.yr),
+    datasets:[
+      {label:"Aisle Expos",      data:HOUSEHOLD.map(d=>d.aisle),  backgroundColor:"rgba(200,169,126,.9)",stack:"h"},
+      {label:"Heather Florals",  data:HOUSEHOLD.map(d=>d.hf),     backgroundColor:"rgba(122,140,110,.9)",stack:"h"},
+      {label:"Silver Creek",     data:HOUSEHOLD.map(d=>d.sc),     backgroundColor:"rgba(139,69,19,.8)",  stack:"h"},
+      {label:"Plainspoken BP",   data:HOUSEHOLD.map(d=>d.pb),     backgroundColor:"rgba(155,122,62,.9)", stack:"h"},
+      {label:"Gather Software",  data:HOUSEHOLD.map(d=>d.gather), backgroundColor:"rgba(44,95,82,.9)",   stack:"h"},
+      {label:"City Jobs",        data:HOUSEHOLD.map(d=>d.city),   backgroundColor:"rgba(51,62,56,.9)",   stack:"h"},
+    ]
+  },
+  options:{
+    responsive:true,plugins:{legend:{labels:{color:SAGE,font:{size:10}}}},
+    scales:{
+      x:{stacked:true,grid:gridCfg,ticks:{color:SAGE}},
+      y:{stacked:true,grid:gridCfg,ticks:{color:SAGE,callback:v=>fmt(v)}},
+    }
+  }
+});
+
+// ── HOUSE TOTALS KPI ─────────────────────────────────────────────────────────
+const ht=document.getElementById("houseTotals");
+HOUSEHOLD.forEach(d=>{
+  const total=d.aisle+d.hf+d.sc+d.pb+d.gather+d.city;
+  ht.innerHTML+=`<div class="card"><div class="kpi-label">${d.yr} Total</div>
+    <div class="kpi-val">${fmt(total)}</div><div class="kpi-sub">all ventures</div></div>`;
+});
+
+// ── CHART: EQUITY EARN-IN ─────────────────────────────────────────────────────
+new Chart(document.getElementById("chartEquity"),{
+  type:"line",
+  data:{
+    labels:EQUITY.map(d=>d.yr),
+    datasets:[
+      {label:"Matt+Heather %",data:EQUITY.map(d=>d.mh),borderColor:GOLD,backgroundColor:"rgba(200,169,126,.1)",
+       borderWidth:2.5,pointBackgroundColor:GOLD,pointRadius:4,fill:true,tension:.3},
+      {label:"Rene+Bruce %",  data:EQUITY.map(d=>d.rb),borderColor:SAGE,backgroundColor:"rgba(74,124,111,.05)",
+       borderWidth:2,pointBackgroundColor:SAGE,pointRadius:3,fill:false,tension:.3},
+    ]
+  },
+  options:{
+    responsive:true,plugins:{legend:{labels:{color:SAGE,font:{size:10}}}},
+    scales:{
+      x:{grid:gridCfg,ticks:{color:SAGE}},
+      y:{grid:gridCfg,ticks:{color:SAGE,callback:v=>v+"%"},min:0,max:105},
+    }
+  }
+});
+
+// ── CHART: SC REVENUE ─────────────────────────────────────────────────────────
+new Chart(document.getElementById("chartSCRev"),{
+  type:"bar",
+  data:{
+    labels:SC_REV.map(d=>d.yr),
+    datasets:[
+      {label:"Total Revenue",  data:SC_REV.map(d=>d.rev),  backgroundColor:"rgba(44,95,82,.85)", yAxisID:"y"},
+      {label:"Owner Return 8%",data:SC_REV.map(d=>d.owner),type:"line",
+       borderColor:GOLD,backgroundColor:"transparent",borderWidth:2,pointRadius:4,pointBackgroundColor:GOLD,yAxisID:"y"},
+    ]
+  },
+  options:{
+    responsive:true,plugins:{legend:{labels:{color:SAGE,font:{size:10}}}},
+    scales:{
+      x:{grid:gridCfg,ticks:{color:SAGE}},
+      y:{grid:gridCfg,ticks:{color:SAGE,callback:v=>fmt(v)}},
+    }
+  }
+});
+
+// ── EQUITY TABLE ──────────────────────────────────────────────────────────────
+let propVal=500000;
+function updateEquityTable(){
+  const et=document.getElementById("equityTable");
+  et.innerHTML="";
+  EQUITY.forEach(row=>{
+    const status=row.mh===0?"Not proposed":row.mh<10?"Building track record":row.mh<20?"Earn-in active":"Cap reached";
+    et.innerHTML+=`<tr>
+      <td style="font-family:'DM Mono',monospace;font-size:12px;color:${GOLD}">${row.yr}</td>
+      <td style="font-family:'DM Mono',monospace;font-size:13px;color:${GOLD};font-weight:500">${row.mh}%</td>
+      <td style="font-family:'DM Mono',monospace;font-size:12px">${fmt(propVal*row.mh/100)}</td>
+      <td style="font-family:'DM Mono',monospace;font-size:12px;color:${SAGE}">${row.rb}%</td>
+      <td style="font-family:'DM Mono',monospace;font-size:12px">${fmt(propVal*row.rb/100)}</td>
+      <td style="font-size:11px;color:#666;font-style:italic">${status}</td>
+    </tr>`;
+  });
+}
+updateEquityTable();
+
+const slider=document.getElementById("propSlider");
+const disp=document.getElementById("propValDisplay");
+slider.addEventListener("input",()=>{
+  propVal=+slider.value;
+  disp.textContent=fmt(propVal);
+  updateEquityTable();
+});
+
+// ── CRITICAL PATH ─────────────────────────────────────────────────────────────
+const cl=document.getElementById("criticalList");
+CRITICAL.forEach(item=>{
+  cl.innerHTML+=`
+    <div class="card" style="border-left:3px solid ${item.color};margin-bottom:14px">
+      <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:${item.color};letter-spacing:2px">#${item.num}</span>
+        <span style="font-size:15px;color:#E8DCC8;font-weight:400">${item.label}</span>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:#666;letter-spacing:1px">DUE: ${item.due}</span>
+      </div>
+      <p style="font-size:12px;color:#aaa;margin-bottom:3px"><strong style="font-family:'DM Mono',monospace;font-size:10px;color:${SAGE}">Target:</strong> ${item.target}</p>
+      <p style="font-size:12px;color:#aaa;margin-bottom:10px"><strong style="font-family:'DM Mono',monospace;font-size:10px;color:${RUST}">Current:</strong> ${item.current}</p>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:${item.color}">→ ${item.action}</p>
+      <div class="bar-track" style="margin-top:10px"><div class="bar-fill" style="width:${item.pct}%;background:linear-gradient(90deg,${SAGE},${item.color})"></div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:${item.color};margin-top:3px">${item.pct}% to gate</div>
+    </div>`;
+});
+
+// ── LIVE TODO FROM CRM ──
+function statusColor(s) {
+  s = (s||'').toLowerCase();
+  if(['completed','done','complete'].includes(s)) return '#5a9e8e';
+  if(['pending','todo','to do','open'].includes(s)) return GOLD;
+  if(['in progress','active'].includes(s)) return SAGE;
+  return '#666';
+}
+
+function renderTasks(data) {
+  const gen = new Date(data.generated);
+  document.getElementById('taskGenerated').textContent = `Updated ${gen.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}`;
+
+  const stats = document.getElementById('taskStats');
+  stats.innerHTML = `
+    <div class="card"><div class="kpi-label">Open tasks</div><div class="kpi-val">${data.stats.total_open.toLocaleString()}</div><div class="kpi-sub">in CRM</div></div>
+    <div class="card"><div class="kpi-label">Due today</div><div class="kpi-val" style="color:${GOLD}">${data.stats.today_count}</div><div class="kpi-sub">need action</div></div>
+    <div class="card"><div class="kpi-label">Done this week</div><div class="kpi-val" style="color:#5a9e8e">${data.stats.done_this_week}</div><div class="kpi-sub">completed</div></div>
+  `;
+
+  document.getElementById('todayCount').textContent = data.today.length;
+  const todayList = document.getElementById('todayList');
+  if (data.today.length === 0) {
+    todayList.innerHTML = `<p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);padding:12px 0">No tasks due today. Clear.</p>`;
+  } else {
+    todayList.innerHTML = data.today.map(t => `
+      <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid ${BORDER};align-items:start">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:${statusColor(t.status)};padding-top:2px;flex-shrink:0;min-width:70px">#${t.id}</span>
+        <div style="flex:1">
+          <div style="font-size:12px;color:var(--cream);margin-bottom:2px">${t.title}</div>
+          ${t.contact_name ? `<div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--dim)">${t.contact_name}</div>` : ''}
+        </div>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:${statusColor(t.status)};flex-shrink:0">${t.status||'pending'}</span>
+      </div>
+    `).join('');
+  }
+
+  const critList = document.getElementById('criticalOpenList');
+  if (data.critical_open.length === 0) {
+    critList.innerHTML = `<p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);padding:12px 0">No critical open tasks. Good.</p>`;
+  } else {
+    critList.innerHTML = data.critical_open.map(t => `
+      <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid ${BORDER};align-items:start">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:${GOLD};padding-top:2px;flex-shrink:0;min-width:70px">#${t.id}</span>
+        <div style="flex:1">
+          <div style="font-size:12px;color:var(--cream);margin-bottom:2px">${t.title}</div>
+          ${t.contact_name ? `<div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--dim)">${t.contact_name}</div>` : ''}
+          ${t.description ? `<div style="font-size:10px;color:#666;margin-top:2px;font-style:italic">${t.description.slice(0,80)}${t.description.length>80?'…':''}</div>` : ''}
+        </div>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;color:${SAGE};flex-shrink:0">priority ${t.priority}</span>
+      </div>
+    `).join('');
+  }
+}
+
+function refreshTasks() {
+  fetch('crm-tasks-live.json?_=' + Date.now())
+    .then(r => r.json())
+    .then(renderTasks)
+    .catch(e => {
+      document.getElementById('taskGenerated').textContent = 'Run: python3 tools/generate-todo-json.py to refresh';
+    });
+}
+
+// Load on page open
+refreshTasks();
+
+// ── NAV SCROLL HIGHLIGHT ──────────────────────────────────────────────────────
+const navLinks=document.querySelectorAll("nav a");
+const sections=document.querySelectorAll("section[id]");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id));
+    }
+  });
+},{threshold:0.2,rootMargin:"-100px 0px -60% 0px"});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
