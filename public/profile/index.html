@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matt Headley &mdash; Southern Legends Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1612;
+      --ink-mid: #3d3228;
+      --ink-light: #7a6a58;
+      --paper: #faf8f4;
+      --paper-warm: #f4efe6;
+      --paper-dark: #ede6d8;
+      --accent: #7a5c3a;
+      --accent-warm: #c9a87c;
+      --accent-pale: #f0e8d8;
+      --rule: #ddd5c8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --max: 860px;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 92dvh;
+      min-height: 560px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(15,10,5,0.08) 0%,
+        rgba(15,10,5,0.15) 40%,
+        rgba(15,10,5,0.72) 100%);
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3rem 2.5rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.82);
+      max-width: 560px;
+      line-height: 1.5;
+    }
+
+    /* ─── NAV STRIP ─── */
+    .nav-strip {
+      background: var(--ink);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .nav-strip a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 1.4rem;
+      transition: color 0.2s;
+    }
+
+    .nav-strip a:hover { color: #fff; }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section { padding: 4rem 0; border-bottom: 1px solid var(--rule); }
+    .section:last-child { border-bottom: none; }
+
+    .label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+      display: block;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+      line-height: 1.2;
+    }
+
+    p { margin-bottom: 1.2rem; font-size: 1rem; color: var(--ink-mid); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ─── INTRO GRID ─── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .facts-card {
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      padding: 1.6rem;
+      position: sticky;
+      top: 2rem;
+    }
+
+    .facts-card .label { margin-bottom: 1rem; }
+
+    .fact-row {
+      display: flex;
+      flex-direction: column;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .fact-row:last-child { border-bottom: none; }
+
+    .fact-key {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.1rem;
+    }
+
+    .fact-val {
+      font-size: 0.9rem;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ─── ETYMOLOGY CALLOUT ─── */
+    .etymology {
+      background: var(--accent-pale);
+      border-left: 3px solid var(--accent-warm);
+      padding: 1.8rem 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .etymology .ety-word {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .etymology p {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      margin-bottom: 0.4rem;
+    }
+
+    .etymology p:last-child { margin-bottom: 0; }
+
+    /* ─── BLOCKQUOTE ─── */
+    blockquote {
+      border-left: 3px solid var(--accent-warm);
+      margin: 2.5rem 0;
+      padding: 0.5rem 0 0.5rem 1.6rem;
+    }
+
+    blockquote p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    blockquote cite {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      font-style: normal;
+    }
+
+    /* ─── PHOTO FULL ─── */
+    .photo-full {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      margin: 2rem 0 0.5rem;
+    }
+
+    .photo-caption {
+      font-size: 0.72rem;
+      color: var(--ink-light);
+      font-style: italic;
+      margin-bottom: 2rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid var(--rule);
+    }
+
+    /* ─── PHOTO GRID ─── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .photo-grid-2 img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── CHAPTER ─── */
+    .chapter-num {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 0.4rem;
+    }
+
+    .chapter-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+
+    .chapter + .chapter { margin-top: 3.5rem; padding-top: 3.5rem; border-top: 1px solid var(--rule); }
+
+    /* ─── TIMELINE ─── */
+    .timeline { list-style: none; }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .tl-item:last-child { border-bottom: none; }
+
+    .tl-year {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--accent);
+      padding-top: 0.15rem;
+    }
+
+    .tl-body strong {
+      display: block;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-body span { font-size: 0.88rem; color: var(--ink-light); }
+
+    /* ─── STAT GRID ─── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .stat {
+      background: var(--paper);
+      padding: 1.4rem 1.2rem;
+    }
+
+    .stat-val {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-lbl {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    /* ─── QUOTES STACK ─── */
+    .quotes-stack { display: flex; flex-direction: column; gap: 0; }
+
+    .quote-item {
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .quote-item:last-child { border-bottom: none; }
+
+    .quote-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.12rem;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .quote-src {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    /* ─── BRAND SECTION ─── */
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .brand-card {
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      padding: 1.2rem;
+    }
+
+    .brand-card h4 {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .brand-card .tagline {
+      font-style: italic;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-card p { font-size: 0.82rem; color: var(--ink-light); margin-bottom: 0; }
+
+    /* ─── GAP NOTE ─── */
+    .gap-note {
+      background: var(--paper-dark);
+      border: 1px dashed var(--rule);
+      padding: 1.4rem 1.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .gap-note p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.5rem; }
+    .gap-note p:last-child { margin-bottom: 0; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 680px) {
+      .intro-grid { grid-template-columns: 1fr; }
+      .facts-card { position: static; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .tl-item { grid-template-columns: 70px 1fr; gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      html { font-size: 16px; }
+      .hero-text { padding: 2rem 1.5rem; }
+      .container { padding: 0 1.25rem; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .brand-grid { grid-template-columns: 1fr; }
+    }
+    /* ─── DRAGGABLE IMAGE ─── */
+    .img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-wrap img {
+      cursor: grab;
+      transition: none;
+      user-select: none;
+    }
+
+    .img-wrap img.dragging { cursor: grabbing; }
+
+    .img-wrap::after {
+      content: '↕ drag to reposition';
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.6rem;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: 0.6rem;
+      font-family: var(--sans);
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .img-wrap:hover::after { opacity: 1; }
+
+    /* ─── VIDEO ─── */
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #111;
+      margin: 0 0 0.5rem;
+    }
+
+    .video-wrap video,
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 600px) { .video-grid { grid-template-columns: 1fr; } }
+
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero img-wrap" style="height:92dvh; min-height:560px; border-radius:0;">
+    <img src="/images/profile/matt-farm-field-portrait-spring2023.jpg"
+         alt="Matt Headley standing in the flower field, spring 2023"
+         loading="eager"
+         data-pos-id="hero" />
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <div class="hero-eyebrow">Southern Legends &mdash; Working Profile</div>
+      <h1>Matt Headley</h1>
+      <p class="hero-sub">Pastor, flower farmer, bipolar survivor. A man who built two beautiful things, lost them both, and is still here.</p>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav-strip">
+    <a href="#who">Who He Is</a>
+    <a href="#name">The Name</a>
+    <a href="#career">Career</a>
+    <a href="#formation">Formation</a>
+    <a href="#story">The Story</a>
+    <a href="#words">His Words</a>
+    <a href="#brand">Brand Vision</a>
+    <a href="#video">Video</a>
+    <a href="#sources">Sources</a>
+  </nav>
+
+  <!-- WHO HE IS -->
+  <div class="container">
+    <section class="section" id="who">
+      <div class="intro-grid">
+        <div>
+          <span class="label">Who He Is</span>
+          <p>Matt Headley is a former pastor and flower farmer living in Pleasant Valley, Alabama. He spent nineteen years leading congregations across Indiana and northeast Alabama, then spent four years building a regenerative cut flower farm with his wife Heather on a property anchored by an 1832 farmhouse in Anniston&rsquo;s Lenlock Heights neighborhood.</p>
+          <p>He holds a B.A. in Music (Voice) with a minor in Drama from Jacksonville State University, where he performed in <em>Sweeney Todd</em>, <em>Pirates of Penzance</em>, <em>The Secret Garden</em>, and <em>Jesus Christ Superstar</em> at the Stone Center for the Arts. He holds an M.Div. in Theology and Ministry from Northern Seminary. He was ordained in 2012 through American Baptist Churches USA.</p>
+          <p>He is the founder of Southern Legends, an editorial storytelling site about northeast Alabama people and places. He is currently doing web and SEO work under Headley Web &amp; SEO, and rebuilding.</p>
+
+          <img src="/images/profile/matt-heather-easter-2026.webp"
+               alt="Matt and Heather, Easter 2026"
+               class="photo-full" style="aspect-ratio:4/3; margin-top:1.8rem;" />
+          <p class="photo-caption">Matt and Heather, Easter 2026 &mdash; Pleasant Valley, AL</p>
+        </div>
+
+        <aside class="facts-card">
+          <span class="label">At a Glance</span>
+          <div class="fact-row">
+            <span class="fact-key">Hometown</span>
+            <span class="fact-val">Oxford, AL (1993&ndash;2002)</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Location</span>
+            <span class="fact-val">Pleasant Valley, AL</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Wife</span>
+            <span class="fact-val">Heather Headley</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Children</span>
+            <span class="fact-val">Hannah (12), Noah (11), Sage &amp; Soren (9)</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Dogs</span>
+            <span class="fact-val">Luna &amp; Sunny</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Sheep</span>
+            <span class="fact-val">Silver &amp; Shadow (Babydoll)</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Education</span>
+            <span class="fact-val">B.A. Voice &amp; Drama, JSU<br>M.Div., Northern Seminary</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Ordained</span>
+            <span class="fact-val">American Baptist Churches USA, 2012</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Years in Ministry</span>
+            <span class="fact-val">19</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Farm</span>
+            <span class="fact-val">Headley Flower Farm, 2021&ndash;2025<br>Anniston, AL (Lenlock Heights)</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-key">Diagnosis</span>
+            <span class="fact-val">Bipolar I (confirmed 2025)</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- THE NAME -->
+    <section class="section" id="name">
+      <span class="label">Etymology</span>
+      <h2>What &ldquo;Headley&rdquo; Means</h2>
+
+      <div class="etymology">
+        <div class="ety-word">Headley (Hedley)</div>
+        <p><strong>Old English:</strong> <em>h&aelig;th</em> (heath, heather) + <em>l&emacr;ah</em> (woodland clearing)</p>
+        <p><strong>Translation:</strong> &ldquo;A clearing overgrown with heather&rdquo; &mdash; or &ldquo;heather meadow.&rdquo;</p>
+        <p>His wife&rsquo;s name is Heather. The farm&rsquo;s most requested bouquet was the Heather Meadow Mix. The surname, the woman, and the land were all saying the same thing.</p>
+      </div>
+
+      <p>Heather thrives in poor soil and tough conditions. In Scottish tradition, white heather is an emblem of good luck and protection. The flower symbolizes inner strength, resilience, and beauty found in difficult places. Matt carried all of that without knowing the etymology.</p>
+
+      <div class="img-wrap photo-full" style="margin:2rem 0 0;">
+        <img src="/images/profile/farmhouse-1832-ridgewood-ave.jpg"
+             alt="The 1832 farmhouse on Ridgewood Avenue, Anniston"
+             style="width:100%; height:100%; object-fit:cover; object-position:center 50%;"
+             data-pos-id="farmhouse" />
+      </div>
+      <p class="photo-caption">The 1832 farmhouse on Ridgewood Ave., Anniston &mdash; the center of Headley Flower Farm, 2021&ndash;2025</p>
+    </section>
+
+    <!-- CAREER -->
+    <section class="section" id="career">
+      <span class="label">Career Arc</span>
+      <ul class="timeline">
+        <li class="tl-item">
+          <div class="tl-year">2006&ndash;2012</div>
+          <div class="tl-body">
+            <strong>Early Ministry</strong>
+            <span>Music director and pastoral roles. Foundation years.</span>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">2012&ndash;2014</div>
+          <div class="tl-body">
+            <strong>Associate Pastor &amp; Worship Arts Director</strong>
+            <span>First Baptist Church, Muncie, Indiana. Ordained through American Baptist Churches USA.</span>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">2014&ndash;2021</div>
+          <div class="tl-body">
+            <strong>Pastor, Weaver First United Methodist Church</strong>
+            <span>Weaver, Alabama. Seven years. Longest single appointment.</span>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">2021&ndash;2025</div>
+          <div class="tl-body">
+            <strong>Associate Pastor &amp; Music Director, Anniston First UMC</strong>
+            <span>Anniston, AL. Lessons &amp; Carols, O Magnum Mysterium, Shepherd&rsquo;s Table breakfast ministry. Left March 2025.</span>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">2021&ndash;2025</div>
+          <div class="tl-body">
+            <strong>Co-owner, Headley Flower Farm</strong>
+            <span>1832 farmhouse, Lenlock Heights, Anniston. Cut flowers, Bloom Bar, Trail Porch kiosk on Chief Ladiga Trail, permaculture with Trevor &amp; Joanna Mann of WaldenFARMacy. Sold November 2025.</span>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">2025&ndash;</div>
+          <div class="tl-body">
+            <strong>Owner, Headley Web &amp; SEO / Founder, Southern Legends</strong>
+            <span>Pleasant Valley, AL. Web work, editorial storytelling, rebuilding.</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="photo-grid-2" style="margin-top:2rem;">
+        <div>
+          <img src="/images/profile/matt-bcs-tractor-high-tunnel-jan2024.jpg"
+               alt="Matt on the BCS tractor near the high tunnel, January 2024" />
+          <p class="photo-caption" style="margin-bottom:0;">On the BCS tractor, January 2024</p>
+        </div>
+        <div>
+          <img src="/images/profile/matt-beekeeper-holding-frame-spring2022.jpg"
+               alt="Matt as beekeeper holding a frame, spring 2022" />
+          <p class="photo-caption" style="margin-bottom:0;">Beekeeper, spring 2022 &mdash; early farm era</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE STORY -->
+    <!-- FORMATION -->
+    <section class="section" id="formation">
+      <span class="label">Formation</span>
+      <h2>Before the Ministry</h2>
+
+      <p>Matt Headley grew up in semi-rural Alabama in a loving, conservative, blue-collar Catholic family. His family moved to Oxford, Alabama in 1993 when he was around nine years old and lived there through 2002.</p>
+
+      <p>When he was ten, a scandal involving his father disrupted everything. The family dropped near the bottom of the socioeconomic ladder. They moved into a small apartment on the shady side of town. He was embarrassed to be poor and tried to fit in with kids from more affluent families. God, as he understood God then, was &ldquo;an utterly transcendent deity worthy of fear and respect but with little concrete influence&rdquo; in his life. Jesus was just as distant as his Father. Religion was something you did to avoid hell, not something you lived into.</p>
+
+      <p>He left for engineering at the University of Alabama. Stopped going to church. Through a campus ministry he met an upperclassman who loaned him his first guitar. A volatile relationship with a high-school sweetheart self-destructed. He wrote later: &ldquo;I felt I had little left to live for.&rdquo; He stopped attending classes. He spent afternoons in a park near campus, learning the guitar. One day a traveling minister sat down next to him, asked about his spiritual status, prayed over him, and prophesied that he would one day serve God through music.</p>
+
+      <p>He left UA after three semesters &mdash; depressed, scholarship lost. Came back to northeast Alabama. That was the first depression. He was nineteen. He has not written publicly about this one yet.</p>
+
+      <p>He got a full music scholarship at Jacksonville State University. A classmate recommended him for the choir director position at Red Hill Methodist Church &mdash; a small, rural fellowship near Jacksonville. What started as a gig became something else. Through that community he encountered theology that asked something of him: the bondage of creation, the depravity of humanity, the need for reconciliation. He did not mark a single conversion moment. He described it simply as repentance, and receiving faith.</p>
+
+      <blockquote>
+        <p>&ldquo;What began as a gig became a call to vocational ministry.&rdquo;</p>
+        <cite>CPE Equivalency Application &mdash; Northern Seminary, September 2012</cite>
+      </blockquote>
+
+      <p>He started a youth ministry at Red Hill. His influence broadened; his faith deepened. During that season he met Heather. They married and moved to Muncie, Indiana, where he joined the staff of First Baptist Church. Heather resumed her graduate piano study. He received a full scholarship at Northern Seminary and began his M.Div.</p>
+
+      <p>At JSU he had studied Music (Voice) with a minor in Drama, performing at the Stone Center in <em>Sweeney Todd</em>, <em>Pirates of Penzance</em>, <em>The Secret Garden</em>, and <em>Jesus Christ Superstar</em>. In February 2009, the Anniston Star interviewed him in character as Sweeney Todd for a feature on the JSU production. During that same period he was writing college papers on the parallels between Greek theater and Christian liturgy, arguing that Stanislavsky&rsquo;s advice to actors and Paul&rsquo;s instruction to worshipers were saying the same thing. The two vocations &mdash; stage and pulpit &mdash; were never separate in his mind.</p>
+
+      <div class="gap-note" style="margin-top:1.5rem;">
+        <p><strong style="font-weight:500; color:var(--ink);">Still unknown from this chapter:</strong></p>
+        <p>What the father&rsquo;s scandal was. What happened in the Oxford years before he left for UA. The full content of 16 AIM chat logs from November&ndash;December 2003 (age 19, in the middle of the UA depression) that are archived in Google Drive but not yet read. Who the high-school sweetheart was. What the traveling minister looked like.</p>
+      </div>
+
+      <p>He ended up at Jacksonville State University. He chose Music, voice concentration, minor in Drama. He performed at the Stone Center for the Arts: <em>Sweeney Todd</em>, <em>Pirates of Penzance</em>, <em>The Secret Garden</em>, <em>Jesus Christ Superstar</em>. And somewhere in that degree, probably around 2005&ndash;2006, he wrote a paper called &ldquo;Theatrical Elements in Christianity.&rdquo;</p>
+
+      <div class="etymology" style="margin-top: 2rem;">
+        <div class="ety-word" style="font-size:1.1rem;">&ldquo;Theatrical Elements in Christianity&rdquo;</div>
+        <p>A college paper by Matthew Headley, JSU. Traces theater and Christian worship from the ancient Egyptian Abydos passion play through the Greek chorus, liturgical drama, Gothic cathedrals, the Great Awakening, and contemporary worship. Quotes Stanislavsky alongside St. Paul. Argues that Stanislavsky&rsquo;s advice to actors &mdash; to relearn how to walk, sit, and look as if for the first time &mdash; is the same thing Paul asks of worshipers in Romans 12. The paper is the intellectual architecture of his whole adult life: two things that look separate are the same thing.</p>
+      </div>
+
+      <p>He graduated. He went to Northern Seminary for an M.Div. He was ordained in 2012 through American Baptist Churches USA. The two streams of his JSU degree &mdash; music and drama &mdash; did not lead to a stage. They led to a pulpit. Which, as he&rsquo;d written, is a kind of stage.</p>
+
+      <blockquote>
+        <p>&ldquo;There&rsquo;s no more earnest person than a child engaged in mindless play.&rdquo;</p>
+        <cite>Quoting Nishitani, in &ldquo;Christianity and Emptiness&rdquo; &mdash; Justin Headley, 2007</cite>
+      </blockquote>
+
+      <p>His brother Justin, around the same time, wrote a college paper comparing Christian kenosis with Buddhist <em>sunyata</em> &mdash; the concept of emptiness as ground-of-being. Justin was working through Keiji Nishitani, Meister Eckhart, and Heidegger&rsquo;s Dasein. He was 20. The Headleys are a family that thinks hard about God.</p>
+
+      <div class="gap-note" style="margin-top:1.5rem;">
+        <p><strong style="font-weight:500; color:var(--ink);">What is still missing from this chapter:</strong></p>
+        <p>Where in northeast Alabama he grew up. His parents. His church upbringing. What caused the UA depression at 19. What the &ldquo;really challenging two years&rdquo; between high school and 2004 actually were. Who the people were. The full AIM conversation trails off mid-sentence and gives no answer.</p>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <span class="label">The Story</span>
+
+      <!-- Ch 1 -->
+      <div class="chapter">
+        <div class="chapter-num">Chapter One</div>
+        <div class="chapter-title">The Life That Made Sense</div>
+
+        <p>For nearly two decades, Matt Headley built something people could see. A congregation. A community. A farm. He led worship, officiated funerals, ran a breakfast ministry for people sleeping on the streets. He launched the flower farm with Heather in 2021, started selling blooms at a Trail Porch kiosk on Chief Ladiga Trail, brought the whole family into it. Hannah, Noah, Sage, Soren. They picked flowers together.</p>
+
+        <p>In 2024, the whole family performed together in <em>A Christmas Story: The Musical</em> in Gadsden. Christmas services at Anniston First that year were acclaimed. He preached. He led. The life made sense.</p>
+
+        <div class="photo-grid">
+          <img src="/images/profile/matt-family-farm-workday-spring2023.jpg"
+               alt="Matt and family on a farm workday, spring 2023" />
+          <img src="/images/profile/matt-wrestling-babydoll-sheep-spring2024.jpg"
+               alt="Matt wrestling with the Babydoll sheep, spring 2024" />
+          <img src="/images/profile/matt-heather-sheep-pasture-selfie-fall2024.jpg"
+               alt="Matt and Heather with the sheep in the pasture, fall 2024" />
+        </div>
+        <p class="photo-caption">Farm life, 2023&ndash;2024. Silver and Shadow are somewhere in there.</p>
+      </div>
+
+      <!-- Ch 2 -->
+      <div class="chapter">
+        <div class="chapter-num">Chapter Two</div>
+        <div class="chapter-title">The First Wilderness</div>
+
+        <p>Around the summer of 2024, severe clinical depression hit. He was turning 40. He wrote about it publicly in the Anniston Star on October 21, 2024, in a piece called &ldquo;Hope in the Wilderness: A Pastor&rsquo;s Journey Through Depression.&rdquo; He sat by the Camp Lee pool surrounded by people and felt completely alone. He hiked into the woods. He journaled his anger at God. He let go of his bias against psychiatric medication.</p>
+
+        <blockquote>
+          <p>&ldquo;Yes, my serotonin is store-bought!&rdquo;</p>
+          <cite>Anniston Star, October 2024</cite>
+        </blockquote>
+
+        <p>He called it resurrection. He recovered. He went back to ministry. He thought he was through it.</p>
+
+        <img src="/images/profile/matt-compost-pile-camp-lee-sweatshirt.jpg"
+             alt="Matt in a Camp Lee sweatshirt by a compost pile"
+             class="photo-full" style="aspect-ratio:4/3;" />
+        <p class="photo-caption">Matt in a Camp Lee sweatshirt &mdash; the place he wrote about sitting by the pool, feeling completely alone</p>
+      </div>
+
+      <!-- Ch 3 -->
+      <div class="chapter">
+        <div class="chapter-num">Chapter Three</div>
+        <div class="chapter-title">The Manic Episode</div>
+
+        <p>A manic episode followed the recovery. Public. Devastating. This is the first time he has told this part of the story fully.</p>
+
+        <p>While manic, he quit his job at the church. While manic, he overextended the family financially on the flower farm. Neither was a deliberate choice. Both were symptoms. The mania drove them. He lost the ministry, the financial stability, credibility, relationships, daily rhythm. The manic episode is what led to the bipolar diagnosis. The first depression had been treated as depression. The mania revealed it was bipolar disorder all along.</p>
+
+        <blockquote>
+          <p>&ldquo;The depression took me to the edge. The mania burned everything down.&rdquo;</p>
+          <cite>Source materials, 2026</cite>
+        </blockquote>
+
+        <p>Through April and July 2025, he and Heather went all-in on the farm. He guest preached at Jacksonville First Presbyterian on Father&rsquo;s Day, just three months after leaving the church. He sold wedding flowers. Heather launched resin jewelry from pressed blooms. The Patreon was up, 27 members, $26.44 a month. He projected hope publicly.</p>
+
+        <img src="/images/profile/matt-suited-farmhouse-selfie-nov2024.jpg"
+             alt="Matt in a suit at the farmhouse, November 2024"
+             class="photo-full" style="aspect-ratio:4/3;" />
+        <p class="photo-caption">November 2024 &mdash; the same window as the manic episode. Suited at the farmhouse.</p>
+      </div>
+
+      <!-- Ch 4 -->
+      <div class="chapter">
+        <div class="chapter-num">Chapter Four</div>
+        <div class="chapter-title">The Floor</div>
+
+        <p>The farm was up for sale. He stopped going outside. He was frozen.</p>
+
+        <p>His father called it: riding shotgun in the Silverado on the way to the dump, he said, &ldquo;Buddy, it&rsquo;s time for you to go to the hospital. I know you don&rsquo;t want to. But I don&rsquo;t want my grandkids to lose their dad.&rdquo; His friend Kyle had preached about his own hospital stay, called it his &ldquo;grippy socks vacation.&rdquo; Matt agreed to let them drive him to Birmingham.</p>
+
+        <p>He left the UAB ER with a spring in his step. The next day, he called Dad to take him back. He was in the psych center for ten days. He told people it had been three weeks &mdash; he was sure, until he checked the journal.</p>
+
+        <p>The notebook was there in his bedside drawer. A cheap brown notebook with lined paper. He wrote with a golf pencil. Less dangerous than a full-length one. He remembered everyone: the Indian girl who was kind, also bipolar. Stellar carrot cake. The ones desperate to leave, crying on the phone. The schizophrenic guy talking to imaginary people. Pete, the roommate who had been there weeks before him, still waiting on his family to figure out where he would go when he got out. The tech who criticized him for drinking too much water. Dr. Bhatia, surrounded by three training psychiatrists: &ldquo;It sounds like you&rsquo;ve tried a lot of different medications. That&rsquo;s bad practice &mdash; cycling through them before reaching maximum therapeutic effect.&rdquo;</p>
+
+        <p>Sam, a woman with a hijab, took him to a quiet room. She asked questions. &ldquo;You had to move as a child because of choices your dad made. Now the same thing you&rsquo;ve worked so hard to avoid is happening to you and your family. This is a major trigger for you.&rdquo; That had never occurred to him. That connection. Not sure it helped. Something in it rang truer than anything else he heard that week.</p>
+
+        <p>Heather visited three times during the ten days. Once to see him. Once for the notary &mdash; house closure papers, his signature, walking out of the ward escorted by the social worker to meet the notary in the hallway. The farm closed while he was inside. A third time because the notary had taken the day off. They sat in eyeshot of the staff, thirty-minute limit, and signed papers and stamped their thumbs.</p>
+
+        <p>After discharge, he lived in his parents&rsquo; camper for a month. Heather and the kids stayed with her parents. His dad parked the camper at Michael Tucker Park in Anniston for a few weeks so he could help drive the kids to tech week rehearsals for <em>Annie</em>. They had a microwave Thanksgiving: chicken nuggets with Chick-fil-A sauce and vegetables. He taught the kids Texas Hold&rsquo;em Poker. The game he&rsquo;d learned in the hospital.</p>
+
+        <p>After Thanksgiving, the power and water on Littlejohn Road was turned on. They moved into the trailer. They spent Christmas there. Their first. Not as horrible as he&rsquo;d imagined.</p>
+
+        <blockquote>
+          <p>&ldquo;The farm sold while I was in the hospital. The bipolar diagnosis. A two-decade ministry career gone.&rdquo;</p>
+          <cite>&ldquo;I&rsquo;m Not Going to Disappear&rdquo; &mdash; southernlegends.blog, April 2026</cite>
+        </blockquote>
+      </div>
+
+      <!-- Ch 5 -->
+      <div class="chapter">
+        <div class="chapter-num">Chapter Five</div>
+        <div class="chapter-title">Stability</div>
+
+        <p>He is in Pleasant Valley now. New medication. New diagnosis. New understanding of what he is dealing with. He moved the family from the Littlejohn Road trailer to a house. He built Southern Legends, an editorial storytelling site about northeast Alabama people and places. He texted fifty people asking for web design referrals. He did web work. He wrote.</p>
+
+        <p>One morning he went to a Chamber of Commerce meetup at Called Coffee. After a few conversations he sat down to take a break. A woman across the room waved &mdash; Sarah, his wife&rsquo;s boss, a flower patron. He walked over. Someone across the table was asking who he was.</p>
+
+        <p>&ldquo;That&rsquo;s Matt from the flower farm.&rdquo;</p>
+
+        <p>They said it was sad that it ended. He said he was still sad too.</p>
+
+        <p>On May 31, 2026, he preached at Jacksonville First United Methodist Church &mdash; the church in his hometown, the one he&rsquo;d led worship at during the JSU years. He had not been in a pulpit in about a year. He opened with: &ldquo;My name is Matt Headley. I grew up in Jacksonville. Went to school here at JSU.&rdquo; His text was John 12:24.</p>
+
+        <blockquote>
+          <p>&ldquo;Unless a grain of wheat falls into the earth and dies, it remains just a single grain; but if it dies, it bears much fruit.&rdquo;</p>
+          <cite>John 12:24 &mdash; The text of the return sermon, May 31, 2026</cite>
+        </blockquote>
+
+        <p>His brother Justin had written an academic paper on this concept in 2007 &mdash; the Buddhist notion of <em>sunyata</em>, emptiness, self-emptying as the path to becoming. Matt had lived it. Then preached it from his hometown pulpit, nineteen years after Justin wrote the theory down.</p>
+
+        <blockquote>
+          <p>&ldquo;A local legend rising from the ashes of my second destruction, the second being more utter and complete. Although it wasn&rsquo;t complete. It only seemed so for a long time. Because Heather and the kids never gave up on him, and they&rsquo;re still here.&rdquo;</p>
+          <cite>Matt Headley, 2026</cite>
+        </blockquote>
+
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat-val">19</div>
+            <div class="stat-lbl">Years in ministry</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">4</div>
+            <div class="stat-lbl">Children</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">2</div>
+            <div class="stat-lbl">Collapses survived</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">1832</div>
+            <div class="stat-lbl">Year the farmhouse was built</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">JSU</div>
+            <div class="stat-lbl">Voice &amp; Drama</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">2</div>
+            <div class="stat-lbl">Babydoll sheep</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIS WORDS -->
+    <section class="section" id="words">
+      <span class="label">In His Own Words</span>
+      <div class="quotes-stack">
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;Severe depression feels like being lost in total darkness. It&rsquo;s relentless, stretching time and making hope feel out of reach.&rdquo;</div>
+          <div class="quote-src">Anniston Star &mdash; October 21, 2024</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;One of the most surprising parts of this resurrection was what I can only describe as an ego death.&rdquo;</div>
+          <div class="quote-src">Anniston Star &mdash; October 21, 2024</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;Resurrection isn&rsquo;t just a thing of the past. It&rsquo;s what happens when love brings us back to life.&rdquo;</div>
+          <div class="quote-src">Anniston Star &mdash; October 21, 2024</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;The old version of Matt didn&rsquo;t make it, but something new is emerging.&rdquo;</div>
+          <div class="quote-src">Patreon &mdash; April 2025</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;There&rsquo;s still a shepherd in me. Just with a shovel instead of a stole.&rdquo;</div>
+          <div class="quote-src">Patreon &mdash; April 2025</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;The pulpit isn&rsquo;t gone. It&rsquo;s just mobile now.&rdquo;</div>
+          <div class="quote-src">Patreon &mdash; July 2025</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;Every dollar is weighted with intention.&rdquo;</div>
+          <div class="quote-src">Patreon &mdash; July 2025</div>
+        </div>
+        <div class="quote-item">
+          <div class="quote-text">&ldquo;Building this profile, compiling the source documents, laying out the timeline, feels a little scary and a little therapeutic. This profile is part of coming out of hiding.&rdquo;</div>
+          <div class="quote-src">Conversation, 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND VISION -->
+    <section class="section" id="brand">
+      <span class="label">Brand Architecture &mdash; Farm Era Vision</span>
+      <h2>What He Was Building</h2>
+
+      <p>During the farm era, Matt drafted a full brand architecture for what Headley could become. Businesses, nonprofit, personal platform, retreats. The vision was expansive. Many of the domains are still parked. The architecture is a window into the manic-era mind at its most generative and most overextended simultaneously.</p>
+
+      <div class="brand-grid">
+        <div class="brand-card">
+          <h4>Headley Flower Farm</h4>
+          <div class="tagline">&ldquo;Bringing the meadow to your table.&rdquo;</div>
+          <p>Weddings, events, Trail Shop, markets, Bloom Bar. The anchor.</p>
+        </div>
+        <div class="brand-card">
+          <h4>The Bloomstead</h4>
+          <div class="tagline">&ldquo;Flourishing where trail meets field.&rdquo;</div>
+          <p>Retail pop-ups, agritourism, retreat experiences. Bloom Bar mobile fleet.</p>
+        </div>
+        <div class="brand-card">
+          <h4>Headley Weddings &amp; Events</h4>
+          <div class="tagline">&ldquo;Rooted in love, grown in community.&rdquo;</div>
+          <p>Full-service florals, officiating, music, coordination. Venue partnerships.</p>
+        </div>
+        <div class="brand-card">
+          <h4>Wholehearted Roots</h4>
+          <div class="tagline">&ldquo;Beauty for ashes. Life in full bloom.&rdquo;</div>
+          <p>Nonprofit, spiritual formation, permaculture education, trail and urban transformation.</p>
+        </div>
+        <div class="brand-card">
+          <h4>Matt Headley</h4>
+          <div class="tagline">&ldquo;Let&rsquo;s grow something worth telling.&rdquo;</div>
+          <p>Speaking, coaching, Patreon, personal writing. Poetry, pastoral mischief, permaculture.</p>
+        </div>
+      </div>
+
+      <img src="/images/profile/matt-farm-work-low-tunnel.webp"
+           alt="Matt working the low tunnel beds on the farm"
+           class="photo-full" style="margin-top:2rem;" />
+      <p class="photo-caption">Low tunnel beds on the farm &mdash; the physical version of the vision</p>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="section" id="video">
+      <span class="label">Archive Video</span>
+      <h2>On Stage &amp; On the Pulpit</h2>
+
+      <p>Pirates of Penzance, JSU Ernest Stone Performing Arts Center, May 2007. Matt played <strong>The Pirate King</strong> &mdash; the lead bass-baritone role. Directed by Dr. Nathan Wight. Jean Ellison, who was in the same program, was blocked from auditioning for this same show by Dr. White.</p>
+
+      <!-- PIRATES YOUTUBE EMBED — swap in URL after upload -->
+      <!-- Upload instructions: southern-legends/content/matt-headley-sources/youtube-description-pirates-2007.md -->
+      <!-- Recommended visibility: Unlisted -->
+      <div class="video-wrap" style="margin-bottom:0.5rem; background:#111; display:flex; align-items:center; justify-content:center;">
+        <p style="color:#888; font-family:var(--sans); font-size:0.8rem; text-align:center; padding:2rem;">
+          Full recording uploading to YouTube.<br>
+          <em>Replace this block with an &lt;iframe&gt; embed once uploaded.</em>
+        </p>
+      </div>
+      <p class="photo-caption">Pirates of Penzance &mdash; JSU Ernest Stone Performing Arts Center, May 2007. Matt Headley as The Pirate King.</p>
+
+      <p style="margin-top:2rem;">Anniston First UMC sermons &mdash; Matt&rsquo;s preaching voice before the manic episode.</p>
+
+      <div class="video-grid">
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/s6rq4Iq4V0w"
+                    title="Reflections on Maundy Thursday"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="photo-caption">Maundy Thursday reflection &mdash; March 26, 2024. Pre-episode voice baseline.</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/24tgZXBF0b8"
+                    title="Anniston First UMC sermon"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="photo-caption">Anniston First UMC &mdash; ministry era</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="section" id="sources">
+      <span class="label">Archive</span>
+      <h2>Source Materials</h2>
+
+      <ul style="list-style:none; font-size:0.88rem;">
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Anniston Star &mdash; &ldquo;Hope in the Wilderness: A Pastor&rsquo;s Journey Through Depression&rdquo; (Oct 21, 2024)</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Foothills Magazine / Anniston Star &mdash; &ldquo;At this local family flower farm, it&rsquo;s all hands on deck&rdquo; (May 7, 2025)</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Patreon &mdash; &ldquo;Leavings Are Tough...&rdquo; (April 17, 2025)</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Patreon &mdash; &ldquo;I Had a Pulpit, And I Still Do&rdquo; (July 1, 2025)</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Patreon &mdash; &ldquo;Behind the Blooms&rdquo; S1 E2 (July 15, 2025)</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Voice transcript &mdash; Gold Star arc, April 19, 2026</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Matthew Headley Resume v.2</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Hospital journal, October&ndash;November 2025</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">ChatGPT export &mdash; mpheadley@gmail.com (210 conversations, Jan 2023&ndash;Apr 2026)</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">ChatGPT export &mdash; matt@headleyflowerfarm.com (97 conversations, Jul 2025&ndash;Jan 2026)</li>
+        <li style="padding:0.55rem 0; border-bottom:1px solid var(--rule); color:var(--ink-mid);">Brand Architecture &amp; Identity Document (Google Doc, 2025)</li>
+        <li style="padding:0.55rem 0; color:var(--ink-mid);">Jean Ellison interview transcript (JSU / Pirates of Penzance connection)</li>
+      </ul>
+
+      <div class="gap-note">
+        <p><strong style="font-weight:500; color:var(--ink);">What the archive does not have:</strong></p>
+        <p>The childhood is not documented. No parents. No hometown. No formative years before JSU. No account of what drew a kid from northeast Alabama toward music and the ministry. The archive begins at ordination.</p>
+        <p>Two ChatGPT accounts from the heaviest period of the manic episode (October 2024 through March 2025) remain locked and unexported. The deepest layer of that chapter is still inaccessible.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    Southern Legends &mdash; Updated June 2026
+  </footer>
+
+  <script>
+  // ── Drag-to-reposition images ──────────────────────────────────────────────
+  (function () {
+    const STORE_KEY = 'sl-img-positions';
+
+    function loadPositions() {
+      try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
+      catch { return {}; }
+    }
+
+    function savePosition(id, x, y) {
+      const positions = loadPositions();
+      positions[id] = { x, y };
+      localStorage.setItem(STORE_KEY, JSON.stringify(positions));
+    }
+
+    function applyPosition(img, x, y) {
+      img.style.objectPosition = `${x}% ${y}%`;
+    }
+
+    function initImage(img) {
+      const id = img.dataset.posId || img.src.split('/').pop();
+      const saved = loadPositions()[id];
+      let posX = saved ? saved.x : 50;
+      let posY = saved ? saved.y : 30;
+
+      applyPosition(img, posX, posY);
+
+      let dragging = false;
+      let startX, startY, startPosX, startPosY;
+      const rect = () => img.getBoundingClientRect();
+
+      img.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        dragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startPosX = posX;
+        startPosY = posY;
+        img.classList.add('dragging');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!dragging) return;
+        const r = rect();
+        const dx = ((e.clientX - startX) / r.width) * -100;
+        const dy = ((e.clientY - startY) / r.height) * -100;
+        posX = Math.max(0, Math.min(100, startPosX + dx));
+        posY = Math.max(0, Math.min(100, startPosY + dy));
+        applyPosition(img, posX, posY);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!dragging) return;
+        dragging = false;
+        img.classList.remove('dragging');
+        savePosition(id, posX, posY);
+      });
+
+      // Touch support
+      img.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY;
+        startPosX = posX; startPosY = posY;
+        dragging = true;
+      }, { passive: true });
+
+      img.addEventListener('touchmove', (e) => {
+        if (!dragging) return;
+        const t = e.touches[0];
+        const r = rect();
+        const dx = ((t.clientX - startX) / r.width) * -100;
+        const dy = ((t.clientY - startY) / r.height) * -100;
+        posX = Math.max(0, Math.min(100, startPosX + dx));
+        posY = Math.max(0, Math.min(100, startPosY + dy));
+        applyPosition(img, posX, posY);
+      }, { passive: true });
+
+      img.addEventListener('touchend', () => {
+        dragging = false;
+        savePosition(id, posX, posY);
+      });
+    }
+
+    // Init all content images
+    document.querySelectorAll('.container img, .hero img').forEach(img => {
+      if (!img.dataset.posId) {
+        img.dataset.posId = img.src.split('/').pop().split('?')[0] || Math.random().toString(36).slice(2);
+      }
+      // Wrap in img-wrap if not already
+      if (!img.closest('.img-wrap')) {
+        const wrap = document.createElement('div');
+        wrap.className = 'img-wrap';
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
+      }
+      initImage(img);
+    });
+  })();
+  </script>
+
+</body>
+</html>
