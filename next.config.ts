@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Business card QR → personal hub
-      { source: "/card", destination: "https://matthewheadley.com/card", permanent: false },
+      { source: "/card", destination: "https://matthewheadley.com/cardpage", permanent: false },
       // Old HTML site URLs → new Next.js routes
       { source: "/about.html", destination: "/about", permanent: true },
       { source: "/services.html", destination: "/services", permanent: true },
