@@ -4,12 +4,5 @@
       "path": "/api/cron/nurture",
       "schedule": "0 14 * * *"
     }
-  ],
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://plainspokenblueprint.com/$1",
-      "permanent": true
-    }
   ]
 }
