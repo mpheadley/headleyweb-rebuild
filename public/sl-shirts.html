@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Southern Legends — T-Shirt Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Abril+Fatface&family=IM+Fell+English:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f0e8; font-family: system-ui, -apple-system, sans-serif; color: #1a1a1a; padding: 40px 20px 80px; }
+  .header { max-width: 900px; margin: 0 auto 48px; }
+  h1 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .subtitle { font-size: 0.85rem; color: #666; }
+  .category { max-width: 900px; margin: 0 auto 48px; }
+  .cat-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 20px; border-bottom: 1px solid #d8d0c0; padding-bottom: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+
+  /* Shirt card */
+  .shirt-card { background: white; border-radius: 14px; overflow: hidden; border: 1px solid #e4ddd0; }
+  .shirt-preview { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; }
+  .shirt-info { padding: 16px; border-top: 1px solid #f0ebe0; }
+  .shirt-name { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+  .shirt-desc { font-size: 0.75rem; color: #777; line-height: 1.5; }
+  .shirt-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .tag { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 4px; }
+  .tag-justice { background: #1a2e1a; color: #7aaa7a; }
+  .tag-faith { background: #1a1e2e; color: #7a8aaa; }
+  .tag-history { background: #2e1a1a; color: #aa7a7a; }
+  .tag-identity { background: #2e2a1a; color: #aaa07a; }
+  .tag-sl { background: #1a2a2e; color: #7aaabf; }
+
+  /* Tee silhouette backgrounds */
+  .bg-tobacco { background: #6b4c2a; }
+  .bg-slate { background: #2e3d4a; }
+  .bg-natural { background: #e8dfc8; }
+  .bg-black { background: #1a1a1a; }
+  .bg-crimson { background: #7a1a1a; }
+  .bg-forest { background: #1e3a2a; }
+  .bg-sand { background: #c8b896; }
+  .bg-indigo { background: #1a1e3a; }
+  .bg-rust { background: #7a3a1a; }
+  .bg-clay { background: #8a4a2a; }
+  .bg-sage { background: #3a4a2e; }
+  .bg-midnight { background: #12141e; }
+
+  /* Typography styles */
+  .stacked-bold { text-align: center; }
+  .stacked-bold .line { display: block; font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.0; font-family: 'Bebas Neue', 'Arial Black', Impact, sans-serif; }
+  .stacked-bold.distressed .line { opacity: 0.88; text-shadow: 1px 1px 0 rgba(0,0,0,0.2); }
+  .italic-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 0.7rem; opacity: 0.65; display: block; margin-bottom: 6px; letter-spacing: 0.05em; }
+  .chest-mark { position: absolute; top: 14px; right: 16px; font-size: 0.65rem; font-style: italic; opacity: 0.7; }
+  .bottom-mark { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.55; white-space: nowrap; }
+
+  /* Alabama shape using SVG */
+  .al-shape { width: 80px; opacity: 0.9; }
+
+  /* Special layouts */
+  .arc-text { text-align: center; }
+  .arc-text .big { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; font-family: 'Arial Black', Impact, sans-serif; display: block; line-height: 1; }
+  .arc-text .small { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; display: block; margin-top: 6px; opacity: 0.7; }
+  .arc-text .sub { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; opacity: 0.5; margin-top: 4px; }
+
+  .verse-layout { text-align: center; }
+  .verse-layout .ref { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 8px; }
+  .verse-layout .text { font-size: clamp(0.9rem, 3vw, 1.1rem); font-style: italic; line-height: 1.5; font-weight: 600; display: block; }
+  .verse-layout .attrib { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.5; display: block; margin-top: 8px; }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Southern Legends — T-Shirt Concepts</h1>
+  <p class="subtitle">Stacked type, distressed print, Fourthwall POD. Drafts only — edit before ordering.</p>
+</div>
+
+<!-- ── ORIGINAL THREE ─────────────────────────────────────── -->
+<div class="category">
+  <p class="cat-label">Original concepts — identity &amp; place</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-tobacco">
+        <div class="chest-mark" style="color:#e8c894;">Southern Legends</div>
+        <div class="stacked-bold distressed">
+          <span class="line" style="color:#e8c894;">BORN</span>
+          <span class="line" style="color:#e8c894;">HERE</span>
+          <span class="line" style="color:#e8c894;">STAYED</span>
+          <span class="line" style="color:#e8c894;">HERE</span>
+        </div>
+        <div class="bottom-mark" style="color:#e8c894;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Born Here / Stayed Here / Buried Here</p>
+        <p class="shirt-desc">The SL thesis in six words. Stacked bold on tobacco brown. White or gold distressed print.</p>
+        <div class="shirt-tags"><span class="tag tag-identity">Identity</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-black">
+        <div class="chest-mark" style="color:#aaa;">SL</div>
+        <div class="stacked-bold distressed">
+          <span class="line" style="color:#e8e8e8;">FROM</span>
+          <span class="line" style="color:#e8e8e8;">HERE</span>
+          <span class="line" style="color:#e8e8e8;">STAYS</span>
+          <span class="line" style="color:#e8e8e8;">HERE</span>
+          <span class="line" style="color:#e8e8e8;">ENDS</span>
+          <span class="line" style="color:#e8e8e8;">HERE</span>
+        </div>
+        <div class="bottom-mark" style="color:#aaa;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">From Here / Stays Here / Ends Here</p>
+        <p class="shirt-desc">Austere. Defiant. Limited run after the first big profile drops. Cult favorite.</p>
+        <div class="shirt-tags"><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-slate">
+        <div class="chest-mark" style="color:#c0c8d8;">Southern Legends</div>
+        <div class="stacked-bold">
+          <span class="line" style="color:#c0c8d8; font-size:1.1rem; letter-spacing:0.05em;">DEEP ROOTS</span>
+          <span class="line" style="color:#c0c8d8; font-size:1.1rem; letter-spacing:0.05em;">SLOW BURN</span>
+          <span class="line" style="color:#c0c8d8; font-size:1.1rem; letter-spacing:0.05em;">LONG MEMORY</span>
+        </div>
+        <div class="bottom-mark" style="color:#c0c8d8;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Deep Roots / Slow Burn / Long Memory</p>
+        <p class="shirt-desc">Three phrases, no shared word. How Southern stories actually move.</p>
+        <div class="shirt-tags"><span class="tag tag-identity">Identity</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── JUSTICE ────────────────────────────────────────────── -->
+<div class="category">
+  <p class="cat-label">Justice &amp; witness</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-crimson">
+        <div class="stacked-bold distressed">
+          <span class="line" style="color:#f8d0b0; font-size:0.9rem; letter-spacing:0.1em;">THEY SAT DOWN</span>
+          <span class="line" style="color:#f8d0b0; font-size:0.9rem; letter-spacing:0.1em;">SO WE COULD</span>
+          <span class="line" style="color:#f8d0b0; font-size:0.9rem; letter-spacing:0.1em;">STAND UP</span>
+        </div>
+        <div class="bottom-mark" style="color:#f8d0b0;">anniston, alabama · 1961</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">They Sat Down So We Could Stand Up</p>
+        <p class="shirt-desc">Freedom Riders reference. Anniston 1961 — the bus burning on Hwy 78. Quiet tribute, no names needed.</p>
+        <div class="shirt-tags"><span class="tag tag-justice">Justice</span><span class="tag tag-history">History</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-forest">
+        <div class="stacked-bold">
+          <span class="line" style="color:#c8e8c0; font-size:1.3rem;">BEAR</span>
+          <span class="line" style="color:#c8e8c0; font-size:1.3rem;">WITNESS</span>
+        </div>
+        <div class="bottom-mark" style="color:#c8e8c0;">southern legends · stories worth telling</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Bear Witness</p>
+        <p class="shirt-desc">Two words. The whole purpose of SL. What a journalist does. What a neighbor does. What Alabama still needs.</p>
+        <div class="shirt-tags"><span class="tag tag-justice">Justice</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-indigo">
+        <div class="stacked-bold distressed">
+          <span class="line" style="color:#c8c8f8; font-size:1rem; letter-spacing:0.08em;">NAMED</span>
+          <span class="line" style="color:#c8c8f8; font-size:1rem; letter-spacing:0.08em;">CLAIMED</span>
+          <span class="line" style="color:#c8c8f8; font-size:1rem; letter-spacing:0.08em;">REMEMBERED</span>
+        </div>
+        <div class="bottom-mark" style="color:#c8c8f8;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Named / Claimed / Remembered</p>
+        <p class="shirt-desc">The counter-erasure shirt. People whose stories got buried. SL's mission made visible.</p>
+        <div class="shirt-tags"><span class="tag tag-justice">Justice</span><span class="tag tag-history">History</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-midnight">
+        <div class="stacked-bold">
+          <span class="line" style="color:#f0e8d8; font-size:0.85rem; letter-spacing:0.12em;">THE SOUTH</span>
+          <span class="line" style="color:#f0e8d8; font-size:0.85rem; letter-spacing:0.12em;">IS NOT</span>
+          <span class="line" style="color:#f0e8d8; font-size:0.85rem; letter-spacing:0.12em;">ONE THING</span>
+        </div>
+        <div class="bottom-mark" style="color:#f0e8d8;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">The South Is Not One Thing</p>
+        <p class="shirt-desc">Direct rebuttal to the monolith myth. Wearable thesis statement. Strong for community events.</p>
+        <div class="shirt-tags"><span class="tag tag-justice">Justice</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FAITH ──────────────────────────────────────────────── -->
+<div class="category">
+  <p class="cat-label">Faith &amp; resurrection</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-natural">
+        <div class="verse-layout">
+          <span class="ref" style="color:#4a3a1a;">Isaiah 58:6</span>
+          <span class="text" style="color:#3a2a0a;">loose the chains<br>of injustice</span>
+          <span class="attrib" style="color:#6a5a3a;">southernlegends.blog</span>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Isaiah 58:6 — Loose the Chains</p>
+        <p class="shirt-desc">The justice-faith crossover. Light natural base, dark ink. Feels like a church camp shirt but says something harder.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Faith</span><span class="tag tag-justice">Justice</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-forest">
+        <div class="stacked-bold">
+          <span class="line" style="color:#d8f0d0; font-size:1.05rem; letter-spacing:0.06em;">THE SEED</span>
+          <span class="line" style="color:#d8f0d0; font-size:1.05rem; letter-spacing:0.06em;">MUST DIE</span>
+          <span class="line" style="color:#d8f0d0; font-size:0.7rem; letter-spacing:0.2em; font-weight: 600; margin-top:6px;">John 12:24</span>
+        </div>
+        <div class="bottom-mark" style="color:#d8f0d0;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">The Seed Must Die</p>
+        <p class="shirt-desc">From your March 31 sermon. Loss as precondition for growth. Works for SL — every profile is a seed story.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Faith</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-rust">
+        <div class="stacked-bold distressed">
+          <span class="line" style="color:#f8e8c0; font-size:0.95rem; letter-spacing:0.06em;">BROKEN</span>
+          <span class="line" style="color:#f8e8c0; font-size:0.95rem; letter-spacing:0.06em;">STILL</span>
+          <span class="line" style="color:#f8e8c0; font-size:0.95rem; letter-spacing:0.06em;">STANDING</span>
+        </div>
+        <div class="bottom-mark" style="color:#f8e8c0;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Broken / Still / Standing</p>
+        <p class="shirt-desc">The resurrection thread without naming it. Every SL subject. Every recovery story. Out of the Shadows adjacent.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Faith</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-indigo">
+        <div class="stacked-bold">
+          <span class="line" style="color:#f0eaf8; font-size:1.1rem;">TEND</span>
+          <span class="line" style="color:#f0eaf8; font-size:1.1rem;">THE</span>
+          <span class="line" style="color:#f0eaf8; font-size:1.1rem;">FLOCK</span>
+        </div>
+        <div class="bottom-mark" style="color:#f0eaf8;">tend the fields · tend the marriage</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Tend the Flock</p>
+        <p class="shirt-desc">Triple meaning: pastoral call, marriage companion (Tend), agricultural roots. Could cross-sell to pastors in the Guide Network.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Faith</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── LOCAL HISTORY ──────────────────────────────────────── -->
+<div class="category">
+  <p class="cat-label">Local history — Calhoun County &amp; Northeast Alabama</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-clay">
+        <div class="arc-text">
+          <span class="big" style="color:#f8e8c8;">ANNISTON</span>
+          <span class="small" style="color:#f8e8c8;">the model city · est. 1872</span>
+          <span class="sub" style="color:#f8e8c8;">calhoun county, alabama</span>
+        </div>
+        <div class="bottom-mark" style="color:#f8e8c8;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Anniston — The Model City</p>
+        <p class="shirt-desc">Reclaims the nickname with irony intact. Est. 1872. Clay brown = the actual dirt of the county.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-sage">
+        <!-- Alabama SVG state shape (simplified) -->
+        <svg class="al-shape" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 10 L80 10 L82 120 L70 135 L60 145 L50 152 L42 145 L35 130 L28 120 L18 115 Z" fill="#c8e8c0" opacity="0.9"/>
+          <!-- Ladiga Trail line rough path across NE corner -->
+          <path d="M20 10 Q35 35 50 45 Q65 55 80 10" stroke="#f8e8c0" stroke-width="2" fill="none" stroke-dasharray="4,3" opacity="0.8"/>
+          <circle cx="35" cy="38" r="3" fill="#f8e8c0" opacity="0.9"/>
+          <circle cx="65" cy="32" r="3" fill="#f8e8c0" opacity="0.9"/>
+        </svg>
+        <div style="text-align:center; margin-top:8px;">
+          <span style="color:#c8e8c0; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; display:block;">Chief Ladiga Trail</span>
+          <span style="color:#c8e8c0; font-size:0.5rem; letter-spacing:0.12em; text-transform:uppercase; display:block; opacity:0.6; margin-top:3px;">Cleburne · Calhoun · Talladega</span>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Alabama + Chief Ladiga Trail</p>
+        <p class="shirt-desc">State shape with trail dotted across NE Alabama. Two start/end points marked. Trail name under. Strong for outdoors/trail crowd AND local history crowd.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-tobacco">
+        <!-- Alabama shape + text inside -->
+        <div style="position:relative; display:inline-block;">
+          <svg width="90" height="145" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 10 L80 10 L82 120 L70 135 L60 145 L50 152 L42 145 L35 130 L28 120 L18 115 Z" fill="#e8c894" opacity="0.95"/>
+          </svg>
+          <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; width:80px;">
+            <span style="color:#6b4c2a; font-size:0.55rem; font-weight:900; text-transform:uppercase; letter-spacing:0.05em; display:block; line-height:1.3;">Where the<br>stories live</span>
+          </div>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Alabama — Where the Stories Live</p>
+        <p class="shirt-desc">State outline, text inside. Simple. Tourist-friendly but SL-branded. Strong seller at farmers markets + Aisle expo table.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-midnight">
+        <div class="stacked-bold">
+          <span class="line" style="color:#f0e8d8; font-size:0.8rem; letter-spacing:0.15em;">FORT McCLELLAN</span>
+          <span class="line" style="color:#f0e8d8; font-size:0.8rem; letter-spacing:0.15em;">COLD WATER MTN</span>
+          <span class="line" style="color:#f0e8d8; font-size:0.8rem; letter-spacing:0.15em;">QUINTARD AVE</span>
+          <span class="line" style="color:#f0e8d8; font-size:0.8rem; letter-spacing:0.15em;">STILL HERE</span>
+        </div>
+        <div class="bottom-mark" style="color:#f0e8d8;">anniston, alabama</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Anniston Landmarks — Still Here</p>
+        <p class="shirt-desc">Stacked place names + "Still Here" anchor. Fort McClellan, Cold Water Mountain, the main drag. Hyperlocal pride.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-sand">
+        <div class="arc-text">
+          <span class="big" style="color:#2a1a0a; font-size:1rem; letter-spacing:0.1em;">TALLADEGA</span>
+          <span class="big" style="color:#2a1a0a; font-size:1rem; letter-spacing:0.1em;">CHEROKEE COUNTY</span>
+          <span class="big" style="color:#2a1a0a; font-size:1rem; letter-spacing:0.1em;">CLAY COUNTY</span>
+          <span class="big" style="color:#2a1a0a; font-size:0.7rem; letter-spacing:0.25em; margin-top:6px;">CLEBURNE COUNTY</span>
+        </div>
+        <div class="bottom-mark" style="color:#2a1a0a;">chief ladiga trail — 33 miles</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Ladiga Trail Counties</p>
+        <p class="shirt-desc">Stacked county names with trail mileage at bottom. Appeals to hikers, trail community, and hyperlocal Alabama pride simultaneously.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── ALABAMA STATE SHAPE IDEAS ──────────────────────────── -->
+<div class="category">
+  <p class="cat-label">Alabama state shape — concept variations</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-forest">
+        <div style="text-align:center;">
+          <svg width="70" height="112" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 10 L80 10 L82 120 L70 135 L60 145 L50 152 L42 145 L35 130 L28 120 L18 115 Z" fill="#c8e8c0"/>
+            <path d="M20 10 Q35 35 50 45 Q65 55 80 10" stroke="#fff" stroke-width="2.5" fill="none" stroke-dasharray="5,4" opacity="0.9"/>
+          </svg>
+          <div style="margin-top:8px;">
+            <span style="color:#c8e8c0; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; display:block;">Ladiga Trail</span>
+            <span style="color:#c8e8c0; font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; display:block; opacity:0.65; margin-top:3px;">Northeast Alabama</span>
+          </div>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Alabama + Trail (Minimal)</p>
+        <p class="shirt-desc">Clean state outline, dashed trail line cutting across NE corner, trail name below. Forest green base, light ink.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-crimson">
+        <div style="text-align:center;">
+          <svg width="70" height="112" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 10 L80 10 L82 120 L70 135 L60 145 L50 152 L42 145 L35 130 L28 120 L18 115 Z" fill="none" stroke="#f8d0b0" stroke-width="3"/>
+            <circle cx="50" cy="80" r="15" fill="none" stroke="#f8d0b0" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+          <div style="margin-top:6px;">
+            <span style="color:#f8d0b0; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; display:block;">Alabama</span>
+            <span style="color:#f8d0b0; font-size:0.5rem; letter-spacing:0.12em; text-transform:uppercase; display:block; opacity:0.6; margin-top:2px;">the stories beneath the surface</span>
+          </div>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Alabama Outline (Ghost) + "Stories Beneath the Surface"</p>
+        <p class="shirt-desc">Outline only, not filled. More minimalist. Subtle for people who don't want to shout their state — they know.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-clay">
+        <div style="text-align:center;">
+          <svg width="70" height="112" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 10 L80 10 L82 120 L70 135 L60 145 L50 152 L42 145 L35 130 L28 120 L18 115 Z" fill="#f8e8c8" opacity="0.95"/>
+            <!-- Anniston dot -->
+            <circle cx="48" cy="45" r="3.5" fill="#8a2a1a"/>
+            <line x1="48" y1="45" x2="60" y2="38" stroke="#8a2a1a" stroke-width="1"/>
+          </svg>
+          <div style="margin-top:4px;">
+            <span style="color:#f8e8c8; font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; display:block;">Anniston, AL</span>
+            <span style="color:#f8e8c8; font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase; display:block; opacity:0.6; margin-top:2px;">where we started</span>
+          </div>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Alabama + Anniston Pinned</p>
+        <p class="shirt-desc">State shape with a single pin drop on Anniston. "Where we started." Hyperlocal pride shirt — tells people exactly where this is from.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Identity</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     THE AISLE — BRIDAL EXPO SHIRTS
+     ══════════════════════════════════════════════════════════ -->
+<div class="category" style="margin-top:48px;">
+  <p class="cat-label">The Aisle · Bridal Expo · Oct 18, 2026</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview" style="background:#f5f0e8; flex-direction:column; gap:6px;">
+        <div class="chest-mark" style="color:#1B2A4A; font-family:'IM Fell English',serif; font-style:italic;">The Aisle</div>
+        <svg width="64" height="46" viewBox="0 0 200 148" fill="none">
+          <line x1="50" y1="140" x2="50" y2="75" stroke="#1B2A4A" stroke-width="5" stroke-linecap="square"/>
+          <line x1="150" y1="140" x2="150" y2="75" stroke="#1B2A4A" stroke-width="5" stroke-linecap="square"/>
+          <path d="M50 75 A50 50 0 0 1 150 75" stroke="#1B2A4A" stroke-width="5" fill="none"/>
+          <line x1="50" y1="140" x2="150" y2="140" stroke="#1B2A4A" stroke-width="5" stroke-linecap="square"/>
+        </svg>
+        <span style="display:block; font-family:'Bodoni Moda',Georgia,serif; font-size:1.3rem; font-weight:600; color:#1B2A4A; letter-spacing:0.12em; text-transform:uppercase;">THE AISLE</span>
+        <div class="bottom-mark" style="color:#1B2A4A; font-family:'IM Fell English',serif;">East Alabama · 2026</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">The Aisle — Cream (Main Event)</p>
+        <p class="shirt-desc">Arch mark + wordmark in navy. Cream/petal base. Primary event shirt for vendors and staff, Oct 18 Anniston.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Event</span><span class="tag tag-sl">Staff</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-slate" style="flex-direction:column; gap:6px;">
+        <div class="chest-mark" style="color:#c8a060; font-family:'IM Fell English',serif; font-style:italic;">The Aisle</div>
+        <svg width="64" height="46" viewBox="0 0 200 148" fill="none">
+          <line x1="50" y1="140" x2="50" y2="75" stroke="#c8a060" stroke-width="5" stroke-linecap="square"/>
+          <line x1="150" y1="140" x2="150" y2="75" stroke="#c8a060" stroke-width="5" stroke-linecap="square"/>
+          <path d="M50 75 A50 50 0 0 1 150 75" stroke="#c8a060" stroke-width="5" fill="none"/>
+          <line x1="50" y1="140" x2="150" y2="140" stroke="#c8a060" stroke-width="5" stroke-linecap="square"/>
+        </svg>
+        <span style="display:block; font-family:'Bodoni Moda',Georgia,serif; font-size:1.3rem; font-weight:600; color:#c8a060; letter-spacing:0.12em; text-transform:uppercase;">THE AISLE</span>
+        <div class="bottom-mark" style="color:#c8a060; font-family:'IM Fell English',serif;">East Alabama · 2026</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">The Aisle — Navy/Gold (Vendor)</p>
+        <p class="shirt-desc">Same arch mark in gold on navy. Vendor gift and speaker shirt. Classic Alabama bridal palette.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Vendor</span><span class="tag tag-identity">Gift</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     CHIEF LADIGA TRAIL — MERCH
+     ══════════════════════════════════════════════════════════ -->
+<div class="category" style="margin-top:48px;">
+  <p class="cat-label">Chief Ladiga Trail — 33 Miles</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-forest">
+        <div class="chest-mark" style="color:#d4e8c0;">Southern Legends</div>
+        <div class="stacked-bold distressed">
+          <span class="line" style="color:#d4e8c0;">CHIEF</span>
+          <span class="line" style="color:#d4e8c0;">LADIGA</span>
+          <span class="line" style="color:#d4e8c0;">TRAIL</span>
+        </div>
+        <div class="bottom-mark" style="color:#d4e8c0;">Alabama · 33 Miles</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">CLT Wordmark — Forest</p>
+        <p class="shirt-desc">Stacked bold on forest green. Primary CLT trail shirt. Pairs with the Southern Legends CLT profiles.</p>
+        <div class="shirt-tags"><span class="tag tag-identity">Trail</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-tobacco">
+        <div class="chest-mark" style="color:#c8b87a; font-style:italic;">the trail that connects us</div>
+        <div class="arc-text">
+          <span class="big" style="color:#c8b87a;">CLT</span>
+          <span class="small" style="color:#c8b87a;">Cleburne Co → Jacksonville</span>
+          <span class="sub" style="color:#c8b87a;">Alabama</span>
+        </div>
+        <div class="bottom-mark" style="color:#c8b87a;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">CLT Abbreviation — Tobacco</p>
+        <p class="shirt-desc">Three letters, big. "The trail that connects us." For people who know. Tobacco base.</p>
+        <div class="shirt-tags"><span class="tag tag-identity">Trail</span><span class="tag tag-history">Local</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODEL CITY — ANNISTON
+     ══════════════════════════════════════════════════════════ -->
+<div class="category" style="margin-top:48px;">
+  <p class="cat-label">The Model City · Anniston · est. 1872</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-black">
+        <div class="chest-mark" style="color:#e8dfc8; font-family:'IM Fell English',serif; font-style:italic;">Anniston, Alabama</div>
+        <div style="text-align:center; color:#e8dfc8; font-family:'IM Fell English',serif; font-size:clamp(1.6rem,5vw,2.2rem); line-height:1.1; letter-spacing:-0.01em;">
+          The<br>Model<br>City
+        </div>
+        <div class="bottom-mark" style="color:#e8dfc8; font-family:'IM Fell English',serif; font-style:italic;">est. 1872</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">The Model City — Black</p>
+        <p class="shirt-desc">Anniston's original civic boast, reclaimed. IM Fell English serif on black. Cream ink. Pride shirt for people who know the real story.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Anniston</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-natural">
+        <div class="chest-mark" style="color:#1c1917; font-family:'IM Fell English',serif; font-style:italic;">Anniston, Alabama</div>
+        <div style="text-align:center; color:#1c1917; font-family:'IM Fell English',serif; font-size:clamp(1.6rem,5vw,2.2rem); line-height:1.1; letter-spacing:-0.01em;">
+          The<br>Model<br>City
+        </div>
+        <div class="bottom-mark" style="color:#1c1917; font-family:'IM Fell English',serif; font-style:italic;">est. 1872</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">The Model City — Natural</p>
+        <p class="shirt-desc">Same design on natural/parchment. Dark ink. Softer, more vintage. Good for the farmers market crowd.</p>
+        <div class="shirt-tags"><span class="tag tag-history">History</span><span class="tag tag-identity">Anniston</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOOM BAR — HEATHER FLORALS
+     ══════════════════════════════════════════════════════════ -->
+<div class="category" style="margin-top:48px;">
+  <p class="cat-label">Bloom Bar · Heather Florals</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview" style="background:#f5f0e8; padding:8px;">
+        <img src="images/merch/bloombar-front.png" alt="Bloom Bar Shirt Front" style="max-height:100%; max-width:100%; object-fit:contain;">
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Bloom Bar — Front</p>
+        <p class="shirt-desc">Heather's mobile flower market. Print-ready art for Fourthwall tee.</p>
+        <div class="shirt-tags"><span class="tag tag-identity">Heather Florals</span><span class="tag tag-sl">Farm</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview" style="background:#f5f0e8; padding:8px;">
+        <img src="images/merch/bloombar-back.png" alt="Bloom Bar Shirt Back" style="max-height:100%; max-width:100%; object-fit:contain;">
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Bloom Bar — Back</p>
+        <p class="shirt-desc">Back panel design. Trail location + tagline.</p>
+        <div class="shirt-tags"><span class="tag tag-identity">Heather Florals</span><span class="tag tag-sl">Farm</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     REDBIRD WILLOW FARM — FOUNDING PARTNER
+     ══════════════════════════════════════════════════════════ -->
+<div class="category" style="margin-top:48px;">
+  <p class="cat-label">Redbird Willow Farm · Founding Partner · The Aisle</p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-sage">
+        <div class="chest-mark" style="color:#f0e8d0; font-style:italic;">The Aisle · Founding Partner</div>
+        <div class="stacked-bold distressed">
+          <span class="line" style="color:#f0e8d0; font-size:1.5rem;">REDBIRD</span>
+          <span class="line" style="color:#f0e8d0; font-size:1.5rem;">WILLOW</span>
+          <span class="line" style="color:#f0e8d0; font-size:1.5rem;">FARM</span>
+        </div>
+        <div class="bottom-mark" style="color:#f0e8d0;">Alabama · Est.</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Redbird Willow Farm — Sage</p>
+        <p class="shirt-desc">Founding partner vendor shirt for The Aisle. Stacked bold on sage green. Staff/gift shirt for expo day.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Aisle Partner</span><span class="tag tag-identity">Farm</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-natural">
+        <div class="chest-mark" style="color:#3a2a1a; font-style:italic;">The Aisle · Founding Partner</div>
+        <div class="stacked-bold">
+          <span class="line" style="color:#3a2a1a; font-size:1.5rem;">REDBIRD</span>
+          <span class="line" style="color:#3a2a1a; font-size:1.5rem;">WILLOW</span>
+          <span class="line" style="color:#3a2a1a; font-size:1.5rem;">FARM</span>
+        </div>
+        <div class="bottom-mark" style="color:#3a2a1a;">Alabama</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Redbird Willow Farm — Natural</p>
+        <p class="shirt-desc">Same stacked design on natural parchment. Dark ink. More vintage — great for market days.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Aisle Partner</span><span class="tag tag-history">Farm</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     BIPOLAR & PROUD — MENTAL HEALTH BRAND
+     ══════════════════════════════════════════════════════════ -->
+<div class="category" style="margin-top:48px;">
+  <p class="cat-label">Bipolar &amp; Proud · Mental Health Merch — <a href="/southern-legends/bipolar-brand/bipolar-merch-mockups.html" style="color:#888;">full mockups →</a></p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview" style="background:#1C1917;">
+        <div class="chest-mark" style="color:#F5F0E8; font-style:italic; font-family:'IM Fell English',Georgia,serif;">Southern Legends</div>
+        <div style="text-align:center; color:#F5F0E8;">
+          <span style="display:block; font-family:'Fraunces',Georgia,serif; font-size:clamp(1.3rem,4vw,1.8rem); font-weight:400; line-height:1.15;">Bipolar</span>
+          <span style="display:block; font-family:'Fraunces',Georgia,serif; font-size:clamp(0.7rem,2vw,0.9rem); font-weight:300; letter-spacing:0.18em; text-transform:uppercase; opacity:0.55; margin:6px 0;">&amp; Proud</span>
+          <span style="display:block; width:40px; height:1px; background:#F5F0E8; opacity:0.2; margin:8px auto;"></span>
+          <span style="display:block; font-size:0.52rem; letter-spacing:0.2em; text-transform:uppercase; opacity:0.4;">southernlegends.blog</span>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Bipolar &amp; Proud — Dark</p>
+        <p class="shirt-desc">Fraunces serif on black. Quiet, dignified. Not a shout — a statement for people who know. Personal brand crossover with SL mental health coverage.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Mental Health</span><span class="tag tag-sl">SL Core</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview" style="background:#F5F0E8;">
+        <div class="chest-mark" style="color:#1C1917; font-style:italic; font-family:'IM Fell English',Georgia,serif;">Southern Legends</div>
+        <div style="text-align:center; color:#1C1917;">
+          <span style="display:block; font-family:'Fraunces',Georgia,serif; font-size:clamp(1.3rem,4vw,1.8rem); font-weight:400; line-height:1.15;">Still</span>
+          <span style="display:block; font-family:'Fraunces',Georgia,serif; font-size:clamp(1.3rem,4vw,1.8rem); font-weight:400; line-height:1.15;">Here</span>
+          <span style="display:block; width:40px; height:1px; background:#1C1917; opacity:0.2; margin:8px auto;"></span>
+          <span style="display:block; font-size:0.52rem; letter-spacing:0.2em; text-transform:uppercase; opacity:0.4;">southernlegends.blog</span>
+        </div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Still Here — Natural</p>
+        <p class="shirt-desc">Two words. Cream base. For survivors. The simplest possible statement about persistence. Full mockup at southern-legends bipolar brand folder.</p>
+        <div class="shirt-tags"><span class="tag tag-faith">Mental Health</span><span class="tag tag-identity">Survival</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FREEDOM RIDERS — DENNIS TRIBUTE
+     ══════════════════════════════════════════════════════════ -->
+<div class="category" style="margin-top:48px;">
+  <p class="cat-label">Freedom Riders · Dave Dennis Tribute — <a href="/southern-legends/merch/freedom-riders/dennis-preview.html" style="color:#888;">full preview →</a></p>
+  <div class="grid">
+
+    <div class="shirt-card">
+      <div class="shirt-preview" style="background:#111; flex-direction:column; gap:8px;">
+        <div class="stacked-bold distressed" style="text-align:center;">
+          <span class="line" style="color:#e8e0d0; font-size:1.3rem;">DAVE</span>
+          <span class="line" style="color:#e8e0d0; font-size:1.3rem;">DENNIS</span>
+        </div>
+        <span style="display:block; font-family:'IM Fell English',Georgia,serif; font-style:italic; font-size:0.65rem; color:#e8e0d0; opacity:0.5; text-align:center; letter-spacing:0.08em;">Freedom Rider · 1961</span>
+        <div class="bottom-mark" style="color:#e8e0d0;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Dave Dennis — Black</p>
+        <p class="shirt-desc">Hedcut portrait shirt honoring Freedom Rider Dave Dennis. Full art uses PNG hedcut — see full preview for the complete design with portrait and bus imagery.</p>
+        <div class="shirt-tags"><span class="tag tag-justice">Justice</span><span class="tag tag-history">Civil Rights</span></div>
+      </div>
+    </div>
+
+    <div class="shirt-card">
+      <div class="shirt-preview bg-natural" style="flex-direction:column; gap:8px;">
+        <div class="stacked-bold distressed" style="text-align:center;">
+          <span class="line" style="color:#1c1917; font-size:1.3rem;">DAVE</span>
+          <span class="line" style="color:#1c1917; font-size:1.3rem;">DENNIS</span>
+        </div>
+        <span style="display:block; font-family:'IM Fell English',Georgia,serif; font-style:italic; font-size:0.65rem; color:#1c1917; opacity:0.5; text-align:center; letter-spacing:0.08em;">Freedom Rider · 1961</span>
+        <div class="bottom-mark" style="color:#1c1917;">southernlegends.blog</div>
+      </div>
+      <div class="shirt-info">
+        <p class="shirt-name">Dave Dennis — Natural</p>
+        <p class="shirt-desc">Same tribute design on natural base. Dark ink. The hedcut portrait art lives in the freedom-riders folder — pair with this card when ordering.</p>
+        <div class="shirt-tags"><span class="tag tag-justice">Justice</span><span class="tag tag-history">Civil Rights</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="max-width:900px; margin: 0 auto; padding: 20px 0; font-size:0.75rem; color:#888; border-top:1px solid #d8d0c0; margin-top:48px;">
+  All designs: Fourthwall print-on-demand. White or light ink on colored garment unless noted. Distressed texture on print. Script chest mark = "Southern Legends" in italics. Bottom mark = southernlegends.blog. ·
+  <a href="/alabama-wedding-expo/print/tshirt-preview.html" style="color:#888;">Aisle full preview</a> ·
+  <a href="/southern-legends/merch/chief-ladiga-trail/preview-v2.html" style="color:#888;">CLT full preview</a> ·
+  <a href="/southern-legends/merch/model-city/model-city-preview.html" style="color:#888;">Model City full preview</a>
+</div>
+
+</body>
+</html>
