@@ -1,4 +1,10 @@
-// Source: southern-legends/content/matt-headley-sources/matt-headley-profile.html
+// Sources: southern-legends/content/matt-headley-sources/
+//   matt-headley-profile.html (master profile)
+//   GOOGLE-DRIVE-ARCHIVE-INDEX.md (Google Drive inventory 2026-06-06)
+//   Spiritual Autiobiography.gdoc (2009), Autobiographical Statement.pdf (2015)
+//   Matt_Headley_Full_Memory_Export_March_2025.docx
+//   journal-ua-depression-guitar-era.md, journal-meeting-heather-jsu-audition.md
+//   pirates-of-penzance-jsu-2007.md, AIM logs Nov–Dec 2003
 // Personal version contains full biographical detail — not for public display.
 // Public version is the curated professional narrative.
 
@@ -129,16 +135,36 @@ export const personalBio: PersonalBio = {
       date: "October–November 2025",
     },
   },
+  formativeEvents: [
+    { year: "~1991", event: "Father's Marine Corps scandal. Family leaves military, becomes low-income. Parents nearly divorce. Matt is ~10." },
+    { year: "1993–2002", event: "Oxford, AL. Grew up Catholic. Southern gospel quartet. CROSS leadership team, Birmingham Diocese." },
+    { year: "~1997", event: "Age ~16: Judgment House at local Baptist church. Evangelical contact from within Catholic identity." },
+    { year: "2002", event: "Graduates high school. Enters University of Alabama (engineering)." },
+    { year: "2002–2004", event: "Relationship with high school sweetheart collapses on Alaska trip. Severely depressed. Drops out of UA." },
+    { year: "2003–2004", event: "AIM chat logs (Nov–Dec 2003): 'I'm sick of being lonely.' Planning guitar, working out, spiritual recovery." },
+    { year: "2004–2005", event: "Gadsden State Community College. Sang Elvis ('Hound Dog') in flannel at performance center. Buying Takamine guitar ($850, eBay). Dad scoffed." },
+    { year: "2005–2006", event: "Jacksonville State University. Show choir audition: blue jeans + flannel, 'O Rest in the Lord' with Teresa Stricklin. Dr. Corbin: 'Move over, Jason.' Low D2." },
+    { year: "2006", event: "Pirates of Penzance: played The Pirate King. Director: Dr. Nathan Wight. JSU Digital Commons archive." },
+    { year: "2006", event: "Choir director, Red Hill UMC, Attala AL. Slow conversion — no single moment. Music was the door." },
+    { year: "2006–2008", event: "Simultaneous worship leader, Hokes Bluff UMC. JSU Wesley Foundation residency. Mentor: Jay Robinson." },
+    { year: "2009", event: "Marries Heather (summer). Moves to Muncie, Indiana. She begins MA Piano at Ball State." },
+    { year: "2009", event: "Worship Arts Director, First Baptist Church Muncie under Wade Allen (pastor who introduced him to Northern Seminary)." },
+    { year: "2009–2012", event: "M.Div., Northern Seminary, Chicago (full scholarship, Kern Scholarship)." },
+    { year: "2012", event: "Associate Pastor, First Baptist Muncie." },
+    { year: "~2013", event: "Papa (grandfather) commits suicide. Matt preaches the funeral. Sermon in Scrivener archive." },
+    { year: "Feb 23, 2014", event: "Ordained, American Baptist Churches USA, First Baptist Muncie." },
+    { year: "June 2014", event: "Appointed Pastor, Weaver First UMC. Introduced by Jay Robinson to District Superintendent Sherill Clontz." },
+  ],
   career: [
     {
       years: "2006–2012",
       role: "Early Ministry",
-      detail: "Music director and pastoral roles. Foundation years.",
+      detail: "Music director and pastoral roles. Red Hill UMC (Attala AL), Hokes Bluff UMC simultaneously. JSU Wesley Foundation. Foundation years.",
     },
     {
       years: "2012–2014",
       role: "Associate Pastor & Worship Arts Director",
-      detail: "First Baptist Church, Muncie, Indiana. Ordained through American Baptist Churches USA.",
+      detail: "First Baptist Church, Muncie, Indiana. Introduced by pastor Wade Allen to Northern Seminary. Ordained Feb 23, 2014 through American Baptist Churches USA.",
     },
     {
       years: "2014–2021",
@@ -241,12 +267,29 @@ export const personalBio: PersonalBio = {
       source: "Conversation, 2026",
     },
   ],
+  keyPeople: [
+    { name: "Jason Wright", role: "JSU choir bass anchor; 20-year friend; took over as music director at Anniston First after Matt left; called during the silence" },
+    { name: "Kyle", role: "Took over as associate pastor at Anniston First; preached 'grippy socks vacation' sermon; visited Matt the day he went to UAB" },
+    { name: "Teresa Stricklin", role: "Accompanied show choir audition on piano; Assistant Director, Pirates of Penzance 2007" },
+    { name: "Dr. Patricia Corbin", role: "Director, JSU A Cappella Choir & Chamber Singers; said 'move over, Jason'" },
+    { name: "Dr. Nathan Wight", role: "Director, Jacksonville Opera Theatre; directed Pirates of Penzance 2007; cast Matt as Pirate King" },
+    { name: "Jay Robinson", role: "JSU Wesley Foundation director; mentor; introduced Matt to Sherill Clontz for Weaver appointment" },
+    { name: "Wade Allen", role: "Pastor, First Baptist Muncie; introduced Matt to Northern Seminary" },
+    { name: "Sherill Clontz", role: "District Superintendent; appointed Matt to Weaver First UMC, June 2014" },
+    { name: "Michael Mauter", role: "Student leader, UA Catholic student ministry; gave Matt his first guitar (black Sigma acoustic by Martin)" },
+    { name: "Heather Headley", role: "Wife. MA Piano, Ball State University. Co-owner Headley Flower Farm. Visited 3 times during hospitalization including twice to sign farm closing papers." },
+    { name: "Sam", role: "Social worker, UAB psych ward. Wearing hijab. Connected Matt's childhood displacement to the farm loss: 'This is a major trigger for you.'" },
+    { name: "Dr. Bhatia", role: "Psychiatrist, UAB. Said prior medication cycling was 'bad practice.'" },
+  ],
   gaps: [
-    "Childhood before JSU is not documented — no account of parents, formative years, or what drew a kid from northeast Alabama toward music and ministry.",
-    "What the father's scandal was when Matt was ~10 years old.",
-    "The full content of 16 AIM chat logs from November–December 2003 (age 19, mid-UA depression) archived in Google Drive but not yet read.",
-    "Two ChatGPT accounts from October 2024–March 2025 (heaviest manic period) remain locked and unexported.",
+    "What the father's Marine Corps scandal was — named but not described in any document.",
+    "The Alaska trip — named in 2009 notes as the crisis point; never written publicly.",
+    "Papa funeral sermon — Funeral for Grandpa.gdoc in Google Drive; entity not found on first read attempt.",
+    "Two ChatGPT accounts from October 2024–March 2025 (heaviest manic period) remain locked — matt@headleyflowerfarm.com.",
     "The first depression at 19 has not been written about publicly.",
+    "Heather's health challenges (endometriosis) — named in Google Drive fundraising doc; not publicly written.",
+    "Ligare and psychedelic-Christianity exploration — significant theological shift visible in March 2025 memory export; not publicly addressed.",
+    "The AI 'Loving Community' council (Enneagram Council, Personal Advocates, Trinity Avatars) — manic-era spiritual framework in ChatGPT; context and outcome unknown.",
   ],
   sources: [
     {
