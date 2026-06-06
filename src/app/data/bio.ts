@@ -36,7 +36,8 @@ export type PersonalBio = {
     undergraduate: string;
     graduate: string;
     ordination: string;
-    productions: string[];
+    productions: Array<string | { title: string; role: string | null; year: number | null; director: string | null; venue: string }>;
+    keyFigures?: Array<{ name: string; role: string; note: string }>;
   };
   diagnosis: {
     condition: string;
@@ -49,6 +50,8 @@ export type PersonalBio = {
       date: string;
     };
   };
+  formativeEvents?: Array<{ year: string; event: string }>;
+  keyPeople?: Array<{ name: string; role: string }>;
   career: TimelineEntry[];
   farm: {
     name: string;
