@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600"
+     role="img" aria-label="Chief Ladiga Trail editorial overlay on USGS topographic base — Anniston to Piedmont, Alabama">
+
+<defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;display=swap');
+    text { font-family: 'IM Fell English', Georgia, 'Times New Roman', serif; }
+  </style>
+
+  <!--
+    PROJECTION (corrected for aspect-ratio gotcha):
+      Bbox: lon -86.0822 to -85.1678 (0.9145°), lat 33.60 to 33.98 (0.38°), 1200×600px
+      Real aspect at lat 33.79 = 2.0:1 — matches canvas
+      x = (lon - (-86.0822)) / 0.9145 * 1200
+      y = (33.98 - lat) / 0.38 * 600
+
+    Towns:
+      Anniston:    33.659N, 85.831W → (329.7, 506.8)
+      Weaver:      33.755N, 85.810W → (357.2, 355.3)
+      Jacksonville:33.821N, 85.771W → (408.4, 251.1)
+      Piedmont:    33.922N, 85.607W → (623.6, 91.6)
+      GA border:   33.950N, 85.396W → (900.5, 47.4)
+  -->
+
+  <filter id="wobble" x="-4%" y="-20%" width="108%" height="140%">
+    <feTurbulence type="turbulence" baseFrequency="0.03 0.02" numOctaves="2" seed="12" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+
+  <filter id="trailShadow" x="-4%" y="-30%" width="108%" height="160%">
+    <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#292524" flood-opacity="0.45"/>
+  </filter>
+
+  <marker id="arrowSienna" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+    <path d="M0,0 L6,3 L0,6 Z" fill="#9A3412" opacity="0.85"/>
+  </marker>
+
+  <pattern id="creekHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="10" stroke="#9A3412" stroke-width="0.8" opacity="0.35"/>
+  </pattern>
+
+  <!-- 491-node OSM trail + 3-node estimated Anniston extension, projected to corrected bbox -->
+  <path id="trailPath" fill="none"
+    d="M 329.7,506.8 L 337.5,465.8 L 344.1,426.3 L 347.0,381.8 L 347.3,381.0 L 347.4,380.5 L 347.5,380.3 L 347.5,380.2 L 348.0,378.8 L 348.9,375.9 L 349.0,375.5 L 349.2,375.0 L 349.3,374.6 L 349.3,374.3 L 349.4,374.1 L 349.4,373.7 L 349.4,373.3 L 349.5,373.0 L 349.5,372.6 L 349.5,372.1 L 349.4,371.6 L 349.4,371.0 L 349.3,370.6 L 349.3,370.1 L 349.3,369.6 L 349.4,369.1 L 349.4,368.6 L 349.5,368.1 L 349.7,367.4 L 349.8,367.1 L 349.9,366.8 L 350.0,366.5 L 350.2,366.2 L 351.5,363.7 L 352.1,362.5 L 352.5,361.7 L 352.8,361.3 L 352.9,361.0 L 353.4,360.0 L 354.1,358.6 L 355.2,356.6 L 355.7,355.6 L 355.9,355.3 L 356.1,354.8 L 356.3,354.3 L 356.9,353.3 L 357.2,352.7 L 357.6,352.0 L 358.4,350.8 L 358.8,350.2 L 359.3,349.6 L 360.0,348.6 L 360.2,348.4 L 360.8,347.6 L 361.4,346.7 L 361.8,346.1 L 362.6,345.1 L 363.3,344.2 L 364.0,343.3 L 364.6,342.5 L 364.9,342.1 L 365.5,341.2 L 365.7,340.8 L 365.9,340.4 L 366.2,339.7 L 366.8,338.3 L 366.9,337.9 L 366.9,337.8 L 367.0,337.4 L 367.1,336.9 L 367.2,336.4 L 367.2,336.0 L 367.3,334.9 L 367.3,334.1 L 367.3,333.1 L 367.3,332.6 L 367.4,332.0 L 367.4,331.4 L 367.5,330.9 L 367.6,330.4 L 367.6,330.1 L 367.8,329.6 L 367.9,329.0 L 368.2,328.3 L 368.3,327.9 L 368.6,327.4 L 368.8,327.0 L 368.9,326.7 L 369.5,325.8 L 369.7,325.5 L 370.0,325.1 L 370.6,324.4 L 371.1,323.9 L 371.7,323.3 L 373.8,321.2 L 374.6,320.4 L 375.5,319.6 L 378.2,316.8 L 382.2,313.0 L 384.0,311.2 L 385.6,309.6 L 386.6,308.6 L 388.1,307.2 L 388.7,306.6 L 389.5,305.6 L 390.2,304.7 L 390.9,303.8 L 391.6,302.6 L 392.2,301.6 L 392.4,301.1 L 392.8,300.3 L 393.2,299.4 L 393.7,298.1 L 394.2,296.4 L 394.5,295.2 L 394.7,294.5 L 394.9,293.5 L 395.0,292.3 L 395.1,291.1 L 395.1,289.4 L 395.1,288.6 L 395.1,288.5 L 395.2,284.2 L 395.2,283.7 L 395.3,283.3 L 395.4,282.9 L 395.5,282.4 L 395.6,281.8 L 395.7,281.2 L 395.9,280.7 L 396.0,280.2 L 396.9,278.0 L 401.3,266.8 L 402.3,264.3 L 402.4,264.1 L 403.9,260.3 L 404.0,260.1 L 404.8,258.0 L 405.4,256.4 L 405.8,255.7 L 406.1,254.9 L 407.3,251.8 L 407.6,251.0 L 407.7,250.8 L 407.7,250.7 L 408.4,250.7 L 408.6,250.7 L 408.8,250.7 L 408.9,250.7 L 409.0,250.6 L 409.1,250.5 L 409.1,250.4 L 409.1,250.3 L 409.1,250.2 L 409.1,249.4 L 409.1,249.3 L 409.1,249.1 L 409.1,248.9 L 409.1,248.1 L 409.1,247.4 L 409.1,247.3 L 409.1,247.0 L 409.2,246.8 L 409.3,246.3 L 409.5,246.1 L 410.5,243.5 L 410.6,243.3 L 412.2,239.2 L 412.9,237.4 L 413.4,236.2 L 414.3,233.7 L 415.1,232.0 L 415.3,231.4 L 419.0,224.8 L 420.7,221.9 L 427.7,209.1 L 428.7,207.3 L 429.7,205.8 L 431.0,203.7 L 431.5,203.1 L 432.2,202.1 L 437.7,195.2 L 445.3,185.6 L 446.6,184.0 L 447.4,183.0 L 448.4,181.7 L 450.2,179.4 L 452.2,177.0 L 453.5,175.5 L 456.9,172.3 L 459.8,169.2 L 461.7,167.9 L 465.3,165.4 L 467.4,164.0 L 468.9,163.0 L 474.8,159.3 L 481.7,154.8 L 482.5,154.3 L 484.1,153.4 L 486.0,152.2 L 486.6,151.9 L 487.1,151.6 L 488.2,151.0 L 488.9,150.6 L 489.4,150.3 L 490.4,149.7 L 491.6,149.0 L 492.1,148.7 L 492.8,148.3 L 494.0,147.5 L 495.1,146.9 L 496.0,146.4 L 496.9,145.9 L 497.6,145.5 L 498.0,145.3 L 498.6,145.0 L 499.1,144.8 L 499.5,144.6 L 500.0,144.4 L 503.0,143.1 L 504.0,142.6 L 504.8,142.3 L 505.5,142.0 L 506.0,141.8 L 506.6,141.5 L 507.5,141.1 L 508.6,140.6 L 509.3,140.3 L 510.7,139.7 L 511.5,139.4 L 512.3,139.0 L 512.9,138.7 L 513.5,138.5 L 515.3,137.6 L 516.3,137.2 L 517.2,136.8 L 518.2,136.4 L 519.0,136.2 L 520.2,135.7 L 521.4,135.4 L 522.6,135.0 L 523.3,134.7 L 525.3,134.0 L 526.3,133.6 L 527.2,133.2 L 527.9,132.9 L 528.6,132.5 L 529.2,132.1 L 529.7,131.8 L 530.4,131.3 L 531.2,130.8 L 532.4,129.9 L 533.2,129.4 L 534.8,128.2 L 536.4,127.1 L 537.1,126.6 L 537.9,126.0 L 538.4,125.7 L 539.5,125.1 L 539.9,124.9 L 540.5,124.6 L 541.1,124.4 L 541.6,124.2 L 542.1,124.0 L 542.5,123.8 L 543.2,123.6 L 543.9,123.4 L 544.4,123.2 L 545.7,122.9 L 546.4,122.8 L 547.1,122.7 L 547.8,122.5 L 548.6,122.4 L 550.8,122.1 L 551.8,121.9 L 553.3,121.7 L 554.9,121.5 L 555.5,121.3 L 556.2,121.2 L 556.6,121.1 L 557.1,120.9 L 557.8,120.7 L 558.4,120.5 L 559.0,120.3 L 559.5,120.0 L 559.9,119.8 L 560.4,119.6 L 561.1,119.2 L 561.6,118.9 L 562.3,118.4 L 563.3,117.7 L 564.2,117.0 L 565.0,116.3 L 566.3,115.2 L 566.5,115.0 L 567.6,114.1 L 568.7,113.1 L 569.2,112.6 L 570.6,111.5 L 573.3,109.1 L 574.0,108.6 L 574.5,108.2 L 575.2,107.6 L 575.9,107.0 L 576.5,106.5 L 578.0,105.2 L 578.7,104.6 L 579.2,104.2 L 580.9,102.8 L 581.4,102.4 L 584.7,99.7 L 585.1,99.5 L 586.1,98.7 L 588.0,97.2 L 588.8,96.6 L 589.8,96.0 L 591.1,95.5 L 594.7,94.4 L 595.7,94.1 L 598.0,93.4 L 600.5,92.7 L 602.7,92.0 L 604.4,91.7 L 605.9,91.7 L 608.3,91.6 L 609.9,91.5 L 613.7,91.4 L 615.0,91.2 L 618.1,90.8 L 619.5,90.7 L 621.4,90.5 L 622.9,90.3 L 623.5,90.3 L 624.1,90.2 L 626.7,90.4 L 626.9,90.4 L 631.6,90.6 L 633.2,90.7 L 636.0,90.9 L 641.1,90.8 L 644.5,90.9 L 646.1,90.8 L 650.6,90.8 L 653.2,90.8 L 653.6,90.8 L 664.2,90.7 L 666.8,90.8 L 667.8,90.8 L 668.9,90.9 L 670.1,91.1 L 672.0,91.4 L 675.0,92.4 L 680.3,94.5 L 682.3,95.5 L 684.4,96.5 L 685.8,97.2 L 687.9,98.2 L 699.2,104.2 L 700.3,104.9 L 702.1,105.8 L 703.4,106.5 L 705.6,107.7 L 710.4,110.3 L 712.1,111.5 L 713.5,112.8 L 714.6,114.0 L 716.5,115.8 L 717.5,116.7 L 719.2,119.1 L 719.7,119.7 L 720.1,120.2 L 720.6,120.7 L 721.6,121.5 L 722.4,121.9 L 723.4,122.2 L 724.4,122.4 L 728.3,123.7 L 732.6,125.0 L 733.3,125.2 L 734.3,125.3 L 735.1,125.2 L 736.0,125.0 L 736.7,124.7 L 737.5,124.3 L 738.8,123.4 L 739.6,122.4 L 740.4,121.4 L 741.3,120.5 L 742.4,119.8 L 743.5,119.2 L 744.8,118.7 L 745.7,118.2 L 747.1,117.2 L 748.1,116.4 L 749.2,115.2 L 759.2,106.2 L 760.4,105.2 L 763.1,102.8 L 763.5,102.4 L 768.5,98.0 L 770.0,96.8 L 771.1,95.9 L 772.2,94.9 L 774.0,92.8 L 778.1,88.6 L 780.9,86.4 L 782.4,85.2 L 783.1,84.7 L 784.0,84.3 L 784.7,84.1 L 789.0,83.1 L 790.5,82.7 L 792.4,82.1 L 793.5,81.9 L 795.2,81.4 L 796.4,81.1 L 797.5,80.9 L 798.7,80.7 L 800.4,80.5 L 802.2,80.3 L 803.1,80.0 L 806.3,78.4 L 808.6,77.3 L 812.4,75.4 L 816.5,73.4 L 819.0,72.3 L 822.6,70.5 L 823.1,70.0 L 823.6,69.6 L 824.1,68.9 L 824.5,68.3 L 827.0,63.8 L 828.6,61.2 L 829.0,60.7 L 829.3,60.4 L 829.5,60.1 L 830.1,59.7 L 831.3,59.1 L 834.7,57.2 L 837.8,55.5 L 839.9,54.3 L 840.7,53.8 L 841.7,53.4 L 842.7,53.1 L 844.0,52.9 L 845.4,52.7 L 846.5,52.5 L 849.8,52.3 L 854.4,51.9 L 857.4,51.5 L 862.7,51.0 L 865.3,50.7 L 867.4,50.6 L 868.0,50.6 L 868.7,50.8 L 869.3,51.0 L 870.0,51.2 L 872.0,52.2 L 873.4,52.7 L 874.0,52.9 L 874.7,53.1 L 875.3,53.3 L 876.0,53.3 L 876.5,53.3 L 877.2,53.2 L 877.8,53.0 L 878.4,52.8 L 879.0,52.5 L 879.5,52.2 L 879.9,51.9 L 881.8,50.3 L 882.8,49.8 L 883.9,49.5 L 884.9,49.4 L 887.8,49.3 L 891.5,49.1 L 893.7,48.9 L 894.9,48.6 L 896.1,48.3 L 896.4,48.2 L 900.0,47.2 L 900.4,47.0"/>
+</defs>
+
+
+<!-- USGS topo base — bbox -86.0822 to -85.1678 lon, 33.60 to 33.98 lat -->
+<image href="../images/clt-topo-base.png" x="0" y="0" width="1200" height="600" preserveAspectRatio="xMidYMid meet"/>
+<rect x="0" y="0" width="1200" height="600" fill="#F0EDE6" opacity="0.20"/>
+
+
+<!-- Muscogee Creek territory wash -->
+<g opacity="0.15">
+  <path d="M 30,50 L 1170,40 L 1185,570 L 45,580 Z" fill="url(#creekHatch)"/>
+  <path d="M 30,50 L 1170,40 L 1185,570 L 45,580 Z"
+        fill="none" stroke="#9A3412" stroke-width="1" stroke-dasharray="5,9" opacity="0.45"/>
+</g>
+<text x="500" y="560" font-size="8.5" fill="#9A3412" letter-spacing="2"
+      opacity="0.65" font-style="italic">MUSCOGEE CREEK TERRITORY · PRE-1832</text>
+
+
+<!-- Trail — gold spine -->
+<g filter="url(#trailShadow)">
+  <use href="#trailPath" stroke="#292524" stroke-width="6.5" opacity="0.18" stroke-linecap="round" stroke-linejoin="round"/>
+  <use href="#trailPath" stroke="#CA8A04" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+       filter="url(#wobble)"/>
+  <use href="#trailPath" stroke="#F5E090" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+       opacity="0.55" filter="url(#wobble)"/>
+</g>
+
+<!-- Trail terminus dots -->
+<circle cx="329.7" cy="506.8" r="6" fill="#F0EDE6" stroke="#CA8A04" stroke-width="2.2"/>
+<circle cx="623.6" cy="91.6"  r="6" fill="#F0EDE6" stroke="#CA8A04" stroke-width="2.2"/>
+
+
+<!-- Silver Comet continuation east of GA border -->
+<path d="M 900.4,47.0 C 980,44 1080,41 1200,38"
+      fill="none" stroke="#CA8A04" stroke-width="2.5"
+      stroke-dasharray="6,4" stroke-linecap="round" opacity="0.65"
+      filter="url(#wobble)"/>
+<rect x="908" y="30" width="148" height="14" fill="#F0EDE6" fill-opacity="0.80" rx="1"/>
+<text x="982" y="41" text-anchor="middle" font-size="8" fill="#CA8A04"
+      opacity="0.90" font-style="italic">→ Silver Comet Trail · Atlanta</text>
+
+
+<!-- 1832 HISTORICAL MARKERS -->
+
+<!-- Treaty of Cusseta seal — placed between Weaver and Jacksonville, hung below trail -->
+<g transform="translate(390, 470)">
+  <circle cx="0" cy="0" r="30" fill="#9A3412" fill-opacity="0.07"
+          stroke="#9A3412" stroke-width="1.2" stroke-dasharray="3,4"/>
+  <path d="M0,-10 L2.4,-3.3 L9.5,-3.1 L3.8,1.2 L6.0,8.1 L0,4.0 L-6.0,8.1 L-3.8,1.2 L-9.5,-3.1 L-2.4,-3.3 Z"
+        fill="#9A3412" opacity="0.75"/>
+  <text x="0" y="-38" text-anchor="middle" font-size="9" fill="#9A3412"
+        letter-spacing="0.5" font-weight="bold">TREATY OF CUSSETA</text>
+  <text x="0" y="44" text-anchor="middle" font-size="22" fill="#9A3412"
+        opacity="0.85" font-style="italic">1832</text>
+  <text x="0" y="58" text-anchor="middle" font-size="7.5" fill="#9A3412"
+        opacity="0.8" font-style="italic">Chief Ladiga signs.</text>
+  <text x="0" y="68" text-anchor="middle" font-size="7.5" fill="#9A3412"
+        opacity="0.8" font-style="italic">Creek removal begins.</text>
+  <line x1="-12" y1="-30" x2="-30" y2="-100" stroke="#9A3412" stroke-width="0.9"
+        stroke-dasharray="3,3" opacity="0.5" marker-end="url(#arrowSienna)"/>
+</g>
+
+<!-- Jacksonville land sale — anchored near Jacksonville town marker -->
+<g transform="translate(490, 350)">
+  <rect x="-50" y="-22" width="100" height="44"
+        fill="#F0EDE6" fill-opacity="0.88"
+        stroke="#9A3412" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.82"/>
+  <text x="0" y="-7" text-anchor="middle" font-size="7.5" fill="#9A3412"
+        font-weight="bold" letter-spacing="0.3">LAND SOLD · 1833</text>
+  <text x="0" y="5" text-anchor="middle" font-size="7" fill="#9A3412"
+        opacity="0.85" font-style="italic">To Charles White Peters</text>
+  <text x="0" y="16" text-anchor="middle" font-size="7" fill="#9A3412"
+        opacity="0.85" font-style="italic">$2,000 · Jacksonville founded</text>
+  <line x1="-30" y1="-22" x2="-78" y2="-92" stroke="#9A3412" stroke-width="0.8"
+        stroke-dasharray="2,3" opacity="0.5" marker-end="url(#arrowSienna)"/>
+</g>
+
+<!-- Farmhouse near Anniston -->
+<g transform="translate(220, 480)">
+  <path d="M0,-14 L9,-5 L9,9 L-9,9 L-9,-5 Z" fill="none" stroke="#9A3412" stroke-width="1.2" opacity="0.78"/>
+  <path d="M-11,-5 L0,-16 L11,-5" fill="none" stroke="#9A3412" stroke-width="1.2" opacity="0.78"/>
+  <text x="0" y="22" text-anchor="middle" font-size="7" fill="#9A3412"
+        font-weight="bold">5400 RIDGEWOOD AVE</text>
+  <text x="0" y="32" text-anchor="middle" font-size="6.5" fill="#9A3412"
+        opacity="0.8" font-style="italic">Farmhouse · 1832</text>
+  <text x="0" y="42" text-anchor="middle" font-size="6.5" fill="#9A3412"
+        opacity="0.65" font-style="italic">Same year.</text>
+  <line x1="60" y1="0" x2="100" y2="32" stroke="#9A3412" stroke-width="0.7"
+        stroke-dasharray="2,3" opacity="0.45"/>
+</g>
+
+<!-- Proposed Blue Mountain extension south of Anniston trailhead -->
+<g opacity="0.60">
+  <path d="M 329.7,506.8 C 320,535 308,560 295,580"
+        fill="none" stroke="#9A3412" stroke-width="1.8"
+        stroke-dasharray="5,5" stroke-linecap="round"/>
+  <rect x="240" y="568" width="118" height="22" fill="#F0EDE6" fill-opacity="0.82" rx="1"/>
+  <text x="299" y="578" text-anchor="middle" font-size="7" fill="#9A3412"
+        font-style="italic">Proposed: Blue Mtn. extension</text>
+  <text x="299" y="587" text-anchor="middle" font-size="6.5" fill="#9A3412"
+        opacity="0.75" font-style="italic">to Anniston Amtrak depot (2025)</text>
+</g>
+
+
+<!-- TOWN MARKERS -->
+
+<!-- Anniston -->
+<circle cx="329.7" cy="506.8" r="7.5" fill="#F0EDE6" stroke="#292524" stroke-width="1.8"/>
+<circle cx="329.7" cy="506.8" r="3"   fill="#9A3412"/>
+<rect x="276" y="484" width="108" height="28" fill="#F0EDE6" fill-opacity="0.90" rx="1"/>
+<text x="330" y="499" text-anchor="middle" font-size="12" fill="#292524"
+      font-weight="bold" letter-spacing="0.3">ANNISTON</text>
+<text x="330" y="509" text-anchor="middle" font-size="7.5" fill="#292524"
+      opacity="0.65" font-style="italic">trail terminus · 1832</text>
+
+<!-- Weaver -->
+<circle cx="357.2" cy="355.3" r="5" fill="#F0EDE6" stroke="#292524" stroke-width="1.4"/>
+<circle cx="357.2" cy="355.3" r="2" fill="#292524"/>
+<rect x="365" y="347" width="55" height="14" fill="#F0EDE6" fill-opacity="0.88" rx="1"/>
+<text x="392" y="358" text-anchor="middle" font-size="10.5" fill="#292524"
+      letter-spacing="0.2">WEAVER</text>
+
+<!-- Jacksonville -->
+<circle cx="408.4" cy="251.1" r="6.5" fill="#F0EDE6" stroke="#292524" stroke-width="1.6"/>
+<circle cx="408.4" cy="251.1" r="2.5" fill="#292524"/>
+<rect x="335" y="232" width="146" height="28" fill="#F0EDE6" fill-opacity="0.90" rx="1"/>
+<text x="408" y="247" text-anchor="middle" font-size="12" fill="#292524"
+      letter-spacing="0.3">JACKSONVILLE</text>
+<text x="408" y="258" text-anchor="middle" font-size="7.5" fill="#292524"
+      opacity="0.6" font-style="italic">Jacksonville State University</text>
+
+<!-- Piedmont -->
+<circle cx="623.6" cy="91.6" r="7.5" fill="#F0EDE6" stroke="#292524" stroke-width="1.8"/>
+<circle cx="623.6" cy="91.6" r="3"   fill="#9A3412"/>
+<rect x="572" y="99" width="104" height="24" fill="#F0EDE6" fill-opacity="0.90" rx="1"/>
+<text x="624" y="113" text-anchor="middle" font-size="12" fill="#292524"
+      font-weight="bold" letter-spacing="0.3">PIEDMONT</text>
+<text x="624" y="122" text-anchor="middle" font-size="7.5" fill="#292524"
+      opacity="0.65" font-style="italic">trail end · 39.5 mi.</text>
+
+<!-- GA Border -->
+<line x1="900.5" y1="28" x2="900.5" y2="96" stroke="#292524" stroke-width="1"
+      stroke-dasharray="3,3" opacity="0.55"/>
+<circle cx="900.5" cy="47.4" r="4.5" fill="#F0EDE6" stroke="#292524" stroke-width="1.3"/>
+<rect x="843" y="17" width="60" height="13" fill="#F0EDE6" fill-opacity="0.85" rx="1"/>
+<text x="873" y="27" text-anchor="middle" font-size="8" fill="#292524"
+      opacity="0.7" letter-spacing="0.8">ALABAMA</text>
+<rect x="843" y="66" width="58" height="13" fill="#F0EDE6" fill-opacity="0.85" rx="1"/>
+<text x="872" y="76" text-anchor="middle" font-size="8" fill="#292524"
+      opacity="0.7" letter-spacing="0.8">GEORGIA</text>
+
+
+<!-- TITLE BAR -->
+<rect x="0" y="0" width="1200" height="50" fill="#292524" opacity="0.78"/>
+<text x="600" y="21" text-anchor="middle" font-size="18" fill="#F0EDE6"
+      letter-spacing="5" font-weight="bold">CHIEF LADIGA TRAIL</text>
+<line x1="200" y1="26" x2="1000" y2="26" stroke="#CA8A04" stroke-width="0.5" opacity="0.6"/>
+<text x="600" y="41" text-anchor="middle" font-size="10" fill="#F0EDE6"
+      opacity="0.7" letter-spacing="2" font-style="italic">Anniston to Piedmont, Alabama · 39.5 miles</text>
+
+
+<!-- LEGEND -->
+<rect x="940" y="468" width="252" height="124" fill="#F0EDE6" fill-opacity="0.92"
+      stroke="#292524" stroke-width="0.8" opacity="0.92"/>
+<text x="1066" y="485" text-anchor="middle" font-size="8.5" fill="#292524"
+      letter-spacing="2" font-weight="bold" opacity="0.78">LEGEND</text>
+<line x1="950" y1="489" x2="1182" y2="489" stroke="#292524" stroke-width="0.4" opacity="0.4"/>
+
+<line x1="956" y1="503" x2="990" y2="503" stroke="#CA8A04" stroke-width="3.5"/>
+<text x="997" y="507" font-size="8.5" fill="#292524" opacity="0.85">Chief Ladiga Trail</text>
+
+<line x1="956" y1="517" x2="990" y2="517" stroke="#CA8A04" stroke-width="2"
+      stroke-dasharray="5,3" opacity="0.65"/>
+<text x="997" y="521" font-size="8.5" fill="#292524" opacity="0.85">Silver Comet Trail (east)</text>
+
+<circle cx="970" cy="535" r="4" fill="none" stroke="#9A3412" stroke-width="1"
+        stroke-dasharray="2,2" opacity="0.75"/>
+<circle cx="970" cy="535" r="1.5" fill="#9A3412" opacity="0.7"/>
+<text x="997" y="539" font-size="8.5" fill="#9A3412" opacity="0.85">1832 treaty markers</text>
+
+<line x1="956" y1="551" x2="990" y2="551" stroke="#9A3412" stroke-width="1.8"
+      stroke-dasharray="5,5" opacity="0.65"/>
+<text x="997" y="555" font-size="8.5" fill="#9A3412" opacity="0.85">Proposed extension (Blue Mtn.)</text>
+
+<text x="600" y="597" text-anchor="middle" font-size="7" fill="#292524" opacity="0.4"
+      letter-spacing="0.5">Base map: USGS National Map, public domain · Overlay: southernlegends.blog</text>
+
+</svg>

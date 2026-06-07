@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
+  <defs>
+    <style>
+      .wordmark {
+        font-family: 'Didot', 'GFS Didot', 'Bodoni MT', 'Book Antiqua', Georgia, serif;
+        font-size: 38px;
+        font-weight: 400;
+        letter-spacing: 0.28em;
+        fill: #1B2A4A;
+      }
+    </style>
+  </defs>
+
+  <!-- Arch: two legs + semicircle top + horizontal base -->
+  <!-- Left leg -->
+  <line x1="130" y1="180" x2="130" y2="100" stroke="#1B2A4A" stroke-width="1.5" stroke-linecap="square"/>
+  <!-- Right leg -->
+  <line x1="270" y1="180" x2="270" y2="100" stroke="#1B2A4A" stroke-width="1.5" stroke-linecap="square"/>
+  <!-- Semicircle top -->
+  <path d="M130 100 A70 70 0 0 1 270 100" stroke="#1B2A4A" stroke-width="1.5" fill="none" stroke-linecap="square"/>
+  <!-- Base line -->
+  <line x1="130" y1="180" x2="270" y2="180" stroke="#1B2A4A" stroke-width="1.5" stroke-linecap="square"/>
+
+  <!-- Wordmark -->
+  <text x="200" y="232" text-anchor="middle" class="wordmark">THE AISLE</text>
+</svg>
