@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const PROTECTED = ["/profile", "/bio", "/vision", "/writing"];
+const PROTECTED = ["/profile", "/bio", "/vision", "/writing", "/satire", "/sl-projects"];
 const ADMIN_PIN = process.env.ADMIN_PIN ?? "2426";
 
 export function middleware(request: NextRequest) {
