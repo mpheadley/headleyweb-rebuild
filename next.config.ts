@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
     return [
       // Business card QR → personal hub
       { source: "/card", destination: "https://matthewheadley.com/card", permanent: false },
+      // Blog migration → matthewheadley.com/websites/blog
+      { source: "/blog/:slug", destination: "https://matthewheadley.com/websites/blog/:slug", permanent: true },
+      { source: "/blog", destination: "https://matthewheadley.com/websites/blog", permanent: true },
       // Old HTML site URLs → new Next.js routes
       { source: "/about.html", destination: "/about", permanent: true },
       { source: "/services.html", destination: "/services", permanent: true },
