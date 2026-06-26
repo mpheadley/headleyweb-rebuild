@@ -36,7 +36,7 @@ export interface BlogFrontmatter {
 /** Author + publisher constants — update sameAs URLs when available */
 export const AUTHOR = {
   name: "Matt Headley",
-  url: "https://headleyweb.com/about",
+  url: "https://gatherstudio.app/about",
   sameAs: [
     "https://www.linkedin.com/in/mpheadley/",
     "https://share.google/dgOVQ1xvLGRCnunm9",
@@ -45,8 +45,8 @@ export const AUTHOR = {
 };
 
 export const PUBLISHER = {
-  name: "Headley Web & SEO",
-  url: "https://headleyweb.com",
+  name: "Gather Studio",
+  url: "https://gatherstudio.app",
 };
 
 /** Extract H2 headings from MDX content for ToC + FAQ schema */

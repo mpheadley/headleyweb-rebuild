@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Headley Web & SEO",
+    siteName: "Gather Studio",
     url: "/blog",
     images: [
       {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO Blog",
+        alt: "Gather Studio Blog",
       },
     ],
   },
@@ -31,8 +31,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://headleyweb.com/blog" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://gatherstudio.app" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://gatherstudio.app/blog" },
   ],
 };
 
@@ -71,7 +71,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: Se
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 !text-white animate-on-scroll">
             The{" "}
-            <span className="text-hw-primary hand-accent">Headley Web</span>{" "}
+            <span className="text-hw-primary hand-accent">Gather Studio</span>{" "}
             Blog
           </h1>
           <p className="text-lg text-white/90 max-w-2xl mx-auto animate-on-scroll">

@@ -3,7 +3,7 @@ import { getAllLocationSlugs } from "@/app/data/locations";
 import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://headleyweb.com";
+  const baseUrl = "https://gatherstudio.app";
 
   const locationPages = getAllLocationSlugs().map((slug) => ({
     url: `${baseUrl}/locations/${slug}`,

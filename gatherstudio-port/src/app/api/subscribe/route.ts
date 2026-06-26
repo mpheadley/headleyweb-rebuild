@@ -53,8 +53,8 @@ export async function POST(request: NextRequest) {
       <p><a href="https://southernlegends.blog">southernlegends.blog</a></p>
       <p>I'll be in touch when I have something worth saying.</p>
       <p>Matt<br>
-      Headley Web &amp; SEO<br>
-      (256) 644-7334 | <a href="https://headleyweb.com">headleyweb.com</a></p>
+      Gather Studio &amp; SEO<br>
+      (256) 644-7334 | <a href="https://gatherstudio.app">gatherstudio.app</a></p>
     `;
     const welcomeText = `${greeting}
 
@@ -68,8 +68,8 @@ https://southernlegends.blog
 I'll be in touch when I have something worth saying.
 
 Matt
-Headley Web & SEO
-(256) 644-7334 | headleyweb.com`;
+Gather Studio
+(256) 644-7334 | gatherstudio.app`;
 
     await resend.emails.send({
       from: "Matt Headley <matt@headleyweb.com>",
@@ -81,10 +81,10 @@ Headley Web & SEO
 
     // Notify Matt of new subscriber + source
     await resend.emails.send({
-      from: "Headley Web <matt@headleyweb.com>",
+      from: "Gather Studio <matt@headleyweb.com>",
       to: "matt@headleyweb.com",
       subject: `New HW subscriber — ${source}`,
-      text: `New newsletter subscriber on Headley Web.\n\nEmail: ${email}\nName: ${firstName || "not provided"}\nSource: ${source}`,
+      text: `New newsletter subscriber on Gather Studio.\n\nEmail: ${email}\nName: ${firstName || "not provided"}\nSource: ${source}`,
     }).catch((err) => console.error("Subscriber notify error:", err));
 
     return NextResponse.json({ success: true });

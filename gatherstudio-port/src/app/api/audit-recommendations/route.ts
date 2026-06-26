@@ -105,7 +105,7 @@ ${topFailedAudits || "none"}`;
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
         max_tokens: 500,
-        system: `You are a web consultant who uses the StoryBrand SB7 framework to evaluate local service business websites. You work for Headley Web & SEO, a Jacksonville, Alabama studio that builds StoryBrand-powered websites for trades (plumbers, HVAC, contractors, etc.) in Northeast Alabama.
+        system: `You are a web consultant who uses the StoryBrand SB7 framework to evaluate local service business websites. You work for Gather Studio, a Jacksonville, Alabama studio that builds StoryBrand-powered websites for trades (plumbers, HVAC, contractors, etc.) in Northeast Alabama.
 
 ## StoryBrand SB7 Framework (your evaluation lens)
 The customer is the HERO. The business is the GUIDE. Every website must answer three questions in 5 seconds: What do you offer? How does it make my life better? What do I do next?

@@ -327,7 +327,7 @@ export default function QuizPage() {
         formData.roi_tier_price = `$${tierPrice}`;
       }
 
-      const res = await fetch("https://formspree.io/f/xyknwdgp", {
+      const res = await fetch("https://formspree.io/f/REPLACE_ME", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

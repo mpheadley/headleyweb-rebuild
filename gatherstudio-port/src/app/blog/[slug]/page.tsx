@@ -121,7 +121,7 @@ export async function generateMetadata({
     openGraph: {
       type: "article",
       locale: "en_US",
-      siteName: "Headley Web & SEO",
+      siteName: "Gather Studio",
       url: `/blog/${slug}`,
       title,
       description,
@@ -166,14 +166,14 @@ export default async function BlogPostPage({
   const { frontmatter, content, readingTime } = post;
   const headings = extractHeadings(content);
   const faqSchema = buildFaqSchema(headings, content);
-  const postUrl = `https://headleyweb.com/blog/${slug}`;
+  const postUrl = `https://gatherstudio.app/blog/${slug}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://headleyweb.com/blog" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://gatherstudio.app" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://gatherstudio.app/blog" },
       {
         "@type": "ListItem",
         position: 3,
@@ -203,7 +203,7 @@ export default async function BlogPostPage({
     },
     mainEntityOfPage: postUrl,
     ...(frontmatter.image && {
-      image: `https://headleyweb.com${frontmatter.image}`,
+      image: `https://gatherstudio.app${frontmatter.image}`,
     }),
     speakable: {
       "@type": "SpeakableSpecification",
@@ -338,7 +338,7 @@ export default async function BlogPostPage({
         <div className="max-w-3xl mx-auto flex items-center gap-3 border-t border-gray-200 pt-8">
           <Image
             src="/images/logo-icon-sm.webp"
-            alt="Headley Web & SEO"
+            alt="Gather Studio"
             width={40}
             height={35}
             sizes="40px"
@@ -347,7 +347,7 @@ export default async function BlogPostPage({
           <div>
             <p className="text-sm font-semibold text-hw-text">Matt Headley</p>
             <p className="text-xs text-hw-text-light">
-              Headley Web <span className="amp">&amp;</span> SEO · Jacksonville, AL
+              Gather Studio <span className="amp">&amp;</span> SEO · Jacksonville, AL
             </p>
           </div>
         </div>

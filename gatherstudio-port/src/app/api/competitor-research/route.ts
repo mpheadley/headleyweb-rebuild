@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
         max_tokens: 1024,
-        system: `You are a local SEO competitor researcher for Headley Web & SEO, a web design studio in Jacksonville, Alabama.
+        system: `You are a local SEO competitor researcher for Gather Studio, a web design studio in Jacksonville, Alabama.
 
 Your job: find real competitors for a local service business so we can show them who's outranking them.
 

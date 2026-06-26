@@ -19,7 +19,7 @@ function formatRfc2822(dateString: string): string {
 
 export function GET() {
   const posts = getAllPosts();
-  const siteUrl = "https://headleyweb.com";
+  const siteUrl = "https://gatherstudio.app";
   const feedUrl = `${siteUrl}/blog/feed.xml`;
 
   const itemsXml = posts
@@ -46,7 +46,7 @@ export function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2003/Atom">
   <channel>
-    <title>Headley Web &amp; SEO Blog</title>
+    <title>Gather Studio &amp; SEO Blog</title>
     <link>${siteUrl}</link>
     <description>Web design tips, local SEO strategies, and StoryBrand insights for small business owners in Northeast Alabama.</description>
     <language>en-us</language>

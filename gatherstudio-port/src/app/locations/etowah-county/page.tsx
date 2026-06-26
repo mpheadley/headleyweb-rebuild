@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Headley Web & SEO",
+    siteName: "Gather Studio",
     url: "/locations/etowah-county",
     images: [
       {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO, Web Design for Etowah County, AL",
+        alt: "Gather Studio, Web Design for Etowah County, AL",
       },
     ],
   },
@@ -30,19 +30,19 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
-    { "@type": "ListItem", position: 2, name: "Locations", item: "https://headleyweb.com/locations" },
-    { "@type": "ListItem", position: 3, name: "Etowah County", item: "https://headleyweb.com/locations/etowah-county" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://gatherstudio.app" },
+    { "@type": "ListItem", position: 2, name: "Locations", item: "https://gatherstudio.app/locations" },
+    { "@type": "ListItem", position: 3, name: "Etowah County", item: "https://gatherstudio.app/locations/etowah-county" },
   ],
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Headley Web & SEO",
+  name: "Gather Studio",
   description:
-    "Headley Web & SEO provides custom web design and local SEO for small businesses across Etowah County, Alabama, including Gadsden, Rainbow City, and Attalla.",
-  url: "https://headleyweb.com",
+    "Gather Studio provides custom web design and local SEO for small businesses across Etowah County, Alabama, including Gadsden, Rainbow City, and Attalla.",
+  url: "https://gatherstudio.app",
   telephone: "+1-256-644-7334",
   email: "matt@headleyweb.com",
   address: {
@@ -243,7 +243,7 @@ export default function EtowahCountyPage() {
         </div>
       </section>
 
-      {/* ═══ Why Headley Web ═══ */}
+      {/* ═══ Why Gather Studio ═══ */}
       <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -298,7 +298,7 @@ export default function EtowahCountyPage() {
       <section className="sr-only">
         <h2>Web Design for Etowah County, Alabama Small Businesses</h2>
         <p>
-          Headley Web &amp; SEO is a Jacksonville, Alabama web design studio serving small businesses
+          Gather Studio &amp; SEO is a Jacksonville, Alabama web design studio serving small businesses
           across Etowah County, including Gadsden, Rainbow City, Attalla, and Southside. Services include
           custom website design starting at $495, local SEO optimization, and Google Business Profile setup
           and management. Every build includes mobile-friendly design, on-page SEO targeting Etowah County

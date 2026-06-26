@@ -45,7 +45,7 @@ export default function Nav() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/images/logo-icon-sm.webp"
-              alt="Headley Web & SEO"
+              alt="Gather Studio"
               width={36}
               height={32}
               sizes="36px"

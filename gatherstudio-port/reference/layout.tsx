@@ -30,12 +30,12 @@ const rockSalt = Rock_Salt({
 
 export const metadata: Metadata = {
   title: {
-    default: "Headley Web & SEO | Web Design for Local Businesses in Jacksonville & Anniston, AL",
-    template: "%s | Headley Web & SEO",
+    default: "Gather Studio | Web Design for Local Businesses in Jacksonville & Anniston, AL",
+    template: "%s | Gather Studio",
   },
   description:
     "I help Jacksonville, Anniston, and Gadsden businesses get found on Google with clear, mobile-friendly websites that make the phone ring.",
-  metadataBase: new URL("https://headleyweb.com"),
+  metadataBase: new URL("https://gatherstudio.app"),
   alternates: {
     canonical: "/",
   },
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     url: "/",
     type: "website",
     locale: "en_US",
-    siteName: "Headley Web & SEO",
+    siteName: "Gather Studio",
     images: [
       {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO: Get Found. Get Calls. Get Booked.",
+        alt: "Gather Studio: Get Found. Get Calls. Get Booked.",
       },
     ],
   },
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/images/headley_web_seo_clean-1200-630.webp"],
   },
-  authors: [{ name: "Headley Web & SEO", url: "https://headleyweb.com" }],
+  authors: [{ name: "Gather Studio", url: "https://gatherstudio.app" }],
   robots: {
     index: true,
     follow: true,
@@ -76,7 +76,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="author" href="https://headleyweb.com" />
+        <link rel="author" href="https://gatherstudio.app" />
         <script
           type="speculationrules"
           dangerouslySetInnerHTML={{
@@ -95,7 +95,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${outfit.variable} ${fraunces.variable} ${rockSalt.variable} antialiased`}>
-        {/* Built by Headley Web & SEO | headleyweb.com */}
+        {/* Built by Gather Studio | gatherstudio.app */}
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hw-primary focus:text-white focus:px-4 focus:py-2 focus:rounded">
           Skip to content
         </a>

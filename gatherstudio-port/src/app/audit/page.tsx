@@ -119,7 +119,7 @@ export default function AuditPage() {
       formData.storybrand_grade = auditResult.storyBrand.grade;
       formData.storybrand_score = `${auditResult.storyBrand.autoTotal}/${auditResult.storyBrand.autoMax}`;
     }
-    fetch("https://formspree.io/f/xyknwdgp", {
+    fetch("https://formspree.io/f/REPLACE_ME", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -216,7 +216,7 @@ export default function AuditPage() {
           storybrand_grade: auditResult.storyBrand?.grade ?? "N/A",
         };
         if (newsletterOptin) formspreeData.newsletter = true;
-        fetch("https://formspree.io/f/xyknwdgp", {
+        fetch("https://formspree.io/f/REPLACE_ME", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formspreeData),
