@@ -62,14 +62,14 @@ export async function POST(request: NextRequest) {
 
     // Send email via Resend
     const { error } = await resend.emails.send({
-      from: "Headley Web & SEO <reports@headleyweb.com>",
+      from: "Gather Studio <reports@gatherstudio.app>",
       to: [body.email],
       subject: `Your Site Readiness Report for ${hostname}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: #1C2826; padding: 24px 30px; border-radius: 8px 8px 0 0;">
             <h1 style="color: #FFFFFF; font-size: 20px; margin: 0 0 4px;">Your Site Readiness Report</h1>
-            <p style="color: #E07B3C; font-size: 14px; margin: 0;">Headley Web &amp; SEO</p>
+            <p style="color: #E07B3C; font-size: 14px; margin: 0;">Gather Studio &amp; SEO</p>
           </div>
           <div style="background: #F5F0EB; padding: 24px 30px; border-radius: 0 0 8px 8px;">
             <p style="color: #2D2D2D; font-size: 15px; line-height: 1.6; margin: 0 0 16px;">
@@ -91,10 +91,10 @@ export async function POST(request: NextRequest) {
               Call Me: (256) 644-7334
             </a>
             <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">
-              Want occasional web tips? <a href="https://headleyweb.com/#newsletter" style="color: #E07B3C; text-decoration: underline;">Subscribe here</a>
+              Want occasional web tips? <a href="https://gatherstudio.app/#newsletter" style="color: #E07B3C; text-decoration: underline;">Subscribe here</a>
             </p>
             <p style="color: #6B7280; font-size: 12px; margin-top: 8px;">
-              Headley Web &amp; SEO &middot; headleyweb.com &middot; Jacksonville, AL
+              Gather Studio &amp; SEO &middot; gatherstudio.app &middot; Jacksonville, AL
             </p>
           </div>
         </div>

@@ -15,7 +15,7 @@ export default function CheckupForm() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch("https://formspree.io/f/xyknwdgp", {
+      const res = await fetch("https://formspree.io/f/REPLACE_ME", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
@@ -51,7 +51,7 @@ export default function CheckupForm() {
 
   return (
     <form className="animate-on-scroll space-y-5 card-glow" onSubmit={handleSubmit}>
-      <input type="hidden" name="_subject" value="New Site Checkup Request from headleyweb.com" />
+      <input type="hidden" name="_subject" value="New Site Checkup Request from gatherstudio.app" />
       <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
       <div>
         <label htmlFor="name" className="block text-sm font-semibold text-hw-dark mb-1">Your Name</label>

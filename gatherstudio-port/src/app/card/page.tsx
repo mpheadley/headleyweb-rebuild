@@ -34,7 +34,7 @@ const links = [
   {
     href: "https://www.facebook.com/HeadleyWebSEO/?utm_source=business_card&utm_medium=qr&utm_campaign=networking",
     icon: Facebook,
-    label: "Headley Web & SEO",
+    label: "Gather Studio",
     subtitle: "Facebook page",
   },
 ];
@@ -263,18 +263,18 @@ export default function CardPage() {
 
           {/* Footer — branded link to homepage */}
           <a
-            href="https://headleyweb.com?utm_source=business_card&utm_medium=qr&utm_campaign=networking"
+            href="https://gatherstudio.app?utm_source=business_card&utm_medium=qr&utm_campaign=networking"
             className="flex flex-col items-center mt-4 gap-2 opacity-80 hover:opacity-100 transition-opacity duration-200"
           >
             <Image
               src="/images/logo-icon-transparent.png"
-              alt="Headley Web & SEO"
+              alt="Gather Studio"
               width={224}
               height={224}
             />
             <span className="flex items-center gap-1.5 text-sm font-medium" style={{ color: "#ffffff" }}>
               <Globe size={14} />
-              headleyweb.com
+              gatherstudio.app
             </span>
           </a>
 

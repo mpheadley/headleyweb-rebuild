@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Headley Web & SEO",
+    siteName: "Gather Studio",
     url: "/portfolio",
     images: [
       {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO: Portfolio",
+        alt: "Gather Studio: Portfolio",
       },
     ],
   },
@@ -32,8 +32,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
-    { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://headleyweb.com/portfolio" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://gatherstudio.app" },
+    { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://gatherstudio.app/portfolio" },
   ],
 };
 

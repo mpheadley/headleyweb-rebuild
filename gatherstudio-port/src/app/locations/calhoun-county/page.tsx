@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Headley Web & SEO",
+    siteName: "Gather Studio",
     url: "/locations/calhoun-county",
     images: [
       {
         url: "/images/headley_web_seo_clean-1200-630.webp",
         width: 1200,
         height: 630,
-        alt: "Headley Web & SEO, Web Design for Calhoun County, AL",
+        alt: "Gather Studio, Web Design for Calhoun County, AL",
       },
     ],
   },
@@ -30,19 +30,19 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
-    { "@type": "ListItem", position: 2, name: "Locations", item: "https://headleyweb.com/locations" },
-    { "@type": "ListItem", position: 3, name: "Calhoun County", item: "https://headleyweb.com/locations/calhoun-county" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://gatherstudio.app" },
+    { "@type": "ListItem", position: 2, name: "Locations", item: "https://gatherstudio.app/locations" },
+    { "@type": "ListItem", position: 3, name: "Calhoun County", item: "https://gatherstudio.app/locations/calhoun-county" },
   ],
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Headley Web & SEO",
+  name: "Gather Studio",
   description:
-    "Headley Web & SEO provides custom web design and local SEO for small businesses across Calhoun County, Alabama, including Jacksonville, Anniston, Oxford, and Piedmont.",
-  url: "https://headleyweb.com",
+    "Gather Studio provides custom web design and local SEO for small businesses across Calhoun County, Alabama, including Jacksonville, Anniston, Oxford, and Piedmont.",
+  url: "https://gatherstudio.app",
   telephone: "+1-256-644-7334",
   email: "matt@headleyweb.com",
   address: {
@@ -96,7 +96,7 @@ const cities = [
 const whyPoints = [
   {
     title: "I Live Here",
-    desc: "Headley Web & SEO is based in Jacksonville. I'm not a remote agency targeting your area from Arizona. I know this county, these towns, and these customers.",
+    desc: "Gather Studio is based in Jacksonville. I'm not a remote agency targeting your area from Arizona. I know this county, these towns, and these customers.",
   },
   {
     title: "No Other Local Web Designer Publishes Prices",
@@ -248,7 +248,7 @@ export default function CalhounCountyPage() {
         </div>
       </section>
 
-      {/* ═══ Why Headley Web ═══ */}
+      {/* ═══ Why Gather Studio ═══ */}
       <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -303,7 +303,7 @@ export default function CalhounCountyPage() {
       <section className="sr-only">
         <h2>Web Design for Calhoun County, Alabama Small Businesses</h2>
         <p>
-          Headley Web &amp; SEO is a Jacksonville, Alabama web design studio serving small businesses
+          Gather Studio &amp; SEO is a Jacksonville, Alabama web design studio serving small businesses
           across Calhoun County, including Anniston, Oxford, Jacksonville, and Piedmont. Services include
           custom website design starting at $495, local SEO optimization, and Google Business Profile setup
           and management. Every build includes mobile-friendly design, on-page SEO targeting Calhoun County

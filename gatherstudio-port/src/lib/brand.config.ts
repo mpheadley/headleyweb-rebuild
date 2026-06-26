@@ -1,16 +1,17 @@
 /**
  * Gather Studio — central brand config.
  *
- * Single source of truth for brand-level values that are currently hardcoded
- * across the ported feature files. Two ways to use it:
+ * Single source of truth for brand-level values.
  *
- *   1. (Recommended, gradual) Import BRAND where you touch a file and replace
- *      the hardcoded literal, e.g. `BRAND.phoneDisplay` instead of "(256) 644-7334".
- *   2. (Fast) Use the find/replace table in ../../README.md to swap the literals
- *      in place, then delete this file if you don't want a runtime dependency.
+ * The bundle has ALREADY been rebranded from Headley Web -> Gather Studio
+ * (domain, brand name, report sender). This file remains the place to manage
+ * those values going forward — import BRAND where convenient, e.g.
+ * `BRAND.phoneDisplay` instead of the hardcoded "(256) 644-7334".
  *
- * The README lists every file that still contains a Headley Web literal so you
- * can verify nothing was missed (`grep -ri "headley" src/`).
+ * A few owner-specific literals are intentionally KEPT (Matt is the owner of
+ * Gather Studio too): his name "Matt Headley", email, phone, the `HeadleyWebSEO`
+ * social handle, and the headshot/vCard filenames on the /card page. Update the
+ * handle + asset filenames if GS uses its own. See README "Remaining manual steps."
  */
 export const BRAND = {
   // Identity
@@ -26,14 +27,14 @@ export const BRAND = {
   url: "https://gatherstudio.app",
   ownerSiteUrl: "https://matthewheadley.com",
 
-  // Contact  (same owner as Headley Web — update only if GS uses different contact)
+  // Contact  (same owner, Matt Headley — update only if GS uses different contact)
   phoneDisplay: "(256) 644-7334",
   phoneHref: "+12566447334",
   email: "matt@headleyweb.com",
 
   // Email delivery (Resend)
   // NOTE: create a NEW Resend audience for Gather Studio — do not reuse the
-  // Southern Legends / Headley Web audience. Verify the sending domain first.
+  // existing Southern Legends audience. Verify the sending domain first.
   resendFrom: "reports@gatherstudio.app",
   resendReplyTo: "matt@headleyweb.com",
 

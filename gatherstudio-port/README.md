@@ -1,14 +1,33 @@
 # Gather Studio Feature Bundle
 
-A self-contained, drop-in package of all 11 proven Headley Web features, ready to
-copy into the Gather Studio Next.js app. Every file here is working code lifted
-from `headleyweb-rebuild` (Next.js 16 App Router + Tailwind v4). Copy what you
-want, wire the env vars, and rebrand using the find/replace table below.
+A self-contained, drop-in package of all 11 proven features (originally built for
+Headley Web), ready to copy into the Gather Studio Next.js app. Every file here is
+working code lifted from `headleyweb-rebuild` (Next.js 16 App Router + Tailwind v4)
+and **already rebranded to Gather Studio**. Copy what you want, wire the env vars,
+and finish the few owner/account-specific steps in section 1.
 
 > **Why a bundle and not a direct build?** The Gather Studio repo wasn't reachable
 > from the session that produced this. These are the real, battle-tested source
-> files — not blind reimplementations — so they'll behave exactly as they do on
-> headleyweb.com once rebranded.
+> files — not blind reimplementations — so they behave exactly as they do on
+> headleyweb.com, now under Gather Studio branding.
+
+---
+
+## How to get this into the Gather Studio repo
+
+Pick whichever is easiest:
+
+- **Download the archive** — grab `gatherstudio-port.zip` (or `.tar.gz`), unzip,
+  and copy its `src/` and `content/` into your GS repo root (paths line up).
+- **One-command install** — from the GS repo root, with this folder alongside:
+  ```bash
+  bash gatherstudio-port/install.sh .
+  ```
+  Copies `src/` + `content/` into place; leaves `reference/` for manual merge.
+- **Copy-paste from GitHub** — browse `gatherstudio-port/` in this repo and copy
+  files individually into the matching GS paths.
+
+After any method: install deps, set env vars, and finish section 1's manual steps.
 
 ---
 
@@ -47,24 +66,31 @@ is only needed if you keep the optional audit-result storage in feature #1/#5.)
 
 ---
 
-## 1. Rebrand (do this once, up front)
+## 1. Rebrand — already applied; finish these owner/account steps
 
-All brand-specific literals live in `src/lib/brand.config.ts`. Either import
-`BRAND` where you edit a file, or run this find/replace across the bundle:
+The bundle is **already rebranded**: `Headley Web & SEO`/`Headley Web` → `Gather
+Studio`, `headleyweb.com` → `gatherstudio.app`, report sender →
+`reports@gatherstudio.app`. The live Headley Formspree id was **removed** and
+replaced with `formspree.io/f/REPLACE_ME` so GS form leads can't route into
+Headley's account. Central values live in `src/lib/brand.config.ts`.
 
-| Find | Replace with |
-|------|--------------|
-| `Headley Web & SEO` | `Gather Studio` |
-| `Headley Web` | `Gather Studio` |
-| `headleyweb.com` | `gatherstudio.app` |
-| `matt@headleyweb.com` | (keep, or GS email) |
-| `reports@headleyweb.com` | `reports@gatherstudio.app` (verify domain in Resend first) |
-| `(256) 644-7334` / `2566447334` | (keep, same owner) |
-| `formspree.io/f/xyknwdgp` | your new GS Formspree id |
-| `G-XXXXXXXXXX` | your GS GA4 id (or rely on `NEXT_PUBLIC_GA4_ID`) |
+**Intentionally kept** (Matt owns Gather Studio too): his name "Matt Headley",
+phone `(256) 644-7334`, email `matt@headleyweb.com`.
 
-Verify afterward: `grep -ri "headley\|xyknwdgp" src/` should return only
-intentional keeps (e.g. the owner email).
+**Remaining manual steps before launch:**
+
+| What | Where | Action |
+|------|-------|--------|
+| Formspree id | `formspree.io/f/REPLACE_ME` (grep it) | create a GS Formspree form, paste its id |
+| GA4 id | `NEXT_PUBLIC_GA4_ID` env (fallback literal `G-XXXXXXXXXX`) | set GS measurement id |
+| Resend audience | `subscribe/route.ts` / env | create a **new** GS audience (don't reuse Southern Legends) + verify sending domain |
+| PDF logo | `src/lib/logo-icon-data.ts` → `LOGO_ICON_BASE64` | swap for GS logo |
+| Social handle | `HeadleyWebSEO` (Footer, card) | replace with GS social handle |
+| Card assets | `/card`: `headley.webp`, `headley.vcf` | replace headshot/vCard or update paths |
+| GS email (optional) | `brand.config.ts` `email` | switch from `matt@headleyweb.com` if GS uses its own |
+
+Verify: `grep -rn "REPLACE_ME\|G-XXXXXXXXXX" src/` shows what still needs values;
+`grep -rin "headley" src/` should show only the intentional keeps above.
 
 **Design tokens:** the components use Tailwind classes like `bg-hw-primary`,
 `text-hw-dark`. `reference/globals.css` contains the full Sage & Stone token set
@@ -196,7 +222,8 @@ which exist in Headley Web. Those are net-new builds.
 ## 5. Suggested verification after install
 ```bash
 npm run build          # type + lint (ESLint blocks raw <img>; use next/image)
-grep -ri "headley\|xyknwdgp" src/   # should be empty (or intentional keeps only)
+grep -rn "REPLACE_ME\|G-XXXXXXXXXX" src/   # finish these before launch
+grep -rin "headley" src/                   # only intentional owner keeps should remain
 ```
 Smoke-test the audit route with a real URL, submit the subscribe form (confirm
 the Resend contact + welcome email), and confirm GA fires only after consent.

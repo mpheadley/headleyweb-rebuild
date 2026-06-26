@@ -137,9 +137,9 @@ export function buildReportDoc(input: ReportInput): jsPDF {
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...terracotta);
-  doc.text("Headley Web & SEO", textX, 60);
+  doc.text("Gather Studio", textX, 60);
   doc.setTextColor(180, 180, 180);
-  doc.text("headleyweb.com  |  (256) 644-7334", textX, 76);
+  doc.text("gatherstudio.app  |  (256) 644-7334", textX, 76);
 
   if (auditResult) {
     doc.setTextColor(...white);
@@ -721,7 +721,7 @@ export function buildReportDoc(input: ReportInput): jsPDF {
   doc.setTextColor(200, 200, 200);
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text("headleyweb.com  |  (256) 644-7334  |  matt@headleyweb.com", margin, finalFooterY + 34);
+  doc.text("gatherstudio.app  |  (256) 644-7334  |  matt@headleyweb.com", margin, finalFooterY + 34);
   doc.setTextColor(...mutedText);
   doc.setFontSize(8);
   doc.text(

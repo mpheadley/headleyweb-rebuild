@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="w-80 h-52 rounded-2xl bg-[#F2E8D4] overflow-hidden relative">
             <Image
               src="/images/logo-seal-footer.webp"
-              alt="Headley Web & SEO"
+              alt="Gather Studio"
               fill
               sizes="320px"
               loading="lazy"
@@ -111,7 +111,7 @@ export default function Footer() {
         </p>
 
         <div className="flex items-center justify-center gap-4 text-xs text-gray-400 pt-2">
-          <span>&copy; {new Date().getFullYear()} Headley Web <span className="amp">&amp;</span> SEO. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Gather Studio <span className="amp">&amp;</span> SEO. All rights reserved.</span>
           <Link href="/audit" className="hover:text-white transition-colors">
             Free Site Audit
           </Link>
@@ -127,20 +127,20 @@ export default function Footer() {
         </div>
 
         <a
-          href="https://headleyweb.com"
+          href="https://gatherstudio.app"
           className="inline-flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity mx-auto"
-          aria-label="Built by Headley Web & SEO"
+          aria-label="Built by Gather Studio"
         >
           <Image
             src="/images/logo-headley-web-sm.webp"
-            alt="Headley Web & SEO logo"
+            alt="Gather Studio logo"
             width={28}
             height={28}
             loading="lazy"
             className="rounded-full"
           />
           <span className="text-xs text-gray-400">
-            Built by Headley Web <span className="amp">&amp;</span> SEO
+            Built by Gather Studio <span className="amp">&amp;</span> SEO
           </span>
         </a>
       </div>

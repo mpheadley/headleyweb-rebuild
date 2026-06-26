@@ -29,7 +29,7 @@ export const locations: Location[] = [
     name: "Anniston",
     county: "Calhoun County",
     zip: "36201",
-    metaTitle: "Web Design in Anniston, AL | Headley Web & SEO",
+    metaTitle: "Web Design in Anniston, AL | Gather Studio",
     metaDescription:
       "Custom web design and local SEO for Anniston, Alabama businesses. Get found on Google by Army Depot families, Noble Street foot traffic, and Calhoun County customers. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Anniston Businesses",
@@ -98,7 +98,7 @@ export const locations: Location[] = [
     name: "Gadsden",
     county: "Etowah County",
     zip: "35901",
-    metaTitle: "Web Design in Gadsden, AL | Headley Web & SEO",
+    metaTitle: "Web Design in Gadsden, AL | Gather Studio",
     metaDescription:
       "Custom web design and local SEO for Gadsden, Alabama businesses. Get found on Google by Etowah County customers near Noccalula Falls and Broad Street. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Gadsden Businesses",
@@ -140,7 +140,7 @@ export const locations: Location[] = [
     name: "Jacksonville",
     county: "Calhoun County",
     zip: "36265",
-    metaTitle: "Web Design in Jacksonville, AL | Headley Web & SEO",
+    metaTitle: "Web Design in Jacksonville, AL | Gather Studio",
     metaDescription:
       "Custom web design and local SEO for Jacksonville, Alabama businesses. Get found on Google by JSU students, families, and locals searching right now. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Jacksonville Businesses",
@@ -148,11 +148,11 @@ export const locations: Location[] = [
       "I live here. I work here. And I build websites for businesses right here in Jacksonville that actually show up when locals search.",
     heroImage: { src: "/images/locations/jacksonville-hero.webp", alt: "Jacksonville, Alabama public square", credit: "Thomson200 / CC0" },
     localIntro:
-      "Jacksonville is home. My kids go to school here. I built Headley Web & SEO here because I watched good local businesses lose customers to competitors with worse work but better websites. I know who the competition is and where the foot traffic flows. Your next customer is probably searching Google right now. They're going to call whoever shows up first.",
+      "Jacksonville is home. My kids go to school here. I built Gather Studio here because I watched good local businesses lose customers to competitors with worse work but better websites. I know who the competition is and where the foot traffic flows. Your next customer is probably searching Google right now. They're going to call whoever shows up first.",
     bodyParagraphs: [
       "Jacksonville State University sets the rhythm for this town. The student population keeps restaurants, coffee shops, and service businesses busy through the school year. Gamecock football weekends bring traffic that rivals any market day. Every August, a new class of students and families arrives, and every one of them is searching Google for the nearest pizza place, a trusted mechanic, a good dentist. They don't have a neighbor to ask yet. They call whoever shows up first.",
       "Beyond JSU, Jacksonville runs on a solid trades economy. HVAC companies, plumbers, electricians, roofers, and lawn services cover the neighborhoods stretching toward Weaver, Alexandria, and Piedmont. The square still draws lunch crowds. Local medical offices, chiropractors, and dental practices compete for patients who'd rather stay close to home than drive 20 minutes to Anniston. Most of those patients make that decision on their phone, based on what Google shows them, not a yard sign.",
-      "Most Jacksonville businesses still run on referrals and a Facebook page that last got updated before the pandemic. That holds onto existing customers. It does nothing for the person searching Google right now who doesn't know you exist. Even in a small town, the business with the best online presence wins the call. I built Headley Web & SEO here precisely because I know this market, and I know how much is being left on the table.",
+      "Most Jacksonville businesses still run on referrals and a Facebook page that last got updated before the pandemic. That holds onto existing customers. It does nothing for the person searching Google right now who doesn't know you exist. Even in a small town, the business with the best online presence wins the call. I built Gather Studio here precisely because I know this market, and I know how much is being left on the table.",
     ],
     clientTypes: [
       { type: "Trades & Contractors", examples: "HVAC, plumbing, electrical, roofing, lawn care and landscaping" },
@@ -307,7 +307,7 @@ export const locations: Location[] = [
     name: "Centre",
     county: "Cherokee County",
     zip: "35960",
-    metaTitle: "Web Design in Centre, AL | Headley Web & SEO",
+    metaTitle: "Web Design in Centre, AL | Gather Studio",
     metaDescription:
       "Custom web design and local SEO for Centre, Alabama businesses. Get found on Google by Weiss Lake anglers, tournament visitors, and Cherokee County locals. Flat-rate pricing from $495. No contracts.",
     heroHeadline: "Web Design for Centre Businesses",

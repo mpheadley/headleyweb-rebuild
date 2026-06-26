@@ -25,14 +25,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     openGraph: {
       type: "website",
       locale: "en_US",
-      siteName: "Headley Web & SEO",
+      siteName: "Gather Studio",
       url: `/locations/${loc.slug}`,
       images: [
         {
           url: "/images/headley_web_seo_clean-1200-630.webp",
           width: 1200,
           height: 630,
-          alt: `Headley Web & SEO, ${loc.metaTitle}`,
+          alt: `Gather Studio, ${loc.metaTitle}`,
         },
       ],
     },
@@ -48,17 +48,17 @@ export default async function LocationPage({ params }: { params: Params }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://headleyweb.com" },
-      { "@type": "ListItem", position: 2, name: loc.name, item: `https://headleyweb.com/locations/${loc.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://gatherstudio.app" },
+      { "@type": "ListItem", position: 2, name: loc.name, item: `https://gatherstudio.app/locations/${loc.slug}` },
     ],
   };
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Headley Web & SEO",
-    description: `Headley Web & SEO provides custom web design and local SEO services for businesses in ${loc.name}, ${loc.county}, Alabama.`,
-    url: "https://headleyweb.com",
+    name: "Gather Studio",
+    description: `Gather Studio provides custom web design and local SEO services for businesses in ${loc.name}, ${loc.county}, Alabama.`,
+    url: "https://gatherstudio.app",
     telephone: "+1-256-644-7334",
     email: "matt@headleyweb.com",
     address: {
@@ -76,8 +76,8 @@ export default async function LocationPage({ params }: { params: Params }) {
     },
     creator: {
       "@type": "Organization",
-      name: "Headley Web & SEO",
-      url: "https://headleyweb.com",
+      name: "Gather Studio",
+      url: "https://gatherstudio.app",
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -386,10 +386,10 @@ export default async function LocationPage({ params }: { params: Params }) {
       <section className="sr-only">
         <h2>Web Design in {loc.name}, Alabama</h2>
         <p>
-          Headley Web &amp; SEO provides custom web design, local SEO, and Google Business Profile management
+          Gather Studio &amp; SEO provides custom web design, local SEO, and Google Business Profile management
           for businesses in {loc.name}, {loc.county}, Alabama. Services include mobile-friendly website design
           starting at $495, on-page SEO optimization, and Google Maps listing setup. Based in Jacksonville, AL,
-          Headley Web &amp; SEO serves {loc.name} and surrounding {loc.county} communities with flat-rate pricing,
+          Gather Studio &amp; SEO serves {loc.name} and surrounding {loc.county} communities with flat-rate pricing,
           no contracts, and full site ownership from day one.
         </p>
       </section>
