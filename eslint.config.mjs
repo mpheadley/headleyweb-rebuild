@@ -18,6 +18,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Reference bundle for the Gather Studio port — not part of this app's build.
+    "gatherstudio-port/**",
   ]),
 ]);
 
