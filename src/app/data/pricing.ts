@@ -96,8 +96,8 @@ export const carePlans: CarePlan[] = [
 export const buildTiers: BuildTier[] = [
   {
     name: "Get Found",
-    price: 495,
-    priceDisplay: "$495",
+    price: 500,
+    priceDisplay: "$500",
     tagline: "Get online. Get visible. Get found.",
     timeline: "Typically 1 page · ~1–2 weeks*",
     bestValue: false,
@@ -115,8 +115,8 @@ export const buildTiers: BuildTier[] = [
   },
   {
     name: "Get Calls",
-    price: 1495,
-    priceDisplay: "$1,495",
+    price: 1500,
+    priceDisplay: "$1,500",
     tagline: "Show up in search. Start getting calls.",
     timeline: "Typically 3–5 pages · ~2–3 weeks*",
     bestValue: true,
