@@ -1,3 +1,5 @@
+// Source of truth: packages/brand/products.ts in gather monorepo. Keep in sync manually.
+
 export interface CarePlan {
   name: string;
   price: number;
@@ -137,8 +139,8 @@ export const buildTiers: BuildTier[] = [
   },
   {
     name: "Get Booked",
-    price: 1995,
-    priceDisplay: "$1,995",
+    price: 2500,
+    priceDisplay: "$2,500",
     tagline: "Become the obvious choice in your area.",
     timeline: "Typically 5–7 pages · ~3–4 weeks*",
     bestValue: false,
