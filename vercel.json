@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "destination": "https://matthewheadley.com/websites",
+      "destination": "https://gatherstudio.app",
       "permanent": true
     }
   ]
