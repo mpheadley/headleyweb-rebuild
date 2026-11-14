@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headley Web & SEO — Trifold Brochure (Print-Ready)</title>
+  <!--
+    PRINT-READY VERSION — matched to GotPrint trifold template
+    - Bleed: 0.0625in per side
+    - Final trim: 11 × 8.5in
+    - Sheet with bleed: 11.125 × 8.625in  (GotPrint template spec)
+    - Left panel: 3.6875in  |  Center: 3.6875in  |  Right: 3.75in
+    - Fold lines at 3.6875in and 7.375in from left edge
+    - Left panel is tuck (narrower), right panel is outer wrap (wider)
+    - Print at 100% scale, no scaling
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&family=Rock+Salt&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Tokens ──────────────────────────────────────── */
+    :root {
+      --primary:      #E07B3C;
+      --primary-dark: #B85A24;
+      --secondary:    #6B8F71;
+      --dark:         #1C2826;
+      --light:        #F5F0EB;
+      --text:         #2D2D2D;
+      --text-light:   #6B7280;
+      --white:        #FFFFFF;
+      --font-heading: 'Fraunces', Georgia, serif;
+      --font-body:    'Outfit', system-ui, sans-serif;
+
+      /* Matched to GotPrint fold lines (measured from PDF template at 400 DPI) */
+      /* Fold 1 at 3.685" (left panel), Fold 2 at 7.3725" (left+center) */
+      --p-left:   3.6875in;  /* tuck panel — slightly narrower for C-fold */
+      --p-center: 3.6875in;
+      --p-right:  3.75in;    /* outer wrap panel — slightly wider */
+    }
+
+    /* ── Shell ───────────────────────────────────────── */
+    html, body {
+      background: #b0b0b0;
+      font-family: var(--font-body);
+      color: var(--text);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Sheet ───────────────────────────────────────── */
+    .sheet {
+      width: 11.125in;
+      height: 8.625in;
+      display: grid;
+      grid-template-columns: var(--p-left) var(--p-center) var(--p-right);
+      margin: 0;
+      box-shadow: none;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Inside sheet is printed on the back — mirror left/right column widths */
+    #inside { grid-template-columns: var(--p-right) var(--p-center) var(--p-left); }
+
+    /* bleed + trim guides — screen only */
+    .fold-guide {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(0,0,0,0.12);
+      z-index: 20;
+      pointer-events: none;
+    }
+    /* trim line (actual fold) — offset by 0.125in bleed */
+    .fold-guide.left  { left: var(--p-left); }
+    .fold-guide.right { right: var(--p-right); }
+
+    /* ── Panel base ──────────────────────────────────── */
+    .panel {
+      height: 8.625in;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* single continuous gradient bar across all inside panels */
+    #inside::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 36px;
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* ── Section label ───────────────────────────────── */
+    .label {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 0.12in;
+    }
+    .label-light {
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── Panel 4 — FRONT COVER ────────────────────────── */
+    .panel-front {
+      position: relative;
+      background: var(--dark);
+      padding: 0;
+      justify-content: flex-end;
+      align-items: stretch;
+    }
+
+    .front-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 65% -1.1in;
+      display: block;
+    }
+
+    .panel-front::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(28,40,38,0.0)  0%,
+        rgba(28,40,38,0.0)  45%,
+        rgba(28,40,38,0.75) 75%,
+        rgba(28,40,38,0.96) 100%
+      );
+      z-index: 1;
+    }
+
+    .front-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+      /* extra left padding on front cover to account for bleed on right edge */
+      padding: 0.38in 0.44in 0.545in 0.38in;
+      gap: 0;
+    }
+
+    .front-tagline {
+      font-family: var(--font-heading);
+      font-size: 25pt;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.18;
+      color: var(--white);
+      margin-bottom: 0.3in;
+    }
+
+    .front-tagline em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .front-qr-row {
+      display: flex;
+      align-items: center;
+      gap: 0.14in;
+    }
+
+    .front-qr {
+      width: 1.1in;
+      height: 1.1in;
+      border-radius: 6px;
+      background: var(--white);
+      padding: 5px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .front-qr-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .front-qr-label {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.03em;
+    }
+
+    .front-qr-sub {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .flap-cartoon {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 0.18in;
+    }
+
+    /* ── Panel 5 — INSIDE FLAP ─────────────── */
+    .panel-flap {
+      background: var(--light);
+      border-left: 4px solid var(--primary);
+      padding: 0;
+      justify-content: center;
+    }
+
+    .flap-text {
+      padding: 0.3in 0.32in 0.4in 0.35in;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .flap-headline {
+      font-family: var(--font-heading);
+      font-size: 17pt;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--dark);
+      margin-bottom: 0.22in;
+    }
+
+    .flap-body {
+      font-size: 10pt;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.22in;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.11in;
+    }
+
+    .pain-list li {
+      font-size: 10pt;
+      color: var(--text);
+      padding-left: 1.2em;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .pain-list li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ── Panel 6 — BACK COVER ────────────────────────── */
+    .panel-back {
+      background: var(--dark);
+      padding: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    .back-photo-wrap {
+      position: relative;
+      width: 100%;
+      height: 3.6625in; /* 3.6in + 0.0625in bleed top */
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .back-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    .back-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 0.8in;
+      background: linear-gradient(to bottom, transparent 0%, rgba(28,40,38,0.3) 55%, var(--dark) 100%);
+    }
+
+    .back-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* extra left padding for bleed on left edge */
+      padding: 0.3in 0.38in 0.545in 0.44in;
+    }
+
+    .back-name {
+      font-family: var(--font-heading);
+      font-size: 20pt;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .back-location {
+      font-size: 8.5pt;
+      color: rgba(255,255,255,0.5);
+      margin-top: 3px;
+      margin-bottom: 0.15in;
+    }
+
+    .back-divider {
+      width: 0.5in;
+      height: 2px;
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+      border-radius: 2px;
+      margin-bottom: 0.15in;
+    }
+
+    .back-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .back-contact a,
+    .back-contact span {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      line-height: 1.4;
+    }
+
+    .back-tagline {
+      font-family: var(--font-heading);
+      font-size: 20pt;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-top: 0.22in;
+    }
+
+    .back-tagline .rock-salt {
+      font-family: 'Rock Salt', cursive;
+      font-size: 15pt;
+      font-weight: 400;
+      color: var(--primary);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .back-business {
+      font-family: var(--font-heading);
+      font-size: 16pt;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.1in;
+    }
+
+    .back-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 36px; /* matches inside panels */
+      background: linear-gradient(to right, #6B8F71, #E07B3C);
+      z-index: 3;
+    }
+
+    /* ── Inside panels ─────────────────────────────── */
+    .reviews-wrap {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1in;
+    }
+    .review-block {
+      padding: 0.15in 0.22in;
+      background: var(--light);
+      border-left: 3px solid var(--primary);
+      border-radius: 4px;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .google-g { flex-shrink: 0; }
+
+    .review-stars {
+      color: #E07B3C;
+      font-size: 11pt;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .review-text {
+      font-family: var(--font-heading);
+      font-size: 11pt;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.45;
+    }
+
+    .review-attribution {
+      font-size: 8.5pt;
+      color: var(--text-light);
+      margin-top: 5px;
+    }
+
+    /* ── Panel 1 — GUIDE ───────────────────── */
+    .panel-guide {
+      background: var(--white);
+      /* extra left padding for bleed on left edge */
+      padding: 0.5in 0.35in 0.545in 0.41in;
+    }
+
+    .guide-photo {
+      width: 100%;
+      height: 1.5in;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 6px;
+      display: block;
+      margin-bottom: 0.2in;
+    }
+
+    .guide-empathy {
+      font-family: var(--font-heading);
+      font-size: 11.5pt;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--dark);
+      margin-bottom: 0.18in;
+    }
+
+    .guide-empathy strong {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    .guide-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 0.18in;
+    }
+
+    .guide-bullets li {
+      font-size: 10.5pt;
+      color: var(--text);
+      padding-left: 1.2em;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .guide-bullets li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    /* ── Panel 2 — PLAN ──────────────────────── */
+    .panel-plan {
+      background: var(--light);
+      padding: 0.5in 0.3in 0.545in;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-steps-wrap { flex: 1; }
+    .value-anchor {
+      margin-top: auto;
+      padding: 0.15in 0.2in;
+      background: var(--dark);
+      border-radius: 6px;
+      text-align: center;
+    }
+    .value-anchor-top {
+      font-size: 8.5pt;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .value-anchor-price {
+      font-family: var(--font-heading);
+      font-size: 15pt;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .plan-headline {
+      font-family: var(--font-heading);
+      font-size: 22pt;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 0.25in;
+    }
+
+    .plan-headline em {
+      font-style: italic;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18in;
+      flex: 1;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 0.12in;
+      align-items: start;
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(107,143,113,0.12);
+      border: 2px solid var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .step-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--secondary);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .step-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 7pt;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+    }
+
+    .step-title {
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 10.5pt;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ── Panel 3 — CTA ─────────────────────── */
+    .panel-pricing {
+      background: var(--dark);
+      /* extra right padding for bleed on right edge */
+      padding: 0.5in 0.41in 0.545in 0.35in;
+    }
+
+    .panel-pricing .label {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .care-line {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.14in;
+      padding: 0.1in 0.12in;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      border-left: 2px solid var(--secondary);
+      line-height: 1.5;
+    }
+
+    .cta-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.14in;
+      margin-top: 0.25in;
+      text-align: center;
+    }
+
+    .cta-headline {
+      font-family: var(--font-heading);
+      font-size: 22pt;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.15;
+    }
+
+    .cta-sub {
+      font-size: 9.5pt;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+      max-width: 2.8in;
+    }
+
+    .pricing-qr {
+      width: 1.15in;
+      height: 1.15in;
+      border-radius: 6px;
+      background: var(--white);
+      padding: 5px;
+      display: block;
+    }
+
+    .pricing-qr-label {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: var(--primary);
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    .pricing-phone {
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 500;
+      color: var(--white);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-logo-icon {
+      width: 180px;
+      height: auto;
+      opacity: 0.38;
+      margin-top: auto;
+      margin-bottom: 0.28in;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Decorative ampersand ────────── */
+    .amp {
+      font-family: var(--font-heading);
+      font-variation-settings: "opsz" 144 !important;
+    }
+
+    /* ── Print ───────────────────────────────────────── */
+    @media print {
+      html, body { background: none; margin: 0; }
+      @page { size: 11.125in 8.625in; margin: 0; }
+      .sheet {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+      .fold-guide, .bleed-guide { display: none; }
+    }
+  </style>
+  <script>
+    // ?show=outside or ?show=inside — hides the other sheet for single-sheet export
+    const p = new URLSearchParams(location.search).get('show');
+    if (p === 'outside') document.addEventListener('DOMContentLoaded', () => document.getElementById('inside').style.display = 'none');
+    if (p === 'inside')  document.addEventListener('DOMContentLoaded', () => document.getElementById('outside').style.display = 'none');
+  </script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     SHEET 1 — OUTSIDE
+     Left→Right: Panel 6 (back) | Panel 5 (flap) | Panel 4 (front cover)
+══════════════════════════════════════════════════════ -->
+<div class="sheet" id="outside">
+  <div class="fold-guide left"></div>
+  <div class="fold-guide right"></div>
+
+  <!-- Panel 5 — Problem (first revealed on open) -->
+  <div class="panel panel-flap">
+    <img
+      class="flap-cartoon"
+      src="public/images/quiz-website-checkup-1200-630.webp"
+      alt="Before and after: bad website vs good website"
+      width="372"
+      height="196"
+    >
+    <div class="flap-text">
+      <p class="label">The Problem</p>
+      <h2 class="flap-headline">Your website should show up like you do.</h2>
+      <p class="flap-body">Most businesses around here got sold a website by someone who disappeared after the check cleared. Now it just sits there while competitors — even ones who do worse work — get the calls.</p>
+      <ul class="pain-list">
+        <li>Invisible in Google and AI search results</li>
+        <li>Website that won't work on a phone</li>
+        <li>Losing jobs to less-skilled competitors</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Panel 6 — Back Cover (exterior back, visible without opening) -->
+  <div class="panel panel-back">
+    <div class="back-photo-wrap">
+      <img
+        class="back-photo"
+        src="public/images/headshot-matt-headley.webp"
+        alt="Matt Headley"
+        width="372"
+        height="346"
+      >
+    </div>
+    <div class="back-content">
+      <p class="back-name">Matt Headley</p>
+      <p class="back-location">Jacksonville, Alabama</p>
+      <div class="back-divider"></div>
+      <div class="back-contact">
+        <span>(256) 644-7334</span>
+        <span>matt@headleyweb.com</span>
+        <span>headleyweb.com</span>
+      </div>
+      <p class="back-tagline">
+        Get Found. Get Calls.<span class="rock-salt">Get Booked.</span>
+      </p>
+      <p class="back-business">Headley Web <span class="amp">&amp;</span> SEO</p>
+    </div>
+    <div class="back-bar"></div>
+  </div>
+
+  <!-- Panel 4 — Front Cover -->
+  <div class="panel panel-front">
+    <img
+      class="front-hero-img"
+      src="public/images/google-review-hvac.webp"
+      alt=""
+      aria-hidden="true"
+      width="372"
+      height="816"
+    >
+    <div class="front-content">
+      <h1 class="front-tagline">Your Customers<br>Are Searching.<br><em>Can They Find You?</em></h1>
+      <div class="front-qr-row">
+        <img
+          class="front-qr"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1C2826&bgcolor=ffffff&data=https://headleyweb.com/audit?utm_source=brochure&utm_medium=print&utm_campaign=traditional"
+          alt="Scan for free site checkup"
+          width="105"
+          height="105"
+        >
+        <div class="front-qr-text">
+          <p class="front-qr-label">Free Site Checkup</p>
+          <p class="front-qr-sub">headleyweb.com/audit</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /outside -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     SHEET 2 — INSIDE
+     Left→Right: Panel 1 (guide) | Panel 2 (plan) | Panel 3 (pricing)
+══════════════════════════════════════════════════════ -->
+<div class="sheet" id="inside">
+  <div class="fold-guide left"></div>
+  <div class="fold-guide right"></div>
+
+  <!-- Panel 1 — Guide / Empathy -->
+  <div class="panel panel-guide">
+    <p class="label">Why Headley Web</p>
+    <img
+      class="guide-photo"
+      src="public/images/laptop-matt-headley.webp"
+      alt="Matt Headley at work"
+      width="372"
+      height="144"
+    >
+    <p class="guide-empathy">
+      I'm a husband, dad, and former pastor living right here in Jacksonville. I got tired of watching good businesses pay for a website that just sits there.
+    </p>
+    <ul class="guide-bullets">
+      <li>Local — I know Jacksonville and this market</li>
+      <li>You own your site, domain, and data — no contracts, ever</li>
+      <li>Mobile-first, one-tap call &amp; booking</li>
+      <li>Flat rate — no hourly surprises</li>
+    </ul>
+    <div class="reviews-wrap">
+      <div class="review-block">
+        <div class="review-header">
+          <svg class="google-g" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <p class="review-stars">★★★★★</p>
+        </div>
+        <p class="review-text">"He is GENUINELY invested in this community!! 10/10 highly recommend."</p>
+        <p class="review-attribution">— Jean E., Jacksonville</p>
+      </div>
+      <div class="review-block">
+        <div class="review-header">
+          <svg class="google-g" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <p class="review-stars">★★★★★</p>
+        </div>
+        <p class="review-text">"Fast, easy to work with, and a great help."</p>
+        <p class="review-attribution">— Micah J., rental business owner</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 2 — The Plan -->
+  <div class="panel panel-plan">
+    <p class="label">How It Works</p>
+    <h2 class="plan-headline">Three steps.<br><em>No guesswork.</em></h2>
+    <div class="plan-steps-wrap">
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+          <span class="step-badge">1</span>
+        </div>
+        <div>
+          <p class="step-title">Get Your Free Site Checkup</p>
+          <p class="step-desc">I'll look at your site and Google presence. No cost, no pressure.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="1" y1="20" x2="23" y2="20"/></svg>
+          <span class="step-badge">2</span>
+        </div>
+        <div>
+          <p class="step-title">I Build Your System</p>
+          <p class="step-desc">Clear website &amp; local SEO setup. You own everything from day one.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+          <span class="step-badge">3</span>
+        </div>
+        <div>
+          <p class="step-title">Your Phone Starts Ringing</p>
+          <p class="step-desc">Customers find you, call you, and book you. You get back to the work you love.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="value-anchor">
+      <p class="value-anchor-top">One flat rate. No monthly ad spend.</p>
+      <p class="value-anchor-price">Starting at $495</p>
+    </div>
+  </div>
+
+  <!-- Panel 3 — CTA -->
+  <div class="panel panel-pricing">
+
+    <div class="cta-block">
+      <p class="cta-headline">Start with a free<br>site checkup.</p>
+      <p class="cta-sub">No cost. No pressure. Just an honest look at where you stand online.</p>
+      <img
+        class="pricing-qr"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=F5F0EB&bgcolor=1C2826&data=https://headleyweb.com/audit?utm_source=brochure&utm_medium=print&utm_campaign=traditional"
+        alt="Scan for free site checkup"
+        width="150"
+        height="150"
+      >
+      <p class="pricing-qr-label">Scan to get your free checkup</p>
+      <p class="pricing-phone">(256) 644-7334</p>
+      <p class="care-line">Monthly care plans $49–$199/mo.<br>Keeps your site current and your Google listing active.</p>
+    </div>
+    <img src="public/images/logo-icon-light.svg" alt="Headley Web & SEO" class="cta-logo-icon" width="180">
+  </div>
+
+</div><!-- /inside -->
+
+</body>
+</html>

@@ -1,8 +1,10 @@
-# GETUP Talk — Web Presence & Local SEO
+# GETUP Talk — Web Presence, Local SEO & Digital Advertising
 
 > Source material: `EMAIL-NURTURE-DRAFTS.md` (concepts), `EMAIL-NURTURE-RESEARCH.md` (SB framework)
 > Context: `~/.claude/projects/.../memory/main-street-anniston-strategy.md`
-> Status: Draft outline — pitch to teach September 2026 after completing current cohort
+> Status: Draft outline — August 13, 2026 GETUP session (already scheduled)
+> Brand: **Gather Studio by Matt Headley** — web design + Spectrum Reach ads + Plainspoken Blueprint messaging
+> Follow-on: Pitch Karla to teach September 2026 cohort after August session lands
 
 ---
 
@@ -12,9 +14,17 @@
 
 ---
 
+## Who Matt is (30-second intro frame)
+
+"I run Gather Studio — we build websites, write marketing copy, and run local advertising through Spectrum Reach. I'm also the market manager at the Downtown Market. I'm not here to pitch you anything today — I want to show you what's actually in your control."
+
+---
+
 ## Core insight (the talk's spine)
 
 Most local business owners think their website is a brochure. It's actually a ranking signal. The businesses showing up in Google Maps and AI search results aren't there because they spent more money — they're there because their site answers the right questions, loads fast on a phone, and tells Google exactly where they are and what they do.
+
+**The Spectrum Reach layer (add if time permits or if ads come up):** Running digital ads to a slow, unclear website is like pouring water through a leaky bucket. The ad gets the click — the website loses the customer. The site and the ads have to say the same thing. That's what most agencies miss.
 
 ---
 
@@ -90,17 +100,27 @@ Adam Harper (Profit Flow AI, Oxford) is already doing FB video content in Jackso
 
 At the close of the talk — after Q&A, before people leave — do this:
 
-"If this was useful, I'm running a half-day workshop where you actually do this for your own business. You leave with a one-page messaging brief, a digital card with your URL on it, and a clearer answer to 'what do you do?' than you've had in years. 8 people max. $97 for chamber and BNI members. [date/location TBD]."
+"If this was useful, I'm running a half-day workshop where you actually do this for your own business. You leave with a one-page messaging brief, a clearer answer to 'what do you do?', and a site audit with specific next steps. 8 people max. $97 for chamber and GETUP members. [date/location TBD]."
 
 Then: "Who wants the link?" — hands go up, you text/email the Calendly link on the spot.
 
 **Calendly workshop link:** calendly.com/matt-plainspokenblueprint (workshop event)
 
+**What Gather Studio offers (have this ready if anyone asks):**
+- Website design — from $3,500 (built with Plainspoken Blueprint messaging baked in)
+- Digital ads — TV, streaming, digital through Spectrum Reach (local media partner)
+- Plainspoken Blueprint sessions — half-day messaging workshop, $97
+- GSD CRM — $29/mo for client and lead management
+- Everything together = a local business marketing system, not a one-off fix
+
 **The sequence:**
 - Do NOT schedule the workshop before this talk
 - Collect hands in the room → schedule the workshop 2–3 weeks out
 - If 5+ hands go up, lock the date before you leave the room
-- 6 people at $97 = $582 and 6 potential website clients
+- 6 people at $97 = $582 and 6 potential website/ad clients
+
+**Differentiator vs. Adam Harper / Profit Flow AI:**
+He offers a GoHighLevel funnel and AI promises. You offer a local relationship, real work, and a Spectrum Reach media connection they can't get through an online agency. Lead with "I'm from here and I'm staying here."
 
 **Also offer at close:**
 1. Free digital card: "Scan this QR before you leave — get your free card right now." (QR → plainspokenblueprint.com/card)
@@ -111,9 +131,9 @@ Then: "Who wants the link?" — hands go up, you text/email the Calendly link on
 
 ## Next steps
 
-- [ ] Complete GETUP cohort (May–August 2026)
-- [ ] September 2026: formal pitch to Karla to teach next cohort
-- [ ] Build out Section 4 (before/after) with real client data when available
-- [ ] Add plainspokenblueprint.com/audit as a free tool handout for attendees (replaces headleyweb.com/audit)
-- [ ] Join Anniston Chamber — book meeting room for first workshop
-- [ ] Run GETUP talk → collect hands → schedule workshop within 2 weeks
+- [ ] August 13, 2026: deliver GETUP session (already scheduled)
+- [ ] Post-August: pitch Karla to teach full September cohort
+- [ ] Build out Section 4 (before/after) with real client data — Jason Wright site, Between Worlds, any others
+- [ ] Gather Studio service menu card to hand out (replaces headleyweb.com/audit) — web + Spectrum Reach + Blueprint
+- [ ] After August session lands: pitch library and SBDC for standalone workshop series
+- [ ] Q1 2027: consider paid Plainspoken Blueprint cohort ($299–499/person, 6 weeks) as standalone product

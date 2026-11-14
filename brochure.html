@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headley Web & SEO — Leave-Behind Brochure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Tokens ─────────────────────────────────────── */
+    :root {
+      --primary:      #E07B3C;
+      --primary-dark: #B85A24;
+      --secondary:    #6B8F71;
+      --dark:         #1C2826;
+      --light:        #F5F0EB;
+      --text:         #2D2D2D;
+      --text-light:   #6B7280;
+      --white:        #FFFFFF;
+
+      --font-heading: 'Fraunces', Georgia, serif;
+      --font-body:    'Outfit', system-ui, sans-serif;
+    }
+
+    /* ── Page shell ─────────────────────────────────── */
+    html, body {
+      background: #ccc;
+      font-family: var(--font-body);
+      color: var(--text);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0.5in auto;
+      background: var(--light);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .header {
+      background: var(--dark);
+      color: var(--white);
+      padding: 0.48in 0.55in 0.42in;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 0.2in;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.1in;
+    }
+
+    .tagline {
+      font-family: var(--font-heading);
+      font-size: 30pt;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .tagline em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .sub-tagline {
+      margin-top: 0.15in;
+      font-family: var(--font-body);
+      font-size: 11pt;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+
+    .header-right {
+      text-align: right;
+      padding-bottom: 0.04in;
+    }
+
+    .header-right .location {
+      font-size: 9.5pt;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+
+    .header-right .location strong {
+      display: block;
+      font-size: 10pt;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2px;
+    }
+
+    /* ── Body ───────────────────────────────────────── */
+    .body {
+      padding: 0.38in 0.55in 0.3in;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.28in;
+    }
+
+    /* ── Section labels ──────────────────────────────── */
+    .section-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 0.1in;
+    }
+
+    /* ── Problem column ──────────────────────────────── */
+    .col-problem {
+      grid-column: 1 / -1;
+      background: var(--white);
+      border-radius: 6px;
+      padding: 0.24in 0.28in;
+      border-left: 4px solid var(--primary);
+    }
+
+    .problem-headline {
+      font-family: var(--font-heading);
+      font-size: 16pt;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--dark);
+      margin-bottom: 0.12in;
+    }
+
+    .problem-body {
+      font-size: 10.5pt;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .pain-list {
+      margin-top: 0.12in;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.08in 0.18in;
+    }
+
+    .pain-list li {
+      font-size: 9.5pt;
+      color: var(--text-light);
+      padding-left: 1em;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .pain-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ── Steps column ───────────────────────────────── */
+    .col-steps {
+      grid-column: 1;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.13in;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0.1in;
+      align-items: start;
+      background: var(--white);
+      border-radius: 6px;
+      padding: 0.14in 0.18in;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-content .step-title {
+      font-family: var(--font-heading);
+      font-size: 11.5pt;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .step-content .step-desc {
+      font-size: 9pt;
+      color: var(--text-light);
+      line-height: 1.45;
+    }
+
+    /* ── Trust column ───────────────────────────────── */
+    .col-trust {
+      grid-column: 2;
+    }
+
+    .trust-block {
+      background: var(--dark);
+      border-radius: 6px;
+      padding: 0.22in 0.22in;
+      color: var(--white);
+      margin-bottom: 0.13in;
+    }
+
+    .trust-block .section-label {
+      color: var(--secondary);
+      margin-bottom: 0.1in;
+    }
+
+    .trust-quote {
+      font-family: var(--font-heading);
+      font-size: 11pt;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .trust-quote cite {
+      display: block;
+      margin-top: 0.08in;
+      font-style: normal;
+      font-size: 8.5pt;
+      font-family: var(--font-body);
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    .benefits {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 0.16in 0.18in;
+    }
+
+    .benefits ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .benefits li {
+      font-size: 9pt;
+      color: var(--text);
+      padding-left: 1.1em;
+      position: relative;
+      line-height: 1.35;
+    }
+
+    .benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: 700;
+      font-size: 9pt;
+    }
+
+    /* ── Pricing ─────────────────────────────────────── */
+    .col-pricing {
+      grid-column: 1 / -1;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.12in;
+    }
+
+    .tier {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 0.18in 0.18in 0.16in;
+      position: relative;
+      border: 2px solid transparent;
+    }
+
+    .tier.featured {
+      border-color: var(--secondary);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--secondary);
+      color: var(--white);
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .tier-name {
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .tier-price {
+      font-size: 20pt;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: var(--font-heading);
+      line-height: 1;
+      margin-bottom: 0.1in;
+    }
+
+    .tier-price span {
+      font-size: 10pt;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .tier-desc {
+      font-size: 8.5pt;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin-bottom: 0.1in;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tier-features li {
+      font-size: 8pt;
+      color: var(--text);
+      padding-left: 1em;
+      position: relative;
+      line-height: 1.35;
+    }
+
+    .tier-features li::before {
+      content: '·';
+      position: absolute;
+      left: 0.1em;
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 12pt;
+      line-height: 0.9;
+    }
+
+    /* ── Care plans strip ────────────────────────────── */
+    .care-strip {
+      grid-column: 1 / -1;
+      background: var(--secondary);
+      border-radius: 6px;
+      padding: 0.14in 0.22in;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto auto;
+      align-items: center;
+      gap: 0.2in;
+    }
+
+    .care-strip .section-label {
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+
+    .care-strip .care-desc {
+      font-size: 8.5pt;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.35;
+    }
+
+    .care-tier {
+      text-align: center;
+    }
+
+    .care-tier .care-name {
+      font-size: 8pt;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .care-tier .care-price {
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .care-tier .care-price sub {
+      font-size: 7pt;
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    /* ── Footer ─────────────────────────────────────── */
+    .footer {
+      background: var(--dark);
+      padding: 0.22in 0.55in;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 0.3in;
+    }
+
+    .footer-left .footer-name {
+      font-family: var(--font-heading);
+      font-size: 12pt;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer-left .footer-contact {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      gap: 0.18in;
+    }
+
+    .footer-left .footer-contact a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+    }
+
+    .footer-qr {
+      display: flex;
+      align-items: center;
+      gap: 0.12in;
+    }
+
+    .footer-qr img {
+      width: 0.65in;
+      height: 0.65in;
+      border-radius: 4px;
+      display: block;
+      background: var(--white);
+      padding: 3px;
+    }
+
+    .footer-qr-label {
+      text-align: left;
+    }
+
+    .footer-qr-label strong {
+      display: block;
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.02em;
+    }
+
+    .footer-qr-label small {
+      display: block;
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.45);
+      margin-top: 1px;
+    }
+
+    /* ── Print ──────────────────────────────────────── */
+    @media print {
+      html, body { background: none; margin: 0; }
+      .page {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── HEADER ──────────────────────────────────────── -->
+  <header class="header">
+    <div>
+      <p class="brand-name">Headley Web &amp; SEO</p>
+      <h1 class="tagline">Your website should<br>show up <em>like you do.</em></h1>
+      <p class="sub-tagline">Get found · Get calls · Get booked</p>
+    </div>
+    <div class="header-right">
+      <p class="location">
+        <strong>Matt Headley</strong>
+        Jacksonville, Alabama<br>
+        Serving NE Alabama<br>
+        since 2025
+      </p>
+    </div>
+  </header>
+
+  <!-- ── BODY ────────────────────────────────────────── -->
+  <div class="body">
+
+    <!-- Problem -->
+    <div class="col-problem">
+      <h2 class="problem-headline">Most service businesses around here are losing leads they can't even see.</h2>
+      <p class="problem-body">When someone searches for what you do, the map pack decides who gets the call. If you're not showing up there — or if your site is hard to use on a phone — that job goes to a competitor. Even one who does worse work.</p>
+      <ul class="pain-list">
+        <li>Invisible in the Google map pack</li>
+        <li>Website that won't load on a phone</li>
+        <li>No clear way to call or book</li>
+        <li>Missing from AI search answers</li>
+        <li>Embarrassed to share your own site</li>
+        <li>Losing jobs to less-skilled competitors</li>
+      </ul>
+    </div>
+
+    <!-- Steps -->
+    <div class="col-steps">
+      <p class="section-label">How It Works</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <p class="step-title">Get Your Free Site Checkup</p>
+            <p class="step-desc">I'll review your current site and Google presence and show you exactly where you stand — no cost, no pressure.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <p class="step-title">I Build Your System</p>
+            <p class="step-desc">Clear website, local SEO, and Google Business Profile setup. Flat rate, no surprises. You own everything from day one.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <p class="step-title">Your Phone Starts Ringing</p>
+            <p class="step-desc">Customers find you, call you, and book you. You get back to the work you love while the leads come in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust -->
+    <div class="col-trust">
+      <div class="trust-block">
+        <p class="section-label">Why Headley Web</p>
+        <p class="trust-quote">"I grew tired of seeing great local businesses get ignored by high-priced agencies that don't know this area or care about these communities."</p>
+        <cite>— Matt Headley, Jacksonville, AL</cite>
+      </div>
+      <div class="benefits">
+        <p class="section-label">What You Get</p>
+        <ul>
+          <li>You own your site, domain, and data — always</li>
+          <li>No contracts, no hostage situations</li>
+          <li>Google Maps + AI visibility built in</li>
+          <li>Mobile-first, one-tap call &amp; booking</li>
+          <li>Flat rate — no hourly billing surprises</li>
+          <li>Local guy who knows this market</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="col-pricing">
+      <p class="section-label">Build Packages — One-Time, Flat Rate</p>
+      <div class="pricing-grid">
+
+        <div class="tier">
+          <p class="tier-name">Get Found</p>
+          <p class="tier-price">$495 <span>one time</span></p>
+          <p class="tier-desc">For side hustles &amp; micro-businesses that need a clean, professional presence fast.</p>
+          <ul class="tier-features">
+            <li>1–2 page professional site</li>
+            <li>Google Business Profile setup</li>
+            <li>Mobile-friendly &amp; fast-loading</li>
+            <li>You own everything</li>
+          </ul>
+        </div>
+
+        <div class="tier featured">
+          <div class="tier-badge">Best Value</div>
+          <p class="tier-name">Get Calls</p>
+          <p class="tier-price">$1,495 <span>one time</span></p>
+          <p class="tier-desc">Full marketing site for service businesses ready to generate consistent local leads.</p>
+          <ul class="tier-features">
+            <li>3–5 page marketing site</li>
+            <li>Blog + 2 launch posts</li>
+            <li>Local SEO + GBP setup</li>
+            <li>FAQ schema markup</li>
+            <li>GA4 analytics</li>
+          </ul>
+        </div>
+
+        <div class="tier">
+          <p class="tier-name">Get Booked</p>
+          <p class="tier-price">$1,995 <span>one time</span></p>
+          <p class="tier-desc">Local authority build for service businesses that want to dominate their market area.</p>
+          <ul class="tier-features">
+            <li>5–7 pages + service area pages</li>
+            <li>4 launch posts for AI visibility</li>
+            <li>Full schema + Search Console</li>
+            <li>Comprehensive GA4 setup</li>
+            <li>Map pack &amp; AI answer targeting</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Care Plans strip -->
+    <div class="care-strip">
+      <p class="section-label">Monthly Care Plans</p>
+      <p class="care-desc">Keep your site fast, secure, and ranking. Optional — no pressure, no contracts.</p>
+      <div class="care-tier">
+        <span class="care-name">Essential</span>
+        <span class="care-price">$49<sub>/mo</sub></span>
+      </div>
+      <div class="care-tier">
+        <span class="care-name">Growth</span>
+        <span class="care-price">$99<sub>/mo</sub></span>
+      </div>
+      <div class="care-tier">
+        <span class="care-name">Accelerate</span>
+        <span class="care-price">$199<sub>/mo</sub></span>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- ── FOOTER ──────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-left">
+      <p class="footer-name">Headley Web &amp; SEO</p>
+      <div class="footer-contact">
+        <span>(256) 644-7334</span>
+        <span>matt@headleyweb.com</span>
+        <span>headleyweb.com</span>
+      </div>
+    </div>
+    <div class="footer-qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&color=1C2826&bgcolor=ffffff&data=https://headleyweb.com/audit" alt="Scan for free site checkup">
+      <div class="footer-qr-label">
+        <strong>Free Site Checkup</strong>
+        <small>Scan or visit headleyweb.com/audit</small>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+</body>
+</html>

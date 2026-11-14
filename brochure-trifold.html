@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headley Web & SEO — Trifold Brochure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Tokens ──────────────────────────────────────── */
+    :root {
+      --primary:   #E07B3C;
+      --secondary: #6B8F71;
+      --dark:      #1C2826;
+      --light:     #F5F0EB;
+      --text:      #2D2D2D;
+      --muted:     #6B7280;
+      --white:     #FFFFFF;
+      --font-h:    'Fraunces', Georgia, serif;
+      --font-b:    'Outfit', system-ui, sans-serif;
+      --p-outer:   3.875in;
+      --p-center:  3.25in;
+    }
+
+    /* ── Shell ───────────────────────────────────────── */
+    html, body {
+      background: #888;
+      font-family: var(--font-b);
+      color: var(--text);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Decorative ampersand ────────────────────────── */
+    .amp {
+      font-family: var(--font-h);
+      font-variation-settings: "opsz" 144 !important;
+    }
+
+    /* ── Sheet ───────────────────────────────────────── */
+    .sheet {
+      width: 11in;
+      height: 8.5in;
+      display: grid;
+      grid-template-columns: var(--p-outer) var(--p-center) var(--p-outer);
+      margin: 0.3in auto;
+      box-shadow: 0 6px 40px rgba(0,0,0,0.28);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .fold-guide {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.15);
+      z-index: 20;
+      pointer-events: none;
+    }
+    .fold-guide.left  { left: var(--p-outer); }
+    .fold-guide.right { right: var(--p-outer); }
+
+    /* ── Panel base ──────────────────────────────────── */
+    .panel {
+      height: 8.5in;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ════════════════════════════════════════════════════
+       OUTSIDE — Panel 6 | Panel 5 | Panel 4
+    ════════════════════════════════════════════════════ */
+
+    /* ── Panel 4 — FRONT COVER ───────────────────────── */
+    .panel-front {
+      background: var(--dark);
+      padding: 0.5in 0.42in 0.44in;
+      justify-content: space-between;
+    }
+
+    .front-eyebrow {
+      font-family: var(--font-h);
+      font-size: 13pt;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .front-tagline {
+      font-family: var(--font-h);
+      font-size: 42pt;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.05;
+      color: var(--white);
+      margin-top: 0.18in;
+    }
+
+    .front-tagline em {
+      font-style: normal;
+      color: var(--primary);
+      display: block;
+    }
+
+    .front-rule {
+      width: 0.35in;
+      height: 2px;
+      background: var(--primary);
+      margin: 0.22in 0;
+    }
+
+    .front-brand {
+      font-family: var(--font-h);
+      font-size: 10.5pt;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .front-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.15in;
+    }
+
+    .front-qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 7px;
+    }
+
+    .front-qr {
+      width: 1.1in;
+      height: 1.1in;
+      border-radius: 5px;
+      background: var(--white);
+      padding: 5px;
+      display: block;
+    }
+
+    .front-qr-label {
+      font-size: 8pt;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+    }
+
+    .front-qr-sub {
+      font-size: 7pt;
+      color: rgba(255,255,255,0.3);
+      margin-top: 1px;
+    }
+
+    .front-location {
+      font-size: 8pt;
+      color: rgba(255,255,255,0.25);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ── Panel 5 — INSIDE FLAP ───────────────────────── */
+    .panel-flap {
+      background: var(--light);
+      padding: 0.5in 0.35in 0.5in 0.38in;
+      border-left: 3px solid var(--primary);
+      justify-content: center;
+      gap: 0;
+    }
+
+    .flap-overline {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.14in;
+    }
+
+    .flap-headline {
+      font-family: var(--font-h);
+      font-size: 17pt;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--dark);
+      margin-bottom: 0.2in;
+    }
+
+    .flap-body {
+      font-size: 9.5pt;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.22in;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1in;
+    }
+
+    .pain-list li {
+      font-size: 9.5pt;
+      color: var(--text);
+      padding-left: 1.1em;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .pain-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ── Panel 6 — BACK COVER ────────────────────────── */
+    .panel-back {
+      background: var(--white);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .back-photo-band {
+      width: 100%;
+      height: 3.2in;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .back-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    .back-photo-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1.2in;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .back-content {
+      padding: 0.28in 0.38in 0.38in;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .back-name {
+      font-family: var(--font-h);
+      font-size: 22pt;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.1;
+    }
+
+    .back-title {
+      font-size: 9pt;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .back-divider {
+      width: 0.32in;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      margin: 0.18in 0;
+    }
+
+    .back-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .back-contact span {
+      font-size: 9pt;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .back-tagline {
+      font-family: var(--font-h);
+      font-size: 10.5pt;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 0.18in;
+    }
+
+    .back-tagline strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ════════════════════════════════════════════════════
+       INSIDE — Panel 1 | Panel 2 | Panel 3
+    ════════════════════════════════════════════════════ */
+
+    /* ── Panel 1 — GUIDE ─────────────────────────────── */
+    .panel-guide {
+      background: var(--white);
+      padding: 0.5in 0.35in 0.44in;
+      justify-content: space-between;
+    }
+
+    .guide-label {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 0.18in;
+    }
+
+    .guide-photo {
+      width: 100%;
+      height: 1.6in;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 0.2in;
+    }
+
+    .guide-headline {
+      font-family: var(--font-h);
+      font-size: 14pt;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--dark);
+      margin-bottom: 0.18in;
+    }
+
+    .guide-headline strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .guide-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .guide-bullets li {
+      font-size: 8.5pt;
+      color: var(--text);
+      padding-left: 1.2em;
+      position: relative;
+      line-height: 1.35;
+    }
+
+    .guide-bullets li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    /* ── Panel 2 — PLAN ──────────────────────────────── */
+    .panel-plan {
+      background: var(--dark);
+      padding: 0.5in 0.32in 0.44in;
+      justify-content: space-between;
+    }
+
+    .plan-label {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 0.22in;
+    }
+
+    .plan-headline {
+      font-family: var(--font-h);
+      font-size: 32pt;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 0.32in;
+    }
+
+    .plan-headline em {
+      font-style: normal;
+      display: block;
+      color: var(--primary);
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2in;
+      flex: 1;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 0.12in;
+      align-items: start;
+    }
+
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-family: var(--font-h);
+      font-size: 13pt;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-family: var(--font-h);
+      font-size: 11.5pt;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .step-desc {
+      font-size: 8.5pt;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    .plan-footer {
+      padding-top: 0.18in;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.03em;
+      line-height: 1.7;
+    }
+
+    /* ── Panel 3 — PRICING ───────────────────────────── */
+    .panel-pricing {
+      background: var(--light);
+      padding: 0.5in 0.35in 0.44in;
+      justify-content: space-between;
+    }
+
+    .pricing-label {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 0.22in;
+    }
+
+    .tier-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.1in 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .tier-row:first-of-type {
+      border-top: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .tier-name {
+      font-family: var(--font-h);
+      font-size: 13pt;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .tier-price {
+      font-family: var(--font-h);
+      font-size: 18pt;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .best-value {
+      font-size: 6.5pt;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      display: block;
+      margin-top: 1px;
+    }
+
+    .care-line {
+      font-size: 8pt;
+      color: var(--muted);
+      margin-top: 0.14in;
+      line-height: 1.5;
+      padding-left: 0.1in;
+      border-left: 2px solid var(--secondary);
+      font-style: italic;
+    }
+
+    .pricing-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1in;
+    }
+
+    .pricing-qr-row {
+      display: flex;
+      align-items: center;
+      gap: 0.14in;
+      background: var(--dark);
+      border-radius: 6px;
+      padding: 0.14in 0.16in;
+    }
+
+    .pricing-qr {
+      width: 0.85in;
+      height: 0.85in;
+      border-radius: 4px;
+      background: var(--white);
+      padding: 4px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .pricing-cta-text strong {
+      display: block;
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .pricing-cta-text span {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .pricing-phone {
+      font-family: var(--font-h);
+      font-size: 15pt;
+      font-weight: 500;
+      color: var(--dark);
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+
+    /* ── Print ───────────────────────────────────────── */
+    @media print {
+      html, body { background: none; margin: 0; }
+      @page { size: 11in 8.5in; margin: 0; }
+      .sheet { margin: 0; box-shadow: none; page-break-after: always; }
+      .fold-guide { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     SHEET 1 — OUTSIDE
+     Left→Right: Panel 6 (back) | Panel 5 (flap) | Panel 4 (front)
+══════════════════════════════════════════════════════ -->
+<div class="sheet" id="outside">
+  <div class="fold-guide left"></div>
+  <div class="fold-guide right"></div>
+
+  <!-- Panel 6 — Back Cover -->
+  <div class="panel panel-back">
+    <div class="back-photo-band">
+      <img class="back-photo" src="public/images/headshot-matt-headley.webp" alt="Matt Headley" width="372" height="307">
+      <div class="back-photo-overlay"></div>
+    </div>
+    <div class="back-content">
+      <div>
+        <p class="back-name">Matt Headley</p>
+        <p class="back-title">Jacksonville, Alabama</p>
+        <div class="back-divider"></div>
+        <div class="back-contact">
+          <span>(256) 644-7334</span>
+          <span>matt@headleyweb.com</span>
+          <span>headleyweb.com</span>
+        </div>
+      </div>
+      <p class="back-tagline">
+        <strong>Get found.</strong> Get calls.<br>
+        <strong>Get booked.</strong>
+      </p>
+    </div>
+  </div>
+
+  <!-- Panel 5 — Inside Flap -->
+  <div class="panel panel-flap">
+    <p class="flap-overline">The Problem</p>
+    <h2 class="flap-headline">Most service businesses in Northeast Alabama are losing leads they can't even see.</h2>
+    <p class="flap-body">When someone searches for what you do, the map pack decides who gets the call. If you're not there, that job goes to a competitor — even one who does worse work.</p>
+    <ul class="pain-list">
+      <li>Invisible in Google and AI search results</li>
+      <li>Website that won't work on a phone</li>
+      <li>Losing jobs to less-skilled competitors</li>
+    </ul>
+  </div>
+
+  <!-- Panel 4 — Front Cover -->
+  <div class="panel panel-front">
+    <div>
+      <p class="front-eyebrow">Headley Web <span class="amp">&amp;</span> SEO</p>
+      <h1 class="front-tagline">
+        Your website<br>should show up<br>
+        <em>like you do.</em>
+      </h1>
+      <div class="front-rule"></div>
+      <p class="front-brand">Web design for Northeast Alabama<br>service businesses.</p>
+    </div>
+    <div class="front-bottom">
+      <div class="front-qr-wrap">
+        <img
+          class="front-qr"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=1C2826&bgcolor=ffffff&data=https://headleyweb.com/audit"
+          alt="Scan for free site checkup"
+          width="106"
+          height="106"
+        >
+        <p class="front-qr-label">Free Site Checkup</p>
+        <p class="front-qr-sub">headleyweb.com/audit</p>
+      </div>
+      <p class="front-location">Jacksonville, AL<br>Serving NE Alabama</p>
+    </div>
+  </div>
+
+</div><!-- /outside -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     SHEET 2 — INSIDE
+     Left→Right: Panel 1 (guide) | Panel 2 (plan) | Panel 3 (pricing)
+══════════════════════════════════════════════════════ -->
+<div class="sheet" id="inside">
+  <div class="fold-guide left"></div>
+  <div class="fold-guide right"></div>
+
+  <!-- Panel 1 — Guide / Empathy -->
+  <div class="panel panel-guide">
+    <div>
+      <p class="guide-label">Why Headley Web</p>
+      <img class="guide-photo" src="public/images/laptop-matt-headley.webp" alt="Matt Headley at work" width="372" height="154">
+      <p class="guide-headline">
+        As a husband, dad, and former pastor living right here in Jacksonville —
+        <strong>I built this for businesses like yours.</strong>
+      </p>
+    </div>
+    <ul class="guide-bullets">
+      <li>Local — I know Northeast Alabama</li>
+      <li>You own your site, domain, and data — always</li>
+      <li>No contracts, no hostage situations</li>
+      <li>Mobile-first, one-tap call &amp; booking</li>
+      <li>Flat rate — no hourly surprises</li>
+    </ul>
+  </div>
+
+  <!-- Panel 2 — The Plan -->
+  <div class="panel panel-plan">
+    <div>
+      <p class="plan-label">How It Works</p>
+      <h2 class="plan-headline">Three steps.<br><em>No guesswork.</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <p class="step-title">Get Your Free Site Checkup</p>
+            <p class="step-desc">I review your current site and Google presence and show you exactly where you stand — no cost, no pressure.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <p class="step-title">I Build Your System</p>
+            <p class="step-desc">Clear website, local SEO, and Google Business Profile setup. Flat rate. You own everything from day one.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <p class="step-title">Your Phone Starts Ringing</p>
+            <p class="step-desc">Customers find you, call you, and book you. You get back to the work you love.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="plan-footer">Flat rate · You own everything · No contracts</p>
+  </div>
+
+  <!-- Panel 3 — Pricing + CTA -->
+  <div class="panel panel-pricing">
+    <div>
+      <p class="pricing-label">Build Packages — One-Time</p>
+      <div class="tier-row">
+        <p class="tier-name">Get Found</p>
+        <p class="tier-price">$495</p>
+      </div>
+      <div class="tier-row">
+        <div>
+          <p class="tier-name">Get Calls</p>
+          <span class="best-value">Best Value</span>
+        </div>
+        <p class="tier-price">$1,495</p>
+      </div>
+      <div class="tier-row">
+        <p class="tier-name">Get Booked</p>
+        <p class="tier-price">$1,995</p>
+      </div>
+      <p class="care-line">Monthly care plans from $49/mo —<br>ask about availability.</p>
+    </div>
+    <div class="pricing-cta">
+      <div class="pricing-qr-row">
+        <img
+          class="pricing-qr"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&color=F5F0EB&bgcolor=1C2826&data=https://headleyweb.com/audit"
+          alt="Scan for free site checkup"
+          width="82"
+          height="82"
+        >
+        <div class="pricing-cta-text">
+          <strong>Scan for your free site checkup</strong>
+          <span>headleyweb.com/audit</span>
+        </div>
+      </div>
+      <p class="pricing-phone">(256) 644-7334</p>
+    </div>
+  </div>
+
+</div><!-- /inside -->
+
+</body>
+</html>
